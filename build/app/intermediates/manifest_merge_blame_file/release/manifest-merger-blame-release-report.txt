@@ -1,0 +1,199 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="schooldynamics.ug"
+4    android:versionCode="4"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="16"
+8-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+11-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:4:5-79
+11-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:4:22-76
+12    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+12-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:5:5-81
+12-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:5:22-78
+13    <uses-permission android:name="android.permission.INTERNET" />
+13-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:6:5-67
+13-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:6:22-64
+14    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+14-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:7:5-79
+14-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:7:22-76
+15
+16    <queries>
+16-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:10:5-21:15
+17
+18        <!-- If your app checks for SMS support -->
+19        <intent>
+19-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:12:9-15:18
+20            <action android:name="android.intent.action.VIEW" />
+20-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:13:13-65
+20-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:13:21-62
+21
+22            <data android:scheme="sms" />
+22-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:14:13-42
+22-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:14:19-39
+23        </intent>
+24        <!-- If your app checks for call support -->
+25        <intent>
+25-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:17:9-20:18
+26            <action android:name="android.intent.action.VIEW" />
+26-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:13:13-65
+26-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:13:21-62
+27
+28            <data android:scheme="tel" />
+28-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:14:13-42
+28-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:14:19-39
+29        </intent>
+30    </queries>
+31
+32    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+32-->[:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\release\AndroidManifest.xml:7:5-77
+32-->[:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\release\AndroidManifest.xml:7:22-74
+33
+34    <permission
+34-->[androidx.core:core:1.9.0] C:\Users\muhin\.gradle\caches\transforms-3\d8d18349d8b5be0a549bfa36843dd640\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+35        android:name="schooldynamics.ug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+35-->[androidx.core:core:1.9.0] C:\Users\muhin\.gradle\caches\transforms-3\d8d18349d8b5be0a549bfa36843dd640\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+36        android:protectionLevel="signature" />
+36-->[androidx.core:core:1.9.0] C:\Users\muhin\.gradle\caches\transforms-3\d8d18349d8b5be0a549bfa36843dd640\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+37
+38    <uses-permission android:name="schooldynamics.ug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+38-->[androidx.core:core:1.9.0] C:\Users\muhin\.gradle\caches\transforms-3\d8d18349d8b5be0a549bfa36843dd640\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+38-->[androidx.core:core:1.9.0] C:\Users\muhin\.gradle\caches\transforms-3\d8d18349d8b5be0a549bfa36843dd640\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+39
+40    <application
+41        android:name="android.app.Application"
+41-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:24:9-42
+42        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+42-->[androidx.core:core:1.9.0] C:\Users\muhin\.gradle\caches\transforms-3\d8d18349d8b5be0a549bfa36843dd640\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+43        android:exported="true"
+43-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:25:9-32
+44        android:icon="@drawable/logo"
+44-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:26:9-38
+45        android:label="School Dynamics" >
+45-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:27:9-40
+46        <activity
+46-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:28:9-47:20
+47            android:name="schooldynamics.ug.MainActivity"
+47-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:29:13-41
+48            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+48-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:30:13-163
+49            android:exported="true"
+49-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:31:13-36
+50            android:hardwareAccelerated="true"
+50-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:32:13-47
+51            android:launchMode="singleTop"
+51-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:33:13-43
+52            android:theme="@style/LaunchTheme"
+52-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:34:13-47
+53            android:windowSoftInputMode="adjustResize" >
+53-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:35:13-55
+54
+55            <!--
+56                 Specifies an Android theme to apply to this Activity as soon as
+57                 the Android process has started. This theme is visible to the user
+58                 while the Flutter UI initializes. After that, this theme continues
+59                 to determine the Window background behind the Flutter UI.
+60            -->
+61            <meta-data
+61-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:40:13-42:57
+62                android:name="io.flutter.embedding.android.NormalTheme"
+62-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:41:17-72
+63                android:resource="@style/NormalTheme" />
+63-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:42:17-54
+64
+65            <intent-filter>
+65-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:43:13-46:29
+66                <action android:name="android.intent.action.MAIN" />
+66-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:44:17-69
+66-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:44:25-66
+67
+68                <category android:name="android.intent.category.LAUNCHER" />
+68-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:45:17-77
+68-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:45:27-74
+69            </intent-filter>
+70        </activity>
+71        <!--
+72             Don't delete the meta-data below.
+73             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+74        -->
+75        <meta-data
+75-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:50:9-52:33
+76            android:name="flutterEmbedding"
+76-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:51:13-44
+77            android:value="2" />
+77-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:52:13-30
+78
+79        <service
+79-->[:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\release\AndroidManifest.xml:10:9-14:56
+80            android:name="com.baseflow.geolocator.GeolocatorLocationService"
+80-->[:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\release\AndroidManifest.xml:11:13-77
+81            android:enabled="true"
+81-->[:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\release\AndroidManifest.xml:12:13-35
+82            android:exported="false"
+82-->[:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\release\AndroidManifest.xml:13:13-37
+83            android:foregroundServiceType="location" />
+83-->[:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\release\AndroidManifest.xml:14:13-53
+84
+85        <provider
+85-->[:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:8:9-16:20
+86            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+86-->[:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:9:13-82
+87            android:authorities="schooldynamics.ug.flutter.image_provider"
+87-->[:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:10:13-74
+88            android:exported="false"
+88-->[:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:11:13-37
+89            android:grantUriPermissions="true" >
+89-->[:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:12:13-47
+90            <meta-data
+90-->[:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:13:13-15:75
+91                android:name="android.support.FILE_PROVIDER_PATHS"
+91-->[:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:14:17-67
+92                android:resource="@xml/flutter_image_picker_file_paths" />
+92-->[:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:15:17-72
+93        </provider>
+94
+95        <activity
+95-->[:url_launcher_android] C:\github\schools-app\schools-app\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:8:9-11:74
+96            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+96-->[:url_launcher_android] C:\github\schools-app\schools-app\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:9:13-74
+97            android:exported="false"
+97-->[:url_launcher_android] C:\github\schools-app\schools-app\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:10:13-37
+98            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+98-->[:url_launcher_android] C:\github\schools-app\schools-app\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:11:13-71
+99
+100        <uses-library
+100-->[androidx.window:window:1.0.0-beta04] C:\Users\muhin\.gradle\caches\transforms-3\869babc576db208c07001bc4c5a23520\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+101            android:name="androidx.window.extensions"
+101-->[androidx.window:window:1.0.0-beta04] C:\Users\muhin\.gradle\caches\transforms-3\869babc576db208c07001bc4c5a23520\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+102            android:required="false" />
+102-->[androidx.window:window:1.0.0-beta04] C:\Users\muhin\.gradle\caches\transforms-3\869babc576db208c07001bc4c5a23520\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+103        <uses-library
+103-->[androidx.window:window:1.0.0-beta04] C:\Users\muhin\.gradle\caches\transforms-3\869babc576db208c07001bc4c5a23520\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+104            android:name="androidx.window.sidecar"
+104-->[androidx.window:window:1.0.0-beta04] C:\Users\muhin\.gradle\caches\transforms-3\869babc576db208c07001bc4c5a23520\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+105            android:required="false" />
+105-->[androidx.window:window:1.0.0-beta04] C:\Users\muhin\.gradle\caches\transforms-3\869babc576db208c07001bc4c5a23520\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+106
+107        <activity
+107-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\muhin\.gradle\caches\transforms-3\e557ef7c2c6fedd62cfad76a983a187a\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:20:9-22:45
+108            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+108-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\muhin\.gradle\caches\transforms-3\e557ef7c2c6fedd62cfad76a983a187a\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:20:19-85
+109            android:exported="false"
+109-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\muhin\.gradle\caches\transforms-3\e557ef7c2c6fedd62cfad76a983a187a\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:22:19-43
+110            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+110-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\muhin\.gradle\caches\transforms-3\e557ef7c2c6fedd62cfad76a983a187a\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:21:19-78
+111
+112        <meta-data
+112-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\muhin\.gradle\caches\transforms-3\e220d77df2ddd3e387095792b8f750a6\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
+113            android:name="com.google.android.gms.version"
+113-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\muhin\.gradle\caches\transforms-3\e220d77df2ddd3e387095792b8f750a6\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
+114            android:value="@integer/google_play_services_version" />
+114-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\muhin\.gradle\caches\transforms-3\e220d77df2ddd3e387095792b8f750a6\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
+115    </application>
+116
+117</manifest>

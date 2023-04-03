@@ -1,0 +1,317 @@
+-- Merging decision tree log ---
+application
+INJECTED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:23:5-53:19
+MERGED from [:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\release\AndroidManifest.xml:9:5-15:19
+MERGED from [:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\release\AndroidManifest.xml:9:5-15:19
+MERGED from [:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:7:5-17:19
+MERGED from [:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:7:5-17:19
+MERGED from [:url_launcher_android] C:\github\schools-app\schools-app\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:7:5-12:19
+MERGED from [:url_launcher_android] C:\github\schools-app\schools-app\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:7:5-12:19
+MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\muhin\.gradle\caches\transforms-3\869babc576db208c07001bc4c5a23520\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\muhin\.gradle\caches\transforms-3\869babc576db208c07001bc4c5a23520\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
+MERGED from [com.google.android.gms:play-services-location:21.0.1] C:\Users\muhin\.gradle\caches\transforms-3\fb7d260563de55188af11dab143f7fc2\transformed\jetified-play-services-location-21.0.1\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:21.0.1] C:\Users\muhin\.gradle\caches\transforms-3\fb7d260563de55188af11dab143f7fc2\transformed\jetified-play-services-location-21.0.1\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\muhin\.gradle\caches\transforms-3\e557ef7c2c6fedd62cfad76a983a187a\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\muhin\.gradle\caches\transforms-3\e557ef7c2c6fedd62cfad76a983a187a\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-tasks:18.0.2] C:\Users\muhin\.gradle\caches\transforms-3\a536f699629c7264a562825fca8f3a1b\transformed\jetified-play-services-tasks-18.0.2\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks:18.0.2] C:\Users\muhin\.gradle\caches\transforms-3\a536f699629c7264a562825fca8f3a1b\transformed\jetified-play-services-tasks-18.0.2\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\muhin\.gradle\caches\transforms-3\e220d77df2ddd3e387095792b8f750a6\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\muhin\.gradle\caches\transforms-3\e220d77df2ddd3e387095792b8f750a6\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:20:5-24:19
+MERGED from [androidx.core:core:1.9.0] C:\Users\muhin\.gradle\caches\transforms-3\d8d18349d8b5be0a549bfa36843dd640\transformed\core-1.9.0\AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.9.0] C:\Users\muhin\.gradle\caches\transforms-3\d8d18349d8b5be0a549bfa36843dd640\transformed\core-1.9.0\AndroidManifest.xml:28:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\muhin\.gradle\caches\transforms-3\ace594d2eac30b3726ddd1c71d372263\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\muhin\.gradle\caches\transforms-3\ace594d2eac30b3726ddd1c71d372263\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.9.0] C:\Users\muhin\.gradle\caches\transforms-3\d8d18349d8b5be0a549bfa36843dd640\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+	android:label
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:27:9-40
+	android:exported
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:25:9-32
+	android:icon
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:26:9-38
+	android:name
+		INJECTED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:24:9-42
+manifest
+ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:1:1-54:12
+INJECTED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:1:1-54:12
+INJECTED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:1:1-54:12
+INJECTED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:1:1-54:12
+MERGED from [:shared_preferences_android] C:\github\schools-app\schools-app\build\shared_preferences_android\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-7:12
+MERGED from [:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-17:12
+MERGED from [:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-19:12
+MERGED from [:flutter_plugin_android_lifecycle] C:\github\schools-app\schools-app\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-7:12
+MERGED from [:sqflite] C:\github\schools-app\schools-app\build\sqflite\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-7:12
+MERGED from [:url_launcher_android] C:\github\schools-app\schools-app\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-14:12
+MERGED from [:path_provider_android] C:\github\schools-app\schools-app\build\path_provider_android\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-7:12
+MERGED from [:flutter_native_splash] C:\github\schools-app\schools-app\build\flutter_native_splash\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-7:12
+MERGED from [:connectivity_plus] C:\github\schools-app\schools-app\build\connectivity_plus\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\muhin\.gradle\caches\transforms-3\f8d840d5824a00d9b4f9469f7b78fcb8\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\muhin\.gradle\caches\transforms-3\869babc576db208c07001bc4c5a23520\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:17:1-33:12
+MERGED from [com.google.android.gms:play-services-location:21.0.1] C:\Users\muhin\.gradle\caches\transforms-3\fb7d260563de55188af11dab143f7fc2\transformed\jetified-play-services-location-21.0.1\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\muhin\.gradle\caches\transforms-3\e557ef7c2c6fedd62cfad76a983a187a\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:16:1-24:12
+MERGED from [com.google.android.gms:play-services-tasks:18.0.2] C:\Users\muhin\.gradle\caches\transforms-3\a536f699629c7264a562825fca8f3a1b\transformed\jetified-play-services-tasks-18.0.2\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\muhin\.gradle\caches\transforms-3\e220d77df2ddd3e387095792b8f750a6\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:16:1-26:12
+MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\muhin\.gradle\caches\transforms-3\b548e4a017c84e1fe91f4fa63aaf7230\transformed\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\muhin\.gradle\caches\transforms-3\cc2856728a64402d8456a4cbb7ab947a\transformed\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\muhin\.gradle\caches\transforms-3\bc11c67a4320dd30edf5ccaa9eb79a59\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.0.0] C:\Users\muhin\.gradle\caches\transforms-3\3d77ef86a4b564b73cb2feb3d2283bf7\transformed\jetified-activity-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\muhin\.gradle\caches\transforms-3\f088300ab14ad26e8c46116a7172dcd0\transformed\customview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.9.0] C:\Users\muhin\.gradle\caches\transforms-3\d8d18349d8b5be0a549bfa36843dd640\transformed\core-1.9.0\AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.3] C:\Users\muhin\.gradle\caches\transforms-3\44e4be24f2b606733f326d23cad2bb86\transformed\exifinterface-1.3.3\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\muhin\.gradle\caches\transforms-3\d4669b3d9486a917e6e2843ec67169e4\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] C:\Users\muhin\.gradle\caches\transforms-3\916f58f0dd5fef83ed1035d184fddb3f\transformed\lifecycle-runtime-2.3.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\muhin\.gradle\caches\transforms-3\ace594d2eac30b3726ddd1c71d372263\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\muhin\.gradle\caches\transforms-3\345b5f95f028f8328e2f5533df07b377\transformed\jetified-savedstate-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\muhin\.gradle\caches\transforms-3\10f56f0ffb343fd8fbbb6006426c4ad4\transformed\lifecycle-livedata-2.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\muhin\.gradle\caches\transforms-3\e6d2e4d984e4dfda540519e969b29f8b\transformed\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\muhin\.gradle\caches\transforms-3\206a0278be83d10020e00cdc2428aa1b\transformed\core-runtime-2.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\muhin\.gradle\caches\transforms-3\45075fbd588800263a8e719dc0d93245\transformed\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\muhin\.gradle\caches\transforms-3\2fd3b5446331ff45f3dba52b8ac05776\transformed\jetified-annotation-experimental-1.3.0\AndroidManifest.xml:17:1-22:12
+INJECTED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:1:1-54:12
+INJECTED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:1:1-54:12
+INJECTED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:1:1-54:12
+	package
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:2:5-32
+		INJECTED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:1:1-54:12
+		INJECTED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:1:1-54:12
+		INJECTED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:1:11-69
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:4:5-79
+	android:name
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:4:22-76
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:5:5-81
+	android:name
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:5:22-78
+uses-permission#android.permission.INTERNET
+ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:6:5-67
+	android:name
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:6:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:7:5-79
+MERGED from [:connectivity_plus] C:\github\schools-app\schools-app\build\connectivity_plus\intermediates\merged_manifest\release\AndroidManifest.xml:7:5-79
+MERGED from [:connectivity_plus] C:\github\schools-app\schools-app\build\connectivity_plus\intermediates\merged_manifest\release\AndroidManifest.xml:7:5-79
+	android:name
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:7:22-76
+queries
+ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:10:5-21:15
+intent#action:name:android.intent.action.VIEW+data:scheme:sms
+ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:12:9-15:18
+action#android.intent.action.VIEW
+ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:13:13-65
+	android:name
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:13:21-62
+data
+ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:14:13-42
+	android:scheme
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:14:19-39
+intent#action:name:android.intent.action.VIEW+data:scheme:tel
+ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:17:9-20:18
+uses-sdk
+INJECTED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml
+INJECTED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml
+MERGED from [:shared_preferences_android] C:\github\schools-app\schools-app\build\shared_preferences_android\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences_android] C:\github\schools-app\schools-app\build\shared_preferences_android\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] C:\github\schools-app\schools-app\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] C:\github\schools-app\schools-app\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:sqflite] C:\github\schools-app\schools-app\build\sqflite\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:sqflite] C:\github\schools-app\schools-app\build\sqflite\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_android] C:\github\schools-app\schools-app\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_android] C:\github\schools-app\schools-app\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider_android] C:\github\schools-app\schools-app\build\path_provider_android\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider_android] C:\github\schools-app\schools-app\build\path_provider_android\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_native_splash] C:\github\schools-app\schools-app\build\flutter_native_splash\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_native_splash] C:\github\schools-app\schools-app\build\flutter_native_splash\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:connectivity_plus] C:\github\schools-app\schools-app\build\connectivity_plus\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [:connectivity_plus] C:\github\schools-app\schools-app\build\connectivity_plus\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\muhin\.gradle\caches\transforms-3\f8d840d5824a00d9b4f9469f7b78fcb8\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\muhin\.gradle\caches\transforms-3\f8d840d5824a00d9b4f9469f7b78fcb8\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\muhin\.gradle\caches\transforms-3\869babc576db208c07001bc4c5a23520\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\muhin\.gradle\caches\transforms-3\869babc576db208c07001bc4c5a23520\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.gms:play-services-location:21.0.1] C:\Users\muhin\.gradle\caches\transforms-3\fb7d260563de55188af11dab143f7fc2\transformed\jetified-play-services-location-21.0.1\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:21.0.1] C:\Users\muhin\.gradle\caches\transforms-3\fb7d260563de55188af11dab143f7fc2\transformed\jetified-play-services-location-21.0.1\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\muhin\.gradle\caches\transforms-3\e557ef7c2c6fedd62cfad76a983a187a\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\muhin\.gradle\caches\transforms-3\e557ef7c2c6fedd62cfad76a983a187a\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.0.2] C:\Users\muhin\.gradle\caches\transforms-3\a536f699629c7264a562825fca8f3a1b\transformed\jetified-play-services-tasks-18.0.2\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.0.2] C:\Users\muhin\.gradle\caches\transforms-3\a536f699629c7264a562825fca8f3a1b\transformed\jetified-play-services-tasks-18.0.2\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\muhin\.gradle\caches\transforms-3\e220d77df2ddd3e387095792b8f750a6\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\muhin\.gradle\caches\transforms-3\e220d77df2ddd3e387095792b8f750a6\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:18:5-43
+MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\muhin\.gradle\caches\transforms-3\b548e4a017c84e1fe91f4fa63aaf7230\transformed\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\muhin\.gradle\caches\transforms-3\b548e4a017c84e1fe91f4fa63aaf7230\transformed\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\muhin\.gradle\caches\transforms-3\cc2856728a64402d8456a4cbb7ab947a\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\muhin\.gradle\caches\transforms-3\cc2856728a64402d8456a4cbb7ab947a\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\muhin\.gradle\caches\transforms-3\bc11c67a4320dd30edf5ccaa9eb79a59\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\muhin\.gradle\caches\transforms-3\bc11c67a4320dd30edf5ccaa9eb79a59\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0] C:\Users\muhin\.gradle\caches\transforms-3\3d77ef86a4b564b73cb2feb3d2283bf7\transformed\jetified-activity-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.0.0] C:\Users\muhin\.gradle\caches\transforms-3\3d77ef86a4b564b73cb2feb3d2283bf7\transformed\jetified-activity-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\muhin\.gradle\caches\transforms-3\f088300ab14ad26e8c46116a7172dcd0\transformed\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\muhin\.gradle\caches\transforms-3\f088300ab14ad26e8c46116a7172dcd0\transformed\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.9.0] C:\Users\muhin\.gradle\caches\transforms-3\d8d18349d8b5be0a549bfa36843dd640\transformed\core-1.9.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.9.0] C:\Users\muhin\.gradle\caches\transforms-3\d8d18349d8b5be0a549bfa36843dd640\transformed\core-1.9.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.3.3] C:\Users\muhin\.gradle\caches\transforms-3\44e4be24f2b606733f326d23cad2bb86\transformed\exifinterface-1.3.3\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.3] C:\Users\muhin\.gradle\caches\transforms-3\44e4be24f2b606733f326d23cad2bb86\transformed\exifinterface-1.3.3\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\muhin\.gradle\caches\transforms-3\d4669b3d9486a917e6e2843ec67169e4\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\muhin\.gradle\caches\transforms-3\d4669b3d9486a917e6e2843ec67169e4\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] C:\Users\muhin\.gradle\caches\transforms-3\916f58f0dd5fef83ed1035d184fddb3f\transformed\lifecycle-runtime-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] C:\Users\muhin\.gradle\caches\transforms-3\916f58f0dd5fef83ed1035d184fddb3f\transformed\lifecycle-runtime-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\muhin\.gradle\caches\transforms-3\ace594d2eac30b3726ddd1c71d372263\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\muhin\.gradle\caches\transforms-3\ace594d2eac30b3726ddd1c71d372263\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\muhin\.gradle\caches\transforms-3\345b5f95f028f8328e2f5533df07b377\transformed\jetified-savedstate-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\muhin\.gradle\caches\transforms-3\345b5f95f028f8328e2f5533df07b377\transformed\jetified-savedstate-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\muhin\.gradle\caches\transforms-3\10f56f0ffb343fd8fbbb6006426c4ad4\transformed\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\muhin\.gradle\caches\transforms-3\10f56f0ffb343fd8fbbb6006426c4ad4\transformed\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\muhin\.gradle\caches\transforms-3\e6d2e4d984e4dfda540519e969b29f8b\transformed\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\muhin\.gradle\caches\transforms-3\e6d2e4d984e4dfda540519e969b29f8b\transformed\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\muhin\.gradle\caches\transforms-3\206a0278be83d10020e00cdc2428aa1b\transformed\core-runtime-2.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\muhin\.gradle\caches\transforms-3\206a0278be83d10020e00cdc2428aa1b\transformed\core-runtime-2.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\muhin\.gradle\caches\transforms-3\45075fbd588800263a8e719dc0d93245\transformed\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\muhin\.gradle\caches\transforms-3\45075fbd588800263a8e719dc0d93245\transformed\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\muhin\.gradle\caches\transforms-3\2fd3b5446331ff45f3dba52b8ac05776\transformed\jetified-annotation-experimental-1.3.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\muhin\.gradle\caches\transforms-3\2fd3b5446331ff45f3dba52b8ac05776\transformed\jetified-annotation-experimental-1.3.0\AndroidManifest.xml:20:5-44
+INJECTED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml
+INJECTED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml
+activity#schooldynamics.ug.MainActivity
+ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:28:9-47:20
+	android:launchMode
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:33:13-43
+	android:hardwareAccelerated
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:32:13-47
+	android:windowSoftInputMode
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:35:13-55
+	android:exported
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:31:13-36
+	android:configChanges
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:30:13-163
+	android:theme
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:34:13-47
+	android:name
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:29:13-41
+meta-data#io.flutter.embedding.android.NormalTheme
+ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:40:13-42:57
+	android:resource
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:42:17-54
+	android:name
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:41:17-72
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:43:13-46:29
+action#android.intent.action.MAIN
+ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:44:17-69
+	android:name
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:44:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:45:17-77
+	android:name
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:45:27-74
+meta-data#flutterEmbedding
+ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:50:9-52:33
+	android:value
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:52:13-30
+	android:name
+		ADDED from C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:51:13-44
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from [:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\release\AndroidManifest.xml:7:5-77
+	android:name
+		ADDED from [:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\release\AndroidManifest.xml:7:22-74
+service#com.baseflow.geolocator.GeolocatorLocationService
+ADDED from [:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\release\AndroidManifest.xml:10:9-14:56
+	android:enabled
+		ADDED from [:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\release\AndroidManifest.xml:12:13-35
+	android:exported
+		ADDED from [:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\release\AndroidManifest.xml:13:13-37
+	android:foregroundServiceType
+		ADDED from [:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\release\AndroidManifest.xml:14:13-53
+	android:name
+		ADDED from [:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\release\AndroidManifest.xml:11:13-77
+provider#io.flutter.plugins.imagepicker.ImagePickerFileProvider
+ADDED from [:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:8:9-16:20
+	android:grantUriPermissions
+		ADDED from [:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:12:13-47
+	android:authorities
+		ADDED from [:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:10:13-74
+	android:exported
+		ADDED from [:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:11:13-37
+	android:name
+		ADDED from [:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:9:13-82
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:13:13-15:75
+	android:resource
+		ADDED from [:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:15:17-72
+	android:name
+		ADDED from [:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\release\AndroidManifest.xml:14:17-67
+activity#io.flutter.plugins.urllauncher.WebViewActivity
+ADDED from [:url_launcher_android] C:\github\schools-app\schools-app\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:8:9-11:74
+	android:exported
+		ADDED from [:url_launcher_android] C:\github\schools-app\schools-app\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:10:13-37
+	android:theme
+		ADDED from [:url_launcher_android] C:\github\schools-app\schools-app\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:11:13-71
+	android:name
+		ADDED from [:url_launcher_android] C:\github\schools-app\schools-app\build\url_launcher_android\intermediates\merged_manifest\release\AndroidManifest.xml:9:13-74
+uses-library#androidx.window.extensions
+ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\muhin\.gradle\caches\transforms-3\869babc576db208c07001bc4c5a23520\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\muhin\.gradle\caches\transforms-3\869babc576db208c07001bc4c5a23520\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\muhin\.gradle\caches\transforms-3\869babc576db208c07001bc4c5a23520\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+uses-library#androidx.window.sidecar
+ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\muhin\.gradle\caches\transforms-3\869babc576db208c07001bc4c5a23520\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\muhin\.gradle\caches\transforms-3\869babc576db208c07001bc4c5a23520\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\muhin\.gradle\caches\transforms-3\869babc576db208c07001bc4c5a23520\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\muhin\.gradle\caches\transforms-3\e557ef7c2c6fedd62cfad76a983a187a\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:20:9-22:45
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\muhin\.gradle\caches\transforms-3\e557ef7c2c6fedd62cfad76a983a187a\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:22:19-43
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\muhin\.gradle\caches\transforms-3\e557ef7c2c6fedd62cfad76a983a187a\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:21:19-78
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\muhin\.gradle\caches\transforms-3\e557ef7c2c6fedd62cfad76a983a187a\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:20:19-85
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\muhin\.gradle\caches\transforms-3\e220d77df2ddd3e387095792b8f750a6\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\muhin\.gradle\caches\transforms-3\e220d77df2ddd3e387095792b8f750a6\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\muhin\.gradle\caches\transforms-3\e220d77df2ddd3e387095792b8f750a6\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.9.0] C:\Users\muhin\.gradle\caches\transforms-3\d8d18349d8b5be0a549bfa36843dd640\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.9.0] C:\Users\muhin\.gradle\caches\transforms-3\d8d18349d8b5be0a549bfa36843dd640\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.9.0] C:\Users\muhin\.gradle\caches\transforms-3\d8d18349d8b5be0a549bfa36843dd640\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+permission#schooldynamics.ug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.9.0] C:\Users\muhin\.gradle\caches\transforms-3\d8d18349d8b5be0a549bfa36843dd640\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.9.0] C:\Users\muhin\.gradle\caches\transforms-3\d8d18349d8b5be0a549bfa36843dd640\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.9.0] C:\Users\muhin\.gradle\caches\transforms-3\d8d18349d8b5be0a549bfa36843dd640\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.9.0] C:\Users\muhin\.gradle\caches\transforms-3\d8d18349d8b5be0a549bfa36843dd640\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.9.0] C:\Users\muhin\.gradle\caches\transforms-3\d8d18349d8b5be0a549bfa36843dd640\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+uses-permission#schooldynamics.ug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.9.0] C:\Users\muhin\.gradle\caches\transforms-3\d8d18349d8b5be0a549bfa36843dd640\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.9.0] C:\Users\muhin\.gradle\caches\transforms-3\d8d18349d8b5be0a549bfa36843dd640\transformed\core-1.9.0\AndroidManifest.xml:26:22-94

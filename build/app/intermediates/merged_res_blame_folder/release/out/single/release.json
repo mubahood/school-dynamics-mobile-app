@@ -1,0 +1,334 @@
+[
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/layout_notification_action_tombstone.xml.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/layout/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-xhdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-xhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable_common_google_signin_btn_text_dark_normal.xml.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable/common_google_signin_btn_text_dark_normal.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-mdpi-v4_notification_bg_low_pressed.9.png.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/drawable-mdpi-v4/notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-hdpi-v4_googleg_disabled_color_18.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-hdpi-v4/googleg_disabled_color_18.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable_common_google_signin_btn_text_dark.xml.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable/common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-mdpi-v4_notification_bg_normal_pressed.9.png.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/drawable-mdpi-v4/notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/color_common_google_signin_btn_tint.xml.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/color/common_google_signin_btn_tint.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-hdpi-v4_common_full_open_on_phone.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-hdpi-v4/common_full_open_on_phone.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-xxhdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-xxhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-mdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-mdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable_common_google_signin_btn_text_light.xml.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable/common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable_common_google_signin_btn_text_light_normal.xml.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable/common_google_signin_btn_text_light_normal.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-xhdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-xhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "schooldynamics.ug.app-main-7:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/layout-v16_notification_template_custom_big.xml.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/layout-v16/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-v21_notification_action_background.xml.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/drawable-v21/notification_action_background.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-mdpi-v4_notification_bg_low_normal.9.png.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/drawable-mdpi-v4/notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-mdpi-v4_googleg_disabled_color_18.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-mdpi-v4/googleg_disabled_color_18.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/layout_notification_template_part_time.xml.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-hdpi-v4_notification_bg_normal.9.png.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/drawable-hdpi-v4/notification_bg_normal.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable_common_google_signin_btn_icon_dark.xml.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable/common_google_signin_btn_icon_dark.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-hdpi-v4_googleg_standard_color_18.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-hdpi-v4/googleg_standard_color_18.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-xhdpi-v4_notification_bg_low_pressed.9.png.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/drawable-xhdpi-v4/notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-hdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-hdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable_common_google_signin_btn_icon_light_normal.xml.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable/common_google_signin_btn_icon_light_normal.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-hdpi-v4_notification_bg_low_pressed.9.png.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/drawable-hdpi-v4/notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-hdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-hdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable_common_google_signin_btn_text_disabled.xml.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable/common_google_signin_btn_text_disabled.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/layout-v21_notification_action.xml.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-xhdpi-v4_notification_bg_low_normal.9.png.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/drawable-xhdpi-v4/notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable_launch_background.xml.flat",
+        "source": "schooldynamics.ug.app-main-7:/drawable/launch_background.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/color_common_google_signin_btn_text_dark.xml.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/color/common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-mdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-mdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-xxhdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-xxhdpi-v4_googleg_standard_color_18.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-xxhdpi-v4/googleg_standard_color_18.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/layout-v21_notification_template_custom_big.xml.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable_notification_bg_low.xml.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/drawable/notification_bg_low.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-xhdpi-v4_common_full_open_on_phone.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-xhdpi-v4/common_full_open_on_phone.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/color_common_google_signin_btn_text_light.xml.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/color/common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/layout_notification_template_icon_group.xml.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/layout/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable_notification_bg.xml.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/drawable/notification_bg.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-mdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-mdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable_notification_tile_bg.xml.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/drawable/notification_tile_bg.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "schooldynamics.ug.app-main-7:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-hdpi-v4_notification_bg_normal_pressed.9.png.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/drawable-hdpi-v4/notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable_common_google_signin_btn_icon_dark_normal.xml.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable/common_google_signin_btn_icon_dark_normal.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable_common_google_signin_btn_icon_light.xml.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable/common_google_signin_btn_icon_light.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-xhdpi-v4_notify_panel_notification_icon_bg.png.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/drawable-xhdpi-v4/notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/xml_flutter_image_picker_file_paths.xml.flat",
+        "source": "schooldynamics.ug.app-packaged_res-19:/xml/flutter_image_picker_file_paths.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/layout-v21_notification_template_icon_group.xml.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-hdpi-v4_notify_panel_notification_icon_bg.png.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/drawable-hdpi-v4/notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable_common_google_signin_btn_icon_disabled.xml.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable/common_google_signin_btn_icon_disabled.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-xxhdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-hdpi-v4_notification_bg_low_normal.9.png.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/drawable-hdpi-v4/notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable_notification_icon_background.xml.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/drawable/notification_icon_background.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable_common_google_signin_btn_text_dark_focused.xml.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable/common_google_signin_btn_text_dark_focused.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-mdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-mdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/layout_notification_action.xml.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/layout/notification_action.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable_common_google_signin_btn_icon_light_focused.xml.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable/common_google_signin_btn_icon_light_focused.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-xhdpi-v4_googleg_disabled_color_18.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-xhdpi-v4/googleg_disabled_color_18.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "schooldynamics.ug.app-main-7:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable_common_google_signin_btn_icon_dark_focused.xml.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable/common_google_signin_btn_icon_dark_focused.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "schooldynamics.ug.app-main-7:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-xhdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-xhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-xxhdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-xxhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-xhdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-xhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-xhdpi-v4_googleg_standard_color_18.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-xhdpi-v4/googleg_standard_color_18.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/layout-v21_notification_action_tombstone.xml.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/layout_custom_dialog.xml.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/layout/custom_dialog.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-mdpi-v4_notify_panel_notification_icon_bg.png.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/drawable-mdpi-v4/notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/layout_notification_template_part_chronometer.xml.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-xxhdpi-v4_googleg_disabled_color_18.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-xxhdpi-v4/googleg_disabled_color_18.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-mdpi-v4_googleg_standard_color_18.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-mdpi-v4/googleg_standard_color_18.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-v21_launch_background.xml.flat",
+        "source": "schooldynamics.ug.app-main-7:/drawable-v21/launch_background.xml"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable_logo.png.flat",
+        "source": "schooldynamics.ug.app-main-7:/drawable/logo.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-xhdpi-v4_notification_bg_normal_pressed.9.png.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/drawable-xhdpi-v4/notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-hdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-hdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-hdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable-hdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "schooldynamics.ug.app-main-7:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-mdpi-v4_notification_bg_normal.9.png.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/drawable-mdpi-v4/notification_bg_normal.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable-xhdpi-v4_notification_bg_normal.9.png.flat",
+        "source": "schooldynamics.ug.app-core-1.9.0-3:/drawable-xhdpi-v4/notification_bg_normal.9.png"
+    },
+    {
+        "merged": "schooldynamics.ug.app-merged_res-14:/drawable_common_google_signin_btn_text_light_focused.xml.flat",
+        "source": "schooldynamics.ug.app-jetified-play-services-base-18.1.0-5:/drawable/common_google_signin_btn_text_light_focused.xml"
+    }
+]
