@@ -333,7 +333,7 @@
     },
     {
       "name": "flutx",
-      "rootUri": "../../flutx",
+      "rootUri": "../flutx",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -956,7 +956,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2023-03-09T19:45:40.241731Z",
+  "generated": "2023-04-04T11:54:39.927576Z",
   "generator": "pub",
-  "generatorVersion": "2.19.2"
+  "generatorVersion": "2.19.6"
 }

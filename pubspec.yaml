@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutx:
-    path: ../flutx
+    path: ./flutx
   connectivity_plus: ^3.0.2
   dio: ^4.0.4
   google_fonts: ^2.3.2

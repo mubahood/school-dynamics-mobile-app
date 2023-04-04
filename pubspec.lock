@@ -432,7 +432,7 @@ packages:
   flutx:
     dependency: "direct main"
     description:
-      path: "../flutx"
+      path: flutx
       relative: true
     source: path
     version: "0.0.1"
