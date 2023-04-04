@@ -4307,7 +4307,7 @@
             "outputFile": "schooldynamics.ug.app-merged_res-30:/values-night-v8_values-night-v8.arsc.flat",
             "map": [
                 {
-                    "source": "C:\\github\\schools-app\\schools-app\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "C:\\github\\schools-app\\schools-app\\School-Dynamics-Mobile-App\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
@@ -6879,23 +6879,6 @@
                     }
                 },
                 {
-                    "source": "C:\\github\\schools-app\\schools-app\\build\\app\\generated\\res\\google-services\\debug\\values\\values.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "55,199,281,385,494,614,718",
-                        "endColumns": "143,81,103,108,119,103,80",
-                        "endOffsets": "194,276,380,489,609,713,794"
-                    },
-                    "to": {
-                        "startLines": "356,361,362,363,364,365,375",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "24217,24658,24740,24844,24953,25073,26052",
-                        "endColumns": "143,81,103,108,119,103,80",
-                        "endOffsets": "24356,24735,24839,24948,25068,25172,26128"
-                    }
-                },
-                {
                     "source": "C:\\Users\\muhin\\.gradle\\caches\\transforms-3\\357c2410b9b899ada39b60ba045542d4\\transformed\\jetified-OneSignal-4.8.2\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
@@ -6910,6 +6893,25 @@
                         "startOffsets": "25177,25353,25438,25510,25604,25685,25768,25893,25976",
                         "endColumns": "175,84,71,93,80,82,124,82,75",
                         "endOffsets": "25348,25433,25505,25599,25680,25763,25888,25971,26047"
+                    }
+                },
+                {
+                    "source": "C:\\github\\schools-app\\schools-app\\School-Dynamics-Mobile-App\\android\\app\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "3,14",
+                        "startColumns": "4,4",
+                        "startOffsets": "173,818",
+                        "endLines": "7,16",
+                        "endColumns": "12,12",
+                        "endOffsets": "476,982"
+                    },
+                    "to": {
+                        "startLines": "1480,1484",
+                        "startColumns": "4,4",
+                        "startOffsets": "96345,96526",
+                        "endLines": "1483,1486",
+                        "endColumns": "12,12",
+                        "endOffsets": "96521,96690"
                     }
                 },
                 {
@@ -7000,6 +7002,23 @@
                     }
                 },
                 {
+                    "source": "C:\\github\\schools-app\\schools-app\\School-Dynamics-Mobile-App\\build\\app\\generated\\res\\google-services\\debug\\values\\values.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,199,281,385,494,614,718",
+                        "endColumns": "143,81,103,108,119,103,80",
+                        "endOffsets": "194,276,380,489,609,713,794"
+                    },
+                    "to": {
+                        "startLines": "356,361,362,363,364,365,375",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "24217,24658,24740,24844,24953,25073,26052",
+                        "endColumns": "143,81,103,108,119,103,80",
+                        "endOffsets": "24356,24735,24839,24948,25068,25172,26128"
+                    }
+                },
+                {
                     "source": "C:\\Users\\muhin\\.gradle\\caches\\transforms-3\\7bb1efaf55628c419a6f2090357667b6\\transformed\\work-runtime-2.7.1\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5",
@@ -7071,25 +7090,6 @@
                         "endLines": "52,53,54,55,56,57,58,59,337,338,339,340,341,342,343,344,346,347,348,349,350,351,352,353,354,2902,3137",
                         "endColumns": "89,79,89,89,79,80,79,79,104,180,124,106,179,122,115,102,187,104,180,124,174,147,62,61,78,20,20",
                         "endOffsets": "3385,3465,3555,3645,3725,3806,3886,3966,21916,22097,22222,22329,22509,22632,22748,22851,23206,23311,23492,23617,23792,23940,24003,24065,24144,164796,172154"
-                    }
-                },
-                {
-                    "source": "C:\\github\\schools-app\\schools-app\\android\\app\\src\\main\\res\\values\\styles.xml",
-                    "from": {
-                        "startLines": "3,14",
-                        "startColumns": "4,4",
-                        "startOffsets": "173,818",
-                        "endLines": "7,16",
-                        "endColumns": "12,12",
-                        "endOffsets": "476,982"
-                    },
-                    "to": {
-                        "startLines": "1480,1484",
-                        "startColumns": "4,4",
-                        "startOffsets": "96345,96526",
-                        "endLines": "1483,1486",
-                        "endColumns": "12,12",
-                        "endOffsets": "96521,96690"
                     }
                 },
                 {

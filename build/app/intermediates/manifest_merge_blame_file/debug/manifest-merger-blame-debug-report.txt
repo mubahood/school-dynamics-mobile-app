@@ -13,54 +13,54 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:6:5-67
-15-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:6:22-64
+15-->C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\android\app\src\main\AndroidManifest.xml:6:5-67
+15-->C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\android\app\src\main\AndroidManifest.xml:6:22-64
 16    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-16-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:4:5-79
-16-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:4:22-76
+16-->C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\android\app\src\main\AndroidManifest.xml:4:5-79
+16-->C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\android\app\src\main\AndroidManifest.xml:4:22-76
 17    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-17-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:5:5-81
-17-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:5:22-78
+17-->C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\android\app\src\main\AndroidManifest.xml:5:5-81
+17-->C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\android\app\src\main\AndroidManifest.xml:5:22-78
 18    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-18-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:7:5-79
-18-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:7:22-76
+18-->C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\android\app\src\main\AndroidManifest.xml:7:5-79
+18-->C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\android\app\src\main\AndroidManifest.xml:7:22-76
 19
 20    <queries>
-20-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:10:5-21:15
+20-->C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\android\app\src\main\AndroidManifest.xml:10:5-21:15
 21
 22        <!-- If your app checks for SMS support -->
 23        <intent>
-23-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:12:9-15:18
+23-->C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\android\app\src\main\AndroidManifest.xml:12:9-15:18
 24            <action android:name="android.intent.action.VIEW" />
-24-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:13:13-65
-24-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:13:21-62
+24-->C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\android\app\src\main\AndroidManifest.xml:13:13-65
+24-->C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\android\app\src\main\AndroidManifest.xml:13:21-62
 25
 26            <data android:scheme="sms" />
-26-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:14:13-42
-26-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:14:19-39
+26-->C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\android\app\src\main\AndroidManifest.xml:14:13-42
+26-->C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\android\app\src\main\AndroidManifest.xml:14:19-39
 27        </intent>
 28        <!-- If your app checks for call support -->
 29        <intent>
-29-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:17:9-20:18
+29-->C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\android\app\src\main\AndroidManifest.xml:17:9-20:18
 30            <action android:name="android.intent.action.VIEW" />
-30-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:13:13-65
-30-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:13:21-62
+30-->C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\android\app\src\main\AndroidManifest.xml:13:13-65
+30-->C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\android\app\src\main\AndroidManifest.xml:13:21-62
 31
 32            <data android:scheme="tel" />
-32-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:14:13-42
-32-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:14:19-39
+32-->C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\android\app\src\main\AndroidManifest.xml:14:13-42
+32-->C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\android\app\src\main\AndroidManifest.xml:14:19-39
 33        </intent>
 34    </queries>
 35
 36    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Permissions options for the `notification` group -->
-36-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:8:5-68
-36-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:8:22-65
+36-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:8:5-68
+36-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:8:22-65
 37    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-37-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-77
-37-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:11:22-74
+37-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-77
+37-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:11:22-74
 38    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- Create a unique permission for your app and use it so only your app can receive your OneSignal messages. -->
-38-->[:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-77
-38-->[:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:7:22-74
+38-->[:geolocator_android] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-77
+38-->[:geolocator_android] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:7:22-74
 39    <permission
 39-->[com.onesignal:OneSignal:4.8.2] C:\Users\muhin\.gradle\caches\transforms-3\357c2410b9b899ada39b60ba045542d4\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:7:5-9:47
 40        android:name="schooldynamics.ug.permission.C2D_MESSAGE"
@@ -191,63 +191,63 @@
 117            android:value="2" />
 118
 119        <service
-119-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:14:9-17:72
+119-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:14:9-17:72
 120            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingBackgroundService"
-120-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-107
+120-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-107
 121            android:exported="false"
-121-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-37
+121-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-37
 122            android:permission="android.permission.BIND_JOB_SERVICE" />
-122-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:17:13-69
+122-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:17:13-69
 123        <service
-123-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:18:9-24:19
+123-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:18:9-24:19
 124            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingService"
-124-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:19:13-97
+124-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:19:13-97
 125            android:exported="false" >
-125-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:20:13-37
+125-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:20:13-37
 126            <intent-filter>
-126-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:21:13-23:29
+126-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:21:13-23:29
 127                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-127-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:22:17-78
-127-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:22:25-75
+127-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:22:17-78
+127-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:22:25-75
 128            </intent-filter>
 129        </service>
 130
 131        <receiver
-131-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:26:9-33:20
+131-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:26:9-33:20
 132            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingReceiver"
-132-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:27:13-98
+132-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:27:13-98
 133            android:exported="true"
-133-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:28:13-36
+133-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:28:13-36
 134            android:permission="com.google.android.c2dm.permission.SEND" >
-134-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:29:13-73
+134-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:29:13-73
 135            <intent-filter>
-135-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:30:13-32:29
+135-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:30:13-32:29
 136                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-136-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:31:17-81
-136-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:31:25-78
+136-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:31:17-81
+136-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:31:25-78
 137            </intent-filter>
 138        </receiver>
 139
 140        <service
-140-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:35:9-39:19
+140-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:35:9-39:19
 141            android:name="com.google.firebase.components.ComponentDiscoveryService"
-141-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:35:18-89
+141-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:35:18-89
 142            android:directBootAware="true"
 142-->[com.google.firebase:firebase-common:20.3.0] C:\Users\muhin\.gradle\caches\transforms-3\154ac1203fd7131c48832aa271e27e5d\transformed\jetified-firebase-common-20.3.0\AndroidManifest.xml:34:13-43
 143            android:exported="false" >
 143-->[com.google.firebase:firebase-messaging:23.1.1] C:\Users\muhin\.gradle\caches\transforms-3\86df4280a29078faa024b37c306d9ee5\transformed\jetified-firebase-messaging-23.1.1\AndroidManifest.xml:54:13-37
 144            <meta-data
-144-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:36:13-38:85
+144-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:36:13-38:85
 145                android:name="com.google.firebase.components:io.flutter.plugins.firebase.messaging.FlutterFirebaseAppRegistrar"
-145-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:37:17-128
+145-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:37:17-128
 146                android:value="com.google.firebase.components.ComponentRegistrar" />
-146-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:38:17-82
+146-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:38:17-82
 147            <meta-data
-147-->[:firebase_core] C:\github\schools-app\schools-app\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:9:13-11:85
+147-->[:firebase_core] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:9:13-11:85
 148                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
-148-->[:firebase_core] C:\github\schools-app\schools-app\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:10:17-124
+148-->[:firebase_core] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:10:17-124
 149                android:value="com.google.firebase.components.ComponentRegistrar" />
-149-->[:firebase_core] C:\github\schools-app\schools-app\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:11:17-82
+149-->[:firebase_core] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:11:17-82
 150            <meta-data
 150-->[com.google.firebase:firebase-messaging:23.1.1] C:\Users\muhin\.gradle\caches\transforms-3\86df4280a29078faa024b37c306d9ee5\transformed\jetified-firebase-messaging-23.1.1\AndroidManifest.xml:55:13-57:85
 151                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
@@ -275,53 +275,53 @@
 162        </service>
 163
 164        <provider
-164-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:41:9-45:38
+164-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:41:9-45:38
 165            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingInitProvider"
-165-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:42:13-102
+165-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:42:13-102
 166            android:authorities="schooldynamics.ug.flutterfirebasemessaginginitprovider"
-166-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:43:13-88
+166-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:43:13-88
 167            android:exported="false"
-167-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:44:13-37
+167-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:44:13-37
 168            android:initOrder="99" />
-168-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:45:13-35
+168-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:45:13-35
 169
 170        <service
-170-->[:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-14:56
+170-->[:geolocator_android] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-14:56
 171            android:name="com.baseflow.geolocator.GeolocatorLocationService"
-171-->[:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-77
+171-->[:geolocator_android] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-77
 172            android:enabled="true"
-172-->[:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-35
+172-->[:geolocator_android] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-35
 173            android:exported="false"
-173-->[:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
+173-->[:geolocator_android] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
 174            android:foregroundServiceType="location" />
-174-->[:geolocator_android] C:\github\schools-app\schools-app\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-53
+174-->[:geolocator_android] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-53
 175
 176        <provider
-176-->[:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:8:9-16:20
+176-->[:image_picker_android] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:8:9-16:20
 177            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
-177-->[:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:13-82
+177-->[:image_picker_android] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:13-82
 178            android:authorities="schooldynamics.ug.flutter.image_provider"
-178-->[:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:13-74
+178-->[:image_picker_android] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:13-74
 179            android:exported="false"
-179-->[:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-37
+179-->[:image_picker_android] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-37
 180            android:grantUriPermissions="true" >
-180-->[:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-47
+180-->[:image_picker_android] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-47
 181            <meta-data
-181-->[:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-15:75
+181-->[:image_picker_android] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-15:75
 182                android:name="android.support.FILE_PROVIDER_PATHS"
-182-->[:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:17-67
+182-->[:image_picker_android] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:17-67
 183                android:resource="@xml/flutter_image_picker_file_paths" />
-183-->[:image_picker_android] C:\github\schools-app\schools-app\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:17-72
+183-->[:image_picker_android] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:17-72
 184        </provider>
 185
 186        <activity
-186-->[:url_launcher_android] C:\github\schools-app\schools-app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:8:9-11:74
+186-->[:url_launcher_android] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:8:9-11:74
 187            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-187-->[:url_launcher_android] C:\github\schools-app\schools-app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:13-74
+187-->[:url_launcher_android] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:13-74
 188            android:exported="false"
-188-->[:url_launcher_android] C:\github\schools-app\schools-app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:13-37
+188-->[:url_launcher_android] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:13-37
 189            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-189-->[:url_launcher_android] C:\github\schools-app\schools-app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-71
+189-->[:url_launcher_android] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-71
 190
 191        <receiver
 191-->[com.onesignal:OneSignal:4.8.2] C:\Users\muhin\.gradle\caches\transforms-3\357c2410b9b899ada39b60ba045542d4\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:50:9-61:20
@@ -337,8 +337,8 @@
 197-->[com.onesignal:OneSignal:4.8.2] C:\Users\muhin\.gradle\caches\transforms-3\357c2410b9b899ada39b60ba045542d4\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:56:13-60:29
 197-->[com.onesignal:OneSignal:4.8.2] C:\Users\muhin\.gradle\caches\transforms-3\357c2410b9b899ada39b60ba045542d4\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:56:28-50
 198                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-198-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:31:17-81
-198-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:31:25-78
+198-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:31:17-81
+198-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:31:25-78
 199
 200                <category android:name="schooldynamics.ug" />
 200-->[com.onesignal:OneSignal:4.8.2] C:\Users\muhin\.gradle\caches\transforms-3\357c2410b9b899ada39b60ba045542d4\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:59:17-61
@@ -373,8 +373,8 @@
 217            <intent-filter>
 217-->[com.onesignal:OneSignal:4.8.2] C:\Users\muhin\.gradle\caches\transforms-3\357c2410b9b899ada39b60ba045542d4\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:76:13-78:29
 218                <action android:name="android.intent.action.VIEW" />
-218-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:13:13-65
-218-->C:\github\schools-app\schools-app\android\app\src\main\AndroidManifest.xml:13:21-62
+218-->C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\android\app\src\main\AndroidManifest.xml:13:13-65
+218-->C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\android\app\src\main\AndroidManifest.xml:13:21-62
 219            </intent-filter>
 220        </activity>
 221
@@ -503,10 +503,10 @@
 286            android:permission="com.google.android.c2dm.permission.SEND" >
 286-->[com.google.firebase:firebase-messaging:23.1.1] C:\Users\muhin\.gradle\caches\transforms-3\86df4280a29078faa024b37c306d9ee5\transformed\jetified-firebase-messaging-23.1.1\AndroidManifest.xml:34:13-73
 287            <intent-filter>
-287-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:30:13-32:29
+287-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:30:13-32:29
 288                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-288-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:31:17-81
-288-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:31:25-78
+288-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:31:17-81
+288-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:31:25-78
 289            </intent-filter>
 290        </receiver>
 291        <!--
@@ -522,10 +522,10 @@
 298            android:exported="false" >
 298-->[com.google.firebase:firebase-messaging:23.1.1] C:\Users\muhin\.gradle\caches\transforms-3\86df4280a29078faa024b37c306d9ee5\transformed\jetified-firebase-messaging-23.1.1\AndroidManifest.xml:47:13-37
 299            <intent-filter android:priority="-500" >
-299-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:21:13-23:29
+299-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:21:13-23:29
 300                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-300-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:22:17-78
-300-->[:firebase_messaging] C:\github\schools-app\schools-app\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:22:25-75
+300-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:22:17-78
+300-->[:firebase_messaging] C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:22:25-75
 301            </intent-filter>
 302        </service>
 303
