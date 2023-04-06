@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutx/flutx.dart';
-import 'package:get/get.dart';
-import 'package:schooldynamics/controllers/MainController.dart';
 import 'package:schooldynamics/screens/full_app/section/AccountSection.dart';
 import 'package:schooldynamics/screens/full_app/section/CasesSuspect.dart';
 import 'package:schooldynamics/screens/full_app/section/SectionDashboard.dart';
@@ -24,7 +22,6 @@ class _FullAppState extends State<FullApp> with SingleTickerProviderStateMixin {
   late ThemeData theme;
 
   late FullAppController controller;
-  final MainController mainController = Get.put(MainController());
 
   @override
   void initState() {
@@ -32,8 +29,6 @@ class _FullAppState extends State<FullApp> with SingleTickerProviderStateMixin {
 
     theme = AppTheme.shoppingTheme;
     controller = FxControllerStore.putOrFind(FullAppController(this));
-    mainController.initialized;
-    mainController.init();
   }
 
   List<Widget> buildTab() {
@@ -87,7 +82,7 @@ class _FullAppState extends State<FullApp> with SingleTickerProviderStateMixin {
                             physics: const NeverScrollableScrollPhysics(),
                             controller: controller.tabController,
                             children: <Widget>[
-                              SectionDashboard(mainController),
+                              SectionDashboard(),
                               SectionCases(),
                               SectionSuspect(),
                               SectionExhibits(),

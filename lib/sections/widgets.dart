@@ -12,6 +12,8 @@ import 'package:schooldynamics/utils/AppConfig.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../models/StudentVerificationModel.dart';
+
 Widget roundedImage(String url, double w, double h,
     {String no_image: AppConfig.NO_IMAGE, double radius: 10}) {
   return ClipRRect(
@@ -300,6 +302,98 @@ Widget userWidget(UserModel u) {
     ),
   );
 }
+
+
+Widget studentVerificationWidget(StudentVerificationModel u) {
+  return InkWell(
+    onTap: () {
+      Get.to(() => StudentScreen(data: u));
+    },
+    child: Container(
+      padding: EdgeInsets.only(top: 10, left: 15, right: 15),
+      child: Flex(
+        direction: Axis.horizontal,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          roundedImage(u.avatar.toString(), 4.5, 4.5),
+          SizedBox(
+            width: 10,
+          ),
+          Expanded(
+            child: Flex(
+              direction: Axis.vertical,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                FxText.titleMedium(
+                  u.name.toUpperCase(),
+                  maxLines: 1,
+                  fontWeight: 800,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                SizedBox(
+                  height: 6,
+                ),
+                Row(
+                  children: [
+                    FxText.bodyMedium(
+                      'CLASS: ',
+                    ),
+                    FxText.bodyMedium(
+                      u.current_class_id.toUpperCase(),
+                      color: Colors.grey.shade600,
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    FxText.bodyMedium(
+                      'STUDENT ID: ',
+                    ),
+                    FxText.bodyMedium(
+                      u.id.toString().toUpperCase(),
+                      color: Colors.grey.shade600,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 6,
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      FeatherIcons.user,
+                      size: 12,
+                      color: CustomTheme.primaryDark,
+                    ),
+                    SizedBox(
+                      width: 2,
+                    ),
+                    FxText.bodySmall('By John Doe', color: Colors.grey),
+                    Spacer(),
+                    Icon(
+                      FeatherIcons.clock,
+                      size: 12,
+                      color: CustomTheme.primaryDark,
+                    ),
+                    SizedBox(
+                      width: 2,
+                    ),
+                    FxText.bodySmall(
+                      'test ${u.id}',
+                      color: Colors.grey,
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
 
 Widget alertWidget(String msg, String type) {
   if (msg.isEmpty) {

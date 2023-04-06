@@ -1,9 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutx/widgets/container/container.dart';
 import 'package:flutx/widgets/text/text.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../models/MenuItem.dart';
+import '../theme/custom_theme.dart';
 import 'Utils.dart';
 
 Widget valueUnitWidget2(dynamic title, dynamic value,
@@ -64,6 +66,73 @@ Widget valueUnitWidget(BuildContext context, dynamic value, dynamic unit,
       ],
     ),
     textScaleFactor: 0.5,
+  );
+}
+
+Widget listItem(MenuItem item) {
+  return InkWell(
+    onTap: () {
+      item.f();
+    },
+    child: Flex(
+      direction: Axis.horizontal,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Expanded(
+          child: Flex(
+            direction: Axis.horizontal,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 15, top: 12, bottom: 12, right: 10),
+                child: item.icon == null
+                    ? const SizedBox(
+                        height: 30,
+                      )
+                    : Icon(
+                        item.icon,
+                        size: 30,
+                        color: CustomTheme.primary,
+                      ),
+              ),
+              Expanded(
+                  child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  FxText.titleMedium(
+                    item.title,
+                    maxLines: 2,
+                    height: .8,
+                    fontWeight: 800,
+                    color: Colors.black,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  FxText.bodySmall(
+                    item.subTitle,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              )),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(right: 10, top: 5),
+          child: Icon(
+            FeatherIcons.chevronRight,
+            size: 30,
+            color: CustomTheme.primary,
+          ),
+        ),
+      ],
+    ),
   );
 }
 
