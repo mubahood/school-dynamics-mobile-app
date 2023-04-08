@@ -29,6 +29,7 @@ class MyClasses {
   List<UserModel> students = [];
   Future<List<UserModel>> getStudents() async {
     students = await UserModel.getItems(where: " current_class_id = '${id}' ");
+
     return students;
   }
 
@@ -76,7 +77,7 @@ class MyClasses {
       return data;
     }
 
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return data;
     }
@@ -100,12 +101,11 @@ class MyClasses {
     RespondModel resp =
         RespondModel(await Utils.http_get('${MyClasses.endPoint}', {}));
 
-    print(resp.message);
     if (resp.code != 1) {
       return [];
     }
 
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       Utils.toast("Failed to init local store.");
       return [];
@@ -143,7 +143,7 @@ class MyClasses {
   }
 
   save() async {
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       Utils.toast("Failed to init local store.");
       return;
@@ -182,7 +182,7 @@ class MyClasses {
   }
 
   static Future<bool> initTable() async {
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return false;
     }
@@ -222,7 +222,7 @@ class MyClasses {
     if (!(await MyClasses.initTable())) {
       return;
     }
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return false;
     }

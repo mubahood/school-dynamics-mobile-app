@@ -193,7 +193,7 @@ class _StudentEditBioScreenState extends State<StudentEditBioScreen> {
                       ),
                       FormBuilderChoiceChip<String>(
                         decoration: AppTheme.InputDecorationTheme1(
-                            label: "Transaction type", isDense: true),
+                            label: "Sex", isDense: true),
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         name: 'sex',
                         padding: EdgeInsets.all(0),

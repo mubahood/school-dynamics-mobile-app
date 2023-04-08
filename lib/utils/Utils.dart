@@ -16,7 +16,9 @@ import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:schooldynamics/models/MarkLocalModel.dart';
+import 'package:schooldynamics/models/MySubjects.dart';
 import 'package:schooldynamics/models/SessionLocal.dart';
+import 'package:schooldynamics/models/StreamModel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -240,6 +242,8 @@ class Utils {
   }
 
   static Future<void> boot_system() async {
+    await MySubjects.getItems();
+    await StreamModel.getItems();
     await MarkLocalModel.uploadPendingMarks();
     await SessionLocal.uploadPending();
 
@@ -258,7 +262,10 @@ class Utils {
     );
   }
 
-  static Future<dynamic> init_databse() async {}
+  static Future<Database> getDb() async {
+    return await openDatabase(AppConfig.DATABASE_PATH,
+        version: AppConfig.DATABASE_VERSION);
+  }
 
   static void init_dark_theme() {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(

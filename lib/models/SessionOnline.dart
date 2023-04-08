@@ -56,7 +56,7 @@ class SessionOnline {
   }
 
   save() async {
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       Utils.toast("Failed to init local store.");
       return;
@@ -91,9 +91,9 @@ class SessionOnline {
     };
   }
 
-  static Future<List<SessionOnline>> getItems({String where = '1'}) async {
+  static Future<List<SessionOnline>> getItems({String where = '1', bool forceWait : true}) async {
     List<SessionOnline> data = await getLocalData(where: where);
-    if (data.isEmpty) {
+    if (data.isEmpty && forceWait) {
       await SessionOnline.getOnlineItems();
       data = await getLocalData(where: where);
     } else {
@@ -113,7 +113,7 @@ class SessionOnline {
       return [];
     }
 
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       Utils.toast("Failed to init local store.");
       return [];
@@ -163,7 +163,7 @@ class SessionOnline {
     if (!(await SessionOnline.initTable())) {
       return;
     }
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return false;
     }
@@ -177,7 +177,7 @@ class SessionOnline {
       return data;
     }
 
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return data;
     }
@@ -228,7 +228,7 @@ class SessionOnline {
   }
 
   static Future<bool> initTable() async {
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return false;
     }

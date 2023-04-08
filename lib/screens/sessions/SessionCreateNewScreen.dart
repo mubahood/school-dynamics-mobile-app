@@ -12,7 +12,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:schooldynamics/models/MyClasses.dart';
 import 'package:schooldynamics/models/MySubjects.dart';
-import 'package:schooldynamics/models/RespondModel.dart';
+import 'package:schooldynamics/models/StreamModel.dart';
 import 'package:schooldynamics/sections/widgets.dart';
 
 import '../../models/SessionLocal.dart';
@@ -47,16 +47,25 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
   }
 
   List<MySubjects> my_subjects = [];
+  List<StreamModel> allStreams = [];
 
   init() async {
     if (widget.data.runtimeType.toString() == 'MyClasses') {
       classModel = widget.data;
       item.type = 'Class attendance';
-      item.title = '${classModel.name} - Roll-call';
+      item.title = '${classModel.name}';
       item.academic_class_id = classModel.id.toString();
 
       subs.clear();
       my_subjects = await MySubjects.getItems();
+      allStreams = await StreamModel.getItems();
+
+      streams.clear();
+      for (StreamModel element in allStreams) {
+        if (element.academic_class_id.toString() == classModel.id.toString()) {
+          streams.add(element.name);
+        }
+      }
 
       for (MySubjects element in my_subjects) {
         if (element.academic_class_id.toString() == classModel.id.toString()) {
@@ -73,8 +82,9 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
   }
 
   List<String> subs = [];
+  List<String> streams = [];
 
-  MyClasses classModel = new MyClasses();
+  MyClasses classModel = MyClasses();
 
   Future<void> submit_form({
     bool announceChanges: false,
@@ -82,6 +92,11 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
   }) async {
     if (!_formKey.currentState!.validate()) {
       Utils.toast("Please first fix errors.");
+      return;
+    }
+
+    if (item.stream_id.isEmpty) {
+      Utils.toast("Please select stream.");
       return;
     }
 
@@ -99,11 +114,13 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
 
     List<Map<String, dynamic>> items = [];
     for (var student in (await classModel.getStudents())) {
-      TemporaryModel x = TemporaryModel();
-      x.id = student.id;
-      x.title = student.name;
-      x.image = student.avatar;
-      items.add(x.toJson());
+      if (student.stream_id == item.stream_id) {
+        TemporaryModel x = TemporaryModel();
+        x.id = student.id;
+        x.title = student.name;
+        x.image = student.avatar;
+        items.add(x.toJson());
+      }
     }
     item.expected = jsonEncode(items);
     item.present = '[]';
@@ -115,31 +132,7 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
     await item.save();
     Get.off(() => SessionRollCallingScreen(data: item));
     return;
-    error_message = "";
-    setState(() {
-      onLoading = true;
-    });
 
-    RespondModel r =
-        RespondModel(await Utils.http_post('update-bio/${item.id}', {}));
-
-    setState(() {
-      onLoading = false;
-    });
-
-    if (r.code != 1) {
-      Utils.toast('Failed to update because ${r.message}.', color: Colors.red);
-      error_message = r.message;
-      setState(() {});
-      return;
-    }
-
-    await item.save();
-
-    Utils.toast("Success!");
-    setState(() {});
-    Navigator.pop(context);
-    return;
   }
 
   @override
@@ -152,7 +145,7 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
         iconTheme: IconThemeData(color: Colors.white),
         titleSpacing: 0,
         title: FxText.titleLarge(
-          "Creating new roll-call ${classModel.id}",
+          "Creating new roll-call",
           color: Colors.white,
         ),
       ),
@@ -175,7 +168,7 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
                       Container(
                         margin: EdgeInsets.only(bottom: 10, top: 10),
                         child: FormBuilderTextField(
-                          name: 'title',
+                          name: 'Class',
                           readOnly: true,
                           initialValue: item.title,
                           textCapitalization: TextCapitalization.words,
@@ -193,6 +186,33 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
                             ),
                           ]),
                         ),
+                      ),
+                      FormBuilderDropdown<String>(
+                        name: 'stream',
+                        dropdownColor: Colors.white,
+                        decoration: AppTheme.InputDecorationTheme1(
+                          label: "Stream",
+                        ),
+                        onChanged: (x) {
+                          String y = x.toString();
+                          for (var element in allStreams) {
+                            if (element.academic_class_id.toString() ==
+                                classModel.id.toString()) {
+                              if (x.toString() == element.name) {
+                                item.stream_id = element.id.toString();
+                                break;
+                              }
+                            }
+                          }
+                        },
+                        isDense: true,
+                        items: streams
+                            .map((sub) => DropdownMenuItem(
+                                  alignment: AlignmentDirectional.centerStart,
+                                  value: sub,
+                                  child: Text(sub),
+                                ))
+                            .toList(),
                       ),
                       Container(
                         margin: EdgeInsets.only(bottom: 20, top: 10),
@@ -274,8 +294,8 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
                                     width: 10,
                                   ),
                                   Center(
-                                      child: FxText.titleLarge(
-                                    "SUBMIT CHANGES",
+                                      child: FxText.titleMedium(
+                                    "START ROLL-CALLING",
                                     color: Colors.white,
                                     fontWeight: 700,
                                   )),

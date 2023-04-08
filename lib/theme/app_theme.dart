@@ -6,8 +6,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../theme/theme_type.dart';
 
+import '../../../theme/theme_type.dart';
 import 'custom_theme.dart';
 
 export 'custom_theme.dart';
@@ -18,21 +18,28 @@ class AppTheme {
 
   static InputDecoration InputDecorationTheme1(
       {bool isDense: true,
-        String label: "",
-        IconData iconData: Icons.edit,
-        String hintText: ""}) {
+      String label: "",
+      IconData iconData: Icons.edit,
+      bool hasPadding: true,
+      String hintText: ""}) {
+    EdgeInsets padding = EdgeInsets.only(left: 10, top: 10, bottom: 10, right: 15);
+    if (!hasPadding) {
+       padding = EdgeInsets.only(left: 10, top: 0, bottom: 0, right: 15);
+    }
+
     return InputDecoration(
       hintText: hintText.isEmpty ? null : hintText,
+      contentPadding: padding,
       isDense: isDense,
       label: (label.isEmpty)
           ? null
           : Text(
-        label,
-        style: TextStyle(
-            fontWeight: FontWeight.w500,
-            fontSize: 16,
-            color: Colors.grey.shade500),
-      ),
+              label,
+              style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                  color: Colors.grey.shade500),
+            ),
 
       /*prefixIcon: Icon(
         iconData,

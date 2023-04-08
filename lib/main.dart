@@ -11,7 +11,6 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   Utils.boot_system();
-  Utils.init_databse();
   Utils.init_theme();
 
   CustomTheme.primary = Color(0xff225b4c);

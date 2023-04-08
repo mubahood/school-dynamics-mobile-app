@@ -3,7 +3,6 @@ import 'package:schooldynamics/models/MarksModel.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../utils/AppConfig.dart';
 import 'RespondModel.dart';
 
 class MySubjects {
@@ -92,7 +91,7 @@ class MySubjects {
       return data;
     }
 
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return data;
     }
@@ -104,7 +103,6 @@ class MySubjects {
     }
     for (var m in maps) {
       MySubjects sub = MySubjects.fromJson(m);
-      await sub.getExams();
       data.add(sub);
     }
 
@@ -115,13 +113,13 @@ class MySubjects {
     List<MySubjects> data = [];
 
     RespondModel resp =
-    RespondModel(await Utils.http_get('${MySubjects.endPoint}', {}));
+        RespondModel(await Utils.http_get('${MySubjects.endPoint}', {}));
 
     if (resp.code != 1) {
       return [];
     }
 
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       Utils.toast("Failed to init local store.");
       return [];
@@ -136,7 +134,7 @@ class MySubjects {
         var batch = txn.batch();
 
         for (var x in resp.data) {
-          MySubjects sub = new MySubjects();
+          MySubjects sub = MySubjects();
           try {
             sub.id = Utils.int_parse(x['id']);
           } catch (xs) {
@@ -183,7 +181,7 @@ class MySubjects {
   }
 
   save() async {
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       Utils.toast("Failed to init local store.");
       return;
@@ -222,11 +220,10 @@ class MySubjects {
   }
 
   static Future<bool> initTable() async {
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return false;
     }
-
 
     String sql = " CREATE TABLE IF NOT EXISTS "
         "${tableName} ("
@@ -262,7 +259,7 @@ class MySubjects {
     if (!(await MySubjects.initTable())) {
       return;
     }
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return false;
     }

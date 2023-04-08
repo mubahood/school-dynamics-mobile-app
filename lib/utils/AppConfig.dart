@@ -8,6 +8,7 @@ class AppConfig {
 
   // static const String DASHBOARD_URL = "http://10.0.2.2:8000";
   static const String APP_VERSION = "1";
+  static const int DATABASE_VERSION = 2;
   static const String DATABASE_PATH = "SCHOOL_DYNAMICS_${APP_VERSION}";
   static const String MAIN_SITE_URL = "https://schooldynamics.ug";
   static const String MAIN_SITE_URL_1 = "schooldynamics.ug";

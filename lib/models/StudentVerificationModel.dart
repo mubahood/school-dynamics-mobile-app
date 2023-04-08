@@ -18,6 +18,7 @@ class StudentVerificationModel {
   String student_has_class_id = "";
   String stream_id = "";
   String current_class_text = "";
+  String current_stream_text = "";
 
   List<UserModel> students = [];
 
@@ -40,6 +41,7 @@ class StudentVerificationModel {
     obj.student_has_class_id = Utils.to_str(d['student_has_class_id'], '');
     obj.stream_id = Utils.to_str(d['stream_id'], '');
     obj.current_class_text = Utils.to_str(d['current_class_text'], '');
+    obj.current_stream_text = Utils.to_str(d['current_stream_text'], '');
     return obj;
   }
 
@@ -65,7 +67,7 @@ class StudentVerificationModel {
       return data;
     }
 
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return data;
     }
@@ -94,7 +96,7 @@ class StudentVerificationModel {
       return [];
     }
 
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       Utils.toast("Failed to init local store.");
       return [];
@@ -132,7 +134,7 @@ class StudentVerificationModel {
   }
 
   save() async {
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       Utils.toast("Failed to init local store.");
       return;
@@ -162,16 +164,17 @@ class StudentVerificationModel {
       'student_has_class_id': student_has_class_id,
       'stream_id': stream_id,
       'current_class_text': current_class_text,
+      'current_stream_text': current_stream_text,
     };
   }
 
   static Future<bool> initTable() async {
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return false;
     }
 
-    String sql = " CREATE TABLE IF NOT EXISTS "
+    String sql1 = " CREATE TABLE IF NOT EXISTS "
         "${tableName} ("
         "id INTEGER PRIMARY KEY,"
         "name TEXT,"
@@ -181,13 +184,14 @@ class StudentVerificationModel {
         "current_class_id TEXT,"
         "student_has_class_id TEXT,"
         "stream_id TEXT,"
+        "current_stream_text TEXT,"
         "current_class_text TEXT"
         ")";
 
     try {
-      //await db.delete(tableName);
+      //await db.execute("DROP TABLE $tableName");
 
-      await db.execute(sql);
+      await db.execute(sql1);
     } catch (e) {
       Utils.log('Failed to create table because ${e.toString()}');
 
@@ -201,7 +205,7 @@ class StudentVerificationModel {
     if (!(await StudentVerificationModel.initTable())) {
       return;
     }
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return false;
     }

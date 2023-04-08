@@ -253,7 +253,7 @@ class LoggedInUserModel {
       return item;
     }
 
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return item;
     }
@@ -284,7 +284,7 @@ class LoggedInUserModel {
     if (!(await initTable())) {
       return false;
     }
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return false;
     }
@@ -307,7 +307,7 @@ class LoggedInUserModel {
   }
 
   static Future<bool> initTable() async {
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return false;
     }

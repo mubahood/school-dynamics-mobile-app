@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -13,6 +12,7 @@ import '../../theme/custom_theme.dart';
 import '../../utils/SizeConfig.dart';
 import '../../utils/Utils.dart';
 import '../../utils/my_widgets.dart';
+import 'StudentsVerificationFormScreen.dart';
 
 class StudentsVerificationScreen extends StatefulWidget {
   StudentsVerificationScreen({Key? key}) : super(key: key);
@@ -25,6 +25,9 @@ class StudentsVerificationScreen extends StatefulWidget {
 class StudentsVerificationScreenState
     extends State<StudentsVerificationScreen> {
   List<StudentVerificationModel> items = [];
+  List<StudentVerificationModel> activeItems = [];
+  List<StudentVerificationModel> notActiveItems = [];
+  List<StudentVerificationModel> pendingItems = [];
 
   @override
   void initState() {
@@ -130,112 +133,97 @@ class StudentsVerificationScreenState
           )
         ],
       ),
-      body: SafeArea(
-        child: FutureBuilder(
-            future: futureInit,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return myListLoaderWidget(context);
-              }
-              if (items.isEmpty) {
-                return Center(
-                    child: Column(
-                  children: [
-                    const Spacer(),
-                    FxText('No item found.'),
-                    FxButton.text(
-                      child: FxText(
-                        'Reload',
-                        color: CustomTheme.primary,
-                      ),
-                      onPressed: () {
-                        doRefresh(isRefresh: true);
-                      },
-                    ),
-                    const Spacer(),
+      body: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            elevation: 1,
+            toolbarHeight: 42,
+            automaticallyImplyLeading: false,
+            flexibleSpace: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                /*-------------- Build Tabs here ------------------*/
+                TabBar(
+                  padding: EdgeInsets.only(bottom: 0),
+                  labelPadding: EdgeInsets.only(bottom: 2, left: 8, right: 8),
+                  indicatorPadding: EdgeInsets.all(0),
+                  labelColor: CustomTheme.primary,
+                  isScrollable: true,
+                  enableFeedback: true,
+                  indicator: UnderlineTabIndicator(
+                      borderSide:
+                          BorderSide(color: CustomTheme.primary, width: 4)),
+                  tabs: [
+                    Tab(
+                        height: 30,
+                        child: FxText.titleMedium(
+                            "Active (${activeItems.length})",
+                            fontWeight: 600,
+                            color: CustomTheme.primary)),
+                    Tab(
+                        height: 30,
+                        child: FxText.titleMedium(
+                            "Pending (${pendingItems.length})",
+                            fontWeight: 600,
+                            color: CustomTheme.primary)),
+                    Tab(
+                        height: 30,
+                        child: Container(
+                          child: FxText.titleMedium(
+                              "Not active (${notActiveItems.length})",
+                              fontWeight: 600,
+                              color: CustomTheme.primary),
+                        )),
                   ],
-                ));
-              }
+                )
+              ],
+            ),
+          ),
 
-              return Container(
-                child: RefreshIndicator(
-                  backgroundColor: Colors.white,
-                  onRefresh: doRefresh1,
-                  child: CustomScrollView(
-                    slivers: [
-                      SliverAppBar(
-                        toolbarHeight: Get.width / 5,
-                        backgroundColor: CupertinoColors.lightBackgroundGray,
-                        title: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            FxContainer(
-                              color: CupertinoColors.lightBackgroundGray,
-                              borderRadiusAll: 0,
-                              padding: EdgeInsets.only(top: 8),
-                              child: Wrap(
-                                runSpacing: 0,
-                                children: <Widget>[
-                                  _buildChip('All'),
-                                  _buildChip('Male'),
-                                  _buildChip('Female'),
-                                  _buildChip(
-                                      '${selected_class_text.isEmpty ? "Class" : 'Class - $selected_class_text'}'),
-                                  _buildChip('Fees'),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Divider(
-                              color: CustomTheme.primary,
-                              height: 0,
-                            ),
-                            Container(
-                                padding: EdgeInsets.only(bottom: 10, top: 5),
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        FxText.bodyLarge(
-                                          "Found ",
-                                          fontWeight: 800,
-                                        ),
-                                        FxText.bodyLarge(
-                                          "${items.length} students",
-                                          color: Colors.black,
-                                          fontWeight: 800,
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ))
-                          ],
-                        ),
-                        automaticallyImplyLeading: false,
-                        floating: true,
-                        elevation: 1,
-                        leadingWidth: 0,
-                        stretch: true,
-                        shadowColor: CustomTheme.primary,
-                      ),
-                      SliverList(
-                        delegate: SliverChildBuilderDelegate(
-                          (BuildContext context, int index) {
-                            StudentVerificationModel m = items[index];
-                            return studentVerificationWidget(m);
-                          },
-                          childCount: items.length, // 1000 list items
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              );
-            }),
+          /*--------------- Build Tab body here -------------------*/
+          body: TabBarView(
+            children: <Widget>[
+              FutureBuilder(
+                  future: futureInit,
+                  builder: (context, snapshot) {
+                    switch (snapshot.connectionState) {
+                      case ConnectionState.waiting:
+                        return myListLoaderWidget(context);
+                      default:
+                        return activeStudentsWidget();
+                    }
+                  }),
+              FutureBuilder(
+                  future: futureInit,
+                  builder: (context, snapshot) {
+                    switch (snapshot.connectionState) {
+                      case ConnectionState.waiting:
+                        return myListLoaderWidget(context);
+                      default:
+                        return pendingStudentsWidget();
+                    }
+                  }),
+              FutureBuilder(
+                  future: futureInit,
+                  builder: (context, snapshot) {
+                    switch (snapshot.connectionState) {
+                      case ConnectionState.waiting:
+                        return myListLoaderWidget(context);
+                      default:
+                        return notActiveStudentsWidget();
+                    }
+                  }),
+            ],
+          ),
+        ),
       ),
     );
+  }
+
+  navigateToDetailPage(m) async {
+    await Get.to(() => StudentsVerificationFormScreen(data: m));
+    setState(() {});
   }
 
   List<StudentVerificationModel> originalItems = [];
@@ -248,6 +236,9 @@ class StudentsVerificationScreenState
       classes = await MyClasses.getItems();
     }
     items.clear();
+    activeItems.clear();
+    pendingItems.clear();
+    notActiveItems.clear();
 
     for (StudentVerificationModel element in originalItems) {
       if (searchKeyWord.isNotEmpty) {
@@ -274,10 +265,24 @@ class StudentsVerificationScreenState
         }
       }
 
+      if (element.status == '1') {
+        activeItems.add(element);
+      }
+
+      if (element.status == '2') {
+        pendingItems.add(element);
+      }
+      if (element.status == '0') {
+        notActiveItems.add(element);
+      }
+
       items.add(element);
     }
 
     items.sort((a, b) => a.name.compareTo(b.name));
+    activeItems.sort((a, b) => a.name.compareTo(b.name));
+    pendingItems.sort((a, b) => a.name.compareTo(b.name));
+    notActiveItems.sort((a, b) => a.name.compareTo(b.name));
 
     setState(() {});
   }
@@ -420,7 +425,7 @@ class StudentsVerificationScreenState
       onTap: () {
         addItemToFilter(label);
       },
-      margin: const EdgeInsets.only(right: 5, top: 5),
+      margin: const EdgeInsets.only(right: 5, top: 15),
       padding: const EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
       borderRadiusAll: 20,
       borderColor: CustomTheme.primary,
@@ -432,6 +437,329 @@ class StudentsVerificationScreenState
         fontWeight: 700,
         color: isSelected ? Colors.white : Colors.black,
       ),
+    );
+  }
+
+  notActiveStudentsWidget() {
+    return SafeArea(
+      child: FutureBuilder(
+          future: futureInit,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return myListLoaderWidget(context);
+            }
+            if (notActiveItems.isEmpty) {
+              return Center(
+                  child: Column(
+                children: [
+                  const Spacer(),
+                  FxText('No item found.'),
+                  FxButton.text(
+                    child: FxText(
+                      'Reload',
+                      color: CustomTheme.primary,
+                    ),
+                    onPressed: () {
+                      doRefresh(isRefresh: true);
+                    },
+                  ),
+                  const Spacer(),
+                ],
+              ));
+            }
+
+            return RefreshIndicator(
+              backgroundColor: Colors.white,
+              onRefresh: doRefresh1,
+              child: CustomScrollView(
+                slivers: [
+                  SliverAppBar(
+                    toolbarHeight: Get.width / 4.5,
+                    backgroundColor: Colors.white,
+                    title: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        FxContainer(
+                          color: Colors.white,
+                          borderRadiusAll: 0,
+                          padding: EdgeInsets.only(top: 8),
+                          child: Wrap(
+                            runSpacing: 0,
+                            children: <Widget>[
+                              _buildChip('All'),
+                              _buildChip('Male'),
+                              _buildChip('Female'),
+                              _buildChip(
+                                  '${selected_class_text.isEmpty ? "Class" : 'Class - $selected_class_text'}'),
+                              _buildChip('Fees'),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Divider(
+                          color: CustomTheme.primary,
+                          height: 0,
+                        ),
+                        Container(
+                            padding: EdgeInsets.only(bottom: 15, top: 5),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    FxText.bodyLarge(
+                                      "Found ",
+                                      fontWeight: 800,
+                                    ),
+                                    FxText.bodyLarge(
+                                      "${notActiveItems.length} students",
+                                      color: Colors.black,
+                                      fontWeight: 800,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ))
+                      ],
+                    ),
+                    automaticallyImplyLeading: false,
+                    floating: true,
+                    elevation: 1,
+                    leadingWidth: 0,
+                    stretch: true,
+                    shadowColor: CustomTheme.primary,
+                  ),
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                        StudentVerificationModel m = notActiveItems[index];
+                        return studentVerificationWidget(
+                            m, () => {navigateToDetailPage(m)});
+                      },
+                      childCount: notActiveItems.length, // 1000 list items
+                    ),
+                  )
+                ],
+              ),
+            );
+          }),
+    );
+  }
+
+  pendingStudentsWidget() {
+    return SafeArea(
+      child: FutureBuilder(
+          future: futureInit,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return myListLoaderWidget(context);
+            }
+            if (pendingItems.isEmpty) {
+              return Center(
+                  child: Column(
+                children: [
+                  const Spacer(),
+                  FxText('No item found.'),
+                  FxButton.text(
+                    child: FxText(
+                      'Reload',
+                      color: CustomTheme.primary,
+                    ),
+                    onPressed: () {
+                      doRefresh(isRefresh: true);
+                    },
+                  ),
+                  const Spacer(),
+                ],
+              ));
+            }
+
+            return RefreshIndicator(
+              backgroundColor: Colors.white,
+              onRefresh: doRefresh1,
+              child: CustomScrollView(
+                slivers: [
+                  SliverAppBar(
+                    toolbarHeight: Get.width / 4.5,
+                    backgroundColor: Colors.white,
+                    title: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        FxContainer(
+                          color: Colors.white,
+                          borderRadiusAll: 0,
+                          padding: EdgeInsets.only(top: 8),
+                          child: Wrap(
+                            runSpacing: 0,
+                            children: <Widget>[
+                              _buildChip('All'),
+                              _buildChip('Male'),
+                              _buildChip('Female'),
+                              _buildChip(
+                                  '${selected_class_text.isEmpty ? "Class" : 'Class - $selected_class_text'}'),
+                              _buildChip('Fees'),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Divider(
+                          color: CustomTheme.primary,
+                          height: 0,
+                        ),
+                        Container(
+                            padding: EdgeInsets.only(bottom: 15, top: 5),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    FxText.bodyLarge(
+                                      "Found ",
+                                      fontWeight: 800,
+                                    ),
+                                    FxText.bodyLarge(
+                                      "${pendingItems.length} students",
+                                      color: Colors.black,
+                                      fontWeight: 800,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ))
+                      ],
+                    ),
+                    automaticallyImplyLeading: false,
+                    floating: true,
+                    elevation: 1,
+                    leadingWidth: 0,
+                    stretch: true,
+                    shadowColor: CustomTheme.primary,
+                  ),
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                        StudentVerificationModel m = pendingItems[index];
+                        return studentVerificationWidget(
+                            m, () => {navigateToDetailPage(m)});
+                      },
+                      childCount: pendingItems.length, // 1000 list items
+                    ),
+                  )
+                ],
+              ),
+            );
+          }),
+    );
+  }
+
+  activeStudentsWidget() {
+    return SafeArea(
+      child: FutureBuilder(
+          future: futureInit,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return myListLoaderWidget(context);
+            }
+            if (activeItems.isEmpty) {
+              return Center(
+                  child: Column(
+                children: [
+                  const Spacer(),
+                  FxText('No item found.'),
+                  FxButton.text(
+                    child: FxText(
+                      'Reload',
+                      color: CustomTheme.primary,
+                    ),
+                    onPressed: () {
+                      doRefresh(isRefresh: true);
+                    },
+                  ),
+                  const Spacer(),
+                ],
+              ));
+            }
+
+            return Container(
+              child: RefreshIndicator(
+                backgroundColor: Colors.white,
+                onRefresh: doRefresh1,
+                child: CustomScrollView(
+                  slivers: [
+                    SliverAppBar(
+                      toolbarHeight: Get.width / 4.5,
+                      backgroundColor: Colors.white,
+                      title: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          FxContainer(
+                            color: Colors.white,
+                            borderRadiusAll: 0,
+                            padding: EdgeInsets.only(top: 8),
+                            child: Wrap(
+                              runSpacing: 0,
+                              children: <Widget>[
+                                _buildChip('All'),
+                                _buildChip('Male'),
+                                _buildChip('Female'),
+                                _buildChip(
+                                    '${selected_class_text.isEmpty ? "Class" : 'Class - $selected_class_text'}'),
+                                _buildChip('Fees'),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Divider(
+                            color: CustomTheme.primary,
+                            height: 0,
+                          ),
+                          Container(
+                              padding: EdgeInsets.only(bottom: 15, top: 5),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      FxText.bodyLarge(
+                                        "Found ",
+                                        fontWeight: 800,
+                                      ),
+                                      FxText.bodyLarge(
+                                        "${activeItems.length} students",
+                                        color: Colors.black,
+                                        fontWeight: 800,
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ))
+                        ],
+                      ),
+                      automaticallyImplyLeading: false,
+                      floating: true,
+                      elevation: 1,
+                      leadingWidth: 0,
+                      stretch: true,
+                      shadowColor: CustomTheme.primary,
+                    ),
+                    SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        (BuildContext context, int index) {
+                          StudentVerificationModel m = activeItems[index];
+                          return studentVerificationWidget(
+                              m, () => {navigateToDetailPage(m)});
+                        },
+                        childCount: activeItems.length, // 1000 list items
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            );
+          }),
     );
   }
 }

@@ -34,9 +34,9 @@ class ExamModel {
     return obj;
   }
 
-  static Future<List<ExamModel>> getItems({String where = '1'}) async {
+  static Future<List<ExamModel>> getItems({String where = '1',bool forceWait  = true}) async {
     List<ExamModel> data = await getLocalData(where: where);
-    if (data.isEmpty) {
+    if (data.isEmpty && forceWait) {
       await ExamModel.getOnlineItems();
       data = await getLocalData(where: where);
     } else {
@@ -49,12 +49,13 @@ class ExamModel {
 
   static Future<List<ExamModel>> getLocalData({String where: "1"}) async {
     List<ExamModel> data = [];
+
     if (!(await ExamModel.initTable())) {
       Utils.toast("Failed to init dynamic store.");
       return data;
     }
 
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return data;
     }
@@ -81,7 +82,7 @@ class ExamModel {
       return [];
     }
 
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       Utils.toast("Failed to init local store.");
       return [];
@@ -140,7 +141,7 @@ class ExamModel {
   }
 
   save() async {
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       Utils.toast("Failed to init local store.");
       return;
@@ -173,7 +174,7 @@ class ExamModel {
   }
 
   static Future<bool> initTable() async {
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return false;
     }
@@ -207,7 +208,7 @@ class ExamModel {
     if (!(await ExamModel.initTable())) {
       return;
     }
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return false;
     }

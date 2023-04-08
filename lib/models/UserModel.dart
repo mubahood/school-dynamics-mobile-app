@@ -76,6 +76,7 @@ class UserModel {
   String current_class_id = "";
   String current_theology_class_id = "";
   String status = "";
+  String stream_id = "";
 
   Map<String, dynamic> toJson() {
     return {
@@ -147,6 +148,7 @@ class UserModel {
       'current_class_id': current_class_id,
       'current_theology_class_id': current_theology_class_id,
       'status': status,
+      'stream_id': stream_id,
     };
   }
 
@@ -232,6 +234,7 @@ class UserModel {
     obj.deleted_at = Utils.to_str(m['deleted_at'], '');
     obj.marital_status = Utils.to_str(m['marital_status'], '');
     obj.verification = Utils.to_str(m['verification'], '');
+    obj.stream_id = Utils.to_str(m['stream_id'], '');
     obj.current_class_id = Utils.to_str(m['current_class_id'], '');
     obj.current_theology_class_id =
         Utils.to_str(m['current_theology_class_id'], '');
@@ -285,8 +288,7 @@ class UserModel {
     if (!resp.data.runtimeType.toString().contains('List')) {
       return;
     }
-
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       Utils.toast("Failed to init local store.");
       return;
@@ -316,7 +318,7 @@ class UserModel {
       Utils.toast("Failed to init students store.");
       return data;
     }
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return data;
     }
@@ -337,7 +339,7 @@ class UserModel {
     if (!(await initTable())) {
       return false;
     }
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return false;
     }
@@ -361,13 +363,14 @@ class UserModel {
   }
 
   static Future<bool> initTable() async {
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return false;
     }
 
+    //await db.execute('DROP TABLE ${UserModel.table_name}');
     String sql =
-        "CREATE TABLE IF NOT EXISTS ${UserModel.table_name} (id INTEGER PRIMARY KEY, username TEXT, password TEXT, name TEXT, avatar TEXT, remember_token TEXT, created_at TEXT, updated_at TEXT, enterprise_id TEXT, first_name TEXT, last_name TEXT, date_of_birth TEXT, place_of_birth TEXT, sex TEXT, home_address TEXT, current_address TEXT, phone_number_1 TEXT, phone_number_2 TEXT, email TEXT, nationality TEXT, religion TEXT, spouse_name TEXT, spouse_phone TEXT, father_name TEXT, father_phone TEXT, mother_name TEXT, mother_phone TEXT, languages TEXT, emergency_person_name TEXT, emergency_person_phone TEXT, national_id_number TEXT, passport_number TEXT, tin TEXT, nssf_number TEXT, bank_name TEXT, bank_account_number TEXT, primary_school_name TEXT, primary_school_year_graduated TEXT, seconday_school_name TEXT, seconday_school_year_graduated TEXT, high_school_name TEXT, high_school_year_graduated TEXT, degree_university_name TEXT, degree_university_year_graduated TEXT, masters_university_name TEXT, masters_university_year_graduated TEXT, phd_university_name TEXT, phd_university_year_graduated TEXT, user_type TEXT, demo_id TEXT, user_id TEXT, user_batch_importer_id TEXT, school_pay_account_id TEXT, school_pay_payment_code TEXT, given_name TEXT, residential_type TEXT, transportation TEXT, swimming TEXT, outstanding TEXT, guardian_relation TEXT, referral TEXT, previous_school TEXT, deleted_at TEXT, marital_status TEXT, verification TEXT, current_class_id TEXT, current_theology_class_id TEXT, status TEXT)";
+        "CREATE TABLE IF NOT EXISTS ${UserModel.table_name} (id INTEGER PRIMARY KEY, username TEXT,stream_id TEXT, password TEXT, name TEXT, avatar TEXT, remember_token TEXT, created_at TEXT, updated_at TEXT, enterprise_id TEXT, first_name TEXT, last_name TEXT, date_of_birth TEXT, place_of_birth TEXT, sex TEXT, home_address TEXT, current_address TEXT, phone_number_1 TEXT, phone_number_2 TEXT, email TEXT, nationality TEXT, religion TEXT, spouse_name TEXT, spouse_phone TEXT, father_name TEXT, father_phone TEXT, mother_name TEXT, mother_phone TEXT, languages TEXT, emergency_person_name TEXT, emergency_person_phone TEXT, national_id_number TEXT, passport_number TEXT, tin TEXT, nssf_number TEXT, bank_name TEXT, bank_account_number TEXT, primary_school_name TEXT, primary_school_year_graduated TEXT, seconday_school_name TEXT, seconday_school_year_graduated TEXT, high_school_name TEXT, high_school_year_graduated TEXT, degree_university_name TEXT, degree_university_year_graduated TEXT, masters_university_name TEXT, masters_university_year_graduated TEXT, phd_university_name TEXT, phd_university_year_graduated TEXT, user_type TEXT, demo_id TEXT, user_id TEXT, user_batch_importer_id TEXT, school_pay_account_id TEXT, school_pay_payment_code TEXT, given_name TEXT, residential_type TEXT, transportation TEXT, swimming TEXT, outstanding TEXT, guardian_relation TEXT, referral TEXT, previous_school TEXT, deleted_at TEXT, marital_status TEXT, verification TEXT, current_class_id TEXT, current_theology_class_id TEXT, status TEXT)";
     try {
       await db.execute(sql);
     } catch (e) {

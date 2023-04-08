@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
+import 'package:schooldynamics/screens/classes/ClassesScreen.dart';
+import 'package:schooldynamics/screens/students/StudentsScreen.dart';
 
 import '../../../controllers/SectionDashboardController.dart';
 import '../../../models/MenuItem.dart';
@@ -55,11 +57,6 @@ class _SectionDashboardState extends State<SectionDashboard> {
   List<MenuItem> menuItems = [];
 
   Future<dynamic> myInit() async {
-    menuItems = [
-      MenuItem('Admin', 'T 1', FeatherIcons.edit,'', () {
-        Get.to(() => const AdminMenuScreen());
-      })
-    ];
     return "Done";
     // await widget.mainController.getMyClasses();
     // await widget.mainController.getMyStudents();
@@ -67,6 +64,18 @@ class _SectionDashboardState extends State<SectionDashboard> {
   }
 
   Widget mainWidget() {
+    menuItems = [
+      MenuItem('Classes', 'T 1', FeatherIcons.edit, 'classes.png', () {
+        Get.to(() => ClassesScreen());
+      }),
+      MenuItem('Students', 'T 1', FeatherIcons.edit, 'students.png', () {
+        Get.to(() => StudentsScreen());
+      }),
+      MenuItem('Admin', 'T 1', FeatherIcons.edit, 'admin.png', () {
+        Get.to(() => const AdminMenuScreen());
+      }),
+    ];
+
     return Column(
       children: [
         InkWell(
@@ -99,7 +108,7 @@ class _SectionDashboardState extends State<SectionDashboard> {
         ),
         Expanded(
           child: Container(
-            padding: EdgeInsets.only(left: 10, right: 10),
+            padding: EdgeInsets.only(left: 10, top: 10, right: 10),
             child: RefreshIndicator(
               onRefresh: doRefresh,
               color: CustomTheme.primary,
@@ -109,26 +118,40 @@ class _SectionDashboardState extends State<SectionDashboard> {
                   slivers: [
                     SliverGrid(
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 4,
+                        crossAxisCount: 3,
                         crossAxisSpacing: 5,
-                        childAspectRatio: 0.7,
+                        childAspectRatio: 0.8,
                       ),
                       delegate: SliverChildBuilderDelegate(
-                        (BuildContext context, int index) {
+                            (BuildContext context, int index) {
                           MenuItem item = menuItems[index];
                           return FxContainer(
                             width: (Get.width / 6),
                             height: (Get.width / 6),
                             borderRadiusAll: 10,
-                            borderColor: Colors.red.shade700,
-                            bordered: true,
+                            bordered: false,
+                            padding: EdgeInsets.only(left: 5, right: 5),
                             onTap: () {
                               item.f();
                             },
-                            color: CustomTheme.red.withAlpha(40),
-                            paddingAll: 10,
+                            color: Colors.white,
+                            paddingAll: 0,
                             alignment: Alignment.center,
-                            child: Text(item.title),
+                            child: Column(
+                              children: [
+                                Image(
+                                  image: AssetImage('assets/icons/${item.img}'),
+                                  fit: BoxFit.cover,
+                                ),
+                                FxText(
+                                  item.title,
+                                  color: Colors.black,
+                                  fontWeight: 800,
+                                  fontSize: 18,
+                                  maxLines: 1,
+                                ),
+                              ],
+                            ),
                           );
                         },
                         childCount: menuItems.length,

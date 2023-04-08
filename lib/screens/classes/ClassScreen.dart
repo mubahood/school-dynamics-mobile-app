@@ -4,7 +4,6 @@ import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
 import 'package:schooldynamics/models/ExamModel.dart';
 import 'package:schooldynamics/models/MyClasses.dart';
-import 'package:schooldynamics/models/MySubjects.dart';
 import 'package:schooldynamics/models/SessionLocal.dart';
 import 'package:schooldynamics/models/UserModel.dart';
 
@@ -12,10 +11,8 @@ import '../../models/SessionOnline.dart';
 import '../../sections/widgets.dart';
 import '../../theme/app_theme.dart';
 import '../../theme/custom_theme.dart';
-import '../../utils/SizeConfig.dart';
 import '../../utils/Utils.dart';
 import '../../utils/my_widgets.dart';
-import '../exams/MarksScreen.dart';
 import '../sessions/SessionCreateNewScreen.dart';
 import '../sessions/SessionLocalScreen.dart';
 import '../sessions/SessionOnlineScreen.dart';
@@ -49,10 +46,11 @@ class _CourseTasksScreenState extends State<ClassScreen> {
   Future<dynamic> my_init() async {
     item = widget.data;
     await item.getStudents();
-    exams = await ExamModel.getItems();
-    mySubjects = await MySubjects.getItems();
-    sessionsOnline =
-        await SessionOnline.getItems(where: ' academic_class_id = ${item.id} ');
+    exams = await ExamModel.getItems(forceWait: false);
+    sessionsOnline = await SessionOnline.getItems(
+        where: ' academic_class_id = ${item.id} ', forceWait: false);
+
+    await SessionLocal.uploadPending();
 
     setState(() {});
     return "Done";
@@ -372,7 +370,7 @@ class _CourseTasksScreenState extends State<ClassScreen> {
                       ExamModel m = exams[index];
                       return ListTile(
                         onTap: () {
-                          showBottomSheetAccountPicker(m);
+                          //showBottomSheetAccountPicker(m);
                         },
                         title: FxText.titleMedium(
                           "${m.term_name} - ${m.name}",
@@ -396,85 +394,6 @@ class _CourseTasksScreenState extends State<ClassScreen> {
               ],
             ),
           );
-  }
-
-  List<MySubjects> mySubjects = [];
-
-  void showBottomSheetAccountPicker(ExamModel exam) {
-    showModalBottomSheet(
-        context: context,
-        barrierColor: CustomTheme.primary.withOpacity(.5),
-        builder: (BuildContext buildContext) {
-          return Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(MySize.size16!),
-                topRight: Radius.circular(MySize.size16!),
-              ),
-            ),
-            child: Container(
-              padding: EdgeInsets.only(top: 15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(left: 15, right: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        FxText.titleMedium(
-                          'Select subject',
-                          color: Colors.black,
-                          fontWeight: 700,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            setState(() {});
-                            Navigator.pop(context);
-                          },
-                          child: const Icon(
-                            FeatherIcons.x,
-                            color: Colors.red,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Divider(
-                    height: 0,
-                    color: CustomTheme.primary,
-                  ),
-                  Expanded(
-                    child: RefreshIndicator(
-                      backgroundColor: Colors.white,
-                      onRefresh: _my_init,
-                      child: ListView.builder(
-                          itemCount: mySubjects.length,
-                          itemBuilder: (context, position) {
-                            MySubjects c = mySubjects[position];
-                            return ListTile(
-                              onTap: () {
-                                Navigator.pop(context);
-                                Get.to(() => MarksScreen(exam, c));
-                              },
-                              title: FxText.titleMedium(
-                                "${c.subject_name} - ${c.name}",
-                                maxLines: 1,
-                                fontWeight: 700,
-                              ),
-                              visualDensity: VisualDensity.compact,
-                              dense: true,
-                            );
-                          }),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
-        });
   }
 
   Widget attendanceList() {

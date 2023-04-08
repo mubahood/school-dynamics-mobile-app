@@ -4,7 +4,6 @@ import 'package:schooldynamics/models/RespondModel.dart';
 import 'package:schooldynamics/models/TemporaryModel.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../utils/AppConfig.dart';
 import '../utils/Utils.dart';
 
 class SessionLocal {
@@ -67,7 +66,7 @@ class SessionLocal {
   }
 
   save() async {
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       Utils.toast("Failed to init local store.");
       return;
@@ -100,6 +99,7 @@ class SessionLocal {
       'academic_class_id': academic_class_id,
       'subject_id': subject_id,
       'service_id': service_id,
+      'stream_id': stream_id,
     };
     RespondModel resp =
         RespondModel(await Utils.http_post('session-create', params));
@@ -108,7 +108,8 @@ class SessionLocal {
       await deleteSelf();
       print('success');
     } else {
-      print("faoiled/");
+      print(resp.message);
+      print("failed/");
     }
   }
 
@@ -124,6 +125,7 @@ class SessionLocal {
       'expected': expected,
       'academic_class_id': academic_class_id,
       'subject_id': subject_id,
+      'stream_id': stream_id,
       'service_id': service_id,
     };
   }
@@ -135,7 +137,7 @@ class SessionLocal {
       return data;
     }
 
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return data;
     }
@@ -162,6 +164,7 @@ class SessionLocal {
   String expected = "";
   String academic_class_id = '';
   String subject_id = '';
+  String stream_id = '';
   String service_id = '';
 
   static SessionLocal fromJson(dynamic data) {
@@ -181,12 +184,13 @@ class SessionLocal {
     item.academic_class_id = Utils.to_str(data['academic_class_id'], '');
     item.subject_id = Utils.to_str(data['subject_id'], '');
     item.service_id = Utils.to_str(data['service_id'], '');
+    item.stream_id = Utils.to_str(data['stream_id'], '');
 
     return item;
   }
 
   static Future<bool> initTable() async {
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return false;
     }
@@ -202,11 +206,11 @@ class SessionLocal {
         "service_id TEXT,"
         "subject_id TEXT,"
         "closed TEXT,"
+        "stream_id TEXT,"
         "academic_class_id TEXT)";
 
     try {
-      //await db.delete(SessionLocal.table_name);
-
+      //await db.execute("DROP TABLE ${SessionLocal.table_name}");
       await db.execute(sql);
     } catch (e) {
       Utils.log('Failed to create table because ${e.toString()}');
@@ -218,7 +222,7 @@ class SessionLocal {
   }
 
   deleteSelf() async {
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       Utils.toast("Failed to init local store.");
       return;
@@ -238,6 +242,7 @@ class SessionLocal {
   }
 
   static uploadPending() async {
+    print("=======uploadin-----");
     for (SessionLocal s in (await SessionLocal.getItems())) {
       if (s.closed == 'yes') {
         await s.submitSelf();

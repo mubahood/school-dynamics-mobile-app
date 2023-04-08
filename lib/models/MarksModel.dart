@@ -2,7 +2,6 @@ import 'package:schooldynamics/utils/Utils.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../utils/AppConfig.dart';
-import 'RespondModel.dart';
 
 class MarksModel {
   static String tableName = "MarksModels";
@@ -55,7 +54,7 @@ class MarksModel {
       return data;
     }
 
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return data;
     }
@@ -74,7 +73,7 @@ class MarksModel {
   }
 
   save() async {
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       Utils.toast("Failed to init local store.");
       return;
@@ -109,7 +108,7 @@ class MarksModel {
   }
 
   static Future<bool> initTable() async {
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return false;
     }
@@ -145,7 +144,7 @@ class MarksModel {
     if (!(await MarksModel.initTable())) {
       return;
     }
-    Database db = await openDatabase(AppConfig.DATABASE_PATH);
+    Database db = await Utils.getDb();
     if (!db.isOpen) {
       return false;
     }
