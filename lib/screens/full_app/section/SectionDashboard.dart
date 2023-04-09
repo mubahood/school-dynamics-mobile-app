@@ -8,7 +8,9 @@ import 'package:schooldynamics/screens/students/StudentsScreen.dart';
 import '../../../controllers/SectionDashboardController.dart';
 import '../../../models/MenuItem.dart';
 import '../../../theme/app_theme.dart';
+import '../../../utils/my_widgets.dart';
 import '../../admin/AdminMenuScreen.dart';
+import '../../finance/FinanceHomeScreen.dart';
 
 class SectionDashboard extends StatefulWidget {
   SectionDashboard({Key? key}) : super(key: key);
@@ -71,6 +73,9 @@ class _SectionDashboardState extends State<SectionDashboard> {
       MenuItem('Students', 'T 1', FeatherIcons.edit, 'students.png', () {
         Get.to(() => StudentsScreen());
       }),
+      MenuItem('Finance', 'T 1', FeatherIcons.edit, 'finance.png', () {
+        Get.to(() => FinanceHomeScreen());
+      }),
       MenuItem('Admin', 'T 1', FeatherIcons.edit, 'admin.png', () {
         Get.to(() => const AdminMenuScreen());
       }),
@@ -108,7 +113,7 @@ class _SectionDashboardState extends State<SectionDashboard> {
         ),
         Expanded(
           child: Container(
-            padding: EdgeInsets.only(left: 10, top: 10, right: 10),
+            padding: const EdgeInsets.only(left: 10, top: 10, right: 10),
             child: RefreshIndicator(
               onRefresh: doRefresh,
               color: CustomTheme.primary,
@@ -117,42 +122,16 @@ class _SectionDashboardState extends State<SectionDashboard> {
                 child: CustomScrollView(
                   slivers: [
                     SliverGrid(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
                         crossAxisSpacing: 5,
                         childAspectRatio: 0.8,
                       ),
                       delegate: SliverChildBuilderDelegate(
-                            (BuildContext context, int index) {
+                        (BuildContext context, int index) {
                           MenuItem item = menuItems[index];
-                          return FxContainer(
-                            width: (Get.width / 6),
-                            height: (Get.width / 6),
-                            borderRadiusAll: 10,
-                            bordered: false,
-                            padding: EdgeInsets.only(left: 5, right: 5),
-                            onTap: () {
-                              item.f();
-                            },
-                            color: Colors.white,
-                            paddingAll: 0,
-                            alignment: Alignment.center,
-                            child: Column(
-                              children: [
-                                Image(
-                                  image: AssetImage('assets/icons/${item.img}'),
-                                  fit: BoxFit.cover,
-                                ),
-                                FxText(
-                                  item.title,
-                                  color: Colors.black,
-                                  fontWeight: 800,
-                                  fontSize: 18,
-                                  maxLines: 1,
-                                ),
-                              ],
-                            ),
-                          );
+                          return menuItemWidget(item);
                         },
                         childCount: menuItems.length,
                       ),

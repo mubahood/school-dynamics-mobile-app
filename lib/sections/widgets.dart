@@ -13,6 +13,7 @@ import 'package:schooldynamics/utils/Utils.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../models/StudentVerificationModel.dart';
+import '../screens/finance/FinancialAccountScreen.dart';
 
 Widget roundedImage(String url, double w, double h,
     {String no_image: AppConfig.NO_IMAGE, double radius: 10}) {
@@ -303,6 +304,79 @@ Widget userWidget(UserModel u) {
   );
 }
 
+Widget accountWidget(UserModel u) {
+  return InkWell(
+    onTap: () {
+      Get.to(() => FinancialAccountScreen(data: u));
+    },
+    child: Column(
+      children: [
+        Container(
+          padding: EdgeInsets.only(top: 10, bottom: 10, left: 10, right: 15),
+          child: Flex(
+            direction: Axis.horizontal,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              roundedImage(u.avatar.toString(), 8, 8),
+              SizedBox(
+                width: 5,
+              ),
+              Expanded(
+                child: Flex(
+                  direction: Axis.vertical,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    FxText.titleMedium(
+                      u.name.toUpperCase(),
+                      maxLines: 1,
+                      fontWeight: 800,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 2,
+                        ),
+                        FxText.bodyMedium(
+                          '${u.current_class_text}',
+                          fontWeight: 800,
+                        ),
+                        Spacer(),
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: 5,
+                            ),
+                            FxText.bodySmall('UGX'),
+                          ],
+                        ),
+                        SizedBox(
+                          width: 2,
+                        ),
+                        FxText.titleLarge(
+                          Utils.moneyFormat("${u.balance}"),
+                          height: 1.1,
+                          color: u.balance < 0
+                              ? Colors.red.shade800
+                              : Colors.green.shade800,
+                          fontWeight: 900,
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        Divider(
+          height: 0,
+        )
+      ],
+    ),
+  );
+}
 
 Widget studentVerificationWidget(StudentVerificationModel u, Function f) {
   return InkWell(

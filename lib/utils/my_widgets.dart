@@ -2,11 +2,50 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutx/widgets/container/container.dart';
 import 'package:flutx/widgets/text/text.dart';
+import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../models/MenuItem.dart';
 import '../theme/custom_theme.dart';
 import 'Utils.dart';
+
+Widget menuItemWidget(MenuItem item) {
+  return FxContainer(
+    width: (Get.width / 6),
+    height: (Get.width / 6),
+    borderRadiusAll: 10,
+    bordered: false,
+    padding: EdgeInsets.only(left: 5, right: 5),
+    onTap: () {
+      item.f();
+    },
+    color: Colors.white,
+    paddingAll: 0,
+    alignment: Alignment.center,
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image(
+          image: AssetImage('assets/icons/${item.img}'),
+          fit: BoxFit.cover,
+        ),
+        SizedBox(
+          height: 3,
+        ),
+        FxText(
+          item.title,
+          textAlign: TextAlign.center,
+          color: Colors.black,
+          letterSpacing: .001,
+          fontWeight: 800,
+          fontSize: 20,
+          maxLines: 1,
+        ),
+      ],
+    ),
+  );
+}
 
 Widget valueUnitWidget2(dynamic title, dynamic value,
     {double fontSize: 6,
@@ -88,11 +127,11 @@ Widget listItem(MenuItem item) {
                     left: 15, top: 12, bottom: 12, right: 10),
                 child: item.icon == null
                     ? const SizedBox(
-                        height: 30,
+                  height: 34,
                       )
                     : Icon(
                         item.icon,
-                        size: 30,
+                        size: 34,
                         color: CustomTheme.primary,
                       ),
               ),
@@ -103,7 +142,7 @@ Widget listItem(MenuItem item) {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(
-                    height: 5,
+                    height: 10,
                   ),
                   FxText.titleMedium(
                     item.title,
@@ -111,6 +150,7 @@ Widget listItem(MenuItem item) {
                     height: .8,
                     fontWeight: 800,
                     color: Colors.black,
+                    fontSize: 18,
                     overflow: TextOverflow.ellipsis,
                   ),
                   FxText.bodySmall(
