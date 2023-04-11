@@ -4,7 +4,7 @@
             "outputFile": "com.baseflow.geolocator.geolocator_android-merged_res-13:/values-mk/values-mk.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\muhin\\.gradle\\caches\\transforms-3\\e220d77df2ddd3e387095792b8f750a6\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-mk\\values.xml",
+                    "source": "C:\\Users\\muhin\\.gradle\\caches\\transforms-3\\e2b841969b2342e1ac7158933d6952b3\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-mk\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\muhin\\.gradle\\caches\\transforms-3\\d8d18349d8b5be0a549bfa36843dd640\\transformed\\core-1.9.0\\res\\values-mk\\values-mk.xml",
+                    "source": "C:\\Users\\muhin\\.gradle\\caches\\transforms-3\\03dba60721064a80d83e84b78b093ef9\\transformed\\core-1.9.0\\res\\values-mk\\values-mk.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\muhin\\.gradle\\caches\\transforms-3\\e557ef7c2c6fedd62cfad76a983a187a\\transformed\\jetified-play-services-base-18.1.0\\res\\values-mk\\values.xml",
+                    "source": "C:\\Users\\muhin\\.gradle\\caches\\transforms-3\\d73090c1f1875931dd1d4cbfe2d1a4d3\\transformed\\jetified-play-services-base-18.1.0\\res\\values-mk\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -60,7 +60,7 @@
             "outputFile": "com.baseflow.geolocator.geolocator_android-mergeReleaseResources-11:/values-mk/values-mk.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\muhin\\.gradle\\caches\\transforms-3\\e220d77df2ddd3e387095792b8f750a6\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-mk\\values.xml",
+                    "source": "C:\\Users\\muhin\\.gradle\\caches\\transforms-3\\e2b841969b2342e1ac7158933d6952b3\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-mk\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -77,7 +77,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\muhin\\.gradle\\caches\\transforms-3\\d8d18349d8b5be0a549bfa36843dd640\\transformed\\core-1.9.0\\res\\values-mk\\values-mk.xml",
+                    "source": "C:\\Users\\muhin\\.gradle\\caches\\transforms-3\\03dba60721064a80d83e84b78b093ef9\\transformed\\core-1.9.0\\res\\values-mk\\values-mk.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -94,7 +94,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\muhin\\.gradle\\caches\\transforms-3\\e557ef7c2c6fedd62cfad76a983a187a\\transformed\\jetified-play-services-base-18.1.0\\res\\values-mk\\values.xml",
+                    "source": "C:\\Users\\muhin\\.gradle\\caches\\transforms-3\\d73090c1f1875931dd1d4cbfe2d1a4d3\\transformed\\jetified-play-services-base-18.1.0\\res\\values-mk\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",

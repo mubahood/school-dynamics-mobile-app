@@ -43,6 +43,15 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
+    signingConfigs {
+        release {
+            storeFile file("C:/github/schools-app/schools-app/schooldynamics.jks")
+            storePassword "Dev@Team"
+            keyAlias "key0"
+            keyPassword "Dev@Team"
+        }
+    }
+
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "schooldynamics.ug"

@@ -15,6 +15,10 @@
   <androidx.arch.core/>
   <androidx.asynclayoutinflater/>
   <androidx.autofill/>
+  <androidx.baselineprofile/>
+  <androidx.baselineprofile.apptarget/>
+  <androidx.baselineprofile.consumer/>
+  <androidx.baselineprofile.producer/>
   <androidx.benchmark/>
   <androidx.biometric/>
   <androidx.browser/>
@@ -83,6 +87,8 @@
   <androidx.preference/>
   <androidx.print/>
   <androidx.privacysandbox.ads/>
+  <androidx.privacysandbox.library/>
+  <androidx.privacysandbox.plugins/>
   <androidx.privacysandbox.sdkruntime/>
   <androidx.privacysandbox.tools/>
   <androidx.privacysandbox.ui/>

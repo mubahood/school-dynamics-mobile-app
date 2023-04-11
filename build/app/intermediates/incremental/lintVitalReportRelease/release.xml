@@ -1,13 +1,13 @@
 <variant
     name="release"
     package="schooldynamics.ug"
-    minSdkVersion="16"
-    targetSdkVersion="33"
+    minSdkVersion="21"
+    targetSdkVersion="31"
     shrinking="true"
-    mergedManifest="C:\github\schools-app\schools-app\build\app\intermediates\merged_manifest\release\AndroidManifest.xml"
-    manifestMergeReport="C:\github\schools-app\schools-app\build\app\outputs\logs\manifest-merger-release-report.txt"
-    proguardFiles="C:\github\schools-app\schools-app\build\app\intermediates\default_proguard_files\global\proguard-android.txt-7.4.1;C:\src\flutter\packages\flutter_tools\gradle\flutter_proguard_rules.pro;proguard-rules.pro"
-    partialResultsDir="C:\github\schools-app\schools-app\build\app\intermediates\lint_vital_partial_results\release\out">
+    mergedManifest="C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\app\intermediates\merged_manifest\release\AndroidManifest.xml"
+    manifestMergeReport="C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\app\outputs\logs\manifest-merger-release-report.txt"
+    proguardFiles="C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\app\intermediates\default_proguard_files\global\proguard-android.txt-7.4.1;C:\src\flutter\packages\flutter_tools\gradle\flutter_proguard_rules.pro;proguard-rules.pro"
+    partialResultsDir="C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\app\intermediates\lint_vital_partial_results\release\out">
   <buildFeatures
       namespacing="REQUIRED"/>
   <sourceProviders>
@@ -32,9 +32,9 @@
         value="android.app.Application" />
   </manifestPlaceholders>
   <mainArtifact
-      classOutputs="C:\github\schools-app\schools-app\build\app\intermediates\javac\release\classes;C:\github\schools-app\schools-app\build\app\tmp\kotlin-classes\release;C:\github\schools-app\schools-app\build\app\kotlinToolingMetadata;C:\github\schools-app\schools-app\build\app\intermediates\compile_and_runtime_not_namespaced_r_class_jar\release\R.jar"
+      classOutputs="C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\app\intermediates\javac\release\classes;C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\app\tmp\kotlin-classes\release;C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\app\kotlinToolingMetadata;C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\app\intermediates\compile_and_runtime_not_namespaced_r_class_jar\release\R.jar"
       applicationId="schooldynamics.ug"
-      generatedSourceFolders="C:\github\schools-app\schools-app\build\app\generated\ap_generated_sources\release\out;C:\github\schools-app\schools-app\build\app\generated\aidl_source_output_dir\release\out;C:\github\schools-app\schools-app\build\app\generated\source\buildConfig\release;C:\github\schools-app\schools-app\build\app\generated\renderscript_source_output_dir\release\out"
-      generatedResourceFolders="C:\github\schools-app\schools-app\build\app\generated\res\rs\release;C:\github\schools-app\schools-app\build\app\generated\res\resValues\release">
+      generatedSourceFolders="C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\app\generated\ap_generated_sources\release\out;C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\app\generated\aidl_source_output_dir\release\out;C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\app\generated\source\buildConfig\release;C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\app\generated\renderscript_source_output_dir\release\out"
+      generatedResourceFolders="C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\app\generated\res\google-services\release;C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\app\generated\res\rs\release;C:\github\schools-app\schools-app\School-Dynamics-Mobile-App\build\app\generated\res\resValues\release">
   </mainArtifact>
 </variant>
