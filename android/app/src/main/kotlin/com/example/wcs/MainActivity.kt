@@ -1,4 +1,4 @@
-package com.example.wcs
+package schooldynamics.ug
 
 import io.flutter.embedding.android.FlutterActivity
 

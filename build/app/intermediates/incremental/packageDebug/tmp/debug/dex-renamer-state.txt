@@ -1,10 +1,10 @@
-#Wed Apr 19 10:21:27 EAT 2023
-base.0=C\:\\github\\schools-app\\schools-app\\School-Dynamics-Mobile-App\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=C\:\\github\\schools-app\\schools-app\\School-Dynamics-Mobile-App\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\0\\classes.dex
-base.2=C\:\\github\\schools-app\\schools-app\\School-Dynamics-Mobile-App\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.3=C\:\\github\\schools-app\\schools-app\\School-Dynamics-Mobile-App\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex
-base.4=C\:\\github\\schools-app\\schools-app\\School-Dynamics-Mobile-App\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\3\\classes.dex
-base.5=C\:\\github\\schools-app\\schools-app\\School-Dynamics-Mobile-App\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\6\\classes.dex
+#Thu May 25 13:50:05 EAT 2023
+base.0=C\:\\github\\school-dynamics-mobile-app\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=C\:\\github\\school-dynamics-mobile-app\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\0\\classes.dex
+base.2=C\:\\github\\school-dynamics-mobile-app\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.3=C\:\\github\\school-dynamics-mobile-app\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex
+base.4=C\:\\github\\school-dynamics-mobile-app\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\3\\classes.dex
+base.5=C\:\\github\\school-dynamics-mobile-app\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\6\\classes.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=0/classes.dex

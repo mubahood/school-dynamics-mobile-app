@@ -3,6 +3,6 @@
 3    package="com.onesignal.flutter" >
 4
 5    <uses-sdk android:minSdkVersion="16" />
-5-->C:\Users\muhin\AppData\Local\Pub\Cache\hosted\pub.dev\onesignal_flutter-3.5.0\android\src\main\AndroidManifest.xml
+5-->C:\Users\mubahood\AppData\Local\Pub\Cache\hosted\pub.dev\onesignal_flutter-3.5.1\android\src\main\AndroidManifest.xml
 6
 7</manifest>

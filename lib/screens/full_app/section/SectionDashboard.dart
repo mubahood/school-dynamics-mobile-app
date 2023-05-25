@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
+import 'package:schooldynamics/models/LoggedInUserModel.dart';
 import 'package:schooldynamics/screens/classes/ClassesScreen.dart';
+import 'package:schooldynamics/screens/full_app/section/AccountSection.dart';
 import 'package:schooldynamics/screens/students/StudentsScreen.dart';
 
-import '../../../controllers/SectionDashboardController.dart';
 import '../../../models/MenuItem.dart';
 import '../../../theme/app_theme.dart';
 import '../../../utils/my_widgets.dart';
@@ -21,13 +22,11 @@ class SectionDashboard extends StatefulWidget {
 
 class _SectionDashboardState extends State<SectionDashboard> {
   late ThemeData theme;
-  late SectionDashboardController controller;
 
   @override
   void initState() {
     super.initState();
     theme = AppTheme.shoppingManagerTheme;
-    controller = FxControllerStore.putOrFind(SectionDashboardController());
     doRefresh();
   }
 
@@ -58,14 +57,15 @@ class _SectionDashboardState extends State<SectionDashboard> {
 
   List<MenuItem> menuItems = [];
 
+  LoggedInUserModel u = LoggedInUserModel();
   Future<dynamic> myInit() async {
+    u = await LoggedInUserModel.getLoggedInUser();
+
     return "Done";
-    // await widget.mainController.getMyClasses();
-    // await widget.mainController.getMyStudents();
-    // await widget.mainController.getMySubjects();
   }
 
   Widget mainWidget() {
+    print("=========PREPARING ${u.name}'s MENU ============");
     menuItems = [
       MenuItem('Classes', 'T 1', FeatherIcons.edit, 'classes.png', () {
         Get.to(() => ClassesScreen());
@@ -78,6 +78,9 @@ class _SectionDashboardState extends State<SectionDashboard> {
       }),
       MenuItem('Admin', 'T 1', FeatherIcons.edit, 'admin.png', () {
         Get.to(() => const AdminMenuScreen());
+      }),
+      MenuItem('My Account', 'T 1', FeatherIcons.edit, 'admin.png', () {
+        Get.to(() => const AccountSection());
       }),
     ];
 
