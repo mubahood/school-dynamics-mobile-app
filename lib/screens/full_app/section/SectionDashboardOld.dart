@@ -84,8 +84,9 @@ class _SectionDashboardState extends State<SectionDashboardOld> {
   }
 
   testProcesses() async {
-    await widget.mainController.getMySubjects();
-    //print("=========getin=======");
+    print("===I LOVE ROMINA====");
+    //await widget.mainController.getMySubjects();
+    //print("=========geting=======");
     //List<MarksModel> marks = await MarksModel.getItems();
     //List<ExamModel> exams = await ExamModel.getItems();
     //print("=========FOUND-->${marks.length}<----=======");

@@ -9,6 +9,7 @@ import 'package:schooldynamics/screens/students/StudentsScreen.dart';
 
 import '../../../models/MenuItem.dart';
 import '../../../theme/app_theme.dart';
+import '../../../utils/Utils.dart';
 import '../../../utils/my_widgets.dart';
 import '../../admin/AdminMenuScreen.dart';
 import '../../finance/FinanceHomeScreen.dart';
@@ -60,12 +61,13 @@ class _SectionDashboardState extends State<SectionDashboard> {
   LoggedInUserModel u = LoggedInUserModel();
   Future<dynamic> myInit() async {
     u = await LoggedInUserModel.getLoggedInUser();
-
+    //Utils.initOneSignal();
+    print("=========> ${u.} <============");
     return "Done";
   }
 
   Widget mainWidget() {
-    print("=========PREPARING ${u.name}'s MENU ============");
+
     menuItems = [
       MenuItem('Classes', 'T 1', FeatherIcons.edit, 'classes.png', () {
         Get.to(() => ClassesScreen());
@@ -87,7 +89,10 @@ class _SectionDashboardState extends State<SectionDashboard> {
     return Column(
       children: [
         InkWell(
-          onTap: () {},
+          onTap: () {
+            myInit();
+
+          },
           child: Container(
             padding: const EdgeInsets.only(
               left: 15,

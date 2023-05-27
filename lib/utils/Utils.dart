@@ -5,6 +5,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/dio.dart' as dioPackage;
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,6 +14,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:schooldynamics/models/MarkLocalModel.dart';
 import 'package:schooldynamics/models/MySubjects.dart';
 import 'package:schooldynamics/models/SessionLocal.dart';
@@ -32,8 +34,10 @@ class Utils {
   }
 
   static Future<void> initOneSignal() async {
-  /*  WidgetsFlutterBinding.ensureInitialized();
+    WidgetsFlutterBinding.ensureInitialized();
+    print("=====INITING ONE SIGNAL=====");
     await Firebase.initializeApp();
+    print("=====DONE INITING ONE SIGNAL=====");
     // Set the background messaging handler early on, as a named top-level function
 
     OneSignal.shared.setAppId(AppConfig.ONESIGNAL_APP_ID);
@@ -42,6 +46,7 @@ class Utils {
     if (u != null) {
       if (u.id > 0) {
         OneSignal.shared.setExternalUserId(u.id.toString());
+        print("=====SET ONE SIGNAL USER ID: ${u.id} =====");
       }
     }
 
@@ -51,6 +56,10 @@ class Utils {
 
     OneSignal.shared.setNotificationWillShowInForegroundHandler(
         (OSNotificationReceivedEvent event) {
+          print("=====ONE SIGNAL event ID: ${event.notification.title} =====");
+          print("=====ONE SIGNAL event ID: ${event.notification.subtitle} =====");
+          print("=====ONE SIGNAL event ID: ${event.notification.category} =====");
+          print("=====ONE SIGNAL event ID: ${event.notification.body} =====");
       // Will be called whenever a notification is received in foreground
       // Display Notification, pass null param for not displaying the notification
       event.complete(event.notification);
@@ -59,6 +68,10 @@ class Utils {
     OneSignal.shared
         .setNotificationOpenedHandler((OSNotificationOpenedResult result) {
       // Will be called whenever a notification is opened/button pressed.
+      print("=====ONE SIGNAL result ID: ${result.notification.title} =====");
+      print("=====ONE SIGNAL result ID: ${result.notification.subtitle} =====");
+      print("=====ONE SIGNAL result ID: ${result.notification.category} =====");
+      print("=====ONE SIGNAL result ID: ${result.notification.body} =====");
     });
 
     OneSignal.shared.setPermissionObserver((OSPermissionStateChanges changes) {
@@ -76,7 +89,7 @@ class Utils {
         (OSEmailSubscriptionStateChanges emailChanges) {
       // Will be called whenever then user's email subscription changes
       // (ie. OneSignal.setEmail(email) is called and the user gets registered
-    });*/
+    });
   }
 
   static bool contains(List<dynamic> items, dynamic item) {
