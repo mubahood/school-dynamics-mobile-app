@@ -5,7 +5,6 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/dio.dart' as dioPackage;
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,7 +13,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
-import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:schooldynamics/models/MarkLocalModel.dart';
 import 'package:schooldynamics/models/MySubjects.dart';
 import 'package:schooldynamics/models/SessionLocal.dart';
@@ -34,7 +32,7 @@ class Utils {
   }
 
   static Future<void> initOneSignal() async {
-    WidgetsFlutterBinding.ensureInitialized();
+  /*  WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp();
     // Set the background messaging handler early on, as a named top-level function
 
@@ -78,7 +76,7 @@ class Utils {
         (OSEmailSubscriptionStateChanges emailChanges) {
       // Will be called whenever then user's email subscription changes
       // (ie. OneSignal.setEmail(email) is called and the user gets registered
-    });
+    });*/
   }
 
   static bool contains(List<dynamic> items, dynamic item) {

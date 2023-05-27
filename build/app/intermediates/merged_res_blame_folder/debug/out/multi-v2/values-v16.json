@@ -1,29 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "schooldynamics.ug.app-mergeDebugResources-32:/values-v16/values-v16.xml",
+            "outputFile": "schooldynamics.ug.app-mergeDebugResources-24:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\mubahood\\.gradle\\caches\\transforms-3\\57016e69dae1c7e9088eef0e857e5de0\\transformed\\appcompat-1.3.1\\res\\values-v16\\values-v16.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endLines": "5",
-                        "endColumns": "12",
-                        "endOffsets": "223"
-                    },
-                    "to": {
-                        "startLines": "3",
-                        "startColumns": "4",
-                        "startOffsets": "121",
-                        "endLines": "6",
-                        "endColumns": "12",
-                        "endOffsets": "289"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\mubahood\\.gradle\\caches\\transforms-3\\07882300247c981c69addf90b7c095ec\\transformed\\core-1.10.1\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\mubahood\\.gradle\\caches\\transforms-3\\1e4e721e8dd48c9187a344afe5f2f9d1\\transformed\\core-1.9.0\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -125,6 +125,7 @@ int id normal 0x0
 int id notification_background 0x0
 int id notification_main_column 0x0
 int id notification_main_column_container 0x0
+int id report_drawn 0x0
 int id right_icon 0x0
 int id right_side 0x0
 int id rtl 0x0

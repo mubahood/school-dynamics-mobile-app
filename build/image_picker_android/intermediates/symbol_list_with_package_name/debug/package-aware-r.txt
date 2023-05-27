@@ -126,6 +126,7 @@ id normal
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id report_drawn
 id right_icon
 id right_side
 id rtl
