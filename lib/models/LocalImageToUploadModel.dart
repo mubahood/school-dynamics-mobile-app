@@ -102,7 +102,7 @@ class LocalImageToUploadModel {
   static Future<List<LocalImageToUploadModel>> getItems() async {
     List<LocalImageToUploadModel> items = [];
 
-    var db = await openDatabase(AppConfig.DATABASE_PATH);
+    var db = await Utils.getDb();
     if (!db.isOpen) {
       return items;
     }

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:schooldynamics/utils/AppConfig.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
@@ -74,7 +76,34 @@ class LoggedInUserModel {
   String current_class_id = "";
   String current_theology_class_id = "";
   String status = "";
+  String roles_text = "";
 
+  bool isRole(String slug) {
+    getRoles();
+    bool hasRole = false;
+    for(UserRole x in roles){
+      if(x.name.toLowerCase() == slug.toLowerCase()){
+        hasRole = true;
+        break;
+      }
+    }
+    return hasRole;
+  }
+  getRoles() {
+    if(roles_text.isEmpty){
+      return;
+    }
+    var json = jsonDecode(roles_text);
+    if(!json.runtimeType.toString().contains('List')){
+      return;
+    }
+    roles.clear();
+    for(var x in json){
+      roles.add(UserRole.fromJson(x));
+    }
+  }
+
+  List<UserRole> roles = [];
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -145,6 +174,7 @@ class LoggedInUserModel {
       'current_class_id': current_class_id,
       'current_theology_class_id': current_theology_class_id,
       'status': status,
+      'roles_text': roles_text,
     };
   }
 
@@ -231,10 +261,11 @@ class LoggedInUserModel {
     obj.marital_status = Utils.to_str(m['marital_status'], '');
     obj.verification = Utils.to_str(m['verification'], '');
     obj.current_class_id = Utils.to_str(m['current_class_id'], '');
+    obj.roles_text = Utils.to_str(m['roles_text'], '');
     obj.current_theology_class_id =
         Utils.to_str(m['current_theology_class_id'], '');
     obj.status = Utils.to_str(m['status'], '');
-
+    obj.getRoles();
     return obj;
   }
 
@@ -247,7 +278,6 @@ class LoggedInUserModel {
   static Future<LoggedInUserModel> getLoggedInUser() async {
     LoggedInUserModel item = new LoggedInUserModel();
 
-    print("geting user...");
     if (!await initTable()) {
       Utils.toast('Failed to create user storage.');
       return item;
@@ -313,7 +343,10 @@ class LoggedInUserModel {
     }
 
     String sql =
-        "CREATE TABLE IF NOT EXISTS ${LoggedInUserModel.end_point} (id INTEGER PRIMARY KEY, username TEXT, password TEXT, name TEXT, avatar TEXT, remember_token TEXT, created_at TEXT, updated_at TEXT, enterprise_id TEXT, first_name TEXT, last_name TEXT, date_of_birth TEXT, place_of_birth TEXT, sex TEXT, home_address TEXT, current_address TEXT, phone_number_1 TEXT, phone_number_2 TEXT, email TEXT, nationality TEXT, religion TEXT, spouse_name TEXT, spouse_phone TEXT, father_name TEXT, father_phone TEXT, mother_name TEXT, mother_phone TEXT, languages TEXT, emergency_person_name TEXT, emergency_person_phone TEXT, national_id_number TEXT, passport_number TEXT, tin TEXT, nssf_number TEXT, bank_name TEXT, bank_account_number TEXT, primary_school_name TEXT, primary_school_year_graduated TEXT, seconday_school_name TEXT, seconday_school_year_graduated TEXT, high_school_name TEXT, high_school_year_graduated TEXT, degree_university_name TEXT, degree_university_year_graduated TEXT, masters_university_name TEXT, masters_university_year_graduated TEXT, phd_university_name TEXT, phd_university_year_graduated TEXT, user_type TEXT, demo_id TEXT, user_id TEXT, user_batch_importer_id TEXT, school_pay_account_id TEXT, school_pay_payment_code TEXT, given_name TEXT, residential_type TEXT, transportation TEXT, swimming TEXT, outstanding TEXT, guardian_relation TEXT, referral TEXT, previous_school TEXT, deleted_at TEXT, marital_status TEXT, verification TEXT, current_class_id TEXT, current_theology_class_id TEXT, status TEXT)";
+        "CREATE TABLE IF NOT EXISTS ${LoggedInUserModel.end_point} (id INTEGER PRIMARY KEY, username TEXT, password TEXT, name TEXT, avatar TEXT, remember_token TEXT, created_at TEXT, updated_at TEXT, enterprise_id TEXT, first_name TEXT, last_name TEXT, date_of_birth TEXT, place_of_birth TEXT, sex TEXT, home_address TEXT, current_address TEXT, phone_number_1 TEXT, phone_number_2 TEXT, email TEXT, nationality TEXT, religion TEXT, spouse_name TEXT, spouse_phone TEXT, father_name TEXT, father_phone TEXT, mother_name TEXT, mother_phone TEXT, languages TEXT, emergency_person_name TEXT, emergency_person_phone TEXT, national_id_number TEXT, passport_number TEXT, tin TEXT, nssf_number TEXT, bank_name TEXT, bank_account_number TEXT, primary_school_name TEXT, primary_school_year_graduated TEXT, seconday_school_name TEXT, seconday_school_year_graduated TEXT, high_school_name TEXT, high_school_year_graduated TEXT, degree_university_name TEXT, degree_university_year_graduated TEXT, masters_university_name TEXT, masters_university_year_graduated TEXT, phd_university_name TEXT, phd_university_year_graduated TEXT, user_type TEXT, demo_id TEXT, user_id TEXT, user_batch_importer_id TEXT, school_pay_account_id TEXT, school_pay_payment_code TEXT, given_name TEXT, residential_type TEXT, transportation TEXT, swimming TEXT, outstanding TEXT, guardian_relation TEXT, referral TEXT, previous_school TEXT, deleted_at TEXT, marital_status TEXT, verification TEXT, current_class_id TEXT, current_theology_class_id TEXT, "
+        "status TEXT,"
+        "roles_text TEXT"
+        ")";
     try {
       await db.execute(sql);
     } catch (e) {
@@ -322,5 +355,19 @@ class LoggedInUserModel {
     }
 
     return true;
+  }
+}
+
+
+class UserRole{
+  int id  = 0;
+  String name  = '';
+  String slug  = '';
+  static UserRole fromJson(var x){
+    UserRole y = UserRole();
+    y.id = Utils.int_parse(x['id']);
+    y.name = Utils.to_str(x['name'],'');
+    y.slug = Utils.to_str(x['slug'],'');
+    return y;
   }
 }

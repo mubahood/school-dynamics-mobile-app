@@ -4,15 +4,14 @@ import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
 import 'package:schooldynamics/models/LoggedInUserModel.dart';
 import 'package:schooldynamics/screens/classes/ClassesScreen.dart';
-import 'package:schooldynamics/screens/full_app/section/AccountSection.dart';
-import 'package:schooldynamics/screens/students/StudentsScreen.dart';
 
 import '../../../models/MenuItem.dart';
 import '../../../theme/app_theme.dart';
-import '../../../utils/Utils.dart';
 import '../../../utils/my_widgets.dart';
 import '../../admin/AdminMenuScreen.dart';
 import '../../finance/FinanceHomeScreen.dart';
+import '../../students/StudentsScreen.dart';
+import 'AccountSection.dart';
 
 class SectionDashboard extends StatefulWidget {
   SectionDashboard({Key? key}) : super(key: key);
@@ -62,58 +61,76 @@ class _SectionDashboardState extends State<SectionDashboard> {
   Future<dynamic> myInit() async {
     u = await LoggedInUserModel.getLoggedInUser();
     //Utils.initOneSignal();
-    print("=========> ${u.} <============");
+
     return "Done";
   }
 
   Widget mainWidget() {
-
-    menuItems = [
-      MenuItem('Classes', 'T 1', FeatherIcons.edit, 'classes.png', () {
+    menuItems = [];
+    //4194 parent ID
+    if (u.isRole('teacher')) {
+      menuItems
+          .add(MenuItem('Classes', 'T 1', FeatherIcons.edit, 'classes.png', () {
         Get.to(() => ClassesScreen());
-      }),
-      MenuItem('Students', 'T 1', FeatherIcons.edit, 'students.png', () {
+      }));
+    }
+
+    if (u.isRole('teacher') || u.isRole('parent')) {
+      String title = "Students";
+      if (u.isRole('parent')) {
+        title = "My Children";
+      }
+      menuItems
+          .add(MenuItem(title, 'T 1', FeatherIcons.edit, 'students.png', () {
         Get.to(() => StudentsScreen());
-      }),
-      MenuItem('Finance', 'T 1', FeatherIcons.edit, 'finance.png', () {
+      }));
+    }
+
+    if (u.isRole('bursar')) {
+      menuItems
+          .add(MenuItem('Finance', 'T 1', FeatherIcons.edit, 'finance.png', () {
         Get.to(() => FinanceHomeScreen());
-      }),
-      MenuItem('Admin', 'T 1', FeatherIcons.edit, 'admin.png', () {
+      }));
+    }
+
+    if (u.isRole('dos') || u.isRole('admin')) {
+      menuItems
+          .add(MenuItem('Admin', 'T 1', FeatherIcons.edit, 'admin.png', () {
         Get.to(() => const AdminMenuScreen());
-      }),
-      MenuItem('My Account', 'T 1', FeatherIcons.edit, 'admin.png', () {
-        Get.to(() => const AccountSection());
-      }),
-    ];
+      }));
+    }
 
     return Column(
       children: [
-        InkWell(
-          onTap: () {
-            myInit();
-
-          },
-          child: Container(
-            padding: const EdgeInsets.only(
-              left: 15,
-              right: 15,
-              top: 18,
-              bottom: 15,
-            ),
-            child: Flex(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              direction: Axis.horizontal,
-              children: [
-                const Icon(FeatherIcons.settings),
-                FxText.titleLarge(
+        Container(
+          padding: const EdgeInsets.only(
+            left: 15,
+            right: 15,
+            top: 18,
+            bottom: 15,
+          ),
+          child: Flex(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            direction: Axis.horizontal,
+            children: [
+              const Icon(FeatherIcons.settings),
+              InkWell(
+                onTap: () {
+                  myInit();
+                 },
+                child: FxText.titleLarge(
                   'School Dynamics'.toUpperCase(),
                   maxLines: 1,
                   fontWeight: 800,
                   color: CustomTheme.primaryDark,
                 ),
-                Icon(FeatherIcons.user),
-              ],
-            ),
+              ),
+              InkWell(
+                  onTap: () {
+                    Get.to(() => const AccountSection());
+                  },
+                  child: const Icon(FeatherIcons.user)),
+            ],
           ),
         ),
         const Divider(
@@ -131,13 +148,13 @@ class _SectionDashboardState extends State<SectionDashboard> {
                   slivers: [
                     SliverGrid(
                       gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
+                      const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
                         crossAxisSpacing: 5,
                         childAspectRatio: 0.8,
                       ),
                       delegate: SliverChildBuilderDelegate(
-                        (BuildContext context, int index) {
+                            (BuildContext context, int index) {
                           MenuItem item = menuItems[index];
                           return menuItemWidget(item);
                         },
