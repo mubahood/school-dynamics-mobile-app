@@ -10,7 +10,7 @@ import '../../theme/custom_theme.dart';
 import '../full_app/section/AccountSection.dart';
 import '../full_app/section/CasesSuspect.dart';
 import '../full_app/section/SectionDashboard.dart';
-import '../full_app/section/SectionSuspect.dart';
+import '../full_app/section/TransactionsScreen.dart';
 
 class TestScreen extends StatefulWidget {
   const TestScreen({Key? key}) : super(key: key);

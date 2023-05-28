@@ -12,6 +12,7 @@ import '../../theme/custom_theme.dart';
 import '../../utils/SizeConfig.dart';
 import '../../utils/my_widgets.dart';
 import '../finance/TransactionScreen.dart';
+import '../full_app/section/TransactionsScreen.dart';
 import 'StudentEditBioScreen.dart';
 import 'StudentEditGuardianScreen.dart';
 import 'StudentEditPhotoScreen.dart';
@@ -318,12 +319,12 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                         Container(
                             child: titleValueWidget('Date of birth',
                                 '${Utils.to_date_1(item.date_of_birth)}')),
-                        Container(
+             /*           Container(
                             child: titleValueWidget(
                                 'religion', '${item.religion}')),
                         Container(
                             child: titleValueWidget(
-                                'nationality', '${item.nationality}')),
+                                'nationality', '${item.nationality}')),*/
                         Container(
                             child: titleValueWidget(
                                 'Home address', '${item.home_address}')),
@@ -351,6 +352,44 @@ class _CourseTasksScreenState extends State<StudentScreen> {
               SizedBox(
                 height: 10,
               ),
+
+              title_widget('SCHOOL FEES BALANCE'),
+              InkWell(
+                onTap: (){
+                  Get.to(()=>TransactionsScreen({
+                    'activeAccount' : item
+                  }));
+                },
+                child: Column(
+                  children: [
+                    SizedBox(height: 15,),
+                    Center(
+                      child: FxText.titleLarge(
+                        "UGX "+Utils.moneyFormat(item.balance.toString()),
+                        color: item.balance<0?Colors.red.shade700:Colors.green.shade800,
+                        textAlign: TextAlign.center,
+                        fontWeight: 900,
+                        fontSize: 30,
+                      ),
+                    ),
+                    SizedBox(height: 10,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        FxText("View all payment records".toUpperCase(),color: Colors.blue.shade800,),
+
+                        Icon(FeatherIcons.chevronRight,
+                            color: Colors.blue.shade800
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 10,),
+                  ],
+                ),
+              ),
+              Divider(),
+              titleValueWidget2('SCHOOL PAY CODE', '${item.school_pay_payment_code}'),
+              SizedBox(height: 15,),
               title_widget('Academics'),
               titleValueWidget2('Current class', '${item.current_class_id}'),
               titleValueWidget2('Current theology class',

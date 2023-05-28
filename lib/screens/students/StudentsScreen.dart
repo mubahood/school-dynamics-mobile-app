@@ -15,7 +15,9 @@ import '../../utils/Utils.dart';
 import '../../utils/my_widgets.dart';
 
 class StudentsScreen extends StatefulWidget {
-  StudentsScreen({Key? key}) : super(key: key);
+  Map<String, String> params = {};
+
+  StudentsScreen(this.params, {Key? key}) : super(key: key);
 
   @override
   StudentsScreenState createState() => new StudentsScreenState();
@@ -222,7 +224,7 @@ class StudentsScreenState extends State<StudentsScreen> {
                         delegate: SliverChildBuilderDelegate(
                           (BuildContext context, int index) {
                             UserModel m = items[index];
-                            return userWidget(m);
+                            return userWidget(m,context, task_picker: task_picker);
                           },
                           childCount: items.length, // 1000 list items
                         ),
@@ -237,16 +239,23 @@ class StudentsScreenState extends State<StudentsScreen> {
   }
 
   List<UserModel> originalItems = [];
-
+  String task_picker = "";
   Future<void> init({bool isRefresh = false}) async {
+
+    if (widget.params != null) {
+      if (widget.params['task_picker'] != null) {
+        task_picker = 'task_picker';
+      }
+    }
     if (isRefresh || originalItems.isEmpty) {
+
       originalItems = await UserModel.getItems();
+
     }
     if (classes.isEmpty) {
       classes = await MyClasses.getItems();
     }
     items.clear();
-
     for (UserModel element in originalItems) {
       if (searchKeyWord.isNotEmpty) {
         if (!element.name

@@ -153,7 +153,7 @@ class UserModel {
       'status': status,
       'stream_id': stream_id,
       'balance': balance,
-      'account_id': balance,
+      'account_id': account_id,
       'current_class_text': current_class_text,
     };
   }
@@ -273,12 +273,14 @@ class UserModel {
 
   static Future<List<UserModel>> getItems({String where: '1'}) async {
     List<UserModel> items = await UserModel.getLocalData(where);
-    UserModel.getOnlineData();
+
 
     if (items.isEmpty) {
       await UserModel.getOnlineData();
       items = await UserModel.getLocalData(where);
     }
+
+
     return items;
   }
 
@@ -394,5 +396,22 @@ class UserModel {
 /*    int balance = 0;
     int account_id = 0;*/
     return true;
+  }
+
+  String getParentName() {
+    if (father_name.isNotEmpty) {
+      return father_name;
+    } else if (mother_name.isNotEmpty) {
+      return mother_name;
+    } else if (father_phone.isNotEmpty) {
+      return father_phone;
+    } else if (mother_phone.isNotEmpty) {
+      return mother_phone;
+    } else if (phone_number_1.isNotEmpty) {
+      return phone_number_1;
+    } else if (phone_number_2.isNotEmpty) {
+      return phone_number_2;
+    }
+    return school_pay_payment_code;
   }
 }

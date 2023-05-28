@@ -82,7 +82,7 @@ class _SectionDashboardState extends State<SectionDashboard> {
       }
       menuItems
           .add(MenuItem(title, 'T 1', FeatherIcons.edit, 'students.png', () {
-        Get.to(() => StudentsScreen());
+        Get.to(() => StudentsScreen(const {}));
       }));
     }
 

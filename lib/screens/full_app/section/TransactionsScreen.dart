@@ -1,10 +1,11 @@
-import 'dart:math';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
 import 'package:schooldynamics/models/Transaction.dart';
+import 'package:schooldynamics/models/UserModel.dart';
+import 'package:schooldynamics/screens/students/StudentsScreen.dart';
 import 'package:schooldynamics/theme/app_theme.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 
@@ -13,17 +14,23 @@ import '../../../theme/custom_theme.dart';
 import '../../../utils/my_widgets.dart';
 import '../../finance/TransactionScreen.dart';
 
-class SectionSuspect extends StatefulWidget {
-  SectionSuspect({Key? key}) : super(key: key);
+class TransactionsScreen extends StatefulWidget {
+  // ignore: prefer_const_constructors_in_immutables
+
+  Map<String,dynamic> params= {};
+  TransactionsScreen(this.params);
 
   @override
-  _SectionSuspectState createState() => _SectionSuspectState();
+  _TransactionsScreenState createState() => _TransactionsScreenState();
 }
 
-class _SectionSuspectState extends State<SectionSuspect> {
+class _TransactionsScreenState extends State<TransactionsScreen> {
   late Future<dynamic> futureInit;
 
+  UserModel activeAccount = UserModel();
+
   Future<dynamic> do_refresh() async {
+
     futureInit = init();
     setState(() {});
   }
@@ -31,13 +38,24 @@ class _SectionSuspectState extends State<SectionSuspect> {
   @override
   void initState() {
     super.initState();
+
+    if(widget.params!=null){
+      if(widget.params['activeAccount'] != null){
+        if(widget.params['activeAccount'].runtimeType == activeAccount.runtimeType){
+          activeAccount = widget.params['activeAccount'];
+        }
+      }
+    }
+
     do_refresh();
   }
 
-  Random random = new Random();
-
   Future<dynamic> init() async {
-    items = await Transaction.getItems();
+    if(activeAccount.id>0){
+      items = await Transaction.getItems(where: 'administrator_id = ${activeAccount.id}');
+    }else{
+      items = await Transaction.getItems(where: '1');
+    }
     return "Done";
   }
 
@@ -55,44 +73,9 @@ class _SectionSuspectState extends State<SectionSuspect> {
       appBar: AppBar(
         systemOverlayStyle: Utils.overlay(),
         elevation: .5,
-        title: Row(
-          children: [
-            FxContainer(
-              width: 10,
-              height: 20,
-              color: CustomTheme.primary,
-              borderRadiusAll: 2,
-            ),
-            FxSpacing.width(8),
-            FxText.titleLarge(
-              "Finance",
-              fontWeight: 900,
-            ),
-            const Spacer(),
-            FxContainer(
-              color: CustomTheme.bg_primary_light,
-              padding:
-              const EdgeInsets.only(left: 10, right: 10, top: 6, bottom: 6),
-              child: Row(
-                children: [
-                  FxText(
-                    "Sort",
-                    fontWeight: 700,
-                    color: CustomTheme.primaryDark,
-                    fontSize: 16,
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Icon(
-                    FeatherIcons.filter,
-                    size: 20,
-                    color: CustomTheme.primaryDark,
-                  )
-                ],
-              ),
-            )
-          ],
+        title: FxText.titleLarge(
+          "School fees payment",
+          fontWeight: 900,
         ),
       ),
       body: SafeArea(
@@ -115,6 +98,101 @@ class _SectionSuspectState extends State<SectionSuspect> {
                   onRefresh: doRefresh,
                   child: CustomScrollView(
                     slivers: [
+                      SliverAppBar(
+                        toolbarHeight: Get.width / 5,
+                        backgroundColor: Colors.white,
+                        title: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            FxContainer(
+                              color: Colors.white,
+                              borderRadiusAll: 0,
+                              padding: EdgeInsets.only(top: 8),
+                              child: Wrap(
+                                runSpacing: 0,
+                                children: <Widget>[
+                                  FxContainer(
+                                    onTap: () async {
+                                      if (activeAccount.id > 0) {
+                                        activeAccount = UserModel();
+                                        setState(() {});
+                                        doRefresh();
+                                        return;
+                                      }
+                                      var resp = await Get.to(
+                                          StudentsScreen(const {
+                                        "task_picker": 'task_picker'
+                                      }));
+
+                                      if (resp.runtimeType ==
+                                          activeAccount.runtimeType) {
+                                        activeAccount = resp;
+                                        setState(() {});
+                                        doRefresh();
+                                      }
+
+                                      //account_id = "a";
+                                      setState(() {});
+                                      return;
+                                    },
+                                    margin:
+                                        const EdgeInsets.only(right: 5, top: 5),
+                                    padding: const EdgeInsets.only(
+                                        left: 5, right: 5, top: 5, bottom: 5),
+                                    borderRadiusAll: 20,
+                                    borderColor: CustomTheme.primary,
+                                    bordered: true,
+                                    color: (activeAccount.id > 0)
+                                        ? CustomTheme.primary
+                                        : Colors.grey.shade100,
+                                    child: FxText(
+                                      'Filter By Student',
+                                      fontSize: 14,
+                                      fontWeight: 700,
+                                      color: activeAccount.id > 0
+                                          ? Colors.white
+                                          : Colors.black,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Divider(
+                              color: CustomTheme.primary,
+                              height: 0,
+                            ),
+                            Container(
+                                padding: EdgeInsets.only(bottom: 10, top: 5),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+
+                                        FxText.bodyLarge(
+                                          activeAccount.id>0?"Filter by ":  "Found ",
+                                          fontWeight: 800,
+                                        ),
+                                        FxText.bodyLarge(
+                                          activeAccount.id>0?activeAccount.name : "${items.length} transactions",
+                                          color: Colors.black,
+                                          fontWeight: 800,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ))
+                          ],
+                        ),
+                        automaticallyImplyLeading: false,
+                        floating: true,
+                        elevation: 1,
+                        leadingWidth: 0,
+                        stretch: true,
+                        shadowColor: CustomTheme.primary,
+                      ),
                       SliverList(
                         delegate: SliverChildBuilderDelegate(
                           (BuildContext context, int index) {

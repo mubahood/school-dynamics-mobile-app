@@ -329,7 +329,7 @@ class _SectionDashboardState extends State<SectionDashboardOld> {
                       delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
                           return titleWidget('My Students', () {
-                            Get.to(() => StudentsScreen());
+                            Get.to(() => StudentsScreen(const {}));
                           });
                         },
                         childCount: 1, // 1000 list items

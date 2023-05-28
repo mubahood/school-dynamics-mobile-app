@@ -3,7 +3,6 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutx/flutx.dart';
 import 'package:schooldynamics/theme/app_theme.dart';
 
-import '../../../models/Transaction.dart';
 import '../../../sections/widgets.dart';
 import '../../../theme/custom_theme.dart';
 import '../../../utils/Utils.dart';

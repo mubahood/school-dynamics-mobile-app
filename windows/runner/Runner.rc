@@ -89,11 +89,11 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "schooldynamics" "\0"
+            VALUE "CompanyName", "schooldynamics.ug" "\0"
             VALUE "FileDescription", "schooldynamics" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "schooldynamics" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2023 schooldynamics. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2023 schooldynamics.ug. All rights reserved." "\0"
             VALUE "OriginalFilename", "schooldynamics.exe" "\0"
             VALUE "ProductName", "schooldynamics" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"

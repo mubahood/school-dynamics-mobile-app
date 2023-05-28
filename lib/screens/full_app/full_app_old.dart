@@ -5,7 +5,7 @@ import 'package:schooldynamics/screens/full_app/section/AccountSection.dart';
 import 'package:schooldynamics/screens/full_app/section/CasesSuspect.dart';
 import 'package:schooldynamics/screens/full_app/section/SectionDashboard.dart';
 import 'package:schooldynamics/screens/full_app/section/SectionExhibits.dart';
-import 'package:schooldynamics/screens/full_app/section/SectionSuspect.dart';
+import 'package:schooldynamics/screens/full_app/section/TransactionsScreen.dart';
 import 'package:schooldynamics/theme/app_theme.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 
@@ -84,7 +84,7 @@ class _FullAppState extends State<FullAppOld> with SingleTickerProviderStateMixi
                             children: <Widget>[
                               SectionDashboard(),
                               SectionCases(),
-                              SectionSuspect(),
+                              TransactionsScreen({}),
                               SectionExhibits(),
                               AccountSection(),
                             ],

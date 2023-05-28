@@ -343,7 +343,7 @@ class _CourseTasksScreenState extends State<ClassScreen> {
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
                 UserModel m = item.students[index];
-                return userWidget(m);
+                return userWidget(m,context);
               },
               childCount: item.students.length,
             ),

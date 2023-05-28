@@ -214,10 +214,15 @@ Widget userWidget1(UserModel item) {
   );
 }
 
-Widget userWidget(UserModel u) {
+Widget userWidget(UserModel u,context, {String task_picker = ""}) {
   return InkWell(
     onTap: () {
-      Get.to(() => StudentScreen(data: u));
+      if(task_picker == 'task_picker'){
+        Navigator.pop(context,u);
+      }else{
+        Get.to(() => StudentScreen(data: u));
+      }
+
     },
     child: Container(
       padding: EdgeInsets.only(top: 10, left: 15, right: 15),
@@ -258,11 +263,11 @@ Widget userWidget(UserModel u) {
                 Row(
                   children: [
                     FxText.bodyMedium(
-                      'STUDENT ID: ',
+                      'FEES BALANCE: ',
                     ),
                     FxText.bodyMedium(
-                      u.id.toString().toUpperCase(),
-                      color: Colors.grey.shade600,
+                      'UGX ${Utils.moneyFormat(u.balance.toString())}'.toUpperCase(),
+                      color: u.balance>0? Colors.red.shade800 : Colors.green.shade800,
                     ),
                   ],
                 ),
@@ -279,7 +284,7 @@ Widget userWidget(UserModel u) {
                     SizedBox(
                       width: 2,
                     ),
-                    FxText.bodySmall('By John Doe', color: Colors.grey),
+                    FxText.bodySmall('${u.getParentName()}', color: Colors.grey),
                     Spacer(),
                     Icon(
                       FeatherIcons.clock,
