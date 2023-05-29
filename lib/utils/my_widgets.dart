@@ -29,18 +29,18 @@ Widget menuItemWidget(MenuItem item) {
         Image(
           image: AssetImage('assets/icons/${item.img}'),
           fit: BoxFit.cover,
+          height: Get.width/4,
         ),
         SizedBox(
           height: 3,
         ),
-        FxText(
+        FxText.bodyMedium(
           item.title,
           textAlign: TextAlign.center,
           color: Colors.black,
           letterSpacing: .001,
           fontWeight: 800,
-          fontSize: 20,
-          maxLines: 1,
+          maxLines: 2,
         ),
       ],
     ),

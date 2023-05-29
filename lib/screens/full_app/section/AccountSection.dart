@@ -98,7 +98,7 @@ class _AccountSectionState extends State<AccountSection> {
               ],
             ),
           ),
-          FxSpacing.height(20),
+        /*  FxSpacing.height(20),
           InkWell(
             onTap: () {},
             child: Row(
@@ -291,7 +291,7 @@ class _AccountSectionState extends State<AccountSection> {
               letterSpacing: 0.2,
               color: CustomTheme.primaryDark,
             ),
-          ),
+          ),*/
         ],
       ),
     );

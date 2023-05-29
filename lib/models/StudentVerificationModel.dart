@@ -133,6 +133,9 @@ class StudentVerificationModel {
     return data;
   }
 
+  get_current_stream_text() async {
+
+  }
   save() async {
     Database db = await Utils.getDb();
     if (!db.isOpen) {

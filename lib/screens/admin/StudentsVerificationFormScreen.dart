@@ -8,7 +8,11 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutx/flutx.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:schooldynamics/models/RespondModel.dart';
+import 'package:schooldynamics/models/ServiceSubscription.dart';
+import 'package:schooldynamics/screens/finance/ServiceSubscriptionCreateScreen.dart';
 import 'package:schooldynamics/sections/widgets.dart';
 
 import '../../models/MyClasses.dart';
@@ -137,190 +141,237 @@ class _StudentsVerificationFormScreenState
           color: Colors.white,
         ),
       ),
-      body: ListView(
+      body: Column(
         children: [
-          Container(
-              color: Colors.white,
-              padding:
-                  EdgeInsets.only(left: MySize.size16!, right: MySize.size16!),
-              child: FormBuilder(
-                key: _formKey,
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      top: MySize.size10!,
-                      left: MySize.size5!,
-                      right: MySize.size5!,
-                      bottom: MySize.size10!),
-                  child: Column(
-                    children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.only(bottom: 10, top: 10),
-                        child: FormBuilderTextField(
-                          name: 'name',
-                          initialValue: item.name,
-                          textCapitalization: TextCapitalization.words,
-                          textInputAction: TextInputAction.next,
-                          readOnly: true,
-                          onChanged: (x) {
-                            item.name = Utils.to_str(x, '');
-                          },
-                          keyboardType: TextInputType.name,
-                          decoration: AppTheme.InputDecorationTheme1(
-                            label: "Name",
-                          ),
-                          validator: FormBuilderValidators.compose([
-                            FormBuilderValidators.required(
-                              errorText: "First name is required.",
+          Expanded(
+            child: ListView(
+              children: [
+                Container(
+                    color: Colors.white,
+                    padding:
+                        EdgeInsets.only(left: MySize.size16!, right: MySize.size16!),
+                    child: FormBuilder(
+                      key: _formKey,
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                            top: MySize.size10!,
+                            left: MySize.size5!,
+                            right: MySize.size5!,
+                            bottom: MySize.size10!),
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              margin: EdgeInsets.only(bottom: 10, top: 10),
+                              child: FormBuilderTextField(
+                                name: 'name',
+                                initialValue: item.name,
+                                textCapitalization: TextCapitalization.words,
+                                textInputAction: TextInputAction.next,
+                                readOnly: true,
+                                onChanged: (x) {
+                                  item.name = Utils.to_str(x, '');
+                                },
+                                keyboardType: TextInputType.name,
+                                decoration: AppTheme.InputDecorationTheme1(
+                                  label: "Name",
+                                ),
+                                validator: FormBuilderValidators.compose([
+                                  FormBuilderValidators.required(
+                                    errorText: "First name is required.",
+                                  ),
+                                ]),
+                              ),
                             ),
-                          ]),
+                            FormBuilderRadioGroup(
+                              decoration: AppTheme.InputDecorationTheme1(
+                                  hasPadding: false, label: "Sex", isDense: true),
+                              name: 'sex',
+                              wrapRunSpacing: 0,
+                              wrapSpacing: 0,
+                              initialValue: item.sex,
+                              onChanged: (val) {
+                                item.sex = Utils.to_str(val, '');
+                                setState(() {});
+                              },
+                              orientation: OptionsOrientation.horizontal,
+                              validator: FormBuilderValidators.required(),
+                              options: [
+                                'Male',
+                                'Female',
+                              ]
+                                  .map((lang) => FormBuilderFieldOption(
+                                        value: lang,
+                                      ))
+                                  .toList(growable: false),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            FormBuilderRadioGroup(
+                              decoration: AppTheme.InputDecorationTheme1(
+                                  hasPadding: false, label: "Status", isDense: true),
+                              name: 'status',
+                              wrapRunSpacing: 0,
+                              wrapSpacing: 0,
+                              initialValue: item.status,
+                              onChanged: (val) {
+                                item.status = Utils.to_str(val, '2');
+                                setState(() {});
+                              },
+                              orientation: OptionsOrientation.vertical,
+                              validator: FormBuilderValidators.required(),
+                              options: [
+                                '1',
+                                '2',
+                                '0',
+                              ]
+                                  .map((lang) => FormBuilderFieldOption(
+                                        value: lang,
+                                        child: Text(lang == '1'
+                                            ? 'Active'
+                                            : lang == '2'
+                                                ? 'Pending'
+                                                : 'Not Active'),
+                                      ))
+                                  .toList(growable: false),
+                            ),
+                            item.status != '1'
+                                ? SizedBox()
+                                : Column(
+                                    children: [
+                                      SizedBox(
+                                        height: 15,
+                                      ),
+                                      FormBuilderTextField(
+                                        name: 'current_class_text',
+                                        initialValue: item.current_class_text,
+                                        textCapitalization: TextCapitalization.words,
+                                        textInputAction: TextInputAction.next,
+                                        readOnly: true,
+                                        onTap: () {
+                                          selectClass();
+                                        },
+                                        onChanged: (x) {
+                                          item.name = Utils.to_str(x, '');
+                                        },
+                                        keyboardType: TextInputType.name,
+                                        decoration: AppTheme.InputDecorationTheme1(
+                                          label: "Class",
+                                        ),
+                                        validator: FormBuilderValidators.compose([
+                                          FormBuilderValidators.required(
+                                            errorText: "First name is required.",
+                                          ),
+                                        ]),
+                                      ),
+                                      SizedBox(
+                                        height: 15,
+                                      ),
+                                      FormBuilderTextField(
+                                        name: 'current_stream_text',
+                                        initialValue: item.current_stream_text,
+                                        textCapitalization: TextCapitalization.words,
+                                        textInputAction: TextInputAction.next,
+                                        readOnly: true,
+                                        onTap: () {
+                                          selectStream();
+                                        },
+                                        keyboardType: TextInputType.name,
+                                        decoration: AppTheme.InputDecorationTheme1(
+                                          label: "Stream",
+                                        ),
+                                        validator: FormBuilderValidators.compose([
+                                          FormBuilderValidators.required(
+                                            errorText: "Stream is required.",
+                                          ),
+                                        ]),
+                                      ),
+
+                                      SizedBox(height: 10,),
+                                      InkWell(
+                                        onTap: (){
+                                          Get.to(()=>ServiceSubscriptionCreateScreen({
+                                            'id' : item.id
+                                          }));
+                                        },
+                                        child: Column(
+                                          children: [
+                                            Divider(),
+                                            SizedBox(height: 10,),
+                                            Row(
+                                              children: [
+                                                Expanded(
+                                                    child: FxText.bodyLarge(
+                                                      'Set service subscriptions',
+                                                      fontWeight: 800,
+                                                      fontSize: 18,
+                                                      color: CustomTheme.primary,
+                                                    )),
+                                                FxSpacing.width(20),
+                                                Icon(
+                                                  FeatherIcons.chevronRight,
+                                                  size: 20,
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(height: 10,),
+                                            Divider(),
+                                          ],
+                                        ),
+                                      ),
+
+                                    ],
+                                  ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            alertWidget(error_message, 'danger'),
+
+                          ],
                         ),
                       ),
-                      FormBuilderRadioGroup(
-                        decoration: AppTheme.InputDecorationTheme1(
-                            hasPadding: false, label: "Sex", isDense: true),
-                        name: 'sex',
-                        wrapRunSpacing: 0,
-                        wrapSpacing: 0,
-                        initialValue: item.sex,
-                        onChanged: (val) {
-                          item.sex = Utils.to_str(val, '');
-                          setState(() {});
-                        },
-                        orientation: OptionsOrientation.horizontal,
-                        validator: FormBuilderValidators.required(),
-                        options: [
-                          'Male',
-                          'Female',
-                        ]
-                            .map((lang) => FormBuilderFieldOption(
-                                  value: lang,
-                                ))
-                            .toList(growable: false),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      FormBuilderRadioGroup(
-                        decoration: AppTheme.InputDecorationTheme1(
-                            hasPadding: false, label: "Status", isDense: true),
-                        name: 'status',
-                        wrapRunSpacing: 0,
-                        wrapSpacing: 0,
-                        initialValue: item.status,
-                        onChanged: (val) {
-                          item.status = Utils.to_str(val, '2');
-                          setState(() {});
-                        },
-                        orientation: OptionsOrientation.vertical,
-                        validator: FormBuilderValidators.required(),
-                        options: [
-                          '1',
-                          '2',
-                          '0',
-                        ]
-                            .map((lang) => FormBuilderFieldOption(
-                                  value: lang,
-                                  child: Text(lang == '1'
-                                      ? 'Active'
-                                      : lang == '2'
-                                          ? 'Pending'
-                                          : 'Not Active'),
-                                ))
-                            .toList(growable: false),
-                      ),
-                      item.status != '1'
-                          ? SizedBox()
-                          : Column(
-                              children: [
-                                SizedBox(
-                                  height: 15,
-                                ),
-                                FormBuilderTextField(
-                                  name: 'current_class_text',
-                                  initialValue: item.current_class_text,
-                                  textCapitalization: TextCapitalization.words,
-                                  textInputAction: TextInputAction.next,
-                                  readOnly: true,
-                                  onTap: () {
-                                    selectClass();
-                                  },
-                                  onChanged: (x) {
-                                    item.name = Utils.to_str(x, '');
-                                  },
-                                  keyboardType: TextInputType.name,
-                                  decoration: AppTheme.InputDecorationTheme1(
-                                    label: "Class",
-                                  ),
-                                  validator: FormBuilderValidators.compose([
-                                    FormBuilderValidators.required(
-                                      errorText: "First name is required.",
-                                    ),
-                                  ]),
-                                ),
-                                SizedBox(
-                                  height: 15,
-                                ),
-                                FormBuilderTextField(
-                                  name: 'current_stream_text',
-                                  initialValue: item.current_stream_text,
-                                  textCapitalization: TextCapitalization.words,
-                                  textInputAction: TextInputAction.next,
-                                  readOnly: true,
-                                  onTap: () {
-                                    selectStream();
-                                  },
-                                  keyboardType: TextInputType.name,
-                                  decoration: AppTheme.InputDecorationTheme1(
-                                    label: "Stream",
-                                  ),
-                                  validator: FormBuilderValidators.compose([
-                                    FormBuilderValidators.required(
-                                      errorText: "Stream is required.",
-                                    ),
-                                  ]),
-                                ),
-                              ],
-                            ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      alertWidget(error_message, 'danger'),
-                      onLoading
-                          ? Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: CircularProgressIndicator(
-                                strokeWidth: 2.0,
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                    CustomTheme.primary),
-                              ))
-                          : FxButton.block(
-                              onPressed: () {
-                                submit_form();
-                              },
-                              borderRadiusAll: 100,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Icon(
-                                    Icons.check,
-                                    size: 30,
-                                    color: Colors.white,
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Center(
-                                      child: FxText.titleLarge(
-                                    "SAVE CHANGES",
-                                    color: Colors.white,
-                                    fontWeight: 700,
-                                  )),
-                                ],
-                              ))
-                    ],
-                  ),
-                ),
-              )),
+                    )),
+              ],
+            ),
+          ),
+          onLoading
+              ? Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: CircularProgressIndicator(
+                strokeWidth: 2.0,
+                valueColor: AlwaysStoppedAnimation<Color>(
+                    CustomTheme.primary),
+              ))
+              : Container(
+            padding: EdgeInsets.only(
+              left: 10,
+              right: 10,bottom: 10
+            ),
+                child: FxButton.block(
+                onPressed: () {
+                  submit_form();
+                },
+                borderRadiusAll: 100,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      Icons.check,
+                      size: 30,
+                      color: Colors.white,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Center(
+                        child: FxText.titleLarge(
+                          "SAVE CHANGES",
+                          color: Colors.white,
+                          fontWeight: 700,
+                        )),
+                  ],
+                )),
+              )
         ],
       ),
     );

@@ -4,12 +4,18 @@ import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
 import 'package:schooldynamics/models/LoggedInUserModel.dart';
 import 'package:schooldynamics/screens/classes/ClassesScreen.dart';
+import 'package:schooldynamics/screens/finance/ServiceSubscriptionScreen.dart';
+import 'package:schooldynamics/screens/finance/TransactionScreen.dart';
+import 'package:schooldynamics/screens/full_app/section/TransactionsScreen.dart';
 
 import '../../../models/MenuItem.dart';
+import '../../../models/ServiceSubscription.dart';
 import '../../../theme/app_theme.dart';
 import '../../../utils/my_widgets.dart';
 import '../../admin/AdminMenuScreen.dart';
 import '../../finance/FinanceHomeScreen.dart';
+import '../../finance/FinancialAccountsScreen.dart';
+import '../../finance/ServicesScreen.dart';
 import '../../students/StudentsScreen.dart';
 import 'AccountSection.dart';
 
@@ -82,21 +88,45 @@ class _SectionDashboardState extends State<SectionDashboard> {
       }
       menuItems
           .add(MenuItem(title, 'T 1', FeatherIcons.edit, 'students.png', () {
-        Get.to(() => StudentsScreen(const {}));
+        Get.to(() => StudentsScreen({}));
       }));
     }
 
     if (u.isRole('bursar')) {
       menuItems
-          .add(MenuItem('Finance', 'T 1', FeatherIcons.edit, 'finance.png', () {
-        Get.to(() => FinanceHomeScreen());
+          .add(MenuItem('Transactions', 'T 1', FeatherIcons.edit, 'finance.png', () {
+        Get.to(() => TransactionsScreen({}));
       }));
+/*      menuItems.add(
+          MenuItem('Services', 'T 1', FeatherIcons.edit, 'finance.png', () {
+        Get.to(() => ServicesScreen(const {}));
+      }));*/
     }
 
-    if (u.isRole('dos') || u.isRole('admin')) {
+    if (u.isRole('dos') || u.isRole('admin') || u.isRole('bursar')) {
       menuItems
           .add(MenuItem('Admin', 'T 1', FeatherIcons.edit, 'admin.png', () {
         Get.to(() => const AdminMenuScreen());
+      }));
+    }
+
+    if (u.isRole('dos') ||
+        u.isRole('admin') ||
+        u.isRole('bursar') ||
+        u.isRole('parent')) {
+      menuItems.add(MenuItem(
+          'Service Subscription', 'T 1', FeatherIcons.edit, 'admin.png', () {
+        Get.to(() => ServiceSubscriptionScreen());
+      }));
+    }
+
+    if (u.isRole('dos') ||
+        u.isRole('admin') ||
+        u.isRole('bursar') ||
+        u.isRole('parent')) {
+      menuItems.add(MenuItem(
+          'Financial Accounts', 'T 1', FeatherIcons.edit, 'admin.png', () {
+        Get.to(() => FinancialAccountsScreen());
       }));
     }
 
