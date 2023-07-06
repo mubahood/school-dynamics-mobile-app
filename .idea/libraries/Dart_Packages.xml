@@ -849,6 +849,48 @@
             </list>
           </value>
         </entry>
+        <entry key="share_plus">
+          <value>
+            <list>
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/share_plus-4.5.3/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="share_plus_linux">
+          <value>
+            <list>
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/share_plus_linux-3.0.1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="share_plus_macos">
+          <value>
+            <list>
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/share_plus_macos-3.0.1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="share_plus_platform_interface">
+          <value>
+            <list>
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/share_plus_platform_interface-3.2.1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="share_plus_web">
+          <value>
+            <list>
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/share_plus_web-3.1.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="share_plus_windows">
+          <value>
+            <list>
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/share_plus_windows-3.0.1/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="shared_preferences">
           <value>
             <list>
@@ -1299,6 +1341,12 @@
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/pub_semver-2.1.4/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/pubspec_parse-1.2.3/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/rxdart-0.27.7/lib" />
+      <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/share_plus-4.5.3/lib" />
+      <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/share_plus_linux-3.0.1/lib" />
+      <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/share_plus_macos-3.0.1/lib" />
+      <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/share_plus_platform_interface-3.2.1/lib" />
+      <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/share_plus_web-3.1.0/lib" />
+      <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/share_plus_windows-3.0.1/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences-2.0.15/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences-2.1.1/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_android-2.0.9/lib" />

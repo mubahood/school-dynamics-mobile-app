@@ -66,7 +66,7 @@ class MarksScreenState extends State<MarksScreen> {
               ),
               FxText.bodySmall(
                 'TERM: ${exam.term_name}, '
-                'EXAM: ${exam.name}, '
+                'EXAM: ${exam.type}, '
                 '\nCLASS: ${exam.name}, '
                 'SUBJECT: ${subject.subject_name}',
                 color: Colors.white,
@@ -87,65 +87,80 @@ class MarksScreenState extends State<MarksScreen> {
             return RefreshIndicator(
               backgroundColor: Colors.white,
               onRefresh: doRefresh,
-                child: ListView.separated(
-                    separatorBuilder: (context, index) => const Divider(
-                          height: 15,
-                        ),
-                    itemCount: items.length,
-                    itemBuilder: (context, index) {
-                      final MarksModel m = items[index];
-                      return Flex(
-                        direction: Axis.horizontal,
-                        children: [
-                          const SizedBox(
-                            width: 15,
-                          ),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                FxText.titleMedium(
-                                  m.student_name,
-                                  color: Colors.black,
-                                  fontWeight: 700,
-                                ),
-                                FxText.bodySmall("${m.remarks}"),
-                              ],
+              child: Column(
+                children: [
+                  FxContainer(
+                    width: double.infinity,
+                    child: FxText.bodySmall(
+                      'SUBMITTED MARKS: ${items.length}'
+                      '\nNOT SUBMITTED MARKS: ${items.length}',
+                      color: CustomTheme.primary,
+                      fontWeight: 700,
+                    ),
+                  ),
+                  Expanded(
+                    child: ListView.separated(
+                        separatorBuilder: (context, index) => const Divider(
+                              height: 15,
                             ),
-                          ),
-                          Container(
-                            child: Flex(
-                              direction: Axis.horizontal,
-                              children: [
-                                FxText.titleLarge(
-                                  m.score,
-                                  color: Colors.black,
-                                  fontWeight: 800,
+                        itemCount: items.length,
+                        itemBuilder: (context, index) {
+                          final MarksModel m = items[index];
+                          return Flex(
+                            direction: Axis.horizontal,
+                            children: [
+                              const SizedBox(
+                                width: 15,
+                              ),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    FxText.titleMedium(
+                                      m.student_name,
+                                      color: Colors.black,
+                                      fontWeight: 700,
+                                    ),
+                                    FxText.bodySmall("${m.remarks}"),
+                                  ],
                                 ),
-                                SizedBox(
-                                  width: 5,
+                              ),
+                              Container(
+                                child: Flex(
+                                  direction: Axis.horizontal,
+                                  children: [
+                                    FxText.titleLarge(
+                                      m.score,
+                                      color: Colors.black,
+                                      fontWeight: 800,
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    FxContainer(
+                                      onTap: () {
+                                        showBottomSheetAccountPicker(index);
+                                      },
+                                      padding: const EdgeInsets.only(
+                                          left: 5, right: 5, top: 5, bottom: 5),
+                                      color: CustomTheme.primary.withAlpha(10),
+                                      child: Icon(
+                                        Icons.edit,
+                                        color: CustomTheme.primary,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                FxContainer(
-                                  onTap: () {
-                                    showBottomSheetAccountPicker(index);
-                                  },
-                                  padding: const EdgeInsets.only(
-                                      left: 5, right: 5, top: 5, bottom: 5),
-                                  color: CustomTheme.primary.withAlpha(10),
-                                  child: Icon(
-                                    Icons.edit,
-                                    color: CustomTheme.primary,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            width: 15,
-                          ),
-                        ],
-                      );
-                    }),
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                            ],
+                          );
+                        }),
+                  ),
+                ],
+              ),
             );
           }),
     );
@@ -297,7 +312,24 @@ class MarksScreenState extends State<MarksScreen> {
   }
 
   Future<void> init() async {
-    items = await MarksModel.getItems();
+    items = await MarksModel.getItems(
+        where:
+            'exam_id = ${widget.exam.id} AND subject_id = ${widget.subject.id} ');
     setState(() {});
   }
+/*
+  *
+
+  String exam_id = "";
+  String subject_id = "";
+
+  String class_id = "";
+  String student_id = "";
+  String student_name = "";
+  String score = "";
+  String remarks = "";
+  String main_course_id = "";
+  String is_submitted = "";
+
+  * */
 }

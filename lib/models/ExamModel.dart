@@ -1,8 +1,8 @@
 import 'package:schooldynamics/models/MarksModel.dart';
+import 'package:schooldynamics/models/MySubjects.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../utils/AppConfig.dart';
 import 'RespondModel.dart';
 
 class ExamModel {
@@ -214,4 +214,9 @@ class ExamModel {
     }
     await db.delete(tableName);
   }
+}
+
+class ExamSubject {
+  ExamModel exam = ExamModel();
+  MySubjects subject = MySubjects();
 }

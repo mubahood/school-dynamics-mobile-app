@@ -35,9 +35,9 @@ class Utils {
 
   static Future<void> initOneSignal() async {
     WidgetsFlutterBinding.ensureInitialized();
-    print("=====INITING ONE SIGNAL=====");
+    print("=====INVITING ONE SIGNAL=====");
     await Firebase.initializeApp();
-    print("=====DONE INITING ONE SIGNAL=====");
+    print("=====DONE INVITING ONE SIGNAL=====");
     // Set the background messaging handler early on, as a named top-level function
 
     OneSignal.shared.setAppId(AppConfig.ONESIGNAL_APP_ID);

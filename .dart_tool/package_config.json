@@ -704,6 +704,42 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "share_plus",
+      "rootUri": "file:///C:/Users/mubahood/AppData/Local/Pub/Cache/hosted/pub.dev/share_plus-4.5.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "share_plus_linux",
+      "rootUri": "file:///C:/Users/mubahood/AppData/Local/Pub/Cache/hosted/pub.dev/share_plus_linux-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "share_plus_macos",
+      "rootUri": "file:///C:/Users/mubahood/AppData/Local/Pub/Cache/hosted/pub.dev/share_plus_macos-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "share_plus_platform_interface",
+      "rootUri": "file:///C:/Users/mubahood/AppData/Local/Pub/Cache/hosted/pub.dev/share_plus_platform_interface-3.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "share_plus_web",
+      "rootUri": "file:///C:/Users/mubahood/AppData/Local/Pub/Cache/hosted/pub.dev/share_plus_web-3.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "share_plus_windows",
+      "rootUri": "file:///C:/Users/mubahood/AppData/Local/Pub/Cache/hosted/pub.dev/share_plus_windows-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "shared_preferences",
       "rootUri": "file:///C:/Users/mubahood/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences-2.1.1",
       "packageUri": "lib/",
@@ -962,7 +998,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2023-05-29T00:33:30.331943Z",
+  "generated": "2023-07-06T22:23:45.146911Z",
   "generator": "pub",
   "generatorVersion": "2.19.6"
 }

@@ -7,12 +7,14 @@ import 'package:schooldynamics/models/MyClasses.dart';
 import 'package:schooldynamics/models/SessionLocal.dart';
 import 'package:schooldynamics/models/UserModel.dart';
 
+import '../../models/MySubjects.dart';
 import '../../models/SessionOnline.dart';
 import '../../sections/widgets.dart';
 import '../../theme/app_theme.dart';
 import '../../theme/custom_theme.dart';
 import '../../utils/Utils.dart';
 import '../../utils/my_widgets.dart';
+import '../exams/MarksScreen.dart';
 import '../sessions/SessionCreateNewScreen.dart';
 import '../sessions/SessionLocalScreen.dart';
 import '../sessions/SessionOnlineScreen.dart';
@@ -41,17 +43,28 @@ class _CourseTasksScreenState extends State<ClassScreen> {
 
   List<SessionOnline> sessionsOnline = [];
   List<SessionLocal> sessionsLocal = [];
-  List<ExamModel> exams = [];
+  List<MySubjects> subjects = [];
+  List<ExamSubject> examSubjects = [];
 
   Future<dynamic> my_init() async {
     item = widget.data;
+    List<ExamModel> exams = await ExamModel.getItems();
+    subjects =
+        await MySubjects.getItems(where: 'academic_class_id = ${item.id}');
+    examSubjects.clear();
+    for (var exam in exams) {
+      for (var subject in subjects) {
+        ExamSubject examSubject = ExamSubject();
+        examSubject.subject = subject;
+        examSubject.exam = exam;
+        examSubjects.add(examSubject);
+      }
+    }
+
     await item.getStudents();
-    exams = await ExamModel.getItems(forceWait: false);
     sessionsOnline = await SessionOnline.getItems(
         where: ' academic_class_id = ${item.id} ', forceWait: false);
-
     await SessionLocal.uploadPending();
-
     setState(() {});
     return "Done";
   }
@@ -354,7 +367,7 @@ class _CourseTasksScreenState extends State<ClassScreen> {
   }
 
   Widget examsList() {
-    return exams.isEmpty
+    return examSubjects.isEmpty
         ? Expanded(
             child: Center(
             child: FxText.bodyMedium('No exams.'),
@@ -367,18 +380,18 @@ class _CourseTasksScreenState extends State<ClassScreen> {
                 SliverList(
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
-                      ExamModel m = exams[index];
+                      ExamSubject m = examSubjects[index];
                       return ListTile(
                         onTap: () {
-                          //showBottomSheetAccountPicker(m);
+                          Get.to(() => MarksScreen(m.exam, m.subject));
                         },
                         title: FxText.titleMedium(
-                          "${m.term_name} - ${m.name}",
+                          "${m.exam.type}, ${m.exam.term_name}",
                           color: Colors.black,
                           fontWeight: 700,
                         ),
                         dense: true,
-                        subtitle: FxText.bodySmall(m.type),
+                        subtitle: FxText.bodySmall(m.subject.subject_name),
                         trailing: FxContainer(
                           borderRadiusAll: 50,
                           padding: const EdgeInsets.only(
@@ -388,7 +401,7 @@ class _CourseTasksScreenState extends State<ClassScreen> {
                         ),
                       );
                     },
-                    childCount: exams.length,
+                    childCount: examSubjects.length,
                   ),
                 ),
               ],

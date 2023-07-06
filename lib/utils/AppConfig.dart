@@ -1,6 +1,6 @@
 class AppConfig {
   static String API_BASE_URL = "https://schooldynamics.ug/api";
-  static const String ONESIGNAL_APP_ID = "c11278da-0a50-41a7-a5c9-55cec96d8540";
+  static const String ONESIGNAL_APP_ID = "4112fae4-4ea5-4acc-b9da-4dba93b85c34";
 
   // static String API_BASE_URL = "10.0.2.2:8000/api";
 

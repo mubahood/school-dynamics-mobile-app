@@ -180,7 +180,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
         ),
       ),
       body: DefaultTabController(
-        length: 5,
+        length: 3,
         child: Scaffold(
           appBar: AppBar(
             elevation: 1,
@@ -208,14 +208,14 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                           fontWeight: 600,
                           color: CustomTheme.primary,
                         )),
-                    Tab(
+/*                    Tab(
                         height: 30,
                         child: FxText.titleMedium("Services".toUpperCase(),
                             fontWeight: 600, color: CustomTheme.primary)),
                     Tab(
                         height: 30,
                         child: FxText.titleMedium("Fees".toUpperCase(),
-                            fontWeight: 600, color: CustomTheme.primary)),
+                            fontWeight: 600, color: CustomTheme.primary)),*/
                     Tab(
                         height: 30,
                         child: Container(
@@ -257,7 +257,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                         return studentsFragment();
                     }
                   }),
-              FutureBuilder(
+        /*  FutureBuilder(
                   future: futureInit,
                   builder: (context, snapshot) {
                     switch (snapshot.connectionState) {
@@ -266,7 +266,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                       default:
                         return feesFragment();
                     }
-                  }),
+                  }),*/
               CustomScrollView(
                 slivers: [
                   SliverList(
@@ -279,7 +279,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                   )
                 ],
               ),
-              Text("Records")
+              /*   Text("Records")*/
             ],
           ),
         ),
@@ -353,7 +353,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                 height: 10,
               ),
 
-              title_widget('SCHOOL FEES BALANCE'),
+/*              title_widget('SCHOOL FEES BALANCE'),
               InkWell(
                 onTap: (){
                   Get.to(()=>TransactionsScreen({
@@ -386,7 +386,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                     SizedBox(height: 10,),
                   ],
                 ),
-              ),
+              ),*/
               Divider(),
               titleValueWidget2('SCHOOL PAY CODE', '${item.school_pay_payment_code}'),
               SizedBox(height: 15,),

@@ -274,7 +274,6 @@ class UserModel {
   static Future<List<UserModel>> getItems({String where: '1'}) async {
     List<UserModel> items = await UserModel.getLocalData(where);
 
-
     if (items.isEmpty) {
       await UserModel.getOnlineData();
       items = await UserModel.getLocalData(where);
@@ -334,6 +333,7 @@ class UserModel {
       return data;
     }
 
+    print("=========>$where<==========");
     List<Map> maps = await db.query(UserModel.table_name, where: where);
 
     if (maps.isEmpty) {

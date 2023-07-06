@@ -48,6 +48,7 @@ class ServiceSubscriptionCreateScreenState
       if(widget.data['id']!=null){
         if(Utils.int_parse(widget.data['id']) >0 ){
           acc_id = Utils.int_parse(widget.data['id']);
+
         }
       }
     }
@@ -487,12 +488,19 @@ class ServiceSubscriptionCreateScreenState
   Future<bool> init_form() async {
 
     if(acc_id>0){
-      List<UserModel> subs = await UserModel.getItems(where: ' id = $acc_id ');
-      if(subs.isNotEmpty){
-        subscriber = subs.first;
+      List<UserModel> subs = await UserModel.getItems();
+      for (var element in subs) {
+        if(element.id == acc_id){
+          subscriber = element;
+          print("================FOUND <<<<<<<${subscriber.name}>>>>>>>>>=========");
+
+          setState(() {
+
+          });break;
+        }
       }
+
     }
-    acc_id = 0;
 
 
     items = await ServiceSubscription.getItems(

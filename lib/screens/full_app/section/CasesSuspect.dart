@@ -35,45 +35,7 @@ class _SectionCasesState extends State<SectionCases> {
 
   }
 
-  void _showBottomSheet(context) {
-    showModalBottomSheet(
-        context: context,
-        barrierColor: CustomTheme.primary.withOpacity(.5),
-        builder: (BuildContext buildContext) {
-          return Container(
-            color: Colors.transparent,
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16))),
-              child: Container(
-                padding: EdgeInsets.all(12),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ListTile(
-                      onTap: () {},
-                      leading: Icon(
-                        FeatherIcons.plusCircle,
-                        color: CustomTheme.primary,
-                        size: 26,
-                      ),
-                      title: FxText.titleMedium(
-                        "Create new case",
-                        fontSize: 18,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          );
-        });
-  }
+
 
   @override
   Widget build(BuildContext context) {

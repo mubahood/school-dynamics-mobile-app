@@ -54,13 +54,12 @@ class MySubjects {
     return obj;
   }
 
-  static Future<List<MySubjects>> getItems() async {
-    List<MySubjects> data = await getLocalData();
+  static Future<List<MySubjects>> getItems({String where = "1"}) async {
+    List<MySubjects> data = await getLocalData(where : where);
     if (data.isEmpty) {
       await MySubjects.getOnlineItems();
-      data = await getLocalData();
+      data = await getLocalData(where : where);
     } else {
-      data = await getLocalData();
       MySubjects.getOnlineItems();
     }
 
@@ -84,7 +83,7 @@ class MySubjects {
     }
   }
 
-  static Future<List<MySubjects>> getLocalData() async {
+  static Future<List<MySubjects>> getLocalData({String where = "1"}) async {
     List<MySubjects> data = [];
     if (!(await MySubjects.initTable())) {
       Utils.toast("Failed to init dynamic store.");
@@ -96,7 +95,7 @@ class MySubjects {
       return data;
     }
 
-    List<Map> maps = await db.query(MySubjects.tableName);
+    List<Map> maps = await db.query(MySubjects.tableName,where: where);
 
     if (maps.isEmpty) {
       return data;

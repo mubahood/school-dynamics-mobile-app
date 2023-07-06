@@ -5,17 +5,13 @@ import 'package:get/get.dart';
 import 'package:schooldynamics/models/LoggedInUserModel.dart';
 import 'package:schooldynamics/screens/classes/ClassesScreen.dart';
 import 'package:schooldynamics/screens/finance/ServiceSubscriptionScreen.dart';
-import 'package:schooldynamics/screens/finance/TransactionScreen.dart';
 import 'package:schooldynamics/screens/full_app/section/TransactionsScreen.dart';
 
 import '../../../models/MenuItem.dart';
-import '../../../models/ServiceSubscription.dart';
 import '../../../theme/app_theme.dart';
 import '../../../utils/my_widgets.dart';
 import '../../admin/AdminMenuScreen.dart';
-import '../../finance/FinanceHomeScreen.dart';
 import '../../finance/FinancialAccountsScreen.dart';
-import '../../finance/ServicesScreen.dart';
 import '../../students/StudentsScreen.dart';
 import 'AccountSection.dart';
 
@@ -92,9 +88,19 @@ class _SectionDashboardState extends State<SectionDashboard> {
       }));
     }
 
+    if (u.isRole('dos') ||
+        u.isRole('admin') ||
+        u.isRole('bursar') ||
+        u.isRole('parent')) {
+      menuItems.add(MenuItem('Financial Accounts', 'T 1', FeatherIcons.edit,
+          'financial-account.jpg', () {
+        Get.to(() => FinancialAccountsScreen());
+      }));
+    }
+
     if (u.isRole('bursar')) {
-      menuItems
-          .add(MenuItem('Transactions', 'T 1', FeatherIcons.edit, 'finance.png', () {
+      menuItems.add(
+          MenuItem('Transactions', 'T 1', FeatherIcons.edit, 'finance.png', () {
         Get.to(() => TransactionsScreen({}));
       }));
 /*      menuItems.add(
@@ -180,7 +186,8 @@ class _SectionDashboardState extends State<SectionDashboard> {
                       gridDelegate:
                       const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
-                        crossAxisSpacing: 5,
+                        crossAxisSpacing: 8,
+                        mainAxisSpacing: 10,
                         childAspectRatio: 0.8,
                       ),
                       delegate: SliverChildBuilderDelegate(

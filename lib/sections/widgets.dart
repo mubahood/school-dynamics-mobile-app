@@ -260,7 +260,7 @@ Widget userWidget(UserModel u,context, {String task_picker = ""}) {
                     ),
                   ],
                 ),
-                Row(
+                /*Row(
                   children: [
                     FxText.bodyMedium(
                       'FEES BALANCE: ',
@@ -270,7 +270,7 @@ Widget userWidget(UserModel u,context, {String task_picker = ""}) {
                       color: u.balance>0? Colors.red.shade800 : Colors.green.shade800,
                     ),
                   ],
-                ),
+                ),*/
                 SizedBox(
                   height: 6,
                 ),
@@ -338,6 +338,9 @@ Widget accountWidget(UserModel u) {
                       fontWeight: 800,
                       overflow: TextOverflow.ellipsis,
                     ),
+                    SizedBox(
+                      height: 5,
+                    ),
                     Row(
                       children: [
                         SizedBox(
@@ -346,6 +349,23 @@ Widget accountWidget(UserModel u) {
                         FxText.bodyMedium(
                           '${u.current_class_text}',
                           fontWeight: 800,
+                          color: Colors.black,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        FxCard(
+                          child: FxText.bodySmall(
+                            '${u.verification == '1' ? 'Verified' : 'Not Verified'}',
+                            fontWeight: 800,
+                            color: Colors.white,
+                          ),
+                          padding:
+                              EdgeInsets.only(left: 5, right: 5, bottom: 2),
+                          marginAll: 0,
+                          color: u.verification == '1'
+                              ? Colors.green.shade700
+                              : Colors.red.shade700,
                         ),
                         Spacer(),
                         Column(

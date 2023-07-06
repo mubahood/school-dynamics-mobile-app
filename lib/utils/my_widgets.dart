@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:flutx/widgets/card/card.dart';
 import 'package:flutx/widgets/container/container.dart';
 import 'package:flutx/widgets/text/text.dart';
 import 'package:get/get.dart';
@@ -10,7 +11,7 @@ import '../theme/custom_theme.dart';
 import 'Utils.dart';
 
 Widget menuItemWidget(MenuItem item) {
-  return FxContainer(
+  return FxCard(
     width: (Get.width / 6),
     height: (Get.width / 6),
     borderRadiusAll: 10,
@@ -21,7 +22,6 @@ Widget menuItemWidget(MenuItem item) {
     },
     color: Colors.white,
     paddingAll: 0,
-    alignment: Alignment.center,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -41,6 +41,8 @@ Widget menuItemWidget(MenuItem item) {
           letterSpacing: .001,
           fontWeight: 800,
           maxLines: 2,
+          height: 1,
+          overflow: TextOverflow.ellipsis,
         ),
       ],
     ),

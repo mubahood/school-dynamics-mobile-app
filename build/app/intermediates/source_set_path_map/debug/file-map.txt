@@ -46,6 +46,7 @@ schooldynamics.ug.app-packaged_res-44 C:\github\schooldynamics\build\geolocator_
 schooldynamics.ug.app-packaged_res-45 C:\github\schooldynamics\build\image_picker_android\intermediates\packaged_res\debug
 schooldynamics.ug.app-packaged_res-46 C:\github\schooldynamics\build\onesignal_flutter\intermediates\packaged_res\debug
 schooldynamics.ug.app-packaged_res-47 C:\github\schooldynamics\build\path_provider_android\intermediates\packaged_res\debug
-schooldynamics.ug.app-packaged_res-48 C:\github\schooldynamics\build\shared_preferences_android\intermediates\packaged_res\debug
-schooldynamics.ug.app-packaged_res-49 C:\github\schooldynamics\build\sqflite\intermediates\packaged_res\debug
-schooldynamics.ug.app-packaged_res-50 C:\github\schooldynamics\build\url_launcher_android\intermediates\packaged_res\debug
+schooldynamics.ug.app-packaged_res-48 C:\github\schooldynamics\build\share_plus\intermediates\packaged_res\debug
+schooldynamics.ug.app-packaged_res-49 C:\github\schooldynamics\build\shared_preferences_android\intermediates\packaged_res\debug
+schooldynamics.ug.app-packaged_res-50 C:\github\schooldynamics\build\sqflite\intermediates\packaged_res\debug
+schooldynamics.ug.app-packaged_res-51 C:\github\schooldynamics\build\url_launcher_android\intermediates\packaged_res\debug

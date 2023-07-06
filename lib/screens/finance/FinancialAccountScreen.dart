@@ -310,6 +310,23 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
                   fontWeight: 700,
                 ),
               ),
+              SizedBox(
+                width: 8,
+              ),
+              Center(
+                child: FxCard(
+                  child: FxText.bodySmall(
+                    '${item.verification == '1' ? 'Verified Balance' : 'Not Verified Balance'}',
+                    fontWeight: 800,
+                    color: Colors.white,
+                  ),
+                  padding: EdgeInsets.only(left: 5, right: 5, bottom: 2),
+                  marginAll: 0,
+                  color: item.verification == '1'
+                      ? Colors.green.shade700
+                      : Colors.red.shade700,
+                ),
+              ),
               Divider(
                 color: CustomTheme.primary,
               )
@@ -423,58 +440,5 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
         ],
       ),
     );
-  }
-
-  void _showMyBottomSheetExhibitModel(context) {
-    showModalBottomSheet(
-        context: context,
-        barrierColor: CustomTheme.primary.withOpacity(.5),
-        builder: (BuildContext buildContext) {
-          return Container(
-            child: Container(
-              padding: EdgeInsets.only(bottom: 20),
-              margin: EdgeInsets.only(left: 13, right: 13, bottom: 10),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(MySize.size16!),
-                  topRight: Radius.circular(MySize.size16!),
-                  bottomLeft: Radius.circular(MySize.size16!),
-                  bottomRight: Radius.circular(MySize.size16!),
-                ),
-              ),
-              child: Container(
-                padding: EdgeInsets.all(0),
-                child: ListView(
-                  children: [
-                    Center(
-                      child: Container(
-                        padding: EdgeInsets.only(top: 20),
-                        child: Column(
-                          children: [
-                            FxText.titleLarge(
-                              "Exhibit Details".toUpperCase(),
-                              color: Colors.black,
-                              fontSize: 16,
-                              fontWeight: 700,
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 3),
-                    singleWidget('Exhibit type', 'ex.exhibit_catgory'),
-                    singleWidget('Wildlife', 'ex.wildlife'),
-                    singleWidget('Wildlife', 'ex.wildlife'),
-                    singleWidget('Wildlife', 'ex.wildlife'),
-                  ],
-                ),
-              ),
-            ),
-          );
-        });
   }
 }
