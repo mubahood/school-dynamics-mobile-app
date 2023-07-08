@@ -1,4 +1,4 @@
-#Fri Jul 07 00:36:30 EAT 2023
+#Sat Jul 08 21:09:01 EAT 2023
 base.0=C\:\\github\\schooldynamics\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\github\\schooldynamics\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\0\\classes.dex
 base.2=C\:\\github\\schooldynamics\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex

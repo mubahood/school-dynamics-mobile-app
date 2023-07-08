@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
+import 'package:schooldynamics/models/ServiceSubscription.dart';
 import 'package:schooldynamics/models/UserModel.dart';
-import 'package:schooldynamics/screens/students/StudentEditPhotoScreen.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 
 import '../../models/Transaction.dart';
 import '../../sections/widgets.dart';
 import '../../theme/app_theme.dart';
 import '../../theme/custom_theme.dart';
-import '../../utils/SizeConfig.dart';
 import '../../utils/my_widgets.dart';
 import '../finance/TransactionScreen.dart';
+import 'ServiceSubscriptionCreateScreen.dart';
+import 'TransactionCreateScreen.dart';
 
 class FinancialAccountScreen extends StatefulWidget {
   const FinancialAccountScreen({Key? key, required this.data})
@@ -40,8 +41,8 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
 
   Future<dynamic> my_init() async {
     item = widget.data;
-    transactions =
-        await Transaction.getItems(where: ' administrator_id = ${item.id} ');
+    await getTransactions();
+    await getServices();
     setState(() {});
     return "Done";
   }
@@ -63,11 +64,13 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
             onSelected: (x) {
               switch (x.toString()) {
                 case '1':
+                  Get.to(() => TransactionCreateScreen({
+                        'account': item,
+                      }));
                   break;
                 case '2':
-                  Get.to(() => StudentEditPhotoScreen(
-                        data: item,
-                      ));
+                  Get.to(
+                      () => ServiceSubscriptionCreateScreen({'id': item.id}));
                   break;
 
                 case '3':
@@ -92,7 +95,8 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
                         const SizedBox(
                           width: 8,
                         ),
-                        Expanded(child: FxText.bodyLarge('Add transaction')),
+                        Expanded(
+                            child: FxText.bodyLarge('Add school fees payment')),
                       ],
                     ),
                   ),
@@ -107,7 +111,7 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
                         const SizedBox(
                           width: 8,
                         ),
-                        FxText.bodyLarge('Add service'),
+                        FxText.bodyLarge('Add service subscription'),
                       ],
                     ),
                   ),
@@ -191,7 +195,7 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
                             fontWeight: 600, color: CustomTheme.primary)),
                     Tab(
                         height: 30,
-                        child: FxText.titleMedium("Fees payment".toUpperCase(),
+                        child: FxText.titleMedium("School Fees".toUpperCase(),
                             fontWeight: 600, color: CustomTheme.primary)),
                   ],
                 )
@@ -219,7 +223,7 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
                       case ConnectionState.waiting:
                         return myListLoaderWidget(context);
                       default:
-                        return studentsFragment();
+                        return servicesFragment();
                     }
                   }),
               FutureBuilder(
@@ -242,115 +246,145 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
   mainFragment() {
     return Container(
       padding: const EdgeInsets.only(left: 15, right: 15),
-      child: ListView(
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 15,
-              ),
-              Flex(
-                direction: Axis.horizontal,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Container(
-                        child: Column(
-                      children: [
-                        title_widget('BIO DATA'),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Container(
-                            child: titleValueWidget('NAME', '${item.name}')),
-                        Container(
-                            child: titleValueWidget('SEX', '${item.sex}')),
-                        Container(
-                            child: titleValueWidget(
-                                'CLASS', '${item.current_class_text}')),
-                      ],
-                    )),
-                  ),
-                  const SizedBox(
-                    width: 8,
-                  ),
-                  FxContainer(
-                    bordered: true,
-                    color: CustomTheme.primary.withAlpha(30),
-                    borderColor: CustomTheme.primary,
-                    paddingAll: 5,
-                    borderRadiusAll: 0,
-                    child: roundedImage(
-                      item.avatar.toString(),
-                      2.6,
-                      2,
-                      radius: 0,
+      child: RefreshIndicator(
+        onRefresh: getBasicData,
+        backgroundColor: Colors.white,
+        color: CustomTheme.primary,
+        child: ListView(
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  height: 15,
+                ),
+                Flex(
+                  direction: Axis.horizontal,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Container(
+                          child: Column(
+                        children: [
+                          title_widget('BIO DATA'),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                              child: titleValueWidget('NAME', '${item.name}')),
+                          Container(
+                              child: titleValueWidget('SEX', '${item.sex}')),
+                          Container(
+                              child: titleValueWidget(
+                                  'CLASS', '${item.current_class_text}')),
+                        ],
+                      )),
                     ),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              title_widget('SCHOOL FEES BALANCE'),
-              const SizedBox(
-                height: 10,
-              ),
-              Center(
-                child: FxText.titleLarge(
-                  'UGX ${Utils.moneyFormat("${item.balance}")}',
-                  fontSize: 35,
-                  color: item.balance < 0
-                      ? Colors.red.shade900
-                      : Colors.green.shade900,
-                  textAlign: TextAlign.center,
-                  fontWeight: 700,
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    FxContainer(
+                      bordered: true,
+                      color: CustomTheme.primary.withAlpha(30),
+                      borderColor: CustomTheme.primary,
+                      paddingAll: 5,
+                      borderRadiusAll: 0,
+                      child: roundedImage(
+                        item.avatar.toString(),
+                        2.6,
+                        2,
+                        radius: 0,
+                      ),
+                    )
+                  ],
                 ),
-              ),
-              SizedBox(
-                width: 8,
-              ),
-              Center(
-                child: FxCard(
-                  child: FxText.bodySmall(
-                    '${item.verification == '1' ? 'Verified Balance' : 'Not Verified Balance'}',
-                    fontWeight: 800,
-                    color: Colors.white,
+                const SizedBox(
+                  height: 10,
+                ),
+                title_widget('SCHOOL FEES BALANCE'),
+                const SizedBox(
+                  height: 10,
+                ),
+                Center(
+                  child: FxText.titleLarge(
+                    'UGX ${Utils.moneyFormat("${item.balance}")}',
+                    fontSize: 35,
+                    color: item.balance < 0
+                        ? Colors.red.shade900
+                        : Colors.green.shade900,
+                    textAlign: TextAlign.center,
+                    fontWeight: 700,
                   ),
-                  padding: EdgeInsets.only(left: 5, right: 5, bottom: 2),
-                  marginAll: 0,
-                  color: item.verification == '1'
-                      ? Colors.green.shade700
-                      : Colors.red.shade700,
                 ),
-              ),
-              Divider(
-                color: CustomTheme.primary,
-              )
-            ],
-          ),
-        ],
+                const SizedBox(
+                  width: 8,
+                ),
+                Center(
+                  child: FxCard(
+                    padding: EdgeInsets.only(left: 5, right: 5, bottom: 2),
+                    marginAll: 0,
+                    color: item.verification == '1'
+                        ? Colors.green.shade700
+                        : Colors.red.shade700,
+                    child: FxText.bodySmall(
+                      item.verification == '1'
+                          ? 'Verified Balance'
+                          : 'Not Verified Balance',
+                      fontWeight: 800,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                Divider(
+                  color: CustomTheme.primary,
+                )
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  studentsFragment() {
-    return Container(
-      child: CustomScrollView(
-        slivers: [
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return FxText.bodyMedium("$index");
-              },
-              childCount: 100,
-            ),
-          ),
-        ],
-      ),
+  List<ServiceSubscription> services = [];
+
+  Future<void> getServices() async {
+    services = await ServiceSubscription.getItems(
+        where: 'administrator_id = ${item.id}');
+  }
+
+  Future<void> getBasicData() async {
+    List<UserModel> accs = await UserModel.getItems(where: "id = ${item.id}");
+    if (accs.isNotEmpty) {
+      item = accs.first;
+    }
+    setState(() {});
+  }
+
+  Future<void> getTransactions() async {
+    transactions =
+        await Transaction.getItems(where: ' administrator_id = ${item.id} ');
+  }
+
+  servicesFragment() {
+    return RefreshIndicator(
+      onRefresh: () async {
+        await getServices();
+        setState(() {});
+      },
+      backgroundColor: Colors.white,
+      color: CustomTheme.primary,
+      child: ListView.separated(
+          separatorBuilder: (context, index) => const Divider(
+                height: 15,
+              ),
+          itemCount: services.length,
+          itemBuilder: (context, index) {
+            final ServiceSubscription m = services[index];
+            return ServiceSubscriptionWidget(m);
+          }),
     );
   }
 
@@ -358,86 +392,94 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
 
   feesFragment() {
     return Container(
-      padding: EdgeInsets.only(left: 5, right: 5),
-      child: CustomScrollView(
-        slivers: [
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return const SizedBox(
-                  height: 10,
-                );
-              },
-              childCount: 1, // 1000 list items
+      padding: const EdgeInsets.only(left: 5, right: 5),
+      child: RefreshIndicator(
+        onRefresh: () async {
+          await getTransactions();
+          setState(() {});
+        },
+        backgroundColor: Colors.white,
+        color: CustomTheme.primary,
+        child: CustomScrollView(
+          slivers: [
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  return const SizedBox(
+                    height: 10,
+                  );
+                },
+                childCount: 1, // 1000 list items
+              ),
             ),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                Transaction m = transactions[index];
-                return InkWell(
-                  onTap: () {
-                    Get.to(() => TransactionScreen(
-                          data: m,
-                        ));
-                  },
-                  child: Column(
-                    children: [
-                      Flex(
-                        direction: Axis.horizontal,
-                        children: [
-                          FxContainer(
-                            color: CustomTheme.primary.withAlpha(20),
-                            paddingAll: 10,
-                            margin: const EdgeInsets.only(
-                                left: 10, right: 10, bottom: 0, top: 0),
-                            child: Icon(
-                              m.amount_figure < 1
-                                  ? FeatherIcons.arrowUp
-                                  : FeatherIcons.arrowDown,
-                              color: m.amount_figure < 1
-                                  ? Colors.red.shade800
-                                  : Colors.green.shade800,
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  Transaction m = transactions[index];
+                  return InkWell(
+                    onTap: () {
+                      Get.to(() => TransactionScreen(
+                            data: m,
+                          ));
+                    },
+                    child: Column(
+                      children: [
+                        Flex(
+                          direction: Axis.horizontal,
+                          children: [
+                            FxContainer(
+                              color: CustomTheme.primary.withAlpha(20),
+                              paddingAll: 10,
+                              margin: const EdgeInsets.only(
+                                  left: 10, right: 10, bottom: 0, top: 0),
+                              child: Icon(
+                                m.amount_figure < 1
+                                    ? FeatherIcons.arrowUp
+                                    : FeatherIcons.arrowDown,
+                                color: m.amount_figure < 1
+                                    ? Colors.red.shade800
+                                    : Colors.green.shade800,
+                              ),
                             ),
-                          ),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                FxText.bodySmall(Utils.to_date(m.created_at)),
-                                FxText.titleMedium(
-                                  m.account_name,
-                                  maxLines: 1,
-                                  color: Colors.grey.shade800,
-                                  fontWeight: 800,
-                                )
-                              ],
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  FxText.bodySmall(Utils.to_date(m.created_at)),
+                                  FxText.titleMedium(
+                                    m.account_name,
+                                    maxLines: 1,
+                                    color: Colors.grey.shade800,
+                                    fontWeight: 800,
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                          FxText.bodyLarge(
-                            Utils.moneyFormat(m.amount),
-                            fontWeight: 700,
-                            color: (m.amount_figure < 0)
-                                ? Colors.red.shade700
-                                : Colors.green.shade700,
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          )
-                        ],
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 10, right: 10),
-                        child: Divider(),
-                      ),
-                    ],
-                  ),
-                );
-              },
-              childCount: transactions.length, // 1000 list items
-            ),
-          )
-        ],
+                            FxText.bodyLarge(
+                              Utils.moneyFormat(m.amount),
+                              fontWeight: 700,
+                              color: (m.amount_figure < 0)
+                                  ? Colors.red.shade700
+                                  : Colors.green.shade700,
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            )
+                          ],
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 10, right: 10),
+                          child: Divider(),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                childCount: transactions.length, // 1000 list items
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -94,7 +94,7 @@ class _SectionDashboardState extends State<SectionDashboard> {
         u.isRole('parent')) {
       menuItems.add(MenuItem('Financial Accounts', 'T 1', FeatherIcons.edit,
           'financial-account.jpg', () {
-        Get.to(() => FinancialAccountsScreen());
+        Get.to(() => FinancialAccountsScreen({}));
       }));
     }
 
@@ -132,7 +132,7 @@ class _SectionDashboardState extends State<SectionDashboard> {
         u.isRole('parent')) {
       menuItems.add(MenuItem(
           'Financial Accounts', 'T 1', FeatherIcons.edit, 'admin.png', () {
-        Get.to(() => FinancialAccountsScreen());
+        Get.to(() => FinancialAccountsScreen({}));
       }));
     }
 

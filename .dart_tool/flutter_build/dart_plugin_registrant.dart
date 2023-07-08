@@ -19,15 +19,18 @@ import 'package:shared_preferences_foundation/shared_preferences_foundation.dart
 import 'package:sqflite/sqflite.dart';
 import 'package:url_launcher_ios/url_launcher_ios.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:image_picker_linux/image_picker_linux.dart';
 import 'package:path_provider_linux/path_provider_linux.dart';
 import 'package:share_plus_linux/share_plus_linux.dart';
 import 'package:shared_preferences_linux/shared_preferences_linux.dart';
 import 'package:url_launcher_linux/url_launcher_linux.dart';
 import 'package:geolocator_apple/geolocator_apple.dart';
+import 'package:image_picker_macos/image_picker_macos.dart';
 import 'package:path_provider_foundation/path_provider_foundation.dart';
 import 'package:shared_preferences_foundation/shared_preferences_foundation.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:url_launcher_macos/url_launcher_macos.dart';
+import 'package:image_picker_windows/image_picker_windows.dart';
 import 'package:path_provider_windows/path_provider_windows.dart';
 import 'package:share_plus_windows/share_plus_windows.dart';
 import 'package:shared_preferences_windows/shared_preferences_windows.dart';
@@ -172,6 +175,16 @@ class _PluginRegistrant {
       }
 
       try {
+        ImagePickerLinux.registerWith();
+      } catch (err) {
+        print(
+          '`image_picker_linux` threw an error: $err. '
+          'The app may not function as expected until you remove this plugin from pubspec.yaml'
+        );
+        rethrow;
+      }
+
+      try {
         PathProviderLinux.registerWith();
       } catch (err) {
         print(
@@ -223,6 +236,16 @@ class _PluginRegistrant {
       }
 
       try {
+        ImagePickerMacOS.registerWith();
+      } catch (err) {
+        print(
+          '`image_picker_macos` threw an error: $err. '
+          'The app may not function as expected until you remove this plugin from pubspec.yaml'
+        );
+        rethrow;
+      }
+
+      try {
         PathProviderFoundation.registerWith();
       } catch (err) {
         print(
@@ -263,6 +286,16 @@ class _PluginRegistrant {
       }
 
     } else if (Platform.isWindows) {
+      try {
+        ImagePickerWindows.registerWith();
+      } catch (err) {
+        print(
+          '`image_picker_windows` threw an error: $err. '
+          'The app may not function as expected until you remove this plugin from pubspec.yaml'
+        );
+        rethrow;
+      }
+
       try {
         PathProviderWindows.registerWith();
       } catch (err) {

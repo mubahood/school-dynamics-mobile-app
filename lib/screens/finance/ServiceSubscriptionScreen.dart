@@ -81,44 +81,7 @@ class ServiceSubscriptionScreenState extends State<ServiceSubscriptionScreen> {
                   itemCount: items.length,
                   itemBuilder: (context, index) {
                     final ServiceSubscription m = items[index];
-                    return Flex(
-                      direction: Axis.horizontal,
-                      children: [
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              FxText.titleMedium(
-                                "${m.administrator_text}",
-                                color: Colors.black,
-                                fontWeight: 700,
-                              ),
-                              FxText.bodySmall(
-                                "TERM: ${m.due_term_text} \n ${m.service_text} X ${m.quantity}",
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          child: Flex(
-                            direction: Axis.horizontal,
-                            children: [
-                              FxText.titleLarge(
-                                Utils.moneyFormat(m.total),
-                                color: Colors.black,
-                                fontWeight: 800,
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                      ],
-                    );
+                    return ServiceSubscriptionWidget(m);
                   }),
             );
           }),

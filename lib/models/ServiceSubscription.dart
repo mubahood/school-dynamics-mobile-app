@@ -75,11 +75,10 @@ class ServiceSubscription {
   static Future<List<ServiceSubscription>> getItems(
       {String where = '1'}) async {
     List<ServiceSubscription> data = await getLocalData(where: where);
-    if (data.isEmpty) {
+    if (data.isEmpty && where.length < 2) {
       await ServiceSubscription.getOnlineItems();
       data = await getLocalData(where: where);
     } else {
-      data = await getLocalData(where: where);
       ServiceSubscription.getOnlineItems();
     }
     data.sort((a, b) => b.id.compareTo(a.id));

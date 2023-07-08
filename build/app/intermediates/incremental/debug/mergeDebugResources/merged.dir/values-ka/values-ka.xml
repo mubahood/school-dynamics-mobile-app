@@ -27,6 +27,13 @@
     <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"გაზიარება:"</string>
     <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"<ns1:g id="APPLICATION_NAME">%s</ns1:g>-ით გაზიარება"</string>
     <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"ჩაკეცვა"</string>
+    <string msgid="881409763997275156" name="call_notification_answer_action">"პასუხი"</string>
+    <string msgid="8793775615905189152" name="call_notification_answer_video_action">"ვიდეო"</string>
+    <string msgid="3229508546291798546" name="call_notification_decline_action">"უარყოფა"</string>
+    <string msgid="2659457946726154263" name="call_notification_hang_up_action">"გათიშვა"</string>
+    <string msgid="6107532579223922871" name="call_notification_incoming_text">"შემომავალი ზარი"</string>
+    <string msgid="8623827134497363134" name="call_notification_ongoing_text">"მიმდინარე ზარი"</string>
+    <string msgid="59049573811482460" name="call_notification_screening_text">"შემომავალი ზარების გაცხრილვა"</string>
     <string msgid="2523291102206661146" name="common_google_play_services_enable_button">ჩართვა</string>
     <string msgid="227660514972886228" name="common_google_play_services_enable_text">%1$s ვერ იმუშავებს Google Play Services-ის ჩართვამდე.</string>
     <string msgid="5122002158466380389" name="common_google_play_services_enable_title">Google Play Services-ის ჩართვა</string>

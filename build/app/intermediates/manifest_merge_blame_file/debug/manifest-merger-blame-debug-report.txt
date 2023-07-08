@@ -1,7 +1,7 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 3    package="schooldynamics.ug"
-4    android:versionCode="7"
+4    android:versionCode="8"
 5    android:versionName="1.0.0" >
 6
 7    <uses-sdk
@@ -139,20 +139,20 @@
 71-->[com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:47:22-86
 72
 73    <permission
-73-->[androidx.core:core:1.9.0] C:\Users\mubahood\.gradle\caches\transforms-3\1e4e721e8dd48c9187a344afe5f2f9d1\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+73-->[androidx.core:core:1.10.1] C:\Users\mubahood\.gradle\caches\transforms-3\335a6a4b82f905ed5c0c475d9359b77b\transformed\core-1.10.1\AndroidManifest.xml:22:5-24:47
 74        android:name="schooldynamics.ug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-74-->[androidx.core:core:1.9.0] C:\Users\mubahood\.gradle\caches\transforms-3\1e4e721e8dd48c9187a344afe5f2f9d1\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+74-->[androidx.core:core:1.10.1] C:\Users\mubahood\.gradle\caches\transforms-3\335a6a4b82f905ed5c0c475d9359b77b\transformed\core-1.10.1\AndroidManifest.xml:23:9-81
 75        android:protectionLevel="signature" />
-75-->[androidx.core:core:1.9.0] C:\Users\mubahood\.gradle\caches\transforms-3\1e4e721e8dd48c9187a344afe5f2f9d1\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+75-->[androidx.core:core:1.10.1] C:\Users\mubahood\.gradle\caches\transforms-3\335a6a4b82f905ed5c0c475d9359b77b\transformed\core-1.10.1\AndroidManifest.xml:24:9-44
 76
 77    <uses-permission android:name="schooldynamics.ug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-77-->[androidx.core:core:1.9.0] C:\Users\mubahood\.gradle\caches\transforms-3\1e4e721e8dd48c9187a344afe5f2f9d1\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
-77-->[androidx.core:core:1.9.0] C:\Users\mubahood\.gradle\caches\transforms-3\1e4e721e8dd48c9187a344afe5f2f9d1\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+77-->[androidx.core:core:1.10.1] C:\Users\mubahood\.gradle\caches\transforms-3\335a6a4b82f905ed5c0c475d9359b77b\transformed\core-1.10.1\AndroidManifest.xml:26:5-97
+77-->[androidx.core:core:1.10.1] C:\Users\mubahood\.gradle\caches\transforms-3\335a6a4b82f905ed5c0c475d9359b77b\transformed\core-1.10.1\AndroidManifest.xml:26:22-94
 78
 79    <application
 80        android:name="android.app.Application"
 81        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-81-->[androidx.core:core:1.9.0] C:\Users\mubahood\.gradle\caches\transforms-3\1e4e721e8dd48c9187a344afe5f2f9d1\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+81-->[androidx.core:core:1.10.1] C:\Users\mubahood\.gradle\caches\transforms-3\335a6a4b82f905ed5c0c475d9359b77b\transformed\core-1.10.1\AndroidManifest.xml:28:18-86
 82        android:debuggable="true"
 83        android:exported="true"
 84        android:icon="@drawable/logo"
