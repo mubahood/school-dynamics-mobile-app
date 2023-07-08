@@ -54,7 +54,7 @@ class _CourseTasksScreenState extends State<FinanceHomeScreen> {
       MenuItem('Financial accounts', 'Students school fees accounts',
           FeatherIcons.user, 'accounts.png', () {
         Get.to(
-          () => FinancialAccountsScreen(),
+          () => FinancialAccountsScreen({}),
         );
       }),
       MenuItem('Transactions', 'List of recent school fees payments',

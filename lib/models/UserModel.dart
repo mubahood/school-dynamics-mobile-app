@@ -277,8 +277,9 @@ class UserModel {
     if (items.isEmpty) {
       await UserModel.getOnlineData();
       items = await UserModel.getLocalData(where);
+    } else {
+      UserModel.getOnlineData();
     }
-
 
     return items;
   }

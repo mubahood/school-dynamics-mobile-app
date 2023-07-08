@@ -15,9 +15,12 @@ import '../../theme/custom_theme.dart';
 import '../../utils/SizeConfig.dart';
 import '../../utils/Utils.dart';
 import '../../utils/my_widgets.dart';
+import 'FinancialAccountScreen.dart';
 
 class FinancialAccountsScreen extends StatefulWidget {
-  FinancialAccountsScreen({Key? key}) : super(key: key);
+  Map<String, dynamic> params = {};
+
+  FinancialAccountsScreen(this.params, {Key? key}) : super(key: key);
 
   @override
   FinancialAccountsScreenState createState() =>
@@ -246,7 +249,16 @@ class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
                               delegate: SliverChildBuilderDelegate(
                                 (BuildContext context, int index) {
                                   UserModel m = items[index];
-                                  return accountWidget(m);
+                                  return InkWell(
+                                      onTap: () {
+                                        if (widget.params['isSelect'] == true) {
+                                          Get.back(result: m);
+                                          return;
+                                        }
+                                        Get.to(() =>
+                                            FinancialAccountScreen(data: m));
+                                      },
+                                      child: accountWidget(m));
                                 },
                                 childCount: items.length, // 1000 list items
                               ),

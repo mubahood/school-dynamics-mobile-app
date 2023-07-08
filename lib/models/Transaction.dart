@@ -1,7 +1,6 @@
 import 'package:schooldynamics/utils/Utils.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../utils/AppConfig.dart';
 import 'RespondModel.dart';
 
 class Transaction {
@@ -41,11 +40,10 @@ class Transaction {
 
   static Future<List<Transaction>> getItems({String where = '1'}) async {
     List<Transaction> data = await getLocalData(where: where);
-    if (data.isEmpty) {
+    if (data.isEmpty && where.length < 3) {
       await Transaction.getOnlineItems();
       data = await getLocalData(where: where);
     } else {
-      data = await getLocalData( where: where );
       Transaction.getOnlineItems();
     }
     data.sort((a, b) => b.id.compareTo(a.id));

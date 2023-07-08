@@ -310,96 +310,91 @@ Widget userWidget(UserModel u,context, {String task_picker = ""}) {
 }
 
 Widget accountWidget(UserModel u) {
-  return InkWell(
-    onTap: () {
-      Get.to(() => FinancialAccountScreen(data: u));
-    },
-    child: Column(
-      children: [
-        Container(
-          padding: EdgeInsets.only(top: 10, bottom: 10, left: 10, right: 15),
-          child: Flex(
-            direction: Axis.horizontal,
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              roundedImage(u.avatar.toString(), 8, 8),
-              SizedBox(
-                width: 5,
-              ),
-              Expanded(
-                child: Flex(
-                  direction: Axis.vertical,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    FxText.titleMedium(
-                      u.name.toUpperCase(),
-                      maxLines: 1,
-                      fontWeight: 800,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 2,
-                        ),
-                        FxText.bodyMedium(
-                          '${u.current_class_text}',
+  return Column(
+    children: [
+      Container(
+        padding: EdgeInsets.only(top: 10, bottom: 10, left: 10, right: 15),
+        child: Flex(
+          direction: Axis.horizontal,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            roundedImage(u.avatar.toString(), 8, 8),
+            SizedBox(
+              width: 5,
+            ),
+            Expanded(
+              child: Flex(
+                direction: Axis.vertical,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  FxText.titleMedium(
+                    u.name.toUpperCase(),
+                    maxLines: 1,
+                    fontWeight: 800,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 2,
+                      ),
+                      FxText.bodyMedium(
+                        '${u.current_class_text}',
+                        fontWeight: 800,
+                        color: Colors.black,
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      FxCard(
+                        child: FxText.bodySmall(
+                          '${u.verification == '1' ? 'Verified' : 'Not Verified'}',
                           fontWeight: 800,
-                          color: Colors.black,
+                          color: Colors.white,
                         ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        FxCard(
-                          child: FxText.bodySmall(
-                            '${u.verification == '1' ? 'Verified' : 'Not Verified'}',
-                            fontWeight: 800,
-                            color: Colors.white,
+                        padding:
+                            EdgeInsets.only(left: 5, right: 5, bottom: 2),
+                        marginAll: 0,
+                        color: u.verification == '1'
+                            ? Colors.green.shade700
+                            : Colors.red.shade700,
+                      ),
+                      Spacer(),
+                      Column(
+                        children: [
+                          SizedBox(
+                            height: 5,
                           ),
-                          padding:
-                              EdgeInsets.only(left: 5, right: 5, bottom: 2),
-                          marginAll: 0,
-                          color: u.verification == '1'
-                              ? Colors.green.shade700
-                              : Colors.red.shade700,
-                        ),
-                        Spacer(),
-                        Column(
-                          children: [
-                            SizedBox(
-                              height: 5,
-                            ),
-                            FxText.bodySmall('UGX'),
-                          ],
-                        ),
-                        SizedBox(
-                          width: 2,
-                        ),
-                        FxText.titleLarge(
-                          Utils.moneyFormat("${u.balance}"),
-                          height: 1.1,
-                          color: u.balance < 0
-                              ? Colors.red.shade800
-                              : Colors.green.shade800,
-                          fontWeight: 900,
-                        ),
-                      ],
-                    )
-                  ],
-                ),
+                          FxText.bodySmall('UGX'),
+                        ],
+                      ),
+                      SizedBox(
+                        width: 2,
+                      ),
+                      FxText.titleLarge(
+                        Utils.moneyFormat("${u.balance}"),
+                        height: 1.1,
+                        color: u.balance < 0
+                            ? Colors.red.shade800
+                            : Colors.green.shade800,
+                        fontWeight: 900,
+                      ),
+                    ],
+                  )
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-        Divider(
-          height: 0,
-        )
-      ],
-    ),
+      ),
+      Divider(
+        height: 0,
+      )
+    ],
   );
 }
 

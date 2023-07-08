@@ -11,8 +11,6 @@ import '../../theme/app_theme.dart';
 import '../../theme/custom_theme.dart';
 import '../../utils/SizeConfig.dart';
 import '../../utils/my_widgets.dart';
-import '../finance/TransactionScreen.dart';
-import '../full_app/section/TransactionsScreen.dart';
 import 'StudentEditBioScreen.dart';
 import 'StudentEditGuardianScreen.dart';
 import 'StudentEditPhotoScreen.dart';
@@ -459,64 +457,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
                 Transaction m = transactions[index];
-                return InkWell(
-                  onTap: () {
-                    Get.to(() => TransactionScreen(
-                          data: m,
-                        ));
-                  },
-                  child: Column(
-                    children: [
-                      Flex(
-                        direction: Axis.horizontal,
-                        children: [
-                          FxContainer(
-                            color: CustomTheme.primary.withAlpha(20),
-                            paddingAll: 10,
-                            margin: const EdgeInsets.only(
-                                left: 10, right: 10, bottom: 0, top: 0),
-                            child: Icon(
-                              m.amount_figure < 1
-                                  ? FeatherIcons.arrowUp
-                                  : FeatherIcons.arrowDown,
-                              color: m.amount_figure < 1
-                                  ? Colors.red.shade800
-                                  : Colors.green.shade800,
-                            ),
-                          ),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                FxText.bodySmall(Utils.to_date(m.created_at)),
-                                FxText.titleMedium(
-                                  m.account_name,
-                                  maxLines: 1,
-                                  color: Colors.grey.shade800,
-                                  fontWeight: 800,
-                                )
-                              ],
-                            ),
-                          ),
-                          FxText.bodyLarge(
-                            Utils.moneyFormat(m.amount),
-                            fontWeight: 700,
-                            color: (m.amount_figure < 0)
-                                ? Colors.red.shade700
-                                : Colors.green.shade700,
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          )
-                        ],
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 10, right: 10),
-                        child: Divider(),
-                      ),
-                    ],
-                  ),
-                );
+                return TransactionWidget(m);
               },
               childCount: transactions.length, // 1000 list items
             ),
