@@ -79,9 +79,8 @@ class Transaction {
     List<Transaction> data = [];
 
     RespondModel resp =
-        RespondModel(await Utils.http_get('${Transaction.endPoint}', {}));
+        RespondModel(await Utils.http_get(Transaction.endPoint, {}));
 
-    print(resp.message);
     if (resp.code != 1) {
       return [];
     }
