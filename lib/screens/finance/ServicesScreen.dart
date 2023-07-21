@@ -43,7 +43,6 @@ class ServicesScreenState extends State<ServicesScreen> {
   }
 
   late Future<dynamic> futureInit;
-  MarksModel localMark = MarksModel();
 
   @override
   Widget build(BuildContext context) {

@@ -65,7 +65,6 @@ class ServiceModel {
       await ServiceModel.getOnlineItems();
       data = await getLocalData(where: where);
     } else {
-      data = await getLocalData(where: where);
       ServiceModel.getOnlineItems();
     }
     data.sort((a, b) => b.name.compareTo(a.name));
