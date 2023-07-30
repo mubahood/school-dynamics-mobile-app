@@ -274,9 +274,9 @@ class Utils {
   }
 
   static Future<Database> getDb() async {
-    print("===GETING DB========");
+    print("===GETTING DB========");
     return await openDatabase(AppConfig.DATABASE_PATH,
-        version: 4);
+        version: AppConfig.DATABASE_VERSION);
   }
 
   static void init_dark_theme() {

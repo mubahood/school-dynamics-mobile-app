@@ -2,7 +2,6 @@ import 'package:schooldynamics/models/MarksModel.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../utils/AppConfig.dart';
 import 'RespondModel.dart';
 
 class StreamModel {
@@ -12,6 +11,7 @@ class StreamModel {
   int id = 0;
   String academic_class_id = "";
   String name = "";
+  String section = "";
 
   static StreamModel fromJson(dynamic m) {
     StreamModel obj = new StreamModel();
@@ -21,6 +21,7 @@ class StreamModel {
     obj.id = Utils.int_parse(m['id']);
     obj.academic_class_id = Utils.to_str(m['academic_class_id'], '');
     obj.name = Utils.to_str(m['name'], '');
+    obj.section = Utils.to_str(m['section'], '');
 
     return obj;
   }
@@ -168,6 +169,7 @@ class StreamModel {
         "${tableName} ("
         "id INTEGER PRIMARY KEY,"
         "academic_class_id TEXT,"
+        "section TEXT,"
         "name TEXT"
         ")";
 

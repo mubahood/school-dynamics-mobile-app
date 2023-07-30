@@ -23,6 +23,7 @@ class MyClasses {
   String compulsory_subjects = "";
   String optional_subjects = "";
   String class_type = "";
+  String section = "";
   String academic_class_level_id = "";
 
 
@@ -51,6 +52,7 @@ class MyClasses {
     obj.class_type = Utils.to_str(d['class_type'], '');
     obj.students_count = Utils.to_str(d['students_count'], '');
     obj.class_teacher_name = Utils.to_str(d['class_teacher_name'], '');
+    obj.section = Utils.to_str(d['section'], '');
     obj.academic_class_level_id =
         Utils.to_str(d['academic_class_level_id'], '');
 
@@ -178,6 +180,7 @@ class MyClasses {
       'optional_subjects': optional_subjects,
       'academic_class_level_id': academic_class_level_id,
       'class_type': class_type,
+      'section': section,
     };
   }
 
@@ -202,6 +205,7 @@ class MyClasses {
         "compulsory_subjects TEXT,"
         "optional_subjects TEXT,"
         "class_type TEXT,"
+        "section TEXT,"
         "academic_class_level_id TEXT"
         ")";
 

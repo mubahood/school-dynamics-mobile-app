@@ -20,6 +20,7 @@ class MySubjects {
   String subject_name = "";
   String academic_year_id = "";
   String class_teahcer_id = "";
+  String section = "";
   String name = "";
   String short_name = "";
   String academic_class_level_id = "";
@@ -47,6 +48,7 @@ class MySubjects {
     obj.subject_name = Utils.to_str(d['subject_name'], '');
     obj.academic_year_id = Utils.to_str(d['academic_year_id'], '');
     obj.class_teahcer_id = Utils.to_str(d['class_teahcer_id'], '');
+    obj.section = Utils.to_str(d['section'], '');
     obj.subject_teacher_name = Utils.to_str(d['subject_teacher_name'], '');
     obj.academic_class_level_id =
         Utils.to_str(d['academic_class_level_id'], '');
@@ -153,6 +155,7 @@ class MySubjects {
           sub.academic_year_id = Utils.to_str(x['academic_year_id'], '');
           sub.class_teahcer_id = Utils.to_str(x['class_teahcer_id'], '');
           sub.name = Utils.to_str(x['name'], '');
+          sub.section = Utils.to_str(x['section'], '');
           sub.short_name = Utils.to_str(x['short_name'], '');
           sub.academic_class_level_id =
               Utils.to_str(x['academic_class_level_id'], '');
@@ -214,6 +217,7 @@ class MySubjects {
       'short_name': short_name,
       'subject_teacher': subject_teacher,
       'academic_class_id': academic_class_id,
+      'section': section,
       'name': name,
     };
   }
@@ -236,6 +240,7 @@ class MySubjects {
         "subject_teacher_name TEXT,"
         "academic_class_level_id TEXT,"
         "short_name TEXT,"
+        "section TEXT,"
         "name TEXT,"
         "subject_name TEXT,"
         "subject_teacher TEXT,"
