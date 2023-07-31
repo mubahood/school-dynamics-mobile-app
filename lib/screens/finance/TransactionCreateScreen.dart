@@ -72,7 +72,7 @@ class TransactionCreateScreenState extends State<TransactionCreateScreen>
           ),
         ),
         title: FxText.titleMedium(
-          "Creating school fees payment",
+          "Creating school fees payament",
           fontSize: 20,
           color: Colors.black,
           fontWeight: 700,

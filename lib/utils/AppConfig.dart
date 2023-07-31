@@ -1,5 +1,3 @@
-import 'Utils.dart';
-
 class AppConfig {
   static String API_BASE_URL = "https://schooldynamics.ug/api";
   static const String ONESIGNAL_APP_ID = "4112fae4-4ea5-4acc-b9da-4dba93b85c34";
@@ -9,8 +7,8 @@ class AppConfig {
   static const String DASHBOARD_URL = "https://schooldynamics.ug";
 
   // static const String DASHBOARD_URL = "http://10.0.2.2:8000";
-  static const String APP_VERSION = "10";
-  static int DATABASE_VERSION = Utils.int_parse(APP_VERSION);
+  static const String APP_VERSION = "1";
+  static const int DATABASE_VERSION = 2;
   static const String DATABASE_PATH = "SCHOOL_DYNAMICS_${APP_VERSION}";
   static const String MAIN_SITE_URL = "https://schooldynamics.ug";
   static const String MAIN_SITE_URL_1 = "schooldynamics.ug";
@@ -53,6 +51,8 @@ class AppConfig {
   static const String LOGIN_PICS = "./assets/images/login/";
   static const String lorem_1 =
       "A widget that clips its child using a rectangle. By default, ClipRect prevents its child from painting outside its bounds, but the size and location of the clip rect can be customized using a custom clipper. ClipRect i commonly used with these widgets, which commonly paint outside their bounds: CustomPaint.";
+
+
 
 
 }

@@ -8,89 +8,9 @@ import 'package:shimmer/shimmer.dart';
 
 import '../models/MenuItem.dart';
 import '../models/ServiceSubscription.dart';
-import '../models/Transaction.dart';
-import '../screens/finance/TransactionScreen.dart';
 import '../theme/custom_theme.dart';
 import 'Utils.dart';
 
-Widget TransactionWidget(Transaction m) {
-  return InkWell(
-    onTap: () {
-      Get.to(() => TransactionScreen(
-        data: m,
-      ));
-    },
-    child: Column(
-      children: [
-        Flex(
-          direction: Axis.horizontal,
-          children: [
-            FxContainer(
-              color: CustomTheme.primary.withAlpha(20),
-              paddingAll: 10,
-              margin: const EdgeInsets.only(
-                  left: 10, right: 10, bottom: 0, top: 0),
-              child: Icon(
-                m.amount_figure < 1
-                    ? FeatherIcons.arrowUp
-                    : FeatherIcons.arrowDown,
-                color: m.amount_figure < 1
-                    ? Colors.red.shade800
-                    : Colors.green.shade800,
-              ),
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Flex(direction: Axis.horizontal, children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment:
-                        CrossAxisAlignment.start,
-                        children: [
-                          FxText.bodySmall(Utils.to_date(m.created_at)),
-                          FxText.titleMedium(
-                            m.account_name,
-                            maxLines: 1,
-                            color: Colors.grey.shade800,
-                            fontWeight: 800,
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    FxText.bodyLarge(
-                      Utils.moneyFormat(m.amount),
-                      fontWeight: 700,
-                      color: (m.amount_figure < 0)
-                          ? Colors.red.shade700
-                          : Colors.green.shade700,
-                    ),
-                  ]),
-
-
-                  FxText.bodySmall(m.description,
-                      color: Colors.grey.shade800,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis),
-                ],
-              ),
-            ),
-
-            const SizedBox(
-              width: 10,
-            )
-          ],
-        ),
-        const Padding(
-          padding: EdgeInsets.only(left: 10, right: 10),
-          child: Divider(),
-        ),
-      ],
-    ),
-  );
-}
 Widget ServiceSubscriptionWidget(ServiceSubscription m) => Flex(
       direction: Axis.horizontal,
       children: [

@@ -11,8 +11,7 @@ import '../../sections/widgets.dart';
 import '../../theme/app_theme.dart';
 import '../../theme/custom_theme.dart';
 import '../../utils/my_widgets.dart';
-import 'ChangeAccountBalanceScreen.dart';
-import 'ChangeAccountStatusScreen.dart';
+import '../finance/TransactionScreen.dart';
 import 'ServiceSubscriptionCreateScreen.dart';
 import 'TransactionCreateScreen.dart';
 
@@ -73,16 +72,7 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
                   Get.to(
                       () => ServiceSubscriptionCreateScreen({'id': item.id}));
                   break;
-                case '5':
-                  Get.to(() => ChangeAccountBalanceScreen({
-                        'account': item,
-                      }));
-                  break;
-                case '6':
-                  Get.to(() => ChangeAccountStatusScreen({
-                        'account': item,
-                      }));
-                  break;
+
                 case '3':
                   break;
               }
@@ -141,7 +131,7 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
                     ),
                   ),
                   PopupMenuItem(
-                    value: 5,
+                    value: 3,
                     child: Row(
                       children: [
                         Icon(
@@ -152,21 +142,6 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
                           width: 8,
                         ),
                         FxText.bodyLarge('Change balance'),
-                      ],
-                    ),
-                  ),
-                  PopupMenuItem(
-                    value: 6,
-                    child: Row(
-                      children: [
-                        Icon(
-                          FeatherIcons.checkSquare,
-                          color: CustomTheme.primary,
-                        ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        FxText.bodyLarge('Change account status'),
                       ],
                     ),
                   ),
@@ -441,7 +416,64 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
                   Transaction m = transactions[index];
-                  return TransactionWidget(m);
+                  return InkWell(
+                    onTap: () {
+                      Get.to(() => TransactionScreen(
+                            data: m,
+                          ));
+                    },
+                    child: Column(
+                      children: [
+                        Flex(
+                          direction: Axis.horizontal,
+                          children: [
+                            FxContainer(
+                              color: CustomTheme.primary.withAlpha(20),
+                              paddingAll: 10,
+                              margin: const EdgeInsets.only(
+                                  left: 10, right: 10, bottom: 0, top: 0),
+                              child: Icon(
+                                m.amount_figure < 1
+                                    ? FeatherIcons.arrowUp
+                                    : FeatherIcons.arrowDown,
+                                color: m.amount_figure < 1
+                                    ? Colors.red.shade800
+                                    : Colors.green.shade800,
+                              ),
+                            ),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  FxText.bodySmall(Utils.to_date(m.created_at)),
+                                  FxText.titleMedium(
+                                    m.account_name,
+                                    maxLines: 1,
+                                    color: Colors.grey.shade800,
+                                    fontWeight: 800,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            FxText.bodyLarge(
+                              Utils.moneyFormat(m.amount),
+                              fontWeight: 700,
+                              color: (m.amount_figure < 0)
+                                  ? Colors.red.shade700
+                                  : Colors.green.shade700,
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            )
+                          ],
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 10, right: 10),
+                          child: Divider(),
+                        ),
+                      ],
+                    ),
+                  );
                 },
                 childCount: transactions.length, // 1000 list items
               ),
