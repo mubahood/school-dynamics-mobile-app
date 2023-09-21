@@ -1,11 +1,3 @@
-/*
-  String  = "";
-  String father_phone = "";
-  String mother_name = "";
-  String mother_phone = "";
-
- */
-
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutx/flutx.dart';
@@ -50,8 +42,8 @@ class _StudentEditGuardianScreenState extends State<StudentEditGuardianScreen> {
   }
 
   Future<void> submit_form({
-    bool announceChanges: false,
-    bool askReset: false,
+    bool announceChanges = false,
+    bool askReset = false,
   }) async {
     if (!_formKey.currentState!.validate()) {
       Utils.toast("Please first fix errors.");

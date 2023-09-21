@@ -87,8 +87,8 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
   MyClasses classModel = MyClasses();
 
   Future<void> submit_form({
-    bool announceChanges: false,
-    bool askReset: false,
+    bool announceChanges = false,
+    bool askReset = false,
   }) async {
     if (!_formKey.currentState!.validate()) {
       Utils.toast("Please first fix errors.");

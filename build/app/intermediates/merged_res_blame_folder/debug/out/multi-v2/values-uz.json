@@ -4,6 +4,23 @@
             "outputFile": "schooldynamics.ug.app-mergeDebugResources-36:/values-uz/values-uz.xml",
             "map": [
                 {
+                    "source": "C:\\Users\\mubahood\\.gradle\\caches\\transforms-3\\fbe20841e015533a24cf9039dad791cf\\transformed\\browser-1.5.0\\res\\values-uz\\values-uz.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,173,282,392",
+                        "endColumns": "117,108,109,105",
+                        "endOffsets": "168,277,387,493"
+                    },
+                    "to": {
+                        "startLines": "54,55,56,57",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "5753,5871,5980,6090",
+                        "endColumns": "117,108,109,105",
+                        "endOffsets": "5866,5975,6085,6191"
+                    }
+                },
+                {
                     "source": "C:\\Users\\mubahood\\.gradle\\caches\\transforms-3\\42fd4caf74cd4768968ce83ac321f4a2\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-uz\\values.xml",
                     "from": {
                         "startLines": "4",
@@ -35,23 +52,6 @@
                         "startOffsets": "105,210,305,405,487,587,704,789,867,958,1051,1146,1240,1334,1427,1522,1617,1708,1800,1884,1994,2100,2200,2308,2414,2516,2677,6196",
                         "endColumns": "104,94,99,81,99,116,84,77,90,92,94,93,93,92,94,94,90,91,83,109,105,99,107,105,101,160,98,83",
                         "endOffsets": "205,300,400,482,582,699,784,862,953,1046,1141,1235,1329,1422,1517,1612,1703,1795,1879,1989,2095,2195,2303,2409,2511,2672,2771,6275"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\mubahood\\.gradle\\caches\\transforms-3\\d76931674ce76331e76a6367ccb8f024\\transformed\\browser-1.3.0\\res\\values-uz\\values-uz.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,173,282,392",
-                        "endColumns": "117,108,109,105",
-                        "endOffsets": "168,277,387,493"
-                    },
-                    "to": {
-                        "startLines": "54,55,56,57",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "5753,5871,5980,6090",
-                        "endColumns": "117,108,109,105",
-                        "endOffsets": "5866,5975,6085,6191"
                     }
                 },
                 {

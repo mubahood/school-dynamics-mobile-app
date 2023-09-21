@@ -10,12 +10,13 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutx/themes/app_theme.dart';
 import 'package:flutx/utils/spacing.dart';
 import 'package:flutx/widgets/text/text.dart';
 import 'package:flutx/widgets/text_field/text_field.dart';
 import 'package:flutx/utils/formatters/card_month_input_formatter.dart';
 import 'package:flutx/utils/formatters/card_number_input_formatter.dart';
+
+import '../../themes/app_theme.dart';
 
 typedef void OnCreditCardNumberChanged(String creditCardNumber);
 typedef void OnCreditCardDateChanged(String creditCardDate);
@@ -166,7 +167,7 @@ class _FxCreditCardState extends State<FxCreditCard>
             onPressed: () => Navigator.of(context).pop(),
             icon: Icon(Icons.chevron_left),
           ),
-          title: FxText.sh1("Add Card", fontWeight: 600),
+          title: FxText.bodySmall("Add Card", fontWeight: 600),
           actions: <Widget>[
             InkWell(
                 onTap: () {
@@ -223,7 +224,7 @@ class _FxCreditCardState extends State<FxCreditCard>
                                             color: Colors.white,
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(4))),
-                                        child: FxText.sh1("VISA",
+                                        child: FxText.bodySmall("VISA",
                                             fontWeight: 700,
                                             color: creditCardColor),
                                       ),
@@ -382,7 +383,7 @@ class _FxCreditCardState extends State<FxCreditCard>
                                               color: Colors.white,
                                               borderRadius: BorderRadius.all(
                                                   Radius.circular(4))),
-                                          child: FxText.b1("VISA",
+                                          child: FxText.bodySmall("VISA",
                                               fontWeight: 700,
                                               color: creditCardColor),
                                         ),

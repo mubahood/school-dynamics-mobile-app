@@ -37,7 +37,6 @@ class DottedBorder extends StatelessWidget {
               strokeWidth: strokeWidth,
               radius: radius,
               color: color,
-              borderType: borderType,
               dashPattern: dashPattern,
               customPath: customPath,
               strokeCap: strokeCap,

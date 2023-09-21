@@ -8,8 +8,8 @@
 /// [FxButtonType.outlined] - gives outline to the button
 /// [FxButtonType.text] - able to build text button
 import 'package:flutter/material.dart';
-import 'package:flutx/themes/app_theme.dart';
-import 'package:flutx/themes/themes.dart';
+
+import '../../themes/constant.dart';
 
 enum FxButtonType { elevated, outlined, text }
 

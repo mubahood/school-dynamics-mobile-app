@@ -50,7 +50,7 @@ class Transaction {
     return data;
   }
 
-  static Future<List<Transaction>> getLocalData({String where: "1"}) async {
+  static Future<List<Transaction>> getLocalData({String where = "1"}) async {
     List<Transaction> data = [];
     if (!(await Transaction.initTable())) {
       Utils.toast("Failed to init dynamic store.");

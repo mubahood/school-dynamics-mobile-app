@@ -1,7 +1,8 @@
 library flutx;
 
-import 'package:flutx/core/logs/log.dart';
-import 'package:flutx/themes/app_theme_notifier.dart';
+import 'core/logs/log.dart';
+import 'themes/app_theme_notifier.dart';
+
 
 export 'core/routes/routes.dart';
 export 'core/state_management/state_management.dart';

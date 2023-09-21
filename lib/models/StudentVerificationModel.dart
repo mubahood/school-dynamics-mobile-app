@@ -23,7 +23,7 @@ class StudentVerificationModel {
   List<UserModel> students = [];
 
   Future<List<UserModel>> getStudents() async {
-    students = await UserModel.getItems(where: " current_class_id = '${id}' ");
+    students = await UserModel.getItems(where : " current_class_id = '${id}' ");
     return students;
   }
 
@@ -60,7 +60,7 @@ class StudentVerificationModel {
   }
 
   static Future<List<StudentVerificationModel>> getLocalData(
-      {String where: "1"}) async {
+      {String where = "1"}) async {
     List<StudentVerificationModel> data = [];
     if (!(await StudentVerificationModel.initTable())) {
       Utils.toast("Failed to init dynamic store.");

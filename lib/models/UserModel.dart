@@ -261,7 +261,7 @@ class UserModel {
   static Future<UserModel> getItemById(String id) async {
     UserModel item = UserModel();
     try {
-      List<UserModel> items = await UserModel.getItems(where: "id = ${id}");
+      List<UserModel> items = await UserModel.getItems(where : "id = ${id}");
       if (items.isNotEmpty) {
         item = items.first;
       }
@@ -271,7 +271,7 @@ class UserModel {
     return item;
   }
 
-  static Future<List<UserModel>> getItems({String where: '1'}) async {
+  static Future<List<UserModel>> getItems({String where = '1'}) async {
     List<UserModel> items = await UserModel.getLocalData(where);
 
     if (items.isEmpty) {

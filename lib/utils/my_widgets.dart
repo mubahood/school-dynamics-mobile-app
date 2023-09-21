@@ -90,11 +90,11 @@ Widget menuItemWidget(MenuItem item) {
 }
 
 Widget valueUnitWidget2(dynamic title, dynamic value,
-    {double fontSize: 6,
-    double letterSpacing: -1,
-    Color titleColor: Colors.grey,
-    Color color: Colors.black,
-    fontWeight: FontWeight.w500}) {
+    {double fontSize = 6,
+    double letterSpacing = -1,
+    Color titleColor = Colors.grey,
+    Color color = Colors.black,
+    fontWeight = FontWeight.w500}) {
   return Container(
     child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -117,11 +117,11 @@ Widget valueUnitWidget2(dynamic title, dynamic value,
 }
 
 Widget valueUnitWidget(BuildContext context, dynamic value, dynamic unit,
-    {double fontSize: 6,
-    double letterSpacing: -1,
-    Color color: Colors.grey,
-    Color titleColor: Colors.black,
-    fontWeight: FontWeight.w500}) {
+    {double fontSize = 6,
+    double letterSpacing = -1,
+    Color color = Colors.grey,
+    Color titleColor = Colors.black,
+    fontWeight = FontWeight.w500}) {
   return RichText(
     text: TextSpan(
       style: TextStyle(

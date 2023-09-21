@@ -9,11 +9,11 @@
 ///
 
 import 'package:flutter/material.dart';
-import 'package:flutx/themes/app_theme.dart';
-import 'package:flutx/themes/text_style.dart';
 import 'package:flutx/utils/spacing.dart';
 import 'package:flutx/widgets/container/container.dart';
 
+import '../../themes/app_theme.dart';
+import '../../themes/text_style.dart';
 import 'bottom_navigation_bar_item.dart';
 
 export 'bottom_navigation_bar_item.dart';

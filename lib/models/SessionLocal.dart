@@ -130,7 +130,7 @@ class SessionLocal {
     };
   }
 
-  static Future<List<SessionLocal>> getItems({String where: '1'}) async {
+  static Future<List<SessionLocal>> getItems({String where = '1'}) async {
     List<SessionLocal> data = [];
     if (!(await SessionLocal.initTable())) {
       Utils.toast("Failed to init dynamic store.");

@@ -17,6 +17,7 @@ void main() {
   CustomTheme.primaryDark = Color(0xff225b4c);
   runApp(const MyApp());
 }
+
 /*
 *    flutter run --debug info option to get more log output.
 [        ] > flutter run --scan to get full insights.

@@ -47,7 +47,7 @@ class ServiceSubscription {
   }
 
   static Future<List<ServiceSubscription>> getLocalData(
-      {String where: "1"}) async {
+      {String where = "1"}) async {
     List<ServiceSubscription> data = [];
     if (!(await ServiceSubscription.initTable())) {
       Utils.toast("Failed to init dynamic store.");

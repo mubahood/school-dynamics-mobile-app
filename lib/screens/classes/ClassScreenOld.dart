@@ -19,15 +19,15 @@ import '../sessions/SessionCreateNewScreen.dart';
 import '../sessions/SessionLocalScreen.dart';
 import '../sessions/SessionOnlineScreen.dart';
 
-class ClassScreen extends StatefulWidget {
-  const ClassScreen({Key? key, required this.data}) : super(key: key);
+class ClassScreenOld extends StatefulWidget {
+  const ClassScreenOld({Key? key, required this.data}) : super(key: key);
   final dynamic data;
 
   @override
   _CourseTasksScreenState createState() => _CourseTasksScreenState();
 }
 
-class _CourseTasksScreenState extends State<ClassScreen> {
+class _CourseTasksScreenState extends State<ClassScreenOld> {
   late ThemeData themeData;
 
   _CourseTasksScreenState();

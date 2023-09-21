@@ -4,23 +4,6 @@
             "outputFile": "schooldynamics.ug.app-mergeDebugResources-36:/values-es/values-es.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\mubahood\\.gradle\\caches\\transforms-3\\d76931674ce76331e76a6367ccb8f024\\transformed\\browser-1.3.0\\res\\values-es\\values-es.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,162,263,378",
-                        "endColumns": "106,100,114,104",
-                        "endOffsets": "157,258,373,478"
-                    },
-                    "to": {
-                        "startLines": "54,55,56,57",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "5905,6012,6113,6228",
-                        "endColumns": "106,100,114,104",
-                        "endOffsets": "6007,6108,6223,6328"
-                    }
-                },
-                {
                     "source": "C:\\Users\\mubahood\\.gradle\\caches\\transforms-3\\42fd4caf74cd4768968ce83ac321f4a2\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-es\\values.xml",
                     "from": {
                         "startLines": "4",
@@ -35,6 +18,23 @@
                         "startOffsets": "4604",
                         "endColumns": "159",
                         "endOffsets": "4759"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\mubahood\\.gradle\\caches\\transforms-3\\fbe20841e015533a24cf9039dad791cf\\transformed\\browser-1.5.0\\res\\values-es\\values-es.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,162,263,378",
+                        "endColumns": "106,100,114,104",
+                        "endOffsets": "157,258,373,478"
+                    },
+                    "to": {
+                        "startLines": "54,55,56,57",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "5905,6012,6113,6228",
+                        "endColumns": "106,100,114,104",
+                        "endOffsets": "6007,6108,6223,6328"
                     }
                 },
                 {

@@ -6,7 +6,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:flutter_svg/flutter_svg.dart';
+
 import 'two_tone_icon_data.dart';
 
 export 'two_tone_icon_data.dart';
@@ -45,15 +45,7 @@ class _FxTwoToneIconState extends State<FxTwoToneIcon> {
     }
 
 
-
-    return iconDataString == null
-        ? Container()
-        : SvgPicture.string(
-            iconDataString!,
-            color: widget.color,
-            width: widget.size,
-            height: widget.size,
-          );
+    return Container();
   }
 
   getIconDataString() async {

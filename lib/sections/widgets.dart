@@ -15,8 +15,36 @@ import 'package:shimmer/shimmer.dart';
 import '../models/StudentVerificationModel.dart';
 import '../screens/finance/FinancialAccountScreen.dart';
 
+Widget singleWidget2(String title, String subTitle) {
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.start,
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      SizedBox(
+        width: 15,
+      ),
+      FxText.bodyLarge(
+        '${title}'.toUpperCase(),
+        color: CustomTheme.primary,
+        textAlign: TextAlign.left,
+        fontWeight: 700,
+      ),
+      SizedBox(
+        width: 5,
+      ),
+      FxText.bodyLarge(
+        subTitle,
+        maxLines: 10,
+      ),
+      SizedBox(
+        width: 15,
+      ),
+    ],
+  );
+}
+
 Widget roundedImage(String url, double w, double h,
-    {String no_image: AppConfig.NO_IMAGE, double radius: 10}) {
+    {String no_image = AppConfig.NO_IMAGE, double radius = 10}) {
   return ClipRRect(
     borderRadius: BorderRadius.circular(radius),
     child: CachedNetworkImage(
@@ -38,7 +66,7 @@ Widget roundedImage(String url, double w, double h,
 }
 
 Widget circularImage(String url, double size,
-    {String no_image: AppConfig.USER_IMAGE}) {
+    {String no_image = AppConfig.USER_IMAGE}) {
   return ClipOval(
     child: Container(
       color: CustomTheme.primary,
@@ -171,10 +199,10 @@ Widget singleWidget(String title, String subTitle) {
 
 
 Widget ShimmerLoadingWidget(
-    {double width: double.infinity,
-    double height: 200,
-    bool is_circle: false,
-    double padding: 0.0}) {
+    {double width = double.infinity,
+    double height = 200,
+    bool is_circle = false,
+    double padding = 0.0}) {
   return Padding(
     padding: EdgeInsets.all(padding),
     child: SizedBox(
@@ -569,7 +597,7 @@ Widget textInput(
   required String label,
   required String name,
   required String value,
-  bool required: false,
+  bool required = false,
 }) {
   return FormBuilderTextField(
     decoration: CustomTheme.in_3(
@@ -622,8 +650,8 @@ Widget IconTextWidget(
   String s,
   bool is_done,
   Function f, {
-  bool show_acation_button: true,
-  String action_text: "Edit",
+  bool show_acation_button = true,
+  String action_text = "Edit",
 }) {
   return ListTile(
     leading: is_done

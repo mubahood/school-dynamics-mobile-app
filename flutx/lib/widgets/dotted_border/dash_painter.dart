@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutx/widgets/dotted_border/dotted_border.dart';
-import 'package:flutx/widgets/path_drawing/dash_path.dart';
+
+import '../path_drawing/dash_path.dart';
 
 typedef PathBuilder = Path Function(Size);
 

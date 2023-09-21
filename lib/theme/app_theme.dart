@@ -4,6 +4,7 @@
 * */
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutx/flutx.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -17,14 +18,15 @@ class AppTheme {
 
 
   static InputDecoration InputDecorationTheme1(
-      {bool isDense: true,
-      String label: "",
-      IconData iconData: Icons.edit,
-      bool hasPadding: true,
-      String hintText: ""}) {
-    EdgeInsets padding = EdgeInsets.only(left: 10, top: 10, bottom: 10, right: 15);
+      {bool isDense = true,
+      String label = "",
+      IconData iconData = Icons.edit,
+      bool hasPadding = true,
+      String hintText = ""}) {
+    EdgeInsets padding =
+        EdgeInsets.only(left: 10, top: 10, bottom: 10, right: 15);
     if (!hasPadding) {
-       padding = EdgeInsets.only(left: 10, top: 0, bottom: 0, right: 15);
+      padding = EdgeInsets.only(left: 10, top: 0, bottom: 0, right: 15);
     }
 
     return InputDecoration(
@@ -147,15 +149,24 @@ class AppTheme {
     ),
   );
 
-
-
-
   static init() {
+    //   resetFont();
+    //  FlutX.changeTheme(theme);
+    AppTheme.resetFont();
+    FxAppTheme.changeTheme(lightTheme);
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: CustomTheme.primary,
+        statusBarIconBrightness: Brightness.light,
+        systemNavigationBarIconBrightness: Brightness.light,
+        systemNavigationBarColor: CustomTheme.primary));
+  }
+
+  /* static init() {
     //resetFont();
     FxAppTheme.changeLightTheme(lightTheme);
     //FxAppTheme.changeDarkTheme(darkTheme);
   }
-
+*/
   static resetFont() {
     //FxTextStyle.changeFontFamily(GoogleFonts.openSans);
     FxTextStyle.changeDefaultFontWeight({
@@ -183,12 +194,16 @@ class AppTheme {
     return CustomTheme.darkCustomTheme;
   }
 
-  static void changeFxTheme(ThemeType themeType) {
+  /*static void changeFxTheme(ThemeType themeType) {
     if (themeType == ThemeType.light) {
       FxAppTheme.changeThemeType(FxAppThemeType.light);
     } else if (themeType == ThemeType.dark) {
       FxAppTheme.changeThemeType(FxAppThemeType.dark);
     }
+  }
+*/
+  static void changeFxTheme() {
+    FlutX.changeTheme(theme);
   }
 
   /// -------------------------- Light Theme  -------------------------------------------- ///
@@ -222,9 +237,7 @@ class AppTheme {
     colorScheme: ColorScheme.light(
         primary: CustomTheme.primary,
         onPrimary: Color(0xffeeeeee),
-        primaryVariant: CustomTheme.primary,
         secondary: CustomTheme.primary,
-        secondaryVariant: Color(0xffeeeeee),
         onSecondary: Color(0xffeeeeee),
         surface: Color(0xffeeeeee),
         background: Color(0xffeeeeee),

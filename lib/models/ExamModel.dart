@@ -47,7 +47,7 @@ class ExamModel {
     return data;
   }
 
-  static Future<List<ExamModel>> getLocalData({String where: "1"}) async {
+  static Future<List<ExamModel>> getLocalData({String where = "1"}) async {
     List<ExamModel> data = [];
 
     if (!(await ExamModel.initTable())) {

@@ -57,6 +57,23 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\mubahood\\.gradle\\caches\\transforms-3\\fbe20841e015533a24cf9039dad791cf\\transformed\\browser-1.5.0\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,113,179,242,304,375,447,515,582,661",
+                        "endColumns": "57,65,62,61,70,71,67,66,78,68",
+                        "endOffsets": "108,174,237,299,370,442,510,577,656,725"
+                    },
+                    "to": {
+                        "startLines": "42,43,44,45,188,189,366,368,369,370",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "2687,2745,2811,2874,12531,12602,24893,25105,25172,25251",
+                        "endColumns": "57,65,62,61,70,71,67,66,78,68",
+                        "endOffsets": "2740,2806,2869,2931,12597,12669,24956,25167,25246,25315"
+                    }
+                },
+                {
                     "source": "C:\\Users\\mubahood\\.gradle\\caches\\transforms-3\\5f6c78d60b0156c470823d34e70daf1d\\transformed\\jetified-activity-1.7.2\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3",
@@ -146,23 +163,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\mubahood\\.gradle\\caches\\transforms-3\\d76931674ce76331e76a6367ccb8f024\\transformed\\browser-1.3.0\\res\\values\\values.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,113,179,242,304,375,447,515,582,661",
-                        "endColumns": "57,65,62,61,70,71,67,66,78,68",
-                        "endOffsets": "108,174,237,299,370,442,510,577,656,725"
-                    },
-                    "to": {
-                        "startLines": "42,43,44,45,188,189,366,368,369,370",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "2687,2745,2811,2874,12531,12602,24893,25105,25172,25251",
-                        "endColumns": "57,65,62,61,70,71,67,66,78,68",
-                        "endOffsets": "2740,2806,2869,2931,12597,12669,24956,25167,25246,25315"
-                    }
-                },
-                {
                     "source": "C:\\Users\\mubahood\\.gradle\\caches\\transforms-3\\d39565af933f5c5c3b37d48db8980f8d\\transformed\\jetified-savedstate-1.2.1\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2",
@@ -199,7 +199,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\mubahood\\.gradle\\caches\\transforms-3\\d9fa08f257f2ac8914bf4e27559659c5\\transformed\\jetified-OneSignal-4.8.5\\res\\values\\values.xml",
+                    "source": "C:\\Users\\mubahood\\.gradle\\caches\\transforms-3\\96d35bc9fdfd33a9bd9569bdb5f9432f\\transformed\\jetified-OneSignal-4.8.2\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",
@@ -213,23 +213,6 @@
                         "startOffsets": "25921,26097,26182,26254,26348,26429,26512,26637,26720",
                         "endColumns": "175,84,71,93,80,82,124,82,75",
                         "endOffsets": "26092,26177,26249,26343,26424,26507,26632,26715,26791"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\mubahood\\.gradle\\caches\\transforms-3\\30768c25e0aefbd4a5b2c2f837f5479b\\transformed\\jetified-firebase-messaging-23.1.2\\res\\values\\values.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "81",
-                        "endOffsets": "132"
-                    },
-                    "to": {
-                        "startLines": "371",
-                        "startColumns": "4",
-                        "startOffsets": "25320",
-                        "endColumns": "81",
-                        "endOffsets": "25397"
                     }
                 },
                 {
@@ -266,6 +249,23 @@
                         "endLines": "12,13,14,15,275,2042,2046,3168,3180,3188",
                         "endColumns": "11,59,51,44,59,24,24,24,24,24",
                         "endOffsets": "601,661,713,758,18142,134757,134888,173492,173932,174241"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\mubahood\\.gradle\\caches\\transforms-3\\20b99b33a1eb6d0fbb3c052680ea6ed3\\transformed\\jetified-firebase-messaging-23.2.1\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "81",
+                        "endOffsets": "132"
+                    },
+                    "to": {
+                        "startLines": "371",
+                        "startColumns": "4",
+                        "startOffsets": "25320",
+                        "endColumns": "81",
+                        "endOffsets": "25397"
                     }
                 },
                 {

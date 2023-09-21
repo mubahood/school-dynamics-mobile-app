@@ -38,10 +38,10 @@ class CustomTheme {
 
 
   static InputDecoration in_4(
-      {bool isDense: true,
-        String label: "",
-        IconData iconData: Icons.edit,
-        String hintText: ""}) {
+      {bool isDense = true,
+        String label = "",
+        IconData iconData = Icons.edit,
+        String hintText = ""}) {
     return InputDecoration(
       hintText: hintText.isEmpty ? null : hintText,
       isDense: isDense,
@@ -86,7 +86,7 @@ class CustomTheme {
 
 
   static InputDecoration in_3(
-      {String label: "", String hintText: "", double label_font_size: 16}) {
+      {String label = "", String hintText = "", double label_font_size = 16}) {
     return InputDecoration(
       filled: true,
       isDense: false,
@@ -128,10 +128,10 @@ class CustomTheme {
     );
   }
 
-  InputDecoration input_decoration_2({String labelText: "",
-    String hintText: "",
-    dynamic suffixIcon: null,
-    double label_font_size: 18}) {
+  InputDecoration input_decoration_2({String labelText = "",
+    String hintText = "",
+    dynamic suffixIcon = null,
+    double label_font_size = 18}) {
     return InputDecoration(
       suffixIcon: (suffixIcon == null)
           ? const SizedBox()
@@ -143,7 +143,7 @@ class CustomTheme {
       enabledBorder: InputBorder.none,
       filled: true,
       border: InputBorder.none,
-      labelStyle: FxTextStyle.b1(
+      labelStyle: FxTextStyle.bodySmall(
         color: Colors.grey.shade700,
         fontSize: label_font_size,
       ),
@@ -156,7 +156,7 @@ class CustomTheme {
     );
   }
 
-  static InputDecoration input_decoration_4({String labelText: ""}) {
+  static InputDecoration input_decoration_4({String labelText = ""}) {
     return InputDecoration(
       hintText: labelText,
       hintStyle: TextStyle(),
@@ -180,7 +180,7 @@ class CustomTheme {
     );
   }
 
-  InputDecoration input_decoration({String labelText: "", IconData icon: Icons.edit}) {
+  InputDecoration input_decoration({String labelText = "", IconData icon = Icons.edit}) {
     return InputDecoration(
       prefixIcon: Icon(icon, color: CustomTheme.primary),
       focusedBorder: OutlineInputBorder(
@@ -193,7 +193,7 @@ class CustomTheme {
       ),
       filled: true,
       border: InputBorder.none,
-      labelStyle: FxTextStyle.b1(color: CustomTheme.accent),
+      labelStyle: FxTextStyle.bodySmall(color: CustomTheme.accent),
       labelText: labelText,
       fillColor: CustomTheme.primary.withAlpha(40),
     );

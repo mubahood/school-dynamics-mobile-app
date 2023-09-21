@@ -4,16 +4,15 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+8
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: '>=3.0.3 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  flutx:
-    path: ./flutx
+
   connectivity_plus: ^3.0.2
   dio: ^4.0.4
-  google_fonts: ^2.3.2
+  google_fonts: ^5.1.0
   #provider: ^6.0.2
 
   hive: ^2.2.3
@@ -22,17 +21,18 @@ dependencies:
   # Base Dependencies
   cupertino_icons: ^1.0.3
   cached_network_image: ^3.2.0
-  flutter_form_builder: ^7.7.0
-  form_builder_validators: ^8.3.0
+  flutter_form_builder: 9.0.0
+  form_builder_validators: 9.0.0
   url_launcher: ^6.1.9
   flutter_native_splash: ^2.1.6
   geolocator: ^9.0.2
   image_picker: ^0.8.6+1
   shimmer: ^2.0.0
   intl: ^0.17.0
-  onesignal_flutter: ^3.5.1
+  onesignal_flutter: 3.5.0
   firebase_core: ^2.13.0
   firebase_messaging: ^14.6.1
+  flutx: ^0.2.0-rc.2
 
   get: ^4.6.5
   sqflite: ^2.2.4+1
@@ -50,8 +50,9 @@ dev_dependencies:
   build_runner: ^2.3.2
   change_app_package_name: ^1.0.0
 
-
-
+dependency_overrides:
+  intl: any
+  google_fonts: any
 
   # Icons
   material_design_icons_flutter: ^6.0.7096

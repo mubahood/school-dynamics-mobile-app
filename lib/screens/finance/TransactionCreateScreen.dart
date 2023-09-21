@@ -300,7 +300,7 @@ class TransactionCreateScreenState extends State<TransactionCreateScreen>
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           4.0),
-                                                  child: FxText.sh1(
+                                                  child: FxText.bodySmall(
                                                     "SUBMIT",
                                                     color: Colors.white,
                                                     fontWeight: 600,

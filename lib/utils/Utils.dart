@@ -375,7 +375,7 @@ class Utils {
   }
 
   static toast(String message,
-      {Color color: Colors.green, bool isLong: false}) {
+      {Color color = Colors.green, bool isLong = false}) {
     if (Colors.green == color) {
       color = CustomTheme.primary;
     }
@@ -399,9 +399,9 @@ class Utils {
     BuildContext context,
     Function onPositiveClick,
     Function onNegativeClick, {
-    String message: "Please confirm this action",
-    String positive_text: "Confirm",
-    String negative_text: "Cancel",
+    String message = "Please confirm this action",
+    String positive_text = "Confirm",
+    String negative_text = "Cancel",
   }) async {
     await showDialog<void>(
       context: context,
@@ -416,7 +416,7 @@ class Utils {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    FxText.sh1(
+                    FxText.bodySmall(
                       "${message}\n",
                       fontWeight: 500,
                     ),
@@ -431,7 +431,7 @@ class Utils {
                                 },
                                 borderRadiusAll: 4,
                                 elevation: 0,
-                                child: FxText.b2(positive_text,
+                                child: FxText.bodySmall(positive_text,
                                     letterSpacing: 0.3, color: Colors.white)),
                             SizedBox(
                               height: 10,
@@ -443,7 +443,7 @@ class Utils {
                                 },
                                 borderRadiusAll: 4,
                                 elevation: 0,
-                                child: FxText.b2(negative_text,
+                                child: FxText.bodySmall(negative_text,
                                     letterSpacing: 0.3, color: Colors.red)),
                           ],
                         )),

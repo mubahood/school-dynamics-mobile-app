@@ -11,8 +11,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutx/styles/shadow.dart';
-import 'package:flutx/themes/app_theme.dart';
-import 'package:flutx/themes/constant.dart';
+import '../../themes/app_theme.dart';
+import '../../themes/constant.dart';
 import '../../utils/spacing.dart';
 class FxCard extends StatelessWidget {
   final Widget child;

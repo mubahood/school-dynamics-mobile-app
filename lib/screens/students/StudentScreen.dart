@@ -457,7 +457,8 @@ class _CourseTasksScreenState extends State<StudentScreen> {
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
                 Transaction m = transactions[index];
-                return TransactionWidget(m);
+                return Text(m.account_name);
+                //return TransactionWidget(m);
               },
               childCount: transactions.length, // 1000 list items
             ),

@@ -39,7 +39,7 @@ class StreamModel {
     return data;
   }
 
-  static Future<List<StreamModel>> getLocalData({String where: "1"}) async {
+  static Future<List<StreamModel>> getLocalData({String where = "1"}) async {
     List<StreamModel> data = [];
     if (!(await StreamModel.initTable())) {
       Utils.toast("Failed to init dynamic store.");

@@ -35,7 +35,7 @@ class ServiceModel {
     return obj;
   }
 
-  static Future<List<ServiceModel>> getLocalData({String where: "1"}) async {
+  static Future<List<ServiceModel>> getLocalData({String where = "1"}) async {
     List<ServiceModel> data = [];
     if (!(await ServiceModel.initTable())) {
       Utils.toast("Failed to init dynamic store.");

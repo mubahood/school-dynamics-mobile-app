@@ -47,7 +47,7 @@ class MarksModel {
     return data;
   }
 
-  static Future<List<MarksModel>> getLocalData({String where: "1"}) async {
+  static Future<List<MarksModel>> getLocalData({String where = "1"}) async {
     List<MarksModel> data = [];
     if (!(await MarksModel.initTable())) {
       Utils.toast("Failed to init dynamic store.");

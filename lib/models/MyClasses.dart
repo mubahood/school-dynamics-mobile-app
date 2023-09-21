@@ -29,7 +29,7 @@ class MyClasses {
 
   List<UserModel> students = [];
   Future<List<UserModel>> getStudents() async {
-    students = await UserModel.getItems(where: " current_class_id = '${id}' ");
+    students = await UserModel.getItems(where : " current_class_id = '${id}' ");
 
     return students;
   }
@@ -72,7 +72,7 @@ class MyClasses {
     return data;
   }
 
-  static Future<List<MyClasses>> getLocalData({String where: "1"}) async {
+  static Future<List<MyClasses>> getLocalData({String where = "1"}) async {
     List<MyClasses> data = [];
     if (!(await MyClasses.initTable())) {
       Utils.toast("Failed to init dynamic store.");

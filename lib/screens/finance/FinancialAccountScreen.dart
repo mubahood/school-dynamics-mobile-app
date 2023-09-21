@@ -356,7 +356,7 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
   }
 
   Future<void> getBasicData() async {
-    List<UserModel> accs = await UserModel.getItems(where: "id = ${item.id}");
+    List<UserModel> accs = await UserModel.getItems(where : "id = ${item.id}");
     if (accs.isNotEmpty) {
       item = accs.first;
     }

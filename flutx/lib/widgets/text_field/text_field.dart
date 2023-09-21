@@ -11,10 +11,11 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutx/themes/app_theme.dart';
 import 'dart:ui' as ui show BoxHeightStyle, BoxWidthStyle;
-import 'package:flutx/themes/text_style.dart';
 import 'package:flutx/utils/spacing.dart';
+
+import '../../themes/app_theme.dart';
+import '../../themes/text_style.dart';
 
 enum FxTextFieldType { email, password, name, address, mobileNumber }
 enum FxTextFieldStyle {

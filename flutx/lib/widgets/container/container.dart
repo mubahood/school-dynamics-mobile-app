@@ -9,9 +9,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutx/themes/app_theme.dart';
-import 'package:flutx/themes/constant.dart';
 
+import '../../themes/app_theme.dart';
+import '../../themes/constant.dart';
 import '../../utils/spacing.dart';
 
 class FxContainer extends StatelessWidget {

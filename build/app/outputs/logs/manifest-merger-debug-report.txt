@@ -5,32 +5,32 @@ MERGED from [:firebase_messaging] C:\github\schooldynamics\build\firebase_messag
 MERGED from [:firebase_messaging] C:\github\schooldynamics\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:13:5-46:19
 MERGED from [:firebase_core] C:\github\schooldynamics\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_core] C:\github\schooldynamics\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-13:19
-MERGED from [:geolocator_android] C:\github\schooldynamics\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-15:19
-MERGED from [:geolocator_android] C:\github\schooldynamics\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-15:19
+MERGED from [:geolocator_android] C:\github\schooldynamics\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:geolocator_android] C:\github\schooldynamics\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:image_picker_android] C:\github\schooldynamics\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-17:19
 MERGED from [:image_picker_android] C:\github\schooldynamics\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-17:19
 MERGED from [:url_launcher_android] C:\github\schooldynamics\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-12:19
 MERGED from [:url_launcher_android] C:\github\schooldynamics\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-12:19
 MERGED from [:share_plus] C:\github\schooldynamics\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-17:19
 MERGED from [:share_plus] C:\github\schooldynamics\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-17:19
-MERGED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:49:5-134:19
-MERGED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:49:5-134:19
+MERGED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:49:5-134:19
+MERGED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:49:5-134:19
 MERGED from [com.google.android.gms:play-services-location:21.0.1] C:\Users\mubahood\.gradle\caches\transforms-3\cee0c88bfcacce959f24314533f66ec7\transformed\jetified-play-services-location-21.0.1\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-location:21.0.1] C:\Users\mubahood\.gradle\caches\transforms-3\cee0c88bfcacce959f24314533f66ec7\transformed\jetified-play-services-location-21.0.1\AndroidManifest.xml:7:5-20
-MERGED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:30:5-59:19
-MERGED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:30:5-59:19
+MERGED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:28:5-57:19
+MERGED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:28:5-57:19
 MERGED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\a6afbb1433ee788b751834f85c6102eb\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:19:5-23:19
 MERGED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\a6afbb1433ee788b751834f85c6102eb\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:19:5-23:19
 MERGED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\295e26063f785ff1467f3a3986bda8b4\transformed\jetified-firebase-iid-21.1.0\AndroidManifest.xml:28:5-36:19
 MERGED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\295e26063f785ff1467f3a3986bda8b4\transformed\jetified-firebase-iid-21.1.0\AndroidManifest.xml:28:5-36:19
 MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\42bf787422b5caf8f36a84bb76bc9f43\transformed\jetified-firebase-iid-interop-17.1.0\AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\42bf787422b5caf8f36a84bb76bc9f43\transformed\jetified-firebase-iid-interop-17.1.0\AndroidManifest.xml:7:5-8:19
-MERGED from [com.google.firebase:firebase-installations:17.1.3] C:\Users\mubahood\.gradle\caches\transforms-3\72cbffa65ad2ac8c98f7fd119dc9fa43\transformed\jetified-firebase-installations-17.1.3\AndroidManifest.xml:13:5-21:19
-MERGED from [com.google.firebase:firebase-installations:17.1.3] C:\Users\mubahood\.gradle\caches\transforms-3\72cbffa65ad2ac8c98f7fd119dc9fa43\transformed\jetified-firebase-installations-17.1.3\AndroidManifest.xml:13:5-21:19
+MERGED from [com.google.firebase:firebase-installations:17.1.4] C:\Users\mubahood\.gradle\caches\transforms-3\44dee1f1456064ed376b143aa0cbccd9\transformed\jetified-firebase-installations-17.1.4\AndroidManifest.xml:11:5-19:19
+MERGED from [com.google.firebase:firebase-installations:17.1.4] C:\Users\mubahood\.gradle\caches\transforms-3\44dee1f1456064ed376b143aa0cbccd9\transformed\jetified-firebase-installations-17.1.4\AndroidManifest.xml:11:5-19:19
 MERGED from [com.google.firebase:firebase-datatransport:18.1.7] C:\Users\mubahood\.gradle\caches\transforms-3\576d8353937f529f8a1ef830b762d6e5\transformed\jetified-firebase-datatransport-18.1.7\AndroidManifest.xml:23:5-31:19
 MERGED from [com.google.firebase:firebase-datatransport:18.1.7] C:\Users\mubahood\.gradle\caches\transforms-3\576d8353937f529f8a1ef830b762d6e5\transformed\jetified-firebase-datatransport-18.1.7\AndroidManifest.xml:23:5-31:19
-MERGED from [com.google.firebase:firebase-common:20.3.2] C:\Users\mubahood\.gradle\caches\transforms-3\b882cf4161b89dab4569f4209db41931\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:24:5-37:19
-MERGED from [com.google.firebase:firebase-common:20.3.2] C:\Users\mubahood\.gradle\caches\transforms-3\b882cf4161b89dab4569f4209db41931\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:24:5-37:19
+MERGED from [com.google.firebase:firebase-common:20.3.3] C:\Users\mubahood\.gradle\caches\transforms-3\a63a5c56b718e1cd42ffe9136b3e7a03\transformed\jetified-firebase-common-20.3.3\AndroidManifest.xml:24:5-37:19
+MERGED from [com.google.firebase:firebase-common:20.3.3] C:\Users\mubahood\.gradle\caches\transforms-3\a63a5c56b718e1cd42ffe9136b3e7a03\transformed\jetified-firebase-common-20.3.3\AndroidManifest.xml:24:5-37:19
 MERGED from [com.google.android.gms:play-services-tasks:18.0.2] C:\Users\mubahood\.gradle\caches\transforms-3\3bbe19965837840f69ee490125ab5060\transformed\jetified-play-services-tasks-18.0.2\AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-tasks:18.0.2] C:\Users\mubahood\.gradle\caches\transforms-3\3bbe19965837840f69ee490125ab5060\transformed\jetified-play-services-tasks-18.0.2\AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-stats:17.0.2] C:\Users\mubahood\.gradle\caches\transforms-3\ba9310428bb4cfb2624aaa096a866a81\transformed\jetified-play-services-stats-17.0.2\AndroidManifest.xml:7:5-20
@@ -69,7 +69,7 @@ INJECTED from C:\github\schooldynamics\android\app\src\main\AndroidManifest.xml:
 MERGED from C:\github\schooldynamics\android\app\src\main\AndroidManifest.xml:1:1-54:12
 MERGED from [:firebase_messaging] C:\github\schooldynamics\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-48:12
 MERGED from [:firebase_core] C:\github\schooldynamics\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-15:12
-MERGED from [:geolocator_android] C:\github\schooldynamics\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-17:12
+MERGED from [:geolocator_android] C:\github\schooldynamics\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:image_picker_android] C:\github\schooldynamics\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-19:12
 MERGED from [:flutter_plugin_android_lifecycle] C:\github\schooldynamics\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:sqflite] C:\github\schooldynamics\build\sqflite\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
@@ -80,16 +80,16 @@ MERGED from [:flutter_native_splash] C:\github\schooldynamics\build\flutter_nati
 MERGED from [:shared_preferences_android] C:\github\schooldynamics\build\shared_preferences_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:share_plus] C:\github\schooldynamics\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-19:12
 MERGED from [:onesignal_flutter] C:\github\schooldynamics\build\onesignal_flutter\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:2:1-136:12
+MERGED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:2:1-136:12
 MERGED from [androidx.appcompat:appcompat:1.3.1] C:\Users\mubahood\.gradle\caches\transforms-3\2ccf9401a0763fe4b60070ab0108354f\transformed\appcompat-1.3.1\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-location:21.0.1] C:\Users\mubahood\.gradle\caches\transforms-3\cee0c88bfcacce959f24314533f66ec7\transformed\jetified-play-services-location-21.0.1\AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:17:1-61:12
+MERGED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:17:1-59:12
 MERGED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\a6afbb1433ee788b751834f85c6102eb\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:16:1-24:12
 MERGED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\295e26063f785ff1467f3a3986bda8b4\transformed\jetified-firebase-iid-21.1.0\AndroidManifest.xml:17:1-38:12
 MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\42bf787422b5caf8f36a84bb76bc9f43\transformed\jetified-firebase-iid-interop-17.1.0\AndroidManifest.xml:2:1-10:12
-MERGED from [com.google.firebase:firebase-installations:17.1.3] C:\Users\mubahood\.gradle\caches\transforms-3\72cbffa65ad2ac8c98f7fd119dc9fa43\transformed\jetified-firebase-installations-17.1.3\AndroidManifest.xml:2:1-23:12
+MERGED from [com.google.firebase:firebase-installations:17.1.4] C:\Users\mubahood\.gradle\caches\transforms-3\44dee1f1456064ed376b143aa0cbccd9\transformed\jetified-firebase-installations-17.1.4\AndroidManifest.xml:2:1-21:12
 MERGED from [com.google.firebase:firebase-datatransport:18.1.7] C:\Users\mubahood\.gradle\caches\transforms-3\576d8353937f529f8a1ef830b762d6e5\transformed\jetified-firebase-datatransport-18.1.7\AndroidManifest.xml:15:1-33:12
-MERGED from [com.google.firebase:firebase-common:20.3.2] C:\Users\mubahood\.gradle\caches\transforms-3\b882cf4161b89dab4569f4209db41931\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:15:1-39:12
+MERGED from [com.google.firebase:firebase-common:20.3.3] C:\Users\mubahood\.gradle\caches\transforms-3\a63a5c56b718e1cd42ffe9136b3e7a03\transformed\jetified-firebase-common-20.3.3\AndroidManifest.xml:15:1-39:12
 MERGED from [com.google.firebase:firebase-installations-interop:17.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\4845158367d2174b26ca87c174825a39\transformed\jetified-firebase-installations-interop-17.1.0\AndroidManifest.xml:15:1-22:12
 MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.1] C:\Users\mubahood\.gradle\caches\transforms-3\d407314b3b30e5269c3305d592415d51\transformed\jetified-play-services-cloud-messaging-17.0.1\AndroidManifest.xml:2:1-13:12
 MERGED from [com.google.android.gms:play-services-tasks:18.0.2] C:\Users\mubahood\.gradle\caches\transforms-3\3bbe19965837840f69ee490125ab5060\transformed\jetified-play-services-tasks-18.0.2\AndroidManifest.xml:2:1-6:12
@@ -99,10 +99,10 @@ MERGED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\muba
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\mubahood\.gradle\caches\transforms-3\eaf1172700ada267f1518b3a278283bc\transformed\legacy-support-v4-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.fragment:fragment:1.3.6] C:\Users\mubahood\.gradle\caches\transforms-3\c5f5d2e4c21c5fe31c5e212c8293b591\transformed\fragment-1.3.6\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.activity:activity:1.7.2] C:\Users\mubahood\.gradle\caches\transforms-3\5f6c78d60b0156c470823d34e70daf1d\transformed\jetified-activity-1.7.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.browser:browser:1.5.0] C:\Users\mubahood\.gradle\caches\transforms-3\fbe20841e015533a24cf9039dad791cf\transformed\browser-1.5.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\mubahood\.gradle\caches\transforms-3\d682a3a321ae5b72a8951355946d509d\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
-MERGED from [androidx.browser:browser:1.3.0] C:\Users\mubahood\.gradle\caches\transforms-3\d76931674ce76331e76a6367ccb8f024\transformed\browser-1.3.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.work:work-runtime:2.7.1] C:\Users\mubahood\.gradle\caches\transforms-3\7c752566c276f3fdddb9468b654bed8b\transformed\work-runtime-2.7.1\AndroidManifest.xml:17:1-145:12
 MERGED from [androidx.core:core-ktx:1.10.1] C:\Users\mubahood\.gradle\caches\transforms-3\2ce6cd5cee21690047eaec3b1fda6e01\transformed\jetified-core-ktx-1.10.1\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.work:work-runtime:2.7.1] C:\Users\mubahood\.gradle\caches\transforms-3\7c752566c276f3fdddb9468b654bed8b\transformed\work-runtime-2.7.1\AndroidManifest.xml:17:1-145:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\mubahood\.gradle\caches\transforms-3\477ccbc80c81e449e1f582b10200dbda\transformed\legacy-support-core-ui-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\mubahood\.gradle\caches\transforms-3\1923e0e5b9caf2ba890761637f2cddad\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\mubahood\.gradle\caches\transforms-3\a3287cce38d585c2bb153e954bbbb472\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -131,9 +131,9 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.1.0] C:\User
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\mubahood\.gradle\caches\transforms-3\5e2d216100d930bbeb0ec4370123a17f\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:17:1-55:12
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\mubahood\.gradle\caches\transforms-3\f255179004e2b734984a8a8eb54e4dcd\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:17:1-33:12
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\mubahood\.gradle\caches\transforms-3\8fb8a7173c4f1ea1a03eb73270f4ad52\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\mubahood\.gradle\caches\transforms-3\a6730e4c93bf7abfc9d89402dd3d3ebd\transformed\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\mubahood\.gradle\caches\transforms-3\0d67a8a285bf7b655bc2ae4ba1102896\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\mubahood\.gradle\caches\transforms-3\02fa981bd40e298493d97c9506a49c44\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\mubahood\.gradle\caches\transforms-3\a6730e4c93bf7abfc9d89402dd3d3ebd\transformed\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-components:17.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\ed072ea3351d0a7812fce3daa3d59df0\transformed\jetified-firebase-components-17.1.0\AndroidManifest.xml:15:1-22:12
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\mubahood\.gradle\caches\transforms-3\75011fb61653bcb856910d282d1ecf5f\transformed\jetified-transport-backend-cct-3.1.8\AndroidManifest.xml:15:1-37:12
 MERGED from [com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\mubahood\.gradle\caches\transforms-3\1c9cc01bb7150194d75ede5c1b0b770b\transformed\jetified-transport-runtime-3.1.8\AndroidManifest.xml:15:1-41:12
@@ -178,12 +178,12 @@ MERGED from C:\github\schooldynamics\android\app\src\main\AndroidManifest.xml:6:
 MERGED from C:\github\schooldynamics\android\app\src\main\AndroidManifest.xml:6:5-67
 MERGED from [:firebase_messaging] C:\github\schooldynamics\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-67
 MERGED from [:firebase_messaging] C:\github\schooldynamics\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-67
-MERGED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:17:5-67
-MERGED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:17:5-67
+MERGED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:17:5-67
+MERGED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:17:5-67
 MERGED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\295e26063f785ff1467f3a3986bda8b4\transformed\jetified-firebase-iid-21.1.0\AndroidManifest.xml:23:5-67
 MERGED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\295e26063f785ff1467f3a3986bda8b4\transformed\jetified-firebase-iid-21.1.0\AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-installations:17.1.3] C:\Users\mubahood\.gradle\caches\transforms-3\72cbffa65ad2ac8c98f7fd119dc9fa43\transformed\jetified-firebase-installations-17.1.3\AndroidManifest.xml:10:5-67
-MERGED from [com.google.firebase:firebase-installations:17.1.3] C:\Users\mubahood\.gradle\caches\transforms-3\72cbffa65ad2ac8c98f7fd119dc9fa43\transformed\jetified-firebase-installations-17.1.3\AndroidManifest.xml:10:5-67
+MERGED from [com.google.firebase:firebase-installations:17.1.4] C:\Users\mubahood\.gradle\caches\transforms-3\44dee1f1456064ed376b143aa0cbccd9\transformed\jetified-firebase-installations-17.1.4\AndroidManifest.xml:8:5-67
+MERGED from [com.google.firebase:firebase-installations:17.1.4] C:\Users\mubahood\.gradle\caches\transforms-3\44dee1f1456064ed376b143aa0cbccd9\transformed\jetified-firebase-installations-17.1.4\AndroidManifest.xml:8:5-67
 MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.1] C:\Users\mubahood\.gradle\caches\transforms-3\d407314b3b30e5269c3305d592415d51\transformed\jetified-play-services-cloud-messaging-17.0.1\AndroidManifest.xml:8:5-67
 MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.1] C:\Users\mubahood\.gradle\caches\transforms-3\d407314b3b30e5269c3305d592415d51\transformed\jetified-play-services-cloud-messaging-17.0.1\AndroidManifest.xml:8:5-67
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\mubahood\.gradle\caches\transforms-3\75011fb61653bcb856910d282d1ecf5f\transformed\jetified-transport-backend-cct-3.1.8\AndroidManifest.xml:25:5-67
@@ -196,14 +196,14 @@ MERGED from [:firebase_messaging] C:\github\schooldynamics\build\firebase_messag
 MERGED from [:firebase_messaging] C:\github\schooldynamics\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-79
 MERGED from [:connectivity_plus] C:\github\schooldynamics\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-79
 MERGED from [:connectivity_plus] C:\github\schooldynamics\build\connectivity_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-79
-MERGED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:25:5-79
-MERGED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:25:5-79
-MERGED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:24:5-79
+MERGED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:25:5-79
+MERGED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:25:5-79
+MERGED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:22:5-79
 MERGED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\295e26063f785ff1467f3a3986bda8b4\transformed\jetified-firebase-iid-21.1.0\AndroidManifest.xml:22:5-79
 MERGED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\295e26063f785ff1467f3a3986bda8b4\transformed\jetified-firebase-iid-21.1.0\AndroidManifest.xml:22:5-79
-MERGED from [com.google.firebase:firebase-installations:17.1.3] C:\Users\mubahood\.gradle\caches\transforms-3\72cbffa65ad2ac8c98f7fd119dc9fa43\transformed\jetified-firebase-installations-17.1.3\AndroidManifest.xml:9:5-79
-MERGED from [com.google.firebase:firebase-installations:17.1.3] C:\Users\mubahood\.gradle\caches\transforms-3\72cbffa65ad2ac8c98f7fd119dc9fa43\transformed\jetified-firebase-installations-17.1.3\AndroidManifest.xml:9:5-79
+MERGED from [com.google.firebase:firebase-installations:17.1.4] C:\Users\mubahood\.gradle\caches\transforms-3\44dee1f1456064ed376b143aa0cbccd9\transformed\jetified-firebase-installations-17.1.4\AndroidManifest.xml:7:5-79
+MERGED from [com.google.firebase:firebase-installations:17.1.4] C:\Users\mubahood\.gradle\caches\transforms-3\44dee1f1456064ed376b143aa0cbccd9\transformed\jetified-firebase-installations-17.1.4\AndroidManifest.xml:7:5-79
 MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.1] C:\Users\mubahood\.gradle\caches\transforms-3\d407314b3b30e5269c3305d592415d51\transformed\jetified-play-services-cloud-messaging-17.0.1\AndroidManifest.xml:7:5-79
 MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.1] C:\Users\mubahood\.gradle\caches\transforms-3\d407314b3b30e5269c3305d592415d51\transformed\jetified-play-services-cloud-messaging-17.0.1\AndroidManifest.xml:7:5-79
 MERGED from [androidx.work:work-runtime:2.7.1] C:\Users\mubahood\.gradle\caches\transforms-3\7c752566c276f3fdddb9468b654bed8b\transformed\work-runtime-2.7.1\AndroidManifest.xml:26:5-79
@@ -258,26 +258,26 @@ MERGED from [:share_plus] C:\github\schooldynamics\build\share_plus\intermediate
 MERGED from [:share_plus] C:\github\schooldynamics\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:onesignal_flutter] C:\github\schooldynamics\build\onesignal_flutter\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:onesignal_flutter] C:\github\schooldynamics\build\onesignal_flutter\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:4:5-44
-MERGED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:4:5-44
+MERGED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:4:5-44
+MERGED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:4:5-44
 MERGED from [androidx.appcompat:appcompat:1.3.1] C:\Users\mubahood\.gradle\caches\transforms-3\2ccf9401a0763fe4b60070ab0108354f\transformed\appcompat-1.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat:1.3.1] C:\Users\mubahood\.gradle\caches\transforms-3\2ccf9401a0763fe4b60070ab0108354f\transformed\appcompat-1.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.gms:play-services-location:21.0.1] C:\Users\mubahood\.gradle\caches\transforms-3\cee0c88bfcacce959f24314533f66ec7\transformed\jetified-play-services-location-21.0.1\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-location:21.0.1] C:\Users\mubahood\.gradle\caches\transforms-3\cee0c88bfcacce959f24314533f66ec7\transformed\jetified-play-services-location-21.0.1\AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:20:5-22:41
-MERGED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\a6afbb1433ee788b751834f85c6102eb\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:18:5-43
 MERGED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\a6afbb1433ee788b751834f85c6102eb\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:18:5-43
 MERGED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\295e26063f785ff1467f3a3986bda8b4\transformed\jetified-firebase-iid-21.1.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\295e26063f785ff1467f3a3986bda8b4\transformed\jetified-firebase-iid-21.1.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\42bf787422b5caf8f36a84bb76bc9f43\transformed\jetified-firebase-iid-interop-17.1.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\42bf787422b5caf8f36a84bb76bc9f43\transformed\jetified-firebase-iid-interop-17.1.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-installations:17.1.3] C:\Users\mubahood\.gradle\caches\transforms-3\72cbffa65ad2ac8c98f7fd119dc9fa43\transformed\jetified-firebase-installations-17.1.3\AndroidManifest.xml:5:5-7:41
-MERGED from [com.google.firebase:firebase-installations:17.1.3] C:\Users\mubahood\.gradle\caches\transforms-3\72cbffa65ad2ac8c98f7fd119dc9fa43\transformed\jetified-firebase-installations-17.1.3\AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.firebase:firebase-installations:17.1.4] C:\Users\mubahood\.gradle\caches\transforms-3\44dee1f1456064ed376b143aa0cbccd9\transformed\jetified-firebase-installations-17.1.4\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-installations:17.1.4] C:\Users\mubahood\.gradle\caches\transforms-3\44dee1f1456064ed376b143aa0cbccd9\transformed\jetified-firebase-installations-17.1.4\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-datatransport:18.1.7] C:\Users\mubahood\.gradle\caches\transforms-3\576d8353937f529f8a1ef830b762d6e5\transformed\jetified-firebase-datatransport-18.1.7\AndroidManifest.xml:18:5-20:41
 MERGED from [com.google.firebase:firebase-datatransport:18.1.7] C:\Users\mubahood\.gradle\caches\transforms-3\576d8353937f529f8a1ef830b762d6e5\transformed\jetified-firebase-datatransport-18.1.7\AndroidManifest.xml:18:5-20:41
-MERGED from [com.google.firebase:firebase-common:20.3.2] C:\Users\mubahood\.gradle\caches\transforms-3\b882cf4161b89dab4569f4209db41931\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:19:5-21:41
-MERGED from [com.google.firebase:firebase-common:20.3.2] C:\Users\mubahood\.gradle\caches\transforms-3\b882cf4161b89dab4569f4209db41931\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-common:20.3.3] C:\Users\mubahood\.gradle\caches\transforms-3\a63a5c56b718e1cd42ffe9136b3e7a03\transformed\jetified-firebase-common-20.3.3\AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-common:20.3.3] C:\Users\mubahood\.gradle\caches\transforms-3\a63a5c56b718e1cd42ffe9136b3e7a03\transformed\jetified-firebase-common-20.3.3\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-installations-interop:17.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\4845158367d2174b26ca87c174825a39\transformed\jetified-firebase-installations-interop-17.1.0\AndroidManifest.xml:18:5-20:41
 MERGED from [com.google.firebase:firebase-installations-interop:17.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\4845158367d2174b26ca87c174825a39\transformed\jetified-firebase-installations-interop-17.1.0\AndroidManifest.xml:18:5-20:41
 MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.1] C:\Users\mubahood\.gradle\caches\transforms-3\d407314b3b30e5269c3305d592415d51\transformed\jetified-play-services-cloud-messaging-17.0.1\AndroidManifest.xml:5:5-44
@@ -296,14 +296,14 @@ MERGED from [androidx.fragment:fragment:1.3.6] C:\Users\mubahood\.gradle\caches\
 MERGED from [androidx.fragment:fragment:1.3.6] C:\Users\mubahood\.gradle\caches\transforms-3\c5f5d2e4c21c5fe31c5e212c8293b591\transformed\fragment-1.3.6\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.activity:activity:1.7.2] C:\Users\mubahood\.gradle\caches\transforms-3\5f6c78d60b0156c470823d34e70daf1d\transformed\jetified-activity-1.7.2\AndroidManifest.xml:20:5-44
 MERGED from [androidx.activity:activity:1.7.2] C:\Users\mubahood\.gradle\caches\transforms-3\5f6c78d60b0156c470823d34e70daf1d\transformed\jetified-activity-1.7.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.browser:browser:1.5.0] C:\Users\mubahood\.gradle\caches\transforms-3\fbe20841e015533a24cf9039dad791cf\transformed\browser-1.5.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.browser:browser:1.5.0] C:\Users\mubahood\.gradle\caches\transforms-3\fbe20841e015533a24cf9039dad791cf\transformed\browser-1.5.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\mubahood\.gradle\caches\transforms-3\d682a3a321ae5b72a8951355946d509d\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\mubahood\.gradle\caches\transforms-3\d682a3a321ae5b72a8951355946d509d\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
-MERGED from [androidx.browser:browser:1.3.0] C:\Users\mubahood\.gradle\caches\transforms-3\d76931674ce76331e76a6367ccb8f024\transformed\browser-1.3.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.browser:browser:1.3.0] C:\Users\mubahood\.gradle\caches\transforms-3\d76931674ce76331e76a6367ccb8f024\transformed\browser-1.3.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.work:work-runtime:2.7.1] C:\Users\mubahood\.gradle\caches\transforms-3\7c752566c276f3fdddb9468b654bed8b\transformed\work-runtime-2.7.1\AndroidManifest.xml:21:5-23:41
-MERGED from [androidx.work:work-runtime:2.7.1] C:\Users\mubahood\.gradle\caches\transforms-3\7c752566c276f3fdddb9468b654bed8b\transformed\work-runtime-2.7.1\AndroidManifest.xml:21:5-23:41
 MERGED from [androidx.core:core-ktx:1.10.1] C:\Users\mubahood\.gradle\caches\transforms-3\2ce6cd5cee21690047eaec3b1fda6e01\transformed\jetified-core-ktx-1.10.1\AndroidManifest.xml:5:5-44
 MERGED from [androidx.core:core-ktx:1.10.1] C:\Users\mubahood\.gradle\caches\transforms-3\2ce6cd5cee21690047eaec3b1fda6e01\transformed\jetified-core-ktx-1.10.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.work:work-runtime:2.7.1] C:\Users\mubahood\.gradle\caches\transforms-3\7c752566c276f3fdddb9468b654bed8b\transformed\work-runtime-2.7.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.work:work-runtime:2.7.1] C:\Users\mubahood\.gradle\caches\transforms-3\7c752566c276f3fdddb9468b654bed8b\transformed\work-runtime-2.7.1\AndroidManifest.xml:21:5-23:41
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\mubahood\.gradle\caches\transforms-3\477ccbc80c81e449e1f582b10200dbda\transformed\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\mubahood\.gradle\caches\transforms-3\477ccbc80c81e449e1f582b10200dbda\transformed\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\mubahood\.gradle\caches\transforms-3\1923e0e5b9caf2ba890761637f2cddad\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
@@ -360,12 +360,12 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\mubahood\.gradle\c
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\mubahood\.gradle\caches\transforms-3\f255179004e2b734984a8a8eb54e4dcd\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\mubahood\.gradle\caches\transforms-3\8fb8a7173c4f1ea1a03eb73270f4ad52\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\mubahood\.gradle\caches\transforms-3\8fb8a7173c4f1ea1a03eb73270f4ad52\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\mubahood\.gradle\caches\transforms-3\a6730e4c93bf7abfc9d89402dd3d3ebd\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\mubahood\.gradle\caches\transforms-3\a6730e4c93bf7abfc9d89402dd3d3ebd\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\mubahood\.gradle\caches\transforms-3\0d67a8a285bf7b655bc2ae4ba1102896\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\mubahood\.gradle\caches\transforms-3\0d67a8a285bf7b655bc2ae4ba1102896\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\mubahood\.gradle\caches\transforms-3\02fa981bd40e298493d97c9506a49c44\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\mubahood\.gradle\caches\transforms-3\02fa981bd40e298493d97c9506a49c44\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\mubahood\.gradle\caches\transforms-3\a6730e4c93bf7abfc9d89402dd3d3ebd\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\mubahood\.gradle\caches\transforms-3\a6730e4c93bf7abfc9d89402dd3d3ebd\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-components:17.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\ed072ea3351d0a7812fce3daa3d59df0\transformed\jetified-firebase-components-17.1.0\AndroidManifest.xml:18:5-20:41
 MERGED from [com.google.firebase:firebase-components:17.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\ed072ea3351d0a7812fce3daa3d59df0\transformed\jetified-firebase-components-17.1.0\AndroidManifest.xml:18:5-20:41
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\mubahood\.gradle\caches\transforms-3\75011fb61653bcb856910d282d1ecf5f\transformed\jetified-transport-backend-cct-3.1.8\AndroidManifest.xml:18:5-20:41
@@ -402,10 +402,10 @@ INJECTED from C:\github\schooldynamics\android\app\src\debug\AndroidManifest.xml
 		INJECTED from C:\github\schooldynamics\android\app\src\debug\AndroidManifest.xml
 uses-permission#android.permission.WAKE_LOCK
 ADDED from [:firebase_messaging] C:\github\schooldynamics\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:8:5-68
-MERGED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:19:5-68
-MERGED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:19:5-68
-MERGED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:26:5-68
-MERGED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:26:5-68
+MERGED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:19:5-68
+MERGED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:19:5-68
+MERGED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:24:5-68
+MERGED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:24:5-68
 MERGED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\295e26063f785ff1467f3a3986bda8b4\transformed\jetified-firebase-iid-21.1.0\AndroidManifest.xml:24:5-68
 MERGED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\295e26063f785ff1467f3a3986bda8b4\transformed\jetified-firebase-iid-21.1.0\AndroidManifest.xml:24:5-68
 MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.1] C:\Users\mubahood\.gradle\caches\transforms-3\d407314b3b30e5269c3305d592415d51\transformed\jetified-play-services-cloud-messaging-17.0.1\AndroidManifest.xml:9:5-68
@@ -416,10 +416,10 @@ MERGED from [androidx.work:work-runtime:2.7.1] C:\Users\mubahood\.gradle\caches\
 		ADDED from [:firebase_messaging] C:\github\schooldynamics\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:8:22-65
 uses-permission#android.permission.POST_NOTIFICATIONS
 ADDED from [:firebase_messaging] C:\github\schooldynamics\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-77
-MERGED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:16:5-77
-MERGED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:16:5-77
-MERGED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:25:5-77
-MERGED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:25:5-77
+MERGED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:16:5-77
+MERGED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:16:5-77
+MERGED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:23:5-77
+MERGED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:23:5-77
 	android:name
 		ADDED from [:firebase_messaging] C:\github\schooldynamics\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:11:22-74
 service#io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingBackgroundService
@@ -460,22 +460,22 @@ service#com.google.firebase.components.ComponentDiscoveryService
 ADDED from [:firebase_messaging] C:\github\schooldynamics\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:35:9-39:19
 MERGED from [:firebase_core] C:\github\schooldynamics\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_core] C:\github\schooldynamics\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:8:9-12:19
-MERGED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:52:9-58:19
-MERGED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:52:9-58:19
+MERGED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:50:9-56:19
+MERGED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:50:9-56:19
 MERGED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\295e26063f785ff1467f3a3986bda8b4\transformed\jetified-firebase-iid-21.1.0\AndroidManifest.xml:29:9-35:19
 MERGED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\295e26063f785ff1467f3a3986bda8b4\transformed\jetified-firebase-iid-21.1.0\AndroidManifest.xml:29:9-35:19
-MERGED from [com.google.firebase:firebase-installations:17.1.3] C:\Users\mubahood\.gradle\caches\transforms-3\72cbffa65ad2ac8c98f7fd119dc9fa43\transformed\jetified-firebase-installations-17.1.3\AndroidManifest.xml:14:9-20:19
-MERGED from [com.google.firebase:firebase-installations:17.1.3] C:\Users\mubahood\.gradle\caches\transforms-3\72cbffa65ad2ac8c98f7fd119dc9fa43\transformed\jetified-firebase-installations-17.1.3\AndroidManifest.xml:14:9-20:19
+MERGED from [com.google.firebase:firebase-installations:17.1.4] C:\Users\mubahood\.gradle\caches\transforms-3\44dee1f1456064ed376b143aa0cbccd9\transformed\jetified-firebase-installations-17.1.4\AndroidManifest.xml:12:9-18:19
+MERGED from [com.google.firebase:firebase-installations:17.1.4] C:\Users\mubahood\.gradle\caches\transforms-3\44dee1f1456064ed376b143aa0cbccd9\transformed\jetified-firebase-installations-17.1.4\AndroidManifest.xml:12:9-18:19
 MERGED from [com.google.firebase:firebase-datatransport:18.1.7] C:\Users\mubahood\.gradle\caches\transforms-3\576d8353937f529f8a1ef830b762d6e5\transformed\jetified-firebase-datatransport-18.1.7\AndroidManifest.xml:24:9-30:19
 MERGED from [com.google.firebase:firebase-datatransport:18.1.7] C:\Users\mubahood\.gradle\caches\transforms-3\576d8353937f529f8a1ef830b762d6e5\transformed\jetified-firebase-datatransport-18.1.7\AndroidManifest.xml:24:9-30:19
-MERGED from [com.google.firebase:firebase-common:20.3.2] C:\Users\mubahood\.gradle\caches\transforms-3\b882cf4161b89dab4569f4209db41931\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:32:9-36:35
-MERGED from [com.google.firebase:firebase-common:20.3.2] C:\Users\mubahood\.gradle\caches\transforms-3\b882cf4161b89dab4569f4209db41931\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:32:9-36:35
+MERGED from [com.google.firebase:firebase-common:20.3.3] C:\Users\mubahood\.gradle\caches\transforms-3\a63a5c56b718e1cd42ffe9136b3e7a03\transformed\jetified-firebase-common-20.3.3\AndroidManifest.xml:32:9-36:35
+MERGED from [com.google.firebase:firebase-common:20.3.3] C:\Users\mubahood\.gradle\caches\transforms-3\a63a5c56b718e1cd42ffe9136b3e7a03\transformed\jetified-firebase-common-20.3.3\AndroidManifest.xml:32:9-36:35
 	android:exported
-		ADDED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:54:13-37
+		ADDED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:52:13-37
 	tools:targetApi
-		ADDED from [com.google.firebase:firebase-common:20.3.2] C:\Users\mubahood\.gradle\caches\transforms-3\b882cf4161b89dab4569f4209db41931\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:36:13-32
+		ADDED from [com.google.firebase:firebase-common:20.3.3] C:\Users\mubahood\.gradle\caches\transforms-3\a63a5c56b718e1cd42ffe9136b3e7a03\transformed\jetified-firebase-common-20.3.3\AndroidManifest.xml:36:13-32
 	android:directBootAware
-		ADDED from [com.google.firebase:firebase-common:20.3.2] C:\Users\mubahood\.gradle\caches\transforms-3\b882cf4161b89dab4569f4209db41931\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:34:13-43
+		ADDED from [com.google.firebase:firebase-common:20.3.3] C:\Users\mubahood\.gradle\caches\transforms-3\a63a5c56b718e1cd42ffe9136b3e7a03\transformed\jetified-firebase-common-20.3.3\AndroidManifest.xml:34:13-43
 	android:name
 		ADDED from [:firebase_messaging] C:\github\schooldynamics\build\firebase_messaging\intermediates\merged_manifest\debug\AndroidManifest.xml:35:18-89
 meta-data#com.google.firebase.components:io.flutter.plugins.firebase.messaging.FlutterFirebaseAppRegistrar
@@ -500,22 +500,16 @@ ADDED from [:firebase_core] C:\github\schooldynamics\build\firebase_core\interme
 		ADDED from [:firebase_core] C:\github\schooldynamics\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:firebase_core] C:\github\schooldynamics\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:10:17-124
-uses-permission#android.permission.FOREGROUND_SERVICE
-ADDED from [:geolocator_android] C:\github\schooldynamics\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-77
-MERGED from [androidx.work:work-runtime:2.7.1] C:\Users\mubahood\.gradle\caches\transforms-3\7c752566c276f3fdddb9468b654bed8b\transformed\work-runtime-2.7.1\AndroidManifest.xml:28:5-77
-MERGED from [androidx.work:work-runtime:2.7.1] C:\Users\mubahood\.gradle\caches\transforms-3\7c752566c276f3fdddb9468b654bed8b\transformed\work-runtime-2.7.1\AndroidManifest.xml:28:5-77
-	android:name
-		ADDED from [:geolocator_android] C:\github\schooldynamics\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:7:22-74
 service#com.baseflow.geolocator.GeolocatorLocationService
-ADDED from [:geolocator_android] C:\github\schooldynamics\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-14:56
+ADDED from [:geolocator_android] C:\github\schooldynamics\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:8:9-12:56
 	android:enabled
-		ADDED from [:geolocator_android] C:\github\schooldynamics\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-35
+		ADDED from [:geolocator_android] C:\github\schooldynamics\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:13-35
 	android:exported
-		ADDED from [:geolocator_android] C:\github\schooldynamics\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
+		ADDED from [:geolocator_android] C:\github\schooldynamics\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-37
 	android:foregroundServiceType
-		ADDED from [:geolocator_android] C:\github\schooldynamics\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-53
+		ADDED from [:geolocator_android] C:\github\schooldynamics\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-53
 	android:name
-		ADDED from [:geolocator_android] C:\github\schooldynamics\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-77
+		ADDED from [:geolocator_android] C:\github\schooldynamics\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:13-77
 provider#io.flutter.plugins.imagepicker.ImagePickerFileProvider
 ADDED from [:image_picker_android] C:\github\schooldynamics\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:8:9-16:20
 	android:grantUriPermissions
@@ -551,277 +545,277 @@ ADDED from [:share_plus] C:\github\schooldynamics\build\share_plus\intermediates
 	android:name
 		ADDED from [:share_plus] C:\github\schooldynamics\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:9:13-77
 permission#${applicationId}.permission.C2D_MESSAGE
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:7:5-9:47
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:7:5-9:47
 	android:protectionLevel
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:9:9-44
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:9:9-44
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:8:9-63
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:8:9-63
 permission#schooldynamics.ug.permission.C2D_MESSAGE
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:7:5-9:47
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:7:5-9:47
 	android:protectionLevel
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:9:9-44
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:9:9-44
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:8:9-63
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:8:9-63
 uses-permission#${applicationId}.permission.C2D_MESSAGE
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:11:5-79
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:11:5-79
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:11:22-76
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:11:22-76
 uses-permission#schooldynamics.ug.permission.C2D_MESSAGE
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:11:5-79
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:11:5-79
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:11:22-76
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:11:22-76
 uses-permission#com.google.android.c2dm.permission.RECEIVE
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:18:5-82
-MERGED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:28:5-82
-MERGED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:28:5-82
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:18:5-82
+MERGED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:26:5-82
+MERGED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:26:5-82
 MERGED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\295e26063f785ff1467f3a3986bda8b4\transformed\jetified-firebase-iid-21.1.0\AndroidManifest.xml:26:5-82
 MERGED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\295e26063f785ff1467f3a3986bda8b4\transformed\jetified-firebase-iid-21.1.0\AndroidManifest.xml:26:5-82
 MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.1] C:\Users\mubahood\.gradle\caches\transforms-3\d407314b3b30e5269c3305d592415d51\transformed\jetified-play-services-cloud-messaging-17.0.1\AndroidManifest.xml:11:5-82
 MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.1] C:\Users\mubahood\.gradle\caches\transforms-3\d407314b3b30e5269c3305d592415d51\transformed\jetified-play-services-cloud-messaging-17.0.1\AndroidManifest.xml:11:5-82
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:18:22-79
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:18:22-79
 uses-permission#android.permission.VIBRATE
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:24:5-66
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:24:5-66
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:24:22-63
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:24:22-63
 uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:30:5-81
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:30:5-81
 MERGED from [androidx.work:work-runtime:2.7.1] C:\Users\mubahood\.gradle\caches\transforms-3\7c752566c276f3fdddb9468b654bed8b\transformed\work-runtime-2.7.1\AndroidManifest.xml:27:5-81
 MERGED from [androidx.work:work-runtime:2.7.1] C:\Users\mubahood\.gradle\caches\transforms-3\7c752566c276f3fdddb9468b654bed8b\transformed\work-runtime-2.7.1\AndroidManifest.xml:27:5-81
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:30:22-78
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:30:22-78
 uses-permission#com.sec.android.provider.badge.permission.READ
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:32:5-86
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:32:5-86
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:32:22-83
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:32:22-83
 uses-permission#com.sec.android.provider.badge.permission.WRITE
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:33:5-87
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:33:5-87
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:33:22-84
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:33:22-84
 uses-permission#com.htc.launcher.permission.READ_SETTINGS
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:34:5-81
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:34:5-81
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:34:22-78
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:34:22-78
 uses-permission#com.htc.launcher.permission.UPDATE_SHORTCUT
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:35:5-83
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:35:5-83
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:35:22-80
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:35:22-80
 uses-permission#com.sonyericsson.home.permission.BROADCAST_BADGE
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:36:5-88
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:36:5-88
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:36:22-85
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:36:22-85
 uses-permission#com.sonymobile.home.permission.PROVIDER_INSERT_BADGE
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:37:5-92
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:37:5-92
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:37:22-89
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:37:22-89
 uses-permission#com.anddoes.launcher.permission.UPDATE_COUNT
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:38:5-84
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:38:5-84
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:38:22-81
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:38:22-81
 uses-permission#com.majeur.launcher.permission.UPDATE_BADGE
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:39:5-83
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:39:5-83
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:39:22-80
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:39:22-80
 uses-permission#com.huawei.android.launcher.permission.CHANGE_BADGE
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:40:5-91
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:40:5-91
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:40:22-88
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:40:22-88
 uses-permission#com.huawei.android.launcher.permission.READ_SETTINGS
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:41:5-92
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:41:5-92
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:41:22-89
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:41:22-89
 uses-permission#com.huawei.android.launcher.permission.WRITE_SETTINGS
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:42:5-93
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:42:5-93
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:42:22-90
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:42:22-90
 uses-permission#android.permission.READ_APP_BADGE
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:43:5-73
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:43:5-73
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:43:22-70
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:43:22-70
 uses-permission#com.oppo.launcher.permission.READ_SETTINGS
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:44:5-82
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:44:5-82
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:44:22-79
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:44:22-79
 uses-permission#com.oppo.launcher.permission.WRITE_SETTINGS
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:45:5-83
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:45:5-83
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:45:22-80
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:45:22-80
 uses-permission#me.everything.badger.permission.BADGE_COUNT_READ
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:46:5-88
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:46:5-88
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:46:22-85
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:46:22-85
 uses-permission#me.everything.badger.permission.BADGE_COUNT_WRITE
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:47:5-89
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:47:5-89
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:47:22-86
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:47:22-86
 receiver#com.onesignal.FCMBroadcastReceiver
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:50:9-61:20
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:50:9-61:20
 	android:exported
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:52:13-36
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:52:13-36
 	android:permission
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:53:13-73
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:53:13-73
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:51:13-62
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:51:13-62
 intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE+category:name:${applicationId}
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:56:13-60:29
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:56:13-60:29
 	android:priority
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:56:28-50
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:56:28-50
 intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE+category:name:schooldynamics.ug
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:56:13-60:29
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:56:13-60:29
 	android:priority
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:56:28-50
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:56:28-50
 category#${applicationId}
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:59:17-61
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:59:17-61
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:59:27-58
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:59:27-58
 category#schooldynamics.ug
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:59:17-61
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:59:17-61
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:59:27-58
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:59:27-58
 service#com.onesignal.HmsMessageServiceOneSignal
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:63:9-69:19
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:63:9-69:19
 	android:exported
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:65:13-37
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:65:13-37
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:64:13-68
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:64:13-68
 intent-filter#action:name:com.huawei.push.action.MESSAGING_EVENT
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:66:13-68:29
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:66:13-68:29
 action#com.huawei.push.action.MESSAGING_EVENT
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:67:17-81
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:67:17-81
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:67:25-78
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:67:25-78
 activity#com.onesignal.NotificationOpenedActivityHMS
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:71:9-79:20
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:71:9-79:20
 	android:noHistory
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:74:13-37
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:74:13-37
 	android:exported
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:73:13-36
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:73:13-36
 	android:theme
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:75:13-72
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:75:13-72
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:72:13-71
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:72:13-71
 intent-filter#action:name:android.intent.action.VIEW
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:76:13-78:29
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:76:13-78:29
 service#com.onesignal.FCMIntentService
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:81:9-83:40
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:81:9-83:40
 	android:exported
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:83:13-37
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:83:13-37
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:82:13-58
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:82:13-58
 service#com.onesignal.FCMIntentJobService
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:84:9-87:72
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:84:9-87:72
 	android:exported
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:86:13-37
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:86:13-37
 	android:permission
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:87:13-69
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:87:13-69
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:85:13-61
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:85:13-61
 service#com.onesignal.SyncService
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:88:9-91:43
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:88:9-91:43
 	android:exported
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:90:13-37
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:90:13-37
 	android:stopWithTask
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:91:13-40
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:91:13-40
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:89:13-53
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:89:13-53
 service#com.onesignal.SyncJobService
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:92:9-95:72
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:92:9-95:72
 	android:exported
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:94:13-37
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:94:13-37
 	android:permission
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:95:13-69
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:95:13-69
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:93:13-56
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:93:13-56
 activity#com.onesignal.PermissionsActivity
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:97:9-100:75
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:97:9-100:75
 	android:exported
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:99:13-37
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:99:13-37
 	android:theme
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:100:13-72
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:100:13-72
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:98:13-61
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:98:13-61
 receiver#com.onesignal.NotificationDismissReceiver
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:102:9-104:39
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:102:9-104:39
 	android:exported
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:104:13-36
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:104:13-36
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:103:13-69
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:103:13-69
 receiver#com.onesignal.BootUpReceiver
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:105:9-112:20
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:105:9-112:20
 	android:exported
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:107:13-36
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:107:13-36
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:106:13-56
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:106:13-56
 intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.QUICKBOOT_POWERON
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:108:13-111:29
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:108:13-111:29
 action#android.intent.action.BOOT_COMPLETED
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:109:17-79
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:109:17-79
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:109:25-76
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:109:25-76
 action#android.intent.action.QUICKBOOT_POWERON
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:110:17-82
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:110:17-82
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:110:25-79
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:110:25-79
 receiver#com.onesignal.UpgradeReceiver
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:113:9-119:20
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:113:9-119:20
 	android:exported
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:115:13-36
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:115:13-36
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:114:13-57
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:114:13-57
 intent-filter#action:name:android.intent.action.MY_PACKAGE_REPLACED
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:116:13-118:29
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:116:13-118:29
 action#android.intent.action.MY_PACKAGE_REPLACED
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:117:17-84
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:117:17-84
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:117:25-81
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:117:25-81
 activity#com.onesignal.NotificationOpenedReceiver
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:121:9-127:75
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:121:9-127:75
 	android:excludeFromRecents
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:123:13-46
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:123:13-46
 	android:noHistory
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:125:13-37
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:125:13-37
 	android:exported
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:124:13-36
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:124:13-36
 	android:theme
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:127:13-72
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:127:13-72
 	android:taskAffinity
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:126:13-36
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:126:13-36
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:122:13-68
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:122:13-68
 activity#com.onesignal.NotificationOpenedReceiverAndroid22AndOlder
-ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:128:9-133:75
+ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:128:9-133:75
 	android:excludeFromRecents
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:130:13-46
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:130:13-46
 	android:noHistory
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:132:13-37
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:132:13-37
 	android:exported
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:131:13-36
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:131:13-36
 	android:theme
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:133:13-72
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:133:13-72
 	android:name
-		ADDED from [com.onesignal:OneSignal:4.8.5] C:\Users\mubahood\.gradle\caches\transforms-3\d9fa08f257f2ac8914bf4e27559659c5\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:129:13-85
+		ADDED from [com.onesignal:OneSignal:4.8.2] C:\Users\mubahood\.gradle\caches\transforms-3\96d35bc9fdfd33a9bd9569bdb5f9432f\transformed\jetified-OneSignal-4.8.2\AndroidManifest.xml:129:13-85
 receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
-ADDED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:31:9-38:20
+ADDED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:29:9-36:20
 	android:exported
-		ADDED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:33:13-36
+		ADDED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:31:13-36
 	android:permission
-		ADDED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:34:13-73
+		ADDED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:32:13-73
 	android:name
-		ADDED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:32:13-78
+		ADDED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:30:13-78
 service#com.google.firebase.messaging.FirebaseMessagingService
-ADDED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:44:9-51:19
+ADDED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:42:9-49:19
 	android:exported
-		ADDED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:47:13-37
+		ADDED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:45:13-37
 	android:directBootAware
-		ADDED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:46:13-43
+		ADDED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:44:13-43
 	android:name
-		ADDED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:45:13-82
+		ADDED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:43:13-82
 meta-data#com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar
-ADDED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:55:13-57:85
+ADDED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:53:13-55:85
 	android:value
-		ADDED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:57:17-82
+		ADDED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:55:17-82
 	android:name
-		ADDED from [com.google.firebase:firebase-messaging:23.1.2] C:\Users\mubahood\.gradle\caches\transforms-3\30768c25e0aefbd4a5b2c2f837f5479b\transformed\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:56:17-119
+		ADDED from [com.google.firebase:firebase-messaging:23.2.1] C:\Users\mubahood\.gradle\caches\transforms-3\20b99b33a1eb6d0fbb3c052680ea6ed3\transformed\jetified-firebase-messaging-23.2.1\AndroidManifest.xml:54:17-119
 activity#com.google.android.gms.common.api.GoogleApiActivity
 ADDED from [com.google.android.gms:play-services-base:18.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\a6afbb1433ee788b751834f85c6102eb\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:20:9-22:45
 	android:exported
@@ -837,11 +831,11 @@ ADDED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\mubahood\.gradle\c
 	android:name
 		ADDED from [com.google.firebase:firebase-iid:21.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\295e26063f785ff1467f3a3986bda8b4\transformed\jetified-firebase-iid-21.1.0\AndroidManifest.xml:33:17-96
 meta-data#com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar
-ADDED from [com.google.firebase:firebase-installations:17.1.3] C:\Users\mubahood\.gradle\caches\transforms-3\72cbffa65ad2ac8c98f7fd119dc9fa43\transformed\jetified-firebase-installations-17.1.3\AndroidManifest.xml:17:13-19:85
+ADDED from [com.google.firebase:firebase-installations:17.1.4] C:\Users\mubahood\.gradle\caches\transforms-3\44dee1f1456064ed376b143aa0cbccd9\transformed\jetified-firebase-installations-17.1.4\AndroidManifest.xml:15:13-17:85
 	android:value
-		ADDED from [com.google.firebase:firebase-installations:17.1.3] C:\Users\mubahood\.gradle\caches\transforms-3\72cbffa65ad2ac8c98f7fd119dc9fa43\transformed\jetified-firebase-installations-17.1.3\AndroidManifest.xml:19:17-82
+		ADDED from [com.google.firebase:firebase-installations:17.1.4] C:\Users\mubahood\.gradle\caches\transforms-3\44dee1f1456064ed376b143aa0cbccd9\transformed\jetified-firebase-installations-17.1.4\AndroidManifest.xml:17:17-82
 	android:name
-		ADDED from [com.google.firebase:firebase-installations:17.1.3] C:\Users\mubahood\.gradle\caches\transforms-3\72cbffa65ad2ac8c98f7fd119dc9fa43\transformed\jetified-firebase-installations-17.1.3\AndroidManifest.xml:18:17-127
+		ADDED from [com.google.firebase:firebase-installations:17.1.4] C:\Users\mubahood\.gradle\caches\transforms-3\44dee1f1456064ed376b143aa0cbccd9\transformed\jetified-firebase-installations-17.1.4\AndroidManifest.xml:16:17-127
 meta-data#com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar
 ADDED from [com.google.firebase:firebase-datatransport:18.1.7] C:\Users\mubahood\.gradle\caches\transforms-3\576d8353937f529f8a1ef830b762d6e5\transformed\jetified-firebase-datatransport-18.1.7\AndroidManifest.xml:27:13-29:85
 	android:value
@@ -849,23 +843,27 @@ ADDED from [com.google.firebase:firebase-datatransport:18.1.7] C:\Users\mubahood
 	android:name
 		ADDED from [com.google.firebase:firebase-datatransport:18.1.7] C:\Users\mubahood\.gradle\caches\transforms-3\576d8353937f529f8a1ef830b762d6e5\transformed\jetified-firebase-datatransport-18.1.7\AndroidManifest.xml:28:17-115
 provider#com.google.firebase.provider.FirebaseInitProvider
-ADDED from [com.google.firebase:firebase-common:20.3.2] C:\Users\mubahood\.gradle\caches\transforms-3\b882cf4161b89dab4569f4209db41931\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:25:9-30:39
+ADDED from [com.google.firebase:firebase-common:20.3.3] C:\Users\mubahood\.gradle\caches\transforms-3\a63a5c56b718e1cd42ffe9136b3e7a03\transformed\jetified-firebase-common-20.3.3\AndroidManifest.xml:25:9-30:39
 	android:authorities
-		ADDED from [com.google.firebase:firebase-common:20.3.2] C:\Users\mubahood\.gradle\caches\transforms-3\b882cf4161b89dab4569f4209db41931\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:27:13-72
+		ADDED from [com.google.firebase:firebase-common:20.3.3] C:\Users\mubahood\.gradle\caches\transforms-3\a63a5c56b718e1cd42ffe9136b3e7a03\transformed\jetified-firebase-common-20.3.3\AndroidManifest.xml:27:13-72
 	android:exported
-		ADDED from [com.google.firebase:firebase-common:20.3.2] C:\Users\mubahood\.gradle\caches\transforms-3\b882cf4161b89dab4569f4209db41931\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:29:13-37
+		ADDED from [com.google.firebase:firebase-common:20.3.3] C:\Users\mubahood\.gradle\caches\transforms-3\a63a5c56b718e1cd42ffe9136b3e7a03\transformed\jetified-firebase-common-20.3.3\AndroidManifest.xml:29:13-37
 	android:directBootAware
-		ADDED from [com.google.firebase:firebase-common:20.3.2] C:\Users\mubahood\.gradle\caches\transforms-3\b882cf4161b89dab4569f4209db41931\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:28:13-43
+		ADDED from [com.google.firebase:firebase-common:20.3.3] C:\Users\mubahood\.gradle\caches\transforms-3\a63a5c56b718e1cd42ffe9136b3e7a03\transformed\jetified-firebase-common-20.3.3\AndroidManifest.xml:28:13-43
 	android:initOrder
-		ADDED from [com.google.firebase:firebase-common:20.3.2] C:\Users\mubahood\.gradle\caches\transforms-3\b882cf4161b89dab4569f4209db41931\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:30:13-36
+		ADDED from [com.google.firebase:firebase-common:20.3.3] C:\Users\mubahood\.gradle\caches\transforms-3\a63a5c56b718e1cd42ffe9136b3e7a03\transformed\jetified-firebase-common-20.3.3\AndroidManifest.xml:30:13-36
 	android:name
-		ADDED from [com.google.firebase:firebase-common:20.3.2] C:\Users\mubahood\.gradle\caches\transforms-3\b882cf4161b89dab4569f4209db41931\transformed\jetified-firebase-common-20.3.2\AndroidManifest.xml:26:13-77
+		ADDED from [com.google.firebase:firebase-common:20.3.3] C:\Users\mubahood\.gradle\caches\transforms-3\a63a5c56b718e1cd42ffe9136b3e7a03\transformed\jetified-firebase-common-20.3.3\AndroidManifest.xml:26:13-77
 meta-data#com.google.android.gms.version
 ADDED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\42fd4caf74cd4768968ce83ac321f4a2\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
 	android:value
 		ADDED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\42fd4caf74cd4768968ce83ac321f4a2\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
 	android:name
 		ADDED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\mubahood\.gradle\caches\transforms-3\42fd4caf74cd4768968ce83ac321f4a2\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from [androidx.work:work-runtime:2.7.1] C:\Users\mubahood\.gradle\caches\transforms-3\7c752566c276f3fdddb9468b654bed8b\transformed\work-runtime-2.7.1\AndroidManifest.xml:28:5-77
+	android:name
+		ADDED from [androidx.work:work-runtime:2.7.1] C:\Users\mubahood\.gradle\caches\transforms-3\7c752566c276f3fdddb9468b654bed8b\transformed\work-runtime-2.7.1\AndroidManifest.xml:28:22-74
 provider#androidx.startup.InitializationProvider
 ADDED from [androidx.work:work-runtime:2.7.1] C:\Users\mubahood\.gradle\caches\transforms-3\7c752566c276f3fdddb9468b654bed8b\transformed\work-runtime-2.7.1\AndroidManifest.xml:31:9-39:20
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\mubahood\.gradle\caches\transforms-3\5e2d216100d930bbeb0ec4370123a17f\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:24:9-32:20

@@ -1,8 +1,3 @@
-/*
-* File : Login
-* Version : 1.0.0
-* */
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -47,8 +42,8 @@ class _StudentEditBioScreenState extends State<StudentEditBioScreen> {
   }
 
   Future<void> submit_form({
-    bool announceChanges: false,
-    bool askReset: false,
+    bool announceChanges = false,
+    bool askReset = false,
   }) async {
     if (!_formKey.currentState!.validate()) {
       Utils.toast("Please first fix errors.");

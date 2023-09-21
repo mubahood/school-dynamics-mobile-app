@@ -91,7 +91,7 @@ class SessionOnline {
     };
   }
 
-  static Future<List<SessionOnline>> getItems({String where = '1', bool forceWait : true}) async {
+  static Future<List<SessionOnline>> getItems({String where = '1', bool forceWait = true}) async {
     List<SessionOnline> data = await getLocalData(where: where);
     if (data.isEmpty && forceWait) {
       await SessionOnline.getOnlineItems();
