@@ -13,8 +13,8 @@ void main() {
   Utils.boot_system();
   Utils.init_theme();
 
-  CustomTheme.primary = Color(0xff225b4c);
-  CustomTheme.primaryDark = Color(0xff225b4c);
+  CustomTheme.primary = const Color(0xff225b4c);
+  CustomTheme.primaryDark = const Color(0xff225b4c);
   runApp(const MyApp());
 }
 
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
       home: OnBoardingScreen(),
       routes: {
         '/OnBoardingScreen': (context) => OnBoardingScreen(),
-        AppConfig.FullApp: (context) => FullApp(),
+        AppConfig.FullApp: (context) => const FullApp(),
       },
     );
   }

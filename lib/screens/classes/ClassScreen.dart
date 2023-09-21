@@ -47,8 +47,11 @@ class _CourseTasksScreenState extends State<ClassScreen> {
             const SizedBox(
               height: 8,
             ),
-            singleWidget2(
-                'Class', '${widget.data.name} - ${widget.data.short_name}'),
+            Container(
+              padding:
+              child: singleWidget2(
+                  'Class', '${widget.data.name} - ${widget.data.short_name}'),
+            ),
             singleWidget2('Academic year', '${widget.data.academic_year_id}'),
             singleWidget2('Class teacher', '${widget.data.class_teacher_name}'),
             singleWidget2('Students', '${widget.data.students_count}'),
@@ -85,6 +88,4 @@ class _CourseTasksScreenState extends State<ClassScreen> {
       ),
     );
   }
-
-
 }

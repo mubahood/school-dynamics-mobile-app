@@ -19,7 +19,7 @@ class ExamModel {
   String term_name = "";
 
   static ExamModel fromJson(dynamic m) {
-    ExamModel obj = new ExamModel();
+    ExamModel obj = ExamModel();
     if (m == null) {
       return obj;
     }
@@ -34,7 +34,8 @@ class ExamModel {
     return obj;
   }
 
-  static Future<List<ExamModel>> getItems({String where = '1',bool forceWait  = true}) async {
+  static Future<List<ExamModel>> getItems(
+      {String where = '1', bool forceWait = true}) async {
     List<ExamModel> data = await getLocalData(where: where);
     if (data.isEmpty && forceWait) {
       await ExamModel.getOnlineItems();
@@ -73,10 +74,8 @@ class ExamModel {
   }
 
   static Future<List<ExamModel>> getOnlineItems() async {
-    List<ExamModel> data = [];
-
     RespondModel resp =
-        RespondModel(await Utils.http_get('${ExamModel.endPoint}', {}));
+        RespondModel(await Utils.http_get(ExamModel.endPoint, {}));
 
     if (resp.code != 1) {
       return [];
@@ -136,8 +135,6 @@ class ExamModel {
     }
 
     return [];
-
-    return data;
   }
 
   save() async {
@@ -180,7 +177,7 @@ class ExamModel {
     }
 
     String sql = " CREATE TABLE IF NOT EXISTS "
-        "${tableName} ("
+        "$tableName ("
         "id INTEGER PRIMARY KEY,"
         "term_id TEXT,"
         "type TEXT,"
