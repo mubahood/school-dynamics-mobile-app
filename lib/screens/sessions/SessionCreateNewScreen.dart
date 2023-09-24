@@ -144,9 +144,10 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.white),
         titleSpacing: 0,
-        title: FxText.titleLarge(
+        title: FxText.titleMedium(
           "Creating new roll-call",
           color: Colors.white,
+          fontWeight: 800,
         ),
       ),
       body: ListView(
@@ -278,9 +279,11 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
                                     CustomTheme.primary),
                               ))
                           : FxButton.block(
-                              onPressed: () {
+                          onPressed: () {
                                 submit_form();
                               },
+                              padding:
+                                  const EdgeInsets.fromLTRB(24, 24, 24, 24),
                               borderRadiusAll: 100,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,

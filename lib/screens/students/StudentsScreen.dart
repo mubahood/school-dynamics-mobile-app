@@ -15,12 +15,12 @@ import '../../utils/Utils.dart';
 import '../../utils/my_widgets.dart';
 
 class StudentsScreen extends StatefulWidget {
-  Map<String, String> params = {};
+  Map<String, dynamic> params = {};
 
   StudentsScreen(this.params, {Key? key}) : super(key: key);
 
   @override
-  StudentsScreenState createState() => new StudentsScreenState();
+  StudentsScreenState createState() => StudentsScreenState();
 }
 
 class StudentsScreenState extends State<StudentsScreen> {
@@ -46,7 +46,7 @@ class StudentsScreenState extends State<StudentsScreen> {
 
   bool searchIsopen = false;
   String searchKeyWord = "";
-  TextEditingController search_controler = new TextEditingController();
+  TextEditingController search_controler = TextEditingController();
   var searchFocusNode = FocusNode();
 
   @override
@@ -58,13 +58,13 @@ class StudentsScreenState extends State<StudentsScreen> {
         backgroundColor: CustomTheme.primary,
         titleSpacing: 0,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         automaticallyImplyLeading: true,
         // remove back button in appbar.
         title: searchIsopen
             ? FxContainer(
                 color: Colors.white,
-                padding: EdgeInsets.only(left: 10, top: 8, bottom: 8),
+                padding: const EdgeInsets.only(left: 10, top: 8, bottom: 8),
                 child: FormBuilderTextField(
                   name: "search",
                   onChanged: (x) {
@@ -77,21 +77,21 @@ class StudentsScreenState extends State<StudentsScreen> {
                     hintText: "Search ...",
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
-                          Radius.circular(MySize.size8!),
+                          Radius.circular(MySize.size8),
                         ),
                         borderSide: BorderSide.none),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
-                          Radius.circular(MySize.size8!),
+                          Radius.circular(MySize.size8),
                         ),
                         borderSide: BorderSide.none),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
-                          Radius.circular(MySize.size8!),
+                          Radius.circular(MySize.size8),
                         ),
                         borderSide: BorderSide.none),
                     isDense: true,
-                    contentPadding: EdgeInsets.all(0),
+                    contentPadding: const EdgeInsets.all(0),
                   ),
                   controller: search_controler,
                   focusNode: searchFocusNode,
@@ -172,20 +172,21 @@ class StudentsScreenState extends State<StudentsScreen> {
                             FxContainer(
                               color: CupertinoColors.lightBackgroundGray,
                               borderRadiusAll: 0,
-                              padding: EdgeInsets.only(top: 8),
+                              padding: const EdgeInsets.only(top: 8),
                               child: Wrap(
                                 runSpacing: 0,
                                 children: <Widget>[
                                   _buildChip('All'),
                                   _buildChip('Male'),
                                   _buildChip('Female'),
-                                  _buildChip(
-                                      '${selected_class_text.isEmpty ? "Class" : 'Class - $selected_class_text'}'),
+                                  _buildChip(selected_class_text.isEmpty
+                                      ? "Class"
+                                      : 'Class - $selected_class_text'),
                                   _buildChip('Fees'),
                                 ],
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Divider(
@@ -193,7 +194,8 @@ class StudentsScreenState extends State<StudentsScreen> {
                               height: 0,
                             ),
                             Container(
-                                padding: EdgeInsets.only(bottom: 10, top: 5),
+                                padding:
+                                    const EdgeInsets.only(bottom: 10, top: 5),
                                 child: Column(
                                   children: [
                                     Row(
@@ -224,7 +226,8 @@ class StudentsScreenState extends State<StudentsScreen> {
                         delegate: SliverChildBuilderDelegate(
                           (BuildContext context, int index) {
                             UserModel m = items[index];
-                            return userWidget(m,context, task_picker: task_picker);
+                            return userWidget(m, context,
+                                task_picker: task_picker);
                           },
                           childCount: items.length, // 1000 list items
                         ),
@@ -240,17 +243,20 @@ class StudentsScreenState extends State<StudentsScreen> {
 
   List<UserModel> originalItems = [];
   String task_picker = "";
+  MyClasses selectedClass = MyClasses();
   Future<void> init({bool isRefresh = false}) async {
-
-    if (widget.params != null) {
-      if (widget.params['task_picker'] != null) {
-        task_picker = 'task_picker';
-      }
+    if (widget.params['task_picker'] != null) {
+      task_picker = 'task_picker';
     }
+
+    if (widget.params['class'].runtimeType == MyClasses) {
+      selectedClass = widget.params['class'];
+      selected_class_id = selectedClass.id.toString();
+      selected_class_text = selectedClass.short_name.toString();
+    }
+
     if (isRefresh || originalItems.isEmpty) {
-
       originalItems = await UserModel.getItems();
-
     }
     if (classes.isEmpty) {
       classes = await MyClasses.getItems();
@@ -345,17 +351,17 @@ class StudentsScreenState extends State<StudentsScreen> {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(MySize.size16!),
-                topRight: Radius.circular(MySize.size16!),
+                topLeft: Radius.circular(MySize.size16),
+                topRight: Radius.circular(MySize.size16),
               ),
             ),
             child: Container(
-              padding: EdgeInsets.only(top: 15),
+              padding: const EdgeInsets.only(top: 15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(left: 15, right: 15),
+                    margin: const EdgeInsets.only(left: 15, right: 15),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

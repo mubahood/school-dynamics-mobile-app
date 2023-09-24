@@ -147,6 +147,8 @@ class _StudentEditPhotoScreenState extends State<StudentEditPhotoScreen> {
                           Expanded(
                             child: FxButton.block(
                               backgroundColor: Colors.red.shade700,
+                              padding:
+                              const EdgeInsets.fromLTRB(24, 24, 24, 24),
                               child: FxText.titleLarge(
                                 'CANCEL',
                                 color: Colors.white,
@@ -163,6 +165,8 @@ class _StudentEditPhotoScreenState extends State<StudentEditPhotoScreen> {
                           ),
                           Expanded(
                             child: FxButton.block(
+                              padding:
+                              const EdgeInsets.fromLTRB(24, 24, 24, 24),
                               child: FxText.titleLarge(
                                 'UPDATE',
                                 color: Colors.white,
@@ -177,6 +181,8 @@ class _StudentEditPhotoScreenState extends State<StudentEditPhotoScreen> {
                         ],
                       )
                     : FxButton.block(
+              padding:
+              const EdgeInsets.fromLTRB(24, 24, 24, 24),
                         child: FxText.titleLarge(
                           'CHANGE PHOTO',
                           color: Colors.white,

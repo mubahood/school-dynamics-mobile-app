@@ -1,3 +1,4 @@
+import 'package:schooldynamics/models/StudentHasClassModel.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -27,7 +28,7 @@ class MyClasses {
   String academic_class_level_id = "";
 
 
-  List<UserModel> students = [];
+  List<StudentHasClassModel> students = [];
   Future<List<UserModel>> getStudents() async {
     students = await UserModel.getItems(where : " current_class_id = '${id}' ");
 

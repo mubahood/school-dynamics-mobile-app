@@ -276,6 +276,8 @@ class MarksScreenState extends State<MarksScreen> {
                         Expanded(
                           child: FxButton.block(
                             borderColor: CustomTheme.primary,
+                            padding:
+                            const EdgeInsets.fromLTRB(24, 24, 24, 24),
                             onPressed: () {
                               if (Utils.int_parse(tempScore) >
                                   Utils.int_parse(exam.max_mark)) {

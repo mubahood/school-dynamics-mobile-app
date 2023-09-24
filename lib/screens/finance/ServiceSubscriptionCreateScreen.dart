@@ -341,6 +341,8 @@ class ServiceSubscriptionCreateScreenState
                             bottom: 8,
                           ),
                           child: FxButton.block(
+                            padding:
+                            const EdgeInsets.fromLTRB(24, 24, 24, 24),
                             borderRadiusAll: 0,
                             backgroundColor: CustomTheme.primary,
                             onPressed: () {

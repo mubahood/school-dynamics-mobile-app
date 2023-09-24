@@ -41,8 +41,7 @@ class _CourseTasksScreenState extends State<ClassScreenOld> {
 
   MyClasses item = MyClasses();
 
-  List<SessionOnline> sessionsOnline = [];
-  List<SessionLocal> sessionsLocal = [];
+
   List<MySubjects> subjects = [];
   List<ExamSubject> examSubjects = [];
 
@@ -61,11 +60,7 @@ class _CourseTasksScreenState extends State<ClassScreenOld> {
       }
     }
 
-    await item.getStudents();
-    sessionsOnline = await SessionOnline.getItems(
-        where: ' academic_class_id = ${item.id} ', forceWait: false);
-    await SessionLocal.uploadPending();
-    setState(() {});
+
     return "Done";
   }
 
@@ -397,74 +392,6 @@ class _CourseTasksScreenState extends State<ClassScreenOld> {
   }
 
   Widget attendanceList() {
-    return CustomScrollView(
-      slivers: [
-        SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (BuildContext context, int index) {
-              return FxContainer(
-                padding: const EdgeInsets.only(
-                    top: 10, bottom: 10, right: 15, left: 15),
-                color: Colors.red.shade700,
-                borderRadiusAll: 0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    FxText.bodyMedium(
-                      'You have ${sessionsLocal.length} roll-calls not submitted.',
-                      color: Colors.white,
-                    ),
-                    FxContainer(
-                      onTap: () {
-                        Get.to(() => SessionLocalScreen());
-                      },
-                      color: Colors.white,
-                      padding: const EdgeInsets.only(
-                          left: 10, right: 10, top: 2, bottom: 2),
-                      child: FxText.bodySmall(
-                        'VIEW',
-                        color: Colors.black,
-                      ),
-                    )
-                  ],
-                ),
-              );
-            },
-            childCount: sessionsLocal.isNotEmpty ? 1 : 0,
-          ),
-        ),
-        SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (BuildContext context, int index) {
-              SessionOnline m = sessionsOnline[index];
-              return ListTile(
-                onTap: () {
-                  Get.to(() => SessionOnlineScreen(
-                        data: m,
-                      ));
-                },
-                title: FxText.titleMedium(
-                  m.title,
-                  color: Colors.black,
-                  fontWeight: 700,
-                ),
-                subtitle: FxText.bodySmall(Utils.to_date_1(m.due_date)),
-                trailing: FxContainer(
-                  padding: const EdgeInsets.only(
-                      left: 10, right: 10, top: 5, bottom: 5),
-                  color: Colors.green.shade50,
-                  child: FxText.bodySmall(
-                    'SUBMITTED',
-                    color: Colors.green.shade700,
-                    fontWeight: 800,
-                  ),
-                ),
-              );
-            },
-            childCount: sessionsOnline.length,
-          ),
-        ),
-      ],
-    );
+    return Text("Attendance");
   }
 }

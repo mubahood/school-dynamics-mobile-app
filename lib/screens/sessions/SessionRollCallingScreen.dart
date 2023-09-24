@@ -188,12 +188,13 @@ class SessionRollCallingScreenState extends State<SessionRollCallingScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 Expanded(
                   child: FxButton.block(
                     borderColor: CustomTheme.primary,
+                    padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
                     onPressed: () {
                       submit_form();
                     },
@@ -207,7 +208,7 @@ class SessionRollCallingScreenState extends State<SessionRollCallingScreen> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           )
         ],

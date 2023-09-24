@@ -229,6 +229,8 @@ class _StudentEditGuardianScreenState extends State<StudentEditGuardianScreen> {
                               onPressed: () {
                                 submit_form();
                               },
+                          padding:
+                          const EdgeInsets.fromLTRB(24, 24, 24, 24),
                               borderRadiusAll: 100,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,

@@ -234,6 +234,8 @@ class ChangeAccountBalanceScreenState extends State<ChangeAccountBalanceScreen>
                                                         ),
                                                       )
                                                     : FxButton.block(
+                                                  padding:
+                                                  const EdgeInsets.fromLTRB(24, 24, 24, 24),
                                                         onPressed: () {
                                                           if (!_fKey
                                                               .currentState!

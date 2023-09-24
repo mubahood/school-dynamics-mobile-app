@@ -425,6 +425,8 @@ class Utils {
                         child: Column(
                           children: [
                             FxButton.block(
+                                padding:
+                                const EdgeInsets.fromLTRB(24, 24, 24, 24),
                                 onPressed: () {
                                   onPositiveClick();
                                   Navigator.pop(context);

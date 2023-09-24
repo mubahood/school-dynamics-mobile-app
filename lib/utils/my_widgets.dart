@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:flutx/widgets/card/card.dart';
-import 'package:flutx/widgets/container/container.dart';
-import 'package:flutx/widgets/text/text.dart';
+import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -10,6 +8,43 @@ import '../models/MenuItem.dart';
 import '../models/ServiceSubscription.dart';
 import '../theme/custom_theme.dart';
 import 'Utils.dart';
+
+Widget emptyListWidget(String title, Function f) {
+  return SizedBox(
+    width: double.infinity,
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        SizedBox(
+          height: Get.height / 2.5,
+        ),
+        FxText.titleMedium(
+          title.isEmpty ? "No items found." : title,
+          color: Colors.black,
+          fontWeight: 700,
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+        FxButton.outlined(
+          onPressed: () {
+            f();
+          },
+          padding:
+              const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+          borderRadiusAll: 100,
+          borderColor: CustomTheme.primary,
+          child: FxText.bodySmall(
+            "Reload",
+            color: CustomTheme.primary,
+            fontWeight: 800,
+          ),
+        ),
+      ],
+    ),
+  );
+}
 
 Widget ServiceSubscriptionWidget(ServiceSubscription m) => Flex(
       direction: Axis.horizontal,

@@ -281,6 +281,8 @@ class _StudentEditBioScreenState extends State<StudentEditBioScreen> {
                                 submit_form();
                               },
                               borderRadiusAll: 100,
+                          padding:
+                          const EdgeInsets.fromLTRB(24, 24, 24, 24),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [

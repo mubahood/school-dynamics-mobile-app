@@ -13,33 +13,51 @@ import 'package:schooldynamics/utils/Utils.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../models/StudentVerificationModel.dart';
-import '../screens/finance/FinancialAccountScreen.dart';
 
 Widget singleWidget2(String title, String subTitle) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.start,
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      SizedBox(
-        width: 15,
-      ),
-      FxText.bodyLarge(
-        '${title}'.toUpperCase(),
+      FxText.bodySmall(
+        title.toUpperCase(),
         color: CustomTheme.primary,
         textAlign: TextAlign.left,
-        fontWeight: 700,
-      ),
-      SizedBox(
-        width: 5,
+        fontWeight: 800,
       ),
       FxText.bodyLarge(
         subTitle,
         maxLines: 10,
       ),
-      SizedBox(
-        width: 15,
-      ),
     ],
+  );
+}
+
+Widget myListTile(String title, subtile, IconData icon, Function f) {
+  return ListTile(
+    onTap: () {
+      f();
+    },
+    title: FxText.titleMedium(
+      title,
+      color: Colors.black,
+      fontWeight: 700,
+    ),
+    dense: true,
+    minLeadingWidth: 0,
+    trailing: Icon(
+      FeatherIcons.chevronRight,
+      color: CustomTheme.primary,
+    ),
+    leading: Icon(
+      icon,
+      color: CustomTheme.primary,
+    ),
+    minVerticalPadding: 0,
+    subtitle: FxText.bodySmall(
+      subtile,
+      color: Colors.black,
+    ),
   );
 }
 
@@ -92,7 +110,7 @@ Widget circularImage(String url, double size,
 Widget titleValueWidget(String title, String subTitle) {
   return Container(
     alignment: Alignment.centerRight,
-    padding: EdgeInsets.only(bottom: 7),
+    padding: const EdgeInsets.only(bottom: 7),
     child: Flex(
       direction: Axis.vertical,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -101,13 +119,13 @@ Widget titleValueWidget(String title, String subTitle) {
         Container(
           alignment: Alignment.topLeft,
           child: FxText.bodyLarge(
-            '${title} : '.toUpperCase(),
+            '$title : '.toUpperCase(),
             textAlign: TextAlign.left,
             color: Colors.black,
             fontWeight: 700,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 2,
         ),
         FxText.bodyLarge(
@@ -124,7 +142,7 @@ Widget titleValueWidget(String title, String subTitle) {
 Widget titleValueWidget2(String title, String subTitle) {
   return Container(
     alignment: Alignment.centerRight,
-    padding: EdgeInsets.only(top: 7),
+    padding: const EdgeInsets.only(top: 7),
     child: Flex(
       direction: Axis.horizontal,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -133,18 +151,18 @@ Widget titleValueWidget2(String title, String subTitle) {
         Container(
           alignment: Alignment.topLeft,
           child: FxText.bodyLarge(
-            '${title} : '.toUpperCase(),
+            '$title : '.toUpperCase(),
             textAlign: TextAlign.left,
             color: Colors.black,
             fontWeight: 700,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 2,
         ),
         Expanded(
           child: FxText.bodyLarge(
-            subTitle.isEmpty ? "-" : '${subTitle}',
+            subTitle.isEmpty ? "-" : subTitle,
             textAlign: TextAlign.right,
             fontWeight: 500,
           ),
@@ -168,7 +186,7 @@ Widget singleWidget(String title, String subTitle) {
     );*/
   return Container(
     alignment: Alignment.centerRight,
-    padding: EdgeInsets.only(top: 4, bottom: 4),
+    padding: const EdgeInsets.only(top: 4, bottom: 4),
     child: Flex(
       direction: Axis.horizontal,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -177,13 +195,13 @@ Widget singleWidget(String title, String subTitle) {
         Container(
           alignment: Alignment.centerRight,
           child: FxText.bodyLarge(
-            '${title} :'.toUpperCase(),
+            '$title :'.toUpperCase(),
             textAlign: TextAlign.right,
             color: CustomTheme.primary,
             fontWeight: 700,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 4,
         ),
         Expanded(
@@ -195,8 +213,6 @@ Widget singleWidget(String title, String subTitle) {
     ),
   );
 }
-
-
 
 Widget ShimmerLoadingWidget(
     {double width = double.infinity,
@@ -211,7 +227,7 @@ Widget ShimmerLoadingWidget(
       child: Shimmer.fromColors(
         baseColor: Colors.grey.shade50,
         highlightColor: Colors.grey.shade300,
-        child: FxContainer(),
+        child: const FxContainer(),
       ),
     ),
   );
@@ -242,25 +258,24 @@ Widget userWidget1(UserModel item) {
   );
 }
 
-Widget userWidget(UserModel u,context, {String task_picker = ""}) {
+Widget userWidget(UserModel u, context, {String task_picker = ""}) {
   return InkWell(
     onTap: () {
-      if(task_picker == 'task_picker'){
-        Navigator.pop(context,u);
-      }else{
+      if (task_picker == 'task_picker') {
+        Navigator.pop(context, u);
+      } else {
         Get.to(() => StudentScreen(data: u));
       }
-
     },
     child: Container(
-      padding: EdgeInsets.only(top: 10, left: 15, right: 15),
+      padding: const EdgeInsets.only(top: 10, left: 15, right: 15),
       child: Flex(
         direction: Axis.horizontal,
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           roundedImage(u.avatar.toString(), 4.5, 4.5),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
           Expanded(
@@ -274,7 +289,7 @@ Widget userWidget(UserModel u,context, {String task_picker = ""}) {
                   fontWeight: 800,
                   overflow: TextOverflow.ellipsis,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 6,
                 ),
                 Row(
@@ -299,7 +314,7 @@ Widget userWidget(UserModel u,context, {String task_picker = ""}) {
                     ),
                   ],
                 ),*/
-                SizedBox(
+                const SizedBox(
                   height: 6,
                 ),
                 Row(
@@ -309,17 +324,17 @@ Widget userWidget(UserModel u,context, {String task_picker = ""}) {
                       size: 12,
                       color: CustomTheme.primaryDark,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 2,
                     ),
-                    FxText.bodySmall('${u.getParentName()}', color: Colors.grey),
-                    Spacer(),
+                    FxText.bodySmall(u.getParentName(), color: Colors.grey),
+                    const Spacer(),
                     Icon(
                       FeatherIcons.clock,
                       size: 12,
                       color: CustomTheme.primaryDark,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 2,
                     ),
                     FxText.bodySmall(
@@ -341,14 +356,15 @@ Widget accountWidget(UserModel u) {
   return Column(
     children: [
       Container(
-        padding: EdgeInsets.only(top: 10, bottom: 10, left: 10, right: 15),
+        padding:
+            const EdgeInsets.only(top: 10, bottom: 10, left: 10, right: 15),
         child: Flex(
           direction: Axis.horizontal,
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             roundedImage(u.avatar.toString(), 8, 8),
-            SizedBox(
+            const SizedBox(
               width: 5,
             ),
             Expanded(
@@ -362,45 +378,45 @@ Widget accountWidget(UserModel u) {
                     fontWeight: 800,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Row(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 2,
                       ),
                       FxText.bodyMedium(
-                        '${u.current_class_text}',
+                        u.current_class_text,
                         fontWeight: 800,
                         color: Colors.black,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                       ),
                       FxCard(
-                        child: FxText.bodySmall(
-                          '${u.verification == '1' ? 'Verified' : 'Not Verified'}',
-                          fontWeight: 800,
-                          color: Colors.white,
-                        ),
                         padding:
-                            EdgeInsets.only(left: 5, right: 5, bottom: 2),
+                            const EdgeInsets.only(left: 5, right: 5, bottom: 2),
                         marginAll: 0,
                         color: u.verification == '1'
                             ? Colors.green.shade700
                             : Colors.red.shade700,
+                        child: FxText.bodySmall(
+                          u.verification == '1' ? 'Verified' : 'Not Verified',
+                          fontWeight: 800,
+                          color: Colors.white,
+                        ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Column(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
                           FxText.bodySmall('UGX'),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 2,
                       ),
                       FxText.titleLarge(
@@ -419,7 +435,7 @@ Widget accountWidget(UserModel u) {
           ],
         ),
       ),
-      Divider(
+      const Divider(
         height: 0,
       )
     ],
@@ -434,14 +450,15 @@ Widget studentVerificationWidget(StudentVerificationModel u, Function f) {
     child: Column(
       children: [
         Container(
-          padding: EdgeInsets.only(top: 5, bottom: 5, left: 15, right: 15),
+          padding:
+              const EdgeInsets.only(top: 5, bottom: 5, left: 15, right: 15),
           child: Flex(
             direction: Axis.horizontal,
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               roundedImage(u.avatar.toString(), 6.0, 6.0),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Expanded(
@@ -484,7 +501,7 @@ Widget studentVerificationWidget(StudentVerificationModel u, Function f) {
                                   : u.status == '2'
                                       ? Colors.yellow.shade900
                                       : CustomTheme.primary,
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                               left: 8, right: 8, top: 0, bottom: 0),
                           child: FxText.bodySmall(
                             u.status == '1'
@@ -505,14 +522,13 @@ Widget studentVerificationWidget(StudentVerificationModel u, Function f) {
           ),
         ),
         Container(
-          child: Divider(height: 0),
-          padding: EdgeInsets.only(left: 15, right: 15),
+          padding: const EdgeInsets.only(left: 15, right: 15),
+          child: const Divider(height: 0),
         ),
       ],
     ),
   );
 }
-
 
 Widget alertWidget(String msg, String type) {
   if (msg.isEmpty) {
@@ -566,7 +582,7 @@ Widget titleWidget(String title, Function onTap) {
       onTap();
     },
     child: Container(
-      padding: EdgeInsets.only(left: 5, top: 20, right: 5, bottom: 10),
+      padding: const EdgeInsets.only(left: 5, top: 20, right: 5, bottom: 10),
       child: Flex(
         direction: Axis.horizontal,
         children: [
@@ -575,7 +591,7 @@ Widget titleWidget(String title, Function onTap) {
             fontWeight: 700,
             color: Colors.black,
           ),
-          Spacer(),
+          const Spacer(),
           Row(
             children: [
               FxText.bodyLarge(
@@ -583,7 +599,7 @@ Widget titleWidget(String title, Function onTap) {
                 fontWeight: 300,
                 letterSpacing: .1,
               ),
-              Icon(FeatherIcons.chevronRight),
+              const Icon(FeatherIcons.chevronRight),
             ],
           ),
         ],
@@ -630,7 +646,7 @@ Widget title_widget_2(String title) {
 // ignore: non_constant_identifier_names
 Widget title_widget(String title) {
   return Container(
-    padding: EdgeInsets.only(top: 3, bottom: 3),
+    padding: const EdgeInsets.only(top: 3, bottom: 3),
     color: CustomTheme.primary,
     child: Center(
       child: FxText.titleMedium(
@@ -648,14 +664,14 @@ Widget title_widget(String title) {
 Widget IconTextWidget(
   String t,
   String s,
-  bool is_done,
+  bool isDone,
   Function f, {
   bool show_acation_button = true,
   String action_text = "Edit",
 }) {
   return ListTile(
-    leading: is_done
-        ? Icon(
+    leading: isDone
+        ? const Icon(
             Icons.check,
             color: Colors.green,
             size: 28,
@@ -665,7 +681,7 @@ Widget IconTextWidget(
             color: Colors.red.shade600,
             size: 28,
           ),
-    contentPadding: EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 0),
+    contentPadding: const EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 0),
     minLeadingWidth: 0,
     trailing: (!show_acation_button)
         ? null
@@ -673,14 +689,14 @@ Widget IconTextWidget(
             onPressed: () {
               f();
             },
+            padding: EdgeInsets.zero,
+            borderRadiusAll: 30,
+            borderColor: CustomTheme.primary,
             child: FxText(
               action_text,
               color: CustomTheme.primary,
               fontSize: 18,
             ),
-            padding: EdgeInsets.zero,
-            borderRadiusAll: 30,
-            borderColor: CustomTheme.primary,
           ),
     title: FxText.titleMedium(
       t,
@@ -701,7 +717,7 @@ class MyWidgets {
       BuildContext context, String field) {
     return FormBuilderValidators.compose([
       FormBuilderValidators.required(
-        errorText: "${field} is required.",
+        errorText: "$field is required.",
       ),
     ]);
   }
