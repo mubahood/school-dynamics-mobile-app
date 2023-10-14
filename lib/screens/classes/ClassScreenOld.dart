@@ -9,6 +9,7 @@ import 'package:schooldynamics/models/UserModel.dart';
 
 import '../../models/MySubjects.dart';
 import '../../models/SessionOnline.dart';
+import '../../models/StudentHasClassModel.dart';
 import '../../sections/widgets.dart';
 import '../../theme/app_theme.dart';
 import '../../theme/custom_theme.dart';
@@ -337,8 +338,8 @@ class _CourseTasksScreenState extends State<ClassScreenOld> {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
-                UserModel m = item.students[index];
-                return userWidget(m,context);
+                StudentHasClassModel m = item.students[index];
+                return userWidget2(m,context);
               },
               childCount: item.students.length,
             ),

@@ -3,6 +3,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
 import 'package:schooldynamics/screens/students/StudentsScreen.dart';
+import 'package:schooldynamics/utils/Utils.dart';
 
 import '../../sections/widgets.dart';
 import '../../theme/app_theme.dart';
@@ -90,8 +91,11 @@ class _CourseTasksScreenState extends State<ClassScreen> {
                 FeatherIcons.checkCircle, () {
               Get.to(() => ClassAttendenciesScreen(widget.data));
             }),
-            myListTile('Exam Marks', 'View exams for this class.',
-                FeatherIcons.file, () {}),
+            myListTile(
+                'Exam Marks', 'View exams for this class.', FeatherIcons.file,
+                () {
+              Utils.toast("Coming soon...");
+            }),
           ],
         ),
       ),

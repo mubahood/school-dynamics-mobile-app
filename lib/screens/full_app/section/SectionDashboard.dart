@@ -60,6 +60,7 @@ class _SectionDashboardState extends State<SectionDashboard> {
   List<MenuItem> menuItems = [];
 
   LoggedInUserModel u = LoggedInUserModel();
+
   Future<dynamic> myInit() async {
     u = await LoggedInUserModel.getLoggedInUser();
     //Utils.initOneSignal();
@@ -92,8 +93,8 @@ class _SectionDashboardState extends State<SectionDashboard> {
         u.isRole('admin') ||
         u.isRole('bursar') ||
         u.isRole('parent')) {
-      menuItems.add(MenuItem('Financial Accounts', 'T 1', FeatherIcons.edit,
-          'financial-account.jpg', () {
+      menuItems.add(MenuItem(
+          'School Fees', 'T 1', FeatherIcons.edit, 'financial-account.jpg', () {
         Get.to(() => FinancialAccountsScreen({}));
       }));
     }
@@ -153,7 +154,7 @@ class _SectionDashboardState extends State<SectionDashboard> {
               InkWell(
                 onTap: () {
                   myInit();
-                 },
+                },
                 child: FxText.titleLarge(
                   'School Dynamics'.toUpperCase(),
                   maxLines: 1,
@@ -184,14 +185,14 @@ class _SectionDashboardState extends State<SectionDashboard> {
                   slivers: [
                     SliverGrid(
                       gridDelegate:
-                      const SliverGridDelegateWithFixedCrossAxisCount(
+                          const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
                         crossAxisSpacing: 8,
                         mainAxisSpacing: 10,
                         childAspectRatio: 0.8,
                       ),
                       delegate: SliverChildBuilderDelegate(
-                            (BuildContext context, int index) {
+                        (BuildContext context, int index) {
                           MenuItem item = menuItems[index];
                           return menuItemWidget(item);
                         },

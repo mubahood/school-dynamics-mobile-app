@@ -22,6 +22,12 @@ class SessionRollCallingScreen extends StatefulWidget {
 
 class SessionRollCallingScreenState extends State<SessionRollCallingScreen> {
   Future<void> submit_form() async {
+    if ((item.expectedMembers.length) >
+        (item.presentMembers.length + item.absentMembers.length)) {
+      Utils.toast("Please mark all present and absent students.",
+          color: Colors.red.shade900);
+      return;
+    }
     await doSave(true);
     Utils.boot_system();
     Get.back();
@@ -54,8 +60,8 @@ class SessionRollCallingScreenState extends State<SessionRollCallingScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              FxText.titleLarge(
-                '${item.title}',
+              FxText.titleMedium(
+                '${item.title} - Roll call',
                 color: Colors.white,
                 fontWeight: 700,
                 height: .6,

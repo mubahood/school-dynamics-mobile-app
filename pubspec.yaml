@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  connectivity_plus: ^3.0.2
+  internet_connection_checker: ^1.0.0+1
   dio: ^4.0.4
   google_fonts: ^5.1.0
   #provider: ^6.0.2
@@ -29,7 +29,6 @@ dependencies:
   image_picker: ^0.8.6+1
   shimmer: ^2.0.0
   intl: ^0.17.0
-  onesignal_flutter: 3.5.0
   firebase_core: ^2.13.0
   firebase_messaging: ^14.6.1
   flutx: ^0.2.0-rc.2
@@ -38,6 +37,8 @@ dependencies:
   sqflite: ^2.2.4+1
   shared_preferences: ^2.0.17
   share_plus: ^4.5.3
+  fluttertoast: ^8.2.2
+  onesignal_flutter: ^5.0.3
 
 
 

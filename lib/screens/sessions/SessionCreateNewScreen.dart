@@ -53,7 +53,7 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
     if (widget.data.runtimeType.toString() == 'MyClasses') {
       classModel = widget.data;
       item.type = 'Class attendance';
-      item.title = '${classModel.name}';
+      item.title = classModel.name;
       item.academic_class_id = classModel.id.toString();
 
       subs.clear();
@@ -99,6 +99,10 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
       Utils.toast("Please select stream.");
       return;
     }
+    if (Utils.int_parse(item.stream_id) < 1) {
+      Utils.toast("Please select stream.");
+      return;
+    }
 
     item.due_date =
         Utils.to_str(_formKey.currentState?.fields['date']?.value, '');
@@ -116,9 +120,9 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
     for (var student in (await classModel.getStudents())) {
       if (student.stream_id == item.stream_id) {
         TemporaryModel x = TemporaryModel();
-        x.id = student.id;
-        x.title = student.name;
-        x.image = student.avatar;
+        x.id = Utils.int_parse(student.administrator_id);
+        x.title = student.administrator_text;
+        x.image = student.administrator_photo;
         items.add(x.toJson());
       }
     }
@@ -132,7 +136,6 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
     await item.save();
     Get.off(() => SessionRollCallingScreen(data: item));
     return;
-
   }
 
   @override
@@ -167,7 +170,7 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
                   child: Column(
                     children: <Widget>[
                       Container(
-                        margin: EdgeInsets.only(bottom: 10, top: 10),
+                        margin: const EdgeInsets.only(bottom: 10, top: 10),
                         child: FormBuilderTextField(
                           name: 'Class',
                           readOnly: true,
@@ -205,6 +208,7 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
                               }
                             }
                           }
+                          setState(() {});
                         },
                         isDense: true,
                         items: streams
@@ -221,7 +225,8 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
                           name: 'date',
                           initialEntryMode: DatePickerEntryMode.calendar,
                           initialValue: DateTime.now(),
-                          inputType: InputType.date,
+                          inputType: InputType.both,
+                          lastDate: DateTime.now(),
                           currentDate: DateTime.now(),
                           onChanged: (x) {
                             item.due_date = Utils.to_str(x, '');
@@ -266,7 +271,7 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
                                 ))
                             .toList(),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
                       alertWidget(error_message, 'success'),
@@ -279,7 +284,7 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
                                     CustomTheme.primary),
                               ))
                           : FxButton.block(
-                          onPressed: () {
+                              onPressed: () {
                                 submit_form();
                               },
                               padding:
@@ -293,7 +298,7 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
                                     size: 30,
                                     color: Colors.white,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
                                   Center(

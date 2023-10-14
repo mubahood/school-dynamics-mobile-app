@@ -12,6 +12,7 @@ import 'package:schooldynamics/utils/AppConfig.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../models/StudentHasClassModel.dart';
 import '../models/StudentVerificationModel.dart';
 
 Widget singleWidget2(String title, String subTitle) {
@@ -254,6 +255,100 @@ Widget userWidget1(UserModel item) {
           ),
         ),
       ],
+    ),
+  );
+}
+
+Widget userWidget2(StudentHasClassModel u, context, {String task_picker = ""}) {
+  return InkWell(
+    onTap: () {
+      if (task_picker == 'task_picker') {
+        Navigator.pop(context, u);
+      } else {
+        Get.to(() => StudentScreen(data: u));
+      }
+    },
+    child: Container(
+      padding: const EdgeInsets.only(top: 10, left: 15, right: 15),
+      child: Flex(
+        direction: Axis.horizontal,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          roundedImage(u.administrator_photo.toString(), 4.5, 4.5),
+          const SizedBox(
+            width: 10,
+          ),
+          Expanded(
+            child: Flex(
+              direction: Axis.vertical,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                FxText.titleMedium(
+                  u.administrator_text.toUpperCase(),
+                  maxLines: 1,
+                  fontWeight: 800,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(
+                  height: 6,
+                ),
+                Row(
+                  children: [
+                    FxText.bodyMedium(
+                      'CLASS: ',
+                    ),
+                    FxText.bodyMedium(
+                      u.academic_class_id.toUpperCase(),
+                      color: Colors.grey.shade600,
+                    ),
+                  ],
+                ),
+                /*Row(
+                  children: [
+                    FxText.bodyMedium(
+                      'FEES BALANCE: ',
+                    ),
+                    FxText.bodyMedium(
+                      'UGX ${Utils.moneyFormat(u.balance.toString())}'.toUpperCase(),
+                      color: u.balance>0? Colors.red.shade800 : Colors.green.shade800,
+                    ),
+                  ],
+                ),*/
+                const SizedBox(
+                  height: 6,
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      FeatherIcons.user,
+                      size: 12,
+                      color: CustomTheme.primaryDark,
+                    ),
+                    const SizedBox(
+                      width: 2,
+                    ),
+                    FxText.bodySmall(u.administrator_text, color: Colors.grey),
+                    const Spacer(),
+                    Icon(
+                      FeatherIcons.clock,
+                      size: 12,
+                      color: CustomTheme.primaryDark,
+                    ),
+                    const SizedBox(
+                      width: 2,
+                    ),
+                    FxText.bodySmall(
+                      Utils.to_date_1(u.academic_class_text),
+                      color: Colors.grey,
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
     ),
   );
 }

@@ -9,7 +9,7 @@ import '../utils/AppConfig.dart';
 import '../utils/Utils.dart';
 
 class SessionOnline {
-  static String tableName = "SessionOnline";
+  static String tableName = "SessionOnline1";
   static String endPoint = "my-sessions";
 
   List<TemporaryModel> expectedMembers = [];
@@ -27,8 +27,6 @@ class SessionOnline {
       presentMembers.add(Utils.int_parse(x));
     }
   }
-
-
 
   getExpectedMembers() async {
     List<MyClasses> myClasses = await MyClasses.getItems();
@@ -48,8 +46,8 @@ class SessionOnline {
     for (var student in (await myClass.getStudents())) {
       TemporaryModel x = TemporaryModel();
       x.id = student.id;
-      x.title = student.name;
-      x.image = student.avatar;
+      x.title = student.administrator_text;
+      x.image = student.administrator_photo;
       expectedMembers.add(x);
     }
     expectedMembers.sort((a, b) => a.title.compareTo(b.title));
@@ -88,16 +86,23 @@ class SessionOnline {
       'academic_class_id': academic_class_id,
       'subject_id': subject_id,
       'service_id': service_id,
+      'administrator_id': administrator_id,
+      'administrator_text': administrator_text,
+      'academic_class_text': academic_class_text,
+      'subject_text': subject_text,
+      'stream_text': stream_text,
+      'present_count': present_count,
+      'absent_count': absent_count,
     };
   }
 
-  static Future<List<SessionOnline>> getItems({String where = '1', bool forceWait = true}) async {
+  static Future<List<SessionOnline>> getItems(
+      {String where = '1', bool forceWait = true}) async {
     List<SessionOnline> data = await getLocalData(where: where);
-    if (data.isEmpty && forceWait) {
+    if (data.isEmpty) {
       await SessionOnline.getOnlineItems();
       data = await getLocalData(where: where);
     } else {
-      data = await getLocalData(where: where);
       SessionOnline.getOnlineItems();
     }
     return data;
@@ -182,7 +187,8 @@ class SessionOnline {
       return data;
     }
 
-    List<Map> maps = await db.query(SessionOnline.tableName, where: where);
+    List<Map> maps = await db.query(SessionOnline.tableName,
+        where: where, orderBy: 'id DESC');
 
     if (maps.isEmpty) {
       return data;
@@ -205,6 +211,13 @@ class SessionOnline {
   String academic_class_id = '';
   String subject_id = '';
   String service_id = '';
+  String administrator_id = '';
+  String administrator_text = '';
+  String academic_class_text = '';
+  String subject_text = '';
+  String stream_text = '';
+  String present_count = '';
+  String absent_count = '';
 
   static SessionOnline fromJson(dynamic data) {
     SessionOnline item = new SessionOnline();
@@ -223,6 +236,13 @@ class SessionOnline {
     item.academic_class_id = Utils.to_str(data['academic_class_id'], '');
     item.subject_id = Utils.to_str(data['subject_id'], '');
     item.service_id = Utils.to_str(data['service_id'], '');
+    item.administrator_id = Utils.to_str(data['administrator_id'], '');
+    item.administrator_text = Utils.to_str(data['administrator_text'], '');
+    item.academic_class_text = Utils.to_str(data['academic_class_text'], '');
+    item.subject_text = Utils.to_str(data['subject_text'], '');
+    item.stream_text = Utils.to_str(data['stream_text'], '');
+    item.present_count = Utils.to_str(data['present_count'], '');
+    item.absent_count = Utils.to_str(data['absent_count'], '');
 
     return item;
   }
@@ -244,6 +264,13 @@ class SessionOnline {
         "service_id TEXT,"
         "subject_id TEXT,"
         "closed TEXT,"
+        "administrator_id TEXT,"
+        "administrator_text TEXT,"
+        "academic_class_text TEXT,"
+        "subject_text TEXT,"
+        "stream_text TEXT,"
+        "present_count TEXT,"
+        "absent_count TEXT,"
         "academic_class_id TEXT)";
 
     try {

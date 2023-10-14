@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/dio.dart' as dioPackage;
@@ -9,16 +8,19 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutx/flutx.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:intl/intl.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:schooldynamics/models/MarkLocalModel.dart';
 import 'package:schooldynamics/models/MySubjects.dart';
 import 'package:schooldynamics/models/SessionLocal.dart';
 import 'package:schooldynamics/models/StreamModel.dart';
+import 'package:schooldynamics/models/StudentHasClassModel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -40,56 +42,52 @@ class Utils {
     print("=====DONE INVITING ONE SIGNAL=====");
     // Set the background messaging handler early on, as a named top-level function
 
-    OneSignal.shared.setAppId(AppConfig.ONESIGNAL_APP_ID);
+    OneSignal.initialize(AppConfig.ONESIGNAL_APP_ID);
 
     LoggedInUserModel u = await LoggedInUserModel.getLoggedInUser();
     if (u != null) {
       if (u.id > 0) {
-        OneSignal.shared.setExternalUserId(u.id.toString());
+        OneSignal.login(u.id.toString());
         print("=====SET ONE SIGNAL USER ID: ${u.id} =====");
       }
     }
 
-    OneSignal.shared
-        .promptUserForPushNotificationPermission()
-        .then((accepted) {});
-
-    OneSignal.shared.setNotificationWillShowInForegroundHandler(
-        (OSNotificationReceivedEvent event) {
-          print("=====ONE SIGNAL event ID: ${event.notification.title} =====");
-          print("=====ONE SIGNAL event ID: ${event.notification.subtitle} =====");
-          print("=====ONE SIGNAL event ID: ${event.notification.category} =====");
-          print("=====ONE SIGNAL event ID: ${event.notification.body} =====");
-      // Will be called whenever a notification is received in foreground
-      // Display Notification, pass null param for not displaying the notification
-      event.complete(event.notification);
+    OneSignal.Notifications.addPermissionObserver((state) {
+      print("Has permission " + state.toString());
     });
 
-    OneSignal.shared
-        .setNotificationOpenedHandler((OSNotificationOpenedResult result) {
-      // Will be called whenever a notification is opened/button pressed.
-      print("=====ONE SIGNAL result ID: ${result.notification.title} =====");
-      print("=====ONE SIGNAL result ID: ${result.notification.subtitle} =====");
-      print("=====ONE SIGNAL result ID: ${result.notification.category} =====");
-      print("=====ONE SIGNAL result ID: ${result.notification.body} =====");
+    OneSignal.Notifications.addForegroundWillDisplayListener((event) {
+      print(
+          'NOTIFICATION WILL DISPLAY LISTENER CALLED WITH: ${event.notification.jsonRepresentation()}');
+
+      /// Display Notification, preventDefault to not display
+      event.preventDefault();
+
+      /// Do async work
+
+      /// notification.display() to display after preventing default
+      event.notification.display();
+
+      /*this.setState(() {
+        _debugLabelString =
+        "Notification received in foreground notification: \n${event.notification.jsonRepresentation().replaceAll("\\n", "\n")}";
+      });*/
     });
 
-    OneSignal.shared.setPermissionObserver((OSPermissionStateChanges changes) {
-      // Will be called whenever the permission changes
-      // (ie. user taps Allow on the permission prompt in iOS)
+    OneSignal.InAppMessages.addWillDisplayListener((event) {
+      print("ON WILL DISPLAY IN APP MESSAGE ${event.message.messageId}");
+    });
+    OneSignal.InAppMessages.addDidDisplayListener((event) {
+      print("ON DID DISPLAY IN APP MESSAGE ${event.message.messageId}");
+    });
+    OneSignal.InAppMessages.addWillDismissListener((event) {
+      print("ON WILL DISMISS IN APP MESSAGE ${event.message.messageId}");
+    });
+    OneSignal.InAppMessages.addDidDismissListener((event) {
+      print("ON DID DISMISS IN APP MESSAGE ${event.message.messageId}");
     });
 
-    OneSignal.shared
-        .setSubscriptionObserver((OSSubscriptionStateChanges changes) {
-      // Will be called whenever the subscription changes
-      // (ie. user gets registered with OneSignal and gets a user ID)
-    });
-
-    OneSignal.shared.setEmailSubscriptionObserver(
-        (OSEmailSubscriptionStateChanges emailChanges) {
-      // Will be called whenever then user's email subscription changes
-      // (ie. OneSignal.setEmail(email) is called and the user gets registered
-    });
+    OneSignal.InAppMessages.paused(true);
   }
 
   static bool contains(List<dynamic> items, dynamic item) {
@@ -253,11 +251,11 @@ class Utils {
   }
 
   static Future<void> boot_system() async {
+    await StudentHasClassModel.get_items();
     await MySubjects.getItems();
     await StreamModel.getItems();
     await MarkLocalModel.uploadPendingMarks();
     await SessionLocal.uploadPending();
-
   }
 
   static void init_theme() {
@@ -356,18 +354,7 @@ class Utils {
   }
 
   static Future<bool> is_connected() async {
-    bool isConnected = false;
-    var connectivityResult = await (Connectivity().checkConnectivity());
-
-    if (connectivityResult == ConnectivityResult.mobile) {
-      // I am connected to a mobile network.
-      isConnected = true;
-    } else if (connectivityResult == ConnectivityResult.wifi) {
-      // I am connected to a wifi network.
-      isConnected = true;
-    }
-
-    return isConnected;
+    return await InternetConnectionChecker().hasConnection;
   }
 
   static log(String message) {
@@ -379,6 +366,9 @@ class Utils {
     if (Colors.green == color) {
       color = CustomTheme.primary;
     }
+    toast2(message,
+        background_color: color, color: Colors.white, is_long: isLong);
+    return;
 
     Get.snackbar('Alert', message,
         dismissDirection: DismissDirection.down,
@@ -389,6 +379,24 @@ class Utils {
             isLong ? const Duration(seconds: 3) : const Duration(seconds: 5),
         snackPosition: SnackPosition.BOTTOM,
         snackStyle: SnackStyle.GROUNDED);
+  }
+
+  static void toast2(String message,
+      {Color background_color = Colors.green,
+      color = Colors.white,
+      bool is_long = false}) {
+    if (Colors.green == color) {
+      color = CustomTheme.primary;
+    }
+
+    Fluttertoast.showToast(
+        msg: message,
+        toastLength: is_long ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: background_color,
+        textColor: color,
+        fontSize: 16.0);
   }
 
   static void go_to_home(context) {
@@ -426,7 +434,7 @@ class Utils {
                           children: [
                             FxButton.block(
                                 padding:
-                                const EdgeInsets.fromLTRB(24, 24, 24, 24),
+                                    const EdgeInsets.fromLTRB(24, 24, 24, 24),
                                 onPressed: () {
                                   onPositiveClick();
                                   Navigator.pop(context);

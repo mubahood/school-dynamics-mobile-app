@@ -34,6 +34,7 @@ class _CourseTasksScreenState extends State<ClassAttendenciesScreen> {
     sessionsOnline = await SessionOnline.getItems(
         where: ' academic_class_id = ${widget.data.id} ', forceWait: false);
     await SessionLocal.uploadPending();
+    sessionsLocal = await SessionLocal.getItems();
     loading = false;
     setState(() {});
     return "Done";
@@ -50,6 +51,7 @@ class _CourseTasksScreenState extends State<ClassAttendenciesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade100,
       floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.add),
           onPressed: () async {
@@ -68,7 +70,7 @@ class _CourseTasksScreenState extends State<ClassAttendenciesScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             FxText.titleMedium(
-              "${widget.data.short_name} - attendance lists",
+              "${widget.data.short_name} - Roll Calls",
               color: Colors.white,
               fontWeight: 800,
             ),
@@ -115,44 +117,93 @@ class _CourseTasksScreenState extends State<ClassAttendenciesScreen> {
                 sessionsOnline.isEmpty
                     ? emptyListWidget("", my_init)
                     : Expanded(
-                        child: CustomScrollView(
-                          slivers: [
-                            SliverList(
-                              delegate: SliverChildBuilderDelegate(
-                                (BuildContext context, int index) {
-                                  SessionOnline m = sessionsOnline[index];
-                                  return ListTile(
-                                    onTap: () {
-                                      Get.to(() => SessionOnlineScreen(
-                                            data: m,
-                                          ));
-                                    },
-                                    title: FxText.titleMedium(
-                                      m.title,
-                                      color: Colors.black,
-                                      fontWeight: 700,
-                                    ),
-                                    subtitle: FxText.bodySmall(
-                                        Utils.to_date_1(m.due_date)),
-                                    trailing: FxContainer(
-                                      padding: const EdgeInsets.only(
-                                          left: 10,
-                                          right: 10,
+                        child: RefreshIndicator(
+                          onRefresh: () {
+                            return my_init();
+                          },
+                          backgroundColor: Colors.white,
+                          child: CustomScrollView(
+                            slivers: [
+                              SliverList(
+                                delegate: SliverChildBuilderDelegate(
+                                  (BuildContext context, int index) {
+                                    SessionOnline m = sessionsOnline[index];
+                                    return FxContainer(
+                                      bordered: true,
+                                      onTap: () {
+                                        Get.to(() => SessionOnlineScreen(
+                                              data: m,
+                                            ));
+                                      },
+                                      padding: const EdgeInsets.all(10),
+                                      border: Border.all(
+                                          color: Colors.grey.shade300,
+                                          width: 1),
+                                      margin: const EdgeInsets.only(
+                                          left: 15,
+                                          right: 15,
                                           top: 5,
                                           bottom: 5),
-                                      color: Colors.green.shade50,
-                                      child: FxText.bodySmall(
-                                        'SUBMITTED',
-                                        color: Colors.green.shade700,
-                                        fontWeight: 800,
+                                      paddingAll: 5,
+                                      color: Colors.white,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              FxContainer(
+                                                padding: const EdgeInsets.only(
+                                                    left: 8,
+                                                    right: 8,
+                                                    top: 3,
+                                                    bottom: 3),
+                                                color: CustomTheme.primary,
+                                                child: FxText.titleSmall(
+                                                  "${m.subject_text}",
+                                                  fontWeight: 700,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                              FxText.titleMedium(
+                                                "${Utils.to_date(m.due_date)}",
+                                                fontWeight: 700,
+                                                color: Colors.grey.shade700,
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            height: 12,
+                                          ),
+                                          FxText.titleMedium(
+                                            "${m.academic_class_text}, ${m.stream_text} - Roll call",
+                                            color: Colors.black,
+                                            fontWeight: 700,
+                                          ),
+                                          Divider(),
+                                          FxText.titleMedium(
+                                            "${m.present_count} present, ${m.absent_count} absent",
+                                            color: Colors.black,
+                                            fontWeight: 700,
+                                          ),
+                                          const SizedBox(
+                                            height: 10,
+                                          ),
+                                          FxText.bodySmall(
+                                            'Conducted by ${m.administrator_text}',
+                                            color: Colors.grey.shade700,
+                                          ),
+                                        ],
                                       ),
-                                    ),
-                                  );
-                                },
-                                childCount: sessionsOnline.length,
+                                    );
+                                  },
+                                  childCount: sessionsOnline.length,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
               ],

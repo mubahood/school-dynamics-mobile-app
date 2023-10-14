@@ -11,9 +11,13 @@ class StudentHasClassModel {
   String academic_class_id = "";
   String administrator_id = "";
   String administrator_text = "";
+  String academic_class_text = "";
   String stream_id = "";
   String stream_text = "";
   String administrator_photo = "";
+
+
+
 
   static fromJson(dynamic m) {
     StudentHasClassModel obj = new StudentHasClassModel();
@@ -27,6 +31,7 @@ class StudentHasClassModel {
     obj.academic_class_id = Utils.to_str(m['academic_class_id'], '');
     obj.administrator_id = Utils.to_str(m['administrator_id'], '');
     obj.administrator_text = Utils.to_str(m['administrator_text'], '');
+    obj.academic_class_text = Utils.to_str(m['academic_class_text'], '');
     obj.stream_id = Utils.to_str(m['stream_id'], '');
     obj.stream_text = Utils.to_str(m['stream_text'], '');
 
@@ -145,6 +150,7 @@ class StudentHasClassModel {
       'administrator_text': administrator_text,
       'stream_id': stream_id,
       'stream_text': stream_text,
+      'academic_class_text': academic_class_text,
       'administrator_photo': administrator_photo,
     };
   }
@@ -162,6 +168,7 @@ class StudentHasClassModel {
         ",academic_class_id TEXT"
         ",administrator_id TEXT"
         ",administrator_text TEXT"
+        ",academic_class_text TEXT"
         ",administrator_photo TEXT"
         ",stream_id TEXT"
         ",stream_text TEXT"

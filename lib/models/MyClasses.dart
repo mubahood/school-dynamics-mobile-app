@@ -27,11 +27,11 @@ class MyClasses {
   String section = "";
   String academic_class_level_id = "";
 
-
   List<StudentHasClassModel> students = [];
-  Future<List<UserModel>> getStudents() async {
-    students = await UserModel.getItems(where : " current_class_id = '${id}' ");
 
+  Future<List<StudentHasClassModel>> getStudents() async {
+    students = await StudentHasClassModel.get_items(
+        where: " academic_class_id = '${id}' ");
     return students;
   }
 
@@ -84,7 +84,6 @@ class MyClasses {
     if (!db.isOpen) {
       return data;
     }
-
 
     List<Map> maps = await db.query(MyClasses.tableName, where: where);
 

@@ -49,35 +49,43 @@ class SessionLocalScreenState extends State<SessionLocalScreen> {
               ),
             ],
           )),
-      body: ListView.separated(
-          separatorBuilder: (context, index) => Divider(
-                height: 1,
-              ),
-          itemCount: sessions.length,
-          itemBuilder: (context, index) {
-            final SessionLocal m = sessions[index];
-            return ListTile(
-              onTap: () {
-                Get.to(() => SessionOnlineScreen(data: m));
-              },
-              title: FxText.titleMedium(
-                m.title,
-                color: Colors.black,
-                fontWeight: 700,
-              ),
-              subtitle: FxText.bodySmall(Utils.to_date_1(m.due_date)),
-              trailing: FxContainer(
-                padding:
-                    EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
-                color: Colors.red.shade50,
-                child: FxText.bodySmall(
-                  'NOT SUBMITTED',
-                  color: Colors.red.shade700,
-                  fontWeight: 800,
+      body: RefreshIndicator(
+        onRefresh: () async {
+          await init();
+        },
+        color: CustomTheme.primary,
+        backgroundColor: Colors.white,
+        child: ListView.separated(
+            separatorBuilder: (context, index) => const Divider(
+                  height: 1,
                 ),
-              ),
-            );
-          }),
+            itemCount: sessions.length,
+            itemBuilder: (context, index) {
+              final SessionLocal m = sessions[index];
+              return ListTile(
+                onTap: () async {
+                  await Get.to(() => SessionRollCallingScreen(data: m));
+                  await init();
+                },
+                title: FxText.titleMedium(
+                  m.title,
+                  color: Colors.black,
+                  fontWeight: 700,
+                ),
+                subtitle: FxText.bodySmall(Utils.to_date_1(m.due_date)),
+                trailing: FxContainer(
+                  padding:
+                      EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
+                  color: Colors.red.shade50,
+                  child: FxText.bodySmall(
+                    'NOT SUBMITTED',
+                    color: Colors.red.shade700,
+                    fontWeight: 800,
+                  ),
+                ),
+              );
+            }),
+      ),
     );
   }
 
