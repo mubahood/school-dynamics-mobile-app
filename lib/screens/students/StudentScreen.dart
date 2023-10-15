@@ -9,8 +9,8 @@ import '../../models/Transaction.dart';
 import '../../sections/widgets.dart';
 import '../../theme/app_theme.dart';
 import '../../theme/custom_theme.dart';
-import '../../utils/SizeConfig.dart';
 import '../../utils/my_widgets.dart';
+import '../finance/TransactionScreen.dart';
 import 'StudentEditBioScreen.dart';
 import 'StudentEditGuardianScreen.dart';
 import 'StudentEditPhotoScreen.dart';
@@ -40,10 +40,17 @@ class _CourseTasksScreenState extends State<StudentScreen> {
 
   Future<dynamic> my_init() async {
     item = widget.data;
-    transactions =
-        await Transaction.getItems(where: ' administrator_id = ${item.id} ');
+    get_transactions();
     setState(() {});
     return "Done";
+  }
+
+  Future<void> get_transactions() async {
+    transactions_loading = true;
+    setState(() {});
+    transactions = await Transaction.getItems(where: ' 1 ');
+    transactions_loading = false;
+    setState(() {});
   }
 
   @override
@@ -178,53 +185,56 @@ class _CourseTasksScreenState extends State<StudentScreen> {
         ),
       ),
       body: DefaultTabController(
-        length: 3,
+        length: 5,
         child: Scaffold(
           appBar: AppBar(
             elevation: 1,
-            toolbarHeight: 48,
+            backgroundColor: CustomTheme.primary,
+            toolbarHeight: 35,
             automaticallyImplyLeading: false,
             flexibleSpace: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 /*-------------- Build Tabs here ------------------*/
                 TabBar(
-                  padding: EdgeInsets.only(bottom: 0),
-                  labelPadding: EdgeInsets.only(bottom: 2, left: 8, right: 8),
-                  indicatorPadding: EdgeInsets.all(0),
-                  labelColor: CustomTheme.primary,
+                  padding: const EdgeInsets.only(bottom: 0),
+                  labelPadding:
+                      const EdgeInsets.only(bottom: 2, left: 8, right: 8),
+                  indicatorPadding: const EdgeInsets.all(0),
+                  labelColor: Colors.white,
                   isScrollable: true,
                   enableFeedback: true,
-                  indicator: UnderlineTabIndicator(
-                      borderSide:
-                          BorderSide(color: CustomTheme.primary, width: 4)),
+                  indicator: const UnderlineTabIndicator(
+                      borderSide: BorderSide(color: Colors.white, width: 4)),
                   tabs: [
                     Tab(
                         height: 30,
-                        child: FxText.titleMedium(
+                        child: FxText.titleSmall(
                           "BIO".toUpperCase(),
                           fontWeight: 600,
-                          color: CustomTheme.primary,
+                          color: Colors.white,
                         )),
-/*                    Tab(
-                        height: 30,
-                        child: FxText.titleMedium("Services".toUpperCase(),
-                            fontWeight: 600, color: CustomTheme.primary)),
                     Tab(
                         height: 30,
-                        child: FxText.titleMedium("Fees".toUpperCase(),
-                            fontWeight: 600, color: CustomTheme.primary)),*/
+                        child: FxText.titleSmall("SCHOOL FEES".toUpperCase(),
+                            fontWeight: 600, color: Colors.white)),
                     Tab(
                         height: 30,
                         child: Container(
-                          child: FxText.titleMedium("Attendance",
-                              fontWeight: 600, color: CustomTheme.primary),
+                          child: FxText.titleMedium("Attendance".toUpperCase(),
+                              fontWeight: 600, color: Colors.white),
                         )),
                     Tab(
                         height: 30,
                         child: Container(
-                          child: FxText.titleMedium("Records",
-                              fontWeight: 600, color: CustomTheme.primary),
+                          child: FxText.titleSmall("DISCIPLINARY".toUpperCase(),
+                              fontWeight: 600, color: Colors.white),
+                        )),
+                    Tab(
+                        height: 30,
+                        child: Container(
+                          child: FxText.titleSmall("REPORT".toUpperCase(),
+                              fontWeight: 600, color: Colors.white),
                         )),
                   ],
                 )
@@ -252,19 +262,19 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                       case ConnectionState.waiting:
                         return myListLoaderWidget(context);
                       default:
-                        return studentsFragment();
+                        return feesFragment();
                     }
                   }),
-        /*  FutureBuilder(
+              FutureBuilder(
                   future: futureInit,
                   builder: (context, snapshot) {
                     switch (snapshot.connectionState) {
                       case ConnectionState.waiting:
                         return myListLoaderWidget(context);
                       default:
-                        return feesFragment();
+                        return studentsFragment();
                     }
-                  }),*/
+                  }),
               CustomScrollView(
                 slivers: [
                   SliverList(
@@ -277,7 +287,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                   )
                 ],
               ),
-              /*   Text("Records")*/
+              Text("Records"),
             ],
           ),
         ),
@@ -347,47 +357,15 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-
-/*              title_widget('SCHOOL FEES BALANCE'),
-              InkWell(
-                onTap: (){
-                  Get.to(()=>TransactionsScreen({
-                    'activeAccount' : item
-                  }));
-                },
-                child: Column(
-                  children: [
-                    SizedBox(height: 15,),
-                    Center(
-                      child: FxText.titleLarge(
-                        "UGX "+Utils.moneyFormat(item.balance.toString()),
-                        color: item.balance<0?Colors.red.shade700:Colors.green.shade800,
-                        textAlign: TextAlign.center,
-                        fontWeight: 900,
-                        fontSize: 30,
-                      ),
-                    ),
-                    SizedBox(height: 10,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        FxText("View all payment records".toUpperCase(),color: Colors.blue.shade800,),
-
-                        Icon(FeatherIcons.chevronRight,
-                            color: Colors.blue.shade800
-                        )
-                      ],
-                    ),
-                    SizedBox(height: 10,),
-                  ],
-                ),
-              ),*/
-              Divider(),
-              titleValueWidget2('SCHOOL PAY CODE', '${item.school_pay_payment_code}'),
-              SizedBox(height: 15,),
+              const Divider(),
+              titleValueWidget2(
+                  'SCHOOL PAY CODE', '${item.school_pay_payment_code}'),
+              const SizedBox(
+                height: 15,
+              ),
               title_widget('Academics'),
               titleValueWidget2('Current class', '${item.current_class_id}'),
               titleValueWidget2('Current theology class',
@@ -399,7 +377,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                   'status', '${item.status == '1' ? 'Active' : 'Pending'}'),
               titleValueWidget2(
                   'registered', '${Utils.to_date_1(item.created_at)}'),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               title_widget('Guardian'),
@@ -409,7 +387,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
               titleValueWidget2(
                   "guArdian's contact 2", '${item.phone_number_2}'),
               titleValueWidget2("Email address", '${item.email}'),
-              SizedBox(
+              const SizedBox(
                 height: 100,
               ),
             ],
@@ -437,87 +415,112 @@ class _CourseTasksScreenState extends State<StudentScreen> {
   }
 
   List<Transaction> transactions = [];
+  bool transactions_loading = false;
 
   feesFragment() {
-    return Container(
-      padding: EdgeInsets.only(left: 5, right: 5),
-      child: CustomScrollView(
-        slivers: [
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return const SizedBox(
-                  height: 10,
-                );
-              },
-              childCount: 1, // 1000 list items
-            ),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                Transaction m = transactions[index];
-                return Text(m.account_name);
-                //return TransactionWidget(m);
-              },
-              childCount: transactions.length, // 1000 list items
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
-  void _showMyBottomSheetExhibitModel(context) {
-    showModalBottomSheet(
-        context: context,
-        barrierColor: CustomTheme.primary.withOpacity(.5),
-        builder: (BuildContext buildContext) {
-          return Container(
-            child: Container(
-              padding: EdgeInsets.only(bottom: 20),
-              margin: EdgeInsets.only(left: 13, right: 13, bottom: 10),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(MySize.size16!),
-                  topRight: Radius.circular(MySize.size16!),
-                  bottomLeft: Radius.circular(MySize.size16!),
-                  bottomRight: Radius.circular(MySize.size16!),
-                ),
-              ),
-              child: Container(
-                padding: EdgeInsets.all(0),
-                child: ListView(
-                  children: [
-                    Center(
-                      child: Container(
-                        padding: EdgeInsets.only(top: 20),
-                        child: Column(
-                          children: [
-                            FxText.titleLarge(
-                              "Exhibit Details".toUpperCase(),
-                              color: Colors.black,
-                              fontSize: 16,
-                              fontWeight: 700,
-                            ),
-                            SizedBox(
+    return transactions_loading
+        ? myListLoaderWidget(context)
+        : transactions.isEmpty
+            ? emptyListWidget('No Transaction.', () {
+                get_transactions();
+              })
+            : Container(
+                padding: EdgeInsets.only(left: 5, right: 5),
+                child: RefreshIndicator(
+                  onRefresh: () async {
+                    await my_init();
+                  },
+                  color: CustomTheme.primary,
+                  backgroundColor: Colors.white,
+                  child: CustomScrollView(
+                    slivers: [
+                      SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                          (BuildContext context, int index) {
+                            return const SizedBox(
                               height: 10,
-                            ),
-                          ],
+                            );
+                          },
+                          childCount: 1, // 1000 list items
                         ),
                       ),
-                    ),
-                    SizedBox(height: 3),
-                    singleWidget('Exhibit type', 'ex.exhibit_catgory'),
-                    singleWidget('Wildlife', 'ex.wildlife'),
-                    singleWidget('Wildlife', 'ex.wildlife'),
-                    singleWidget('Wildlife', 'ex.wildlife'),
-                  ],
+                      SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                          (BuildContext context, int index) {
+                            Transaction m = transactions[index];
+
+                            return InkWell(
+                              onTap: () {
+                                Get.to(() => TransactionScreen(
+                                      data: m,
+                                    ));
+                              },
+                              child: Column(
+                                children: [
+                                  Flex(
+                                    direction: Axis.horizontal,
+                                    children: [
+                                      FxContainer(
+                                        color:
+                                            CustomTheme.primary.withAlpha(20),
+                                        paddingAll: 10,
+                                        margin: const EdgeInsets.only(
+                                            left: 10,
+                                            right: 10,
+                                            bottom: 0,
+                                            top: 0),
+                                        child: Icon(
+                                          m.amount_figure < 1
+                                              ? FeatherIcons.arrowUp
+                                              : FeatherIcons.arrowDown,
+                                          color: m.amount_figure < 1
+                                              ? Colors.red.shade800
+                                              : Colors.green.shade800,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            FxText.bodySmall(
+                                                Utils.to_date(m.created_at)),
+                                            FxText.titleMedium(
+                                              m.account_name,
+                                              maxLines: 1,
+                                              color: Colors.grey.shade800,
+                                              fontWeight: 800,
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                      FxText.bodyLarge(
+                                        Utils.moneyFormat(m.amount),
+                                        fontWeight: 700,
+                                        color: (m.amount_figure < 0)
+                                            ? Colors.red.shade700
+                                            : Colors.green.shade700,
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      )
+                                    ],
+                                  ),
+                                  const Padding(
+                                    padding:
+                                        EdgeInsets.only(left: 10, right: 10),
+                                    child: Divider(),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                          childCount: transactions.length, // 1000 list items
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-            ),
-          );
-        });
+              );
   }
 }

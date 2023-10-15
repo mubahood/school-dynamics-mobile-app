@@ -23,7 +23,6 @@ class LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormBuilderState>();
 
   Future<void> submit_form() async {
-    //LoggedInUserModel.fromJson("{id: 2206, username: muhsin, name: Muhsin  Mutagubya, avatar: images/a027e8675a269daa7eb85dee0cabd9f5.png, created_at: 2022-09-16T17:17:27.000000Z, updated_at: 2023-01-12T06:55:05.000000Z, enterprise_id: 7, first_name: Muhsin, last_name: Mutagubya, date_of_birth: 1992-02-12, place_of_birth: Old Kampala, sex: Male, home_address: Masaka, current_address: Kira, phone_number_1: +256700869880, phone_number_2: , email: muhsinmutagubya@gmail.com, nationality: Ugandan, religion: Islam, spouse_name: Shariffa Muhsin, spouse_phone: 0770479228, father_name: Sheikh Muhammad Mutagubya, father_phone: 0702811466, mother_name: Fatumah Nalubanga, mother_phone: 0702684117, languages: Arabic, English, Luganda, emergency_person_name: Dr. Ashraf Mutagubya, emergency_person_phone: +256705719772, national_id_number: CM9202410117LA, passport_number: A00348931, tin: null, nssf_number: null, bank_name: Equity Bank, bank_account_number: 1027101079959, primary_school_name: Kabowa Hidayat, primary_school_year_graduated: 2009, degree_university_year_graduated: 2020, masters_university_name: null, masters_university_year_graduated: null, phd_university_name: null, phd_university_year_graduated: null, user_type: employee, demo_id: 0, user_id: null, user_batch_importer_id: 0, school_pay_account_id: null, school_pay_payment_code: null, given_name: null, residential_type: Day, transportation: 25, swimming: No, outstanding: null, guardian_relation: null, referral: null, previous_school: null, deleted_at: null, marital_status: null, verification: 0, current_class_id: 0, current_theology_class_id: 0, status: 2, token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3NjaG9vbGR5bmFtaWNzLnVnL2FwaS91c2Vycy9sb2dpbiIsImlhdCI6MTY3NTUwNDg3OCwiZXhwIjoxNjc1NTA4NDc4LCJuYmYiOjE2NzU1MDQ4NzgsImp0aSI6InRLOVRKaUkwM2lkbHdqTmYiLCJzdWIiOiIyMjA2IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.LH5safY3WweC-tdhvA4zbqTWi-UfrvdsVOMKkfBKWPo}");
 
     if (!_formKey.currentState!.validate()) {
       Utils.toast("Please fix errors in the form.", color: Colors.red);
@@ -111,7 +110,7 @@ class LoginScreenState extends State<LoginScreen> {
                 FxContainer(
                     borderRadiusAll: 0,
                     marginAll: 0,
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                         left: 25, right: 25, top: 50, bottom: 10),
                     color: Colors.white,
                     child: FormBuilder(
@@ -143,7 +142,7 @@ class LoginScreenState extends State<LoginScreen> {
                                 border:
                                     CustomTheme.input_outline_focused_border,
                                 labelText:
-                                    "Email address or Phone number or ID",
+                                    "Phone number",
                               ),
                             ),
                             Container(height: 25),
@@ -170,7 +169,7 @@ class LoginScreenState extends State<LoginScreen> {
                             ),
                             Container(height: 10),
                             error_message.isEmpty
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : FxContainer(
                                     margin: EdgeInsets.only(bottom: 10),
                                     color: Colors.red.shade50,
@@ -179,7 +178,7 @@ class LoginScreenState extends State<LoginScreen> {
                                     ),
                                   ),
                             Container(
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                 top: 20,
                               ),
                               child: is_loading
@@ -188,7 +187,7 @@ class LoginScreenState extends State<LoginScreen> {
                                         width: 60,
                                         height: 60,
                                         padding: const EdgeInsets.all(15),
-                                        child: CircularProgressIndicator(
+                                        child: const CircularProgressIndicator(
                                           strokeWidth: 2.0,
                                           valueColor:
                                               AlwaysStoppedAnimation<Color>(
@@ -197,12 +196,12 @@ class LoginScreenState extends State<LoginScreen> {
                                       ),
                                     )
                                   : CupertinoButton(
-                                      color: CustomTheme.primary,
+                                  color: CustomTheme.primary,
                                       onPressed: () {
                                         submit_form();
                                       },
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(50)),
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(50)),
                                       padding: FxSpacing.xy(32, 8),
                                       pressedOpacity: 0.5,
                                       child: FxText.bodyMedium("Sign In",
@@ -217,10 +216,10 @@ class LoginScreenState extends State<LoginScreen> {
           Divider(),
           Row(
             children: <Widget>[
-              Spacer(),
+              const Spacer(),
               Text(
-                "Are you stuck?",
-                style: TextStyle(color: Colors.grey.shade500, fontSize: 14),
+                "Facing any problem?",
+                style: TextStyle(color: Colors.red.shade500, fontSize: 14),
               ),
               TextButton(
                 style: TextButton.styleFrom(primary: Colors.transparent),

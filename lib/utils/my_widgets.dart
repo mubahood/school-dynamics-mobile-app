@@ -16,9 +16,6 @@ Widget emptyListWidget(String title, Function f) {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(
-          height: Get.height / 2.5,
-        ),
         FxText.titleMedium(
           title.isEmpty ? "No items found." : title,
           color: Colors.black,

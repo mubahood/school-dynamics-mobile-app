@@ -1,8 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
-
-import '../utils/my_colors.dart';
 
 class CustomTheme {
   static final Color primary_1 = Colors.green;
@@ -26,13 +23,12 @@ class CustomTheme {
   static final Color orange = Color(0xffFFA500);
   static final input_outline_border = OutlineInputBorder(
     borderSide: BorderSide(color: CustomTheme.primary),
-    borderRadius: const BorderRadius.all(Radius.circular(50.0)),
+    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
   );
   static final input_outline_focused_border = OutlineInputBorder(
     borderSide: BorderSide(color: CustomTheme.primary),
-
     gapPadding: 20,
-    borderRadius: const BorderRadius.all(Radius.circular(50.0)),
+    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
   );
 
 
