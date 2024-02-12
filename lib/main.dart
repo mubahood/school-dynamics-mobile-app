@@ -10,7 +10,6 @@ void main() {
   //You will need to initialize AppThemeNotifier class for theme changes.
   WidgetsFlutterBinding.ensureInitialized();
 
-  Utils.boot_system();
   Utils.init_theme();
 
   CustomTheme.primary = const Color(0xff225b4c);
@@ -41,7 +40,7 @@ class MyApp extends StatelessWidget {
       home: OnBoardingScreen(),
       routes: {
         '/OnBoardingScreen': (context) => OnBoardingScreen(),
-        AppConfig.FullApp: (context) => const FullApp(),
+        AppConfig.FullApp: (context) => FullApp(),
       },
     );
   }

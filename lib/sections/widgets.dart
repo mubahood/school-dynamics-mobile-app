@@ -129,10 +129,11 @@ Widget titleValueWidget(String title, String subTitle) {
         const SizedBox(
           height: 2,
         ),
-        FxText.bodyLarge(
+        FxText.bodyMedium(
           subTitle.isEmpty ? "-" : subTitle,
           maxLines: 10,
           letterSpacing: .5,
+          color: Colors.grey.shade800,
           height: 1,
         ),
       ],

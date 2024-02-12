@@ -4,7 +4,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 2.0.0+2
 
 environment:
-  sdk: '>=3.0.3 <4.0.0'
+  sdk: '>=3.1.2 <4.0.0'
 
 dependencies:
   flutter:
@@ -12,33 +12,30 @@ dependencies:
 
   internet_connection_checker: ^1.0.0+1
   dio: ^4.0.4
-  google_fonts: ^5.1.0
+  google_fonts: ^6.1.0
   #provider: ^6.0.2
 
-  hive: ^2.2.3
-  hive_flutter: ^1.1.0
-
   # Base Dependencies
-  cupertino_icons: ^1.0.3
-  cached_network_image: ^3.2.0
-  flutter_form_builder: 9.0.0
-  form_builder_validators: 9.0.0
-  url_launcher: ^6.1.9
-  flutter_native_splash: ^2.1.6
-  geolocator: ^9.0.2
-  image_picker: ^0.8.6+1
-  shimmer: ^2.0.0
-  intl: ^0.17.0
-  firebase_core: ^2.13.0
-  firebase_messaging: ^14.6.1
-  flutx: ^0.2.0-rc.2
+  cupertino_icons: ^1.0.6
+  cached_network_image: ^3.3.1
+  flutter_form_builder: 9.2.1
+  form_builder_validators: 9.1.0
+  url_launcher: ^6.2.4
+  flutter_native_splash: ^2.3.10
+  geolocator: ^10.1.0
+  image_picker: ^1.0.7
+  shimmer: ^3.0.0
+  intl: ^0.19.0
+  firebase_core: ^2.25.4
+  firebase_messaging: ^14.7.15
+  flutx: ^0.2.0-rc.4
 
-  get: ^4.6.5
+  get: ^4.6.6
   sqflite: ^2.2.4+1
-  shared_preferences: ^2.0.17
-  share_plus: ^4.5.3
-  fluttertoast: ^8.2.2
-  onesignal_flutter: ^5.0.3
+  shared_preferences: ^2.2.2
+  share_plus: ^7.2.2
+  fluttertoast: ^8.2.4
+  onesignal_flutter: ^5.1.0
 
 
 
@@ -47,18 +44,16 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  hive_generator: ^2.0.0
-  build_runner: ^2.3.2
-  change_app_package_name: ^1.0.0
+  change_app_package_name: ^1.1.0
 
 dependency_overrides:
   intl: any
   google_fonts: any
 
   # Icons
-  material_design_icons_flutter: ^6.0.7096
+  material_design_icons_flutter: ^7.0.7296
   flutter_feather_icons: ^2.0.0+1
-  flutter_lints: ^2.0.1
+  flutter_lints: ^3.0.1
 
 
 flutter:

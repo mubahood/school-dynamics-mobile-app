@@ -297,17 +297,7 @@ class LoggedInUserModel {
     return item;
   }
 
-  static Future<String> get_token() async {
-    final prefs = await SharedPreferences.getInstance();
-    dynamic local_token = prefs.getString('token');
-    if (local_token == null || local_token.toString().length < 6) {
-      LoggedInUserModel lu = await LoggedInUserModel.getLoggedInUser();
-      local_token = lu.remember_token;
-      await prefs.setString('token', local_token);
-    }
 
-    return local_token;
-  }
 
   Future<bool> save() async {
     bool isSuccess = false;

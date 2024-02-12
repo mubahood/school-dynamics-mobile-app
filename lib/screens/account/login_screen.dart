@@ -23,7 +23,6 @@ class LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormBuilderState>();
 
   Future<void> submit_form() async {
-
     if (!_formKey.currentState!.validate()) {
       Utils.toast("Please fix errors in the form.", color: Colors.red);
       return;
@@ -67,7 +66,16 @@ class LoginScreenState extends State<LoginScreen> {
       return;
     }
 
-    Utils.toast("Success!");
+    await Utils.setPref('token', lu.remember_token);
+
+    String token = await Utils.getToken();
+    if (token.isEmpty) {
+      is_loading = false;
+      error_message = 'Failed to save token.';
+      Utils.toast("Failed to save token.");
+      setState(() {});
+      return;
+    }
 
     is_loading = false;
     setState(() {});

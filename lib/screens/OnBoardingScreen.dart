@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:schooldynamics/models/LoggedInUserModel.dart';
 import 'package:schooldynamics/screens/account/login_screen.dart';
 
-import '../models/RespondModel.dart';
 import '../theme/app_theme.dart';
 import '../utils/AppConfig.dart';
 import '../utils/Utils.dart';
@@ -67,7 +66,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
 
 
-    String   token = await LoggedInUserModel.get_token();
+    String token = await Utils.getToken();
     if (token.toString().length < 20) {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => LoginScreen()));
@@ -82,7 +81,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       return;
     }
 
-    Utils.get_common();
+    Utils.boot_system();
+    Utils.initOneSignal();
     Navigator.pushNamedAndRemoveUntil(context, AppConfig.FullApp, (r) => false);
 
     return "Done";

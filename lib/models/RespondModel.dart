@@ -1,7 +1,6 @@
 import 'dart:convert';
 
-import 'package:get/get.dart';
-import 'package:schooldynamics/screens/account/login_screen.dart';
+import 'package:schooldynamics/theme/app_theme.dart';
 
 import '../utils/Utils.dart';
 
@@ -28,10 +27,7 @@ class RespondModel {
     }
 
     if (resp['message'] == 'Unauthenticated') {
-
-      Utils.toast("You are not logged in.");
-      Utils.logout();
-      Get.off(const LoginScreen());
+      Utils.toast("You are not logged in.",color: CustomTheme.red);
       return;
     }
 

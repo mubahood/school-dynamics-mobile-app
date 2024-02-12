@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/adapter.dart';
-import 'package:dio/dio.dart';
 import 'package:dio/dio.dart' as dioPackage;
+import 'package:dio/dio.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -31,10 +31,6 @@ import '../theme/app_theme.dart';
 import 'AppConfig.dart';
 
 class Utils {
-  static Future<void> get_common() async {
-    await ExamModel.getItems();
-  }
-
   static Future<void> initOneSignal() async {
     WidgetsFlutterBinding.ensureInitialized();
     print("=====INVITING ONE SIGNAL=====");
@@ -125,12 +121,14 @@ class Utils {
 
     var da = dioPackage.FormData.fromMap(body); //.fromMap();
     try {
-      String token = await LoggedInUserModel.get_token();
+      String token = await Utils.getToken();
       response = await dio.post(AppConfig.API_BASE_URL + "/${path}",
           data: da,
           options: Options(
             headers: <String, String>{
               "authorization": 'Bearer ${token}',
+              "Tok": 'Bearer ${token}',
+              "tok": 'Bearer ${token}',
               "Content-Type": "application/json",
               "accept": "application/json",
             },
@@ -172,10 +170,68 @@ class Utils {
     return url;
   }
 
+  static Future<String> getToken() async {
+    String token = "";
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    token = prefs.getString("token") ?? "";
+    return token;
+  }
+
+  static Future<String> getPref(String path) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString(path) ?? "";
+  }
+
+  static Future<void> setPref(String path, String data) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString(path, data);
+    return;
+  }
+
+  static Future<void> removePref(String path) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove(path);
+    return;
+  }
+
+  static Future<void> setPrefInt(String path, int data) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt(path, data);
+    return;
+  }
+
+  static Future<int> getPrefInt(String path) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getInt(path) ?? 0;
+  }
+
+  static Future<void> removePrefInt(String path) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove(path);
+    return;
+  }
+
+  static Future<void> setPrefBool(String path, bool data) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool(path, data);
+    return;
+  }
+
+  static Future<bool> getPrefBool(String path) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getBool(path) ?? false;
+  }
+
+  static Future<void> removePrefBool(String path) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove(path);
+    return;
+  }
+
   static Future<dynamic> http_get(
       String path, Map<String, dynamic> body) async {
     var client = http.Client();
-    String token = await LoggedInUserModel.get_token();
+    String token = await Utils.getToken();
 
     /* print("feting data...");
 
@@ -204,6 +260,9 @@ class Utils {
     var response;
     var dio = Dio();
 
+    // print("feting data...");
+    // print(AppConfig.API_BASE_URL + "/${path}");
+
     if (!kIsWeb) {
       (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
           (HttpClient client) {
@@ -220,10 +279,19 @@ class Utils {
             "Content-Type": "application/json",
             "accept": "application/json",
             "authorization": 'Bearer ${token}',
+            "Tok": 'Bearer ${token}',
+            "tok": 'Bearer ${token}',
           }));
+      // print('=====||||==SUCCESS===||||====');
+      // print(response.data);
+      // print('====||||===>SUCCESS<===||||====');
 
       return response.data;
     } on DioError catch (e) {
+      // print("=======ERROR=======");
+      // print(e.message);
+      // print(e.response?.data);
+      // print('=======>ERROR<=======');
       if (e.response?.data != null) {
         if (e.response?.data.runtimeType.toString() ==
             '_Map<String, dynamic>') {
@@ -256,23 +324,43 @@ class Utils {
     await StreamModel.getItems();
     await MarkLocalModel.uploadPendingMarks();
     await SessionLocal.uploadPending();
+    await ExamModel.getItems();
   }
 
-  static void init_theme() {
+  static SystemUiOverlayStyle init_theme() {
     AppTheme.resetFont();
+    return SystemUiOverlayStyle(
+        statusBarColor: CustomTheme.primary,
+        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.light,
+        systemNavigationBarColor: CustomTheme.primary,
+        systemNavigationBarDividerColor: CustomTheme.primary,
+        systemNavigationBarContrastEnforced: true,
+        systemStatusBarContrastEnforced: true,
+        systemNavigationBarIconBrightness:
+            debugBrightnessOverride // For iOS (dark icons)
+        );
+  }
 
-    SystemChrome.setSystemUIOverlayStyle(
+/*
+
+    return SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
         statusBarColor: CustomTheme.primary,
         statusBarIconBrightness: Brightness.light,
         systemNavigationBarIconBrightness: Brightness.light,
         systemNavigationBarColor: CustomTheme.primary,
+        statusBarBrightness: Brightness.light,
+        systemStatusBarContrastEnforced: true,
+        systemNavigationBarContrastEnforced: true,
+        systemNavigationBarDividerColor: CustomTheme.primary,
       ),
     );
-  }
+* *
+* */
 
   static Future<Database> getDb() async {
-    print("===GETTING DB========");
+    //print("===GETTING DB========");
     return await openDatabase(AppConfig.DATABASE_PATH,
         version: AppConfig.DATABASE_VERSION);
   }

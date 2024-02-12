@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:flutx/flutx.dart';
+import 'package:flutx/widgets/container/container.dart';
+import 'package:flutx/widgets/text/text.dart';
 import 'package:get/get.dart';
 import 'package:schooldynamics/models/LoggedInUserModel.dart';
 import 'package:schooldynamics/screens/classes/ClassesScreen.dart';
 import 'package:schooldynamics/screens/finance/ServiceSubscriptionScreen.dart';
 import 'package:schooldynamics/screens/full_app/section/TransactionsScreen.dart';
+import 'package:schooldynamics/utils/Utils.dart';
 
 import '../../../models/MenuItem.dart';
 import '../../../theme/app_theme.dart';
@@ -13,10 +15,9 @@ import '../../../utils/my_widgets.dart';
 import '../../admin/AdminMenuScreen.dart';
 import '../../finance/FinancialAccountsScreen.dart';
 import '../../students/StudentsScreen.dart';
-import 'AccountSection.dart';
 
 class SectionDashboard extends StatefulWidget {
-  SectionDashboard({Key? key}) : super(key: key);
+  const SectionDashboard({Key? key}) : super(key: key);
 
   @override
   _SectionDashboardState createState() => _SectionDashboardState();
@@ -35,6 +36,12 @@ class _SectionDashboardState extends State<SectionDashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: CustomTheme.primary,
+        toolbarHeight: 0,
+        automaticallyImplyLeading: false,
+        systemOverlayStyle: Utils.init_theme(),
+      ),
       body: FutureBuilder(
           future: futureInit,
           builder: (context, snapshot) {
@@ -64,6 +71,7 @@ class _SectionDashboardState extends State<SectionDashboard> {
   Future<dynamic> myInit() async {
     u = await LoggedInUserModel.getLoggedInUser();
     //Utils.initOneSignal();
+    Utils.init_theme();
 
     return "Done";
   }
@@ -121,8 +129,8 @@ class _SectionDashboardState extends State<SectionDashboard> {
         u.isRole('admin') ||
         u.isRole('bursar') ||
         u.isRole('parent')) {
-      menuItems.add(MenuItem(
-          'Service Subscription', 'T 1', FeatherIcons.edit, 'admin.png', () {
+      menuItems.add(
+          MenuItem('Services', 'T 1', FeatherIcons.edit, 'finance.png', () {
         Get.to(() => ServiceSubscriptionScreen());
       }));
     }
@@ -131,51 +139,92 @@ class _SectionDashboardState extends State<SectionDashboard> {
         u.isRole('admin') ||
         u.isRole('bursar') ||
         u.isRole('parent')) {
+      menuItems.add(
+          MenuItem('Attendance', 'T 1', FeatherIcons.edit, 'finance.png', () {
+        Get.to(() => ServiceSubscriptionScreen());
+      }));
+    }
+
+    /* if (u.isRole('dos') ||
+        u.isRole('admin') ||
+        u.isRole('bursar') ||
+        u.isRole('parent')) {
       menuItems.add(MenuItem(
           'Financial Accounts', 'T 1', FeatherIcons.edit, 'admin.png', () {
         Get.to(() => FinancialAccountsScreen({}));
       }));
-    }
+    }*/
 
     return Column(
       children: [
         Container(
-          padding: const EdgeInsets.only(
-            left: 15,
-            right: 15,
-            top: 18,
-            bottom: 15,
-          ),
-          child: Flex(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            direction: Axis.horizontal,
-            children: [
-              const Icon(FeatherIcons.settings),
-              InkWell(
-                onTap: () {
-                  myInit();
-                },
-                child: FxText.titleLarge(
-                  'School Dynamics'.toUpperCase(),
-                  maxLines: 1,
-                  fontWeight: 800,
-                  color: CustomTheme.primaryDark,
+            height: Get.height / 5,
+            color: CustomTheme.primary,
+            padding: const EdgeInsets.only(
+              left: 20,
+              top: 20,
+              right: 20,
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                    child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    FxText.bodySmall(
+                      'Good Morning Muhindo, Welcome to',
+                      maxLines: 1,
+                      textAlign: TextAlign.start,
+                      fontWeight: 300,
+                      color: Colors.white,
+                    ),
+
+                    Divider(),
+                    InkWell(
+                      onTap: () {
+                        myInit();
+                      },
+                      child: FxText.titleLarge(
+                        'Kiira Junior Primary School'.toUpperCase(),
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.start,
+                        fontWeight: 800,
+                        color: Colors.white,
+                        fontSize: 30,
+                        height: 1.2,
+                      ),
+                    ),
+                  ],
+                )),
+                FxContainer(
+                  color: CustomTheme.primary,
+                  border: Border.all(color: Colors.white, width: 1),
+                  bordered: true,
+                  borderRadiusAll: 0,
+                  margin: const EdgeInsets.only(
+                    bottom: 10,
+                  ),
+                  padding: const EdgeInsets.all(5),
+                  child: Image(
+                      width: Get.width / 4,
+                      height: Get.width / 3,
+                      fit: BoxFit.fill,
+                      image: const AssetImage('assets/images/logo.png')),
                 ),
-              ),
-              InkWell(
-                  onTap: () {
-                    Get.to(() => const AccountSection());
-                  },
-                  child: const Icon(FeatherIcons.user)),
-            ],
-          ),
-        ),
-        const Divider(
-          height: 0,
-        ),
+              ],
+            )),
         Expanded(
           child: Container(
-            padding: const EdgeInsets.only(left: 10, top: 10, right: 10),
+            padding: const EdgeInsets.only(
+              left: 10,
+              top: 10,
+              right: 10,
+            ),
             child: RefreshIndicator(
               onRefresh: doRefresh,
               color: CustomTheme.primary,
@@ -186,7 +235,7 @@ class _SectionDashboardState extends State<SectionDashboard> {
                     SliverGrid(
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
+                        crossAxisCount: 2,
                         crossAxisSpacing: 8,
                         mainAxisSpacing: 10,
                         childAspectRatio: 0.8,

@@ -9,6 +9,7 @@ import 'package:flutx/flutx.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../theme/theme_type.dart';
+import '../utils/Utils.dart';
 import 'custom_theme.dart';
 
 export 'custom_theme.dart';
@@ -168,7 +169,7 @@ class AppTheme {
   }
 */
   static resetFont() {
-    //FxTextStyle.changeFontFamily(GoogleFonts.openSans);
+    FxTextStyle.changeFontFamily(GoogleFonts.openSans);
     FxTextStyle.changeDefaultFontWeight({
       100: FontWeight.w100,
       200: FontWeight.w200,
@@ -183,6 +184,7 @@ class AppTheme {
   }
 
   static ThemeData getTheme([ThemeType? themeType]) {
+    return lightTheme;
     themeType = themeType ?? AppTheme.themeType;
     if (themeType == ThemeType.light) return lightTheme;
     return lightTheme;
@@ -221,9 +223,13 @@ class AppTheme {
 
     /// AppBar Theme
     appBarTheme: AppBarTheme(
-        backgroundColor: Color(0xffffffff),
-        iconTheme: IconThemeData(color: Color(0xff495057)),
-        actionsIconTheme: IconThemeData(color: Color(0xff495057))),
+      systemOverlayStyle: Utils.init_theme(),
+      backgroundColor: Color(0xffffffff),
+      elevation: 0,
+      centerTitle: false,
+      iconTheme: IconThemeData(color: Colors.white),
+      actionsIconTheme: IconThemeData(color: Colors.white),
+    ),
 
     /// Card Theme
     cardTheme: CardTheme(color: Color(0xfff6f6f6)),

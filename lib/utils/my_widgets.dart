@@ -16,6 +16,9 @@ Widget emptyListWidget(String title, Function f) {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        SizedBox(
+          height: Get.height / 2.5,
+        ),
         FxText.titleMedium(
           title.isEmpty ? "No items found." : title,
           color: Colors.black,
@@ -87,11 +90,15 @@ Widget menuItemWidget(MenuItem item) {
     width: (Get.width / 6),
     height: (Get.width / 6),
     borderRadiusAll: 10,
-    bordered: false,
+    bordered: true,
     padding: EdgeInsets.only(left: 5, right: 5),
     onTap: () {
       item.f();
     },
+    border: Border.all(
+      color: CustomTheme.primary,
+      width: 1,
+    ),
     color: Colors.white,
     paddingAll: 0,
     child: Column(
@@ -101,10 +108,9 @@ Widget menuItemWidget(MenuItem item) {
         Image(
           image: AssetImage('assets/icons/${item.img}'),
           fit: BoxFit.cover,
-          height: Get.width/4,
         ),
         SizedBox(
-          height: 3,
+          height: 10,
         ),
         FxText.bodyMedium(
           item.title,
@@ -114,6 +120,7 @@ Widget menuItemWidget(MenuItem item) {
           fontWeight: 800,
           maxLines: 2,
           height: 1,
+          fontSize: 20,
           overflow: TextOverflow.ellipsis,
         ),
       ],
@@ -251,14 +258,17 @@ Widget listItem(MenuItem item) {
 }
 
 Widget myListLoaderWidget(BuildContext context) {
-  return ListView(
-    children: [
-      singleLoadingWidget(context),
-      singleLoadingWidget(context),
-      singleLoadingWidget(context),
-      singleLoadingWidget(context),
-      singleLoadingWidget(context),
-    ],
+  return Container(
+    height: Get.height,
+    child: ListView(
+      children: [
+        singleLoadingWidget(context),
+        singleLoadingWidget(context),
+        singleLoadingWidget(context),
+        singleLoadingWidget(context),
+        singleLoadingWidget(context),
+      ],
+    ),
   );
 }
 

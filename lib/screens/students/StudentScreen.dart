@@ -5,12 +5,12 @@ import 'package:get/get.dart';
 import 'package:schooldynamics/models/UserModel.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 
-import '../../models/Transaction.dart';
+import '../../models/DisciplinaryRecordModel.dart';
+import '../../models/RollCall/Participant.dart';
 import '../../sections/widgets.dart';
 import '../../theme/app_theme.dart';
 import '../../theme/custom_theme.dart';
 import '../../utils/my_widgets.dart';
-import '../finance/TransactionScreen.dart';
 import 'StudentEditBioScreen.dart';
 import 'StudentEditGuardianScreen.dart';
 import 'StudentEditPhotoScreen.dart';
@@ -40,17 +40,9 @@ class _CourseTasksScreenState extends State<StudentScreen> {
 
   Future<dynamic> my_init() async {
     item = widget.data;
-    get_transactions();
+    getAttendance();
     setState(() {});
     return "Done";
-  }
-
-  Future<void> get_transactions() async {
-    transactions_loading = true;
-    setState(() {});
-    transactions = await Transaction.getItems(where: ' 1 ');
-    transactions_loading = false;
-    setState(() {});
   }
 
   @override
@@ -185,7 +177,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
         ),
       ),
       body: DefaultTabController(
-        length: 5,
+        length: 4,
         child: Scaffold(
           appBar: AppBar(
             elevation: 1,
@@ -216,26 +208,18 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                         )),
                     Tab(
                         height: 30,
-                        child: FxText.titleSmall("SCHOOL FEES".toUpperCase(),
-                            fontWeight: 600, color: Colors.white)),
-                    Tab(
-                        height: 30,
                         child: Container(
                           child: FxText.titleMedium("Attendance".toUpperCase(),
                               fontWeight: 600, color: Colors.white),
                         )),
                     Tab(
                         height: 30,
-                        child: Container(
-                          child: FxText.titleSmall("DISCIPLINARY".toUpperCase(),
-                              fontWeight: 600, color: Colors.white),
-                        )),
+                        child: FxText.titleSmall("DISCIPLINARY".toUpperCase(),
+                            fontWeight: 600, color: Colors.white)),
                     Tab(
                         height: 30,
-                        child: Container(
-                          child: FxText.titleSmall("REPORT".toUpperCase(),
-                              fontWeight: 600, color: Colors.white),
-                        )),
+                        child: FxText.titleSmall("REPORT CARDS".toUpperCase(),
+                            fontWeight: 600, color: Colors.white)),
                   ],
                 )
               ],
@@ -272,22 +256,10 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                       case ConnectionState.waiting:
                         return myListLoaderWidget(context);
                       default:
-                        return studentsFragment();
+                        return disciplineFragment();
                     }
                   }),
-              CustomScrollView(
-                slivers: [
-                  SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      (BuildContext context, int index) {
-                        return Text("Tab data 2");
-                      },
-                      childCount: 1,
-                    ),
-                  )
-                ],
-              ),
-              Text("Records"),
+              const Text("Records"),
             ],
           ),
         ),
@@ -313,11 +285,10 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
-                    child: Container(
-                        child: Column(
+                    child: Column(
                       children: [
                         title_widget('BIO DATA'),
-                        SizedBox(
+                        const SizedBox(
                           height: 5,
                         ),
                         Container(
@@ -327,17 +298,17 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                         Container(
                             child: titleValueWidget('Date of birth',
                                 '${Utils.to_date_1(item.date_of_birth)}')),
-             /*           Container(
-                            child: titleValueWidget(
-                                'religion', '${item.religion}')),
-                        Container(
-                            child: titleValueWidget(
-                                'nationality', '${item.nationality}')),*/
+                        /*           Container(
+                        child: titleValueWidget(
+                            'religion', '${item.religion}')),
+                    Container(
+                        child: titleValueWidget(
+                            'nationality', '${item.nationality}')),*/
                         Container(
                             child: titleValueWidget(
                                 'Home address', '${item.home_address}')),
                       ],
-                    )),
+                    ),
                   ),
                   SizedBox(
                     width: 5,
@@ -397,130 +368,438 @@ class _CourseTasksScreenState extends State<StudentScreen> {
     );
   }
 
-  studentsFragment() {
-    return Container(
-      child: CustomScrollView(
-        slivers: [
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return FxText.bodyMedium("$index");
-              },
-              childCount: 100,
-            ),
-          ),
-        ],
-      ),
-    );
+  List<Participant> participants = [];
+  List<DisciplinaryRecordModel> disciplinaryRecords = [];
+
+  getAttendance() async {
+    transactions_loading = true;
+    setState(() {});
+    participants = await Participant.get_items(
+        where: ' administrator_id = \'${item.id}\'');
+    disciplinaryRecords = await DisciplinaryRecordModel.get_items(
+        where: ' administrator_id = \'${item.id}\'');
+    transactions_loading = false;
+    setState(() {});
   }
 
-  List<Transaction> transactions = [];
   bool transactions_loading = false;
+
+  disciplineFragment() {
+    return transactions_loading
+        ? myListLoaderWidget(context)
+        : disciplinaryRecords.isEmpty
+            ? emptyListWidget('No Disciplinary Records.', () {
+                getAttendance();
+              })
+            : RefreshIndicator(
+                onRefresh: () async {
+                  await getAttendance();
+                },
+                color: CustomTheme.primary,
+                backgroundColor: Colors.white,
+                child: CustomScrollView(
+                  slivers: [
+                    SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        (BuildContext context, int index) {
+                          DisciplinaryRecordModel m =
+                              disciplinaryRecords[index];
+                          return FxContainer(
+                            onTap: () {
+                              _disciplineBottomSheet(m);
+                            },
+                            color: m.p()
+                                ? Colors.green.shade50
+                                : Colors.red.shade50,
+                            paddingAll: 0,
+                            child: Column(
+                              children: [
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Flex(
+                                  direction: Axis.horizontal,
+                                  children: [
+                                    const SizedBox(
+                                      width: 15,
+                                    ),
+                                    roundedImage(m.avatar.toString(), 8, 8),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          FxText.titleMedium(
+                                            m.administrator_text,
+                                            maxLines: 1,
+                                            height: 1,
+                                            color: Colors.grey.shade800,
+                                            fontWeight: 800,
+                                          ),
+                                          FxText.bodySmall(m.getDisplayText()),
+                                          Row(
+                                            children: [
+                                              FxCard(
+                                                  color: m.p()
+                                                      ? Colors.green.shade700
+                                                      : Colors.red.shade700,
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                    top: 2,
+                                                    bottom: 4,
+                                                    left: 8,
+                                                    right: 8,
+                                                  ),
+                                                  borderRadiusAll: 50,
+                                                  child: FxText.bodySmall(
+                                                    m.p()
+                                                        ? 'Good Record'
+                                                        : 'Indiscipline',
+                                                    color: Colors.white,
+                                                    fontWeight: 900,
+                                                    height: 1,
+                                                    fontSize: 10,
+                                                  )),
+                                              const Spacer(),
+                                              FxText.bodySmall(
+                                                  Utils.to_date(m.created_at)),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    )
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                        childCount:
+                            disciplinaryRecords.length, // 1000 list items
+                      ),
+                    )
+                  ],
+                ),
+              );
+  }
 
   feesFragment() {
     return transactions_loading
         ? myListLoaderWidget(context)
-        : transactions.isEmpty
-            ? emptyListWidget('No Transaction.', () {
-                get_transactions();
+        : participants.isEmpty
+            ? emptyListWidget('No Attendance Record.', () {
+                getAttendance();
               })
-            : Container(
-                padding: EdgeInsets.only(left: 5, right: 5),
-                child: RefreshIndicator(
-                  onRefresh: () async {
-                    await my_init();
-                  },
-                  color: CustomTheme.primary,
-                  backgroundColor: Colors.white,
-                  child: CustomScrollView(
-                    slivers: [
-                      SliverList(
-                        delegate: SliverChildBuilderDelegate(
-                          (BuildContext context, int index) {
-                            return const SizedBox(
-                              height: 10,
-                            );
-                          },
-                          childCount: 1, // 1000 list items
-                        ),
+            : RefreshIndicator(
+                onRefresh: () async {
+                  await getAttendance();
+                },
+                color: CustomTheme.primary,
+                backgroundColor: Colors.white,
+                child: CustomScrollView(
+                  slivers: [
+                    SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        (BuildContext context, int index) {
+                          Participant m = participants[index];
+                          return FxContainer(
+                            onTap: () {
+                              _showBottomSheet(m);
+                            },
+                            color: m.p()
+                                ? Colors.green.shade50
+                                : Colors.red.shade50,
+                            paddingAll: 0,
+                            child: Column(
+                              children: [
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Flex(
+                                  direction: Axis.horizontal,
+                                  children: [
+                                    const SizedBox(
+                                      width: 15,
+                                    ),
+                                    roundedImage(m.avatar.toString(), 8, 8),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          FxText.titleMedium(
+                                            m.administrator_text,
+                                            maxLines: 1,
+                                            height: 1,
+                                            color: Colors.grey.shade800,
+                                            fontWeight: 800,
+                                          ),
+                                          FxText.bodySmall(m.getDisplayText()),
+                                          Row(
+                                            children: [
+                                              FxCard(
+                                                  color: m.p()
+                                                      ? Colors.green.shade700
+                                                      : Colors.red.shade700,
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                    top: 2,
+                                                    bottom: 4,
+                                                    left: 8,
+                                                    right: 8,
+                                                  ),
+                                                  borderRadiusAll: 50,
+                                                  child: FxText.bodySmall(
+                                                    m.p()
+                                                        ? 'Present'
+                                                        : 'Absent',
+                                                    color: Colors.white,
+                                                    fontWeight: 900,
+                                                    height: 1,
+                                                    fontSize: 10,
+                                                  )),
+                                              const Spacer(),
+                                              FxText.bodySmall(
+                                                  Utils.to_date(m.created_at)),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    )
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                        childCount: participants.length, // 1000 list items
                       ),
-                      SliverList(
-                        delegate: SliverChildBuilderDelegate(
-                          (BuildContext context, int index) {
-                            Transaction m = transactions[index];
-
-                            return InkWell(
-                              onTap: () {
-                                Get.to(() => TransactionScreen(
-                                      data: m,
-                                    ));
-                              },
-                              child: Column(
-                                children: [
-                                  Flex(
-                                    direction: Axis.horizontal,
-                                    children: [
-                                      FxContainer(
-                                        color:
-                                            CustomTheme.primary.withAlpha(20),
-                                        paddingAll: 10,
-                                        margin: const EdgeInsets.only(
-                                            left: 10,
-                                            right: 10,
-                                            bottom: 0,
-                                            top: 0),
-                                        child: Icon(
-                                          m.amount_figure < 1
-                                              ? FeatherIcons.arrowUp
-                                              : FeatherIcons.arrowDown,
-                                          color: m.amount_figure < 1
-                                              ? Colors.red.shade800
-                                              : Colors.green.shade800,
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            FxText.bodySmall(
-                                                Utils.to_date(m.created_at)),
-                                            FxText.titleMedium(
-                                              m.account_name,
-                                              maxLines: 1,
-                                              color: Colors.grey.shade800,
-                                              fontWeight: 800,
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                      FxText.bodyLarge(
-                                        Utils.moneyFormat(m.amount),
-                                        fontWeight: 700,
-                                        color: (m.amount_figure < 0)
-                                            ? Colors.red.shade700
-                                            : Colors.green.shade700,
-                                      ),
-                                      const SizedBox(
-                                        width: 10,
-                                      )
-                                    ],
-                                  ),
-                                  const Padding(
-                                    padding:
-                                        EdgeInsets.only(left: 10, right: 10),
-                                    child: Divider(),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                          childCount: transactions.length, // 1000 list items
-                        ),
-                      )
-                    ],
-                  ),
+                    )
+                  ],
                 ),
               );
+  }
+
+  void _disciplineBottomSheet(DisciplinaryRecordModel m) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext buildContext) {
+          return Container(
+            color: Colors.transparent,
+            child: Container(
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(16),
+                      topRight: Radius.circular(16))),
+              child: Container(
+                padding: const EdgeInsets.only(
+                  left: 15,
+                  right: 15,
+                  top: 15,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        const Spacer(),
+                        IconButton(
+                          icon: Icon(
+                            FeatherIcons.x,
+                            color: Colors.black,
+                            size: 30,
+                          ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        )
+                      ],
+                    ),
+                    Expanded(
+                        child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Center(
+                            child: roundedImage(
+                              item.avatar.toString(),
+                              5,
+                              5,
+                              radius: 100,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          FxText.titleLarge(
+                            item.name,
+                            fontWeight: 800,
+                            color: Colors.black,
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          const Divider(),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          titleValueWidget('Date', Utils.to_date(m.created_at)),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          titleValueWidget('Title', m.getDisplayText()),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          titleValueWidget('Record Category',
+                              m.p() ? 'Good Record' : 'Indiscipline'),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          titleValueWidget('Details', m.description),
+                          Divider(),
+                          titleValueWidget(
+                              'Head Teacher\'s Comment', m.hm_comment),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          titleValueWidget(
+                              'Class Teacher\'s Comment', m.teacher_comment),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          titleValueWidget(
+                              'Student\'s Comment', m.student_comment),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          titleValueWidget(
+                              'Parent\'s Comment', m.parent_comment),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                        ],
+                      ),
+                    ))
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
+  }
+
+  void _showBottomSheet(Participant m) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext buildContext) {
+          return Container(
+            color: Colors.transparent,
+            child: Container(
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(16),
+                      topRight: Radius.circular(16))),
+              child: Container(
+                padding: const EdgeInsets.only(
+                  left: 15,
+                  right: 15,
+                  top: 15,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        const Spacer(),
+                        IconButton(
+                          icon: const Icon(
+                            FeatherIcons.x,
+                            color: Colors.black,
+                            size: 30,
+                          ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        )
+                      ],
+                    ),
+                    Expanded(
+                        child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Center(
+                            child: roundedImage(
+                              item.avatar.toString(),
+                              5,
+                              5,
+                              radius: 100,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          FxText.titleLarge(
+                            item.name,
+                            fontWeight: 800,
+                            color: Colors.black,
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          const Divider(),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          titleValueWidget('Date', Utils.to_date(m.created_at)),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          titleValueWidget('Roll Call', m.getDisplayText()),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          titleValueWidget(
+                              'Status', m.p() ? 'Present' : 'Absent'),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          titleValueWidget('Details', m.session_text),
+                        ],
+                      ),
+                    ))
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
   }
 }

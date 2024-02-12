@@ -167,15 +167,15 @@ class _StudentEditPhotoScreenState extends State<StudentEditPhotoScreen> {
                             child: FxButton.block(
                               padding:
                               const EdgeInsets.fromLTRB(24, 24, 24, 24),
+                              onPressed: () {
+                                saveImage();
+                              },
+                              borderRadiusAll: 0,
                               child: FxText.titleLarge(
                                 'UPDATE',
                                 color: Colors.white,
                                 fontWeight: 700,
                               ),
-                              onPressed: () {
-                                saveImage();
-                              },
-                              borderRadiusAll: 0,
                             ),
                           )
                         ],
@@ -323,7 +323,7 @@ class _StudentEditPhotoScreenState extends State<StudentEditPhotoScreen> {
   Future<void> saveImage() async {
     await Future.delayed(Duration(seconds: 1));
 
-    LocalImageToUploadModel img = new LocalImageToUploadModel();
+    LocalImageToUploadModel img = LocalImageToUploadModel();
     img.id = DateTime.now().millisecondsSinceEpoch;
     img.name = local_image_name;
     img.path = local_image_path;
@@ -347,6 +347,7 @@ class _StudentEditPhotoScreenState extends State<StudentEditPhotoScreen> {
       setState(() {
         isUploading = false;
       });
+
 
       Get.back();
       Utils.toast("Photo updated successfully!");
