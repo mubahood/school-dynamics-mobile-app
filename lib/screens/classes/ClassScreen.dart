@@ -36,6 +36,7 @@ class _CourseTasksScreenState extends State<ClassScreen> {
       appBar: AppBar(
         backgroundColor: CustomTheme.primary,
         titleSpacing: 0,
+        systemOverlayStyle: Utils.get_theme(),
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white),
         automaticallyImplyLeading: true,

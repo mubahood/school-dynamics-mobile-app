@@ -3,11 +3,13 @@
 import 'package:get/get.dart';
 import 'package:schooldynamics/models/MyClasses.dart';
 
+import '../models/EnterpriseModel.dart';
 import '../models/MySubjects.dart';
 import '../models/UserModel.dart';
 
 class MainController extends GetxController {
   var count = 0.obs;
+
   // ignore: non_constant_identifier_names
   RxList<dynamic> my_classes = <MyClasses>[].obs;
   RxList<dynamic> my_top_classes = <MyClasses>[].obs;
@@ -16,10 +18,21 @@ class MainController extends GetxController {
   RxList<dynamic> my_top_students = <UserModel>[].obs;
   RxList<dynamic> my_top_subjects = <MySubjects>[].obs;
 
+  EnterpriseModel ent = EnterpriseModel();
+
   init() async {
+    await getEnt();
     await getMyClasses();
     await getMySubjects();
     await getMyStudents();
+  }
+
+  Future<void> getEnt() async {
+    try {
+      ent = await EnterpriseModel.getEnt();
+    } catch (e) {
+      print(e);
+    }
   }
 
   getMyStudents() async {

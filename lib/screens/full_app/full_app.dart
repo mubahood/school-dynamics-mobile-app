@@ -7,6 +7,7 @@ import 'package:schooldynamics/screens/full_app/section/SectionDashboard.dart';
 
 import '../../controllers/MainController.dart';
 import '../../theme/custom_theme.dart';
+import '../posts/PostModelsScreen.dart';
 
 class FullApp extends StatefulWidget {
   static const String tag = "FullApp";
@@ -82,12 +83,12 @@ class _FullAppState extends State<FullApp> with SingleTickerProviderStateMixin {
                       child: TabBarView(
                         physics: const NeverScrollableScrollPhysics(),
                         controller: tabController,
-                        children: const <Widget>[
-                          SectionDashboard(),
-                          SectionDashboard(),
-                          SectionDashboard(),
-                          SectionDashboard(),
-                          AccountSection(),
+                        children: <Widget>[
+                          const SectionDashboard(),
+                          PostModelsScreen('Notice'),
+                          PostModelsScreen('Event'),
+                          PostModelsScreen('News'),
+                          const AccountSection(),
                         ],
                       ),
                     ),
@@ -116,9 +117,10 @@ class _FullAppState extends State<FullApp> with SingleTickerProviderStateMixin {
                         indicatorColor: CustomTheme.primary,
                         tabs: [
                           myNavItem('Home', FeatherIcons.home, 0),
-                          myNavItem('Noticeboard', FeatherIcons.messageSquare, 1),
-                          myNavItem('Calendar', FeatherIcons.calendar, 2),
-                          myNavItem('News', FeatherIcons.fileText, 3),
+                          myNavItem('Noticeboard',
+                              Icons.chrome_reader_mode_outlined, 1),
+                          myNavItem('Events', FeatherIcons.calendar, 2),
+                          myNavItem('News', Icons.newspaper, 3),
                           myNavItem('Account', FeatherIcons.user, 4),
                         ],
                       ),
@@ -142,7 +144,7 @@ class _FullAppState extends State<FullApp> with SingleTickerProviderStateMixin {
         children: [
           Icon(
             icon,
-            size: title.length < 10 ? 22 : 25,
+            size: title.length < 16 ? 22 : 25,
             color: (tabController.index == i)
                 ? CustomTheme.primary
                 : Colors.grey[700],
@@ -152,7 +154,7 @@ class _FullAppState extends State<FullApp> with SingleTickerProviderStateMixin {
           ),
           FxText.bodySmall(
             title,
-            fontSize: title.length < 10 ? 12 : 8,
+            fontSize: title.length < 16 ? 12 : 8,
             color: (tabController.index == i)
                 ? CustomTheme.primary
                 : Colors.grey[700],

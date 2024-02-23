@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
+import 'package:schooldynamics/models/LoggedInUserModel.dart';
 import 'package:schooldynamics/models/UserModel.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 
 import '../../models/DisciplinaryRecordModel.dart';
 import '../../models/RollCall/Participant.dart';
+import '../../models/StudentReportCard.dart';
 import '../../sections/widgets.dart';
 import '../../theme/app_theme.dart';
 import '../../theme/custom_theme.dart';
 import '../../utils/my_widgets.dart';
+import 'PdfViewer.dart';
 import 'StudentEditBioScreen.dart';
 import 'StudentEditGuardianScreen.dart';
 import 'StudentEditPhotoScreen.dart';
@@ -30,8 +33,17 @@ class _CourseTasksScreenState extends State<StudentScreen> {
 
   late Future<dynamic> futureInit;
 
+  LoggedInUserModel u = LoggedInUserModel();
+
   Future<dynamic> _my_init() async {
     futureInit = my_init();
+    u = await LoggedInUserModel.getLoggedInUser();
+    if (u.user_type == 'employee') {
+      showFloat = true;
+    } else {
+      showFloat = false;
+    }
+
     setState(() {});
     return "done";
   }
@@ -50,49 +62,53 @@ class _CourseTasksScreenState extends State<StudentScreen> {
     _my_init();
   }
 
+  bool showFloat = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: CustomTheme.primary,
-        onPressed: () {
-          _my_init();
-        },
-        child: PopupMenuButton<int>(
-            onSelected: (x) {
-              switch (x.toString()) {
-                case '1':
-                  Get.to(() => StudentEditBioScreen(
-                        data: item,
-                      ));
-                  break;
-                case '2':
-                  Get.to(() => StudentEditPhotoScreen(
-                        data: item,
-                      ));
-                  break;
+      floatingActionButton: !showFloat
+          ? null
+          : FloatingActionButton(
+              backgroundColor: CustomTheme.primary,
+              onPressed: () {
+                _my_init();
+              },
+              child: PopupMenuButton<int>(
+                  onSelected: (x) {
+                    switch (x.toString()) {
+                      case '1':
+                        Get.to(() => StudentEditBioScreen(
+                              data: item,
+                            ));
+                        break;
+                      case '2':
+                        Get.to(() => StudentEditPhotoScreen(
+                              data: item,
+                            ));
+                        break;
 
-                case '3':
-                  Get.to(() => StudentEditGuardianScreen(
-                        data: item,
-                      ));
-                  break;
-              }
-            },
-            icon: const Icon(
-              FeatherIcons.moreVertical,
-              size: 25,
-              color: Colors.white,
-            ),
-            itemBuilder: (context) => [
-                  PopupMenuItem(
-                    value: 1,
-                    child: Flex(
-                      direction: Axis.horizontal,
-                      children: [
-                        Icon(
-                          FeatherIcons.user,
-                          color: CustomTheme.primary,
+                      case '3':
+                        Get.to(() => StudentEditGuardianScreen(
+                              data: item,
+                            ));
+                        break;
+                    }
+                  },
+                  icon: const Icon(
+                    FeatherIcons.moreVertical,
+                    size: 25,
+                    color: Colors.white,
+                  ),
+                  itemBuilder: (context) => [
+                        PopupMenuItem(
+                          value: 1,
+                          child: Flex(
+                            direction: Axis.horizontal,
+                            children: [
+                              Icon(
+                                FeatherIcons.user,
+                                color: CustomTheme.primary,
                         ),
                         const SizedBox(
                           width: 8,
@@ -259,7 +275,16 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                         return disciplineFragment();
                     }
                   }),
-              const Text("Records"),
+              FutureBuilder(
+                  future: futureInit,
+                  builder: (context, snapshot) {
+                    switch (snapshot.connectionState) {
+                      case ConnectionState.waiting:
+                        return myListLoaderWidget(context);
+                      default:
+                        return cardsFragment();
+                    }
+                  }),
             ],
           ),
         ),
@@ -369,6 +394,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
   }
 
   List<Participant> participants = [];
+  List<StudentReportCard> cards = [];
   List<DisciplinaryRecordModel> disciplinaryRecords = [];
 
   getAttendance() async {
@@ -376,13 +402,124 @@ class _CourseTasksScreenState extends State<StudentScreen> {
     setState(() {});
     participants = await Participant.get_items(
         where: ' administrator_id = \'${item.id}\'');
+
+    cards = await StudentReportCard.get_items(
+        where: ' student_id = \'${item.id}\'');
+
     disciplinaryRecords = await DisciplinaryRecordModel.get_items(
         where: ' administrator_id = \'${item.id}\'');
+
     transactions_loading = false;
     setState(() {});
   }
 
   bool transactions_loading = false;
+
+  cardsFragment() {
+    return transactions_loading
+        ? myListLoaderWidget(context)
+        : cards.isEmpty
+            ? emptyListWidget('No Disciplinary Records.', () {
+                getAttendance();
+              })
+            : RefreshIndicator(
+                onRefresh: () async {
+                  await getAttendance();
+                },
+                color: CustomTheme.primary,
+                backgroundColor: Colors.white,
+                child: CustomScrollView(
+                  slivers: [
+                    SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        (BuildContext context, int index) {
+                          StudentReportCard m = cards[index];
+                          return FxContainer(
+                            onTap: () {
+                              Get.to(() => PdfViewerScreen(
+                                  m.getPdf(), 'Termly Report Card'));
+                              //_disciplineBottomSheet(m);
+                            },
+                            paddingAll: 0,
+                            child: Column(
+                              children: [
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Flex(
+                                  direction: Axis.horizontal,
+                                  children: [
+                                    const SizedBox(
+                                      width: 15,
+                                    ),
+                                    roundedImage(m.vatar.toString(), 8, 8),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          FxText.titleMedium(
+                                            m.student_text,
+                                            maxLines: 1,
+                                            height: 1,
+                                            color: Colors.grey.shade800,
+                                            fontWeight: 800,
+                                          ),
+                                          FxText.bodySmall(
+                                              'CLASS: ${m.academic_class_text}'),
+                                          Row(
+                                            children: [
+                                              FxText('Position in class: '
+                                                  .toUpperCase()),
+                                              FxCard(
+                                                  color: CustomTheme.primary,
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                    top: 2,
+                                                    bottom: 4,
+                                                    left: 8,
+                                                    right: 8,
+                                                  ),
+                                                  borderRadiusAll: 50,
+                                                  child: FxText.bodySmall(
+                                                    m.position,
+                                                    color: Colors.white,
+                                                    fontWeight: 900,
+                                                    height: 1,
+                                                    fontSize: 10,
+                                                  )),
+                                              const Spacer(),
+                                              FxText.bodySmall(
+                                                  Utils.to_date(m.created_at)),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    )
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                        childCount: cards.length, // 1000 list items
+                      ),
+                    )
+                  ],
+                ),
+              );
+  }
 
   disciplineFragment() {
     return transactions_loading
@@ -628,7 +765,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                       children: [
                         const Spacer(),
                         IconButton(
-                          icon: Icon(
+                          icon: const Icon(
                             FeatherIcons.x,
                             color: Colors.black,
                             size: 30,

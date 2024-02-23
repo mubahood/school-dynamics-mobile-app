@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:schooldynamics/models/LoggedInUserModel.dart';
 import 'package:schooldynamics/screens/account/login_screen.dart';
 
+import '../controllers/MainController.dart';
 import '../theme/app_theme.dart';
 import '../utils/AppConfig.dart';
 import '../utils/Utils.dart';
@@ -63,8 +65,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   }
 
   Future<dynamic> my_init() async {
-
-
+    Get.put(MainController());
 
     String token = await Utils.getToken();
     if (token.toString().length < 20) {
@@ -80,7 +81,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           context, MaterialPageRoute(builder: (context) => LoginScreen()));
       return;
     }
-
+    await Utils.init_theme();
     Utils.boot_system();
     Utils.initOneSignal();
     Navigator.pushNamedAndRemoveUntil(context, AppConfig.FullApp, (r) => false);

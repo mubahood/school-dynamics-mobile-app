@@ -223,7 +223,7 @@ class AppTheme {
 
     /// AppBar Theme
     appBarTheme: AppBarTheme(
-      systemOverlayStyle: Utils.init_theme(),
+      systemOverlayStyle: Utils.get_theme(),
       backgroundColor: Color(0xffffffff),
       elevation: 0,
       centerTitle: false,

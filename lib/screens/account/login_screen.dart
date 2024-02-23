@@ -1,14 +1,18 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutx/flutx.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
+import 'package:in_app_update/in_app_update.dart';
 
-import '../../../utils/AppConfig.dart';
 import '../../../utils/Utils.dart';
+import '../../controllers/MainController.dart';
 import '../../models/LoggedInUserModel.dart';
 import '../../models/RespondModel.dart';
+import '../../sections/widgets.dart';
 import '../../theme/custom_theme.dart';
 import '../OnBoardingScreen.dart';
 
@@ -17,6 +21,20 @@ class LoginScreen extends StatefulWidget {
 
   @override
   LoginScreenState createState() => new LoginScreenState();
+}
+
+Future<void> checkForUpdate() async {
+  InAppUpdate.checkForUpdate().then((info) {
+    try {
+      if (info.updateAvailability == UpdateAvailability.updateAvailable) {
+        InAppUpdate.performImmediateUpdate().catchError((e) {
+          return AppUpdateResult.inAppUpdateFailed;
+        });
+      }
+    } catch (e) {
+      print(e);
+    }
+  }).catchError((e) {});
 }
 
 class LoginScreenState extends State<LoginScreen> {
@@ -39,7 +57,7 @@ class LoginScreenState extends State<LoginScreen> {
     setState(() {});
     print("start conn");
     RespondModel resp =
-        RespondModel(await Utils.http_post('users/login', form_data_map));
+    RespondModel(await Utils.http_post('users/login', form_data_map));
 
     if (resp.code != 1) {
       is_loading = false;
@@ -85,16 +103,93 @@ class LoginScreenState extends State<LoginScreen> {
 
   String error_message = "";
   bool is_loading = false;
+  final MainController main = Get.find<MainController>();
 
   @override
   void initState() {
     Utils.init_theme();
+    myInit();
+  }
+
+  myInit() async {
+    checkForUpdate();
+    await main.getEnt();
+    await main.getEnt();
+
+    /// = await EnterpriseModel.getEnt();
+    setState(() {});
+  }
+
+  void showImagePicker(context) {
+    showModalBottomSheet(
+        context: context,
+        barrierColor: CustomTheme.primary.withOpacity(.5),
+        builder: (BuildContext buildContext) {
+          return Container(
+            color: Colors.transparent,
+            child: Container(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(16),
+                  topRight: Radius.circular(16),
+                  bottomLeft: Radius.circular(16),
+                  bottomRight: Radius.circular(16),
+                ),
+              ),
+              child: Padding(
+                padding: FxSpacing.all(16),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    FxText.bodyLarge(
+                      "Contact Support Team",
+                      color: CustomTheme.primary,
+                      fontWeight: 800,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    ListTile(
+                      onTap: () {
+                        Navigator.pop(context);
+                        Utils.launchURL(
+                            "https://wa.me/+256783204665?text=Hello%20I%20need%20help%20with%20my%20account.\n");
+                      },
+                      dense: false,
+                      leading: Icon(FeatherIcons.messageSquare,
+                          size: 30, color: CustomTheme.primary),
+                      title: FxText(
+                        "WhatsApp",
+                        fontWeight: 500,
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
+                    ),
+                    ListTile(
+                        dense: false,
+                        onTap: () {
+                          Navigator.pop(context);
+                          Utils.launchURL("tel:+256783204665");
+                        },
+                        leading: Icon(FeatherIcons.phoneCall,
+                            size: 28, color: CustomTheme.primary),
+                        title: FxText(
+                          "Call",
+                          fontWeight: 500,
+                          color: Colors.black,
+                          fontSize: 18,
+                        )),
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
   }
 
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
@@ -107,11 +202,50 @@ class LoginScreenState extends State<LoginScreen> {
             height: 50,
             color: Colors.white,
           ),
-          Image(
-            width: MediaQuery.of(context).size.width / 3,
-            fit: BoxFit.cover,
-            image: AssetImage(AppConfig.logo1),
+          Container(
+              padding: const EdgeInsets.only(
+                left: 25,
+                top: 0,
+                right: 25,
+              ),
+              child: FxText.titleLarge(
+                "Welcome To ${main.ent.name}",
+                textAlign: TextAlign.center,
+              )),
+          const SizedBox(
+            height: 15,
           ),
+          CachedNetworkImage(
+            fit: BoxFit.contain,
+            imageUrl: main.ent.getLogo(),
+            width: (Get.width / 3),
+            height: (Get.width / 3),
+            placeholder: (context, url) => ShimmerLoadingWidget(
+              height: 400,
+            ),
+            errorWidget: (context, url, error) => Image(
+              image: const AssetImage('assets/images/logo.png'),
+              fit: BoxFit.contain,
+              width: (Get.width / 5),
+              height: (Get.width / 5),
+            ),
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          Divider(
+            endIndent: 25,
+            indent: 25,
+            thickness: 1,
+            color: CustomTheme.primary,
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          FxText.bodyLarge("Sign in to continue",
+              textAlign: TextAlign.center,
+              fontWeight: 500,
+              color: Colors.black),
           Expanded(
             child: ListView(
               children: [
@@ -119,7 +253,7 @@ class LoginScreenState extends State<LoginScreen> {
                     borderRadiusAll: 0,
                     marginAll: 0,
                     padding: const EdgeInsets.only(
-                        left: 25, right: 25, top: 50, bottom: 10),
+                        left: 25, right: 25, top: 0, bottom: 10),
                     color: Colors.white,
                     child: FormBuilder(
                         key: _formKey,
@@ -149,8 +283,7 @@ class LoginScreenState extends State<LoginScreen> {
                                 enabledBorder: CustomTheme.input_outline_border,
                                 border:
                                     CustomTheme.input_outline_focused_border,
-                                labelText:
-                                    "Phone number",
+                                labelText: "Phone number",
                               ),
                             ),
                             Container(height: 25),
@@ -166,7 +299,7 @@ class LoginScreenState extends State<LoginScreen> {
                               decoration: InputDecoration(
                                 enabledBorder: CustomTheme.input_outline_border,
                                 border:
-                                    CustomTheme.input_outline_focused_border,
+                                CustomTheme.input_outline_focused_border,
                                 labelText: "Password",
                               ),
                               validator: FormBuilderValidators.compose([
@@ -179,22 +312,22 @@ class LoginScreenState extends State<LoginScreen> {
                             error_message.isEmpty
                                 ? const SizedBox()
                                 : FxContainer(
-                                    margin: EdgeInsets.only(bottom: 10),
-                                    color: Colors.red.shade50,
-                                    child: Text(
-                                      error_message,
-                                    ),
-                                  ),
+                              margin: EdgeInsets.only(bottom: 10),
+                              color: Colors.red.shade50,
+                              child: Text(
+                                error_message,
+                              ),
+                            ),
                             Container(
                               padding: const EdgeInsets.only(
                                 top: 20,
                               ),
                               child: is_loading
                                   ? Center(
-                                      child: Container(
-                                        width: 60,
-                                        height: 60,
-                                        padding: const EdgeInsets.all(15),
+                                child: Container(
+                                  width: 60,
+                                  height: 60,
+                                  padding: const EdgeInsets.all(15),
                                         child: const CircularProgressIndicator(
                                           strokeWidth: 2.0,
                                           valueColor:
@@ -204,7 +337,7 @@ class LoginScreenState extends State<LoginScreen> {
                                       ),
                                     )
                                   : CupertinoButton(
-                                  color: CustomTheme.primary,
+                                      color: CustomTheme.primary,
                                       onPressed: () {
                                         submit_form();
                                       },
@@ -230,13 +363,13 @@ class LoginScreenState extends State<LoginScreen> {
                 style: TextStyle(color: Colors.red.shade500, fontSize: 14),
               ),
               TextButton(
-                style: TextButton.styleFrom(primary: Colors.transparent),
+                style: TextButton.styleFrom(),
                 child: Text(
                   "Ask for help",
                   style: TextStyle(color: CustomTheme.primary, fontSize: 14),
                 ),
                 onPressed: () {
-                  submit_form();
+                  showImagePicker(context);
                 },
               )
             ],

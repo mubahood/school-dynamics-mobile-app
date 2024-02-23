@@ -39,6 +39,7 @@ class AccountChangePasswordState extends State<AccountChangePassword>
     return Scaffold(
         appBar: AppBar(
           elevation: 1,
+          backgroundColor: CustomTheme.primary,
           systemOverlayStyle: Utils.overlay(),
           leading: InkWell(
             onTap: () {
@@ -46,7 +47,7 @@ class AccountChangePasswordState extends State<AccountChangePassword>
             },
             child: const Icon(
               Icons.arrow_back_outlined,
-              color: Colors.black,
+              color: Colors.white,
             ),
           ),
           actions: [
@@ -68,13 +69,13 @@ class AccountChangePasswordState extends State<AccountChangePassword>
                     },
                     child: FxText.bodyLarge(
                       "SAVE",
-                      color: CustomTheme.primary,
+                      color: Colors.white,
                       fontWeight: 800,
                     ))
           ],
-          title: FxText.titleMedium(
+          title: FxText.titleLarge(
             "Changing password",
-            color: Colors.black,
+            color: Colors.white,
             fontWeight: 700,
           ),
         ),
@@ -191,7 +192,6 @@ class AccountChangePasswordState extends State<AccountChangePassword>
           color: Colors.red.shade700);
       return;
     }
-    Utils.toast('Updating password...', color: Colors.green.shade700);
     setState(() {
       error_message = "";
       is_loading = true;

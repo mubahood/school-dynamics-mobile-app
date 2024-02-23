@@ -6,14 +6,12 @@ import 'package:schooldynamics/theme/app_theme.dart';
 import 'package:schooldynamics/utils/AppConfig.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 
-void main() {
+Future<void> main() async {
   //You will need to initialize AppThemeNotifier class for theme changes.
   WidgetsFlutterBinding.ensureInitialized();
 
-  Utils.init_theme();
+  await Utils.init_theme();
 
-  CustomTheme.primary = const Color(0xff225b4c);
-  CustomTheme.primaryDark = const Color(0xff225b4c);
   runApp(const MyApp());
 }
 
@@ -40,7 +38,7 @@ class MyApp extends StatelessWidget {
       home: OnBoardingScreen(),
       routes: {
         '/OnBoardingScreen': (context) => OnBoardingScreen(),
-        AppConfig.FullApp: (context) => FullApp(),
+        AppConfig.FullApp: (context) => const FullApp(),
       },
     );
   }

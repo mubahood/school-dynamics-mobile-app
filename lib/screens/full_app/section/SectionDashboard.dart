@@ -3,17 +3,21 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutx/widgets/container/container.dart';
 import 'package:flutx/widgets/text/text.dart';
 import 'package:get/get.dart';
+import 'package:schooldynamics/controllers/MainController.dart';
 import 'package:schooldynamics/models/LoggedInUserModel.dart';
 import 'package:schooldynamics/screens/classes/ClassesScreen.dart';
 import 'package:schooldynamics/screens/finance/ServiceSubscriptionScreen.dart';
 import 'package:schooldynamics/screens/full_app/section/TransactionsScreen.dart';
+import 'package:schooldynamics/sections/widgets.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 
 import '../../../models/MenuItem.dart';
 import '../../../theme/app_theme.dart';
 import '../../../utils/my_widgets.dart';
+import '../../account/login_screen.dart';
 import '../../admin/AdminMenuScreen.dart';
 import '../../finance/FinancialAccountsScreen.dart';
+import '../../sessions/AttendanceScreen.dart';
 import '../../students/StudentsScreen.dart';
 
 class SectionDashboard extends StatefulWidget {
@@ -40,7 +44,7 @@ class _SectionDashboardState extends State<SectionDashboard> {
         backgroundColor: CustomTheme.primary,
         toolbarHeight: 0,
         automaticallyImplyLeading: false,
-        systemOverlayStyle: Utils.init_theme(),
+        systemOverlayStyle: Utils.get_theme(),
       ),
       body: FutureBuilder(
           future: futureInit,
@@ -60,6 +64,7 @@ class _SectionDashboardState extends State<SectionDashboard> {
   late Future<dynamic> futureInit;
 
   Future<dynamic> doRefresh() async {
+    checkForUpdate();
     futureInit = myInit();
     setState(() {});
   }
@@ -68,7 +73,12 @@ class _SectionDashboardState extends State<SectionDashboard> {
 
   LoggedInUserModel u = LoggedInUserModel();
 
+  //maincontroller find
+  final MainController man = Get.find<MainController>();
+
   Future<dynamic> myInit() async {
+    await man.getEnt();
+    await Utils.init_theme();
     u = await LoggedInUserModel.getLoggedInUser();
     //Utils.initOneSignal();
     Utils.init_theme();
@@ -139,9 +149,9 @@ class _SectionDashboardState extends State<SectionDashboard> {
         u.isRole('admin') ||
         u.isRole('bursar') ||
         u.isRole('parent')) {
-      menuItems.add(
-          MenuItem('Attendance', 'T 1', FeatherIcons.edit, 'finance.png', () {
-        Get.to(() => ServiceSubscriptionScreen());
+      menuItems.add(MenuItem(
+          'Attendance', 'T 1', FeatherIcons.edit, 'attandance.png', () {
+        Get.to(() => AttendanceScreen());
       }));
     }
 
@@ -176,20 +186,19 @@ class _SectionDashboardState extends State<SectionDashboard> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     FxText.bodySmall(
-                      'Good Morning Muhindo, Welcome to',
+                      'Good ${u.name}, Welcome to',
                       maxLines: 1,
                       textAlign: TextAlign.start,
                       fontWeight: 300,
                       color: Colors.white,
                     ),
-
-                    Divider(),
+                    const Divider(),
                     InkWell(
                       onTap: () {
                         myInit();
                       },
                       child: FxText.titleLarge(
-                        'Kiira Junior Primary School'.toUpperCase(),
+                        "${man.ent.name.toUpperCase()}.",
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.start,
@@ -210,11 +219,7 @@ class _SectionDashboardState extends State<SectionDashboard> {
                     bottom: 10,
                   ),
                   padding: const EdgeInsets.all(5),
-                  child: Image(
-                      width: Get.width / 4,
-                      height: Get.width / 3,
-                      fit: BoxFit.fill,
-                      image: const AssetImage('assets/images/logo.png')),
+                  child: roundedImage(man.ent.getLogo(), 4, 0, radius: 0),
                 ),
               ],
             )),

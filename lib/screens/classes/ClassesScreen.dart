@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../../models/MyClasses.dart';
 import '../../theme/custom_theme.dart';
+import '../../utils/Utils.dart';
 import '../../utils/my_widgets.dart';
 import 'ClassScreen.dart';
 
@@ -35,11 +36,11 @@ class ClassesScreenState extends State<ClassesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       appBar: AppBar(
-          backgroundColor: CustomTheme.primary,
+          systemOverlayStyle: Utils.get_theme(),
           titleSpacing: 0,
+          backgroundColor: CustomTheme.primary,
           elevation: 0,
           iconTheme: IconThemeData(color: Colors.white),
           automaticallyImplyLeading: true,
@@ -81,7 +82,7 @@ class ClassesScreenState extends State<ClassesScreen> {
                             onTap: () {
                               Get.to(() => ClassScreen(data: myClass));
                             },
-                            borderColor: CustomTheme.primaryDark,
+                            borderColor: CustomTheme.primary,
                             bordered: true,
                             borderRadiusAll: 8,
                             color: CustomTheme.primary.withAlpha(40),
@@ -92,7 +93,7 @@ class ClassesScreenState extends State<ClassesScreen> {
                               children: [
                                 Icon(
                                   FeatherIcons.award,
-                                  color: CustomTheme.primaryDark,
+                                  color: CustomTheme.primary,
                                   size: 30,
                                 ),
                                 Spacer(),
@@ -108,7 +109,7 @@ class ClassesScreenState extends State<ClassesScreen> {
                                   "${myClass.class_teacher_name}",
                                   height: .9,
                                   maxLines: 2,
-                                  color: CustomTheme.primaryDark,
+                                  color: CustomTheme.primary,
                                 ),
                                 Spacer(),
                                 FxText.bodySmall(

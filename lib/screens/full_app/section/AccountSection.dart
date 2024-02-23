@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
-import 'package:schooldynamics/theme/app_theme.dart';
-import 'package:schooldynamics/utils/Utils.dart';
+import 'package:schooldynamics/screens/OnBoardingScreen.dart';
+import 'package:schooldynamics/utils/AppConfig.dart';
 
-import '../../OnBoardingScreen.dart';
+import '../../../../../../controllers/MainController.dart';
+import '../../../theme/custom_theme.dart';
+import '../../../utils/Utils.dart';
+import '../../account/AboutSchoolScreen.dart';
+import '../../account/AboutUsScreen.dart';
+import '../../account/AccountChangePassword.dart';
+import '../../account/AccountEdit.dart';
 
 class AccountSection extends StatefulWidget {
   const AccountSection({Key? key}) : super(key: key);
@@ -15,297 +21,390 @@ class AccountSection extends StatefulWidget {
 }
 
 class _AccountSectionState extends State<AccountSection> {
+  late CustomTheme theme;
+
   @override
   void initState() {
     super.initState();
+    theme = CustomTheme();
+    myInit();
   }
 
-  Widget _buildSingleRow(String name, IconData icon) {
-    return Row(
-      children: [
-        Icon(
-          icon,
-          size: 20,
-        ),
-        FxSpacing.width(20),
-        Expanded(
-            child: FxText.bodyMedium(
-          name,
-          fontWeight: 600,
-        )),
-        FxSpacing.width(20),
-        Icon(
-          FeatherIcons.chevronRight,
-          size: 20,
-        ),
-      ],
-    );
+  final MainController mainController = Get.find<MainController>();
+
+  myInit() async {
+    mainController.initialized;
+    mainController.init();
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        padding:
-            FxSpacing.fromLTRB(20, FxSpacing.safeAreaTop(context) + 20, 20, 20),
-        children: [
-          FxText.bodySmall(
-            'ACCOUNT',
-            fontWeight: 700,
-            letterSpacing: 0.2,
-            muted: true,
-          ),
-          FxSpacing.height(20),
-          Row(
-            children: [
-              Icon(
+      appBar: AppBar(
+        backgroundColor: CustomTheme.primary,
+        systemOverlayStyle: Utils.overlay(),
+        elevation: .5,
+        automaticallyImplyLeading: false,
+        title: FxText.titleLarge(
+          "Account",
+          fontWeight: 800,
+          color: Colors.white,
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            ListTile(
+              leading: Icon(
                 FeatherIcons.user,
-                size: 20,
                 color: CustomTheme.primary,
               ),
-              FxSpacing.width(20),
-              Expanded(child: FxText.bodyMedium('My account', fontWeight: 600)),
-              FxSpacing.width(20),
-              FxContainer(
-                onTap: () {
-                  do_logout();
-                },
-                padding: FxSpacing.xy(20, 8),
-                borderRadiusAll: 4,
-                color: CustomTheme.primary,
-                child: FxText.bodySmall(
-                  'Log Out',
-                  fontWeight: 700,
-                  letterSpacing: 0.3,
-                  color: Colors.white,
-                ),
+              title: FxText.bodyLarge(
+                "Update My Profile",
               ),
-            ],
-          ),
-          FxSpacing.height(20),
-          InkWell(
-            onTap: () {},
-            child: Row(
-              children: [
-                Icon(
-                  FeatherIcons.userCheck,
-                  size: 20,
-                  color: CustomTheme.primary,
-                ),
-                FxSpacing.width(20),
-                FxText.bodyMedium('Edit profile',
-                    color: CustomTheme.primary, fontWeight: 600),
-              ],
+              onTap: () {
+                Get.to(() => const AccountEdit());
+              },
+              trailing: Icon(
+                FeatherIcons.chevronRight,
+                color: CustomTheme.primary,
+              ),
             ),
-          ),
-        /*  FxSpacing.height(20),
-          InkWell(
-            onTap: () {},
-            child: Row(
-              children: [
-                Icon(
-                  FeatherIcons.key,
-                  size: 20,
-                  color: CustomTheme.primary,
-                ),
-                FxSpacing.width(20),
-                FxText.bodyMedium(
-                  'Change password',
-                  fontWeight: 600,
-                ),
-              ],
+            ListTile(
+              title: FxText.bodyLarge(
+                "Change Password",
+              ),
+              onTap: () {
+                Get.to(() => const AccountChangePassword());
+              },
+              leading: Icon(
+                FeatherIcons.key,
+                color: CustomTheme.primary,
+              ),
+              trailing: Icon(
+                FeatherIcons.chevronRight,
+                color: CustomTheme.primary,
+              ),
             ),
-          ),
-          FxSpacing.height(20),
-          FxText.bodySmall(
-            'MY CONTENT & ACTIVITY',
-            fontWeight: 700,
-            letterSpacing: 0.2,
-            muted: true,
-          ),
-          FxSpacing.height(20),
-          InkWell(
-            onTap: () {},
-            child: Row(
-              children: [
-                Icon(
-                  FeatherIcons.plus,
-                  size: 20,
-                  color: CustomTheme.primary,
-                ),
-                FxSpacing.width(20),
-                Expanded(
-                    child: FxText.bodyMedium(
-                  'Post drugs for sale',
-                  fontWeight: 600,
-                )),
-                FxSpacing.width(20),
-                FxSpacing.width(4),
-                Icon(
-                  FeatherIcons.chevronRight,
-                  size: 20,
-                  color: CustomTheme.primary,
-                ),
-              ],
+            ListTile(
+              title: FxText.bodyLarge(
+                "About ${mainController.ent.name}",
+              ),
+              leading: Icon(
+                FeatherIcons.info,
+                color: CustomTheme.primary,
+              ),
+              onTap: () {
+                Get.to(() => AboutSchoolScreen(item: mainController.ent));
+              },
+              trailing: Icon(
+                FeatherIcons.chevronRight,
+                color: CustomTheme.primary,
+              ),
             ),
-          ),
-          FxSpacing.height(20),
-          InkWell(
-            onTap: () {},
-            child: Row(
-              children: [
-                Icon(
-                  FeatherIcons.file,
-                  size: 20,
-                  color: CustomTheme.primary,
-                ),
-                FxSpacing.width(20),
-                Expanded(
-                    child: FxText.bodyMedium(
-                  'Draft cases',
-                  fontWeight: 600,
-                )),
-                FxSpacing.width(20),
-                FxContainer(
-                  color: Colors.red.shade700,
-                  paddingAll: 3,
-                  borderRadiusAll: 50,
-                  child: FxText.bodyMedium(
-                    '${32}',
-                    color: Colors.white,
-                    fontWeight: 600,
-                    muted: true,
-                  ),
-                ),
-                FxSpacing.width(4),
-                Icon(
-                  FeatherIcons.chevronRight,
-                  size: 20,
-                ),
-              ],
+            ListTile(
+              title: FxText.bodyLarge(
+                "Contact ${mainController.ent.name}",
+              ),
+              leading: Icon(
+                FeatherIcons.phoneCall,
+                color: CustomTheme.primary,
+              ),
+              onTap: () {
+                showModalBottomSheet(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Container(
+                        height: 210,
+                        padding: const EdgeInsets.all(15),
+                        child: Column(
+                          children: [
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            ListTile(
+                              leading: Icon(
+                                FeatherIcons.phone,
+                                color: CustomTheme.primary,
+                              ),
+                              title: FxText.bodyLarge(
+                                "Call ${mainController.ent.name}",
+                              ),
+                              onTap: () {
+                                Navigator.pop(context);
+                                Utils.launchPhone(
+                                    '${mainController.ent.phone_number}');
+                              },
+                              trailing: Icon(
+                                FeatherIcons.chevronRight,
+                                color: CustomTheme.primary,
+                              ),
+                            ),
+                            ListTile(
+                              leading: Icon(
+                                FeatherIcons.phone,
+                                color: CustomTheme.primary,
+                              ),
+                              title: FxText.bodyLarge(
+                                "Whatsapp ${mainController.ent.name}",
+                              ),
+                              onTap: () {
+                                Navigator.pop(context);
+                                //+14379803253
+                                Utils.launchBrowser(
+                                    'https://wa.me/${mainController.ent.phone_number}?text=Hello%20\n\n');
+                              },
+                              trailing: Icon(
+                                FeatherIcons.chevronRight,
+                                color: CustomTheme.primary,
+                              ),
+                            ),
+                            ListTile(
+                              leading: Icon(
+                                FeatherIcons.mail,
+                                color: CustomTheme.primary,
+                              ),
+                              title: FxText.bodyLarge(
+                                "Email Us",
+                              ),
+                              onTap: () {
+                                Navigator.pop(context);
+                                Utils.launchBrowser(
+                                    'mailto:${mainController.ent.email}?subject=Hello\n\n');
+                              },
+                              trailing: Icon(
+                                FeatherIcons.chevronRight,
+                                color: CustomTheme.primary,
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    });
+              },
+              trailing: Icon(
+                FeatherIcons.chevronRight,
+                color: CustomTheme.primary,
+              ),
             ),
-          ),
-          FxSpacing.height(20),
-          InkWell(
-            onTap: () {},
-            child: Row(
-              children: [
-                Icon(
-                  FeatherIcons.file,
-                  size: 20,
-                  color: CustomTheme.primary,
-                ),
-                FxSpacing.width(20),
-                Expanded(
-                    child: FxText.bodyMedium(
-                  'Draft cases',
-                  fontWeight: 600,
-                )),
-                FxSpacing.width(20),
-                FxContainer(
-                  color: Colors.red.shade700,
-                  paddingAll: 3,
-                  borderRadiusAll: 50,
-                  child: FxText.bodyMedium(
-                    '${32}',
-                    color: Colors.white,
-                    fontWeight: 600,
-                    muted: true,
-                  ),
-                ),
-                FxSpacing.width(4),
-                Icon(
-                  FeatherIcons.chevronRight,
-                  size: 20,
-                ),
-              ],
+            const Divider(),
+            ListTile(
+              title: FxText.bodyLarge(
+                "About School Dynamics - App",
+              ),
+              leading: Icon(
+                Icons.info,
+                size: 28,
+                color: CustomTheme.primary,
+              ),
+              onTap: () {
+                Get.to(() => AboutUsScreen());
+              },
+              trailing: Icon(
+                FeatherIcons.chevronRight,
+                color: CustomTheme.primary,
+              ),
             ),
-          ),
-          FxSpacing.height(20),
-          FxText.bodySmall(
-            'MY ROLES & PROFILES',
-            fontWeight: 700,
-            letterSpacing: 0.2,
-            muted: true,
-          ),
-          FxSpacing.height(20),
-          InkWell(
-            onTap: () {},
-            child: Row(
-              children: [
-                Icon(
-                  FeatherIcons.award,
-                  size: 20,
-                  color: CustomTheme.primary,
-                ),
-                FxSpacing.width(20),
-                Expanded(
-                    child: FxText.bodyMedium(
-                  'My roles',
-                  fontWeight: 600,
-                )),
-                Icon(
-                  FeatherIcons.chevronRight,
-                  size: 20,
-                  color: CustomTheme.primary,
-                ),
-              ],
+            ListTile(
+              title: FxText.bodyLarge(
+                "Privacy Policy",
+              ),
+              leading: Icon(
+                Icons.info,
+                size: 28,
+                color: CustomTheme.primary,
+              ),
+              onTap: () {
+                Utils.launchURL(AppConfig.TERMS);
+              },
+              trailing: Icon(
+                FeatherIcons.chevronRight,
+                color: CustomTheme.primary,
+              ),
             ),
-          ),
-          FxSpacing.height(20),
-          InkWell(
-            onTap: () {},
-            child: Row(
-              children: [
-                Icon(
-                  FeatherIcons.checkCircle,
-                  size: 20,
-                  color: CustomTheme.primary,
-                ),
-                FxSpacing.width(20),
-                Expanded(
-                    child: FxText.bodyMedium(
-                  'My veterinary profile',
-                  fontWeight: 600,
-                )),
-                Icon(
-                  FeatherIcons.chevronRight,
-                  size: 20,
-                  color: CustomTheme.primary,
-                ),
-              ],
+            ListTile(
+              title: FxText.bodyLarge(
+                "Contact Us",
+              ),
+              leading: Icon(
+                FeatherIcons.phone,
+                color: CustomTheme.primary,
+              ),
+              onTap: () {
+                //show bottomsheet with phone call, whatsapp and email
+                showModalBottomSheet(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Container(
+                        height: 210,
+                        padding: const EdgeInsets.all(15),
+                        child: Column(
+                          children: [
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            ListTile(
+                              leading: Icon(
+                                FeatherIcons.phone,
+                                color: CustomTheme.primary,
+                              ),
+                              title: FxText.bodyLarge(
+                                "Call ${AppConfig.APP_NAME} Team",
+                              ),
+                              onTap: () {
+                                Navigator.pop(context);
+                                Utils.launchPhone('${AppConfig.CONTACT_PHONE}');
+                              },
+                              trailing: Icon(
+                                FeatherIcons.chevronRight,
+                                color: CustomTheme.primary,
+                              ),
+                            ),
+                            ListTile(
+                              leading: Icon(
+                                FeatherIcons.phone,
+                                color: CustomTheme.primary,
+                              ),
+                              title: FxText.bodyLarge(
+                                "Whatsapp ${AppConfig.APP_NAME} Team",
+                              ),
+                              onTap: () {
+                                Navigator.pop(context);
+                                //+14379803253
+                                Utils.launchBrowser(
+                                    'https://wa.me/${AppConfig.CONTACT_PHONE}?text=Hello%20Hambren%20Team\n\n');
+                              },
+                              trailing: Icon(
+                                FeatherIcons.chevronRight,
+                                color: CustomTheme.primary,
+                              ),
+                            ),
+                            ListTile(
+                              leading: Icon(
+                                FeatherIcons.mail,
+                                color: CustomTheme.primary,
+                              ),
+                              title: FxText.bodyLarge(
+                                "Email Us",
+                              ),
+                              onTap: () {
+                                Navigator.pop(context);
+                                Utils.launchBrowser(
+                                    'mailto:${AppConfig.CONTACT_EMAIL}?subject=Hello%20Hambren%20Team&body=Hello%20Hambren%20Team\n\n');
+                              },
+                              trailing: Icon(
+                                FeatherIcons.chevronRight,
+                                color: CustomTheme.primary,
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    });
+              },
+              trailing: Icon(
+                FeatherIcons.chevronRight,
+                color: CustomTheme.primary,
+              ),
             ),
-          ),
-          FxSpacing.height(20),
-          Divider(
-            thickness: 0.8,
-          ),
-          FxSpacing.height(10),
-          FxContainer(
-            color: CustomTheme.primary.withAlpha(28),
-            borderRadiusAll: 4,
-            child: FxText.bodyMedium(
-              "© 2023 U-LITS, Uganda Livestock Traceability System",
-              textAlign: TextAlign.center,
-              fontWeight: 700,
-              letterSpacing: 0.2,
-              color: CustomTheme.primaryDark,
+            ListTile(
+              title: FxText.bodyLarge(
+                "Delete Account",
+                color: Colors.red,
+              ),
+              leading: Icon(
+                FeatherIcons.trash2,
+                color: Colors.red,
+              ),
+              onTap: () {
+                Get.defaultDialog(
+                    middleText:
+                        "Are you sure you want to request for your account to be deleted?",
+                    titleStyle: const TextStyle(color: Colors.black),
+                    actions: <Widget>[
+                      FxButton.outlined(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          do_logout();
+                          Utils.launchURL(
+                              'https://forms.gle/Xpi9wjKxNXDGa57w9');
+                        },
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 15),
+                        borderColor: Colors.red,
+                        child: FxText(
+                          'DELETE ACCOUNT',
+                          color: Colors.red,
+                        ),
+                      ),
+                      FxButton.small(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 15),
+                        child: FxText(
+                          'CANCEL',
+                          color: Colors.white,
+                        ),
+                      )
+                    ]);
+              },
             ),
-          ),*/
-        ],
+            ListTile(
+              title: FxText.bodyLarge(
+                "Logout",
+              ),
+              leading: Icon(
+                FeatherIcons.logOut,
+                color: CustomTheme.primary,
+              ),
+              onTap: () {
+                Get.defaultDialog(
+                    middleText: "Are you sure you want to logout?",
+                    titleStyle: const TextStyle(color: Colors.black),
+                    actions: <Widget>[
+                      FxButton.outlined(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          do_logout();
+                        },
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 15),
+                        borderColor: CustomTheme.primary,
+                        child: FxText(
+                          'LOGOUT',
+                          color: CustomTheme.primary,
+                        ),
+                      ),
+                      FxButton.small(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 15),
+                        child: FxText(
+                          'CANCEL',
+                          color: Colors.white,
+                        ),
+                      )
+                    ]);
+              },
+              trailing: Icon(
+                FeatherIcons.chevronRight,
+                color: CustomTheme.primary,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
   Future<void> do_logout() async {
-    /* u = await Utils.get_logged_user();
-    print(u.roles);
-    return;
-
-    return;
-    */
-    await Utils.logout();
-    Get.off(OnBoardingScreen());
-    return;
+    Utils.logout();
+    Utils.toast("Logged you out!");
+    Get.offAll(() => OnBoardingScreen());
   }
 }

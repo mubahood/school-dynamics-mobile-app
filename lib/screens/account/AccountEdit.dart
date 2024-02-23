@@ -3,19 +3,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutx/flutx.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:schooldynamics/models/LoggedInUserModel.dart';
-
 import 'package:schooldynamics/models/RespondModel.dart';
 
 import '../../../theme/app_theme.dart';
-import '../../../theme/custom_theme.dart';
 import '../../../utils/Utils.dart';
 import '../../sections/widgets.dart';
 
 class AccountEdit extends StatefulWidget {
   const AccountEdit({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   AccountEditState createState() => AccountEditState();
@@ -47,6 +46,7 @@ class AccountEditState extends State<AccountEdit>
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
+        backgroundColor: CustomTheme.primary,
         systemOverlayStyle: Utils.overlay(),
         leading: InkWell(
           onTap: () {
@@ -54,19 +54,17 @@ class AccountEditState extends State<AccountEdit>
           },
           child: const Icon(
             Icons.arrow_back_outlined,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
         actions: [
           is_loading
-              ? Padding(
-                  padding:
-                      const EdgeInsets.only(right: 20, top: 10, bottom: 10),
+              ? const Padding(
+                  padding: EdgeInsets.only(right: 20, top: 10, bottom: 10),
                   child: Center(
                     child: CircularProgressIndicator(
                       strokeWidth: 2.0,
-                      valueColor:
-                          AlwaysStoppedAnimation<Color>(CustomTheme.primary),
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                     ),
                   ),
                 )
@@ -76,24 +74,23 @@ class AccountEditState extends State<AccountEdit>
                   },
                   child: FxText.bodyLarge(
                     "SAVE",
-                    color: CustomTheme.primary,
+                    color: Colors.white,
                     fontWeight: 800,
                   ))
         ],
         title: FxText.titleMedium(
           "Editing profile",
           fontSize: 20,
-          color: Colors.black,
-          fontWeight: 700,
+          color: Colors.white,
+          fontWeight: 900,
         ),
       ),
       body: FutureBuilder(
           future: initFuture,
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             }
-
             return FormBuilder(
               key: _fKey,
               child: Stack(
@@ -125,10 +122,10 @@ class AccountEditState extends State<AccountEdit>
                                               children: [
                                                 const SizedBox(height: 10),
                                                 error_message.isEmpty
-                                                    ? SizedBox()
+                                                    ? const SizedBox()
                                                     : FxContainer(
-                                                        margin: EdgeInsets.only(
-                                                            bottom: 10),
+                                                        margin: const EdgeInsets
+                                                            .only(bottom: 10),
                                                         color:
                                                             Colors.red.shade50,
                                                         child: Text(
@@ -236,6 +233,39 @@ class AccountEditState extends State<AccountEdit>
                                                       TextInputAction.next,
                                                 ),
                                                 const SizedBox(height: 15),
+                                                //sex
+                                                FormBuilderRadioGroup(
+                                                  decoration: AppTheme
+                                                      .InputDecorationTheme1(
+                                                          hasPadding: false,
+                                                          label: "Gender",
+                                                          isDense: true),
+                                                  name: 'sex',
+                                                  wrapRunSpacing: 0,
+                                                  wrapSpacing: 0,
+                                                  initialValue: item.sex,
+                                                  onChanged: (val) {
+                                                    item.sex =
+                                                        Utils.to_str(val, '');
+                                                    setState(() {});
+                                                  },
+                                                  orientation:
+                                                      OptionsOrientation
+                                                          .horizontal,
+                                                  validator:
+                                                      FormBuilderValidators
+                                                          .required(),
+                                                  options: [
+                                                    'Male',
+                                                    'Female',
+                                                  ]
+                                                      .map((lang) =>
+                                                          FormBuilderFieldOption(
+                                                            value: lang,
+                                                          ))
+                                                      .toList(growable: false),
+                                                ),
+
                                                 const SizedBox(height: 15),
                                                 FormBuilderTextField(
                                                   decoration: CustomTheme.in_3(
@@ -298,6 +328,7 @@ class AccountEditState extends State<AccountEdit>
       'phone_number_1': item.phone_number_1,
       'phone_number_2': item.phone_number_2,
       'address': item.name,
+      'sex': item.sex,
     }));
 
     setState(() {
@@ -313,6 +344,12 @@ class AccountEditState extends State<AccountEdit>
       return;
     }
 
+    item = LoggedInUserModel.fromJson(resp.data);
+    if (item.id < 1) {
+      Utils.toast('Failed to update profile', color: Colors.red.shade700);
+      return;
+    }
+    await item.save();
     Utils.toast('Profile updated successfully!');
 
     Navigator.pop(context);

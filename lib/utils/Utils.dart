@@ -4,13 +4,11 @@ import 'dart:io';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart' as dioPackage;
 import 'package:dio/dio.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutx/flutx.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -25,6 +23,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../models/EnterpriseModel.dart';
 import '../models/ExamModel.dart';
 import '../models/LoggedInUserModel.dart';
 import '../theme/app_theme.dart';
@@ -33,8 +32,7 @@ import 'AppConfig.dart';
 class Utils {
   static Future<void> initOneSignal() async {
     WidgetsFlutterBinding.ensureInitialized();
-    print("=====INVITING ONE SIGNAL=====");
-    await Firebase.initializeApp();
+    //await Firebase.initializeApp();
     print("=====DONE INVITING ONE SIGNAL=====");
     // Set the background messaging handler early on, as a named top-level function
 
@@ -327,8 +325,53 @@ class Utils {
     await ExamModel.getItems();
   }
 
-  static SystemUiOverlayStyle init_theme() {
+  static SystemUiOverlayStyle get_theme() {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      systemNavigationBarColor: CustomTheme.primary,
+      systemNavigationBarIconBrightness: Brightness.light,
+      systemNavigationBarDividerColor: null,
+      statusBarColor: CustomTheme.primary,
+      statusBarIconBrightness: Brightness.light,
+      statusBarBrightness: Brightness.light,
+    ));
+
+    return SystemUiOverlayStyle(
+        statusBarColor: CustomTheme.primary,
+        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.light,
+        systemNavigationBarColor: CustomTheme.primary,
+        systemNavigationBarDividerColor: CustomTheme.primary,
+        systemNavigationBarContrastEnforced: true,
+        systemStatusBarContrastEnforced: true,
+        systemNavigationBarIconBrightness:
+            debugBrightnessOverride // For iOS (dark icons)
+        );
+  }
+
+  static Future<SystemUiOverlayStyle> init_theme() async {
+    try {
+      EnterpriseModel ent = await EnterpriseModel.getEnt();
+      if (ent.id > 1) {
+        CustomTheme.primary =
+            Color(int.parse(ent.color.replaceAll("#", "0xff")));
+        CustomTheme.primaryDark = CustomTheme.primary;
+      }
+    } catch (e) {
+      print("Error :===>  $e");
+    }
+
     AppTheme.resetFont();
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      systemNavigationBarColor: CustomTheme.primary,
+      systemNavigationBarIconBrightness: Brightness.light,
+      systemNavigationBarDividerColor: null,
+      statusBarColor: CustomTheme.primary,
+      statusBarIconBrightness: Brightness.light,
+      statusBarBrightness: Brightness.light,
+    ));
+
     return SystemUiOverlayStyle(
         statusBarColor: CustomTheme.primary,
         statusBarIconBrightness: Brightness.light,
@@ -562,38 +605,6 @@ class Utils {
       statusBarIconBrightness: Brightness.light,
       statusBarBrightness: Brightness.light, // For iOS (dark icons)
     );
-  }
-
-  static Future<Position> get_device_location() async {
-    bool serviceEnabled;
-    LocationPermission permission;
-
-    // Test if location services are enabled.
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
-      // Location services are not enabled don't continue
-      // accessing the position and request users of the
-      // App to enable the location services.
-    }
-
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        // Permissions are denied, next time you could try
-        // requesting permissions again (this is also where
-        // Android's shouldShowRequestPermissionRationale
-        // returned true. According to Android guidelines
-        // your App should show an explanatory UI now.
-      }
-    }
-
-    if (permission == LocationPermission.deniedForever) {
-      // Permissions are denied forever, handle appropriately.
-    }
-    // When we reach here, permissions are granted and we can
-    // continue accessing the position of the device.
-    return await Geolocator.getCurrentPosition();
   }
 
   void upload_image(String path) async {}
