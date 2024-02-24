@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="school_dynamics_mobile_app"
+        android:label="School Dynamics"
         android:name="${applicationName}"
         android:icon="@drawable/logo">
 

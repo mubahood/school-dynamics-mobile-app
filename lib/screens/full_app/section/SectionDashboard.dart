@@ -21,7 +21,7 @@ import '../../sessions/AttendanceScreen.dart';
 import '../../students/StudentsScreen.dart';
 
 class SectionDashboard extends StatefulWidget {
-  const SectionDashboard({Key? key}) : super(key: key);
+  const SectionDashboard({super.key});
 
   @override
   _SectionDashboardState createState() => _SectionDashboardState();
@@ -42,9 +42,9 @@ class _SectionDashboardState extends State<SectionDashboard> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: CustomTheme.primary,
+        systemOverlayStyle: Utils.get_theme(),
         toolbarHeight: 0,
         automaticallyImplyLeading: false,
-        systemOverlayStyle: Utils.get_theme(),
       ),
       body: FutureBuilder(
           future: futureInit,
@@ -164,7 +164,7 @@ class _SectionDashboardState extends State<SectionDashboard> {
         Get.to(() => FinancialAccountsScreen({}));
       }));
     }*/
-
+     
     return Column(
       children: [
         Container(
@@ -186,7 +186,7 @@ class _SectionDashboardState extends State<SectionDashboard> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     FxText.bodySmall(
-                      'Good ${u.name}, Welcome to',
+                      '${Utils.greet(u.name)}, Welcome to',
                       maxLines: 1,
                       textAlign: TextAlign.start,
                       fontWeight: 300,

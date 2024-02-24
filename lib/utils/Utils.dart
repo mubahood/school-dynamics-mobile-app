@@ -30,6 +30,28 @@ import '../theme/app_theme.dart';
 import 'AppConfig.dart';
 
 class Utils {
+  static String greet(String name) {
+    //split name by  space if it is more than one word and get the first word
+    name = name.split(" ")[0];
+    name = Utils.short_string(name);
+    //greet name according to time of the day
+    var hour = DateTime.now().hour;
+    if (hour < 12) {
+      return 'Good Morning, $name';
+    }
+    if (hour < 17) {
+      return 'Good Afternoon, $name';
+    }
+    return 'Good Evening, $name';
+  }
+
+  static String short_string(String name) {
+    if (name.length > 10) {
+      return '${name.substring(0, 10)}...';
+    }
+    return name;
+  }
+
   static Future<void> initOneSignal() async {
     WidgetsFlutterBinding.ensureInitialized();
     //await Firebase.initializeApp();
@@ -95,8 +117,7 @@ class Utils {
     return yes;
   }
 
-  static Future<dynamic> http_post(
-      String path, Map<String, dynamic> body) async {
+  static Future<dynamic> http_post(String path, Map<String, dynamic> body) async {
     bool is_online = await Utils.is_connected();
     if (!is_online) {
       return {
@@ -226,8 +247,7 @@ class Utils {
     return;
   }
 
-  static Future<dynamic> http_get(
-      String path, Map<String, dynamic> body) async {
+  static Future<dynamic> http_get(String path, Map<String, dynamic> body) async {
     var client = http.Client();
     String token = await Utils.getToken();
 
@@ -326,26 +346,24 @@ class Utils {
   }
 
   static SystemUiOverlayStyle get_theme() {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    /* SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       systemNavigationBarColor: CustomTheme.primary,
       systemNavigationBarIconBrightness: Brightness.light,
       systemNavigationBarDividerColor: null,
       statusBarColor: CustomTheme.primary,
       statusBarIconBrightness: Brightness.light,
       statusBarBrightness: Brightness.light,
-    ));
+    ));*/
 
     return SystemUiOverlayStyle(
-        statusBarColor: CustomTheme.primary,
-        statusBarIconBrightness: Brightness.light,
-        statusBarBrightness: Brightness.light,
-        systemNavigationBarColor: CustomTheme.primary,
-        systemNavigationBarDividerColor: CustomTheme.primary,
-        systemNavigationBarContrastEnforced: true,
-        systemStatusBarContrastEnforced: true,
-        systemNavigationBarIconBrightness:
-            debugBrightnessOverride // For iOS (dark icons)
-        );
+      statusBarColor: CustomTheme.primary,
+      statusBarIconBrightness: Brightness.light,
+      statusBarBrightness: Brightness.dark,
+      systemNavigationBarColor: CustomTheme.primary,
+      systemNavigationBarDividerColor: CustomTheme.primary,
+      systemNavigationBarContrastEnforced: true,
+      systemStatusBarContrastEnforced: true, // For iOS (dark icons)
+    );
   }
 
   static Future<SystemUiOverlayStyle> init_theme() async {
@@ -381,8 +399,8 @@ class Utils {
         systemNavigationBarContrastEnforced: true,
         systemStatusBarContrastEnforced: true,
         systemNavigationBarIconBrightness:
-            debugBrightnessOverride // For iOS (dark icons)
-        );
+        debugBrightnessOverride // For iOS (dark icons)
+    );
   }
 
 /*
@@ -507,15 +525,15 @@ class Utils {
         backgroundColor: color,
         margin: EdgeInsets.zero,
         duration:
-            isLong ? const Duration(seconds: 3) : const Duration(seconds: 5),
+        isLong ? const Duration(seconds: 3) : const Duration(seconds: 5),
         snackPosition: SnackPosition.BOTTOM,
         snackStyle: SnackStyle.GROUNDED);
   }
 
   static void toast2(String message,
       {Color background_color = Colors.green,
-      color = Colors.white,
-      bool is_long = false}) {
+        color = Colors.white,
+        bool is_long = false}) {
     if (Colors.green == color) {
       color = CustomTheme.primary;
     }
@@ -534,14 +552,13 @@ class Utils {
     Navigator.pushNamedAndRemoveUntil(context, "/HomeScreen", (r) => false);
   }
 
-  static Future<void> showConfirmDialog(
-    BuildContext context,
-    Function onPositiveClick,
-    Function onNegativeClick, {
-    String message = "Please confirm this action",
-    String positive_text = "Confirm",
-    String negative_text = "Cancel",
-  }) async {
+  static Future<void> showConfirmDialog(BuildContext context,
+      Function onPositiveClick,
+      Function onNegativeClick, {
+        String message = "Please confirm this action",
+        String positive_text = "Confirm",
+        String negative_text = "Cancel",
+      }) async {
     await showDialog<void>(
       context: context,
       builder: (BuildContext context) {
@@ -565,7 +582,7 @@ class Utils {
                           children: [
                             FxButton.block(
                                 padding:
-                                    const EdgeInsets.fromLTRB(24, 24, 24, 24),
+                                const EdgeInsets.fromLTRB(24, 24, 24, 24),
                                 onPressed: () {
                                   onPositiveClick();
                                   Navigator.pop(context);

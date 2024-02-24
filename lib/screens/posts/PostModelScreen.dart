@@ -53,89 +53,87 @@ class PostModelScreen extends StatelessWidget {
           child: Container(
             color: Colors.white,
             child: //
-                Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    _buildContentWidget(),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 0, top: 10),
-                      child: Text(
-                        item.title,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 22,
-                          letterSpacing: .01,
-                          height: 1,
-                        ),
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
+                SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  _buildContentWidget(),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 0, top: 10),
+                    child: Text(
+                      item.title,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 22,
+                        letterSpacing: .01,
+                        height: 1,
                       ),
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    const SizedBox(height: 10),
-                    const Divider(
-                      height: 0,
-                    ),
-                    item.type == 'Event'
-                        ? Column(
-                            children: [
-                              const SizedBox(
-                                height: 15,
-                              ),
-                              Row(
-                                children: [
-                                  const Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 0, top: 0, right: 15),
-                                    child: Text(
-                                      'Event Date:',
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 22,
-                                        letterSpacing: .01,
-                                        height: 1,
-                                      ),
-                                      maxLines: 3,
-                                      overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: 10),
+                  const Divider(
+                    height: 0,
+                  ),
+                  item.type == 'Event'
+                      ? Column(
+                          children: [
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            Row(
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.only(
+                                      left: 0, top: 0, right: 15),
+                                  child: Text(
+                                    'Event Date:',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 22,
+                                      letterSpacing: .01,
+                                      height: 1,
                                     ),
+                                    maxLines: 3,
+                                    overflow: TextOverflow.ellipsis,
                                   ),
-                                  FxText.bodyLarge(
-                                    Utils.to_date_1(item.event_date),
-                                    color: Colors.grey.shade900,
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 10),
-                              const Divider(
-                                height: 0,
-                              ),
-                            ],
-                          )
-                        : const SizedBox(),
-                    Container(
-                      color: Colors.white,
-                      padding: const EdgeInsets.symmetric(horizontal: 0),
-                      child: Html(
-                        data: item.description,
-                        style: {
-                          '*': Style(
-                            color: Colors.grey.shade700,
-                          ),
-                          "strong": Style(
-                              color: CustomTheme.primary,
-                              fontSize: FontSize(18),
-                              fontWeight: FontWeight.normal),
-                        },
-                      ),
+                                ),
+                                FxText.bodyLarge(
+                                  Utils.to_date_1(item.event_date),
+                                  color: Colors.grey.shade900,
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 10),
+                            const Divider(
+                              height: 0,
+                            ),
+                          ],
+                        )
+                      : const SizedBox(),
+                  Container(
+                    color: Colors.white,
+                    padding: const EdgeInsets.symmetric(horizontal: 0),
+                    child: Html(
+                      data: item.description,
+                      style: {
+                        '*': Style(
+                          color: Colors.grey.shade700,
+                        ),
+                        "strong": Style(
+                            color: CustomTheme.primary,
+                            fontSize: FontSize(18),
+                            fontWeight: FontWeight.normal),
+                      },
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),

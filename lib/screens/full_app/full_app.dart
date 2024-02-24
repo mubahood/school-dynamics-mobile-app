@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
@@ -7,6 +8,7 @@ import 'package:schooldynamics/screens/full_app/section/SectionDashboard.dart';
 
 import '../../controllers/MainController.dart';
 import '../../theme/custom_theme.dart';
+import '../../utils/Utils.dart';
 import '../posts/PostModelsScreen.dart';
 
 class FullApp extends StatefulWidget {
@@ -39,100 +41,64 @@ class _FullAppState extends State<FullApp> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        Get.defaultDialog(
-            middleText: "Are you sure you want close this App?",
-            titleStyle: const TextStyle(color: Colors.black),
-            actions: <Widget>[
-              FxButton.outlined(
-                onPressed: () {
-                  Navigator.pop(context);
-                  Navigator.pop(context);
-                },
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                borderColor: CustomTheme.primary,
-                child: FxText(
-                  'CLOSE APP',
-                  color: CustomTheme.primary,
-                ),
-              ),
-              FxButton.small(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                child: FxText(
-                  'CANCEL',
-                  color: Colors.white,
-                ),
-              )
-            ]);
-        return false;
-      },
-      child: Scaffold(
-        body: SafeArea(
-          child: Row(
-            children: [
-              Expanded(
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: TabBarView(
-                        physics: const NeverScrollableScrollPhysics(),
-                        controller: tabController,
-                        children: <Widget>[
-                          const SectionDashboard(),
-                          PostModelsScreen('Notice'),
-                          PostModelsScreen('Event'),
-                          PostModelsScreen('News'),
-                          const AccountSection(),
-                        ],
+    return Scaffold(
+            body: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: TabBarView(
+                          physics: const NeverScrollableScrollPhysics(),
+                          controller: tabController,
+                          children: <Widget>[
+                            const SectionDashboard(),
+                            PostModelsScreen('Notice'),
+                            PostModelsScreen('Event'),
+                            PostModelsScreen('News'),
+                            const AccountSection(),
+                          ],
+                        ),
                       ),
-                    ),
-                    FxContainer(
-                      color: Colors.white,
-                      bordered: true,
-                      enableBorderRadius: false,
-                      border: Border(
-                          top: BorderSide(
-                              width: 2,
-                              color: Colors.grey.shade400,
-                              style: BorderStyle.solid)),
-                      padding: FxSpacing.xy(0, 5),
-                      marginAll: 0,
-                      child: TabBar(
-                        labelPadding: EdgeInsets.zero,
-                        controller: tabController,
-                        indicator: FxTabIndicator(
-                            indicatorColor: CustomTheme.primary,
-                            indicatorHeight: 2,
-                            radius: 4,
-                            width: 60,
-                            indicatorStyle: FxTabIndicatorStyle.rectangle,
-                            yOffset: -7),
-                        indicatorSize: TabBarIndicatorSize.tab,
-                        indicatorColor: CustomTheme.primary,
-                        tabs: [
-                          myNavItem('Home', FeatherIcons.home, 0),
-                          myNavItem('Noticeboard',
-                              Icons.chrome_reader_mode_outlined, 1),
-                          myNavItem('Events', FeatherIcons.calendar, 2),
-                          myNavItem('News', Icons.newspaper, 3),
-                          myNavItem('Account', FeatherIcons.user, 4),
-                        ],
-                      ),
-                    )
-                  ],
+                      FxContainer(
+                        color: Colors.white,
+                        bordered: true,
+                        enableBorderRadius: false,
+                        border: Border(
+                            top: BorderSide(
+                                width: 2,
+                                color: Colors.grey.shade400,
+                                style: BorderStyle.solid)),
+                        padding: FxSpacing.xy(0, 5),
+                        marginAll: 0,
+                        child: TabBar(
+                          labelPadding: EdgeInsets.zero,
+                          controller: tabController,
+                          indicator: FxTabIndicator(
+                              indicatorColor: CustomTheme.primary,
+                              indicatorHeight: 2,
+                              radius: 4,
+                              width: 60,
+                              indicatorStyle: FxTabIndicatorStyle.rectangle,
+                              yOffset: -7),
+                          indicatorSize: TabBarIndicatorSize.tab,
+                          indicatorColor: CustomTheme.primary,
+                          tabs: [
+                            myNavItem('Home', FeatherIcons.home, 0),
+                            myNavItem('Noticeboard',
+                                Icons.chrome_reader_mode_outlined, 1),
+                            myNavItem('Events', FeatherIcons.calendar, 2),
+                            myNavItem('News', Icons.newspaper, 3),
+                            myNavItem('Account', FeatherIcons.user, 4),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+              ],
+            ),
+          );
   }
 
   late TabController tabController;
