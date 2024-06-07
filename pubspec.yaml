@@ -37,6 +37,7 @@ dependencies:
   syncfusion_flutter_pdfviewer: 24.1.46
   flutter_html: ^3.0.0-beta.2
   in_app_update: ^4.2.2
+  qr_code_scanner: ^1.0.1
 
 dev_dependencies:
   flutter_test:

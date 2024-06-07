@@ -512,6 +512,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "qr_code_scanner",
+      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/qr_code_scanner-1.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "rxdart",
       "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/rxdart-0.27.7",
       "packageUri": "lib/",
@@ -812,7 +818,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2024-02-24T07:41:10.585905Z",
+  "generated": "2024-06-06T02:06:06.066008Z",
   "generator": "pub",
-  "generatorVersion": "3.3.0"
+  "generatorVersion": "3.3.4"
 }

@@ -41,7 +41,7 @@ class AppTheme {
               style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontSize: 16,
-                  color: Colors.grey.shade500),
+                  color: Colors.grey.shade900),
             ),
 
       /*prefixIcon: Icon(

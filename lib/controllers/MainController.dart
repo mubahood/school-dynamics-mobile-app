@@ -31,7 +31,7 @@ class MainController extends GetxController {
     try {
       ent = await EnterpriseModel.getEnt();
     } catch (e) {
-      print(e);
+
     }
   }
 

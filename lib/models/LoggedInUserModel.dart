@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:schooldynamics/models/RespondModel.dart';
 import 'package:schooldynamics/utils/AppConfig.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
@@ -82,6 +83,7 @@ class LoggedInUserModel {
     getRoles();
     bool hasRole = false;
     for(UserRole x in roles){
+
       if(x.name.toLowerCase() == slug.toLowerCase()){
         hasRole = true;
         break;
@@ -297,7 +299,45 @@ class LoggedInUserModel {
     return item;
   }
 
+  static Future<LoggedInUserModel> getLoggedInUserOnline() async {
+    LoggedInUserModel item = LoggedInUserModel();
 
+    RespondModel resp = RespondModel(await Utils.http_get('users/me', {}));
+    if (resp.code != 1) {
+      return item;
+    }
+    LoggedInUserModel temp = LoggedInUserModel.fromJson(resp.data);
+    if (temp.id < 1) {
+      return item;
+    }
+
+    String token = await Utils.getToken();
+
+    item = temp;
+    if (token.length > 2) {
+      item.remember_token = token;
+    }
+    await item.save();
+    return item;
+
+    if (!await initTable()) {
+      Utils.toast('Failed to create user storage.');
+      return item;
+    }
+
+    Database db = await Utils.getDb();
+    if (!db.isOpen) {
+      return item;
+    }
+
+    final List<Map<String, dynamic>> maps =
+        await db.query(LoggedInUserModel.end_point);
+
+    List.generate(maps.length, (i) {
+      item = LoggedInUserModel.fromJson(maps[i]);
+    });
+    return item;
+  }
 
   Future<bool> save() async {
     bool isSuccess = false;

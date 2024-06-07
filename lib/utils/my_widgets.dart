@@ -272,9 +272,6 @@ Widget emptyListWidget(String title, Function f) {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(
-          height: Get.height / 2.5,
-        ),
         FxText.titleMedium(
           title.isEmpty ? "No items found." : title,
           color: Colors.black,
@@ -361,23 +358,36 @@ Widget menuItemWidget(MenuItem item) {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image(
-          image: AssetImage('assets/icons/${item.img}'),
-          fit: BoxFit.cover,
+        const SizedBox(
+          height: 5,
         ),
-        SizedBox(
+        Expanded(
+          child: Image(
+            image: AssetImage('assets/icons/${item.img}'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        const SizedBox(
           height: 10,
         ),
-        FxText.bodyMedium(
-          item.title,
-          textAlign: TextAlign.center,
-          color: Colors.black,
-          letterSpacing: .001,
-          fontWeight: 800,
-          maxLines: 2,
-          height: 1,
-          fontSize: 20,
-          overflow: TextOverflow.ellipsis,
+        Row(
+          children: [
+            Expanded(
+              child: FxText.bodyMedium(
+                item.title,
+                textAlign: TextAlign.center,
+                color: Colors.black,
+                letterSpacing: .001,
+                fontWeight: 800,
+                maxLines: 2,
+                height: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(
+          height: 5,
         ),
       ],
     ),
@@ -542,7 +552,7 @@ Widget myContainerLoaderWidget(BuildContext context) {
 
 Widget singleLoadingWidget(BuildContext context) {
   return Padding(
-    padding: EdgeInsets.only(
+    padding: const EdgeInsets.only(
       left: 15,
       right: 10,
       top: 8,

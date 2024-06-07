@@ -55,7 +55,6 @@ class LoginScreenState extends State<LoginScreen> {
     is_loading = true;
     error_message = "";
     setState(() {});
-    print("start conn");
     RespondModel resp =
     RespondModel(await Utils.http_post('users/login', form_data_map));
 
@@ -147,7 +146,7 @@ class LoginScreenState extends State<LoginScreen> {
                       color: CustomTheme.primary,
                       fontWeight: 800,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     ListTile(
@@ -354,7 +353,7 @@ class LoginScreenState extends State<LoginScreen> {
               ],
             ),
           ),
-          Divider(),
+          const Divider(),
           Row(
             children: <Widget>[
               const Spacer(),

@@ -6,8 +6,6 @@ import 'package:get/get.dart';
 import 'package:schooldynamics/controllers/MainController.dart';
 import 'package:schooldynamics/models/LoggedInUserModel.dart';
 import 'package:schooldynamics/screens/classes/ClassesScreen.dart';
-import 'package:schooldynamics/screens/finance/ServiceSubscriptionScreen.dart';
-import 'package:schooldynamics/screens/full_app/section/TransactionsScreen.dart';
 import 'package:schooldynamics/sections/widgets.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 
@@ -16,9 +14,10 @@ import '../../../theme/app_theme.dart';
 import '../../../utils/my_widgets.dart';
 import '../../account/login_screen.dart';
 import '../../admin/AdminMenuScreen.dart';
-import '../../finance/FinancialAccountsScreen.dart';
+import '../../schemework/SchemeWorkHomeScreen.dart';
 import '../../sessions/AttendanceScreen.dart';
 import '../../students/StudentsScreen.dart';
+import '../../transport/TransportHomeScreen.dart';
 
 class SectionDashboard extends StatefulWidget {
   const SectionDashboard({super.key});
@@ -40,6 +39,18 @@ class _SectionDashboardState extends State<SectionDashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: true
+          ? const SizedBox()
+          : FloatingActionButton(
+              onPressed: () async {
+                //users/me
+                await LoggedInUserModel.getLoggedInUserOnline();
+                u = await LoggedInUserModel.getLoggedInUser();
+                u.getRoles();
+                u.isRole('driver');
+              },
+              child: const Icon(Icons.logout),
+            ),
       appBar: AppBar(
         backgroundColor: CustomTheme.primary,
         systemOverlayStyle: Utils.get_theme(),
@@ -76,12 +87,23 @@ class _SectionDashboardState extends State<SectionDashboard> {
   //maincontroller find
   final MainController man = Get.find<MainController>();
 
+  bool is_first_time = true;
   Future<dynamic> myInit() async {
-    await man.getEnt();
-    await Utils.init_theme();
+    if (is_first_time) {
+      await man.getEnt();
+      await Utils.init_theme();
+    } else {
+      man.getEnt();
+      Utils.init_theme();
+    }
+
+    LoggedInUserModel.getLoggedInUserOnline();
     u = await LoggedInUserModel.getLoggedInUser();
     //Utils.initOneSignal();
     Utils.init_theme();
+    if (is_first_time) {
+      is_first_time = false;
+    }
 
     return "Done";
   }
@@ -89,7 +111,8 @@ class _SectionDashboardState extends State<SectionDashboard> {
   Widget mainWidget() {
     menuItems = [];
     //4194 parent ID
-    if (u.isRole('teacher')) {
+
+    if (u.isRole('teacher') || u.isRole('admin') || u.isRole('dos')) {
       menuItems
           .add(MenuItem('Classes', 'T 1', FeatherIcons.edit, 'classes.png', () {
         Get.to(() => ClassesScreen());
@@ -103,7 +126,7 @@ class _SectionDashboardState extends State<SectionDashboard> {
       }
       menuItems
           .add(MenuItem(title, 'T 1', FeatherIcons.edit, 'students.png', () {
-        Get.to(() => StudentsScreen({}));
+        Get.to(() => StudentsScreen(const {}));
       }));
     }
 
@@ -111,17 +134,17 @@ class _SectionDashboardState extends State<SectionDashboard> {
         u.isRole('admin') ||
         u.isRole('bursar') ||
         u.isRole('parent')) {
-      menuItems.add(MenuItem(
+      /*menuItems.add(MenuItem(
           'School Fees', 'T 1', FeatherIcons.edit, 'financial-account.jpg', () {
         Get.to(() => FinancialAccountsScreen({}));
-      }));
+      }));*/
     }
 
     if (u.isRole('bursar')) {
-      menuItems.add(
+      /*menuItems.add(
           MenuItem('Transactions', 'T 1', FeatherIcons.edit, 'finance.png', () {
         Get.to(() => TransactionsScreen({}));
-      }));
+      }));*/
 /*      menuItems.add(
           MenuItem('Services', 'T 1', FeatherIcons.edit, 'finance.png', () {
         Get.to(() => ServicesScreen(const {}));
@@ -139,10 +162,10 @@ class _SectionDashboardState extends State<SectionDashboard> {
         u.isRole('admin') ||
         u.isRole('bursar') ||
         u.isRole('parent')) {
-      menuItems.add(
+      /* menuItems.add(
           MenuItem('Services', 'T 1', FeatherIcons.edit, 'finance.png', () {
         Get.to(() => ServiceSubscriptionScreen());
-      }));
+      }));*/
     }
 
     if (u.isRole('dos') ||
@@ -155,6 +178,20 @@ class _SectionDashboardState extends State<SectionDashboard> {
       }));
     }
 
+    if (u.isRole('teacher') || u.isRole('admin') || u.isRole('dos')) {
+      menuItems.add(
+          MenuItem('Schemework', 'T 1', FeatherIcons.edit, 'scheme.png', () {
+        Get.to(() => SchemeWorkHomeScreen());
+      }));
+    }
+
+    if (u.isRole('driver') || u.isRole('admin')) {
+      menuItems
+          .add(MenuItem('Transport', 'T 1', FeatherIcons.edit, 'bus.jpg', () {
+        Get.to(() => TransportHomeScreen());
+      }));
+    }
+
     /* if (u.isRole('dos') ||
         u.isRole('admin') ||
         u.isRole('bursar') ||
@@ -164,7 +201,7 @@ class _SectionDashboardState extends State<SectionDashboard> {
         Get.to(() => FinancialAccountsScreen({}));
       }));
     }*/
-     
+
     return Column(
       children: [
         Container(
@@ -240,7 +277,7 @@ class _SectionDashboardState extends State<SectionDashboard> {
                     SliverGrid(
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
+                        crossAxisCount: 3,
                         crossAxisSpacing: 8,
                         mainAxisSpacing: 10,
                         childAspectRatio: 0.8,
@@ -258,6 +295,9 @@ class _SectionDashboardState extends State<SectionDashboard> {
               ),
             ),
           ),
+        ),
+        SizedBox(
+          height: 10,
         ),
       ],
     );

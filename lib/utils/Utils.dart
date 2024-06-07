@@ -139,22 +139,27 @@ class Utils {
     }
 
     var da = dioPackage.FormData.fromMap(body); //.fromMap();
+    print("fetching...");
     try {
       String token = await Utils.getToken();
       response = await dio.post(AppConfig.API_BASE_URL + "/${path}",
           data: da,
           options: Options(
             headers: <String, String>{
-              "authorization": 'Bearer ${token}',
-              "Tok": 'Bearer ${token}',
-              "tok": 'Bearer ${token}',
+              "authorization": 'Bearer $token',
+              "Tok": 'Bearer $token',
+              "tok": 'Bearer $token',
               "Content-Type": "application/json",
               "accept": "application/json",
             },
           ));
 
+      print("=====success=====");
+      print(response.data.toString());
       return response.data;
     } on DioError catch (e) {
+      print("failed");
+      print(e.message);
       if (e.response?.data != null) {
         if (e.response?.data.runtimeType.toString() ==
             '_Map<String, dynamic>') {
@@ -503,6 +508,9 @@ class Utils {
   }
 
   static Future<bool> is_connected() async {
+    if (AppConfig.API_BASE_URL.contains('10.0.2.2')) {
+      return true;
+    }
     return await InternetConnectionChecker().hasConnection;
   }
 

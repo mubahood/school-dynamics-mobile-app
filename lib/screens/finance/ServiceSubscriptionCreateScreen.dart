@@ -495,9 +495,7 @@ class ServiceSubscriptionCreateScreenState
         if(element.id == acc_id){
           subscriber = element;
           print("================FOUND <<<<<<<${subscriber.name}>>>>>>>>>=========");
-
           setState(() {
-
           });break;
         }
       }

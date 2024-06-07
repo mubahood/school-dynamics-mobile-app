@@ -20,6 +20,7 @@ path_provider_android=/Users/mac/.pub-cache/hosted/pub.dev/path_provider_android
 path_provider_foundation=/Users/mac/.pub-cache/hosted/pub.dev/path_provider_foundation-2.3.2/
 path_provider_linux=/Users/mac/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
 path_provider_windows=/Users/mac/.pub-cache/hosted/pub.dev/path_provider_windows-2.2.1/
+qr_code_scanner=/Users/mac/.pub-cache/hosted/pub.dev/qr_code_scanner-1.0.1/
 share_plus=/Users/mac/.pub-cache/hosted/pub.dev/share_plus-7.2.2/
 shared_preferences=/Users/mac/.pub-cache/hosted/pub.dev/shared_preferences-2.2.2/
 shared_preferences_android=/Users/mac/.pub-cache/hosted/pub.dev/shared_preferences_android-2.2.1/
