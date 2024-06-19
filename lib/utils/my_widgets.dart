@@ -79,9 +79,9 @@ Widget postWidget2(PostModel object, Function f, BuildContext context) {
       f(object);
     },
     child: Container(
-      padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+      padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
       child: Card(
-          margin: EdgeInsets.all(0),
+          margin: const EdgeInsets.all(0),
           elevation: 2,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
           clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -89,26 +89,24 @@ Widget postWidget2(PostModel object, Function f, BuildContext context) {
             children: <Widget>[
               imageWidget(object.getLogo(), 180, double.infinity),
               Container(
-                  padding: EdgeInsets.all(15),
+                  padding: const EdgeInsets.all(15),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text(object.title,
-                              style: MyText.body2(context)!
-                                  .copyWith(color: MyColors.grey_40)),
-                          Spacer(),
-                          Text(Utils.to_date_1(object.created_at),
-                              style: MyText.body1(context)!
-                                  .copyWith(color: MyColors.grey_40)),
+                          Expanded(
+                            child: Text(object.title,
+                                style: MyText.body2(context)!
+                                    .copyWith(color: Colors.black)),
+                          ),
                         ],
                       ),
                       Container(height: 10),
-                      Text(object.title,
-                          style: MyText.body1(context)!.copyWith(
-                              color: MyColors.grey_80,
-                              fontWeight: FontWeight.w500)),
+                      Text(Utils.to_date_1(object.created_at),
+                          style: MyText.body1(context)!
+                              .copyWith(color: MyColors.grey_40)),
                       Container(height: 10),
                     ],
                   )),

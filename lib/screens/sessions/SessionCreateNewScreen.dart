@@ -69,7 +69,7 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
 
       for (MySubjects element in my_subjects) {
         if (element.academic_class_id.toString() == classModel.id.toString()) {
-          subs.add("${element.subject_name} - #${element.id}");
+          subs.add("${element.subject_name} - ${element.name}");
         }
       }
     } else {
@@ -254,9 +254,8 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
                             if (element.academic_class_id.toString() ==
                                 item.academic_class_id.toString()) {
                               if (y.toString() ==
-                                  "${element.subject_name} - #${element.id}") {
+                                  "${element.subject_name} - ${element.name}") {
                                 item.subject_id = element.id.toString();
-                                print(item.subject_id.toString());
                                 break;
                               }
                             }

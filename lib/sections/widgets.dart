@@ -14,6 +14,7 @@ import 'package:shimmer/shimmer.dart';
 
 import '../models/StudentHasClassModel.dart';
 import '../models/StudentVerificationModel.dart';
+import '../models/UserMiniModel.dart';
 
 Widget singleWidget2(String title, String subTitle) {
   return Column(
@@ -350,6 +351,77 @@ Widget userWidget2(StudentHasClassModel u, context, {String task_picker = ""}) {
           ),
         ],
       ),
+    ),
+  );
+}
+
+Widget userMiniWidget(UserMiniModel u) {
+  return Container(
+    padding: const EdgeInsets.only(top: 10, left: 15, right: 15),
+    child: Flex(
+      direction: Axis.horizontal,
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        roundedImage(u.avatar.toString(), 7.5, 7.5),
+        const SizedBox(
+          width: 10,
+        ),
+        Expanded(
+          child: Flex(
+            direction: Axis.vertical,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              FxText.titleMedium(
+                u.name.toUpperCase(),
+                maxLines: 1,
+                fontWeight: 800,
+                overflow: TextOverflow.ellipsis,
+              ),
+              const SizedBox(
+                height: 6,
+              ),
+              Row(
+                children: [
+                  FxContainer(
+                    color: CustomTheme.primary,
+                    borderRadiusAll: 10,
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 2,
+                      horizontal: 5,
+                    ),
+                    child: FxText.bodySmall(
+                      u.user_type.toUpperCase(),
+                      color: Colors.grey.shade100,
+                      fontWeight: 800,
+                    ),
+                  ),
+                  //phone_number not empty, display TEL
+                  if (u.phone_number.isNotEmpty)
+                    const SizedBox(
+                      width: 5,
+                    ),
+                  if (u.phone_number.isNotEmpty) ...[
+                    FxContainer(
+                      color: CustomTheme.primary,
+                      borderRadiusAll: 10,
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 2,
+                        horizontal: 5,
+                      ),
+                      child: FxText.bodySmall(
+                        'TEL: ${u.phone_number}',
+                        color: Colors.grey.shade100,
+                        fontWeight: 800,
+                      ),
+                    ),
+                  ]
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
     ),
   );
 }

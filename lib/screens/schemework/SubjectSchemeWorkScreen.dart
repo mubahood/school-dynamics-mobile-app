@@ -5,17 +5,16 @@ import 'package:get/get.dart';
 
 import '../../models/MySubjects.dart';
 import '../../models/SchemeWorkItemModel.dart';
-import '../../models/TripModelLocal.dart';
-import '../../models/TripModelOnline.dart';
 import '../../theme/custom_theme.dart';
 import '../../utils/Utils.dart';
+import '../students/PdfViewer.dart';
 import 'SchemeItemWorkCreateScreen.dart';
 
 //SubjectSchemeWorkScreen
 class SubjectSchemeWorkScreen extends StatefulWidget {
   MySubjects item;
 
-  SubjectSchemeWorkScreen(this.item, {Key? key}) : super(key: key);
+  SubjectSchemeWorkScreen(this.item, {super.key});
 
   @override
   SubjectSchemeWorkScreenState createState() =>
@@ -48,21 +47,35 @@ class SubjectSchemeWorkScreenState extends State<SubjectSchemeWorkScreen> {
           backgroundColor: CustomTheme.primary,
           titleSpacing: 0,
           elevation: 0,
-          iconTheme: IconThemeData(color: Colors.white),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.download),
+              iconSize: 30,
+              onPressed: () async {
+                Get.to(() => PdfViewerScreen(
+                    widget.item.getPdf(), 'Termly Report Card'));
+                //await init();
+              },
+            ),],
+          iconTheme: const IconThemeData(color: Colors.white),
           automaticallyImplyLeading: true,
           // remove back button in appbar.
           title: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              FxText.titleLarge(
-                '${widget.item.subject_name} - Scheme Work',
+              FxText.titleMedium(
+                '${widget.item.subject_name} - ${widget.item.name},  Scheme Work',
                 color: Colors.white,
                 fontWeight: 700,
+                maxLines: 2,
                 height: 1,
               ),
+              const SizedBox(
+                height: 2,
+              ),
               FxText.titleSmall(
-                'Found ${trips.length} trips',
+                'Found ${works.length} items found.',
                 color: Colors.white,
               ),
             ],
@@ -130,32 +143,6 @@ class SubjectSchemeWorkScreenState extends State<SubjectSchemeWorkScreen> {
       ),
       body: Column(
         children: [
-          localTrips.isNotEmpty
-              ? InkWell(
-                  onTap: () {},
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 5,
-                      horizontal: 16,
-                    ),
-                    color: Colors.red,
-                    width: double.infinity,
-                    child: Row(
-                      children: [
-                        FxText.titleSmall(
-                          'You have ${localTrips.length} offline trips. Please sync to server.',
-                          color: Colors.white,
-                        ),
-                        const Spacer(),
-                        const Icon(
-                          FeatherIcons.chevronRight,
-                          color: Colors.white,
-                        )
-                      ],
-                    ),
-                  ),
-                )
-              : SizedBox(),
           Expanded(
             child: RefreshIndicator(
               onRefresh: () async {
@@ -168,93 +155,101 @@ class SubjectSchemeWorkScreenState extends State<SubjectSchemeWorkScreen> {
                   SliverList(
                     delegate: SliverChildBuilderDelegate(
                       (BuildContext context, int index) {
-                        TripModelOnline m = trips[index];
+                        SchemeWorkItemModel m = works[index];
 
                         return Column(
                           children: [
                             ListTile(
                               onTap: () {
+                                //Get.to(() => SubjectSchemeWorkScreen(m));
+                                //show popup menu
                                 showModalBottomSheet(
                                     context: context,
                                     builder: (BuildContext buildContext) {
                                       return Container(
                                         color: Colors.transparent,
                                         child: Container(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 15,
+                                            vertical: 10,
+                                          ),
                                           decoration: const BoxDecoration(
                                               color: Colors.white,
                                               borderRadius: BorderRadius.only(
                                                   topLeft: Radius.circular(16),
                                                   topRight:
                                                       Radius.circular(16))),
-                                          child: Container(
-                                            padding: EdgeInsets.all(24),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                ListTile(
-                                                  leading: Icon(
-                                                    FeatherIcons.edit3,
-                                                    color: CustomTheme.primary,
-                                                    size: 26,
-                                                  ),
-                                                  title: FxText.titleMedium(
-                                                    "Update trip",
-                                                    fontSize: 20,
-                                                    fontWeight: 800,
-                                                    color: Colors.black,
-                                                  ),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              const SizedBox(
+                                                height: 10,
+                                              ),
+                                              ListTile(
+                                                onTap: () async {
+                                                  //pop
+                                                  Navigator.pop(context);
+                                                  m.subject_text =
+                                                      widget.item.subject_name;
+                                                  await Get.to(() =>
+                                                      SchemeItemWorkCreateScreen(
+                                                          m));
+                                                  init();
+                                                },
+                                                leading: Icon(
+                                                  FeatherIcons.edit,
+                                                  color: CustomTheme.primary,
+                                                  size: 26,
                                                 ),
-
-                                                //delete
-                                                ListTile(
-                                                  onTap: () async {
-                                                    Navigator.pop(context);
-                                                    //are you sure you want to delete this trip?
-                                                    Get.defaultDialog(
-                                                      title: "Delete trip",
-                                                      middleText:
-                                                          "Are you sure you want to delete this trip?",
-                                                      textConfirm: "Yes",
-                                                      textCancel: "No",
-                                                      confirmTextColor:
-                                                          Colors.white,
-                                                      buttonColor:
-                                                          CustomTheme.primary,
-                                                      onConfirm: () async {
-                                                        await m.delete();
-                                                        init();
-                                                        Get.back();
-                                                      },
-                                                    );
-                                                  },
-                                                  leading: Icon(
-                                                    FeatherIcons.trash,
-                                                    color: CustomTheme.primary,
-                                                    size: 26,
-                                                  ),
-                                                  title: FxText.titleMedium(
-                                                    "Delete trip",
-                                                    fontSize: 20,
-                                                    fontWeight: 800,
-                                                    color: Colors.black,
-                                                  ),
+                                                title: FxText.titleLarge(
+                                                  "Edit scheme-work item",
+                                                  fontSize: 20,
+                                                  fontWeight: 800,
+                                                  color: Colors.black,
                                                 ),
-                                              ],
-                                            ),
+                                              ),
+                                              const SizedBox(
+                                                height: 10,
+                                              ),
+                                              ListTile(
+                                                onTap: () async {
+                                                  //pop
+                                                  m.subject_text =
+                                                      widget.item.subject_name;
+                                                  Navigator.pop(context);
+                                                  await m.delete();
+                                                  init();
+                                                },
+                                                leading: Icon(
+                                                  FeatherIcons.trash,
+                                                  color: CustomTheme.red,
+                                                  size: 26,
+                                                ),
+                                                title: FxText.titleLarge(
+                                                  "Delete scheme-work item",
+                                                  fontSize: 20,
+                                                  fontWeight: 800,
+                                                  color: Colors.black,
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 10,
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       );
                                     });
                               },
                               leading: Icon(
-                                FeatherIcons.truck,
+                                FeatherIcons.bookOpen,
                                 color: CustomTheme.primary,
                                 size: 26,
                               ),
                               title: FxText(
-                                "${m.trip_direction}, TRIP #${m.id}",
+                                m.topic,
                                 fontSize: 16,
                                 fontWeight: 600,
                               ),
@@ -262,11 +257,11 @@ class SubjectSchemeWorkScreenState extends State<SubjectSchemeWorkScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  FxText.bodyMedium(
-                                      "DATE: ${Utils.to_date(m.created_at)},"
-                                      "\nPassengers: ${m.expected_passengers}"),
+                                  FxText.bodyMedium("WEEK: ${m.week},"
+                                          "\nperiod: ${m.period},"
+                                      .toUpperCase()),
                                   FxText.bodySmall(
-                                    "STATUS: SUBMITTED",
+                                    "STATUS: ${m.teacher_status}",
                                     color: Colors.black,
                                     fontWeight: 900,
                                   ),
@@ -279,7 +274,7 @@ class SubjectSchemeWorkScreenState extends State<SubjectSchemeWorkScreen> {
                           ],
                         );
                       },
-                      childCount: trips.length, // 1000 list items
+                      childCount: works.length, // 1000 list items
                     ),
                   )
                 ],
@@ -291,20 +286,10 @@ class SubjectSchemeWorkScreenState extends State<SubjectSchemeWorkScreen> {
     );
   }
 
-  List<TripModelLocal> localTrips = [];
-  List<TripModelOnline> trips = [];
-
+  List<SchemeWorkItemModel> works = [];
   Future<void> init() async {
-    localTrips = await TripModelLocal.get_items();
-    hasOnGoingTrip = false;
-    for (var element in localTrips) {
-      if (element.status == 'Ongoing') {
-        hasOnGoingTrip = true;
-        setState(() {});
-        break;
-      }
-    }
-    trips = await TripModelOnline.get_items();
+    works = await SchemeWorkItemModel.get_items(
+        where: ' subject_id = ${widget.item.id} ');
     setState(() {});
   }
 }

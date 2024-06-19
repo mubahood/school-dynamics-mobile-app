@@ -154,6 +154,39 @@ class _SchemeItemWorkCreateScreenState
       appBar: AppBar(
         backgroundColor: CustomTheme.primary,
         elevation: 0,
+        actions: [
+          //done
+          IconButton(
+            icon: const Icon(
+              Icons.check,
+              size: 30,
+            ),
+            onPressed: () {
+              if (!_formKey.currentState!.saveAndValidate()) {
+                Utils.toast2("Fill all fields",
+                    background_color: CustomTheme.red);
+                return;
+              }
+
+              //validate direction
+              if (widget.item.topic == '') {
+                Utils.toast2("Select trip direction",
+                    background_color: CustomTheme.red);
+                return;
+              }
+
+              //validate teacher_status
+              if (widget.item.teacher_status == 'Yes' &&
+                  widget.item.teacher_comment == '') {
+                Utils.toast2("Enter teacher comment",
+                    background_color: CustomTheme.red);
+                return;
+              }
+
+              do_submit();
+            },
+          )
+        ],
         iconTheme: IconThemeData(color: Colors.white),
         titleSpacing: 0,
         title: FxText.titleLarge(
@@ -478,6 +511,7 @@ class _SchemeItemWorkCreateScreenState
                               textAlignVertical: TextAlignVertical.top,
                               onChanged: (x) {
                                 widget.item.references = x.toString();
+                                widget.item.references_1 = x.toString();
                               },
                               decoration: AppTheme.InputDecorationTheme1(
                                 label: "References",
@@ -506,7 +540,8 @@ class _SchemeItemWorkCreateScreenState
                               validator: FormBuilderValidators.required(),
                               options: [
                                 'Pending',
-                                'Done',
+                                'Skipped',
+                                'Conducted',
                               ]
                                   .map((lang) => FormBuilderFieldOption(
                                         value: lang,
@@ -517,7 +552,7 @@ class _SchemeItemWorkCreateScreenState
                               height: 20,
                             ),
                             //if teacher_status yes, enter teacher_comment
-                            widget.item.teacher_status == 'Done'
+                            widget.item.teacher_status == 'Conducted'
                                 ? FormBuilderTextField(
                                     name: 'teacher_comment',
                                     initialValue: widget.item.teacher_comment,
@@ -533,7 +568,7 @@ class _SchemeItemWorkCreateScreenState
                                           x.toString();
                                     },
                                     decoration: AppTheme.InputDecorationTheme1(
-                                      label: "Teacher Comment",
+                                      label: "Teacher's Remarks",
                                     ),
                                     minLines: 3,
                                     maxLines: 5,
@@ -565,7 +600,7 @@ class _SchemeItemWorkCreateScreenState
                               child: FxText.bodyMedium(
                                 error_message,
                                 color: CustomTheme.red,
-                                maxLines: 5,
+                                maxLines: 20,
                                 fontWeight: 600,
                                 overflow: TextOverflow.ellipsis,
                               ),
@@ -658,7 +693,7 @@ class _SchemeItemWorkCreateScreenState
   }
 
   void do_submit() async {
-    error_message = "asas";
+    error_message = "";
 
     if (!(await Utils.is_connected())) {
       Utils.toast2("No internet connection", background_color: CustomTheme.red);
@@ -669,10 +704,16 @@ class _SchemeItemWorkCreateScreenState
       onLoading = true;
     });
 
+    Map<String, dynamic> data = widget.item.toJson();
+    data['references'] = widget.item.references_1;
+    data['references_1'] = widget.item.references_1;
+
     RespondModel? resp;
     try {
       resp = RespondModel(await Utils.http_post(
-          'schemework-items-create', widget.item.toJson()));
+        'schemework-items-create',
+        data,
+      ));
     } catch (e) {
       error_message = e.toString();
       onLoading = false;

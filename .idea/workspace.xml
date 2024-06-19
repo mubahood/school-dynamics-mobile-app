@@ -4,29 +4,55 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b53d5bbc-3aaf-4461-9262-7a96f2d9f29d" name="Changes" comment="latest changes">
-      <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/icons/scheme.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/SchemeWorkItemModel.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/schemework/SchemeItemWorkCreateScreen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/schemework/SchemeWorkHomeScreen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/schemework/SubjectSchemeWorkScreen.dart" afterDir="false" />
+    <list default="true" id="b53d5bbc-3aaf-4461-9262-7a96f2d9f29d" name="Changes" comment="latest changes.">
+      <change afterPath="$PROJECT_DIR$/assets/icons/news.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/icons/visitor.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/UserMiniModel.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/VisitorModel.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/VisitorRecordModelLocal.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/VisitorRecordModelOnline.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screens/pickers/UsersPickerScreen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screens/posts/NewsHomeScreen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screens/visitors/OfflineVisitorsRecordsScreen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screens/visitors/VisitorRecordCreateScreen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screens/visitors/VisitorsBookScreen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/utils/SignScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/600f0f957824ee344707d6fa59586b99/.filecache" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/600f0f957824ee344707d6fa59586b99/.filecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/600f0f957824ee344707d6fa59586b99/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/600f0f957824ee344707d6fa59586b99/app.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/600f0f957824ee344707d6fa59586b99/debug_android_application.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/600f0f957824ee344707d6fa59586b99/debug_android_application.stamp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/600f0f957824ee344707d6fa59586b99/flutter_assets.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/600f0f957824ee344707d6fa59586b99/flutter_assets.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/600f0f957824ee344707d6fa59586b99/kernel_snapshot.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/600f0f957824ee344707d6fa59586b99/kernel_snapshot.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/600f0f957824ee344707d6fa59586b99/kernel_snapshot.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/600f0f957824ee344707d6fa59586b99/kernel_snapshot.stamp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/600f0f957824ee344707d6fa59586b99/outputs.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/600f0f957824ee344707d6fa59586b99/outputs.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/controllers/MainController.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/controllers/MainController.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/TransportSubscriptionModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/TransportSubscriptionModel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/TripModelLocal.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/TripModelLocal.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/TripModelOnline.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/TripModelOnline.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/account/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/account/login_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/finance/ServiceSubscriptionCreateScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/finance/ServiceSubscriptionCreateScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/LoggedInUserModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/LoggedInUserModel.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/MySubjects.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/MySubjects.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/SchemeWorkItemModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/SchemeWorkItemModel.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/SessionLocal.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/SessionLocal.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/classes/ClassAttendenciesScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/classes/ClassAttendenciesScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/full_app/full_app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/full_app/full_app.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/full_app/section/SectionDashboard.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/full_app/section/SectionDashboard.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/transport/OnGoingTripScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/transport/OnGoingTripScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/transport/QRCodeCutScannerScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/transport/QRCodeCutScannerScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/posts/PostModelsScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/posts/PostModelsScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/schemework/SchemeItemWorkCreateScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/schemework/SchemeItemWorkCreateScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/schemework/SchemeWorkHomeScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/schemework/SchemeWorkHomeScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/schemework/SubjectSchemeWorkScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/schemework/SubjectSchemeWorkScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/sessions/AttendanceScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/sessions/AttendanceScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/sessions/SessionCreateNewScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/sessions/SessionCreateNewScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/sessions/SessionRollCallingScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/sessions/SessionRollCallingScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/students/StudentScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/students/StudentScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/transport/PendingTripsScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/transport/PendingTripsScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/transport/TransportHomeScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/transport/TransportHomeScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/transport/TripCreateScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/transport/TripCreateScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/sections/widgets.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/sections/widgets.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/utils/AppConfig.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/AppConfig.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/utils/Utils.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/Utils.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/utils/my_widgets.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/my_widgets.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,9 +65,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;mubahood&quot;
+  }
+}</component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
   </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/mubahood/school-dynamics-mobile-app.git&quot;,
+    &quot;accountId&quot;: &quot;29c36d77-cb9e-4878-a083-52e738e67160&quot;
+  }
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -69,11 +107,12 @@
     "ScreenshotViewer.SavePath": "/Users/mac/Desktop/afriinventions/screens-raw",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
+    "com.android.tools.idea.streaming.zoom.toolbar.visible": "false",
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "main",
     "io.flutter.reload.alreadyRun": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/mac/Desktop/github/school_dynamics/lib/screens/schemework",
+    "last_opened_file_path": "/Users/mac/Desktop/github/school_dynamics/lib/screens/posts",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -83,11 +122,15 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lib/screens/schemework" />
+      <recent name="$PROJECT_DIR$/lib/screens/posts" />
       <recent name="$PROJECT_DIR$/assets/icons" />
-      <recent name="$PROJECT_DIR$/lib/screens/transport" />
+      <recent name="$PROJECT_DIR$/lib/screens/visitors" />
       <recent name="$PROJECT_DIR$/lib/models" />
-      <recent name="$PROJECT_DIR$/lib/screens/sessions" />
+      <recent name="$PROJECT_DIR$/lib/screens/pickers" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/icons" />
+      <recent name="$PROJECT_DIR$/assets/images" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -107,13 +150,30 @@
       <option name="project" value="LOCAL" />
       <updated>1717766086889</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="latest changes">
+      <option name="closed" value="true" />
+      <created>1717920708201</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1717920708201</updated>
+    </task>
+    <task id="LOCAL-00003" summary="latest changes">
+      <option name="closed" value="true" />
+      <created>1717920723154</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1717920723154</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="latest changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="latest changes" />
+    <MESSAGE value="latest changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="latest changes." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

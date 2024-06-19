@@ -52,7 +52,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
 
   Future<dynamic> my_init() async {
     item = widget.data;
-    getAttendance();
+    await getAttendance();
     setState(() {});
     return "Done";
   }
@@ -397,7 +397,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
   List<StudentReportCard> cards = [];
   List<DisciplinaryRecordModel> disciplinaryRecords = [];
 
-  getAttendance() async {
+  Future getAttendance() async {
     transactions_loading = true;
     setState(() {});
     participants = await Participant.get_items(
@@ -410,7 +410,6 @@ class _CourseTasksScreenState extends State<StudentScreen> {
         where: ' administrator_id = \'${item.id}\'');
 
     transactions_loading = false;
-    setState(() {});
   }
 
   bool transactions_loading = false;

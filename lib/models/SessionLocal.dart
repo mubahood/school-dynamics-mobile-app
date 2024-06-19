@@ -242,7 +242,6 @@ class SessionLocal {
   }
 
   static uploadPending() async {
-    print("=======uploadin-----");
     for (SessionLocal s in (await SessionLocal.getItems())) {
       if (s.closed == 'yes') {
         await s.submitSelf();

@@ -1,5 +1,6 @@
 import 'package:schooldynamics/models/ExamModel.dart';
 import 'package:schooldynamics/models/MarksModel.dart';
+import 'package:schooldynamics/utils/AppConfig.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -25,11 +26,15 @@ class MySubjects {
   String short_name = "";
   String academic_class_level_id = "";
   String subject_teacher_name = "";
+  int lessons_planned_count = 0;
+  int lessons_planned_taught = 0;
+  int lessons_skipped_count = 0;
+  int lessons_planned_pending = 0;
 
   List<ExamAndSubjectModel> exams = [];
 
   static MySubjects fromJson(dynamic d) {
-    MySubjects obj = new MySubjects();
+    MySubjects obj = MySubjects();
     if (d == null) {
       return obj;
     }
@@ -268,6 +273,10 @@ class MySubjects {
       return false;
     }
     await db.delete(tableName);
+  }
+
+  String getPdf() {
+    return '${AppConfig.DASHBOARD_URL}/scheme-of-work-print?id=$id';
   }
 }
 

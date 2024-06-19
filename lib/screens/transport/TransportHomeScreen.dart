@@ -89,10 +89,14 @@ class TransportHomeScreenState extends State<TransportHomeScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           ListTile(
-                            onTap: () {
+                            onTap: () async {
                               Navigator.pop(context);
                               TripModelLocal trip = TripModelLocal();
-                              Get.to(() => TripCreateScreen(trip));
+                              await Get.to(() => TripCreateScreen(trip));
+                              init();
+                              setState(() {
+
+                              });
                             },
                             leading: Icon(
                               FeatherIcons.plus,

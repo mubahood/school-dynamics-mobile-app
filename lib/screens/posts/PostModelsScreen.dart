@@ -13,8 +13,9 @@ import 'PostModelScreen.dart';
 
 class PostModelsScreen extends StatefulWidget {
   String type;
+  bool hasBack = true;
 
-  PostModelsScreen(this.type, {super.key});
+  PostModelsScreen(this.type,this.hasBack, {super.key});
 
   @override
   _PostModelsScreenState createState() => _PostModelsScreenState();
@@ -35,6 +36,7 @@ class _PostModelsScreenState extends State<PostModelsScreen> {
         iconTheme: const IconThemeData(
           color: Colors.white,
         ),
+        toolbarHeight: widget. hasBack ? 60 : 0,
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -126,7 +128,7 @@ class _PostModelsScreenState extends State<PostModelsScreen> {
                 onPressed: () {
                   doRefresh();
                 },
-                padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+                padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
                 borderRadiusAll: 100,
                 child: FxText.titleMedium(
                   "Refresh",

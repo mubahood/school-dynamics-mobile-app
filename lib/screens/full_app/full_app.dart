@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
@@ -8,7 +7,6 @@ import 'package:schooldynamics/screens/full_app/section/SectionDashboard.dart';
 
 import '../../controllers/MainController.dart';
 import '../../theme/custom_theme.dart';
-import '../../utils/Utils.dart';
 import '../posts/PostModelsScreen.dart';
 
 class FullApp extends StatefulWidget {
@@ -53,10 +51,10 @@ class _FullAppState extends State<FullApp> with SingleTickerProviderStateMixin {
                           controller: tabController,
                           children: <Widget>[
                             const SectionDashboard(),
-                            PostModelsScreen('Notice'),
-                            PostModelsScreen('Event'),
-                            PostModelsScreen('News'),
-                            const AccountSection(),
+                      PostModelsScreen('Notice', true),
+                      PostModelsScreen('Event', true),
+                      PostModelsScreen('News', true),
+                      const AccountSection(),
                           ],
                         ),
                       ),

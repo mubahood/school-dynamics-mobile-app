@@ -13,7 +13,7 @@ class PendingTripsScreen extends StatefulWidget {
   PendingTripsScreen({Key? key}) : super(key: key);
 
   @override
-  PendingTripsScreenState createState() => new PendingTripsScreenState();
+  PendingTripsScreenState createState() => PendingTripsScreenState();
 }
 
 class PendingTripsScreenState extends State<PendingTripsScreen> {

@@ -83,8 +83,7 @@ class LoggedInUserModel {
     getRoles();
     bool hasRole = false;
     for(UserRole x in roles){
-
-      if(x.name.toLowerCase() == slug.toLowerCase()){
+      if(x.slug.toLowerCase() == slug.toLowerCase()){
         hasRole = true;
         break;
       }

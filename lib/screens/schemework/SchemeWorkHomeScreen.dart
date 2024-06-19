@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
+import 'package:schooldynamics/models/SchemeWorkItemModel.dart';
 import 'package:schooldynamics/theme/app_theme.dart';
 import 'package:schooldynamics/theme/custom_theme.dart';
 import 'package:schooldynamics/utils/my_widgets.dart';
@@ -40,6 +41,32 @@ class _SchemeWorkHomeScreenState extends State<SchemeWorkHomeScreen>
 
     mySubjects = await MySubjects.getItems();
     mySubjects.sort((a, b) => a.id.compareTo(b.id));
+    List<SchemeWorkItemModel> _items = await SchemeWorkItemModel.get_items();
+    for (int i = 0; i < mySubjects.length; i++) {
+      //lessons_planned_count
+      mySubjects[i].lessons_planned_count = _items
+          .where((element) => element.subject_id == mySubjects[i].id.toString())
+          .length;
+      //lessons_planned_taught, where teacher_status = 'Conducted'
+      mySubjects[i].lessons_planned_taught = _items
+          .where((element) =>
+              element.subject_id == mySubjects[i].id.toString() &&
+              element.teacher_status == 'Conducted')
+          .length;
+      //lessons_skipped_count, where teacher_status = 'Skipped'
+      mySubjects[i].lessons_skipped_count = _items
+          .where((element) =>
+              element.subject_id == mySubjects[i].id.toString() &&
+              element.teacher_status == 'Skipped')
+          .length;
+
+      //lessons_planned_pending, where teacher_status = 'Pending'
+      mySubjects[i].lessons_planned_pending = _items
+          .where((element) =>
+              element.subject_id == mySubjects[i].id.toString() &&
+              element.teacher_status == 'Pending')
+          .length;
+    }
 
     loading = false;
     setState(() {});
@@ -67,16 +94,11 @@ class _SchemeWorkHomeScreenState extends State<SchemeWorkHomeScreen>
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            FxText.titleMedium(
+            FxText.titleLarge(
               "Scheme Work".toUpperCase(),
               color: Colors.white,
               maxLines: 2,
               fontWeight: 700,
-            ),
-            FxText.bodySmall(
-              'Expected: 40%',
-              color: Colors.white,
-              maxLines: 2,
             ),
           ],
         ),
@@ -84,9 +106,9 @@ class _SchemeWorkHomeScreenState extends State<SchemeWorkHomeScreen>
           controller: _tabController,
           tabAlignment: TabAlignment.center,
           isScrollable: false,
-          tabs: const [
-            Tab(text: 'MY SUBJECTS'),
-            Tab(text: 'MY SUPERVISIONS'),
+          tabs: [
+            Tab(text: 'MY SUBJECTS (${mySubjects.length})'),
+            const Tab(text: 'MY SUPERVISIONS'),
           ],
           indicatorColor: Colors.white,
           labelColor: Colors.white,
@@ -170,7 +192,7 @@ class _SchemeWorkHomeScreenState extends State<SchemeWorkHomeScreen>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 FxText.titleLarge(
-                  "${mySubject.subject_name} - #${mySubject.id} - ${mySubject.class_teahcer_id}",
+                  "${mySubject.subject_name} - ${mySubject.name}",
                   fontSize: 16,
                   color: Colors.grey.shade900,
                   fontWeight: 600,
@@ -184,27 +206,27 @@ class _SchemeWorkHomeScreenState extends State<SchemeWorkHomeScreen>
                       'LESSONS PLANNED: '.toUpperCase(),
                       color: Colors.black,
                       height: 1,
-                      fontWeight: 800,
                     ),
                     FxText.bodySmall(
-                      '23',
+                      mySubject.lessons_planned_count.toString(),
                       color: Colors.black,
                       height: 1,
+                      fontWeight: 800,
                     ),
                   ],
                 ),
                 Row(
                   children: [
                     FxText.bodySmall(
-                      'LESSONS TAUGHT: '.toUpperCase(),
+                      'LESSONS Conducted: '.toUpperCase(),
+                      color: Colors.black,
+                      height: 1,
+                    ),
+                    FxText.bodySmall(
+                      mySubject.lessons_planned_taught.toString(),
                       color: Colors.black,
                       height: 1,
                       fontWeight: 800,
-                    ),
-                    FxText.bodySmall(
-                      '23',
-                      color: Colors.black,
-                      height: 1,
                     ),
                   ],
                 ),
@@ -214,27 +236,27 @@ class _SchemeWorkHomeScreenState extends State<SchemeWorkHomeScreen>
                       'LESSONS SKIPPED: '.toUpperCase(),
                       color: Colors.black,
                       height: 1,
-                      fontWeight: 800,
                     ),
                     FxText.bodySmall(
-                      '23',
+                      mySubject.lessons_skipped_count.toString(),
                       color: Colors.black,
                       height: 1,
+                      fontWeight: 800,
                     ),
                   ],
                 ),
                 Row(
                   children: [
                     FxText.bodySmall(
-                      'LESSONS NOT YET TAUGHT: '.toUpperCase(),
+                      'LESSONS NOT TAUGHT YET: '.toUpperCase(),
                       color: Colors.black,
-                      fontWeight: 800,
                       height: 1,
                     ),
                     FxText.bodySmall(
-                      '23',
+                      mySubject.lessons_planned_pending.toString(),
                       color: Colors.black,
                       height: 1,
+                      fontWeight: 800,
                     ),
                   ],
                 ),

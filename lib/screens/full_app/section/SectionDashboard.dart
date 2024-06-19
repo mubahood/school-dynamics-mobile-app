@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:flutx/widgets/container/container.dart';
-import 'package:flutx/widgets/text/text.dart';
+import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
 import 'package:schooldynamics/controllers/MainController.dart';
 import 'package:schooldynamics/models/LoggedInUserModel.dart';
@@ -11,13 +10,16 @@ import 'package:schooldynamics/utils/Utils.dart';
 
 import '../../../models/MenuItem.dart';
 import '../../../theme/app_theme.dart';
+import '../../../utils/SignScreen.dart';
 import '../../../utils/my_widgets.dart';
 import '../../account/login_screen.dart';
 import '../../admin/AdminMenuScreen.dart';
+import '../../posts/NewsHomeScreen.dart';
 import '../../schemework/SchemeWorkHomeScreen.dart';
 import '../../sessions/AttendanceScreen.dart';
 import '../../students/StudentsScreen.dart';
 import '../../transport/TransportHomeScreen.dart';
+import '../../visitors/VisitorsBookScreen.dart';
 
 class SectionDashboard extends StatefulWidget {
   const SectionDashboard({super.key});
@@ -43,11 +45,7 @@ class _SectionDashboardState extends State<SectionDashboard> {
           ? const SizedBox()
           : FloatingActionButton(
               onPressed: () async {
-                //users/me
-                await LoggedInUserModel.getLoggedInUserOnline();
-                u = await LoggedInUserModel.getLoggedInUser();
-                u.getRoles();
-                u.isRole('driver');
+                Get.to(() => const SignScreen());
               },
               child: const Icon(Icons.logout),
             ),
@@ -119,7 +117,7 @@ class _SectionDashboardState extends State<SectionDashboard> {
       }));
     }
 
-    if (u.isRole('teacher') || u.isRole('parent')) {
+    if (u.isRole('teacher') || u.isRole('parent') || u.isRole('admin')) {
       String title = "Students";
       if (u.isRole('parent')) {
         title = "My Children";
@@ -168,19 +166,26 @@ class _SectionDashboardState extends State<SectionDashboard> {
       }));*/
     }
 
-    if (u.isRole('dos') ||
-        u.isRole('admin') ||
-        u.isRole('bursar') ||
-        u.isRole('parent')) {
+    if (u.isRole('parent') || u.isRole('admin')) {
       menuItems.add(MenuItem(
           'Attendance', 'T 1', FeatherIcons.edit, 'attandance.png', () {
         Get.to(() => AttendanceScreen());
       }));
     }
 
+    if (u.isRole('dos') ||
+        u.isRole('admin') ||
+        u.isRole('hm') ||
+        u.isRole('gate')) {
+      menuItems.add(MenuItem(
+          'Visitors\' Book', 'T 1', FeatherIcons.edit, 'visitor.png', () {
+        Get.to(() => VisitorsBookScreen());
+      }));
+    }
+
     if (u.isRole('teacher') || u.isRole('admin') || u.isRole('dos')) {
       menuItems.add(
-          MenuItem('Schemework', 'T 1', FeatherIcons.edit, 'scheme.png', () {
+          MenuItem('Scheme-work', 'T 1', FeatherIcons.edit, 'scheme.png', () {
         Get.to(() => SchemeWorkHomeScreen());
       }));
     }
@@ -191,6 +196,11 @@ class _SectionDashboardState extends State<SectionDashboard> {
         Get.to(() => TransportHomeScreen());
       }));
     }
+
+    menuItems
+        .add(MenuItem('School News', 'T 1', FeatherIcons.edit, 'news.png', () {
+      Get.to(() => NewsHomeScreen());
+    }));
 
     /* if (u.isRole('dos') ||
         u.isRole('admin') ||

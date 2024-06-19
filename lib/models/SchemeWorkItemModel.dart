@@ -7,7 +7,7 @@ import 'RespondModel.dart';
 
 class SchemeWorkItemModel {
   static String end_point = "schemework-items";
-  static String tableName = "schem_work_items";
+  static String tableName = "scheme_work_items";
   int id = 0;
   String created_at = "";
   String updated_at = "";
@@ -34,6 +34,7 @@ class SchemeWorkItemModel {
   String skills = "";
   String suggested_activity = "";
   String instructional_material = "";
+  String references_1 = "";
   String references = "";
 
   List<SchemeWorkItemModel> schemeWorkItemsForSameClass = [];
@@ -78,7 +79,19 @@ class SchemeWorkItemModel {
     obj.skills = Utils.to_str(m['skills'], '');
     obj.suggested_activity = Utils.to_str(m['suggested_activity'], '');
     obj.instructional_material = Utils.to_str(m['instructional_material'], '');
-    obj.references = Utils.to_str(m['references'], '');
+    obj.references_1 = Utils.to_str(m['references'], '');
+
+    if (obj.references_1.length < 2) {
+      obj.references_1 = Utils.to_str(m['references_1'], '');
+    }
+
+    obj.references = obj.references;
+
+    if (obj.references_1.length < 3) {
+      obj.references_1 = obj.references;
+    } else {
+      obj.references = obj.references_1;
+    }
 
     return obj;
   }
@@ -187,6 +200,11 @@ class SchemeWorkItemModel {
   }
 
   toJson() {
+    if (references_1.length < 3) {
+      references_1 = references;
+    } else {
+      references = references_1;
+    }
     return {
       'id': id,
       'created_at': created_at,
@@ -214,7 +232,7 @@ class SchemeWorkItemModel {
       'skills': skills,
       'suggested_activity': suggested_activity,
       'instructional_material': instructional_material,
-      'references': references,
+      'references_1': references_1,
     };
   }
 
@@ -252,7 +270,7 @@ class SchemeWorkItemModel {
         ",skills TEXT"
         ",suggested_activity TEXT"
         ",instructional_material TEXT"
-        ",references TEXT"
+        ",references_1 TEXT"
         ")";
 
     try {

@@ -154,19 +154,7 @@ class _CourseTasksScreenState extends State<ClassAttendenciesScreen> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
-                                              FxContainer(
-                                                padding: const EdgeInsets.only(
-                                                    left: 8,
-                                                    right: 8,
-                                                    top: 3,
-                                                    bottom: 3),
-                                                color: CustomTheme.primary,
-                                                child: FxText.titleSmall(
-                                                  "${m.subject_text}",
-                                                  fontWeight: 700,
-                                                  color: Colors.white,
-                                                ),
-                                              ),
+                                              Spacer(),
                                               FxText.titleMedium(
                                                 "${Utils.to_date(m.due_date)}",
                                                 fontWeight: 700,
@@ -177,12 +165,25 @@ class _CourseTasksScreenState extends State<ClassAttendenciesScreen> {
                                           const SizedBox(
                                             height: 12,
                                           ),
+                                          FxContainer(
+                                            padding: const EdgeInsets.only(
+                                                left: 8,
+                                                right: 8,
+                                                top: 3,
+                                                bottom: 3),
+                                            color: CustomTheme.primary,
+                                            child: FxText.titleSmall(
+                                              m.subject_text,
+                                              fontWeight: 700,
+                                              color: Colors.white,
+                                            ),
+                                          ),
                                           FxText.titleMedium(
                                             "${m.academic_class_text}, ${m.stream_text} - Roll call",
                                             color: Colors.black,
                                             fontWeight: 700,
                                           ),
-                                          Divider(),
+                                          const Divider(),
                                           FxText.titleMedium(
                                             "${m.present_count} present, ${m.absent_count} absent",
                                             color: Colors.black,

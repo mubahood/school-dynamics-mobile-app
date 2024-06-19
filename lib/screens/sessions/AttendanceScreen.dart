@@ -12,7 +12,7 @@ class AttendanceScreen extends StatefulWidget {
   AttendanceScreen({Key? key}) : super(key: key);
 
   @override
-  AttendanceScreenState createState() => new AttendanceScreenState();
+  AttendanceScreenState createState() => AttendanceScreenState();
 }
 
 class AttendanceScreenState extends State<AttendanceScreen> {

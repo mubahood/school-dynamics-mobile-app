@@ -14,6 +14,7 @@ import 'package:http/http.dart' as http;
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:intl/intl.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:schooldynamics/models/MarkLocalModel.dart';
 import 'package:schooldynamics/models/MySubjects.dart';
 import 'package:schooldynamics/models/SessionLocal.dart';
@@ -30,6 +31,52 @@ import '../theme/app_theme.dart';
 import 'AppConfig.dart';
 
 class Utils {
+  static String prepare_phone_number(String phone_number) {
+    if (phone_number.isEmpty) {
+      return "";
+    }
+    if (phone_number.substring(0, 1) != '0') {
+      phone_number = phone_number.replaceFirst('+', "");
+      phone_number = phone_number.replaceFirst('256', "");
+    } else {
+      phone_number = phone_number.replaceFirst('0', "");
+    }
+    if (phone_number.length != 9) {
+      return "";
+    }
+    phone_number = "+256" + phone_number;
+    return phone_number;
+  }
+
+  static bool phone_number_is_valid(String phone_number) {
+    if (phone_number.length != 13) {
+      return false;
+    }
+
+    if (phone_number.substring(0, 4) != "+256") {
+      return false;
+    }
+
+    return true;
+  }
+
+  static Future<String> get_temp_dir() async {
+    //get parent storage path for the app
+    Directory dir = await getApplicationDocumentsDirectory();
+    //check if dir contains folder called temp, else create it
+    if (!Directory("${dir.path}/temp").existsSync()) {
+      Directory("${dir.path}/temp").createSync();
+    }
+    Directory tempDir = Directory("${dir.path}/temp");
+
+    //check if tempDir exists
+    if (!tempDir.existsSync()) {
+      Utils.toast("Failed to create temp directory.");
+      return "";
+    }
+    return tempDir.path;
+  }
+
   static String greet(String name) {
     //split name by  space if it is more than one word and get the first word
     name = name.split(" ")[0];
@@ -48,6 +95,13 @@ class Utils {
   static String short_string(String name) {
     if (name.length > 10) {
       return '${name.substring(0, 10)}...';
+    }
+    return name;
+  }
+
+  static String shortString(String name, int length) {
+    if (name.length > length) {
+      return '${name.substring(0, length)}...';
     }
     return name;
   }
@@ -139,7 +193,7 @@ class Utils {
     }
 
     var da = dioPackage.FormData.fromMap(body); //.fromMap();
-    print("fetching...");
+
     try {
       String token = await Utils.getToken();
       response = await dio.post(AppConfig.API_BASE_URL + "/${path}",
@@ -153,9 +207,9 @@ class Utils {
               "accept": "application/json",
             },
           ));
-
+/*
       print("=====success=====");
-      print(response.data.toString());
+      print(response.data.toString());*/
       return response.data;
     } on DioError catch (e) {
       print("failed");
@@ -754,7 +808,24 @@ class Utils {
     return date_text;
   }
 
+  static String getImg(dynamic img) {
+    String _img = "logo.png";
+    if (img != null) {
+      img = img.toString();
+      if (img.toString().length > 3) {
+        if (img.toString().contains('/')) {
+          _img = img.split('/').last;
+        } else {
+          _img = img;
+        }
+      }
+    }
+
+    return "${AppConfig.MAIN_SITE_URL}/storage/images/${_img}";
+  }
+
   static String getImageUrl(dynamic img) {
+    return getImg(img);
     String _img = "logo.png";
     if (img != null) {
       img = img.toString();
@@ -807,5 +878,12 @@ class Utils {
     )) {
       Utils.toast('Could not launch ${uri.toString()}', color: CustomTheme.red);
     }
+  }
+
+  static String get_file_size(String filePath) {
+    File file = File(filePath);
+    int sizeInBytes = file.lengthSync();
+    double sizeInMb = sizeInBytes / (1024 * 1024);
+    return sizeInMb.toStringAsFixed(2) + " MB";
   }
 }

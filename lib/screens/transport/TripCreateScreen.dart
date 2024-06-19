@@ -225,9 +225,9 @@ class _TripCreateScreenState extends State<TripCreateScreen> {
                 //show passengers
                 Container(
                   padding: const EdgeInsets.only(
-                    left: 15,
+                    left: 20,
                     right: 15,
-                    top: 15,
+                    top: 10,
                   ),
                   child: FxText.bodyMedium(
                     "Expected Passengers: ${widget.item.expected_passengers}",
@@ -246,7 +246,7 @@ class _TripCreateScreenState extends State<TripCreateScreen> {
                   },
                   child: Container(
                     padding: const EdgeInsets.only(
-                      left: 15,
+                      left: 20,
                       right: 15,
                       top: 15,
                     ),
@@ -387,10 +387,6 @@ int id = 0;
     }
 
     if (widget.item.trip_direction == '') {
-      return;
-    }
-
-    if (widget.item.local_id == '') {
       return;
     }
 

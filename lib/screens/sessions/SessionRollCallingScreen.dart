@@ -134,7 +134,7 @@ class SessionRollCallingScreenState extends State<SessionRollCallingScreen> {
                                   ),
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 5,
                               ),
                               InkWell(
@@ -150,7 +150,7 @@ class SessionRollCallingScreenState extends State<SessionRollCallingScreen> {
                                         color: Colors.red.shade900,
                                         letterSpacing: .01,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 3,
                                       ),
                                       FxContainer(
