@@ -574,17 +574,15 @@ class _VisitorRecordCreateScreenState extends State<VisitorRecordCreateScreen> {
                                 ),
                               ]),
                             ),
-
                             //check_in_time time
                             const SizedBox(
                               height: 15,
                             ),
-                            FormBuilderDateTimePicker(
-                              name: 'check_in_time',
-                              initialValue: widget.item.check_in_time.isNotEmpty
-                                  ? DateTime.parse(widget.item.check_in_time)
-                                  : null,
-                              inputType: InputType.time,
+                            (widget.item.isEdit)
+                                ? const SizedBox()
+                                : FormBuilderDateTimePicker(
+                                    name: 'check_in_time',
+                                    inputType: InputType.time,
                               onChanged: (x) {
                                 widget.item.check_in_time = x.toString();
                               },
@@ -651,18 +649,11 @@ class _VisitorRecordCreateScreenState extends State<VisitorRecordCreateScreen> {
                                           ? const SizedBox()
                                           : Column(
                                               children: [
-                                                SizedBox(
+                                                const SizedBox(
                                                   height: 15,
                                                 ),
                                                 FormBuilderDateTimePicker(
                                                   name: 'check_out_time',
-                                                  initialValue: widget
-                                                          .item
-                                                          .check_out_time
-                                                          .isNotEmpty
-                                                      ? DateTime.parse(widget
-                                                          .item.check_out_time)
-                                                      : DateTime.now(),
                                                   inputType: InputType.time,
                                                   format: DateFormat("HH:mm"),
                                                   onChanged: (x) {

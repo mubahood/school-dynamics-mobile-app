@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:math';
 
 import 'package:dio/dio.dart';
 import 'package:sqflite/sqflite.dart';
@@ -9,7 +8,7 @@ import 'RespondModel.dart';
 import 'VisitorRecordModelOnline.dart';
 
 class VisitorRecordModelLocal {
-  static String tableName = "visitor_records_local_2";
+  static String tableName = "visitor_records_local_3";
   String local_id = "";
   String created_at = "";
   String updated_at = "";

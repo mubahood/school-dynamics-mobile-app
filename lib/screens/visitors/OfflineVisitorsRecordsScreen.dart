@@ -170,11 +170,6 @@ class OfflineVisitorsRecordsScreenState
                                       );
                                     });
                               },
-                              leading: Icon(
-                                FeatherIcons.truck,
-                                color: CustomTheme.primary,
-                                size: 26,
-                              ),
                               title: FxText(
                                 "${m.name} - ${m.phone_number}",
                                 fontSize: 16,
@@ -185,12 +180,7 @@ class OfflineVisitorsRecordsScreenState
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   FxText.bodyMedium(
-                                    "Driver: ${m.check_in_time}",
-                                  ),
-                                  FxText.bodySmall(
-                                    "STATUS: ${m.status}",
-                                    color: Colors.black,
-                                    fontWeight: 900,
+                                    "STATUS: ${m.upload_status == 'Failed' ? 'FAILED TO UPLOAD: ${m.upload_error}' : 'Pending'}",
                                   ),
                                 ],
                               ),

@@ -32,6 +32,7 @@ class _PostModelsScreenState extends State<PostModelsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        systemOverlayStyle: Utils.get_theme(),
         backgroundColor: CustomTheme.primary,
         iconTheme: const IconThemeData(
           color: Colors.white,
