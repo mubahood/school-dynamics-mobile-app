@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b53d5bbc-3aaf-4461-9262-7a96f2d9f29d" name="Changes" comment="latest changes.">
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/600f0f957824ee344707d6fa59586b99/debug_android_application.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/600f0f957824ee344707d6fa59586b99/debug_android_application.stamp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/600f0f957824ee344707d6fa59586b99/flutter_assets.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/600f0f957824ee344707d6fa59586b99/flutter_assets.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/VisitorRecordModelLocal.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/VisitorRecordModelLocal.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/posts/PostModelsScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/posts/PostModelsScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/visitors/OfflineVisitorsRecordsScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/visitors/OfflineVisitorsRecordsScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/visitors/VisitorRecordCreateScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/visitors/VisitorRecordCreateScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
