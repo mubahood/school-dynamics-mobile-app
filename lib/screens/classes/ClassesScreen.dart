@@ -10,7 +10,9 @@ import '../../utils/my_widgets.dart';
 import 'ClassScreen.dart';
 
 class ClassesScreen extends StatefulWidget {
-  ClassesScreen({Key? key}) : super(key: key);
+  Map<String, dynamic> params = {};
+
+  ClassesScreen(this.params, {Key? key}) : super(key: key);
 
   @override
   ClassesScreenState createState() => new ClassesScreenState();
@@ -26,7 +28,16 @@ class ClassesScreenState extends State<ClassesScreen> {
     doRefresh();
   }
 
+  String title = '';
+  bool isPicker = false;
   Future<dynamic> doRefresh() async {
+    if (widget.params['title'] != null) {
+      title = widget.params['title'];
+    }
+    if (widget.params['task'].toString() == 'Select'.toString()) {
+      isPicker = true;
+    }
+
     futureInit = init();
     setState(() {});
   }
@@ -46,7 +57,7 @@ class ClassesScreenState extends State<ClassesScreen> {
           automaticallyImplyLeading: true,
           // remove back button in appbar.
           title: FxText.titleLarge(
-            'My Classes (${items.length})',
+            title.isNotEmpty ? title : 'My Classes (${items.length})',
             color: Colors.white,
             fontWeight: 700,
             height: .6,
@@ -69,7 +80,7 @@ class ClassesScreenState extends State<ClassesScreen> {
                 child: CustomScrollView(
                   slivers: [
                     SliverGrid(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
                         crossAxisSpacing: 5,
                         childAspectRatio: 0.7,
@@ -80,6 +91,11 @@ class ClassesScreenState extends State<ClassesScreen> {
                           return FxContainer(
                             margin: EdgeInsets.only(top: 5),
                             onTap: () {
+                              if (isPicker) {
+                                Get.back(result: myClass);
+                                return;
+                              }
+
                               Get.to(() => ClassScreen(data: myClass));
                             },
                             borderColor: CustomTheme.primary,
@@ -102,16 +118,16 @@ class ClassesScreenState extends State<ClassesScreen> {
                                   height: .8,
                                   color: Colors.black,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 5,
                                 ),
                                 FxText.bodySmall(
-                                  "${myClass.class_teacher_name}",
+                                  myClass.class_teacher_name,
                                   height: .9,
                                   maxLines: 2,
                                   color: CustomTheme.primary,
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 FxText.bodySmall(
                                   "${myClass.students_count} Students",
                                   height: .8,

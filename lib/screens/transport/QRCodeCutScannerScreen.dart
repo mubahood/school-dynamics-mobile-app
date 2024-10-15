@@ -1,3 +1,16 @@
+import 'package:flutter/cupertino.dart';
+
+class QRCodeCutScannerScreen extends StatelessWidget {
+  const QRCodeCutScannerScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
+
+
+/*
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -212,3 +225,4 @@ class _QRCodeCutScannerScreenState extends State<QRCodeCutScannerScreen> {
     super.dispose();
   }
 }
+*/

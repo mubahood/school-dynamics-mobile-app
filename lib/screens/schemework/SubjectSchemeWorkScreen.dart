@@ -49,11 +49,11 @@ class SubjectSchemeWorkScreenState extends State<SubjectSchemeWorkScreen> {
           elevation: 0,
           actions: [
             IconButton(
-              icon: const Icon(Icons.download),
+              icon: const Icon(Icons.remove_red_eye),
               iconSize: 30,
               onPressed: () async {
                 Get.to(() => PdfViewerScreen(
-                    widget.item.getPdf(), 'Termly Report Card'));
+                    widget.item.getPdf(), 'Scheme Work - ${widget.item.name}'));
                 //await init();
               },
             ),],

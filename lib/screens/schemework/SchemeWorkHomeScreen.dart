@@ -149,6 +149,8 @@ class _SchemeWorkHomeScreenState extends State<SchemeWorkHomeScreen>
 
     return RefreshIndicator(
       onRefresh: my_init,
+      color: Colors.white,
+      backgroundColor: CustomTheme.primary,
       child: ListView.separated(
           separatorBuilder: (context, index) => const Divider(),
           itemCount: mySubjects.length,

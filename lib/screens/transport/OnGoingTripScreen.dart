@@ -120,7 +120,7 @@ class _OnGoingTripScreenState extends State<OnGoingTripScreen>
             child: TabBarView(
               controller: _tabController,
               children: [
-                QRCodeCutScannerScreen((String x) {
+               /* QRCodeCutScannerScreen((String x) {
                   get_subscriber_by_id(x);
                 }),
                 ListView.separated(
@@ -128,7 +128,7 @@ class _OnGoingTripScreenState extends State<OnGoingTripScreen>
                     itemCount: widget.item.passengers.length,
                     itemBuilder: (context, index) {
                       return passenger_widget(widget.item.passengers[index]);
-                    }),
+                    }),*/
               ],
             ),
           ),

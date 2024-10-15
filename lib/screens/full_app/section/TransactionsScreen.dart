@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutx/flutx.dart';
@@ -12,6 +11,7 @@ import 'package:schooldynamics/utils/Utils.dart';
 import '../../../sections/widgets.dart';
 import '../../../theme/custom_theme.dart';
 import '../../../utils/my_widgets.dart';
+import '../../finance/TransactionCreateScreen.dart';
 import '../../finance/TransactionScreen.dart';
 
 class TransactionsScreen extends StatefulWidget {
@@ -76,7 +76,16 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
         title: FxText.titleLarge(
           "School fees payment",
           fontWeight: 900,
+          color: Colors.white,
         ),
+      ),
+      //floating action button
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          //show bottom sheet of create transaction
+          Get.to(() => TransactionCreateScreen({}));
+        },
+        child: Icon(FeatherIcons.plus),
       ),
       body: SafeArea(
         child: FutureBuilder(

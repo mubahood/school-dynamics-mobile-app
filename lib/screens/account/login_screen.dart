@@ -41,6 +41,13 @@ class LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormBuilderState>();
 
   Future<void> submit_form() async {
+    /*print("=================");
+    RespondModel resp2 = RespondModel(await Utils.http_post('users/login', {
+      'username': '0783204665',
+      'password': '4321',
+    }));
+    print(resp2.code);*/
+
     if (!_formKey.currentState!.validate()) {
       Utils.toast("Please fix errors in the form.", color: Colors.red);
       return;
@@ -217,8 +224,8 @@ class LoginScreenState extends State<LoginScreen> {
           CachedNetworkImage(
             fit: BoxFit.contain,
             imageUrl: main.ent.getLogo(),
-            width: (Get.width / 3),
-            height: (Get.width / 3),
+            width: 150,
+            height: 150,
             placeholder: (context, url) => ShimmerLoadingWidget(
               height: 400,
             ),

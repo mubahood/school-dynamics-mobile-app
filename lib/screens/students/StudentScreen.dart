@@ -52,7 +52,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
 
   Future<dynamic> my_init() async {
     item = widget.data;
-    await getAttendance();
+    getAttendance();
     setState(() {});
     return "Done";
   }
@@ -75,7 +75,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                 _my_init();
               },
               child: PopupMenuButton<int>(
-                  onSelected: (x) {
+                  onSelected: (x) async {
                     switch (x.toString()) {
                       case '1':
                         Get.to(() => StudentEditBioScreen(
@@ -89,9 +89,13 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                         break;
 
                       case '3':
+                        await
                         Get.to(() => StudentEditGuardianScreen(
                               data: item,
                             ));
+                        setState(() {
+                          _my_init();
+                        });
                         break;
                     }
                   },
@@ -363,7 +367,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                 height: 15,
               ),
               title_widget('Academics'),
-              titleValueWidget2('Current class', '${item.current_class_id}'),
+              titleValueWidget2('Current class', '${item.current_class_text}'),
               titleValueWidget2('Current theology class',
                   '${item.current_theology_class_id}'),
               titleValueWidget2('STUDENT ID', '${item.user_id}'),
@@ -398,18 +402,18 @@ class _CourseTasksScreenState extends State<StudentScreen> {
   List<DisciplinaryRecordModel> disciplinaryRecords = [];
 
   Future getAttendance() async {
-    transactions_loading = true;
     setState(() {});
-    participants = await Participant.get_items(
-        where: ' administrator_id = \'${item.id}\'');
-
     cards = await StudentReportCard.get_items(
         where: ' student_id = \'${item.id}\'');
 
     disciplinaryRecords = await DisciplinaryRecordModel.get_items(
         where: ' administrator_id = \'${item.id}\'');
 
+    participants = await Participant.get_items(
+        where: ' administrator_id = \'${item.id}\'');
+
     transactions_loading = false;
+    setState(() {});
   }
 
   bool transactions_loading = false;
@@ -418,7 +422,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
     return transactions_loading
         ? myListLoaderWidget(context)
         : cards.isEmpty
-            ? emptyListWidget('No Disciplinary Records.', () {
+            ? emptyListWidget('No Report cards found.', () {
                 getAttendance();
               })
             : RefreshIndicator(
@@ -435,6 +439,8 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                           StudentReportCard m = cards[index];
                           return FxContainer(
                             onTap: () {
+                              // print(m.getPdf());
+                              // return;
                               Get.to(() => PdfViewerScreen(
                                   m.getPdf(), 'Termly Report Card'));
                               //_disciplineBottomSheet(m);
@@ -473,8 +479,8 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                                               'CLASS: ${m.academic_class_text}'),
                                           Row(
                                             children: [
-                                              FxText('Position in class: '
-                                                  .toUpperCase()),
+                                              FxText(
+                                                  'DIVISION: '.toUpperCase()),
                                               FxCard(
                                                   color: CustomTheme.primary,
                                                   padding:
@@ -486,7 +492,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                                                   ),
                                                   borderRadiusAll: 50,
                                                   child: FxText.bodySmall(
-                                                    m.position,
+                                                    m.grade,
                                                     color: Colors.white,
                                                     fontWeight: 900,
                                                     height: 1,

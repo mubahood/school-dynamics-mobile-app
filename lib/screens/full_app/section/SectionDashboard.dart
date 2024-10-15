@@ -14,12 +14,16 @@ import '../../../utils/SignScreen.dart';
 import '../../../utils/my_widgets.dart';
 import '../../account/login_screen.dart';
 import '../../admin/AdminMenuScreen.dart';
+import '../../exams/ExamsHomeScreen.dart';
+import '../../finance/FinancialAccountsScreen.dart';
+import '../../finance/ServicesScreen.dart';
 import '../../posts/NewsHomeScreen.dart';
 import '../../schemework/SchemeWorkHomeScreen.dart';
 import '../../sessions/AttendanceScreen.dart';
 import '../../students/StudentsScreen.dart';
 import '../../transport/TransportHomeScreen.dart';
 import '../../visitors/VisitorsBookScreen.dart';
+import 'TransactionsScreen.dart';
 
 class SectionDashboard extends StatefulWidget {
   const SectionDashboard({super.key});
@@ -113,7 +117,7 @@ class _SectionDashboardState extends State<SectionDashboard> {
     if (u.isRole('teacher') || u.isRole('admin') || u.isRole('dos')) {
       menuItems
           .add(MenuItem('Classes', 'T 1', FeatherIcons.edit, 'classes.png', () {
-        Get.to(() => ClassesScreen());
+        Get.to(() => ClassesScreen(const {}));
       }));
     }
 
@@ -132,21 +136,21 @@ class _SectionDashboardState extends State<SectionDashboard> {
         u.isRole('admin') ||
         u.isRole('bursar') ||
         u.isRole('parent')) {
-      /*menuItems.add(MenuItem(
+      menuItems.add(MenuItem(
           'School Fees', 'T 1', FeatherIcons.edit, 'financial-account.jpg', () {
         Get.to(() => FinancialAccountsScreen({}));
-      }));*/
+      }));
     }
 
     if (u.isRole('bursar')) {
-      /*menuItems.add(
+      menuItems.add(
           MenuItem('Transactions', 'T 1', FeatherIcons.edit, 'finance.png', () {
         Get.to(() => TransactionsScreen({}));
-      }));*/
-/*      menuItems.add(
-          MenuItem('Services', 'T 1', FeatherIcons.edit, 'finance.png', () {
+      }));
+      menuItems.add(
+          MenuItem('Services', 'T 1', FeatherIcons.edit, 'services.png', () {
         Get.to(() => ServicesScreen(const {}));
-      }));*/
+      }));
     }
 
     if (u.isRole('dos') || u.isRole('admin') || u.isRole('bursar')) {
@@ -201,6 +205,13 @@ class _SectionDashboardState extends State<SectionDashboard> {
         .add(MenuItem('School News', 'T 1', FeatherIcons.edit, 'news.png', () {
       Get.to(() => NewsHomeScreen());
     }));
+
+    if (u.isRole('teacher') || u.isRole('admin') || u.isRole('dos')) {
+      menuItems.add(MenuItem(
+          'Exams & Report Cards', 'T 1', FeatherIcons.edit, 'exams.png', () {
+        Get.to(() => ExamsHomeScreen());
+      }));
+    }
 
     /* if (u.isRole('dos') ||
         u.isRole('admin') ||

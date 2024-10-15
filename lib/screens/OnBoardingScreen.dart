@@ -83,7 +83,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     }
     await Utils.init_theme();
     Utils.boot_system();
-    Utils.initOneSignal();
+    Utils.initOneSignal(logged_in_user);
     Navigator.pushNamedAndRemoveUntil(context, AppConfig.FullApp, (r) => false);
 
     return "Done";

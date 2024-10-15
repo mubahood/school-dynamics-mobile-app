@@ -217,26 +217,35 @@ class AppTheme {
     primaryColor: CustomTheme.primary,
 
     /// Scaffold and Background color
-    backgroundColor: Color(0xffffffff),
     scaffoldBackgroundColor: Color(0xffffffff),
     canvasColor: Colors.transparent,
 
     /// AppBar Theme
     appBarTheme: AppBarTheme(
       systemOverlayStyle: Utils.get_theme(),
-      backgroundColor: Color(0xffffffff),
+      backgroundColor: CustomTheme.primary,
       elevation: 0,
       centerTitle: false,
+      titleTextStyle: const TextStyle(
+        color: Colors.white,
+        fontWeight: FontWeight.w800,
+        fontSize: 18,
+      ),
       iconTheme: IconThemeData(color: Colors.white),
       actionsIconTheme: IconThemeData(color: Colors.white),
     ),
+
+
 
     /// Card Theme
     cardTheme: CardTheme(color: Color(0xfff6f6f6)),
 
     textTheme: TextTheme(
-      headline6: GoogleFonts.lato(),
-      bodyText1: GoogleFonts.lato(),
+      bodyLarge: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: Color(0xff495057),
+      ),
     ),
 
     /// Colorscheme
@@ -255,6 +264,9 @@ class AppTheme {
         splashColor: Color(0xffeeeeee).withAlpha(100),
         highlightElevation: 8,
         elevation: 4,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(100),
+        ),
         focusColor: CustomTheme.primary,
         hoverColor: CustomTheme.primary,
         foregroundColor: Color(0xffeeeeee)),
@@ -337,7 +349,6 @@ class AppTheme {
     splashColor: Colors.white.withAlpha(100),
     indicatorColor: Color(0xffeeeeee),
     highlightColor: Color(0xffeeeeee),
-    errorColor: Color(0xfff0323c),
   );
 
   /// -------------------------- Dark Theme  -------------------------------------------- ///
@@ -350,7 +361,6 @@ class AppTheme {
 
     /// Scaffold and Background color
     scaffoldBackgroundColor: Color(0xff161616),
-    backgroundColor: Color(0xff161616),
     canvasColor: Colors.transparent,
 
     /// AppBar Theme
@@ -462,7 +472,6 @@ class AppTheme {
     indicatorColor: Colors.white,
     disabledColor: Color(0xffa3a3a3),
     highlightColor: Colors.white.withAlpha(28),
-    errorColor: Colors.orange,
     cardColor: Color(0xff282a2b),
     splashColor: Colors.white.withAlpha(56),
   );

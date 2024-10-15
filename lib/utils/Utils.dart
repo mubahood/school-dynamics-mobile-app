@@ -7,13 +7,14 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:intl/intl.dart';
-import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:schooldynamics/models/MarkLocalModel.dart';
 import 'package:schooldynamics/models/MySubjects.dart';
@@ -22,6 +23,7 @@ import 'package:schooldynamics/models/StreamModel.dart';
 import 'package:schooldynamics/models/StudentHasClassModel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../models/EnterpriseModel.dart';
@@ -106,58 +108,69 @@ class Utils {
     return name;
   }
 
-  static Future<void> initOneSignal() async {
-    WidgetsFlutterBinding.ensureInitialized();
+  static Future<void> initOneSignal(LoggedInUserModel u) async {
+    /*
     //await Firebase.initializeApp();
-    print("=====DONE INVITING ONE SIGNAL=====");
-    // Set the background messaging handler early on, as a named top-level function
+    OneSignal.shared.setAppId(AppConfig.ONESIGNAL_APP_ID);
 
-    OneSignal.initialize(AppConfig.ONESIGNAL_APP_ID);
-
-    LoggedInUserModel u = await LoggedInUserModel.getLoggedInUser();
-    if (u != null) {
-      if (u.id > 0) {
-        OneSignal.login(u.id.toString());
-        print("=====SET ONE SIGNAL USER ID: ${u.id} =====");
-      }
+    int id = u.id;
+    if (u.user_type.toLowerCase() == 'worker') {
+      // id = int_parse(u.temp_id);
     }
 
-    OneSignal.Notifications.addPermissionObserver((state) {
-      print("Has permission " + state.toString());
+    if (id > 0) {
+      OneSignal.shared.setExternalUserId(id.toString());
+    }
+
+    OneSignal.shared.promptUserForPushNotificationPermission().then((accepted) {
+      print(" !==>444<==! ");
     });
 
-    OneSignal.Notifications.addForegroundWillDisplayListener((event) {
-      print(
-          'NOTIFICATION WILL DISPLAY LISTENER CALLED WITH: ${event.notification.jsonRepresentation()}');
-
-      /// Display Notification, preventDefault to not display
-      event.preventDefault();
-
-      /// Do async work
-
-      /// notification.display() to display after preventing default
-      event.notification.display();
-
-      /*this.setState(() {
-        _debugLabelString =
-        "Notification received in foreground notification: \n${event.notification.jsonRepresentation().replaceAll("\\n", "\n")}";
-      });*/
+    OneSignal.shared.setNotificationWillShowInForegroundHandler(
+        (OSNotificationReceivedEvent event) {
+      event.complete(event.notification);
+      print(" !==>111<==! ");
     });
 
-    OneSignal.InAppMessages.addWillDisplayListener((event) {
-      print("ON WILL DISPLAY IN APP MESSAGE ${event.message.messageId}");
-    });
-    OneSignal.InAppMessages.addDidDisplayListener((event) {
-      print("ON DID DISPLAY IN APP MESSAGE ${event.message.messageId}");
-    });
-    OneSignal.InAppMessages.addWillDismissListener((event) {
-      print("ON WILL DISMISS IN APP MESSAGE ${event.message.messageId}");
-    });
-    OneSignal.InAppMessages.addDidDismissListener((event) {
-      print("ON DID DISMISS IN APP MESSAGE ${event.message.messageId}");
+    OneSignal.shared.setNotificationOpenedHandler(
+        (OSNotificationOpenedResult result) async {
+      print(" !==>222<==! ");
+      Map<String, dynamic>? params = {};
+
+      params = result.notification.additionalData;
+          if (result.notification.additionalData != null) {
+            if (result.notification.additionalData?['notification_id'] !=
+                null) {
+              int id = Utils.int_parse(
+                  result.notification.additionalData?['notification_id']);
+              if (id > 0) {
+                // NotificationModel.markAsRead(id);
+              }
+            }
+            // NotificationModel.getOnlineItems();
+            // Get.to(() => NotificationsScreen(params));
+          }
+        });
+
+    OneSignal.shared.setPermissionObserver((OSPermissionStateChanges changes) {
+      // Will be called whenever the permission changes
+      // (ie. user taps Allow on the permission prompt in iOS)
+      print(" !==>333<==! ");
     });
 
-    OneSignal.InAppMessages.paused(true);
+    OneSignal.shared
+        .setSubscriptionObserver((OSSubscriptionStateChanges changes) {
+      // Will be called whenever the subscription changes
+      // (ie. user gets registered with OneSignal and gets a user ID)
+      print(" !==>444<==! ");
+    });
+
+    OneSignal.shared.setEmailSubscriptionObserver(
+        (OSEmailSubscriptionStateChanges emailChanges) {
+      print(" !==>444<==! ");
+      // Will be called whenever then user's email subscription changes
+      // (ie. OneSignal.setEmail(email) is called and the user gets registered
+    });*/
   }
 
   static bool contains(List<dynamic> items, dynamic item) {
@@ -183,14 +196,14 @@ class Utils {
     dynamic response;
     var dio = Dio();
 
-    if (!kIsWeb) {
+   /* if (!kIsWeb) {
       (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
           (HttpClient client) {
         client.badCertificateCallback =
             (X509Certificate cert, String host, int port) => true;
         return client;
       };
-    }
+    }*/
 
     var da = dioPackage.FormData.fromMap(body); //.fromMap();
 
@@ -207,13 +220,15 @@ class Utils {
               "accept": "application/json",
             },
           ));
-/*
-      print("=====success=====");
-      print(response.data.toString());*/
+      /*Utils.log("=========success==========");
+      Utils.log(response.data.toString());
+      Utils.log("===========================");*/
       return response.data;
     } on DioError catch (e) {
-      print("failed");
-      print(e.message);
+      Utils.log("==========failed===========");
+      Utils.log(e.message);
+      print(e.response?.data.toString());
+      Utils.log("===========================");
       if (e.response?.data != null) {
         if (e.response?.data.runtimeType.toString() ==
             '_Map<String, dynamic>') {
@@ -359,16 +374,16 @@ class Utils {
             "Tok": 'Bearer ${token}',
             "tok": 'Bearer ${token}',
           }));
-      // print('=====||||==SUCCESS===||||====');
-      // print(response.data);
-      // print('====||||===>SUCCESS<===||||====');
+/*      print('=====||||==SUCCESS===||||====');
+      Utils.log(response.data.toString());
+      print('====||||===>SUCCESS<===||||====');*/
 
       return response.data;
     } on DioError catch (e) {
-      // print("=======ERROR=======");
-      // print(e.message);
-      // print(e.response?.data);
-      // print('=======>ERROR<=======');
+      print("=======ERROR=======");
+      print(e.message);
+      print(e.response?.data);
+      print('=======>ERROR<=======');
       if (e.response?.data != null) {
         if (e.response?.data.runtimeType.toString() ==
             '_Map<String, dynamic>') {
@@ -480,6 +495,10 @@ class Utils {
 * */
 
   static Future<Database> getDb() async {
+    if (kIsWeb) {
+      var factory = databaseFactoryFfiWeb;
+      return await factory.openDatabase(AppConfig.DATABASE_PATH);
+    }
     //print("===GETTING DB========");
     return await openDatabase(AppConfig.DATABASE_PATH,
         version: AppConfig.DATABASE_VERSION);
@@ -562,6 +581,13 @@ class Utils {
   }
 
   static Future<bool> is_connected() async {
+    if (AppConfig.API_BASE_URL.contains('10.0.2.2')) {
+      return true;
+    }
+    return await InternetConnection().hasInternetAccess;
+
+
+    //if is web
     if (AppConfig.API_BASE_URL.contains('10.0.2.2')) {
       return true;
     }
@@ -684,6 +710,26 @@ class Utils {
       statusBarIconBrightness: Brightness.light,
       statusBarBrightness: Brightness.light, // For iOS (dark icons)
     );
+  }
+
+  static void showLoader(bool dismissable) {
+    if (EasyLoading.isShow) {
+      return;
+    } else {
+      EasyLoading.show(
+        status: 'loading...',
+        maskType: EasyLoadingMaskType.black,
+        dismissOnTap: dismissable,
+      );
+    }
+    return;
+  }
+
+  static void hideLoader() {
+    if (EasyLoading.isShow) {
+      EasyLoading.dismiss();
+    }
+    return;
   }
 
   void upload_image(String path) async {}

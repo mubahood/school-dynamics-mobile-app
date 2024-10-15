@@ -67,12 +67,16 @@ class _FullAppState extends State<FullApp> with SingleTickerProviderStateMixin {
                                 width: 2,
                                 color: Colors.grey.shade400,
                                 style: BorderStyle.solid)),
-                        padding: FxSpacing.xy(0, 5),
-                        marginAll: 0,
-                        child: TabBar(
-                          labelPadding: EdgeInsets.zero,
-                          controller: tabController,
-                          indicator: FxTabIndicator(
+                  padding: FxSpacing.only(
+                    top: 5,
+                    bottom: 3,
+                  ),
+                  marginAll: 0,
+                  child: TabBar(
+                    dividerColor: Colors.white,
+                    labelPadding: EdgeInsets.zero,
+                    controller: tabController,
+                    indicator: FxTabIndicator(
                               indicatorColor: CustomTheme.primary,
                               indicatorHeight: 2,
                               radius: 4,

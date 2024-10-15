@@ -4,6 +4,7 @@ import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
 import 'package:schooldynamics/models/ServiceSubscription.dart';
 import 'package:schooldynamics/models/UserModel.dart';
+import 'package:schooldynamics/screens/finance/ChangeAccountStatusScreen.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 
 import '../../models/Transaction.dart';
@@ -12,6 +13,7 @@ import '../../theme/app_theme.dart';
 import '../../theme/custom_theme.dart';
 import '../../utils/my_widgets.dart';
 import '../finance/TransactionScreen.dart';
+import 'ChangeAccountBalanceScreen.dart';
 import 'ServiceSubscriptionCreateScreen.dart';
 import 'TransactionCreateScreen.dart';
 
@@ -73,7 +75,14 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
                       () => ServiceSubscriptionCreateScreen({'id': item.id}));
                   break;
 
+                case '4':
+                  Get.to(() => ChangeAccountStatusScreen({'account': item}));
+                  break;
+
                 case '3':
+                  Get.to(() => ChangeAccountBalanceScreen({
+                        'account': item,
+                      }));
                   break;
               }
             },
@@ -105,7 +114,7 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
                     child: Row(
                       children: [
                         Icon(
-                          FeatherIcons.arrowLeft,
+                          FeatherIcons.plusCircle,
                           color: CustomTheme.primary,
                         ),
                         const SizedBox(
@@ -120,13 +129,13 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
                     child: Row(
                       children: [
                         Icon(
-                          FeatherIcons.arrowRight,
+                          FeatherIcons.checkCircle,
                           color: CustomTheme.primary,
                         ),
                         const SizedBox(
                           width: 8,
                         ),
-                        FxText.bodyLarge('Add bursary'),
+                        FxText.bodyLarge('Update Account Status'),
                       ],
                     ),
                   ),
@@ -278,7 +287,7 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
                               child: titleValueWidget('SEX', '${item.sex}')),
                           Container(
                               child: titleValueWidget(
-                                  'CLASS', '${item.current_class_text}')),
+                                  'CLASS', item.current_class_text)),
                         ],
                       )),
                     ),

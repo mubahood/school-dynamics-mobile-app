@@ -39,12 +39,13 @@ class _PdfViewerScreen extends State<PdfViewerScreen> {
         actions: <Widget>[
           IconButton(
             icon: const Icon(
-              Icons.bookmark,
+              Icons.download,
               color: Colors.white,
               semanticLabel: 'Bookmark',
             ),
             onPressed: () {
-              _pdfViewerKey.currentState?.openBookmarkView();
+              Utils.launchURL(widget.url);
+              //_pdfViewerKey.currentState?.openBookmarkView();
             },
           ),
         ],

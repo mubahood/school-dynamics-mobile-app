@@ -323,8 +323,8 @@ class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
   String shared_filters = "";
 
   Future<void> init({bool isRefresh = false}) async {
+    originalItems = await UserModel.getItems();
     if (isRefresh || originalItems.isEmpty) {
-      originalItems = await UserModel.getItems();
     }
     if (classes.isEmpty) {
       classes = await MyClasses.getItems();
@@ -416,11 +416,11 @@ class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
     }
 
     count = 0;
-    items.forEach((element) {
+    for (var element in items) {
       count++;
       shared_records +=
           "\n*${count}. ${element.name}* - ${element.current_class_text}\n*BALANCE:* UGX ${Utils.moneyFormat(element.balance.toString())}\n";
-    });
+    }
 
     shared_data += "\n\n*FILTERS*" +
         '${(shared_filters.isNotEmpty) ? shared_filters : "\nALL STUDENTS"}';

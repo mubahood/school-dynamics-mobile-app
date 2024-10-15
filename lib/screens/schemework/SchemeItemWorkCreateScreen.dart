@@ -344,6 +344,30 @@ class _SchemeItemWorkCreateScreenState
                               height: 15,
                             ),
                             FormBuilderTextField(
+                              name: 'supervisor_comment',
+                              initialValue: widget.item.supervisor_comment.isEmpty
+                                  ? "- "
+                                  : widget.item.supervisor_comment,
+                              textCapitalization: TextCapitalization.sentences,
+                              keyboardType: TextInputType.multiline,
+                              textInputAction: TextInputAction.newline,
+                              autocorrect: true,
+                              enableSuggestions: true,
+                              textAlignVertical: TextAlignVertical.top,
+                              onChanged: (x) {
+                                widget.item.supervisor_comment = x.toString();
+                              },
+                              decoration: AppTheme.InputDecorationTheme1(
+                                label: "Content",
+                              ),
+                              minLines: 3,
+                              maxLines: 5,
+                            ),
+
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            FormBuilderTextField(
                               name: 'competence',
                               initialValue: widget.item.competence.isEmpty
                                   ? "- "

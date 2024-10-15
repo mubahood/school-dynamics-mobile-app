@@ -4,21 +4,15 @@ import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
 import 'package:schooldynamics/models/ExamModel.dart';
 import 'package:schooldynamics/models/MyClasses.dart';
-import 'package:schooldynamics/models/SessionLocal.dart';
-import 'package:schooldynamics/models/UserModel.dart';
 
 import '../../models/MySubjects.dart';
-import '../../models/SessionOnline.dart';
 import '../../models/StudentHasClassModel.dart';
 import '../../sections/widgets.dart';
 import '../../theme/app_theme.dart';
 import '../../theme/custom_theme.dart';
-import '../../utils/Utils.dart';
 import '../../utils/my_widgets.dart';
 import '../exams/MarksScreen.dart';
 import '../sessions/SessionCreateNewScreen.dart';
-import '../sessions/SessionLocalScreen.dart';
-import '../sessions/SessionOnlineScreen.dart';
 
 class ClassScreenOld extends StatefulWidget {
   const ClassScreenOld({Key? key, required this.data}) : super(key: key);
@@ -366,7 +360,7 @@ class _CourseTasksScreenState extends State<ClassScreenOld> {
                       ExamSubject m = examSubjects[index];
                       return ListTile(
                         onTap: () {
-                          Get.to(() => MarksScreen(m.exam, m.subject));
+                          //Get.to(() => MarksScreen({}));
                         },
                         title: FxText.titleMedium(
                           "${m.exam.type}, ${m.exam.term_name}",

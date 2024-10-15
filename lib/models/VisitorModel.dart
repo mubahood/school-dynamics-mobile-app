@@ -172,8 +172,9 @@ class VisitorModel {
         toJson(),
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
+
     } catch (e) {
-      Utils.toast("Failed to save student because ${e.toString()}");
+      print("Failed to save student because ${e.toString()}");
     }
   }
 

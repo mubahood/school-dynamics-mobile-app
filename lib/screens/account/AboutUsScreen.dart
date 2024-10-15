@@ -6,7 +6,6 @@ import 'package:schooldynamics/theme/app_theme.dart';
 import '../../utils/AppConfig.dart';
 import '../../utils/Utils.dart';
 import '../../utils/my_colors.dart';
-import '../../utils/my_text.dart';
 
 class AboutUsScreen extends StatefulWidget {
   AboutUsScreen({super.key});
@@ -49,23 +48,20 @@ class AboutUsScreenState extends State<AboutUsScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text("${AppConfig.APP_NAME} App",
-                  style: MyText.display1(context)!.copyWith(
-                      color: Colors.white, fontWeight: FontWeight.w300)),
+              FxText.titleMedium(
+                "${AppConfig.APP_NAME} App",
+                color: Colors.white,
+              ),
               Container(height: 5),
               Container(width: 120, height: 3, color: Colors.white),
               Container(height: 15),
-              Text("Version",
-                  style:
-                      MyText.body1(context)!.copyWith(color: MyColors.grey_20)),
-              Text("2.1.0",
-                  style: MyText.body1(context)!.copyWith(color: Colors.white)),
+              FxText.bodyLarge('Version', color: MyColors.grey_20),
+              FxText.bodyLarge('2.1.0', color: MyColors.grey_20),
               Container(height: 15),
-              Text("Last Update",
-                  style:
-                      MyText.body1(context)!.copyWith(color: MyColors.grey_20)),
-              Text("February 2023",
-                  style: MyText.body1(context)!.copyWith(color: Colors.white)),
+
+              FxText.bodyLarge('Last Update', color: MyColors.grey_20),
+
+              FxText.bodyLarge('February 2023', color: Colors.white),
 
               FeatureItem('Attendance Tracking',
                   'Say goodbye to manual attendance records. "School Dynamics" simplifies the process by allowing teachers to effortlessly mark and track student attendance with just a few taps.'),
@@ -109,9 +105,10 @@ class AboutUsScreenState extends State<AboutUsScreen> {
                 onPressed: () {
                   Utils.launchBrowser(AppConfig.TERMS);
                 },
-                child: Text("Term of services",
-                    style:
-                        MyText.body1(context)!.copyWith(color: Colors.white)),
+                child: FxText(
+                  "Term of services",
+                  color: Colors.white,
+                ),
               ),
               SizedBox(height: 22),
             ],

@@ -8,7 +8,9 @@ import '../../utils/my_widgets.dart';
 import 'SubjectScreen.dart';
 
 class SubjectsScreen extends StatefulWidget {
-  SubjectsScreen({Key? key}) : super(key: key);
+  Map<String, dynamic> params = {};
+
+  SubjectsScreen(this.params, {Key? key}) : super(key: key);
 
   @override
   SubjectsScreenState createState() => new SubjectsScreenState();
@@ -16,6 +18,9 @@ class SubjectsScreen extends StatefulWidget {
 
 class SubjectsScreenState extends State<SubjectsScreen> {
   List<MySubjects> items = [];
+
+  String title = '';
+  bool isPicker = false;
 
   @override
   void initState() {
@@ -44,7 +49,7 @@ class SubjectsScreenState extends State<SubjectsScreen> {
           automaticallyImplyLeading: true,
           // remove back button in appbar.
           title: FxText.titleLarge(
-            'My Subjects (${items.length})',
+            title.isNotEmpty ? title : 'My Subjects (${items.length})',
             color: Colors.white,
             fontWeight: 700,
             height: .6,
@@ -71,6 +76,11 @@ class SubjectsScreenState extends State<SubjectsScreen> {
                     final MySubjects m = items[index];
                     return ListTile(
                       onTap: () {
+                        if (isPicker) {
+                          Get.back(result: m);
+                          return;
+                        }
+
                         Get.to(() => SubjectScreen(
                               data: m,
                             ));
@@ -114,6 +124,13 @@ class SubjectsScreenState extends State<SubjectsScreen> {
   }
 
   Future<void> init() async {
+    if (widget.params['title'] != null) {
+      title = widget.params['title'];
+    }
+    if (widget.params['task'].toString() == 'Select'.toString()) {
+      isPicker = true;
+    }
+
     items = await MySubjects.getItems();
     setState(() {});
   }

@@ -163,12 +163,10 @@ Widget titleValueWidget2(String title, String subTitle) {
         const SizedBox(
           width: 2,
         ),
-        Expanded(
-          child: FxText.bodyLarge(
-            subTitle.isEmpty ? "-" : subTitle,
-            textAlign: TextAlign.right,
-            fontWeight: 500,
-          ),
+        FxText.bodyLarge(
+          subTitle.isEmpty ? "-" : subTitle,
+          textAlign: TextAlign.right,
+          fontWeight: 500,
         ),
       ],
     ),
@@ -466,7 +464,7 @@ Widget userWidget(UserModel u, context, {String task_picker = ""}) {
                       'CLASS: ',
                     ),
                     FxText.bodyMedium(
-                      u.current_class_id.toUpperCase(),
+                      u.current_class_text.toUpperCase(),
                       color: Colors.grey.shade600,
                     ),
                   ],
@@ -495,7 +493,14 @@ Widget userWidget(UserModel u, context, {String task_picker = ""}) {
                     const SizedBox(
                       width: 2,
                     ),
-                    FxText.bodySmall(u.getParentName(), color: Colors.grey),
+                    Expanded(
+                      child: FxText.bodySmall(
+                        u.getParentName(),
+                        color: Colors.grey,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
                     const Spacer(),
                     Icon(
                       FeatherIcons.clock,
@@ -545,26 +550,28 @@ Widget accountWidget(UserModel u) {
                     maxLines: 1,
                     fontWeight: 800,
                     overflow: TextOverflow.ellipsis,
+                    height: 1,
                   ),
                   const SizedBox(
-                    height: 5,
+                    height: 0,
+                  ),
+                  FxText.bodySmall(
+                    'CLASS: ${u.current_class_text}',
+                    fontWeight: 800,
+                    height: 1,
+                    color: Colors.black,
+                  ),
+                  const SizedBox(
+                    width: 2,
                   ),
                   Row(
                     children: [
                       const SizedBox(
                         width: 2,
                       ),
-                      FxText.bodyMedium(
-                        u.current_class_text,
-                        fontWeight: 800,
-                        color: Colors.black,
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
                       FxCard(
                         padding:
-                            const EdgeInsets.only(left: 5, right: 5, bottom: 2),
+                            const EdgeInsets.only(left: 5, right: 5, bottom: 0),
                         marginAll: 0,
                         color: u.verification == '1'
                             ? Colors.green.shade700
@@ -589,7 +596,7 @@ Widget accountWidget(UserModel u) {
                       ),
                       FxText.titleLarge(
                         Utils.moneyFormat("${u.balance}"),
-                        height: 1.1,
+                        height: .6,
                         color: u.balance < 0
                             ? Colors.red.shade800
                             : Colors.green.shade800,

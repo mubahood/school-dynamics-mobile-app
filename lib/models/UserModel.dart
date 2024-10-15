@@ -295,6 +295,9 @@ class UserModel {
     if (resp.code != 1) {
       return;
     }
+   /* print("================");
+    Utils.log(resp.data.toString());
+    print("================");*/
 
     if (!resp.data.runtimeType.toString().contains('List')) {
       return;

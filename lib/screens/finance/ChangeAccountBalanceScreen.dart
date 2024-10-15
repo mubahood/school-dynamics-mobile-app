@@ -68,13 +68,13 @@ class ChangeAccountBalanceScreenState extends State<ChangeAccountBalanceScreen>
           },
           child: const Icon(
             Icons.arrow_back_outlined,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
         title: FxText.titleMedium(
           "Changing account balance",
           fontSize: 20,
-          color: Colors.black,
+          color: Colors.white,
           fontWeight: 700,
         ),
       ),
@@ -82,7 +82,7 @@ class ChangeAccountBalanceScreenState extends State<ChangeAccountBalanceScreen>
           future: initFuture,
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             }
 
             return FormBuilder(

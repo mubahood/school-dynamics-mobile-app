@@ -70,7 +70,7 @@ class ServiceSubscriptionCreateScreenState
           },
           child: const Icon(
             Icons.arrow_back_outlined,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
         actions: [
@@ -100,9 +100,9 @@ class ServiceSubscriptionCreateScreenState
                   ))
         ],
         title: FxText.titleMedium(
-          "New Subscription",
+          "New Service Subscription",
           fontSize: 20,
-          color: Colors.black,
+          color: Colors.white,
           fontWeight: 700,
         ),
       ),

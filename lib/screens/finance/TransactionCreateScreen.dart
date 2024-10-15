@@ -68,14 +68,14 @@ class TransactionCreateScreenState extends State<TransactionCreateScreen>
           },
           child: const Icon(
             Icons.arrow_back_outlined,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
         title: FxText.titleMedium(
-          "Creating school fees payament",
-          fontSize: 20,
-          color: Colors.black,
-          fontWeight: 700,
+          "Creating school fees payment",
+          fontSize: 18,
+          color: Colors.white,
+          fontWeight: 900,
         ),
       ),
       body: FutureBuilder(

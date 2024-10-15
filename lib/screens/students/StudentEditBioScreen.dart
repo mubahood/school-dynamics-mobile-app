@@ -162,15 +162,10 @@ class _StudentEditBioScreenState extends State<StudentEditBioScreen> {
                           decoration: AppTheme.InputDecorationTheme1(
                             label: "Last name",
                           ),
-                          validator: FormBuilderValidators.compose([
-                            FormBuilderValidators.required(
-                              errorText: "Last name is required.",
-                            ),
-                          ]),
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(bottom: 20, top: 10),
+                        margin: const EdgeInsets.only(bottom: 20, top: 10),
                         child: FormBuilderTextField(
                           name: 'given_name	',
                           initialValue: item.given_name,
@@ -239,11 +234,6 @@ class _StudentEditBioScreenState extends State<StudentEditBioScreen> {
                           decoration: AppTheme.InputDecorationTheme1(
                             label: "Nationality",
                           ),
-                          validator: FormBuilderValidators.compose([
-                            FormBuilderValidators.required(
-                              errorText: "Nationality is required.",
-                            ),
-                          ]),
                         ),
                       ),
                       Container(
@@ -260,11 +250,6 @@ class _StudentEditBioScreenState extends State<StudentEditBioScreen> {
                           decoration: AppTheme.InputDecorationTheme1(
                             label: "Home address",
                           ),
-                          validator: FormBuilderValidators.compose([
-                            FormBuilderValidators.required(
-                              errorText: "Home address is required.",
-                            ),
-                          ]),
                         ),
                       ),
                       alertWidget(error_message, 'success'),

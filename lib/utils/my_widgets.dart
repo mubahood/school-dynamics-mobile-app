@@ -12,7 +12,6 @@ import '../sections/widgets.dart';
 import '../theme/custom_theme.dart';
 import 'Utils.dart';
 import 'my_colors.dart';
-import 'my_text.dart';
 
 Widget postWidget3(PostModel object, Function f, BuildContext context) {
   return InkWell(
@@ -32,15 +31,17 @@ Widget postWidget3(PostModel object, Function f, BuildContext context) {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(object.title,
-                        maxLines: 3,
-                        style: MyText.body1(context)!.copyWith(
-                            color: Colors.grey[800],
-                            fontWeight: FontWeight.w500)),
+                    FxText(
+                      object.title,
+                      maxLines: 3,
+                      color: Colors.black,
+                    ),
                     Container(height: 5),
-                    Text("EVENT DATE: ${Utils.to_date_1(object.event_date)}",
-                        style: MyText.body1(context)!
-                            .copyWith(color: Colors.grey[900])),
+                    FxText(
+                      "EVENT DATE: ${Utils.to_date_1(object.event_date)}",
+                      maxLines: 2,
+                      color: Colors.grey[700],
+                    ),
                     Container(height: 5),
                     Align(
                       alignment: Alignment.bottomRight,
@@ -49,15 +50,12 @@ Widget postWidget3(PostModel object, Function f, BuildContext context) {
                             ? Colors.yellow.shade900
                             : CustomTheme.primary,
                         padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
-                        child: Text(
+                        child: FxText(
                           object.isBeforeToday()
                               ? "PAST EVENT"
                               : "UPCOMING EVENT",
                           maxLines: 2,
-                          style: MyText.body1(context)!.copyWith(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 10,
-                              color: Colors.grey[100]),
+                          color: Colors.white,
                         ),
                       ),
                     ),
@@ -97,16 +95,19 @@ Widget postWidget2(PostModel object, Function f, BuildContext context) {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Expanded(
-                            child: Text(object.title,
-                                style: MyText.body2(context)!
-                                    .copyWith(color: Colors.black)),
+                            child: Text(
+                              object.title,
+                            ),
                           ),
                         ],
                       ),
                       Container(height: 10),
                       Text(Utils.to_date_1(object.created_at),
-                          style: MyText.body1(context)!
-                              .copyWith(color: MyColors.grey_40)),
+                        style: TextStyle(
+                            color: Colors.grey[700],
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500),
+                      ),
                       Container(height: 10),
                     ],
                   )),
@@ -179,21 +180,25 @@ Widget postWidget(PostModel object, Function f, BuildContext context) {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(object.title,
-                          maxLines: 3,
-                          style: MyText.body1(context)!.copyWith(
-                              color: MyColors.grey_80,
-                              fontWeight: FontWeight.w500)),
+                      FxText(
+                        object.title,
+                        maxLines: 3,
+                        color: Colors.black,
+                      ),
                       const Spacer(),
                       Row(
                         children: <Widget>[
-                          Text(object.type.toUpperCase(),
-                              style: MyText.caption(context)!
-                                  .copyWith(color: MyColors.grey_40)),
+                          FxText(
+                            object.type.toUpperCase(),
+                            color: MyColors.grey_40,
+                            fontSize: 12,
+                          ),
                           const Spacer(),
-                          Text(Utils.to_date_1(object.created_at),
-                              style: MyText.caption(context)!
-                                  .copyWith(color: MyColors.grey_40)),
+                          FxText(
+                            Utils.to_date_1(object.created_at),
+                            color: MyColors.grey_40,
+                            fontSize: 12,
+                          ),
                         ],
                       ),
                     ],
@@ -240,23 +245,6 @@ Widget postWidget(PostModel object, Function f, BuildContext context) {
             ),
           ),
           Container(height: 10),
-          Row(
-            children: <Widget>[
-              Text(object.title,
-                  style:
-                      MyText.body2(context)!.copyWith(color: MyColors.grey_40)),
-              Spacer(),
-              Text(object.created_at,
-                  style:
-                      MyText.body1(context)!.copyWith(color: MyColors.grey_40)),
-            ],
-          ),
-          Container(height: 10),
-          Text(object.title,
-              style: MyText.body1(context)!.copyWith(
-                  color: MyColors.grey_80, fontWeight: FontWeight.w500)),
-          Container(height: 10),
-          Divider(height: 0),
         ],
       ),
     ),

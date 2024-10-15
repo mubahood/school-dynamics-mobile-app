@@ -65,13 +65,13 @@ class ChangeAccountStatusScreenState extends State<ChangeAccountStatusScreen>
           },
           child: const Icon(
             Icons.arrow_back_outlined,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
         title: FxText.titleMedium(
           "Changing account status",
           fontSize: 20,
-          color: Colors.black,
+          color: Colors.white,
           fontWeight: 700,
         ),
       ),
@@ -113,11 +113,40 @@ class ChangeAccountStatusScreenState extends State<ChangeAccountStatusScreen>
                                               children: [
                                                 FxContainer(
                                                   width: double.infinity,
-                                                  child: FxText.bodySmall(
-                                                    "Current account status is ${account.status == '1' ? 'Verified' : 'Not Verified'}",
-                                                    fontWeight: 700,
-                                                    color: CustomTheme.primary,
-                                                    textAlign: TextAlign.start,
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    children: [
+                                                      FxText.bodySmall(
+                                                        "ACCOUNT NAME: ${account.name}",
+                                                        fontWeight: 700,
+                                                        color: Colors.black,
+                                                        textAlign:
+                                                            TextAlign.start,
+                                                      ),
+                                                      FxText.bodySmall(
+                                                        "CURRENT CLASS  : ${account.current_class_text}",
+                                                        fontWeight: 700,
+                                                        color: Colors.black,
+                                                        textAlign:
+                                                            TextAlign.start,
+                                                      ),
+                                                      Divider(
+                                                        color:
+                                                            CustomTheme.primary,
+                                                      ),
+                                                      FxText.bodySmall(
+                                                        "Current account status is: ${(account.status.toString() == '1') ? 'Verified'.toUpperCase() : 'Not Verified'.toUpperCase()}",
+                                                        fontWeight: 700,
+                                                        color:
+                                                            CustomTheme.primary,
+                                                        textAlign:
+                                                            TextAlign.start,
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
                                                 const SizedBox(
@@ -128,7 +157,8 @@ class ChangeAccountStatusScreenState extends State<ChangeAccountStatusScreen>
                                                   dropdownColor: Colors.white,
                                                   decoration: AppTheme
                                                       .InputDecorationTheme1(
-                                                    label: "Stream",
+                                                    label:
+                                                        "Select Account Status",
                                                   ),
                                                   onChanged: (x) {
                                                     String y = x.toString();

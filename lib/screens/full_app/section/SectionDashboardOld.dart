@@ -140,7 +140,7 @@ class _SectionDashboardState extends State<SectionDashboardOld> {
                       delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
                           return titleWidget('Examination Marks', () {
-                            Get.to(() => SubjectsScreen());
+                            Get.to(() => SubjectsScreen({}));
                           });
                         },
                         childCount: 1, // 1000 list items
@@ -206,7 +206,7 @@ class _SectionDashboardState extends State<SectionDashboardOld> {
                       delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
                           return titleWidget('My Top Subjects', () {
-                            Get.to(() => SubjectsScreen());
+                            Get.to(() => SubjectsScreen({}));
                           });
                         },
                         childCount: 1, // 1000 list items
@@ -264,7 +264,7 @@ class _SectionDashboardState extends State<SectionDashboardOld> {
                       delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
                           return titleWidget('My Classes', () {
-                            Get.to(() => ClassesScreen());
+                            Get.to(() => ClassesScreen({}));
                           });
                         },
                         childCount: 1, // 1000 list items

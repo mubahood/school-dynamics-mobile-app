@@ -180,10 +180,12 @@ class LoggedInUserModel {
   }
 
   static LoggedInUserModel fromJson(dynamic m) {
-    LoggedInUserModel obj = new LoggedInUserModel();
+    LoggedInUserModel obj =  LoggedInUserModel();
     if (m == null) {
       return obj;
     }
+
+
 
     obj.id = Utils.int_parse(m['id']);
     obj.username = Utils.to_str(m['username'], '');

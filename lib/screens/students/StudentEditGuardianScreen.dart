@@ -11,7 +11,7 @@ import '../../utils/SizeConfig.dart';
 import '../../utils/Utils.dart';
 
 class StudentEditGuardianScreen extends StatefulWidget {
-  final dynamic data;
+  dynamic data;
 
   StudentEditGuardianScreen({
     Key? key,
@@ -75,6 +75,7 @@ class _StudentEditGuardianScreenState extends State<StudentEditGuardianScreen> {
     }
 
     item = UserModel.fromJson(r.data);
+    widget.data = item;
     await item.save();
 
     Utils.toast("Success!");

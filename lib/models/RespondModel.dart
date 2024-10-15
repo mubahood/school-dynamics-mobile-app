@@ -15,6 +15,15 @@ class RespondModel {
     if (this.raw == null) {
       return;
     }
+    if (raw.runtimeType.toString() == '_JsonMap') {
+      if (raw['code'] != null) {
+        code = Utils.int_parse(raw['code']);
+      }
+      data = raw['data'];
+      message = raw['message'];
+      return;
+    }
+
     Map<String, dynamic> resp = {};
     if (raw.runtimeType.toString() != '_Map<String, dynamic>') {
       try {
