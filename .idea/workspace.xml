@@ -5,15 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b53d5bbc-3aaf-4461-9262-7a96f2d9f29d" name="Changes" comment="latest changes.">
-      <change afterPath="$PROJECT_DIR$/web_1/favicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web_1/icons/Icon-192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web_1/icons/Icon-512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web_1/icons/Icon-maskable-192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web_1/icons/Icon-maskable-512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web_1/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web_1/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web_1/sqflite_sw.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web_1/sqlite3.wasm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/chrome-device/Default/Affiliation Database" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/chrome-device/Default/Affiliation Database-journal" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/chrome-device/Default/AutofillStrikeDatabase/LOCK" beforeDir="false" />
