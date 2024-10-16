@@ -12,7 +12,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
@@ -591,7 +590,6 @@ class Utils {
     if (AppConfig.API_BASE_URL.contains('10.0.2.2')) {
       return true;
     }
-    return await InternetConnectionChecker().hasConnection;
   }
 
   static log(String message) {

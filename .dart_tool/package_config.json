@@ -386,12 +386,6 @@
       "languageVersion": "2.17"
     },
     {
-      "name": "internet_connection_checker",
-      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/internet_connection_checker-1.0.0+1",
-      "packageUri": "lib/",
-      "languageVersion": "2.18"
-    },
-    {
       "name": "internet_connection_checker_plus",
       "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/internet_connection_checker_plus-2.5.2",
       "packageUri": "lib/",
@@ -956,7 +950,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2024-10-15T17:48:34.781457Z",
+  "generated": "2024-10-16T09:48:10.268739Z",
   "generator": "pub",
   "generatorVersion": "3.5.3",
   "flutterRoot": "file:///Users/mac/src/flutter",
