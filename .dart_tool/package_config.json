@@ -75,7 +75,7 @@
     },
     {
       "name": "connectivity_plus",
-      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/connectivity_plus-6.0.5",
+      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/connectivity_plus-6.1.0",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -87,9 +87,9 @@
     },
     {
       "name": "convert",
-      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/convert-3.1.1",
+      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/convert-3.1.2",
       "packageUri": "lib/",
-      "languageVersion": "2.18"
+      "languageVersion": "3.4"
     },
     {
       "name": "cross_file",
@@ -99,7 +99,7 @@
     },
     {
       "name": "crypto",
-      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/crypto-3.0.5",
+      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/crypto-3.0.6",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -189,9 +189,9 @@
     },
     {
       "name": "fixnum",
-      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/fixnum-1.1.0",
+      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/fixnum-1.1.1",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.1"
     },
     {
       "name": "flutter",
@@ -327,7 +327,7 @@
     },
     {
       "name": "image",
-      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/image-4.2.0",
+      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/image-4.3.0",
       "packageUri": "lib/",
       "languageVersion": "2.15"
     },
@@ -345,9 +345,9 @@
     },
     {
       "name": "image_picker_for_web",
-      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/image_picker_for_web-3.0.5",
+      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/image_picker_for_web-3.0.6",
       "packageUri": "lib/",
-      "languageVersion": "3.3"
+      "languageVersion": "3.4"
     },
     {
       "name": "image_picker_ios",
@@ -399,9 +399,9 @@
     },
     {
       "name": "js",
-      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/js-0.6.7",
+      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/js-0.7.1",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.1"
     },
     {
       "name": "leak_tracker",
@@ -543,7 +543,7 @@
     },
     {
       "name": "platform",
-      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/platform-3.1.5",
+      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/platform-3.1.6",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -783,7 +783,7 @@
     },
     {
       "name": "syncfusion_pdfviewer_web",
-      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/syncfusion_pdfviewer_web-24.2.8",
+      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/syncfusion_pdfviewer_web-24.2.9",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -813,9 +813,9 @@
     },
     {
       "name": "typed_data",
-      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/typed_data-1.3.2",
+      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/typed_data-1.4.0",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.5"
     },
     {
       "name": "universal_io",
@@ -950,7 +950,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2024-10-16T12:43:26.666643Z",
+  "generated": "2024-10-17T17:24:54.488625Z",
   "generator": "pub",
   "generatorVersion": "3.5.3",
   "flutterRoot": "file:///Users/mac/src/flutter",

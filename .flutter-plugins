@@ -1,5 +1,5 @@
 # This is a generated file; do not edit or check into version control.
-connectivity_plus=/Users/mac/.pub-cache/hosted/pub.dev/connectivity_plus-6.0.5/
+connectivity_plus=/Users/mac/.pub-cache/hosted/pub.dev/connectivity_plus-6.1.0/
 device_info_plus=/Users/mac/.pub-cache/hosted/pub.dev/device_info_plus-9.1.2/
 file_selector_linux=/Users/mac/.pub-cache/hosted/pub.dev/file_selector_linux-0.9.3/
 file_selector_macos=/Users/mac/.pub-cache/hosted/pub.dev/file_selector_macos-0.9.4+2/
@@ -9,7 +9,7 @@ flutter_plugin_android_lifecycle=/Users/mac/.pub-cache/hosted/pub.dev/flutter_pl
 fluttertoast=/Users/mac/.pub-cache/hosted/pub.dev/fluttertoast-8.2.8/
 image_picker=/Users/mac/.pub-cache/hosted/pub.dev/image_picker-1.1.2/
 image_picker_android=/Users/mac/.pub-cache/hosted/pub.dev/image_picker_android-0.8.12+16/
-image_picker_for_web=/Users/mac/.pub-cache/hosted/pub.dev/image_picker_for_web-3.0.5/
+image_picker_for_web=/Users/mac/.pub-cache/hosted/pub.dev/image_picker_for_web-3.0.6/
 image_picker_ios=/Users/mac/.pub-cache/hosted/pub.dev/image_picker_ios-0.8.12+1/
 image_picker_linux=/Users/mac/.pub-cache/hosted/pub.dev/image_picker_linux-0.2.1+1/
 image_picker_macos=/Users/mac/.pub-cache/hosted/pub.dev/image_picker_macos-0.2.1+1/
@@ -33,7 +33,7 @@ sqflite_android=/Users/mac/.pub-cache/hosted/pub.dev/sqflite_android-2.4.0/
 sqflite_darwin=/Users/mac/.pub-cache/hosted/pub.dev/sqflite_darwin-2.4.1-1/
 syncfusion_flutter_pdfviewer=/Users/mac/.pub-cache/hosted/pub.dev/syncfusion_flutter_pdfviewer-24.1.46/
 syncfusion_pdfviewer_macos=/Users/mac/.pub-cache/hosted/pub.dev/syncfusion_pdfviewer_macos-24.2.9/
-syncfusion_pdfviewer_web=/Users/mac/.pub-cache/hosted/pub.dev/syncfusion_pdfviewer_web-24.2.8/
+syncfusion_pdfviewer_web=/Users/mac/.pub-cache/hosted/pub.dev/syncfusion_pdfviewer_web-24.2.9/
 syncfusion_pdfviewer_windows=/Users/mac/.pub-cache/hosted/pub.dev/syncfusion_pdfviewer_windows-24.2.9/
 url_launcher=/Users/mac/.pub-cache/hosted/pub.dev/url_launcher-6.3.1/
 url_launcher_android=/Users/mac/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.12/
