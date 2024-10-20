@@ -13,8 +13,7 @@ class TheologySubjectsScreen extends StatefulWidget {
   TheologySubjectsScreen(this.params, {Key? key}) : super(key: key);
 
   @override
-  TheologySubjectsScreenState createState() =>
-      new TheologySubjectsScreenState();
+  TheologySubjectsScreenState createState() => TheologySubjectsScreenState();
 }
 
 class TheologySubjectsScreenState extends State<TheologySubjectsScreen> {
@@ -111,8 +110,14 @@ class TheologySubjectsScreenState extends State<TheologySubjectsScreen> {
     if (widget.params['task'].toString() == 'Select'.toString()) {
       isPicker = true;
     }
+    if (widget.params['theology_class_id'] != null) {
+      items = await TheologySubjectModel.get_items(
+        where: " theology_class_id = '${widget.params['theology_class_id']}' ",
+      );
+    } else {
+      items = await TheologySubjectModel.get_items();
+    }
 
-    items = await TheologySubjectModel.get_items();
     setState(() {});
   }
 }

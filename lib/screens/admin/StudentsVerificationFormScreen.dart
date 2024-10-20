@@ -54,7 +54,7 @@ class _StudentsVerificationFormScreenState
       classIsSet = true;
     }
     classes = await MyClasses.getItems();
-    streams = await StreamModel.getItems();
+    streams = await StreamModel.get_items();
     setState(() {});
   }
 
@@ -382,7 +382,7 @@ class _StudentsVerificationFormScreenState
       return;
     }
 
-    streams = await StreamModel.getItems(
+    streams = await StreamModel.get_items(
         where: '  academic_class_id = ${item.current_class_id} ');
 
     if (streams.isEmpty) {

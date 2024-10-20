@@ -1,10 +1,9 @@
 import 'package:schooldynamics/models/StudentHasClassModel.dart';
+import 'package:schooldynamics/models/UserMiniModel.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../utils/AppConfig.dart';
 import 'RespondModel.dart';
-import 'UserModel.dart';
 
 class MyClasses {
   static String endPoint = "my-classes";
@@ -29,10 +28,12 @@ class MyClasses {
 
   List<StudentHasClassModel> students = [];
 
-  Future<List<StudentHasClassModel>> getStudents() async {
-    students = await StudentHasClassModel.get_items(
-        where: " academic_class_id = '${id}' ");
-    return students;
+  Future<List<UserMiniModel>> getStudents(String class_id) async {
+    List<UserMiniModel> users = await UserMiniModel.getItems(
+      where: " class_id = '$class_id' ",
+    );
+
+    return users;
   }
 
   static MyClasses fromJson(dynamic d) {

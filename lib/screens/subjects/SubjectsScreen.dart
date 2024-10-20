@@ -130,8 +130,14 @@ class SubjectsScreenState extends State<SubjectsScreen> {
     if (widget.params['task'].toString() == 'Select'.toString()) {
       isPicker = true;
     }
+    if (widget.params['academic_class_id'].toString().trim().isNotEmpty) {
+      String academic_class_id = widget.params['academic_class_id'].toString();
+      items = await MySubjects.getItems(
+          where: " academic_class_id = '$academic_class_id' ");
+    } else {
+      items = await MySubjects.getItems();
+    }
 
-    items = await MySubjects.getItems();
     setState(() {});
   }
 }

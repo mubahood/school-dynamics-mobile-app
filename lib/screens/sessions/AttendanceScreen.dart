@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutx/flutx.dart';
+import 'package:get/get.dart';
+import 'package:schooldynamics/screens/sessions/SessionLocalScreen.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 
 import '../../models/RollCall/Participant.dart';
+import '../../models/SessionLocal.dart';
 import '../../sections/widgets.dart';
 import '../../theme/custom_theme.dart';
+import 'SessionCreateNewScreen.dart';
 
 //AttendanceScreen
 class AttendanceScreen extends StatefulWidget {
@@ -31,12 +35,34 @@ class AttendanceScreenState extends State<AttendanceScreen> {
     init();
   }
 
+  List<SessionLocal> sessions = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          await Get.to(() => SessionCreateNewScreen());
+          await init();
+          setState(() {
+            ;
+          });
+          // submit_form();
+        },
+        backgroundColor: CustomTheme.primary,
+        child: const Icon(FeatherIcons.plus),
+      ),
       appBar: AppBar(
+          actions: [
+            IconButton(
+              icon: const Icon(FeatherIcons.refreshCcw),
+              onPressed: () async {
+                init();
+              },
+            )
+          ],
           backgroundColor: CustomTheme.primary,
           titleSpacing: 0,
           elevation: 0,
@@ -48,7 +74,7 @@ class AttendanceScreenState extends State<AttendanceScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               FxText.titleLarge(
-                'Attendance',
+                'Roll-calling',
                 color: Colors.white,
                 fontWeight: 700,
                 height: .8,
@@ -65,89 +91,127 @@ class AttendanceScreenState extends State<AttendanceScreen> {
         },
         color: CustomTheme.primary,
         backgroundColor: Colors.white,
-        child: CustomScrollView(
-          slivers: [
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
-                  Participant m = participants[index];
-                  return FxContainer(
-                    onTap: () {
-                      _showBottomSheet(m);
+        child: Column(
+          children: [
+            sessions.isNotEmpty
+                ? InkWell(
+                    onTap: () async {
+                      await Get.to(() => SessionLocalScreen());
+                      init();
                     },
-                    color: m.p() ? Colors.green.shade50 : Colors.red.shade50,
-                    paddingAll: 0,
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Flex(
-                          direction: Axis.horizontal,
-                          children: [
-                            const SizedBox(
-                              width: 15,
-                            ),
-                            roundedImage(m.avatar.toString(), 8, 8),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Expanded(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 5,
+                        horizontal: 16,
+                      ),
+                      color: Colors.red,
+                      width: double.infinity,
+                      child: Row(
+                        children: [
+                          FxText.titleSmall(
+                            'You have ${sessions.length} roll-calls pending for upload.',
+                            color: Colors.white,
+                          ),
+                          const Spacer(),
+                          const Icon(
+                            FeatherIcons.chevronRight,
+                            color: Colors.white,
+                          )
+                        ],
+                      ),
+                    ),
+                  )
+                : SizedBox(),
+            Expanded(
+              child: CustomScrollView(
+                slivers: [
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                        Participant m = participants[index];
+                        return FxContainer(
+                          onTap: () {
+                            _showBottomSheet(m);
+                          },
+                          color:
+                              m.p() ? Colors.green.shade50 : Colors.red.shade50,
+                          paddingAll: 0,
+                          child: Column(
+                            children: [
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Flex(
+                                direction: Axis.horizontal,
                                 children: [
-                                  FxText.titleMedium(
-                                    m.administrator_text,
-                                    maxLines: 1,
-                                    height: 1,
-                                    color: Colors.grey.shade800,
-                                    fontWeight: 800,
+                                  const SizedBox(
+                                    width: 15,
                                   ),
-                                  FxText.bodySmall(m.getDisplayText()),
-                                  Row(
-                                    children: [
-                                      FxCard(
-                                          color: m.p()
-                                              ? Colors.green.shade700
-                                              : Colors.red.shade700,
-                                          padding: const EdgeInsets.only(
-                                            top: 2,
-                                            bottom: 4,
-                                            left: 8,
-                                            right: 8,
-                                          ),
-                                          borderRadiusAll: 50,
-                                          child: FxText.bodySmall(
-                                            m.p() ? 'Present' : 'Absent',
-                                            color: Colors.white,
-                                            fontWeight: 900,
-                                            height: 1,
-                                            fontSize: 10,
-                                          )),
-                                      const Spacer(),
-                                      FxText.bodySmall(
-                                          Utils.to_date(m.created_at)),
-                                    ],
+                                  roundedImage(m.avatar.toString(), 8, 8),
+                                  const SizedBox(
+                                    width: 10,
                                   ),
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        FxText.titleMedium(
+                                          m.administrator_text,
+                                          maxLines: 1,
+                                          height: 1,
+                                          color: Colors.grey.shade800,
+                                          fontWeight: 800,
+                                        ),
+                                        FxText.bodySmall(m.getDisplayText()),
+                                        Row(
+                                          children: [
+                                            FxCard(
+                                                color: m.p()
+                                                    ? Colors.green.shade700
+                                                    : Colors.red.shade700,
+                                                padding: const EdgeInsets.only(
+                                                  top: 2,
+                                                  bottom: 4,
+                                                  left: 8,
+                                                  right: 8,
+                                                ),
+                                                borderRadiusAll: 50,
+                                                child: FxText.bodySmall(
+                                                  m.p() ? 'Present' : 'Absent',
+                                                  color: Colors.white,
+                                                  fontWeight: 900,
+                                                  height: 1,
+                                                  fontSize: 10,
+                                                )),
+                                            const Spacer(),
+                                            FxText.bodySmall(
+                                                Utils.to_date(m.created_at)),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  )
                                 ],
                               ),
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            )
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        )
-                      ],
+                              const SizedBox(
+                                height: 10,
+                              )
+                            ],
+                          ),
+                        );
+                      },
+                      childCount: participants.length, // 1000 list items
                     ),
-                  );
-                },
-                childCount: participants.length, // 1000 list items
+                  )
+                ],
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -157,7 +221,10 @@ class AttendanceScreenState extends State<AttendanceScreen> {
   List<Participant> participants = [];
 
   Future<void> init() async {
+    sessions = await SessionLocal.getItems();
+    setState(() {});
     participants = await Participant.get_items();
+
     setState(() {});
   }
 

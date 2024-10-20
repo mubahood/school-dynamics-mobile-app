@@ -20,6 +20,7 @@ import '../../finance/ServicesScreen.dart';
 import '../../posts/NewsHomeScreen.dart';
 import '../../schemework/SchemeWorkHomeScreen.dart';
 import '../../sessions/AttendanceScreen.dart';
+import '../../sessions/SessionsScreen.dart';
 import '../../students/StudentsScreen.dart';
 import '../../transport/TransportHomeScreen.dart';
 import '../../visitors/VisitorsBookScreen.dart';
@@ -170,9 +171,14 @@ class _SectionDashboardState extends State<SectionDashboard> {
       }));*/
     }
 
-    if (u.isRole('parent') || u.isRole('admin')) {
+    if (!u.isRole('parent')) {
       menuItems.add(MenuItem(
-          'Attendance', 'T 1', FeatherIcons.edit, 'attandance.png', () {
+          'Roll-calling', 'T 1', FeatherIcons.edit, 'attandance.png', () {
+        Get.to(() => SessionsScreen());
+      }));
+    } else {
+      menuItems.add(MenuItem(
+          'Roll-calling', 'T 1', FeatherIcons.edit, 'attandance.png', () {
         Get.to(() => AttendanceScreen());
       }));
     }

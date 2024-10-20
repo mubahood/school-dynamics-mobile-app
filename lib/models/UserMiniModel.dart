@@ -4,13 +4,19 @@ import '../utils/Utils.dart';
 import 'RespondModel.dart';
 
 class UserMiniModel {
-  static String table_name = "users_mini_2";
   static String end_point = "users-mini";
+  static String table_name_6 = "users_mini_6";
   int id = 0;
   String name = "";
   String avatar = "";
   String user_type = "";
   String phone_number = "";
+  String class_name = "";
+  String class_id = "";
+  String services = "";
+  String user_number = "";
+  String stream_id = "";
+  String theology_stream_id = "";
 
   Map<String, dynamic> toJson() {
     return {
@@ -19,6 +25,12 @@ class UserMiniModel {
       'name': name,
       'user_type': user_type,
       'phone_number': phone_number,
+      'class_name': class_name,
+      'class_id': class_id,
+      'services': services,
+      'user_number': user_number,
+      'stream_id': stream_id,
+      'theology_stream_id': theology_stream_id,
     };
   }
 
@@ -33,6 +45,12 @@ class UserMiniModel {
     obj.avatar = Utils.to_str(m['avatar'], '');
     obj.user_type = Utils.to_str(m['user_type'], '');
     obj.phone_number = Utils.to_str(m['phone_number'], '');
+    obj.class_name = Utils.to_str(m['class_name'], '');
+    obj.class_id = Utils.to_str(m['class_id'], '');
+    obj.class_id = Utils.to_str(m['class_id'], '');
+    obj.user_number = Utils.to_str(m['user_number'], '');
+    obj.stream_id = Utils.to_str(m['stream_id'], '');
+    obj.theology_stream_id = Utils.to_str(m['theology_stream_id'], '');
 
     return obj;
   }
@@ -96,7 +114,7 @@ class UserMiniModel {
         UserMiniModel _u = UserMiniModel.fromJson(d);
         try {
           await txn.insert(
-            UserMiniModel.table_name,
+            UserMiniModel.table_name_6,
             _u.toJson(),
             conflictAlgorithm: ConflictAlgorithm.replace,
           );
@@ -120,7 +138,7 @@ class UserMiniModel {
       return data;
     }
 
-    List<Map> maps = await db.query(UserMiniModel.table_name, where: where);
+    List<Map> maps = await db.query(UserMiniModel.table_name_6, where: where);
 
     if (maps.isEmpty) {
       return data;
@@ -143,7 +161,7 @@ class UserMiniModel {
 
     try {
       await db.insert(
-        UserMiniModel.table_name,
+        UserMiniModel.table_name_6,
         toJson(),
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
@@ -163,12 +181,17 @@ class UserMiniModel {
       return false;
     }
 
-    //await db.execute('DROP TABLE ${UserMiniModel.table_name}');
-    String sql = "CREATE TABLE IF NOT EXISTS ${UserMiniModel.table_name} ("
+    String sql = "CREATE TABLE IF NOT EXISTS ${UserMiniModel.table_name_6} ("
         "id INTEGER PRIMARY KEY, "
         "name TEXT, "
         "avatar TEXT, "
         "phone_number TEXT, "
+        "class_name TEXT, "
+        "class_id TEXT, "
+        "services TEXT, "
+        "user_number TEXT, "
+        "stream_id TEXT, "
+        "theology_stream_id TEXT,"
         "user_type TEXT)";
 
     try {

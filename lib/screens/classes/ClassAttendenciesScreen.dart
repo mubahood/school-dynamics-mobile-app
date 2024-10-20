@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
 import 'package:schooldynamics/models/MyClasses.dart';
@@ -30,7 +31,7 @@ class _CourseTasksScreenState extends State<ClassAttendenciesScreen> {
   Future<dynamic> my_init() async {
     loading = true;
     setState(() {});
-    await widget.data.getStudents();
+    await widget.data.getStudents(widget.data.id.toString());
     sessionsOnline = await SessionOnline.getItems(
         where: ' academic_class_id = ${widget.data.id} ', forceWait: false);
     await SessionLocal.uploadPending();
@@ -59,7 +60,12 @@ class _CourseTasksScreenState extends State<ClassAttendenciesScreen> {
                   data: widget.data,
                 ));
           }),
+
       appBar: AppBar(
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarColor: CustomTheme.primary,
+          statusBarIconBrightness: Brightness.light,
+        ),
         backgroundColor: CustomTheme.primary,
         titleSpacing: 0,
         elevation: 0,

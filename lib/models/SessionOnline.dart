@@ -5,7 +5,6 @@ import 'package:schooldynamics/models/RespondModel.dart';
 import 'package:schooldynamics/models/TemporaryModel.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../utils/AppConfig.dart';
 import '../utils/Utils.dart';
 
 class SessionOnline {
@@ -43,11 +42,11 @@ class SessionOnline {
     }
 
     expectedMembers.clear();
-    for (var student in (await myClass.getStudents())) {
+    for (var student in (await myClass.getStudents(myClass.id.toString()))) {
       TemporaryModel x = TemporaryModel();
       x.id = student.id;
-      x.title = student.administrator_text;
-      x.image = student.administrator_photo;
+      x.title = student.name;
+      x.image = student.avatar;
       expectedMembers.add(x);
     }
     expectedMembers.sort((a, b) => a.title.compareTo(b.title));
@@ -224,6 +223,7 @@ class SessionOnline {
     if (data == null) {
       return item;
     }
+
 
     item.id = Utils.int_parse(data['id']);
     item.due_date = Utils.to_str(data['due_date'], '');

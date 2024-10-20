@@ -412,7 +412,7 @@ class Utils {
   static Future<void> boot_system() async {
     await StudentHasClassModel.get_items();
     await MySubjects.getItems();
-    await StreamModel.getItems();
+    await StreamModel.get_items();
     await MarkLocalModel.uploadPendingMarks();
     await SessionLocal.uploadPending();
     await ExamModel.getItems();
