@@ -1,7 +1,7 @@
 class AppConfig {
-  static String API_BASE_URL = "https://schooldynamics.ug/api";
+  // static String API_BASE_URL = "https://schooldynamics.ug/api";
 
-  // static String API_BASE_URL = "http://10.0.2.2:8888/schools/api";
+  static String API_BASE_URL = "http://10.0.2.2:8888/schools/api";
   // static const String DASHBOARD_URL = "http://10.0.2.2:8888/schools";
   static const String DASHBOARD_URL = "https://schooldynamics.ug";
 

@@ -5,13 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b53d5bbc-3aaf-4461-9262-7a96f2d9f29d" name="Changes" comment="latest changes.">
-      <change afterPath="$PROJECT_DIR$/lib/models/TheologyStreamModel.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/classes/StreamsScreen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/classes/TheologyStreamsScreen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/sessions/QRCodeScannerScreen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/sessions/SessionsScreen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/sessions/scanner_button_widgets.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/dartpad/web_plugin_registrant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/dartpad/web_plugin_registrant.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/5ede662e6d4b157beafc2bf641c76839/.filecache" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/5ede662e6d4b157beafc2bf641c76839/.filecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/5ede662e6d4b157beafc2bf641c76839/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/5ede662e6d4b157beafc2bf641c76839/app.dill" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/5ede662e6d4b157beafc2bf641c76839/debug_android_application.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/5ede662e6d4b157beafc2bf641c76839/debug_android_application.stamp" afterDir="false" />
@@ -19,34 +12,11 @@
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/5ede662e6d4b157beafc2bf641c76839/kernel_snapshot_program.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/5ede662e6d4b157beafc2bf641c76839/kernel_snapshot_program.d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/5ede662e6d4b157beafc2bf641c76839/kernel_snapshot_program.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/5ede662e6d4b157beafc2bf641c76839/kernel_snapshot_program.stamp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/5ede662e6d4b157beafc2bf641c76839/program.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/5ede662e6d4b157beafc2bf641c76839/program.dill" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/MyClasses.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/MyClasses.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/SessionLocal.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/SessionLocal.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/SessionOnline.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/SessionOnline.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/StreamModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/StreamModel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/TemporaryModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/TemporaryModel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/UserMiniModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/UserMiniModel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/admin/StudentsVerificationFormScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/admin/StudentsVerificationFormScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/classes/ClassAttendenciesScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/classes/ClassAttendenciesScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/full_app/section/SectionDashboard.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/full_app/section/SectionDashboard.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/sessions/AttendanceScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/sessions/AttendanceScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/sessions/SessionCreateNewScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/sessions/SessionCreateNewScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/sessions/SessionRollCallingScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/sessions/SessionRollCallingScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/subjects/SubjectsScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/subjects/SubjectsScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/subjects/TheologySubjectsScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/subjects/TheologySubjectsScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utils/Utils.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/Utils.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/UserModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/UserModel.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils/AppConfig.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/AppConfig.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +71,6 @@
     &quot;ScreenshotViewer.SavePath&quot;: &quot;/Users/mac/Desktop/afriinventions/screens-raw&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;com.android.tools.idea.streaming.zoom.toolbar.visible&quot;: &quot;false&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
