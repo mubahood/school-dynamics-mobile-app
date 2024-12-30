@@ -13,6 +13,56 @@ import '../theme/custom_theme.dart';
 import 'Utils.dart';
 import 'my_colors.dart';
 
+
+Widget MyButtonIcon(String title, String icon, Function f,
+    {Color color = Colors.grey,
+      Color textColor = Colors.black,
+      double fontSize = 16,
+      double iconSize = 30,
+      double padding = 0,
+      double borderRadius = 10,
+      double borderWidth = 1,
+      double height = 50,
+      double width = 100}) {
+  return FxButton.outlined(
+    padding: EdgeInsets.all(padding),
+    onPressed: () {
+      f();
+    },
+    borderColor: color,
+    block: true,
+    child: Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          child: Image(
+            image: AssetImage(icon),
+            width: iconSize,
+          ),
+        ),
+        Container(
+          height: height,
+          width: 2,
+          color: color,
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Expanded(
+          child: FxText.bodyLarge(
+            title,
+            fontWeight: 600,
+            color: textColor,
+            fontSize: fontSize,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
 Widget postWidget3(PostModel object, Function f, BuildContext context) {
   return InkWell(
     onTap: () {

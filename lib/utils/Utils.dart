@@ -32,6 +32,9 @@ import '../theme/app_theme.dart';
 import 'AppConfig.dart';
 
 class Utils {
+  static String icon(String) {
+    return "assets/icons/$String";
+  }
   static String prepare_phone_number(String phone_number) {
     if (phone_number.isEmpty) {
       return "";
@@ -108,9 +111,9 @@ class Utils {
   }
 
   static Future<void> initOneSignal(LoggedInUserModel u) async {
-    /*
+
     //await Firebase.initializeApp();
-    OneSignal.shared.setAppId(AppConfig.ONESIGNAL_APP_ID);
+    /*OneSignal.shared.setAppId(AppConfig.ONESIGNAL_APP_ID);
 
     int id = u.id;
     if (u.user_type.toLowerCase() == 'worker') {

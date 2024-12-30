@@ -1,1 +1,0 @@
- /Users/mac/Desktop/github/school_dynamics/.dart_tool/flutter_build/5ede662e6d4b157beafc2bf641c76839/native_assets.yaml: 
