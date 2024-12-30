@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "566124388712",
+    "project_id": "schooldynamics-4be7a",
+    "storage_bucket": "schooldynamics-4be7a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:566124388712:android:396264001d79235f2b36dd",
+        "android_client_info": {
+          "package_name": "schooldynamics.ug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "566124388712-pldi449dvj90gbhff67onhpt3512qpep.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "schooldynamics.ug",
+            "certificate_hash": "e6ecb7ba5ddc8428b15cd040f7fbcdf3c0d38a69"
+          }
+        },
+        {
+          "client_id": "566124388712-n2n9fjtgkhqbe49hm6ncc5trsfcefohv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCqFHo-S4ws71q8AvjEtncjsUvcB5IhuE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "566124388712-n2n9fjtgkhqbe49hm6ncc5trsfcefohv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
