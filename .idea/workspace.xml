@@ -10,54 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b53d5bbc-3aaf-4461-9262-7a96f2d9f29d" name="Changes" comment="latest changes.">
-      <change afterPath="$PROJECT_DIR$/assets/icons/checklist.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/icons/important.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/icons/quality.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/icons/verified.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/devtools_options.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/EmployeeModel.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/MenuModel.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/RoleModel.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/account/ConfirmCreateNewSchoolAccountScreen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/account/EmailVerificationScreen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/account/EnterpriseRegisterScreen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/account/EnterpriseUpdateScreen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/account/OnboardingCheckListScreen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/account/PasswordResetScreen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/account/UserAccountCreateScreen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/admin/MenuCreateScreen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/admin/MenuEditList.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/employees/EmployeeCreateScreen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/employees/EmployeesScreen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/sections/ImagePickerWisget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/utils/MainMenuWidget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/dartpad/web_plugin_registrant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/dartpad/web_plugin_registrant.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/school_dynamics.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/school_dynamics.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/google-services.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/google-services.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/UserModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/UserModel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/OnBoardingScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/OnBoardingScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/account/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/account/login_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/admin/AdminMenuScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/admin/AdminMenuScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/full_app/section/SectionDashboard.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/full_app/section/SectionDashboard.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/students/StudentEditPhotoScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/students/StudentEditPhotoScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/sections/widgets.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/sections/widgets.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/theme/custom_theme.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/theme/custom_theme.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utils/AppConfig.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/AppConfig.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utils/Utils.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/Utils.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utils/my_widgets.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/my_widgets.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec_1.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/employees/EmployeeCreateScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/employees/EmployeeCreateScreen.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,12 +158,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/lib/screens/employees/EmployeeCreateScreen.dart</url>
-          <line>182</line>
+          <line>186</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/lib/screens/employees/EmployeeCreateScreen.dart</url>
-          <line>31</line>
+          <line>33</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>

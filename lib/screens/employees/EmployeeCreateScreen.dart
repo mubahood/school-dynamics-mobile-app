@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dio/dio.dart' as DIO;
 import 'package:flutter/material.dart';
@@ -37,6 +39,7 @@ class EmployeeCreateScreenState extends State<EmployeeCreateScreen>
   String avatar_path = "";
   EmployeeModel item = EmployeeModel();
   List<RoleModel> roles = [];
+  List<String> user_roles = [];
 
   Future<bool> init_form() async {
     roles = await RoleModel.get_items();
@@ -59,6 +62,21 @@ class EmployeeCreateScreenState extends State<EmployeeCreateScreen>
       item.passport_number = '+256';
       item.nationality = 'Uganda';
     }
+
+    if (item.roles_text.toString().length > 2) {
+      user_roles = [];
+      try {
+        var x = jsonDecode(item.roles_text.toString());
+        for (var y in x) {
+          user_roles.add(y.toString());
+        }
+      } catch (e) {
+        user_roles = [];
+      }
+    }
+
+    setState(() {});
+
     return true;
   }
 
@@ -136,22 +154,8 @@ class EmployeeCreateScreenState extends State<EmployeeCreateScreen>
                                       error_message,
                                     ),
                                   ),
-                            Text(roles.length.toString()),
                             title_widget("Basic Information".toUpperCase()),
 
-                            //slect roles using checkbox
-                            FormBuilderCheckboxGroup(
-                              name: 'roles_text',
-                              onChanged: (x) {
-                                new_roles = x.toString();
-                              },
-                              options: roles.map((role) {
-                                return FormBuilderFieldOption(
-                                  value: role.id.toString(),
-                                  child: Text(role.name),
-                                );
-                              }).toList(),
-                            ),
 
                             const SizedBox(height: 10),
                             FormBuilderTextField(
@@ -373,6 +377,24 @@ class EmployeeCreateScreenState extends State<EmployeeCreateScreen>
                                 ? const SizedBox()
                                 : Column(
                                     children: [
+
+                                      title_widget("Roles Assignment".toUpperCase()),
+
+                                      //slect roles using checkbox
+                                      FormBuilderCheckboxGroup(
+                                        name: 'roles_text',
+                                        onChanged: (x) {
+                                          new_roles = x.toString();
+                                        },
+                                        initialValue: user_roles,
+                                        options: roles.map((role) {
+                                          return FormBuilderFieldOption(
+                                            value: role.id.toString(),
+                                            child: Text(role.name),
+                                          );
+                                        }).toList(),
+                                      ),
+
                                       title_widget("Bio Data".toUpperCase()),
                                       SizedBox(
                                         height: 10,
