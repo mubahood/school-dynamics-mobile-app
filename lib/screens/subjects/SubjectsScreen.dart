@@ -41,6 +41,12 @@ class SubjectsScreenState extends State<SubjectsScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Get.to(() => SubjectScreen());
+        },
+        child: Icon(Icons.add),
+      ),
       appBar: AppBar(
           backgroundColor: CustomTheme.primary,
           titleSpacing: 0,
@@ -61,7 +67,10 @@ class SubjectsScreenState extends State<SubjectsScreen> {
               return myListLoaderWidget(context);
             }
             if (items.isEmpty) {
-              return Center(child: FxText('No item found.'));
+              return emptyListWidget(
+                  "No Item Found. Press (+) button to add new.", () {
+                init();
+              });
             }
 
             return RefreshIndicator(

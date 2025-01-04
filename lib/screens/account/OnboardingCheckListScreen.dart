@@ -7,6 +7,7 @@ import 'package:schooldynamics/utils/Utils.dart';
 import '../../controllers/MainController.dart';
 import '../../theme/custom_theme.dart';
 import '../employees/EmployeesScreen.dart';
+import '../subjects/SubjectsScreen.dart';
 
 class OnboardingCheckListScreen extends StatefulWidget {
   OnboardingCheckListScreen({Key? key}) : super(key: key);
@@ -134,7 +135,7 @@ class _OnboardingCheckListScreenState extends State<OnboardingCheckListScreen> {
             ListTile(
               dense: true,
               onTap: () {
-                // Get.to(UserAccountCreateScreen());
+                Get.to(SubjectsScreen({}));
               },
               contentPadding: EdgeInsets.zero,
               leading: Icon(

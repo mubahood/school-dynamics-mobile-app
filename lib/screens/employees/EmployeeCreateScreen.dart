@@ -396,7 +396,7 @@ class EmployeeCreateScreenState extends State<EmployeeCreateScreen>
                                       ),
 
                                       title_widget("Bio Data".toUpperCase()),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 10,
                                       ),
                                       FormBuilderDateTimePicker(
