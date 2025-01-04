@@ -7,6 +7,7 @@ import '../utils/Utils.dart';
 import 'RespondModel.dart';
 
 class EnterpriseModel {
+  //added new changes
   static String end_point = "enterprises";
   static String tableName = "enterprises";
   int id = 0;
