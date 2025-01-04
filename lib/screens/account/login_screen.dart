@@ -15,7 +15,6 @@ import '../../models/RespondModel.dart';
 import '../../sections/widgets.dart';
 import '../../theme/custom_theme.dart';
 import '../OnBoardingScreen.dart';
-import 'PasswordResetScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -203,193 +202,185 @@ class LoginScreenState extends State<LoginScreen> {
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(0),
           child: Container(color: Colors.white)),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              height: 40,
-              color: Colors.white,
-            ),
-            Container(
-                padding: const EdgeInsets.only(
-                  left: 25,
-                  top: 0,
-                  right: 25,
-                ),
-                child: FxText.titleLarge(
-                  "Welcome To ${main.ent.name}",
-                  textAlign: TextAlign.center,
-                )),
-            const SizedBox(
-              height: 0,
-            ),
-            CachedNetworkImage(
-              fit: BoxFit.contain,
-              imageUrl: main.ent.getLogo(),
-              width: 100,
-              height: 100,
-              placeholder: (context, url) => ShimmerLoadingWidget(
-                height: 400,
+      body: Column(
+        children: [
+          Container(
+            height: 50,
+            color: Colors.white,
+          ),
+          Container(
+              padding: const EdgeInsets.only(
+                left: 25,
+                top: 0,
+                right: 25,
               ),
-              errorWidget: (context, url, error) => Image(
-                image: const AssetImage('assets/images/logo.png'),
-                fit: BoxFit.contain,
-                width: (Get.width / 5),
-                height: (Get.width / 5),
-              ),
-            ),
-            Divider(
-              endIndent: Get.width / 3.0,
-              indent: Get.width / 3.0,
-              thickness: 4,
-              color: Colors.grey.shade400,
-            ),
-            FxText.bodyLarge("Sign in to continue",
+              child: FxText.titleLarge(
+                "Welcome To ${main.ent.name}",
                 textAlign: TextAlign.center,
-                fontWeight: 500,
-                color: Colors.black),
-            FxContainer(
-                borderRadiusAll: 0,
-                marginAll: 0,
-                padding: const EdgeInsets.only(
-                    left: 25, right: 25, top: 0, bottom: 10),
-                color: Colors.white,
-                child: FormBuilder(
-                    key: _formKey,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: <Widget>[
-                        /* SizedBox(
-                          height: 20,
-                        ),
-                        FxText.titleLarge("Sign in"),*/
-                        Container(height: 15),
-                        FormBuilderTextField(
-                          name: 'username',
-                          autofocus: false,
-                          /*    initialValue: 'muhsin',*/
-                          textInputAction: TextInputAction.next,
-                          keyboardType: TextInputType.name,
-                          validator: FormBuilderValidators.compose([
-                            FormBuilderValidators.required(
-                              errorText: "This field is required.",
-                            ),
-                          ]),
-                          decoration: InputDecoration(
-                            enabledBorder: CustomTheme.input_outline_border,
-                            border: CustomTheme.input_outline_focused_border,
-                            labelText: "Phone number",
-                          ),
-                        ),
-                        Container(height: 15),
-                        FormBuilderTextField(
-                          name: 'password',
-                          /*                   initialValue: '4321',*/
-                          obscureText: true,
-                          autofocus: false,
-                          enableSuggestions: false,
-                          autocorrect: false,
-                          keyboardType: TextInputType.visiblePassword,
-                          textInputAction: TextInputAction.done,
-                          decoration: InputDecoration(
-                            enabledBorder: CustomTheme.input_outline_border,
-                            border: CustomTheme.input_outline_focused_border,
-                            labelText: "Password",
-                          ),
-                          validator: FormBuilderValidators.compose([
-                            FormBuilderValidators.required(
-                              errorText: "Password is required.",
-                            ),
-                          ]),
-                        ),
-                        Row(
+              )),
+          const SizedBox(
+            height: 15,
+          ),
+          CachedNetworkImage(
+            fit: BoxFit.contain,
+            imageUrl: main.ent.getLogo(),
+            width: 150,
+            height: 150,
+            placeholder: (context, url) => ShimmerLoadingWidget(
+              height: 400,
+            ),
+            errorWidget: (context, url, error) => Image(
+              image: const AssetImage('assets/images/logo.png'),
+              fit: BoxFit.contain,
+              width: (Get.width / 5),
+              height: (Get.width / 5),
+            ),
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          Divider(
+            endIndent: 25,
+            indent: 25,
+            thickness: 1,
+            color: CustomTheme.primary,
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          FxText.bodyLarge("Sign in to continue",
+              textAlign: TextAlign.center,
+              fontWeight: 500,
+              color: Colors.black),
+          Expanded(
+            child: ListView(
+              children: [
+                FxContainer(
+                    borderRadiusAll: 0,
+                    marginAll: 0,
+                    padding: const EdgeInsets.only(
+                        left: 25, right: 25, top: 0, bottom: 10),
+                    color: Colors.white,
+                    child: FormBuilder(
+                        key: _formKey,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
                           children: <Widget>[
-                            Text(
-                              "Forgot password?",
-                              style: TextStyle(
-                                  color: Colors.red.shade500,
-                                  fontSize: 14,
-                                  height: 1),
+                            /* SizedBox(
+                              height: 20,
                             ),
-                            TextButton(
-                              style: TextButton.styleFrom(),
+                            FxText.titleLarge("Sign in"),*/
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Container(height: 25),
+                            FormBuilderTextField(
+                              name: 'username',
+                              autofocus: false,
+                              /*    initialValue: 'muhsin',*/
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.name,
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(
+                                  errorText: "This field is required.",
+                                ),
+                              ]),
+                              decoration: InputDecoration(
+                                enabledBorder: CustomTheme.input_outline_border,
+                                border:
+                                    CustomTheme.input_outline_focused_border,
+                                labelText: "Phone number",
+                              ),
+                            ),
+                            Container(height: 25),
+                            FormBuilderTextField(
+                              name: 'password',
+                              /*                   initialValue: '4321',*/
+                              obscureText: true,
+                              autofocus: false,
+                              enableSuggestions: false,
+                              autocorrect: false,
+                              keyboardType: TextInputType.visiblePassword,
+                              textInputAction: TextInputAction.done,
+                              decoration: InputDecoration(
+                                enabledBorder: CustomTheme.input_outline_border,
+                                border:
+                                CustomTheme.input_outline_focused_border,
+                                labelText: "Password",
+                              ),
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(
+                                  errorText: "Password is required.",
+                                ),
+                              ]),
+                            ),
+                            Container(height: 10),
+                            error_message.isEmpty
+                                ? const SizedBox()
+                                : FxContainer(
+                              margin: EdgeInsets.only(bottom: 10),
+                              color: Colors.red.shade50,
                               child: Text(
-                                "Reset Password",
-                                style: TextStyle(
-                                  color: CustomTheme.primary,
-                                  fontSize: 14,
-                                  height: 1,
-                                ),
+                                error_message,
                               ),
-                              onPressed: () {
-                                Get.to(()=>PasswordResetScreen());
-                              },
-                            )
+                            ),
+                            Container(
+                              padding: const EdgeInsets.only(
+                                top: 20,
+                              ),
+                              child: is_loading
+                                  ? Center(
+                                child: Container(
+                                  width: 60,
+                                  height: 60,
+                                  padding: const EdgeInsets.all(15),
+                                        child: const CircularProgressIndicator(
+                                          strokeWidth: 2.0,
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                                  Colors.red),
+                                        ),
+                                      ),
+                                    )
+                                  : CupertinoButton(
+                                      color: CustomTheme.primary,
+                                      onPressed: () {
+                                        submit_form();
+                                      },
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(50)),
+                                      padding: FxSpacing.xy(32, 8),
+                                      pressedOpacity: 0.5,
+                                      child: FxText.bodyMedium("Sign In",
+                                          color: Colors.white)),
+                            ),
                           ],
-                        ),
-                        Container(height: 0),
-                        error_message.isEmpty
-                            ? const SizedBox()
-                            : FxContainer(
-                                margin: EdgeInsets.only(bottom: 10),
-                                color: Colors.red.shade50,
-                                child: Text(
-                                  error_message,
-                                ),
-                              ),
-                        Container(
-                          padding: const EdgeInsets.only(
-                            top: 0,
-                          ),
-                          child: is_loading
-                              ? Center(
-                                  child: Container(
-                                    width: 60,
-                                    height: 60,
-                                    padding: const EdgeInsets.all(15),
-                                    child: const CircularProgressIndicator(
-                                      strokeWidth: 2.0,
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                          Colors.red),
-                                    ),
-                                  ),
-                                )
-                              : CupertinoButton(
-                                  color: CustomTheme.primary,
-                                  onPressed: () {
-                                    submit_form();
-                                  },
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(50)),
-                                  padding: FxSpacing.xy(32, 8),
-                                  pressedOpacity: 0.5,
-                                  child: FxText.bodyMedium("Sign In",
-                                      color: Colors.white)),
-                        ),
-                      ],
-                    ))),
-            const Divider(),
-            Row(
-              children: <Widget>[
-                const Spacer(),
-                Text(
-                  "Facing any problem?",
-                  style: TextStyle(color: Colors.red.shade500, fontSize: 14),
-                ),
-                TextButton(
-                  style: TextButton.styleFrom(),
-                  child: Text(
-                    "Ask for help",
-                    style: TextStyle(color: CustomTheme.primary, fontSize: 14),
-                  ),
-                  onPressed: () {
-                    showImagePicker(context);
-                  },
-                )
+                        ))),
+
               ],
             ),
-          ],
-        ),
+          ),
+          const Divider(),
+          Row(
+            children: <Widget>[
+              const Spacer(),
+              Text(
+                "Facing any problem?",
+                style: TextStyle(color: Colors.red.shade500, fontSize: 14),
+              ),
+              TextButton(
+                style: TextButton.styleFrom(),
+                child: Text(
+                  "Ask for help",
+                  style: TextStyle(color: CustomTheme.primary, fontSize: 14),
+                ),
+                onPressed: () {
+                  showImagePicker(context);
+                },
+              )
+            ],
+          ),
+        ],
       ),
     );
   }

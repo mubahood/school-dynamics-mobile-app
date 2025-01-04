@@ -308,18 +308,10 @@ Widget emptyListWidget(String title, Function f) {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Container(
-          alignment: Alignment.center,
-          padding: const EdgeInsets.symmetric(
-            horizontal: 60,
-            vertical: 5,
-          ),
-          child: FxText.titleMedium(
-            title.isEmpty ? "No items found." : title,
-            color: Colors.black,
-            fontWeight: 700,
-            textAlign: TextAlign.center,
-          ),
+        FxText.titleMedium(
+          title.isEmpty ? "No items found." : title,
+          color: Colors.black,
+          fontWeight: 700,
         ),
         const SizedBox(
           height: 5,
@@ -563,67 +555,6 @@ Widget listItem(MenuItem item) {
           ),
         ),
       ],
-    ),
-  );
-}
-
-Widget listItem2(MenuItem item) {
-  return InkWell(
-    onTap: () {
-      item.f();
-    },
-    child: Container(
-      child: Flex(
-        direction: Axis.horizontal,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Expanded(
-            child: Flex(
-              direction: Axis.horizontal,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                      left: 50, top: 0, bottom: 0, right: 5),
-                  child: Icon(
-                    FeatherIcons.chevronRight,
-                    size: 35,
-                    color: CustomTheme.primary,
-                  ),
-                ),
-                Expanded(
-                    child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    FxText.titleMedium(
-                      item.title,
-                      maxLines: 2,
-                      height: .8,
-                      fontWeight: 600,
-                      color: Colors.black,
-                      fontSize: 14,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    FxText.bodySmall(
-                      item.subTitle,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                  ],
-                )),
-              ],
-            ),
-          ),
-        ],
-      ),
     ),
   );
 }

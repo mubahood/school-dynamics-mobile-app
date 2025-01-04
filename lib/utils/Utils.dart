@@ -13,7 +13,6 @@ import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
-import 'package:intl/intl.dart' as intl;
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:schooldynamics/models/MarkLocalModel.dart';
@@ -33,45 +32,6 @@ import '../theme/app_theme.dart';
 import 'AppConfig.dart';
 
 class Utils {
-  static Color getColor(String c) {
-    //
-    Color color = Colors.white;
-    try {
-      //check if contains rgb(
-      if (c.contains("rgb(")) {
-        c = c.replaceAll("rgb(", "");
-        c = c.replaceAll(")", "");
-        List<String> colors = c.split(",");
-        color = Color.fromRGBO(int.parse(colors[0]), int.parse(colors[1]),
-            int.parse(colors[2]), 1);
-      } else if (c.contains("rgba(")) {
-        c = c.replaceAll("rgba(", "");
-        c = c.replaceAll(")", "");
-        List<String> colors = c.split(",");
-        color = Color.fromRGBO(int.parse(colors[0]), int.parse(colors[1]),
-            int.parse(colors[2]), double.parse(colors[3]));
-      } else if (c.contains("0x")) {
-        color = Color(int.parse(c.replaceAll("0x", "0xff")));
-      } else if (c.contains("#")) {
-        color = Color(int.parse(c.replaceAll("#", "0xff")));
-      } else {
-        color = Color(int.parse(c));
-      }
-      //check if contains 0x
-      if (c.contains("0x")) {
-        color = Color(int.parse(c.replaceAll("0x", "0xff")));
-      } else if (c.contains("#")) {
-        color = Color(int.parse(c.replaceAll("#", "0xff")));
-      } else {
-        color = Color(int.parse(c));
-      }
-    } catch (e) {
-      color = Colors.white;
-    }
-    print(color.hashCode.toString());
-    return color;
-  }
-
   static String icon(String) {
     return "assets/icons/$String";
   }
@@ -749,9 +709,6 @@ class Utils {
     return SystemUiOverlayStyle(
       statusBarColor: CustomTheme.primary,
       statusBarIconBrightness: Brightness.light,
-      systemNavigationBarColor: CustomTheme.primary,
-      systemNavigationBarIconBrightness: Brightness.light,
-      systemNavigationBarDividerColor: null,
       statusBarBrightness: Brightness.light, // For iOS (dark icons)
     );
   }
@@ -877,41 +834,6 @@ class Utils {
 
   static double fs20(BuildContext context) {
     return Utils.sizeByWidth(context, 20);
-  }
-
-  static dynamic toDate(String updated_at) {
-    DateTime? date = null;
-
-    //01-01-2021 format
-    if (updated_at.toString().toString().length == 10) {
-      try {
-        date = intl.DateFormat("dd-MM-yyyy")
-            .parseUTC(updated_at.toString())
-            .toLocal();
-        return date;
-      } catch (e) {
-        //FormatException: Trying to read T from 2025-01-02 00:00:00.000 at 11
-        try {
-          date = intl.DateFormat("yyyy-MM-dd")
-              .parseUTC(updated_at.toString())
-              .toLocal();
-          return date;
-        } catch (e) {
-          print(e);
-        }
-        print(e);
-      }
-    }
-
-    try {
-      date = intl.DateFormat("yyyy-MM-ddTHH:mm:ssZ")
-          .parseUTC(updated_at.toString())
-          .toLocal();
-    } catch (e) {
-      print(e);
-    }
-
-    return null;
   }
 
   static String to_date(dynamic updated_at) {

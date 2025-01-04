@@ -183,15 +183,15 @@ class _StudentEditPhotoScreenState extends State<StudentEditPhotoScreen> {
                     : FxButton.block(
               padding:
               const EdgeInsets.fromLTRB(24, 24, 24, 24),
-                        onPressed: () {
-                          showImagePicker(context);
-                        },
-                        borderRadiusAll: 0,
                         child: FxText.titleLarge(
                           'CHANGE PHOTO',
                           color: Colors.white,
                           fontWeight: 700,
                         ),
+                        onPressed: () {
+                          showImagePicker(context);
+                        },
+                        borderRadiusAll: 0,
                       ),
           ),
         ],
@@ -279,7 +279,6 @@ class _StudentEditPhotoScreenState extends State<StudentEditPhotoScreen> {
 
   String local_image_path = "";
   String local_image_name = "";
-  bool hasChanged = false;
 
   Future<void> displayPickedPhoto() async {
     if (pickedFile == null) {

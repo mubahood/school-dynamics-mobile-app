@@ -12,7 +12,6 @@ import '../../../models/MenuItem.dart';
 import '../../../theme/app_theme.dart';
 import '../../../utils/SignScreen.dart';
 import '../../../utils/my_widgets.dart';
-import '../../account/OnboardingCheckListScreen.dart';
 import '../../account/login_screen.dart';
 import '../../admin/AdminMenuScreen.dart';
 import '../../exams/ExamsHomeScreen.dart';
@@ -288,22 +287,6 @@ class _SectionDashboardState extends State<SectionDashboard> {
                 ),
               ],
             )),
-        Container(
-          padding: const EdgeInsets.only(
-            left: 20,
-            top: 10,
-            right: 20,
-            bottom: 10,
-          ),
-          child: FxButton.block(
-              onPressed: () {
-                Get.to(() => OnboardingCheckListScreen());
-              },
-              child: FxText.titleLarge(
-                  "Onboarding Check".toUpperCase(),
-                  fontWeight: 800,
-                  color: Colors.white)),
-        ),
         Expanded(
           child: Container(
             padding: const EdgeInsets.only(
