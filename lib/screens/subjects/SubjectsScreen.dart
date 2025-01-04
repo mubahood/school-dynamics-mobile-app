@@ -5,6 +5,7 @@ import 'package:schooldynamics/models/MySubjects.dart';
 
 import '../../theme/custom_theme.dart';
 import '../../utils/my_widgets.dart';
+import 'SubjectModelEditScreen.dart';
 import 'SubjectScreen.dart';
 
 class SubjectsScreen extends StatefulWidget {
@@ -43,9 +44,9 @@ class SubjectsScreenState extends State<SubjectsScreen> {
       backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Get.to(() => SubjectScreen());
+          Get.to(() => SubjectModelEditScreen({}));
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
       appBar: AppBar(
           backgroundColor: CustomTheme.primary,
@@ -55,7 +56,7 @@ class SubjectsScreenState extends State<SubjectsScreen> {
           automaticallyImplyLeading: true,
           // remove back button in appbar.
           title: FxText.titleLarge(
-            title.isNotEmpty ? title : 'My Subjects (${items.length})',
+            title.isNotEmpty ? title : 'Subjects (${items.length})',
             color: Colors.white,
             fontWeight: 700,
             height: .6,
