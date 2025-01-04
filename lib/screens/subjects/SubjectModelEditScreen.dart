@@ -6,6 +6,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:schooldynamics/screens/classes/ClassesScreen.dart';
 
+import '../../models/MyClasses.dart';
 import '../../models/RespondModel.dart';
 import '../../models/SubjectModel.dart';
 import '../../theme/custom_theme.dart';
@@ -130,8 +131,19 @@ class SubjectModelEditScreenState extends State<SubjectModelEditScreen>
                               name: "academic_class_text",
                               enableSuggestions: true,
                               onTap: () async {
-                                await Get.to(() =>
+                                MyClasses? myClass = await Get.to(() =>
                                     ClassesScreen(const {'task': 'Select'}));
+                                if (myClass == null) {
+                                  return;
+                                }
+                                item.academic_class_id = myClass.id.toString();
+                                item.academic_class_text = myClass.name;
+
+                                _fKey.currentState!.patchValue({
+                                  'academic_class_text':
+                                      item.academic_class_text,
+                                });
+
                                 setState(() {});
                               },
                               validator: FormBuilderValidators.compose([
