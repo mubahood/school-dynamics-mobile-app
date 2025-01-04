@@ -5,13 +5,16 @@ import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:schooldynamics/models/LoggedInUserModel.dart';
+import 'package:schooldynamics/screens/account/login_screen.dart';
 
 import '../../../theme/app_theme.dart';
 import '../controllers/MainController.dart';
 import '../utils/AppConfig.dart';
 import '../utils/Utils.dart';
 import '../utils/my_widgets.dart';
-import 'google_sign_in.dart';
+import 'account/ConfirmCreateNewSchoolAccountScreen.dart';
+import 'account/EmailVerificationScreen.dart';
+import 'account/EnterpriseRegisterScreen.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   OnBoardingScreen({Key? key}) : super(key: key);
@@ -41,6 +44,170 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           body: FutureBuilder(
               future: futureInit,
               builder: (context, snapshot) {
+                if (ready_to_create_ent == 'Yes') {
+                  return SingleChildScrollView(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 40,
+                    ),
+                    child: Container(
+                      width: double.infinity,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const SizedBox(
+                            height: 50,
+                          ),
+                          FxText.titleLarge(
+                              "Congrats! You are ready to register your school!",
+                              textAlign: TextAlign.center,
+                              fontWeight: 900,
+                              color: Colors.green.shade700),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Divider(
+                            height: 2,
+                            color: Colors.grey,
+                            indent: Get.width * 0.3,
+                            endIndent: Get.width * 0.3,
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          FxText.bodyMedium(
+                              "You have successfully created and verified school admin account. Now you are ready to register your school and start using the system."),
+                          const SizedBox(
+                            height: 25,
+                          ),
+                          FxButton.block(
+                            onPressed: () {
+                              Get.to(() => EnterpriseModelEditScreen({}));
+                            },
+                            child: FxText.titleMedium(
+                              "Register School".toUpperCase(),
+                              color: Colors.white,
+                              fontWeight: 900,
+                              fontSize: 20,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          FxButton.text(
+                            onPressed: () {
+                              //are you sure you want to logout
+                              Get.dialog(AlertDialog(
+                                title: const Text("Logout"),
+                                content: const Text(
+                                    "Are you sure you want to logout?"),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text("Cancel"),
+                                  ),
+                                  TextButton(
+                                    onPressed: () async {
+                                      await Utils.logout();
+                                      Get.to(() => OnBoardingScreen(),
+                                          preventDuplicates: false);
+                                    },
+                                    child: const Text("Logout"),
+                                  ),
+                                ],
+                              ));
+                            },
+                            child: FxText.titleMedium("Logout",
+                                color: CustomTheme.accent, fontWeight: 900),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }
+                if (account_not_verified == 'Yes') {
+                  return SingleChildScrollView(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 40,
+                    ),
+                    child: Container(
+                      width: double.infinity,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const SizedBox(
+                            height: 50,
+                          ),
+                          FxText.titleLarge("Email not verified"),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Divider(
+                            height: 2,
+                            color: Colors.grey,
+                            indent: Get.width * 0.3,
+                            endIndent: Get.width * 0.3,
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          FxText.bodyMedium(
+                              "Your email (${logged_in_user.email}) is not verified. Please verify your email to continue."),
+                          const SizedBox(
+                            height: 50,
+                          ),
+                          FxButton.block(
+                            onPressed: () {
+                              Get.to(() => EmailVerificationScreen(
+                                    logged_in_user,
+                                    'VERIFY_EMAIL',
+                                  ));
+                            },
+                            child: FxText.titleMedium(
+                              "Verify Email",
+                              color: Colors.white,
+                              fontWeight: 900,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          FxButton.text(
+                            onPressed: () {
+                              //are you sure you want to logout
+                              Get.dialog(AlertDialog(
+                                title: const Text("Logout"),
+                                content: const Text(
+                                    "Are you sure you want to logout?"),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text("Cancel"),
+                                  ),
+                                  TextButton(
+                                    onPressed: () async {
+                                      await Utils.logout();
+                                      Get.to(() => OnBoardingScreen(),
+                                          preventDuplicates: false);
+                                    },
+                                    child: const Text("Logout"),
+                                  ),
+                                ],
+                              ));
+                            },
+                            child: FxText.titleMedium("Logout",
+                                color: CustomTheme.accent, fontWeight: 900),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }
                 if (is_not_logged_in != 'Yes') {
                   return Center(
                     child: InkWell(
@@ -111,7 +278,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                     try {
                                       googleUser = await _googleSignIn.signIn();
                                     } catch (e) {
-                                      print("===> DP ERROR: $e");
+                                      print(e.toString());
                                       Utils.toast("failed because Google Sign In because of $e");
                                       return;
                                     }
@@ -207,7 +374,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                   "Use Email or Phone Number",
                                   Utils.icon('user.png'),
                                   () {
-                                    //Navigator.pushNamed(context, AppConfig.Login);
+                                    Get.to(() => LoginScreen());
                                   },
                                 ),
                               ],
@@ -221,19 +388,23 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       ),
                       Container(
                         padding: const EdgeInsets.all(10),
-                        child: Row(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text("Don't have account? ",
+                            const Text("New School? ",
                                 style: TextStyle(
                                   color: Colors.grey,
                                 )),
+                            const SizedBox(
+                              height: 2,
+                            ),
                             InkWell(
                               onTap: () {
-                                //Navigator.pushNamed(context, AppConfig.Register);
+                                Get.to(() =>
+                                    ConfirmCreateNewSchoolAccountScreen());
                               },
                               child: Text(
-                                "Create Account",
+                                "Create New School Account",
                                 style: TextStyle(
                                   color: CustomTheme.primary,
                                   fontWeight: FontWeight.bold,
@@ -254,13 +425,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   }
 
   String is_not_logged_in = "";
+  String account_not_verified = "";
+  String ready_to_create_ent = "";
   Future<dynamic> my_init() async {
+    Get.put(MainController());
     String token = await Utils.getToken();
     if (token.toString().length < 20) {
       is_not_logged_in = "Yes";
       setState(() {});
-/*      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => LoginScreen()));*/
       return;
     }
 
@@ -269,14 +441,28 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     if (logged_in_user.id < 1) {
       is_not_logged_in = "Yes";
       setState(() {});
-      /*Navigator.push(
-          context, MaterialPageRoute(builder: (context) => LoginScreen()));*/
       return;
     }
-    Get.put(MainController());
+
     await Utils.init_theme();
     Utils.boot_system();
     Utils.initOneSignal(logged_in_user);
+
+    if (logged_in_user.enterprise_id == '1' &&
+        logged_in_user.verification == '1' &&
+        logged_in_user.user_type.toLowerCase() == 'employee') {
+      ready_to_create_ent = "Yes";
+      setState(() {});
+      return;
+    }
+
+    if (logged_in_user.verification != '1' &&
+        logged_in_user.user_type.toLowerCase() == 'employee') {
+      account_not_verified = "Yes";
+      setState(() {});
+      return;
+    }
+
     Navigator.pushNamedAndRemoveUntil(context, AppConfig.FullApp, (r) => false);
 
     return "Done";

@@ -2,11 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
+import 'package:schooldynamics/utils/Utils.dart';
 
+import '../../controllers/MainController.dart';
 import '../../models/MenuItem.dart';
 import '../../theme/app_theme.dart';
 import '../../theme/custom_theme.dart';
+import '../../utils/MainMenuWidget.dart';
 import '../../utils/my_widgets.dart';
+import '../account/EnterpriseUpdateScreen.dart';
+import 'MenuEditList.dart';
 import 'StudentsVerificationScreen.dart';
 
 class AdminMenuScreen extends StatefulWidget {
@@ -40,13 +45,26 @@ class _CourseTasksScreenState extends State<AdminMenuScreen> {
   }
 
   List<MenuItem> menuItems = [];
-
+  final MainController mainController = Get.find<MainController>();
   @override
   Widget build(BuildContext context) {
     menuItems = [
-      MenuItem('Students verification', 'Manage students statuses',
+      MenuItem('Main Menu', 'Menu details go here', FeatherIcons.menu, '', () {
+        Get.to(() => const MenuEditList());
+      }),
+      MenuItem(
+          'Students verification',
+          'Verify students status (Active or Inactive).',
           FeatherIcons.userCheck, '', () {
         Get.to(() => StudentsVerificationScreen());
+      }),
+      MenuItem('School info update', 'Update school details',
+          FeatherIcons.settings, '', () async {
+        await Get.to(() => EnterpriseUpdateScreen({
+              'item': mainController.ent,
+            }));
+        mainController.getEnt();
+        setState(() {});
       })
     ];
 
@@ -55,16 +73,22 @@ class _CourseTasksScreenState extends State<AdminMenuScreen> {
         backgroundColor: CustomTheme.primary,
         titleSpacing: 0,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.white),
+        systemOverlayStyle: Utils.overlay(),
+        iconTheme: const IconThemeData(color: Colors.white),
         automaticallyImplyLeading: true,
         title: FxText.titleLarge(
           "System admin",
           color: Colors.white,
         ),
       ),
-      body: ListView.separated(
-          itemBuilder: (BuildContext context, int index) {
-            return listItem(menuItems[index]);
+      body: true
+          ? MainMenuWidget(
+              MenuItem('Main Menu', 'Menu details go here', FeatherIcons.menu,
+                  '', () {}),
+              menuItems)
+          : ListView.separated(
+              itemBuilder: (BuildContext context, int index) {
+                return listItem(menuItems[index]);
           },
           separatorBuilder: (context, index) =>
               Divider(height: 1, color: Colors.grey.shade200),

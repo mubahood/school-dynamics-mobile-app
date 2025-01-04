@@ -37,7 +37,10 @@ class CustomTheme {
       {bool isDense = true,
         String label = "",
         IconData iconData = Icons.edit,
-        String hintText = ""}) {
+        String hintText = "",
+        double hPadding = 10,
+        double vPadding = 10
+      }) {
     return InputDecoration(
       hintText: hintText.isEmpty ? null : hintText,
       isDense: isDense,
@@ -50,15 +53,9 @@ class CustomTheme {
             fontSize: 16,
             color: Colors.grey.shade500),
       ),
-
-      /*prefixIcon: Icon(
-        iconData,
-        color: Colors.grey.shade800,
-      ),*/
-
       hintStyle: TextStyle(fontSize: 15, color: Color(0xaa495057)),
       focusedBorder: OutlineInputBorder(
-        gapPadding: 0,
+        gapPadding: 5,
         borderRadius: BorderRadius.all(Radius.circular(4)),
         borderSide: BorderSide(width: 1, color: CustomTheme.primaryDark),
       ),
@@ -72,6 +69,8 @@ class CustomTheme {
         borderRadius: BorderRadius.all(Radius.circular(4)),
         borderSide: BorderSide(width: 1, color: Colors.black54),
       ),
+      contentPadding: EdgeInsets.symmetric(
+          horizontal: hPadding, vertical: hPadding),
       fillColor: Colors.grey.shade100,
       border: const OutlineInputBorder(
         gapPadding: 0,

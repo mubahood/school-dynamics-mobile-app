@@ -24,9 +24,9 @@ class AppConfig {
   static const int DATABASE_VERSION = 3;
   static const String DATABASE_PATH = "SCHOOL_DYNAMICS_${APP_VERSION}";
 
-  // static const String MAIN_SITE_URL = "http://10.0.2.2:8888/schools";
-  static const String MAIN_SITE_URL = "https://schooldynamics.ug";
-  static const String MAIN_SITE_URL_1 = "schooldynamics.ug";
+  static const String MAIN_SITE_URL = "http://10.0.2.2:8888/schools";
+  /*static const String MAIN_SITE_URL = "https://schooldynamics.ug";
+  static const String MAIN_SITE_URL_1 = "schooldynamics.ug";*/
   static String APP_NAME = "School Dynamics";
   static String CONTACT_PHONE = "+256783204665";
   static String CONTACT_EMAIL = "info@schooldynamics.ug";

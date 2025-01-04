@@ -6,12 +6,14 @@ import 'package:flutx/flutx.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:schooldynamics/models/UserModel.dart';
+import 'package:schooldynamics/screens/employees/EmployeeCreateScreen.dart';
 import 'package:schooldynamics/screens/students/StudentScreen.dart';
 import 'package:schooldynamics/theme/app_theme.dart';
 import 'package:schooldynamics/utils/AppConfig.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../models/EmployeeModel.dart';
 import '../models/StudentHasClassModel.dart';
 import '../models/StudentVerificationModel.dart';
 import '../models/UserMiniModel.dart';
@@ -59,6 +61,28 @@ Widget myListTile(String title, subtile, IconData icon, Function f) {
     subtitle: FxText.bodySmall(
       subtile,
       color: Colors.black,
+    ),
+  );
+}
+
+Widget roundedImage2(String url, double w, double h,
+    {String no_image = AppConfig.NO_IMAGE, double radius = 10}) {
+  return ClipRRect(
+    borderRadius: BorderRadius.circular(radius),
+    child: CachedNetworkImage(
+      fit: BoxFit.cover,
+      imageUrl: url,
+      width: (w),
+      height: (h),
+      placeholder: (context, url) => ShimmerLoadingWidget(
+        height: double.infinity,
+      ),
+      errorWidget: (context, url, error) => Image(
+        image: AssetImage(no_image),
+        fit: BoxFit.cover,
+        width: (w),
+        height: (h),
+      ),
     ),
   );
 }
@@ -424,6 +448,83 @@ Widget userMiniWidget(UserMiniModel u) {
   );
 }
 
+Widget userWidget3(UserModel u, context, {String task_picker = ""}) {
+  return InkWell(
+    onTap: () {
+      if (task_picker == 'task_picker') {
+        Navigator.pop(context, u);
+      } else {
+        Get.to(() => StudentScreen(data: u));
+      }
+    },
+    child: Container(
+      padding: const EdgeInsets.only(top: 10, left: 15, right: 15),
+      child: Flex(
+        direction: Axis.horizontal,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          roundedImage2(u.avatar.toString(), 50, 50),
+          const SizedBox(
+            width: 10,
+          ),
+          Expanded(
+            child: Flex(
+              direction: Axis.vertical,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                FxText.titleMedium(
+                  u.name.toUpperCase(),
+                  maxLines: 1,
+                  fontWeight: 800,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(
+                  height: 6,
+                ),
+                Text(u.roles_text),
+              ],
+            ),
+          ),
+          //create popupMenu with view, edit and delete
+          PopupMenuButton(
+            icon: Icon(FeatherIcons.moreVertical,
+                size: 30, color: CustomTheme.primary),
+            itemBuilder: (BuildContext context) {
+              return [
+                PopupMenuItem(
+                  child: ListTile(
+                    leading: const Icon(FeatherIcons.eye),
+                    title: const Text('View'),
+                    onTap: () {
+                      //pop
+                      Navigator.pop(context);
+                      Get.to(() => StudentScreen(data: u));
+                    },
+                  ),
+                ),
+                PopupMenuItem(
+                  child: ListTile(
+                    leading: const Icon(FeatherIcons.edit),
+                    title: const Text('Edit'),
+                    onTap: () {
+                      Navigator.pop(context);
+                      EmployeeModel e = EmployeeModel.fromJson(u.toJson());
+                      Get.to(() => EmployeeCreateScreen({
+                            'item': e,
+                          }));
+                    },
+                  ),
+                ),
+              ];
+            },
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
 Widget userWidget(UserModel u, context, {String task_picker = ""}) {
   return InkWell(
     onTap: () {
@@ -483,39 +584,6 @@ Widget userWidget(UserModel u, context, {String task_picker = ""}) {
                 const SizedBox(
                   height: 6,
                 ),
-                Row(
-                  children: [
-                    Icon(
-                      FeatherIcons.user,
-                      size: 12,
-                      color: CustomTheme.primaryDark,
-                    ),
-                    const SizedBox(
-                      width: 2,
-                    ),
-                    Expanded(
-                      child: FxText.bodySmall(
-                        u.getParentName(),
-                        color: Colors.grey,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    const Spacer(),
-                    Icon(
-                      FeatherIcons.clock,
-                      size: 12,
-                      color: CustomTheme.primaryDark,
-                    ),
-                    const SizedBox(
-                      width: 2,
-                    ),
-                    FxText.bodySmall(
-                      Utils.to_date_1(u.created_at),
-                      color: Colors.grey,
-                    ),
-                  ],
-                )
               ],
             ),
           ),
@@ -820,18 +888,32 @@ Widget title_widget_2(String title) {
 
 // ignore: non_constant_identifier_names
 Widget title_widget(String title) {
-  return Container(
-    padding: const EdgeInsets.only(top: 3, bottom: 3),
-    color: CustomTheme.primary,
-    child: Center(
-      child: FxText.titleMedium(
-        title.toUpperCase(),
-        textAlign: TextAlign.center,
-        fontWeight: 700,
-        fontSize: 18,
-        color: Colors.white,
+  return Row(
+    children: [
+      Container(
+        color: Colors.grey,
+        height: 18,
+        width: 10,
       ),
-    ),
+      const SizedBox(
+        width: 5,
+      ),
+      FxText.titleMedium(
+        title,
+        textAlign: TextAlign.center,
+        fontWeight: 800,
+        fontSize: 18,
+        color: CustomTheme.primary,
+      ),
+      const SizedBox(
+        width: 5,
+      ),
+      Expanded(
+          child: Container(
+        color: Colors.grey,
+        height: 18,
+      ))
+    ],
   );
 }
 

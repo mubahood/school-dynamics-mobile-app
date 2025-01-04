@@ -2,6 +2,7 @@
     <application
         android:label="School Dynamics"
         android:name="${applicationName}"
+        android:allowBackup="false"
         android:icon="@drawable/logo">
 
         <activity
