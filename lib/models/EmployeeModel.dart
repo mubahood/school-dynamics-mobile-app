@@ -104,6 +104,9 @@ class EmployeeModel {
   String plain_password = "";
   String mail_verification_token = "";
 
+
+
+
   static fromJson(dynamic m) {
     EmployeeModel obj = new EmployeeModel();
     if (m == null) {

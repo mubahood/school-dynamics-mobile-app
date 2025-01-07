@@ -5,7 +5,7 @@ import 'RespondModel.dart';
 
 class SubjectModel {
   static String end_point = "subjects";
-  static String tableName = "subjects";
+  static String tableName = "subjects_2";
   int id = 0;
   String created_at = "";
   String updated_at = "";
@@ -33,6 +33,16 @@ class SubjectModel {
   String academic_year_text = "";
   String show_in_report = "";
   String grade_subject = "";
+
+  String name = "";
+  String teacher_name = "";
+  String teacher_1_name = "";
+  String teacher_2_name = "";
+  String teacher_3_name = "";
+
+  String get_name() {
+    return name;
+  }
 
   static fromJson(dynamic m) {
     SubjectModel obj = new SubjectModel();
@@ -67,6 +77,11 @@ class SubjectModel {
     obj.academic_year_text = Utils.to_str(m['academic_year_text'], '');
     obj.show_in_report = Utils.to_str(m['show_in_report'], '');
     obj.grade_subject = Utils.to_str(m['grade_subject'], '');
+    obj.name = Utils.to_str(m['name'], '');
+    obj.teacher_name = Utils.to_str(m['teacher_name'], '');
+    obj.teacher_1_name = Utils.to_str(m['teacher_1_name'], '');
+    obj.teacher_2_name = Utils.to_str(m['teacher_2_name'], '');
+    obj.teacher_3_name = Utils.to_str(m['teacher_3_name'], '');
 
     return obj;
   }
@@ -201,6 +216,11 @@ class SubjectModel {
       'academic_year_text': academic_year_text,
       'show_in_report': show_in_report,
       'grade_subject': grade_subject,
+      'name': name,
+      'teacher_name': teacher_name,
+      'teacher_1_name': teacher_1_name,
+      'teacher_2_name': teacher_2_name,
+      'teacher_3_name': teacher_3_name,
     };
   }
 
@@ -239,6 +259,11 @@ class SubjectModel {
         ",academic_year_text TEXT"
         ",show_in_report TEXT"
         ",grade_subject TEXT"
+        ",name TEXT"
+        ",teacher_name TEXT"
+        ",teacher_1_name TEXT"
+        ",teacher_2_name TEXT"
+        ",teacher_3_name TEXT"
         ")";
 
     try {

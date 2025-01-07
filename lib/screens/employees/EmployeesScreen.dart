@@ -216,8 +216,17 @@ class EmployeesScreenState extends State<EmployeesScreen> {
                           (BuildContext context, int index) {
                             UserModel m =
                                 UserModel.fromJson(items[index].toJson());
-                             return userWidget3(m, context,
-                                task_picker: task_picker);
+                            return InkWell(
+                              onTap: () async {
+                                if (task_picker == 'task_picker') {
+                                  Navigator.pop(context, items[index]);
+                                } else {
+                                  // Get.to(() => StudentScreen(data: items[index]));
+                                }
+                              },
+                              child: userWidget3(m, context,
+                                  task_picker: task_picker),
+                            );
                           },
                           childCount: items.length, // 1000 list items
                         ),

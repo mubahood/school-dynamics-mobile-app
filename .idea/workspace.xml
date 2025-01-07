@@ -10,8 +10,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b53d5bbc-3aaf-4461-9262-7a96f2d9f29d" name="Changes" comment="latest changes.">
+      <change afterPath="$PROJECT_DIR$/lib/models/MainCourse.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screens/subjects/CoursesScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/.filecache" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/.filecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/app.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/debug_android_application.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/debug_android_application.stamp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/flutter_assets.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/flutter_assets.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/kernel_snapshot_program.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/kernel_snapshot_program.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/kernel_snapshot_program.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/kernel_snapshot_program.stamp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/program.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/program.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/EmployeeModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/EmployeeModel.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/SubjectModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/SubjectModel.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/employees/EmployeesScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/employees/EmployeesScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/subjects/SubjectModelEditScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/subjects/SubjectModelEditScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/sections/widgets.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/sections/widgets.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils/Utils.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/Utils.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,6 +180,16 @@
           <url>file://$PROJECT_DIR$/lib/screens/employees/EmployeeCreateScreen.dart</url>
           <line>33</line>
           <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/screens/subjects/SubjectModelEditScreen.dart</url>
+          <line>197</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/screens/subjects/SubjectModelEditScreen.dart</url>
+          <line>388</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

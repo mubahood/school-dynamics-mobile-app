@@ -33,7 +33,67 @@ import '../theme/app_theme.dart';
 import 'AppConfig.dart';
 
 class Utils {
+  static Future<void> confirmDialog(
+      BuildContext context,String title, String message, Function onPositiveClick,
+      {String positive_text = "Confirm",
+      String negative_text = "Cancel"}) async {
+    await showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: StatefulBuilder(
+            builder: (BuildContext context, StateSetter setState) {
+              return Container(
+                padding: FxSpacing.all(0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    FxText.bodySmall(
+                      "${message}\n",
+                      fontWeight: 500,
+                    ),
+                    Container(
+                        alignment: AlignmentDirectional.center,
+                        child: Column(
+                          children: [
+                            FxButton.block(
+                                padding:
+                                    const EdgeInsets.fromLTRB(24, 24, 24, 24),
+                                onPressed: () {
+                                  onPositiveClick();
+                                  Navigator.pop(context);
+                                },
+                                borderRadiusAll: 4,
+                                elevation: 0,
+                                child: FxText.bodySmall(positive_text,
+                                    letterSpacing: 0.3, color: Colors.white)),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            FxButton.outlined(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                borderRadiusAll: 4,
+                                elevation: 0,
+                                child: FxText.bodySmall(negative_text,
+                                    letterSpacing: 0.3, color: Colors.red)),
+                          ],
+                        )),
+                  ],
+                ),
+              );
+            },
+          ),
+        );
+      },
+    );
+  }
+
   static Color getColor(String c) {
+    //confirmDialog
+
     //
     Color color = Colors.white;
     try {
