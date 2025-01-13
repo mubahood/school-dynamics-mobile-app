@@ -130,13 +130,13 @@ class SubjectModelEditScreenState extends State<SubjectModelEditScreen>
                                     .capitalize!,
                               ),
                               readOnly: true,
-                              initialValue: item.main_course_text,
+                              initialValue: item.subject_name,
                               textCapitalization: TextCapitalization.sentences,
                               name: "main_course_text",
                               enableSuggestions: true,
                               onTap: () async {
                                 MainCourse? selectedItem = await Get.to(() =>
-                                    CoursesScreen(
+                                    MainCoursesScreen(
                                         const {'is_select': 'is_select'}));
                                 if (selectedItem == null) {
                                   return;
@@ -216,7 +216,7 @@ class SubjectModelEditScreenState extends State<SubjectModelEditScreen>
                                 });
                                 setState(() {});
                               },
-                              initialValue: item.subject_teacher,
+                              initialValue: item.teacher_name,
                               textCapitalization: TextCapitalization.sentences,
                               name: "teacher_name",
                               enableSuggestions: true,
@@ -248,7 +248,7 @@ class SubjectModelEditScreenState extends State<SubjectModelEditScreen>
                                 });
                                 setState(() {});
                               },
-                              initialValue: item.subject_teacher,
+                              initialValue: item.teacher_1_name,
                               textCapitalization: TextCapitalization.sentences,
                               name: "teacher_1_name",
                               enableSuggestions: true,
@@ -274,7 +274,7 @@ class SubjectModelEditScreenState extends State<SubjectModelEditScreen>
                                 });
                                 setState(() {});
                               },
-                              initialValue: item.subject_teacher,
+                              initialValue: item.teacher_2_name,
                               textCapitalization: TextCapitalization.sentences,
                               name: "teacher_2_name",
                               enableSuggestions: true,
@@ -300,7 +300,7 @@ class SubjectModelEditScreenState extends State<SubjectModelEditScreen>
                                 });
                                 setState(() {});
                               },
-                              initialValue: item.subject_teacher,
+                              initialValue: item.teacher_3_name,
                               textCapitalization: TextCapitalization.sentences,
                               name: "teacher_3_name",
                               enableSuggestions: true,
@@ -330,14 +330,14 @@ class SubjectModelEditScreenState extends State<SubjectModelEditScreen>
                               orientation: OptionsOrientation.horizontal,
                               options: const [
                                 FormBuilderFieldOption(
-                                  value: 'Yes',
+                                  value: '1',
                                   child: Text(
                                     'Yes (Optional)',
                                     style: TextStyle(color: Colors.black),
                                   ),
                                 ),
                                 FormBuilderFieldOption(
-                                  value: 'No',
+                                  value: '0',
                                   child: Text(
                                     'No (Compulsory)',
                                     style: TextStyle(color: Colors.black),
@@ -478,10 +478,8 @@ class SubjectModelEditScreenState extends State<SubjectModelEditScreen>
       is_loading = true;
     });
 
-    Utils.toast('Updating...', color: Colors.green.shade700);
-
-    RespondModel resp = RespondModel(
-        await Utils.http_post(SubjectModel.end_point, item.toJson()));
+    RespondModel resp =
+        RespondModel(await Utils.http_post('subject-create', item.toJson()));
 
     setState(() {
       error_message = "";
@@ -496,7 +494,27 @@ class SubjectModelEditScreenState extends State<SubjectModelEditScreen>
       return;
     }
 
-    Utils.toast('Successfully!');
+    SubjectModel? s;
+    try {
+      s = SubjectModel.fromJson(resp.data);
+    } catch (x) {
+      Utils.toast("Saved but Failed to parse.");
+      Navigator.pop(context);
+      return;
+    }
+    if (s == null) {
+      Utils.toast("Saved but did not manage to parse.");
+      Navigator.pop(context);
+      return;
+    }
+    if (s.id < 1) {
+      Utils.toast("Saved but did not manage to parse.");
+      Navigator.pop(context);
+      return;
+    }
+    await s.save();
+
+    Utils.toast(resp.message, color: Colors.green.shade700);
 
     Navigator.pop(context);
     return;

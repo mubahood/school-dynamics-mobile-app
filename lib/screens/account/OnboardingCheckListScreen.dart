@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
 import 'package:schooldynamics/screens/account/EnterpriseUpdateScreen.dart';
+import 'package:schooldynamics/screens/students/StudentsScreen.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 
 import '../../controllers/MainController.dart';
@@ -185,7 +186,7 @@ class _OnboardingCheckListScreenState extends State<OnboardingCheckListScreen> {
             ListTile(
               dense: true,
               onTap: () {
-                // Get.to(UserAccountCreateScreen());
+                Get.to(StudentsScreen({}));
               },
               contentPadding: EdgeInsets.zero,
               leading: Icon(

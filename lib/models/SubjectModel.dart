@@ -40,6 +40,31 @@ class SubjectModel {
   String teacher_2_name = "";
   String teacher_3_name = "";
 
+  String get_other_teachers() {
+    String other = "";
+    if (teacher_1_name.isNotEmpty) {
+      other += teacher_1_name;
+    }
+    if (teacher_2_name.isNotEmpty) {
+      if (other.isEmpty) {
+        other += teacher_2_name;
+      } else {
+        other += ", " + teacher_2_name;
+      }
+    }
+    if (teacher_3_name.isNotEmpty) {
+      if (other.isEmpty) {
+        other += teacher_3_name;
+      } else {
+        other += ", " + teacher_3_name;
+      }
+    }
+    if (other.isEmpty) {
+      other = "None";
+    }
+    return other;
+  }
+
   String get_name() {
     return name;
   }

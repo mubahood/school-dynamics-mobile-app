@@ -1,153 +1,208 @@
 import 'package:flutter/material.dart';
-import 'package:flutx/flutx.dart';
+import 'package:flutx/widgets/text/text.dart';
 import 'package:get/get.dart';
-import 'package:schooldynamics/models/MySubjects.dart';
-
-import '../../theme/custom_theme.dart';
-import '../../utils/my_widgets.dart';
-import 'SubjectModelEditScreen.dart';
-import 'SubjectScreen.dart';
+import 'package:schooldynamics/models/SubjectModel.dart';
+import 'package:schooldynamics/screens/subjects/SubjectModelEditScreen.dart';
+import 'package:schooldynamics/sections/widgets.dart';
+import 'package:schooldynamics/utils/Utils.dart';
 
 class SubjectsScreen extends StatefulWidget {
-  Map<String, dynamic> params = {};
+  Map<String, dynamic> params;
 
-  SubjectsScreen(this.params, {Key? key}) : super(key: key);
-
+  SubjectsScreen(
+    this.params, {
+    super.key,
+  });
   @override
-  SubjectsScreenState createState() => new SubjectsScreenState();
+  State<SubjectsScreen> createState() => _SubjectsScreenState();
 }
 
-class SubjectsScreenState extends State<SubjectsScreen> {
-  List<MySubjects> items = [];
-
-  String title = '';
-  bool isPicker = false;
+class _SubjectsScreenState extends State<SubjectsScreen> {
+  List<SubjectModel> items = [];
+  List<SubjectModel> allItems = [];
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    doRefresh();
+    myInit();
   }
 
-  Future<dynamic> doRefresh() async {
-    futureInit = init();
-    setState(() {});
+  bool isLoading = false;
+  bool is_select = false;
+  bool isSearch = false;
+  bool searchIsOpen = false;
+  String searchWord = "";
+
+  Future<void> myInit() async {
+    if (widget.params['is_select'].toString() == 'is_select') {
+      is_select = true;
+    }
+    if (widget.params['task'].toString() == 'Select') {
+      is_select = true;
+    }
+
+    setState(() {
+      isLoading = true;
+    });
+    allItems = await SubjectModel.get_items();
+    items = [];
+
+    allItems.forEach((element) {
+      if (element.get_name().toLowerCase().contains(searchWord.toLowerCase())) {
+        items.add(element);
+      }
+    });
+
+    setState(() {
+      isLoading = false;
+    });
   }
 
-  late Future<dynamic> futureInit;
+  Widget searchInput() {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 0, horizontal: 15),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: TextField(
+        autofocus: true,
+        decoration: const InputDecoration(
+          hintText: "Search",
+          border: InputBorder.none,
+        ),
+        onChanged: (value) {
+          setState(() {
+            searchWord = value;
+          });
+          myInit();
+        },
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Get.to(() => SubjectModelEditScreen({}));
         },
-        child: const Icon(Icons.add),
+        child: Icon(Icons.add),
       ),
       appBar: AppBar(
-          backgroundColor: CustomTheme.primary,
-          titleSpacing: 0,
-          elevation: 0,
-          iconTheme: IconThemeData(color: Colors.white),
-          automaticallyImplyLeading: true,
-          // remove back button in appbar.
-          title: FxText.titleLarge(
-            title.isNotEmpty ? title : 'Subjects (${items.length})',
-            color: Colors.white,
-            fontWeight: 700,
-            height: .6,
-          )),
-      body: FutureBuilder(
-          future: futureInit,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return myListLoaderWidget(context);
-            }
-            if (items.isEmpty) {
-              return emptyListWidget(
-                  "No Item Found. Press (+) button to add new.", () {
-                init();
+        title: searchIsOpen
+            ? searchInput()
+            : FxText.titleLarge(
+                "Subjects",
+                color: Colors.white,
+                fontWeight: 700,
+              ),
+        systemOverlayStyle: Utils.overlay(),
+        actions: [
+          IconButton(
+            icon: Icon(
+              searchIsOpen ? Icons.close : Icons.search,
+            ),
+            onPressed: () {
+              setState(() {
+                searchIsOpen = !searchIsOpen;
               });
-            }
-
-            return RefreshIndicator(
-              backgroundColor: Colors.white,
-              onRefresh: doRefresh,
-              child: ListView.separated(
-                  separatorBuilder: (context, index) => const Divider(
-                        height: 1,
-                      ),
-                  itemCount: items.length,
-                  itemBuilder: (context, index) {
-                    final MySubjects m = items[index];
-                    return ListTile(
-                      onTap: () {
-                        if (isPicker) {
-                          Get.back(result: m);
-                          return;
-                        }
-
-                        Get.to(() => SubjectScreen(
-                              data: m,
-                            ));
-                      },
-                      leading: FxContainer(
-                        width: (Get.width / 6),
-                        height: (Get.width / 6),
-                        borderRadiusAll: 100,
-                        color: CustomTheme.primary.withAlpha(40),
-                        paddingAll: 10,
-                        alignment: Alignment.center,
-                        child: FxText.titleLarge(
-                          "${m.short_name}",
-                          color: Colors.black,
-                          fontWeight: 900,
+              if (!searchIsOpen) {
+                searchWord = "";
+                myInit();
+              }
+            },
+          ),
+          SizedBox(
+            width: 15,
+          ),
+        ],
+      ),
+      body: isLoading
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : items.isEmpty
+              ? noItemWidget('No Item Found', () {
+                  myInit();
+                })
+              : RefreshIndicator(
+                  onRefresh: myInit,
+                  backgroundColor: Colors.white,
+                  child: ListView.builder(
+                    itemCount: items.length,
+                    itemBuilder: (context, index) {
+                      SubjectModel item = items[index];
+                      return Container(
+                        color:
+                            index.isOdd ? Colors.grey[100] : Colors.grey[300],
+                        child: ListTile(
+                          dense: true,
+                          onTap: () {
+                            if (is_select) {
+                              Get.back(result: item);
+                              return;
+                            }
+                            // Get.to(()=>CourseScreen({'item': item}), arguments: item);
+                          },
+                          title: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              FxText.bodyMedium(
+                                "#${item.id}. ${item.get_name()}",
+                                color: Colors.black,
+                                fontWeight: 700,
+                              ),
+                              FxText.bodySmall("TEACHER: ${item.teacher_name}"),
+                              FxText.bodySmall("CLASS: ${item.academic_class_text}"),
+                              FxText.bodySmall("Other Teachers: "
+                                  "${item.get_other_teachers()}"),
+                            ],
+                          ),
+                          //popup menu with edit and delete
+                          trailing: PopupMenuButton(
+                            itemBuilder: (BuildContext context) {
+                              return [
+                                PopupMenuItem(
+                                  child: ListTile(
+                                    dense: true,
+                                    title: FxText.bodyMedium("Edit"),
+                                    onTap: () {
+                                      Get.back();
+                                      Get.to(
+                                          () => SubjectModelEditScreen(
+                                              {'item': item}),
+                                          arguments: item);
+                                    },
+                                  ),
+                                ),
+                                PopupMenuItem(
+                                  child: ListTile(
+                                    title: FxText.bodyMedium("Delete"),
+                                    dense: true,
+                                    onTap: () {
+                                      Utils.confirmDialog(
+                                        context,
+                                        "Delete",
+                                        "Are you sure you want to delete this item?",
+                                        () async {
+                                          await item.delete();
+                                          myInit();
+                                        },
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ];
+                            },
+                          ),
                         ),
-                      ),
-                      title: FxText.titleMedium(
-                        m.subject_name,
-                        color: Colors.black,
-                        fontWeight: 700,
-                      ),
-                      subtitle: FxText.bodySmall(
-                        m.exams.length > 0
-                            ? "${m.exams.length} marks pending for submission"
-                            : "${m.name} - ${m.subject_teacher_name}.",
-                        color: m.exams.isNotEmpty ? Colors.red.shade800 : null,
-                        fontWeight: 600,
-                      ),
-                      trailing: FxContainer(
-                        padding: const EdgeInsets.only(
-                            left: 5, right: 5, top: 5, bottom: 5),
-                        color: CustomTheme.primary.withAlpha(10),
-                        child: Icon(Icons.chevron_right),
-                      ),
-                    );
-                  }),
-            );
-          }),
+                      );
+                    },
+                  ),
+                ),
     );
-  }
-
-  Future<void> init() async {
-    if (widget.params['title'] != null) {
-      title = widget.params['title'];
-    }
-    if (widget.params['task'].toString() == 'Select'.toString()) {
-      isPicker = true;
-    }
-    if (widget.params['academic_class_id'].toString().trim().isNotEmpty) {
-      String academic_class_id = widget.params['academic_class_id'].toString();
-      items = await MySubjects.getItems(
-          where: " academic_class_id = '$academic_class_id' ");
-    } else {
-      items = await MySubjects.getItems();
-    }
-
-    setState(() {});
   }
 }
