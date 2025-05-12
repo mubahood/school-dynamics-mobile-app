@@ -10,22 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b53d5bbc-3aaf-4461-9262-7a96f2d9f29d" name="Changes" comment="latest changes.">
-      <change afterPath="$PROJECT_DIR$/lib/screens/students/StudentCreateScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/.filecache" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/.filecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/app.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/app.dill" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/debug_android_application.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/debug_android_application.stamp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/flutter_assets.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/flutter_assets.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/kernel_snapshot_program.d" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/kernel_snapshot_program.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/kernel_snapshot_program.stamp" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/kernel_snapshot_program.stamp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/program.dill" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/flutter_build/a34f010aa2746ed7164d2c82b0c49282/program.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/version" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/version" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/SubjectModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/SubjectModel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/account/OnboardingCheckListScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/account/OnboardingCheckListScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/students/StudentsScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/students/StudentsScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/subjects/CoursesScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/subjects/CoursesScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/subjects/SubjectModelEditScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/subjects/SubjectModelEditScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/subjects/SubjectsScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/subjects/SubjectsScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,12 +40,12 @@
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
   </component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/mubahood/school-dynamics-mobile-app.git&quot;,
-    &quot;accountId&quot;: &quot;29c36d77-cb9e-4878-a083-52e738e67160&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/mubahood/school-dynamics-mobile-app.git",
+    "accountId": "afeb7382-49f4-4654-b3cd-b56e4cf3d00c"
   }
-}</component>
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -75,6 +68,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "ScreenshotViewer.SavePath": "/Users/mac/Desktop/afriinventions/screens-raw",
