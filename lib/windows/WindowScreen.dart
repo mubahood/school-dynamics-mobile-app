@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 
 class WinScreen extends StatelessWidget {
-  const WinScreen();
+  const WinScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class WinScreen extends StatelessWidget {
 }
 
 class NavRailExample extends StatefulWidget {
-  const NavRailExample();
+  const NavRailExample({super.key});
 
   @override
   State<NavRailExample> createState() => _NavRailExampleState();

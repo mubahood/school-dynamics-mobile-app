@@ -14,9 +14,9 @@ class StudentEditGuardianScreen extends StatefulWidget {
   dynamic data;
 
   StudentEditGuardianScreen({
-    Key? key,
+    super.key,
     this.data,
-  }) : super(key: key);
+  });
 
   @override
   _StudentEditGuardianScreenState createState() =>
@@ -103,7 +103,7 @@ class _StudentEditGuardianScreenState extends State<StudentEditGuardianScreen> {
       appBar: AppBar(
         backgroundColor: CustomTheme.primary,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         titleSpacing: 0,
         title: FxText.titleLarge(
           "Updating student's guardian data",
@@ -115,19 +115,19 @@ class _StudentEditGuardianScreenState extends State<StudentEditGuardianScreen> {
           Container(
               color: Colors.white,
               padding:
-                  EdgeInsets.only(left: MySize.size16!, right: MySize.size16!),
+                  EdgeInsets.only(left: MySize.size16, right: MySize.size16),
               child: FormBuilder(
                 key: _formKey,
                 child: Padding(
                   padding: EdgeInsets.only(
-                      top: MySize.size10!,
-                      left: MySize.size5!,
-                      right: MySize.size5!,
-                      bottom: MySize.size10!),
+                      top: MySize.size10,
+                      left: MySize.size5,
+                      right: MySize.size5,
+                      bottom: MySize.size10),
                   child: Column(
                     children: <Widget>[
                       Container(
-                        margin: EdgeInsets.only(bottom: 10, top: 10),
+                        margin: const EdgeInsets.only(bottom: 10, top: 10),
                         child: FormBuilderTextField(
                           name: 'father_name',
                           initialValue: item.father_name,
@@ -148,7 +148,7 @@ class _StudentEditGuardianScreenState extends State<StudentEditGuardianScreen> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(bottom: 20, top: 10),
+                        margin: const EdgeInsets.only(bottom: 20, top: 10),
                         child: FormBuilderTextField(
                           name: 'mother_name',
                           initialValue: item.mother_name,
@@ -170,7 +170,7 @@ class _StudentEditGuardianScreenState extends State<StudentEditGuardianScreen> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(bottom: 20, top: 10),
+                        margin: const EdgeInsets.only(bottom: 20, top: 10),
                         child: FormBuilderTextField(
                           name: 'phone_number_1',
                           initialValue: item.phone_number_1,
@@ -186,7 +186,7 @@ class _StudentEditGuardianScreenState extends State<StudentEditGuardianScreen> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(bottom: 20, top: 10),
+                        margin: const EdgeInsets.only(bottom: 20, top: 10),
                         child: FormBuilderTextField(
                           name: 'phone_number_2',
                           initialValue: item.phone_number_2,
@@ -202,7 +202,7 @@ class _StudentEditGuardianScreenState extends State<StudentEditGuardianScreen> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(bottom: 20, top: 10),
+                        margin: const EdgeInsets.only(bottom: 20, top: 10),
                         child: FormBuilderTextField(
                           name: 'email',
                           initialValue: item.email,
@@ -241,7 +241,7 @@ class _StudentEditGuardianScreenState extends State<StudentEditGuardianScreen> {
                                     size: 30,
                                     color: Colors.white,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
                                   Center(

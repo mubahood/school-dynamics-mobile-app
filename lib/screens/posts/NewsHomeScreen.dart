@@ -7,7 +7,7 @@ import '../../models/TransportParticipantModel.dart';
 import 'PostModelsScreen.dart';
 
 class NewsHomeScreen extends StatefulWidget {
-  NewsHomeScreen({Key? key}) : super(key: key);
+  const NewsHomeScreen({super.key});
 
   @override
   _NewsHomeScreenState createState() => _NewsHomeScreenState();

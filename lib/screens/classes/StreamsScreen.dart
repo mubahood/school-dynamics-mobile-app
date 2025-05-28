@@ -11,10 +11,10 @@ import '../../utils/my_widgets.dart';
 class StreamsScreen extends StatefulWidget {
   String class_id = '';
 
-  StreamsScreen(this.class_id, {Key? key}) : super(key: key);
+  StreamsScreen(this.class_id, {super.key});
 
   @override
-  StreamsScreenState createState() => new StreamsScreenState();
+  StreamsScreenState createState() => StreamsScreenState();
 }
 
 class StreamsScreenState extends State<StreamsScreen> {
@@ -47,7 +47,7 @@ class StreamsScreenState extends State<StreamsScreen> {
           titleSpacing: 0,
           backgroundColor: CustomTheme.primary,
           elevation: 0,
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.white),
           automaticallyImplyLeading: true,
           // remove back button in appbar.
           title: FxText.titleLarge(
@@ -63,7 +63,25 @@ class StreamsScreenState extends State<StreamsScreen> {
               return myListLoaderWidget(context);
             }
             if (items.isEmpty) {
-              return Center(child: FxText('No item found.'));
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(child: FxText('No item found.')),
+                  const SizedBox(height: 10),
+                  FxButton(
+                    onPressed: () {
+                      doRefresh();
+                    },
+                    borderRadiusAll: 100,
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: FxText.bodySmall(
+                      'Refresh',
+                      color: Colors.white,
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
+              );
             }
 
             return Container(
@@ -84,7 +102,7 @@ class StreamsScreenState extends State<StreamsScreen> {
                         (BuildContext context, int index) {
                           StreamModel item = items[index];
                           return FxContainer(
-                            margin: EdgeInsets.only(top: 5),
+                            margin: const EdgeInsets.only(top: 5),
                             onTap: () {
                               if (isPicker) {
                                 Get.back(result: item);
@@ -107,7 +125,7 @@ class StreamsScreenState extends State<StreamsScreen> {
                                   color: CustomTheme.primary,
                                   size: 30,
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 FxText.titleSmall(
                                   item.name,
                                   height: .8,
@@ -144,7 +162,6 @@ class StreamsScreenState extends State<StreamsScreen> {
 
   Future<void> init() async {
     items = await StreamModel.get_items(
-      where: " academic_class_id = '${widget.class_id}' ",
     );
     setState(() {});
   }

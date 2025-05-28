@@ -20,7 +20,7 @@ class StreamModel {
 
 
   static fromJson(dynamic m) {
-    StreamModel obj = new StreamModel();
+    StreamModel obj = StreamModel();
     if (m == null) {
       return obj;
     }
@@ -85,7 +85,7 @@ class StreamModel {
     List<StreamModel> data = [];
 
     RespondModel resp =
-    RespondModel(await Utils.http_get('${StreamModel.end_point}', {}));
+    RespondModel(await Utils.http_get(StreamModel.end_point, {}));
 
     if (resp.code != 1) {
       return [];

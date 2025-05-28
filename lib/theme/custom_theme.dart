@@ -2,25 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
 
 class CustomTheme {
-  static final Color primary_1 = Colors.green;
-  static  Color primary = Color.fromRGBO(25, 131, 192, 1.0);
-  static final Color bg_primary_light = Color.fromRGBO(239, 252, 240, 1.0);
-  static   Color primaryDark = Color.fromRGBO(8, 79, 124, 1.0);
-  static final Color primary_bg = Color(0xfff8fffb);
-  static final Color onPrimary = Colors.white;
-  static final Color accent = Color(0xffdf7463);
-  static final Color occur = Color(0xffb38220);
-  static final Color peach = Color(0xffe09c5f);
-  static final Color skyBlue = Color(0xff639fdc);
-  static final Color darkGreen = Color(0xff226e79);
-  static final Color red = Color(0xfff8575e);
-  static final Color purple = Color(0xff9f50bf);
-  static final Color pink = Color(0xffd17b88);
-  static final Color brown = Color(0xffbd631a);
-  static final Color blue = Color(0xff1a71bd);
-  static final Color green = Color(0xff068425);
-  static final Color yellow = Color(0xfffff44f);
-  static final Color orange = Color(0xffFFA500);
+  static const Color primary_1 = Colors.green;
+  static  Color primary = const Color.fromRGBO(25, 131, 192, 1.0);
+  static const Color bg_primary_light = Color.fromRGBO(239, 252, 240, 1.0);
+  static   Color primaryDark = const Color.fromRGBO(8, 79, 124, 1.0);
+  static const Color primary_bg = Color(0xfff8fffb);
+  static const Color onPrimary = Colors.white;
+  static const Color accent = Color(0xffdf7463);
+  static const Color occur = Color(0xffb38220);
+  static const Color peach = Color(0xffe09c5f);
+  static const Color skyBlue = Color(0xff639fdc);
+  static const Color darkGreen = Color(0xff226e79);
+  static const Color red = Color(0xfff8575e);
+  static const Color purple = Color(0xff9f50bf);
+  static const Color pink = Color(0xffd17b88);
+  static const Color brown = Color(0xffbd631a);
+  static const Color blue = Color(0xff1a71bd);
+  static const Color green = Color(0xff068425);
+  static const Color yellow = Color(0xfffff44f);
+  static const Color orange = Color(0xffFFA500);
   static final input_outline_border = OutlineInputBorder(
     borderSide: BorderSide(color: CustomTheme.primary),
     borderRadius: const BorderRadius.all(Radius.circular(10.0)),
@@ -53,18 +53,18 @@ class CustomTheme {
             fontSize: 16,
             color: Colors.grey.shade500),
       ),
-      hintStyle: TextStyle(fontSize: 15, color: Color(0xaa495057)),
+      hintStyle: const TextStyle(fontSize: 15, color: Color(0xaa495057)),
       focusedBorder: OutlineInputBorder(
         gapPadding: 5,
-        borderRadius: BorderRadius.all(Radius.circular(4)),
+        borderRadius: const BorderRadius.all(Radius.circular(4)),
         borderSide: BorderSide(width: 1, color: CustomTheme.primaryDark),
       ),
-      enabledBorder: OutlineInputBorder(
+      enabledBorder: const OutlineInputBorder(
         gapPadding: 0,
         borderRadius: BorderRadius.all(Radius.circular(4)),
         borderSide: BorderSide(width: 1, color: Colors.black54),
       ),
-      disabledBorder: OutlineInputBorder(
+      disabledBorder: const OutlineInputBorder(
         gapPadding: 0,
         borderRadius: BorderRadius.all(Radius.circular(4)),
         borderSide: BorderSide(width: 1, color: Colors.black54),
@@ -85,7 +85,7 @@ class CustomTheme {
     return InputDecoration(
       filled: true,
       isDense: false,
-      errorBorder: UnderlineInputBorder(
+      errorBorder: const UnderlineInputBorder(
           borderSide: BorderSide(
         color: Colors.red,
       )),
@@ -109,14 +109,14 @@ class CustomTheme {
         color: Colors.grey.shade800,
         fontSize: label_font_size,
       ),
-      contentPadding: EdgeInsets.only(left: 0, bottom: 0, right: 0, top: 0),
+      contentPadding: const EdgeInsets.only(left: 0, bottom: 0, right: 0, top: 0),
       label: FxText(
         label,
         color: primary,
       ),
       hintText: hintText,
       helperMaxLines: 2,
-      hintStyle: TextStyle(
+      hintStyle: const TextStyle(
         fontWeight: FontWeight.w300,
       ),
       fillColor: Colors.white,
@@ -125,7 +125,7 @@ class CustomTheme {
 
   InputDecoration input_decoration_2({String labelText = "",
     String hintText = "",
-    dynamic suffixIcon = null,
+    dynamic suffixIcon,
     double label_font_size = 18}) {
     return InputDecoration(
       suffixIcon: (suffixIcon == null)
@@ -144,7 +144,7 @@ class CustomTheme {
       ),
       labelText: labelText,
       hintText: hintText,
-      hintStyle: TextStyle(
+      hintStyle: const TextStyle(
         fontWeight: FontWeight.w300,
       ),
       fillColor: Colors.white,
@@ -154,24 +154,24 @@ class CustomTheme {
   static InputDecoration input_decoration_4({String labelText = ""}) {
     return InputDecoration(
       hintText: labelText,
-      hintStyle: TextStyle(),
-      border: OutlineInputBorder(
+      hintStyle: const TextStyle(),
+      border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(18),
           ),
           borderSide: BorderSide.none),
-      enabledBorder: OutlineInputBorder(
+      enabledBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(18),
           ),
           borderSide: BorderSide.none),
-      focusedBorder: OutlineInputBorder(
+      focusedBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(18),
           ),
           borderSide: BorderSide.none),
       isDense: true,
-      contentPadding: EdgeInsets.all(0),
+      contentPadding: const EdgeInsets.all(0),
     );
   }
 
@@ -180,11 +180,11 @@ class CustomTheme {
       prefixIcon: Icon(icon, color: CustomTheme.primary),
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(color: CustomTheme.primary),
-        borderRadius: BorderRadius.all(Radius.circular(5.0)),
+        borderRadius: const BorderRadius.all(Radius.circular(5.0)),
       ),
       enabledBorder: OutlineInputBorder(
         borderSide: BorderSide(color: CustomTheme.primary),
-        borderRadius: BorderRadius.all(Radius.circular(5.0)),
+        borderRadius: const BorderRadius.all(Radius.circular(5.0)),
       ),
       filled: true,
       border: InputBorder.none,
@@ -328,38 +328,38 @@ class CustomTheme {
   //--------------------------------------  Custom App Theme ----------------------------------------//
 
   static final CustomTheme lightCustomTheme = CustomTheme(
-      card: Color(0xfff6f6f6),
-      cardDark: Color(0xfff0f0f0),
-      disabledColor: Color(0xff636363),
-      onDisabled: Color(0xffffffff),
-      colorInfo: Color(0xffff784b),
-      colorWarning: Color(0xffffc837),
-      colorSuccess: Color(0xff3cd278),
-      shadowColor: Color(0xffd9d9d9),
-      onInfo: Color(0xffffffff),
-      onSuccess: Color(0xffffffff),
-      onWarning: Color(0xffffffff),
-      colorError: Color(0xfff0323c),
-      onError: Color(0xffffffff),
-      shimmerBaseColor: Color(0xFFF5F5F5),
-      shimmerHighlightColor: Color(0xFFE0E0E0));
+      card: const Color(0xfff6f6f6),
+      cardDark: const Color(0xfff0f0f0),
+      disabledColor: const Color(0xff636363),
+      onDisabled: const Color(0xffffffff),
+      colorInfo: const Color(0xffff784b),
+      colorWarning: const Color(0xffffc837),
+      colorSuccess: const Color(0xff3cd278),
+      shadowColor: const Color(0xffd9d9d9),
+      onInfo: const Color(0xffffffff),
+      onSuccess: const Color(0xffffffff),
+      onWarning: const Color(0xffffffff),
+      colorError: const Color(0xfff0323c),
+      onError: const Color(0xffffffff),
+      shimmerBaseColor: const Color(0xFFF5F5F5),
+      shimmerHighlightColor: const Color(0xFFE0E0E0));
 
   static final CustomTheme darkCustomTheme = CustomTheme(
-      card: Color(0xff222327),
-      cardDark: Color(0xff101010),
-      border: Color(0xff303030),
-      borderDark: Color(0xff363636),
-      disabledColor: Color(0xffbababa),
-      onDisabled: Color(0xff000000),
-      colorInfo: Color(0xffff784b),
-      colorWarning: Color(0xffffc837),
-      colorSuccess: Color(0xff3cd278),
-      shadowColor: Color(0xff202020),
-      onInfo: Color(0xffffffff),
-      onSuccess: Color(0xffffffff),
-      onWarning: Color(0xffffffff),
-      colorError: Color(0xfff0323c),
-      onError: Color(0xffffffff),
-      shimmerBaseColor: Color(0xFF1a1a1a),
-      shimmerHighlightColor: Color(0xFF454545));
+      card: const Color(0xff222327),
+      cardDark: const Color(0xff101010),
+      border: const Color(0xff303030),
+      borderDark: const Color(0xff363636),
+      disabledColor: const Color(0xffbababa),
+      onDisabled: const Color(0xff000000),
+      colorInfo: const Color(0xffff784b),
+      colorWarning: const Color(0xffffc837),
+      colorSuccess: const Color(0xff3cd278),
+      shadowColor: const Color(0xff202020),
+      onInfo: const Color(0xffffffff),
+      onSuccess: const Color(0xffffffff),
+      onWarning: const Color(0xffffffff),
+      colorError: const Color(0xfff0323c),
+      onError: const Color(0xffffffff),
+      shimmerBaseColor: const Color(0xFF1a1a1a),
+      shimmerHighlightColor: const Color(0xFF454545));
 }

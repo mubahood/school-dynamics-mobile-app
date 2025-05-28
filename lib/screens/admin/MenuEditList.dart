@@ -39,7 +39,7 @@ class _MenuEditListState extends State<MenuEditList> {
               icon: const Icon(CupertinoIcons.add),
               onPressed: () async {
                 //MenuCreateScreen
-                await Get.to(MenuCreateScreen({}));
+                await Get.to(MenuCreateScreen(const {}));
                 setState(() {});
               }),
           const SizedBox(

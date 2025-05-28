@@ -26,7 +26,7 @@ class MainCourse {
   }
 
   static fromJson(dynamic m) {
-    MainCourse obj = new MainCourse();
+    MainCourse obj = MainCourse();
     if (m == null) {
       return obj;
     }
@@ -86,7 +86,7 @@ class MainCourse {
     List<MainCourse> data = [];
 
     RespondModel resp =
-        RespondModel(await Utils.http_get('${MainCourse.end_point}', {}));
+        RespondModel(await Utils.http_get(MainCourse.end_point, {}));
 
     if (resp.code != 1) {
       return [];

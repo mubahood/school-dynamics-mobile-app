@@ -49,14 +49,14 @@ class SubjectModel {
       if (other.isEmpty) {
         other += teacher_2_name;
       } else {
-        other += ", " + teacher_2_name;
+        other += ", $teacher_2_name";
       }
     }
     if (teacher_3_name.isNotEmpty) {
       if (other.isEmpty) {
         other += teacher_3_name;
       } else {
-        other += ", " + teacher_3_name;
+        other += ", $teacher_3_name";
       }
     }
     if (other.isEmpty) {
@@ -70,7 +70,7 @@ class SubjectModel {
   }
 
   static fromJson(dynamic m) {
-    SubjectModel obj = new SubjectModel();
+    SubjectModel obj = SubjectModel();
     if (m == null) {
       return obj;
     }
@@ -151,7 +151,7 @@ class SubjectModel {
     List<SubjectModel> data = [];
 
     RespondModel resp =
-        RespondModel(await Utils.http_get('${SubjectModel.end_point}', {}));
+        RespondModel(await Utils.http_get(SubjectModel.end_point, {}));
 
     if (resp.code != 1) {
       return [];

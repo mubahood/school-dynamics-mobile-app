@@ -263,6 +263,7 @@ class LoggedInUserModel {
     obj.deleted_at = Utils.to_str(m['deleted_at'], '');
     obj.marital_status = Utils.to_str(m['marital_status'], '');
     obj.verification = Utils.to_str(m['verification'], '');
+    obj.verification = '1';
     obj.current_class_id = Utils.to_str(m['current_class_id'], '');
     obj.roles_text = Utils.to_str(m['roles_text'], '');
     obj.current_theology_class_id =
@@ -279,7 +280,7 @@ class LoggedInUserModel {
   static deleteAllItems() async {}
 
   static Future<LoggedInUserModel> getLoggedInUser() async {
-    LoggedInUserModel item = new LoggedInUserModel();
+    LoggedInUserModel item = LoggedInUserModel();
 
     if (!await initTable()) {
       Utils.toast('Failed to create user storage.');

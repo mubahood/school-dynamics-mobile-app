@@ -19,7 +19,7 @@ import '../../utils/my_widgets.dart';
 class EmployeesScreen extends StatefulWidget {
   Map<String, dynamic> params = {};
 
-  EmployeesScreen(this.params, {Key? key}) : super(key: key);
+  EmployeesScreen(this.params, {super.key});
 
   @override
   EmployeesScreenState createState() => EmployeesScreenState();
@@ -58,7 +58,7 @@ class EmployeesScreenState extends State<EmployeesScreen> {
       backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          await Get.to(() => EmployeeCreateScreen({}));
+          await Get.to(() => EmployeeCreateScreen(const {}));
           doRefresh(
             isRefresh: true,
           );

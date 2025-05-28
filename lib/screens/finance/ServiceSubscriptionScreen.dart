@@ -5,13 +5,12 @@ import 'package:schooldynamics/models/LoggedInUserModel.dart';
 import 'package:schooldynamics/models/MarksModel.dart';
 import 'package:schooldynamics/models/ServiceSubscription.dart';
 import 'package:schooldynamics/screens/finance/ServiceSubscriptionCreateScreen.dart';
-import 'package:schooldynamics/utils/Utils.dart';
 
 import '../../theme/custom_theme.dart';
 import '../../utils/my_widgets.dart';
 
 class ServiceSubscriptionScreen extends StatefulWidget {
-  ServiceSubscriptionScreen({Key? key}) : super(key: key);
+  const ServiceSubscriptionScreen({super.key});
 
   @override
   ServiceSubscriptionScreenState createState() =>
@@ -45,16 +44,16 @@ class ServiceSubscriptionScreenState extends State<ServiceSubscriptionScreen> {
       floatingActionButton: !canCreate
           ? null
           : FloatingActionButton(
-              child: Icon(Icons.add),
+              child: const Icon(Icons.add),
               onPressed: () async {
-                await Get.to(() =>   ServiceSubscriptionCreateScreen({}));
+                await Get.to(() =>   ServiceSubscriptionCreateScreen(const {}));
                 doRefresh();
               }),
       appBar: AppBar(
           backgroundColor: CustomTheme.primary,
           titleSpacing: 0,
           elevation: 0,
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.white),
           automaticallyImplyLeading: true,
           // remove back button in appbar.
           title: FxText.titleLarge(

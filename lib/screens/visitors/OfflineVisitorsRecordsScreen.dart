@@ -10,7 +10,7 @@ import '../../utils/Utils.dart';
 
 //OfflineVisitorsRecordsScreen
 class OfflineVisitorsRecordsScreen extends StatefulWidget {
-  OfflineVisitorsRecordsScreen({Key? key}) : super(key: key);
+  const OfflineVisitorsRecordsScreen({super.key});
 
   @override
   OfflineVisitorsRecordsScreenState createState() =>
@@ -101,7 +101,7 @@ class OfflineVisitorsRecordsScreenState
                                                   topRight:
                                                       Radius.circular(16))),
                                           child: Container(
-                                            padding: EdgeInsets.all(24),
+                                            padding: const EdgeInsets.all(24),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.min,
                                               crossAxisAlignment:
@@ -200,7 +200,7 @@ class OfflineVisitorsRecordsScreenState
           ),
           loading
               ? Container(
-                  padding: EdgeInsets.only(bottom: 10),
+                  padding: const EdgeInsets.only(bottom: 10),
                   child: const CircularProgressIndicator(
                     strokeWidth: 2.5,
                     valueColor: AlwaysStoppedAnimation<Color>(Colors.red),

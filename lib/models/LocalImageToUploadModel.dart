@@ -3,7 +3,6 @@ import 'package:schooldynamics/models/UserModel.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../utils/AppConfig.dart';
 import 'RespondModel.dart';
 
 class LocalImageToUploadModel {
@@ -17,18 +16,18 @@ class LocalImageToUploadModel {
   String parent_id_local = "";
 
   Future<bool> upload() async {
-    Map<String, dynamic> form_data_map = {};
+    Map<String, dynamic> formDataMap = {};
     try {
-      form_data_map['file'] =
+      formDataMap['file'] =
           await MultipartFile.fromFile(path, filename: name);
-      form_data_map['name'] = name;
-      form_data_map['path'] = path;
-      form_data_map['parent_id_online'] = parent_id_online;
-      form_data_map['parent_id_local'] = id;
-      form_data_map['parent_type'] = parent_type;
+      formDataMap['name'] = name;
+      formDataMap['path'] = path;
+      formDataMap['parent_id_online'] = parent_id_online;
+      formDataMap['parent_id_local'] = id;
+      formDataMap['parent_type'] = parent_type;
 
       RespondModel r = RespondModel(
-          await Utils.http_post('post-media-upload', form_data_map));
+          await Utils.http_post('post-media-upload', formDataMap));
       if (r.code != 1) {
         return false;
       }
@@ -40,9 +39,9 @@ class LocalImageToUploadModel {
         }
       }
 
-      this.delete();
+      delete();
       return true;
-    } on DioError catch (e) {
+    } on DioError {
       return false;
     }
 
@@ -136,7 +135,7 @@ class LocalImageToUploadModel {
   }
 
   static LocalImageToUploadModel fromJson(dynamic d) {
-    LocalImageToUploadModel obj = new LocalImageToUploadModel();
+    LocalImageToUploadModel obj = LocalImageToUploadModel();
     if (d == null) {
       return obj;
     }

@@ -13,7 +13,7 @@ class RoleModel {
   String updated_at = "";
 
   static fromJson(dynamic m) {
-    RoleModel obj = new RoleModel();
+    RoleModel obj = RoleModel();
     if (m == null) {
       return obj;
     }
@@ -67,7 +67,7 @@ class RoleModel {
     List<RoleModel> data = [];
 
     RespondModel resp =
-        RespondModel(await Utils.http_get('${RoleModel.end_point}', {}));
+        RespondModel(await Utils.http_get(RoleModel.end_point, {}));
 
     if (resp.code != 1) {
       return [];

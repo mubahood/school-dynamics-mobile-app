@@ -108,7 +108,7 @@ class EmployeeModel {
 
 
   static fromJson(dynamic m) {
-    EmployeeModel obj = new EmployeeModel();
+    EmployeeModel obj = EmployeeModel();
     if (m == null) {
       return obj;
     }
@@ -269,7 +269,7 @@ class EmployeeModel {
     List<EmployeeModel> data = [];
 
     RespondModel resp =
-        RespondModel(await Utils.http_get('${EmployeeModel.end_point}', {}));
+        RespondModel(await Utils.http_get(EmployeeModel.end_point, {}));
 
     if (resp.code != 1) {
       return [];

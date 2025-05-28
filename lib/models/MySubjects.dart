@@ -119,7 +119,7 @@ class MySubjects {
     List<MySubjects> data = [];
 
     RespondModel resp =
-        RespondModel(await Utils.http_get('${MySubjects.endPoint}', {}));
+        RespondModel(await Utils.http_get(MySubjects.endPoint, {}));
 
     if (resp.code != 1) {
       return [];
@@ -234,7 +234,7 @@ class MySubjects {
     }
 
     String sql = " CREATE TABLE IF NOT EXISTS "
-        "${tableName} ("
+        "$tableName ("
         "id INTEGER PRIMARY KEY,"
         "code TEXT,"
         "class_teahcer_id TEXT,"

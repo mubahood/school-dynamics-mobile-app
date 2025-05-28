@@ -12,7 +12,7 @@ import 'package:schooldynamics/utils/Utils.dart';
 import '../../controllers/full_app_controller.dart';
 
 class FullAppOld extends StatefulWidget {
-  const FullAppOld({Key? key}) : super(key: key);
+  const FullAppOld({super.key});
 
   @override
   _FullAppState createState() => _FullAppState();
@@ -44,7 +44,7 @@ class _FullAppState extends State<FullAppOld> with SingleTickerProviderStateMixi
                 size: controller.navItems[i].title.length < 10 ? 22 : 25,
                 color: (controller.currentIndex == i)
                     ? CustomTheme.primary
-                    : theme.colorScheme.onBackground,
+                    : theme.colorScheme.onSurface,
               ),
               const SizedBox(
                 height: 3,
@@ -54,7 +54,7 @@ class _FullAppState extends State<FullAppOld> with SingleTickerProviderStateMixi
                 fontSize: controller.navItems[i].title.length < 10 ? 12 : 8,
                 color: (controller.currentIndex == i)
                     ? CustomTheme.primary
-                    : theme.colorScheme.onBackground,
+                    : theme.colorScheme.onSurface,
               ),
             ],
           ),
@@ -82,16 +82,16 @@ class _FullAppState extends State<FullAppOld> with SingleTickerProviderStateMixi
                             physics: const NeverScrollableScrollPhysics(),
                             controller: controller.tabController,
                             children: <Widget>[
-                              SectionDashboard(),
-                              SectionCases(),
-                              TransactionsScreen({}),
-                              SectionExhibits(),
-                              AccountSection(),
+                              const SectionDashboard(),
+                              const SectionCases(),
+                              TransactionsScreen(const {}),
+                              const SectionExhibits(),
+                              const AccountSection(),
                             ],
                           ),
                         ),
                         ([].isEmpty)
-                            ? SizedBox()
+                            ? const SizedBox()
                             : InkWell(
                           onTap: () {},
                           child: Container(
@@ -133,7 +133,7 @@ class _FullAppState extends State<FullAppOld> with SingleTickerProviderStateMixi
                           ),
                         ),
                         Utils.isDesktop(context)
-                            ? SizedBox()
+                            ? const SizedBox()
                             : FxContainer(
                           bordered: true,
                           enableBorderRadius: false,

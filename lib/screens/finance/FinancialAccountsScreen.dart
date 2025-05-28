@@ -20,11 +20,10 @@ import 'FinancialAccountScreen.dart';
 class FinancialAccountsScreen extends StatefulWidget {
   Map<String, dynamic> params = {};
 
-  FinancialAccountsScreen(this.params, {Key? key}) : super(key: key);
+  FinancialAccountsScreen(this.params, {super.key});
 
   @override
-  FinancialAccountsScreenState createState() =>
-      new FinancialAccountsScreenState();
+  FinancialAccountsScreenState createState() => FinancialAccountsScreenState();
 }
 
 class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
@@ -50,7 +49,7 @@ class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
 
   bool searchIsopen = false;
   String searchKeyWord = "";
-  TextEditingController search_controler = new TextEditingController();
+  TextEditingController search_controler = TextEditingController();
   var searchFocusNode = FocusNode();
 
   @override
@@ -62,13 +61,13 @@ class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
         backgroundColor: CustomTheme.primary,
         titleSpacing: 0,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         automaticallyImplyLeading: true,
         // remove back button in appbar.
         title: searchIsopen
             ? FxContainer(
                 color: Colors.white,
-                padding: EdgeInsets.only(left: 10, top: 8, bottom: 8),
+                padding: const EdgeInsets.only(left: 10, top: 8, bottom: 8),
                 child: FormBuilderTextField(
                   name: "search",
                   onChanged: (x) {
@@ -81,21 +80,21 @@ class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
                     hintText: "Search ...",
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
-                          Radius.circular(MySize.size8!),
+                          Radius.circular(MySize.size8),
                         ),
                         borderSide: BorderSide.none),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
-                          Radius.circular(MySize.size8!),
+                          Radius.circular(MySize.size8),
                         ),
                         borderSide: BorderSide.none),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
-                          Radius.circular(MySize.size8!),
+                          Radius.circular(MySize.size8),
                         ),
                         borderSide: BorderSide.none),
                     isDense: true,
-                    contentPadding: EdgeInsets.all(0),
+                    contentPadding: const EdgeInsets.all(0),
                   ),
                   controller: search_controler,
                   focusNode: searchFocusNode,
@@ -132,13 +131,13 @@ class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
             ),
           ),
           searchIsopen
-              ? SizedBox()
+              ? const SizedBox()
               : InkWell(
                   onTap: () {
                     showShareBottomSheet();
                   },
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 5, right: 20),
+                  child: const Padding(
+                    padding: EdgeInsets.only(left: 5, right: 20),
                     child: Icon(
                       FeatherIcons.share2,
                       color: Colors.white,
@@ -193,15 +192,16 @@ class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
                                   FxContainer(
                                     color: CupertinoColors.lightBackgroundGray,
                                     borderRadiusAll: 0,
-                                    padding: EdgeInsets.only(top: 8),
+                                    padding: const EdgeInsets.only(top: 8),
                                     child: Wrap(
                                       runSpacing: 0,
                                       children: <Widget>[
                                         _buildChip('All'),
                                         _buildChip('Male'),
                                         _buildChip('Female'),
-                                        _buildChip(
-                                            '${selected_class_text.isEmpty ? "Class" : 'Class - $selected_class_text'}'),
+                                        _buildChip(selected_class_text.isEmpty
+                                            ? "Class"
+                                            : 'Class - $selected_class_text'),
                                         _buildChip('Fees'),
                                         _buildChip(selected_verification.isEmpty
                                             ? "Verification"
@@ -209,7 +209,7 @@ class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
                                       ],
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   Divider(
@@ -217,8 +217,8 @@ class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
                                     height: 0,
                                   ),
                                   Container(
-                                      padding:
-                                          EdgeInsets.only(bottom: 10, top: 5),
+                                      padding: const EdgeInsets.only(
+                                          bottom: 10, top: 5),
                                       child: Column(
                                         children: [
                                           Row(
@@ -271,7 +271,7 @@ class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
                         color: CustomTheme.primary,
                       ),
                       Container(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                           left: 15,
                           bottom: 5,
                           right: 15,
@@ -284,10 +284,10 @@ class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
                               fontWeight: 800,
                               color: Colors.black,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Column(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   height: 8,
                                 ),
                                 FxText.bodySmall(
@@ -335,7 +335,7 @@ class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
     shared_data = "SCHOOL FEES BALANCES";
     balance = 0;
     count = 0;
-    String _word = "";
+    String word = "";
     for (UserModel element in originalItems) {
       if (searchKeyWord.isNotEmpty) {
         if (!element.name
@@ -343,9 +343,9 @@ class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
             .contains(searchKeyWord.toString().toLowerCase().trim())) {
           continue;
         }
-        _word = "\n*KEYWORD:* $searchKeyWord}";
-        if (!shared_filters.contains(_word)) {
-          shared_filters += _word;
+        word = "\n*KEYWORD:* $searchKeyWord}";
+        if (!shared_filters.contains(word)) {
+          shared_filters += word;
         }
       }
 
@@ -353,27 +353,27 @@ class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
         if (element.sex != 'Male') {
           continue;
         }
-        _word = '\n*GENDER:* Male';
-        if (!shared_filters.contains(_word)) {
-          shared_filters += _word;
+        word = '\n*GENDER:* Male';
+        if (!shared_filters.contains(word)) {
+          shared_filters += word;
         }
       }
       if (filteredParameters.contains('Female')) {
         if (element.sex != 'Female') {
           continue;
         }
-        _word = '\n*GENDER:* FEMALE';
-        if (!shared_filters.contains(_word)) {
-          shared_filters += _word;
+        word = '\n*GENDER:* FEMALE';
+        if (!shared_filters.contains(word)) {
+          shared_filters += word;
         }
       }
       if (selected_class_id.isNotEmpty) {
         if (element.current_class_id != selected_class_id) {
           continue;
         }
-        _word = '\n*CLASS:* ${selected_class_text}';
-        if (!shared_filters.contains(_word)) {
-          shared_filters += _word;
+        word = '\n*CLASS:* $selected_class_text';
+        if (!shared_filters.contains(word)) {
+          shared_filters += word;
         }
       }
 
@@ -382,8 +382,8 @@ class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
           if (element.verification != '1') {
             continue;
           }
-          _word = '\n*VERIFICATION:* Verified';
-          if (!shared_filters.contains(_word)) {
+          word = '\n*VERIFICATION:* Verified';
+          if (!shared_filters.contains(word)) {
             //shared_filters += _word;
           }
         }
@@ -392,8 +392,8 @@ class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
           if (element.verification != '0') {
             continue;
           }
-          _word = '\n*VERIFICATION:* Not Verified';
-          if (!shared_filters.contains(_word)) {
+          word = '\n*VERIFICATION:* Not Verified';
+          if (!shared_filters.contains(word)) {
             //shared_filters += _word;
           }
         }
@@ -419,16 +419,20 @@ class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
     for (var element in items) {
       count++;
       shared_records +=
-          "\n*${count}. ${element.name}* - ${element.current_class_text}\n*BALANCE:* UGX ${Utils.moneyFormat(element.balance.toString())}\n";
+          "\n*$count. ${element.name}* - ${element.current_class_text}\n*BALANCE:* UGX ${Utils.moneyFormat(element.balance.toString())}\n";
     }
 
-    shared_data += "\n\n*FILTERS*" +
-        '${(shared_filters.isNotEmpty) ? shared_filters : "\nALL STUDENTS"}';
+    shared_data += "\n\n*FILTERS*";
+    if (shared_filters.isNotEmpty) {
+      shared_data += "\n\n*FILTERS*";
+    } else {
+      shared_data += "\n\n*FILTERS* ALL STUDENTS";
+    }
 
     shared_data += "\n\n*TOTAL:* UGX ${Utils.moneyFormat(balance.toString())}";
     shared_data += "\n*AS ON:* UGX ${Utils.to_date(DateTime.now().toString())}";
 
-    shared_data += "\n\n*STUDENTS\' ACCOUNTS*";
+    shared_data += "\n\n*STUDENTS' ACCOUNTS*";
     shared_data += shared_records;
 
     setState(() {});
@@ -514,17 +518,17 @@ class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(MySize.size16!),
-                topRight: Radius.circular(MySize.size16!),
+                topLeft: Radius.circular(MySize.size16),
+                topRight: Radius.circular(MySize.size16),
               ),
             ),
             child: Container(
-              padding: EdgeInsets.only(top: 15),
+              padding: const EdgeInsets.only(top: 15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(left: 15, right: 15),
+                    margin: const EdgeInsets.only(left: 15, right: 15),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -624,13 +628,13 @@ class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
           return Container(
             color: Colors.transparent,
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(16),
                       topRight: Radius.circular(16))),
               child: Container(
-                padding: EdgeInsets.all(12),
+                padding: const EdgeInsets.all(12),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,

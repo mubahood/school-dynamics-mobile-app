@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
-import 'package:schooldynamics/models/MarksModel.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 
 import '../../models/Service.dart';
@@ -11,7 +10,7 @@ class ServicesScreen extends StatefulWidget {
 
   Map<String, String> params = {};
 
-  ServicesScreen(this.params, {Key? key}) : super(key: key);
+  ServicesScreen(this.params, {super.key});
 
 
 
@@ -33,12 +32,10 @@ class ServicesScreenState extends State<ServicesScreen> {
   Future<dynamic> doRefresh() async {
     futureInit = init();
 
-    if (widget.params != null) {
-      if (widget.params['task_picker'] != null) {
-        isPickTask = true;
-      }
+    if (widget.params['task_picker'] != null) {
+      isPickTask = true;
     }
-
+  
     setState(() {});
   }
 
@@ -52,7 +49,7 @@ class ServicesScreenState extends State<ServicesScreen> {
           backgroundColor: CustomTheme.primary,
           titleSpacing: 0,
           elevation: 0,
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.white),
           automaticallyImplyLeading: true,
           // remove back button in appbar.
           title: FxText.titleLarge(
@@ -100,7 +97,7 @@ class ServicesScreenState extends State<ServicesScreen> {
                                   color: Colors.black,
                                   fontWeight: 700,
                                 ),
-                                FxText.bodySmall("${m.description}"),
+                                FxText.bodySmall(m.description),
                               ],
                             ),
                           ),
@@ -117,7 +114,7 @@ class ServicesScreenState extends State<ServicesScreen> {
                               ],
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 15,
                           ),
                         ],

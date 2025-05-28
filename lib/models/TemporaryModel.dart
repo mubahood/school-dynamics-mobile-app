@@ -18,7 +18,7 @@ class TemporaryModel {
   }
 
   static TemporaryModel fromJson(dynamic data) {
-    TemporaryModel x = new TemporaryModel();
+    TemporaryModel x = TemporaryModel();
     x.id = Utils.int_parse(data['id']);
     x.title = Utils.to_str(data['title'], '');
     x.subtitle = Utils.to_str(data['subtitle'], '');

@@ -60,7 +60,7 @@ class VisitorRecordModelLocal {
   }
 
   static fromJson(dynamic m) {
-    VisitorRecordModelLocal obj = new VisitorRecordModelLocal();
+    VisitorRecordModelLocal obj = VisitorRecordModelLocal();
     if (m == null) {
       return obj;
     }
@@ -307,18 +307,18 @@ class VisitorRecordModelLocal {
     upload_status = "";
     upload_error = '';
     save();
-    Map<String, dynamic> form_data_map = toJson();
+    Map<String, dynamic> formDataMap = toJson();
 
     if (signature_path.length > 3) {
       File sig = File(signature_path);
       if (sig.existsSync()) {
-        form_data_map['file'] = await MultipartFile.fromFile(signature_path,
+        formDataMap['file'] = await MultipartFile.fromFile(signature_path,
             filename: signature_path);
       }
     }
 
     RespondModel r = RespondModel(
-        await Utils.http_post('visitors-record-create', form_data_map));
+        await Utils.http_post('visitors-record-create', formDataMap));
 
     if (r.code != 1) {
       upload_status = "Failed";

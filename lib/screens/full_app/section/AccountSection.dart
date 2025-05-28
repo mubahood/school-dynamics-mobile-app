@@ -14,7 +14,7 @@ import '../../account/AccountChangePassword.dart';
 import '../../account/AccountEdit.dart';
 
 class AccountSection extends StatefulWidget {
-  const AccountSection({Key? key}) : super(key: key);
+  const AccountSection({super.key});
 
   @override
   _AccountSectionState createState() => _AccountSectionState();
@@ -134,7 +134,7 @@ class _AccountSectionState extends State<AccountSection> {
                               onTap: () {
                                 Navigator.pop(context);
                                 Utils.launchPhone(
-                                    '${mainController.ent.phone_number}');
+                                    mainController.ent.phone_number);
                               },
                               trailing: Icon(
                                 FeatherIcons.chevronRight,
@@ -199,7 +199,7 @@ class _AccountSectionState extends State<AccountSection> {
                 color: CustomTheme.primary,
               ),
               onTap: () {
-                Get.to(() => AboutUsScreen());
+                Get.to(() => const AboutUsScreen());
               },
               trailing: Icon(
                 FeatherIcons.chevronRight,
@@ -254,7 +254,7 @@ class _AccountSectionState extends State<AccountSection> {
                               ),
                               onTap: () {
                                 Navigator.pop(context);
-                                Utils.launchPhone('${AppConfig.CONTACT_PHONE}');
+                                Utils.launchPhone(AppConfig.CONTACT_PHONE);
                               },
                               trailing: Icon(
                                 FeatherIcons.chevronRight,
@@ -313,7 +313,7 @@ class _AccountSectionState extends State<AccountSection> {
                 "Delete Account",
                 color: Colors.red,
               ),
-              leading: Icon(
+              leading: const Icon(
                 FeatherIcons.trash2,
                 color: Colors.red,
               ),
@@ -405,6 +405,6 @@ class _AccountSectionState extends State<AccountSection> {
   Future<void> do_logout() async {
     Utils.logout();
     Utils.toast("Logged you out!");
-    Get.offAll(() => OnBoardingScreen());
+    Get.offAll(() => const OnBoardingScreen());
   }
 }

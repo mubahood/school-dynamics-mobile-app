@@ -44,7 +44,7 @@ class VisitorRecordModelOnline {
   String status = "";
 
   static fromJson(dynamic m) {
-    VisitorRecordModelOnline obj = new VisitorRecordModelOnline();
+    VisitorRecordModelOnline obj = VisitorRecordModelOnline();
     if (m == null) {
       return obj;
     }
@@ -131,7 +131,7 @@ class VisitorRecordModelOnline {
     List<VisitorRecordModelOnline> data = [];
 
     RespondModel resp = RespondModel(
-        await Utils.http_get('${VisitorRecordModelOnline.end_point}', {}));
+        await Utils.http_get(VisitorRecordModelOnline.end_point, {}));
 
     if (resp.code != 1) {
       return [];

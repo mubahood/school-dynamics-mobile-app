@@ -56,7 +56,6 @@ class TripModelLocal {
     } catch (e) {
       failed_message = e.toString();
       status = 'Failed';
-      ;
       await save();
       return e.toString();
     }
@@ -154,13 +153,13 @@ class TripModelLocal {
     await initTable();
 
     try {
-      dynamic my_data = toJson();
+      dynamic myData = toJson();
       if (id == 0) {
-        my_data.remove('id');
+        myData.remove('id');
       }
       await db.insert(
         table_name,
-        my_data,
+        myData,
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
     } catch (e) {
@@ -264,7 +263,7 @@ class TripModelLocal {
 
   delete() async {
 
-    await TransportParticipantModel.delete(' trip_id = ${id} ');
+    await TransportParticipantModel.delete(' trip_id = $id ');
 
     Database db = await Utils.getDb();
     if (!db.isOpen) {

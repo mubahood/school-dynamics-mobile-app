@@ -44,11 +44,11 @@ class _MainCoursesScreenState extends State<MainCoursesScreen> {
     allItems = await MainCourse.get_items();
     items = [];
 
-    allItems.forEach((element) {
+    for (var element in allItems) {
       if (element.get_name().toLowerCase().contains(searchWord.toLowerCase())) {
         items.add(element);
       }
-    });
+    }
 
     setState(() {
       isLoading = false;
@@ -57,7 +57,7 @@ class _MainCoursesScreenState extends State<MainCoursesScreen> {
 
   Widget searchInput() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 0, horizontal: 15),
+      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -87,7 +87,7 @@ class _MainCoursesScreenState extends State<MainCoursesScreen> {
               onPressed: () {
                 // Get.to(()=>CourseEditScreen());
               },
-              child: Icon(Icons.add),
+              child: const Icon(Icons.add),
       ),
       appBar: AppBar(
         title: searchIsOpen
@@ -113,7 +113,7 @@ class _MainCoursesScreenState extends State<MainCoursesScreen> {
               }
             },
           ),
-          SizedBox(
+          const SizedBox(
             width: 15,
           ),
         ],

@@ -21,7 +21,7 @@ class TheologyClassModel {
   String students_count = "";
 
   static fromJson(dynamic m) {
-    TheologyClassModel obj = new TheologyClassModel();
+    TheologyClassModel obj = TheologyClassModel();
     if (m == null) {
       return obj;
     }
@@ -85,7 +85,7 @@ class TheologyClassModel {
     List<TheologyClassModel> data = [];
 
     RespondModel resp = RespondModel(
-        await Utils.http_get('${TheologyClassModel.end_point}', {}));
+        await Utils.http_get(TheologyClassModel.end_point, {}));
 
     if (resp.code != 1) {
       return [];

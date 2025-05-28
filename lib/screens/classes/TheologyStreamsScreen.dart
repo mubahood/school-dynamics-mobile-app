@@ -11,10 +11,10 @@ import '../../utils/my_widgets.dart';
 class TheologyStreamsScreen extends StatefulWidget {
   String class_id = '';
 
-  TheologyStreamsScreen(this.class_id, {Key? key}) : super(key: key);
+  TheologyStreamsScreen(this.class_id, {super.key});
 
   @override
-  TheologyStreamsScreenState createState() => new TheologyStreamsScreenState();
+  TheologyStreamsScreenState createState() => TheologyStreamsScreenState();
 }
 
 class TheologyStreamsScreenState extends State<TheologyStreamsScreen> {
@@ -47,7 +47,7 @@ class TheologyStreamsScreenState extends State<TheologyStreamsScreen> {
           titleSpacing: 0,
           backgroundColor: CustomTheme.primary,
           elevation: 0,
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.white),
           automaticallyImplyLeading: true,
           // remove back button in appbar.
           title: FxText.titleLarge(
@@ -63,7 +63,32 @@ class TheologyStreamsScreenState extends State<TheologyStreamsScreen> {
               return myListLoaderWidget(context);
             }
             if (items.isEmpty) {
-              return Center(child: FxText('No item found.'));
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(child: FxText('No item found.')),
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      doRefresh();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: CustomTheme.primary,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 10,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: FxText.bodyLarge(
+                      'Reload',
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              );
             }
 
             return Container(
@@ -84,7 +109,7 @@ class TheologyStreamsScreenState extends State<TheologyStreamsScreen> {
                         (BuildContext context, int index) {
                           TheologyStreamModel item = items[index];
                           return FxContainer(
-                            margin: EdgeInsets.only(top: 5),
+                            margin: const EdgeInsets.only(top: 5),
                             onTap: () {
                               if (isPicker) {
                                 Get.back(result: item);
@@ -107,7 +132,7 @@ class TheologyStreamsScreenState extends State<TheologyStreamsScreen> {
                                   color: CustomTheme.primary,
                                   size: 30,
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 FxText.titleSmall(
                                   item.name,
                                   height: .8,
@@ -140,9 +165,13 @@ class TheologyStreamsScreenState extends State<TheologyStreamsScreen> {
   }
 
   Future<void> init() async {
-    items = await TheologyStreamModel.get_items(
-      where: " theology_class_id = '${widget.class_id}' ",
-    );
-    setState(() {});
+    try {
+      items = await TheologyStreamModel.get_items();
+      if (items.isEmpty) {
+        await TheologyStreamModel.getOnlineItems();
+        items = await TheologyStreamModel.get_items(
+        );
+      }
+    } catch (e) {}
   }
 }

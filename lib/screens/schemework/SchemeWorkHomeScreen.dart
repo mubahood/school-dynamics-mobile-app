@@ -10,7 +10,7 @@ import '../../models/MySubjects.dart';
 import 'SubjectSchemeWorkScreen.dart';
 
 class SchemeWorkHomeScreen extends StatefulWidget {
-  SchemeWorkHomeScreen({Key? key}) : super(key: key);
+  const SchemeWorkHomeScreen({super.key});
 
   @override
   _SchemeWorkHomeScreenState createState() => _SchemeWorkHomeScreenState();
@@ -41,27 +41,27 @@ class _SchemeWorkHomeScreenState extends State<SchemeWorkHomeScreen>
 
     mySubjects = await MySubjects.getItems();
     mySubjects.sort((a, b) => a.id.compareTo(b.id));
-    List<SchemeWorkItemModel> _items = await SchemeWorkItemModel.get_items();
+    List<SchemeWorkItemModel> items = await SchemeWorkItemModel.get_items();
     for (int i = 0; i < mySubjects.length; i++) {
       //lessons_planned_count
-      mySubjects[i].lessons_planned_count = _items
+      mySubjects[i].lessons_planned_count = items
           .where((element) => element.subject_id == mySubjects[i].id.toString())
           .length;
       //lessons_planned_taught, where teacher_status = 'Conducted'
-      mySubjects[i].lessons_planned_taught = _items
+      mySubjects[i].lessons_planned_taught = items
           .where((element) =>
               element.subject_id == mySubjects[i].id.toString() &&
               element.teacher_status == 'Conducted')
           .length;
       //lessons_skipped_count, where teacher_status = 'Skipped'
-      mySubjects[i].lessons_skipped_count = _items
+      mySubjects[i].lessons_skipped_count = items
           .where((element) =>
               element.subject_id == mySubjects[i].id.toString() &&
               element.teacher_status == 'Skipped')
           .length;
 
       //lessons_planned_pending, where teacher_status = 'Pending'
-      mySubjects[i].lessons_planned_pending = _items
+      mySubjects[i].lessons_planned_pending = items
           .where((element) =>
               element.subject_id == mySubjects[i].id.toString() &&
               element.teacher_status == 'Pending')

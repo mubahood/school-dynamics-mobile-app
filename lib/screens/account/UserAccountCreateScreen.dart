@@ -16,7 +16,7 @@ class UserAccountCreateScreen extends StatefulWidget {
   UserModel u;
   String task;
 
-  UserAccountCreateScreen(this.u, this.task, {Key? key}) : super(key: key);
+  UserAccountCreateScreen(this.u, this.task, {super.key});
 
   @override
   State<UserAccountCreateScreen> createState() =>
@@ -65,7 +65,7 @@ class _UserAccountCreateScreenState extends State<UserAccountCreateScreen> {
                   if (val == null) {
                     return;
                   }
-                  item.first_name = val!.trim().toString();
+                  item.first_name = val.trim().toString();
                 },
                 textInputAction: TextInputAction.next,
               ),
@@ -86,7 +86,7 @@ class _UserAccountCreateScreenState extends State<UserAccountCreateScreen> {
                   if (val == null) {
                     return;
                   }
-                  item.last_name = val!.trim().toString();
+                  item.last_name = val.trim().toString();
                 },
                 textInputAction: TextInputAction.next,
               ),
@@ -254,7 +254,7 @@ class _UserAccountCreateScreenState extends State<UserAccountCreateScreen> {
                   if (val == null) {
                     return;
                   }
-                  item.email = val!.trim().toString();
+                  item.email = val.trim().toString();
                 },
                 textInputAction: TextInputAction.next,
               ),
@@ -283,7 +283,7 @@ class _UserAccountCreateScreenState extends State<UserAccountCreateScreen> {
                   if (val == null) {
                     return;
                   }
-                  item.password = val!.trim().toString();
+                  item.password = val.trim().toString();
                 },
                 textInputAction: TextInputAction.next,
               ),
@@ -306,7 +306,7 @@ class _UserAccountCreateScreenState extends State<UserAccountCreateScreen> {
                   if (val == null) {
                     return;
                   }
-                  item.confirm_password = val!.trim().toString();
+                  item.confirm_password = val.trim().toString();
                 },
                 textInputAction: TextInputAction.done,
               ),
@@ -318,7 +318,7 @@ class _UserAccountCreateScreenState extends State<UserAccountCreateScreen> {
                       width: double.infinity,
                       borderColor: Colors.red.shade900,
                       bordered: true,
-                      margin: EdgeInsets.only(bottom: 10),
+                      margin: const EdgeInsets.only(bottom: 10),
                       color: Colors.red.shade50,
                       child: FxText.bodySmall(
                         error_message,
@@ -381,38 +381,38 @@ class _UserAccountCreateScreenState extends State<UserAccountCreateScreen> {
     }
 
     //do some more validation
-    if (item.phone_number_1!.length < 6) {
+    if (item.phone_number_1.length < 6) {
       Utils.toast("Invalid phone number.", color: Colors.red);
       return;
     }
     //do some more validation
-    if (item.current_address!.length < 6) {
+    if (item.current_address.length < 6) {
       Utils.toast("Invalid address.", color: Colors.red);
       return;
     }
     //do some more validation
-    if (item.email!.length < 4) {
+    if (item.email.length < 4) {
       Utils.toast("Invalid email address.", color: Colors.red);
       return;
     }
     //do some more validation
-    if (item.password!.length < 4) {
+    if (item.password.length < 4) {
       Utils.toast("Password is too short.", color: Colors.red);
       return;
     }
     //do some more validation
-    if (item.first_name!.length < 2) {
+    if (item.first_name.length < 2) {
       Utils.toast("First name is too short.", color: Colors.red);
       return;
     }
     //do some more validation
-    if (item.last_name!.length < 2) {
+    if (item.last_name.length < 2) {
       Utils.toast("Last name is too short.", color: Colors.red);
       return;
     }
     item.phone_number_1 = "$country$phone_number";
     //do some more validation
-    if (item.phone_number_1!.length < 6) {
+    if (item.phone_number_1.length < 6) {
       Utils.toast("Invalid phone number.", color: Colors.red);
       return;
     }
@@ -464,7 +464,7 @@ class _UserAccountCreateScreenState extends State<UserAccountCreateScreen> {
 
     setState(() {});
 
-    Get.off(OnBoardingScreen());
+    Get.off(const OnBoardingScreen());
   }
 
   bool is_loading = false;

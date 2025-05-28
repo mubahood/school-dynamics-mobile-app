@@ -22,8 +22,8 @@ class EmployeeCreateScreen extends StatefulWidget {
 
   EmployeeCreateScreen(
     this.params, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   EmployeeCreateScreenState createState() => EmployeeCreateScreenState();
@@ -103,7 +103,7 @@ class EmployeeCreateScreenState extends State<EmployeeCreateScreen>
         backgroundColor: CustomTheme.primary,
         actions: [
           is_loading
-              ? Padding(
+              ? const Padding(
                   padding: EdgeInsets.only(right: 20, top: 10, bottom: 10),
                   child: Center(
                     child: CircularProgressIndicator(
@@ -117,7 +117,7 @@ class EmployeeCreateScreenState extends State<EmployeeCreateScreen>
                     submit_form();
                   },
                   backgroundColor: Colors.white,
-                  child: Icon(
+                  child: const Icon(
                     FeatherIcons.check,
                     color: Colors.white,
                     size: 35,
@@ -732,7 +732,7 @@ class EmployeeCreateScreenState extends State<EmployeeCreateScreen>
                                       ),
                                       const SizedBox(height: 10),
                                       title_widget("Academics".toUpperCase()),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 10,
                                       ),
                                       FormBuilderTextField(
@@ -1060,7 +1060,7 @@ class EmployeeCreateScreenState extends State<EmployeeCreateScreen>
                     ),
                   ),
                   _keyboardVisible
-                      ? SizedBox()
+                      ? const SizedBox()
                       : is_loading
                           ? Container(
                               height: 50,

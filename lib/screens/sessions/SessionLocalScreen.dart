@@ -5,14 +5,13 @@ import 'package:get/get.dart';
 import '../../models/SessionLocal.dart';
 import '../../theme/custom_theme.dart';
 import '../../utils/Utils.dart';
-import 'SessionOnlineScreen.dart';
 import 'SessionRollCallingScreen.dart';
 
 class SessionLocalScreen extends StatefulWidget {
-  SessionLocalScreen({Key? key}) : super(key: key);
+  const SessionLocalScreen({super.key});
 
   @override
-  SessionLocalScreenState createState() => new SessionLocalScreenState();
+  SessionLocalScreenState createState() => SessionLocalScreenState();
 }
 
 class SessionLocalScreenState extends State<SessionLocalScreen> {
@@ -34,7 +33,7 @@ class SessionLocalScreenState extends State<SessionLocalScreen> {
           backgroundColor: CustomTheme.primary,
           titleSpacing: 0,
           elevation: 0,
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.white),
           automaticallyImplyLeading: true,
           // remove back button in appbar.
           title: Column(
@@ -75,7 +74,7 @@ class SessionLocalScreenState extends State<SessionLocalScreen> {
                 subtitle: FxText.bodySmall(Utils.to_date_1(m.due_date)),
                 trailing: FxContainer(
                   padding:
-                      EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
+                      const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
                   color: Colors.red.shade50,
                   child: FxText.bodySmall(
                     'NOT SUBMITTED',

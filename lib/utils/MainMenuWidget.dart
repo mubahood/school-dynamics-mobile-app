@@ -9,7 +9,7 @@ class MainMenuWidget extends StatefulWidget {
   MenuItem main;
   List<MenuItem> menuItems;
 
-  MainMenuWidget(this.main, this.menuItems);
+  MainMenuWidget(this.main, this.menuItems, {super.key});
 
   @override
   _CourseTasksScreenState createState() => _CourseTasksScreenState();

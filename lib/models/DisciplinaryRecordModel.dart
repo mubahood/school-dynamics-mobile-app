@@ -33,7 +33,7 @@ class DisciplinaryRecordModel {
   String file = "";
 
   static fromJson(dynamic m) {
-    DisciplinaryRecordModel obj = new DisciplinaryRecordModel();
+    DisciplinaryRecordModel obj = DisciplinaryRecordModel();
     if (m == null) {
       return obj;
     }
@@ -109,7 +109,7 @@ class DisciplinaryRecordModel {
     List<DisciplinaryRecordModel> data = [];
 
     RespondModel resp = RespondModel(
-        await Utils.http_get('${DisciplinaryRecordModel.end_point}', {}));
+        await Utils.http_get(DisciplinaryRecordModel.end_point, {}));
 
     if (resp.code != 1) {
       return [];

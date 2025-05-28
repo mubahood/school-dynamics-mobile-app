@@ -16,7 +16,7 @@ class AnalyzeImageFromGalleryButton extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(
+        const SizedBox(
           height: 5,
         ),
         IconButton(

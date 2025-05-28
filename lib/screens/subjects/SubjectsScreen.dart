@@ -48,11 +48,11 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
     allItems = await SubjectModel.get_items();
     items = [];
 
-    allItems.forEach((element) {
+    for (var element in allItems) {
       if (element.get_name().toLowerCase().contains(searchWord.toLowerCase())) {
         items.add(element);
       }
-    });
+    }
 
     setState(() {
       isLoading = false;
@@ -61,7 +61,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
 
   Widget searchInput() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 0, horizontal: 15),
+      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -87,9 +87,9 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Get.to(() => SubjectModelEditScreen({}));
+          Get.to(() => SubjectModelEditScreen(const {}));
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
       appBar: AppBar(
         title: searchIsOpen
@@ -115,7 +115,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
               }
             },
           ),
-          SizedBox(
+          const SizedBox(
             width: 15,
           ),
         ],

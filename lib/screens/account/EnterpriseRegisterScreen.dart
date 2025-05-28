@@ -19,8 +19,8 @@ class EnterpriseModelEditScreen extends StatefulWidget {
 
   EnterpriseModelEditScreen(
     this.params, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   EnterpriseModelEditScreenState createState() =>
@@ -65,7 +65,7 @@ class EnterpriseModelEditScreenState extends State<EnterpriseModelEditScreen>
         actions: [
           is_loading
               ? Padding(
-                  padding: EdgeInsets.only(right: 20, top: 10, bottom: 10),
+                  padding: const EdgeInsets.only(right: 20, top: 10, bottom: 10),
                   child: Center(
                     child: CircularProgressIndicator(
                       strokeWidth: 2.0,
@@ -79,7 +79,7 @@ class EnterpriseModelEditScreenState extends State<EnterpriseModelEditScreen>
                     submit_form();
                   },
                   backgroundColor: Colors.white,
-                  child: Icon(
+                  child: const Icon(
                     FeatherIcons.check,
                     color: Colors.white,
                     size: 35,
@@ -218,12 +218,12 @@ class EnterpriseModelEditScreenState extends State<EnterpriseModelEditScreen>
                                   FormBuilderFieldOption(
                                     value: 'Secondary',
                                     child: Text(
-                                        "Secondary School (O\'level school)"),
+                                        "Secondary School (O'level school)"),
                                   ),
                                   FormBuilderFieldOption(
                                     value: 'Advanced',
                                     child: Text(
-                                        "Advanced Secondary School (Both O\'level and A\'level)"),
+                                        "Advanced Secondary School (Both O'level and A'level)"),
                                   ),
                                 ]),
                             const SizedBox(height: 20),
@@ -505,7 +505,7 @@ class EnterpriseModelEditScreenState extends State<EnterpriseModelEditScreen>
                     ),
                   ),
                   _keyboardVisible
-                      ? SizedBox()
+                      ? const SizedBox()
                       : FxContainer(
                           color: Colors.white,
                           borderRadiusAll: 0,
@@ -580,7 +580,7 @@ class EnterpriseModelEditScreenState extends State<EnterpriseModelEditScreen>
     await u.save();
 
     Utils.toast(resp.message, color: Colors.green.shade700);
-    Get.off(OnBoardingScreen());
+    Get.off(const OnBoardingScreen());
     return;
   }
 }

@@ -27,8 +27,8 @@ class VisitorRecordCreateScreen extends StatefulWidget {
 
   VisitorRecordCreateScreen(
     this.item, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   _VisitorRecordCreateScreenState createState() =>
@@ -162,7 +162,7 @@ class _VisitorRecordCreateScreenState extends State<VisitorRecordCreateScreen> {
             },
           )
         ],
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         titleSpacing: 0,
         title: FxText.titleLarge(
           "New scheme-work item",
@@ -598,7 +598,7 @@ class _VisitorRecordCreateScreenState extends State<VisitorRecordCreateScreen> {
                             ),
 
                             (!widget.item.isEdit)
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : Column(
                                     children: [
                                       const SizedBox(
@@ -733,8 +733,8 @@ class _VisitorRecordCreateScreenState extends State<VisitorRecordCreateScreen> {
                                             Utils.toast("Signature not saved");
                                             return;
                                           }
-                                          File? sign_file = File(signPath);
-                                          if (!sign_file.existsSync()) {
+                                          File? signFile = File(signPath);
+                                          if (!signFile.existsSync()) {
                                             Utils.toast("Signature not saved");
                                             return;
                                           }
@@ -786,7 +786,7 @@ class _VisitorRecordCreateScreenState extends State<VisitorRecordCreateScreen> {
                             ),
 
                             widget.item.purpose_other != 'Yes'
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : Column(
                                     children: [
                                       //organization

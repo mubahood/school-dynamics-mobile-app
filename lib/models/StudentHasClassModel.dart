@@ -20,7 +20,7 @@ class StudentHasClassModel {
 
 
   static fromJson(dynamic m) {
-    StudentHasClassModel obj = new StudentHasClassModel();
+    StudentHasClassModel obj = StudentHasClassModel();
     if (m == null) {
       return obj;
     }
@@ -80,7 +80,7 @@ class StudentHasClassModel {
     List<StudentHasClassModel> data = [];
 
     RespondModel resp = RespondModel(
-        await Utils.http_get('${StudentHasClassModel.end_point}', {}));
+        await Utils.http_get(StudentHasClassModel.end_point, {}));
 
     if (resp.code != 1) {
       return [];

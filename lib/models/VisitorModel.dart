@@ -55,7 +55,7 @@ class VisitorModel {
   }
 
   static fromJson(dynamic m) {
-    VisitorModel obj = new VisitorModel();
+    VisitorModel obj = VisitorModel();
     if (m == null) {
       return obj;
     }
@@ -116,7 +116,7 @@ class VisitorModel {
     List<VisitorModel> data = [];
 
     RespondModel resp =
-        RespondModel(await Utils.http_get('${VisitorModel.end_point}', {}));
+        RespondModel(await Utils.http_get(VisitorModel.end_point, {}));
 
     if (resp.code != 1) {
       return [];

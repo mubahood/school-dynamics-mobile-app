@@ -3,30 +3,31 @@ import 'dart:ui';
 
 extension StringUtil on String {
   Color get toColor {
-    String data = this.replaceAll("#", "");
+    String data = replaceAll("#", "");
     if (data.length == 6) {
-      data = "FF" + data;
+      data = "FF$data";
     }
     return Color(int.parse("0x$data"));
   }
 
   String maxLength(int length) {
-    if (length > this.length)
+    if (length > this.length) {
       return this;
-    else
-      return this.substring(0, length);
+    } else {
+      return substring(0, length);
+    }
   }
 
   String toParagraph([bool addDash = false]) {
-    return addDash ? "-\t" + this : "\t" + this;
+    return addDash ? "-\t$this" : "\t$this";
   }
 
   bool toBool([bool defaultValue = false]) {
-    if (this.toString().compareTo('1') == 0 ||
-        this.toString().compareTo('true') == 0) {
+    if (toString().compareTo('1') == 0 ||
+        toString().compareTo('true') == 0) {
       return true;
-    } else if (this.toString().compareTo('0') == 0 ||
-        this.toString().compareTo('false') == 0) {
+    } else if (toString().compareTo('0') == 0 ||
+        toString().compareTo('false') == 0) {
       return false;
     }
     return defaultValue;

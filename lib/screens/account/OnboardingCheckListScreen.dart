@@ -11,7 +11,7 @@ import '../employees/EmployeesScreen.dart';
 import '../subjects/SubjectsScreen.dart';
 
 class OnboardingCheckListScreen extends StatefulWidget {
-  OnboardingCheckListScreen({Key? key}) : super(key: key);
+  const OnboardingCheckListScreen({super.key});
 
   @override
   State<OnboardingCheckListScreen> createState() =>
@@ -60,7 +60,7 @@ class _OnboardingCheckListScreenState extends State<OnboardingCheckListScreen> {
               ),
             ),
             const SizedBox(height: 10),
-            Text(
+            const Text(
               'You should complete the following steps to set up your school account.',
               style: TextStyle(fontSize: 16, height: 1.5),
             ),
@@ -136,7 +136,7 @@ class _OnboardingCheckListScreenState extends State<OnboardingCheckListScreen> {
             ListTile(
               dense: true,
               onTap: () {
-                Get.to(SubjectsScreen({}));
+                Get.to(SubjectsScreen(const {}));
               },
               contentPadding: EdgeInsets.zero,
               leading: Icon(
@@ -186,7 +186,7 @@ class _OnboardingCheckListScreenState extends State<OnboardingCheckListScreen> {
             ListTile(
               dense: true,
               onTap: () {
-                Get.to(StudentsScreen({}));
+                Get.to(StudentsScreen(const {}));
               },
               contentPadding: EdgeInsets.zero,
               leading: Icon(
@@ -238,12 +238,6 @@ class _OnboardingCheckListScreenState extends State<OnboardingCheckListScreen> {
                 onPressed: () {
                   // Get.to(UserAccountCreateScreen());
                 },
-                child: const Text('Get Started',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    )),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: CustomTheme.primary,
                   padding: const EdgeInsets.symmetric(
@@ -256,6 +250,12 @@ class _OnboardingCheckListScreenState extends State<OnboardingCheckListScreen> {
                     color: Colors.white,
                   ),
                 ),
+                child: const Text('Get Started',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    )),
               ),
             ),
             const SizedBox(height: 40),

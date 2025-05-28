@@ -9,7 +9,7 @@ import '../../../utils/Utils.dart';
 import '../../../utils/my_widgets.dart';
 
 class SectionCases extends StatefulWidget {
-  SectionCases({Key? key}) : super(key: key);
+  const SectionCases({super.key});
 
   @override
   _SectionCasesState createState() => _SectionCasesState();
@@ -126,7 +126,7 @@ class _SectionCasesState extends State<SectionCases> {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
-                return Text("romina");
+                return const Text("romina");
               },
               childCount: [].length, // 1000 list items
             ),

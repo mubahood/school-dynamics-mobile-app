@@ -52,7 +52,7 @@ class StudentReportCard {
   }
 
   static fromJson(dynamic m) {
-    StudentReportCard obj = new StudentReportCard();
+    StudentReportCard obj = StudentReportCard();
     if (m == null) {
       return obj;
     }
@@ -139,7 +139,7 @@ class StudentReportCard {
     List<StudentReportCard> data = [];
 
     RespondModel resp = RespondModel(
-        await Utils.http_get('${StudentReportCard.end_point}', {}));
+        await Utils.http_get(StudentReportCard.end_point, {}));
 
     if (resp.code != 1) {
       return [];

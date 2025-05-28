@@ -20,8 +20,8 @@ class TransactionCreateScreen extends StatefulWidget {
 
   TransactionCreateScreen(
     this.params, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   TransactionCreateScreenState createState() => TransactionCreateScreenState();
@@ -82,7 +82,7 @@ class TransactionCreateScreenState extends State<TransactionCreateScreen>
           future: initFuture,
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             }
 
             return FormBuilder(
@@ -206,12 +206,12 @@ class TransactionCreateScreenState extends State<TransactionCreateScreen>
                                                 ),
 
                                                 error_message.isEmpty
-                                                    ? SizedBox()
+                                                    ? const SizedBox()
                                                     : const SizedBox(height: 10),
                                                 error_message.isEmpty
-                                                    ? SizedBox()
+                                                    ? const SizedBox()
                                                     : FxContainer(
-                                                  margin: EdgeInsets.only(
+                                                  margin: const EdgeInsets.only(
                                                       bottom: 10),
                                                   color:
                                                   Colors.red.shade50,
@@ -278,7 +278,7 @@ class TransactionCreateScreenState extends State<TransactionCreateScreen>
                                                               Navigator.pop(
                                                                   context);
                                                             },
-                                                            padding: EdgeInsets
+                                                            padding: const EdgeInsets
                                                                 .symmetric(
                                                                     vertical:
                                                                         10,

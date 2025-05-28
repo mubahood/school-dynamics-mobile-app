@@ -16,8 +16,7 @@ import '../../theme/app_theme.dart';
 import '../../theme/custom_theme.dart';
 
 class StudentEditPhotoScreen extends StatefulWidget {
-  const StudentEditPhotoScreen({Key? key, required this.data})
-      : super(key: key);
+  const StudentEditPhotoScreen({super.key, required this.data});
   final dynamic data;
 
   @override
@@ -56,12 +55,12 @@ class _StudentEditPhotoScreenState extends State<StudentEditPhotoScreen> {
         backgroundColor: CustomTheme.primary,
         titleSpacing: 0,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         automaticallyImplyLeading: true,
         // remove back button in appbar.
 
         title: FxText.titleLarge(
-          "${item.name}",
+          item.name,
           color: Colors.white,
         ),
       ),
@@ -77,7 +76,7 @@ class _StudentEditPhotoScreenState extends State<StudentEditPhotoScreen> {
         children: [
           Expanded(
             child: FxContainer(
-              margin: EdgeInsets.all(15),
+              margin: const EdgeInsets.all(15),
               bordered: true,
               color: CustomTheme.primary.withAlpha(30),
               borderColor: CustomTheme.primary,
@@ -95,8 +94,8 @@ class _StudentEditPhotoScreenState extends State<StudentEditPhotoScreen> {
                         placeholder: (context, url) => ShimmerLoadingWidget(
                           height: double.infinity,
                         ),
-                        errorWidget: (context, url, error) => Center(
-                          child: const Image(
+                        errorWidget: (context, url, error) => const Center(
+                          child: Image(
                             image: AssetImage(AppConfig.USER_IMAGE),
                             fit: BoxFit.cover,
                           ),
@@ -106,7 +105,7 @@ class _StudentEditPhotoScreenState extends State<StudentEditPhotoScreen> {
             ),
           ),
           Container(
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               left: 15,
               right: 15,
               bottom: 15,
@@ -122,19 +121,19 @@ class _StudentEditPhotoScreenState extends State<StudentEditPhotoScreen> {
                           valueColor: AlwaysStoppedAnimation<Color>(
                               Colors.red.shade700),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 15,
                         ),
                         FxButton.text(
+                          onPressed: () {
+                            Get.back();
+                          },
+                          borderRadiusAll: 0,
                           child: FxText.bodyMedium(
                             'upload in background',
                             color: CustomTheme.primary,
                             fontWeight: 700,
                           ),
-                          onPressed: () {
-                            Get.back();
-                          },
-                          borderRadiusAll: 0,
                         )
                       ],
                     ),
@@ -149,18 +148,18 @@ class _StudentEditPhotoScreenState extends State<StudentEditPhotoScreen> {
                               backgroundColor: Colors.red.shade700,
                               padding:
                               const EdgeInsets.fromLTRB(24, 24, 24, 24),
+                              onPressed: () {
+                                deleteLocalImage();
+                              },
+                              borderRadiusAll: 0,
                               child: FxText.titleLarge(
                                 'CANCEL',
                                 color: Colors.white,
                                 fontWeight: 700,
                               ),
-                              onPressed: () {
-                                deleteLocalImage();
-                              },
-                              borderRadiusAll: 0,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           Expanded(
@@ -208,7 +207,7 @@ class _StudentEditPhotoScreenState extends State<StudentEditPhotoScreen> {
         builder: (BuildContext buildContext) {
           return Container(
             color: Colors.transparent,
-            padding: EdgeInsets.all(15),
+            padding: const EdgeInsets.all(15),
             child: Container(
               decoration: const BoxDecoration(
                 color: Colors.white,
@@ -273,7 +272,7 @@ class _StudentEditPhotoScreenState extends State<StudentEditPhotoScreen> {
       );
       displayPickedPhoto();
     } catch (e) {
-      Utils.toast("Failed to get photo because ${e}");
+      Utils.toast("Failed to get photo because $e");
     }
   }
 
@@ -292,11 +291,11 @@ class _StudentEditPhotoScreenState extends State<StudentEditPhotoScreen> {
       return;
     }
 
-    var temp_file = pickedFile?.path.toString();
-    if (!(await (File(temp_file.toString()).exists()))) {
+    var tempFile = pickedFile?.path.toString();
+    if (!(await (File(tempFile.toString()).exists()))) {
       return;
     }
-    local_image_path = temp_file.toString();
+    local_image_path = tempFile.toString();
     local_image_name = pickedFile!.name.toString();
     setState(() {});
   }
@@ -322,7 +321,7 @@ class _StudentEditPhotoScreenState extends State<StudentEditPhotoScreen> {
   }
 
   Future<void> saveImage() async {
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 1));
 
     LocalImageToUploadModel img = LocalImageToUploadModel();
     img.id = DateTime.now().millisecondsSinceEpoch;

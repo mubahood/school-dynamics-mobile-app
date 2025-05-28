@@ -18,7 +18,7 @@ class TransactionsScreen extends StatefulWidget {
   // ignore: prefer_const_constructors_in_immutables
 
   Map<String,dynamic> params= {};
-  TransactionsScreen(this.params);
+  TransactionsScreen(this.params, {super.key});
 
   @override
   _TransactionsScreenState createState() => _TransactionsScreenState();
@@ -39,14 +39,12 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
   void initState() {
     super.initState();
 
-    if(widget.params!=null){
-      if(widget.params['activeAccount'] != null){
-        if(widget.params['activeAccount'].runtimeType == activeAccount.runtimeType){
-          activeAccount = widget.params['activeAccount'];
-        }
+    if(widget.params['activeAccount'] != null){
+      if(widget.params['activeAccount'].runtimeType == activeAccount.runtimeType){
+        activeAccount = widget.params['activeAccount'];
       }
     }
-
+  
     do_refresh();
   }
 
@@ -83,9 +81,9 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           //show bottom sheet of create transaction
-          Get.to(() => TransactionCreateScreen({}));
+          Get.to(() => TransactionCreateScreen(const {}));
         },
-        child: Icon(FeatherIcons.plus),
+        child: const Icon(FeatherIcons.plus),
       ),
       body: SafeArea(
         child: FutureBuilder(
@@ -101,7 +99,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
               }
 
               return Container(
-                padding: EdgeInsets.only(left: 5, right: 5),
+                padding: const EdgeInsets.only(left: 5, right: 5),
                 child: RefreshIndicator(
                   backgroundColor: Colors.white,
                   onRefresh: doRefresh,
@@ -116,7 +114,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                             FxContainer(
                               color: Colors.white,
                               borderRadiusAll: 0,
-                              padding: EdgeInsets.only(top: 8),
+                              padding: const EdgeInsets.only(top: 8),
                               child: Wrap(
                                 runSpacing: 0,
                                 children: <Widget>[
@@ -166,7 +164,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                                 ],
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Divider(
@@ -174,7 +172,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                               height: 0,
                             ),
                             Container(
-                                padding: EdgeInsets.only(bottom: 10, top: 5),
+                                padding: const EdgeInsets.only(bottom: 10, top: 5),
                                 child: Column(
                                   children: [
                                     Row(

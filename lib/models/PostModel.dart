@@ -47,11 +47,11 @@ class PostModel {
     if (photo.isEmpty) {
       return "${AppConfig.STORAGE_URL}/logo.png";
     }
-    return "${AppConfig.STORAGE_URL}/${photo}";
+    return "${AppConfig.STORAGE_URL}/$photo";
   }
 
   static fromJson(dynamic m) {
-    PostModel obj = new PostModel();
+    PostModel obj = PostModel();
     if (m == null) {
       return obj;
     }
@@ -119,7 +119,7 @@ class PostModel {
     List<PostModel> data = [];
 
     RespondModel resp =
-        RespondModel(await Utils.http_get('${PostModel.end_point}', {}));
+        RespondModel(await Utils.http_get(PostModel.end_point, {}));
 
     if (resp.code != 1) {
       return [];

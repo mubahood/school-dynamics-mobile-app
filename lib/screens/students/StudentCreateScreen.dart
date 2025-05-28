@@ -24,8 +24,8 @@ class StudentCreateScreen extends StatefulWidget {
 
   StudentCreateScreen(
     this.params, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   StudentCreateScreenState createState() => StudentCreateScreenState();
@@ -105,7 +105,7 @@ class StudentCreateScreenState extends State<StudentCreateScreen>
         backgroundColor: CustomTheme.primary,
         actions: [
           is_loading
-              ? Padding(
+              ? const Padding(
                   padding: EdgeInsets.only(right: 20, top: 10, bottom: 10),
                   child: Center(
                     child: CircularProgressIndicator(
@@ -119,7 +119,7 @@ class StudentCreateScreenState extends State<StudentCreateScreen>
                     submit_form();
                   },
                   backgroundColor: Colors.white,
-                  child: Icon(
+                  child: const Icon(
                     FeatherIcons.check,
                     color: Colors.white,
                     size: 35,
@@ -672,7 +672,7 @@ class StudentCreateScreenState extends State<StudentCreateScreen>
                     ),
                   ),
                   _keyboardVisible
-                      ? SizedBox()
+                      ? const SizedBox()
                       : is_loading
                           ? Container(
                               height: 50,

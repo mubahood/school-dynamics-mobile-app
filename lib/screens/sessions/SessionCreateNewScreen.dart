@@ -19,27 +19,25 @@ import 'package:schooldynamics/models/TheologyStreamModel.dart';
 import 'package:schooldynamics/screens/classes/ClassesScreen.dart';
 import 'package:schooldynamics/screens/classes/TheologyClassesScreen.dart';
 import 'package:schooldynamics/screens/classes/TheologyStreamsScreen.dart';
-import 'package:schooldynamics/screens/subjects/TheologySubjectsScreen.dart';
 import 'package:schooldynamics/sections/widgets.dart';
 
 import '../../models/SessionLocal.dart';
 import '../../models/TemporaryModel.dart';
-import '../../models/TheologySubjectModel.dart';
 import '../../models/UserMiniModel.dart';
 import '../../theme/app_theme.dart';
 import '../../utils/SizeConfig.dart';
 import '../../utils/Utils.dart';
 import '../classes/StreamsScreen.dart';
-import '../subjects/SubjectsScreen.dart';
+import '../finance/ServicesScreen.dart';
 import 'SessionRollCallingScreen.dart';
 
 class SessionCreateNewScreen extends StatefulWidget {
   final dynamic data;
 
-  SessionCreateNewScreen({
-    Key? key,
+  const SessionCreateNewScreen({
+    super.key,
     this.data,
-  }) : super(key: key);
+  });
 
   @override
   _SessionCreateNewScreenState createState() => _SessionCreateNewScreenState();
@@ -50,6 +48,8 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
   bool onLoading = false;
   String error_message = "";
   SessionLocal item = SessionLocal();
+  List<MyClasses> selectedClasses = [];
+  List<TheologyClassModel> selectedTheologyClasses = [];
 
   @override
   void initState() {
@@ -60,7 +60,17 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
   List<MySubjects> my_subjects = [];
   List<StreamModel> allStreams = [];
 
-  init() async {
+  Future<void> init() async {
+    allStudents = await UserMiniModel.getItems();
+    if (allStudents.length < 3) {
+      await UserMiniModel.getOnlineData();
+      allStudents = await UserMiniModel.getItems();
+      if (allStudents.length < 3) {
+        Utils.toast(
+            "No students found. Please connect to the internet and try again.",
+            color: CustomTheme.red);
+      }
+    }
     if (widget.data.runtimeType.toString() == 'MyClasses') {
       classModel = widget.data;
       item.type = 'Class attendance';
@@ -91,6 +101,7 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
   List<String> streams = [];
 
   MyClasses classModel = MyClasses();
+  List<UserMiniModel> allStudents = [];
 
   Future<void> submit_form({
     bool announceChanges = false,
@@ -101,47 +112,45 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
       return;
     }
 
-    if (['CLASS_ATTENDANCE', 'THEOLOGY_ATTENDANCE'].contains(item.type)) {
-      if (item.stream_id.isEmpty) {
-        Utils.toast("Please select stream.");
-        return;
-      }
-      if (Utils.int_parse(item.stream_id) < 1) {
-        Utils.toast("Please select stream.");
-        return;
-      }
-
-      if (item.subject_id.isEmpty) {
-        Utils.toast('Select subject');
-        return;
-      }
-    } else if (item.type == 'ACTIVITY_ATTENDANCE') {
-      if (item.title.isEmpty) {
-        Utils.toast('Enter title');
-        return;
-      }
-    } else {
-      item.title = item.type;
-      setState(() {});
-    }
-
     item.due_date =
         Utils.to_str(_formKey.currentState?.fields['date']?.value, '');
     if (item.due_date.isEmpty) {
       Utils.toast('Select date');
       return;
     }
-
     Utils.showLoader(true);
-    List<Map<String, dynamic>> items = [];
 
-    if (item.type == 'CLASS_ATTENDANCE') {
-      item.title =
-          "${item.academic_class_text} - ${item.stream_text} - ${item.subject_text} - ${Utils.to_date(item.due_date)}";
-      List<UserMiniModel> students =
-          await classModel.getStudents(item.academic_class_id.toString());
-      for (var student in students) {
-        if (student.stream_id == item.stream_id) {
+    if (allStudents.length < 5) {
+      Utils.toast("Please wait...");
+      await init();
+      allStudents = await UserMiniModel.getItems();
+      if (allStudents.length < 5) {
+        Utils.toast(
+            "No students found. Please connect to the internet and try again.",
+            color: CustomTheme.red);
+        Utils.hideLoader();
+        return;
+      }
+    } else {
+      UserMiniModel.getOnlineData();
+      allStudents = await UserMiniModel.getItems();
+    }
+
+    if (item.type.isEmpty) {
+      Utils.toast("Please select roll-call type.");
+      Utils.hideLoader();
+      return;
+    }
+    if (item.target.isEmpty) {
+      Utils.toast("Please select roll-call target.");
+      Utils.hideLoader();
+      return;
+    }
+
+    List<Map<String, dynamic>> items = [];
+    try {
+      if (item.target == 'ENTIRE_SCHOOL') {
+        for (var student in allStudents) {
           TemporaryModel x = TemporaryModel();
           x.id = Utils.int_parse(student.id.toString());
           x.title = student.name;
@@ -149,45 +158,175 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
           x.details = student.user_number;
           items.add(x.toJson());
         }
+      } else if (item.target == 'SECULAR_CLASSES') {
+        if (selectedClasses.isEmpty) {
+          Utils.toast("Please select classes.");
+          return;
+        }
+        List<String> classIds = [];
+        for (var selectedClass in selectedClasses) {
+          classIds.add(selectedClass.id.toString());
+        }
+        item.secular_casses = json.encode(classIds);
+        for (var student in allStudents) {
+          if (classIds.contains(student.class_id.toString())) {
+            TemporaryModel x = TemporaryModel();
+            x.id = Utils.int_parse(student.id.toString());
+            x.title = student.name;
+            x.image = student.avatar;
+            x.details = student.user_number;
+            items.add(x.toJson());
+          }
+        }
+      } else if (item.target == 'THEOLOGY_CLASSES') {
+        if (selectedTheologyClasses.isEmpty) {
+          Utils.toast("Please select theology classes.");
+          return;
+        }
+        List<String> classIds = [];
+        for (var selectedClass in selectedTheologyClasses) {
+          classIds.add(selectedClass.id.toString());
+        }
+        item.theology_classes = json.encode(classIds);
+        for (var student in allStudents) {
+          if (classIds.contains(student.theology_class_id.toString())) {
+            TemporaryModel x = TemporaryModel();
+            x.id = Utils.int_parse(student.id.toString());
+            x.title = student.name;
+            x.image = student.avatar;
+            x.details = student.user_number;
+            items.add(x.toJson());
+          }
+        }
+      } else if (item.target == 'SECULAR_STREAM') {
+        if (item.stream_id.isEmpty || Utils.int_parse(item.stream_id) < 1) {
+          Utils.toast("Please select secular stream.");
+          return;
+        }
+        item.secular_stream_id = item.stream_id;
+        if (item.secular_stream_id.isEmpty) {
+          Utils.toast("Please select secular stream.");
+          return;
+        }
+        for (var student in allStudents) {
+          if (student.stream_id == item.stream_id) {
+            TemporaryModel x = TemporaryModel();
+            x.id = Utils.int_parse(student.id.toString());
+            x.title = student.name;
+            x.image = student.avatar;
+            x.details = student.user_number;
+            items.add(x.toJson());
+          }
+        }
+      } else if (item.target == 'THEOLOGY_STREAM') {
+        if (item.stream_id.isEmpty || Utils.int_parse(item.stream_id) < 1) {
+          Utils.toast("Please select theology stream.");
+          return;
+        }
+        item.theology_stream_id = item.stream_id;
+        if (item.theology_stream_id.isEmpty) {
+          Utils.toast("Please select theology stream.");
+          return;
+        }
+        for (var student in allStudents) {
+          if (student.theology_stream_id == item.stream_id) {
+            TemporaryModel x = TemporaryModel();
+            x.id = Utils.int_parse(student.id.toString());
+            x.title = student.name;
+            x.image = student.avatar;
+            x.details = student.user_number;
+            items.add(x.toJson());
+          }
+        }
+      } else if (item.target == 'SERVICE') {
+        if (item.service.id == 0) {
+          Utils.toast("Please select service.");
+          return;
+        }
+        item.service_text = item.service.name;
+        item.service_id = item.service.id.toString();
+        if (item.service_text.isEmpty) {
+          Utils.toast("Please select service.");
+          return;
+        }
+        if (item.service.id < 1) {
+          Utils.toast("Please select service.");
+          return;
+        }
+        item.service_id = item.service.id.toString();
+        for (var student in allStudents) {
+          if (student.services.isEmpty) {
+            continue;
+          }
+          student.getServicesList();
+          if (student.servicesList.contains(item.service.id.toString())) {
+            TemporaryModel x = TemporaryModel();
+            x.id = Utils.int_parse(student.id.toString());
+            x.title = student.name;
+            x.image = student.avatar;
+            x.details = student.user_number;
+            items.add(x.toJson());
+          }
+        }
+      } else {
+        Utils.toast("Invalid target selected.");
+        Utils.hideLoader();
+        return;
       }
-    } else if (item.type == 'THEOLOGY_ATTENDANCE') {
-      item.title =
-          "${item.academic_class_text} - ${item.stream_text} - ${item.subject_text} - ${Utils.to_date(item.due_date)}";
-      List<UserMiniModel> students = await UserMiniModel.getItems(
-          where: " theology_stream_id = ${item.stream_id} ");
-      for (var student in students) {
-        TemporaryModel x = TemporaryModel();
-        x.id = Utils.int_parse(student.id.toString());
-        x.title = student.name;
-        x.image = student.avatar;
-        x.details = student.user_number;
-        items.add(x.toJson());
-      }
-    } else {
-      List<UserMiniModel> students = await UserMiniModel.getItems();
-      for (var student in students) {
-        TemporaryModel x = TemporaryModel();
-        x.id = Utils.int_parse(student.id.toString());
-        x.title = student.name;
-        x.image = student.avatar;
-        x.details = student.user_number;
-        items.add(x.toJson());
-      }
+    } catch (e) {
+      Utils.hideLoader();
+      Utils.toast("Error fetching students: $e", color: CustomTheme.red);
+      return;
+    } finally {
+      Utils.hideLoader();
     }
+
+    if (items.isEmpty) {
+      Utils.toast("No students found for the selected criteria.",
+          color: CustomTheme.red);
+      Utils.hideLoader();
+      return;
+    }
+
     Utils.hideLoader();
 
     if (items.isEmpty) {
       Utils.toast("No student found.", color: CustomTheme.red);
+      Utils.hideLoader();
       return;
+    }
+
+    //if target is SECULAR_CLASSES
+    if (item.target == 'SECULAR_CLASSES') {
+      if (item.secular_casses.length < 2) {
+        Utils.toast("Please select classes.");
+        return;
+      }
+    }
+
+    //if target is THEOLOGY_CLASSES
+    if (item.target == 'THEOLOGY_CLASSES') {
+      if (item.theology_classes.length < 2) {
+        Utils.toast("Please select theology classes.");
+        return;
+      }
     }
 
     item.expected = jsonEncode(items);
     item.present = '[]';
     item.closed = 'No';
     if (item.id < 1) {
-      item.id = Random().nextInt(10000000);
+      item.id = Random().nextInt(100000000);
     }
+
+    if (item.title.isEmpty) {
+      item.title = "${item.type}, ${item.target} - ${item.details}";
+    }
+
     await item.save();
+    Utils.toast("Session created successfully. Start roll-calling",
+        color: CustomTheme.green);
+    Utils.hideLoader();
     Get.off(() => SessionRollCallingScreen(data: item));
     return;
   }
@@ -199,7 +338,7 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
       appBar: AppBar(
         backgroundColor: CustomTheme.primary,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         titleSpacing: 0,
         title: FxText.titleMedium(
           "Creating new roll-call",
@@ -225,7 +364,6 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
                     children: <Widget>[
                       FormBuilderDropdown<String>(
                         name: 'type',
-                        dropdownColor: Colors.white,
                         decoration: AppTheme.InputDecorationTheme1(
                           label: "Roll-call type",
                         ),
@@ -233,52 +371,97 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
                           String y = x.toString();
                           item.type = y;
                           item.title = y;
-
                           setState(() {});
                         },
-                        isDense: true,
+                        dropdownColor: Colors.white,
                         items: const [
                           DropdownMenuItem(
-                            alignment: AlignmentDirectional.centerStart,
-                            value: 'CLASS_ATTENDANCE',
-                            child: Text('Secular Class attendance'),
-                          ),
-                          DropdownMenuItem(
-                            alignment: AlignmentDirectional.centerStart,
-                            value: 'THEOLOGY_ATTENDANCE',
-                            child: Text('Theology Class attendance'),
-                          ),
-                          /* DropdownMenuItem(
-                            alignment: AlignmentDirectional.centerStart,
-                            value: 'SECONDARY_CLASS_ATTENDANCE',
-                            child: Text('Secondary Class attendance'),
-                          ),*/
-                          DropdownMenuItem(
-                            alignment: AlignmentDirectional.centerStart,
                             value: 'STUDENT_REPORT',
                             child: Text('Student Report at School'),
                           ),
                           DropdownMenuItem(
-                            alignment: AlignmentDirectional.centerStart,
                             value: 'STUDENT_LEAVE',
                             child: Text('Student Leave School'),
                           ),
                           DropdownMenuItem(
-                            alignment: AlignmentDirectional.centerStart,
                             value: 'STUDENT_MEAL',
                             child: Text('Student Meals Session'),
                           ),
                           DropdownMenuItem(
-                            alignment: AlignmentDirectional.centerStart,
+                            value: 'CLASS_ATTENDANCE',
+                            child: Text('Class attendance'),
+                          ),
+                          DropdownMenuItem(
+                            value: 'THEOLOGY_ATTENDANCE',
+                            child: Text('Theology Class attendance'),
+                          ),
+                          DropdownMenuItem(
                             value: 'ACTIVITY_ATTENDANCE',
-                            child: Text('Activity Roll-call'),
+                            child: Text('Activity participation'),
                           ),
                         ],
+                        validator: FormBuilderValidators.required(
+                          errorText: "Roll-call type is required",
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      FormBuilderDropdown<String>(
+                        dropdownColor: Colors.white,
+                        name: 'target',
+                        decoration: AppTheme.InputDecorationTheme1(
+                          label: "Target",
+                        ),
+                        onChanged: (x) {
+                          item.target = x.toString();
+                          item.academic_class_text = '';
+                          item.stream_text = '';
+                          item.service_text = '';
+
+                          selectedClasses.clear();
+                          _formKey.currentState!.patchValue({
+                            'academic_class_text': '',
+                            'stream_text': "",
+                            'service_text': ''
+                          });
+
+                          setState(() {});
+                        },
+                        items: const [
+                          DropdownMenuItem(
+                            value: 'ENTIRE_SCHOOL',
+                            child: Text('All active students'),
+                          ),
+                          DropdownMenuItem(
+                            value: 'SECULAR_CLASSES',
+                            child: Text('Specific secular classes'),
+                          ),
+                          DropdownMenuItem(
+                            value: 'THEOLOGY_CLASSES',
+                            child: Text('Specific theology classes'),
+                          ),
+                          DropdownMenuItem(
+                            value: 'SECULAR_STREAM',
+                            child: Text('Specific secular stream'),
+                          ),
+                          DropdownMenuItem(
+                            value: 'THEOLOGY_STREAM',
+                            child: Text('Specific theology stream'),
+                          ),
+                          DropdownMenuItem(
+                            value: 'SERVICE',
+                            child: Text('Specific service subscribers'),
+                          ),
+                        ],
+                        validator: FormBuilderValidators.required(
+                          errorText: "Target is required",
+                        ),
                       ),
                       item.type == 'ACTIVITY_ATTENDANCE'
                           ? //enter title
                           Container(
-                              margin: EdgeInsets.only(bottom: 0, top: 15),
+                              margin: const EdgeInsets.only(bottom: 0, top: 15),
                               child: FormBuilderTextField(
                                 name: 'title',
                                 initialValue: item.title,
@@ -300,70 +483,105 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
                               ),
                             )
                           : const SizedBox(),
-                      (!['CLASS_ATTENDANCE', 'THEOLOGY_ATTENDANCE']
-                              .contains(item.type))
-                          ? const SizedBox()
-                          : Container(
-                              margin: const EdgeInsets.only(top: 15),
-                              child: FormBuilderTextField(
-                                name: 'academic_class_text',
-                                readOnly: true,
-                                onTap: () async {
-                                  if (item.type == 'CLASS_ATTENDANCE') {
-                                    MyClasses? myClass = await Get.to(() =>
-                                        ClassesScreen(
-                                            const {'task': 'Select'}));
-                                    if (myClass == null) {
-                                      Utils.toast("Please select class.");
-                                      return;
-                                    }
-                                    item.academic_class_id =
-                                        myClass.id.toString();
-                                    item.academic_class_text =
-                                        myClass.short_name.toString();
-                                  } else if (item.type ==
-                                      'THEOLOGY_ATTENDANCE') {
-                                    TheologyClassModel? myClass = await Get.to(
-                                        () => TheologyClassesScreen(
-                                            const {'task': 'Select'}));
-                                    if (myClass == null) {
-                                      Utils.toast("Please select class.");
-                                      return;
-                                    }
-                                    item.academic_class_id =
-                                        myClass.id.toString();
-                                    item.academic_class_text =
-                                        myClass.short_name.toString();
+                      Visibility(
+                        visible: ['SECULAR_CLASSES', 'THEOLOGY_CLASSES']
+                            .contains(item.target),
+                        child: Container(
+                          margin: const EdgeInsets.only(top: 15),
+                          child: FormBuilderTextField(
+                            name: 'academic_class_text',
+                            readOnly: true,
+                            onTap: () async {
+                              if (item.target == 'SECULAR_CLASSES') {
+                                List<MyClasses>? classes = await Get.to(() =>
+                                    ClassesScreen({
+                                      'task': 'MultiSelect',
+                                      'selectedItems': selectedClasses
+                                    }));
+                                if (classes == null) {
+                                  Utils.toast("Please select classes.");
+                                  return;
+                                }
+
+                                selectedClasses = [];
+
+                                if (classes.runtimeType ==
+                                    selectedClasses.runtimeType) {
+                                  for (var x in classes) {
+                                    selectedClasses.add(x);
                                   }
+                                }
 
-                                  item.stream_text = "";
-                                  item.stream_id = "";
-                                  item.subject_text = "";
-                                  item.subject_id = "";
+                                item.academic_class_text = '';
+                                for (int i = 0;
+                                    i < selectedClasses.length;
+                                    i++) {
+                                  item.academic_class_text +=
+                                      selectedClasses[i].short_name;
+                                  if (i != selectedClasses.length - 1) {
+                                    item.academic_class_text += ", ";
+                                  }
+                                }
 
-                                  _formKey.currentState!.patchValue({
-                                    'academic_class_text':
-                                        item.academic_class_text,
-                                    'stream_text': "",
-                                    'subject_text': ""
-                                  });
-                                  setState(() {});
-                                },
-                                initialValue: item.academic_class_text,
-                                textCapitalization: TextCapitalization.words,
-                                keyboardType: TextInputType.name,
-                                decoration: AppTheme.InputDecorationTheme1(
-                                  label: "Select Class",
-                                ),
-                                validator: FormBuilderValidators.compose([
-                                  FormBuilderValidators.required(
-                                    errorText: "Class is required",
-                                  ),
-                                ]),
+                                setState(() {});
+                              } else if (item.target == 'THEOLOGY_CLASSES') {
+                                List<TheologyClassModel>? myClasses =
+                                    await Get.to(() => TheologyClassesScreen({
+                                          'task': 'MultiSelect',
+                                          'selectedItems':
+                                              selectedTheologyClasses,
+                                        }));
+
+                                if (myClasses == null) {
+                                  return;
+                                }
+                                selectedTheologyClasses = [];
+
+                                if (myClasses.runtimeType ==
+                                    selectedTheologyClasses.runtimeType) {
+                                  for (var x in myClasses) {
+                                    selectedTheologyClasses.add(x);
+                                  }
+                                }
+
+                                item.academic_class_text = '';
+                                for (int i = 0;
+                                    i < selectedTheologyClasses.length;
+                                    i++) {
+                                  item.academic_class_text +=
+                                      selectedTheologyClasses[i].short_name;
+                                  if (i != selectedTheologyClasses.length - 1) {
+                                    item.academic_class_text += ", ";
+                                  }
+                                }
+                              }
+
+                              item.title =
+                                  "${item.type}, ${item.target} - ${item.academic_class_text}";
+                              _formKey.currentState!.patchValue({
+                                'academic_class_text': item.academic_class_text,
+                                'stream_text': "",
+                                'subject_text': ""
+                              });
+
+                              setState(() {});
+                            },
+                            initialValue: item.academic_class_text,
+                            textCapitalization: TextCapitalization.words,
+                            keyboardType: TextInputType.name,
+                            decoration: AppTheme.InputDecorationTheme1(
+                                label:
+                                    "Select ${item.target == 'SECULAR_CLASSES' ? "Classes" : "Theology Classes"}"),
+                            validator: FormBuilderValidators.compose([
+                              FormBuilderValidators.required(
+                                errorText: "Classes are required",
                               ),
-                            ),
-                      (!['CLASS_ATTENDANCE', 'THEOLOGY_ATTENDANCE']
-                              .contains(item.type))
+                            ]),
+                          ),
+                        ),
+                      ),
+                      (!['SECULAR_STREAM', 'THEOLOGY_STREAM']
+                              .contains(item.target))
                           ? const SizedBox()
                           : Container(
                               margin: const EdgeInsets.only(top: 10),
@@ -371,12 +589,7 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
                                 name: 'stream_text',
                                 readOnly: true,
                                 onTap: () async {
-                                  print(item.type);
-                                  if (item.type == 'CLASS_ATTENDANCE') {
-                                    if (item.academic_class_id.isEmpty) {
-                                      Utils.toast("Please select class.");
-                                      return;
-                                    }
+                                  if (item.target == 'SECULAR_STREAM') {
                                     StreamModel? obj = await Get.to(() =>
                                         StreamsScreen(item.academic_class_id));
                                     if (obj == null) {
@@ -384,13 +597,10 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
                                       return;
                                     }
                                     item.stream_id = obj.id.toString();
-                                    item.stream_text = obj.name.toString();
-                                  } else if (item.type ==
-                                      'THEOLOGY_ATTENDANCE') {
-                                    if (item.academic_class_id.isEmpty) {
-                                      Utils.toast("Please select class.");
-                                      return;
-                                    }
+                                    item.stream_text =
+                                        "${obj.academic_class_text.toString()} - ${obj.name.toString()}";
+                                    item.secularStreamModel = obj;
+                                  } else if (item.target == 'THEOLOGY_STREAM') {
                                     TheologyStreamModel? obj = await Get.to(
                                         () => TheologyStreamsScreen(
                                             item.academic_class_id));
@@ -399,9 +609,13 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
                                       return;
                                     }
                                     item.stream_id = obj.id.toString();
-                                    item.stream_text = obj.name.toString();
+                                    item.stream_text =
+                                        "${obj.theology_class_text.toString()} - ${obj.name.toString()}";
+                                    item.theologyStreamModel = obj;
                                   }
 
+                                  item.title =
+                                      "${item.type}, ${item.target} - ${item.stream_text}";
                                   _formKey.currentState!.patchValue({
                                     'stream_text': item.stream_text,
                                   });
@@ -420,64 +634,34 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
                                 ]),
                               ),
                             ),
-                      (!['CLASS_ATTENDANCE', 'THEOLOGY_ATTENDANCE']
-                              .contains(item.type))
+                      (!['SERVICE'].contains(item.target))
                           ? const SizedBox()
                           : Container(
                               margin: const EdgeInsets.only(top: 15),
                               child: FormBuilderTextField(
-                                name: 'subject_text',
+                                name: 'service_text',
                                 readOnly: true,
                                 onTap: () async {
-                                  if (item.type == 'CLASS_ATTENDANCE') {
-                                    if (item.stream_text.isEmpty) {
-                                      Utils.toast("Please stream");
-                                      return;
-                                    }
-                                    MySubjects? obj = await Get.to(() =>
-                                        SubjectsScreen({
-                                          'task': 'Select',
-                                          'academic_class_id':
-                                              item.academic_class_id
-                                        }));
-                                    if (obj == null) {
-                                      Utils.toast("Please select class.");
-                                      return;
-                                    }
-                                    item.subject_id = obj.id.toString();
-                                    item.subject_text =
-                                        obj.subject_name.toString();
-                                    Utils.toast(item.subject_text);
-                                  } else if (item.type ==
-                                      'THEOLOGY_ATTENDANCE') {
-                                    if (item.stream_text.isEmpty) {
-                                      Utils.toast("Please stream");
-                                      return;
-                                    }
-                                    TheologySubjectModel? obj = await Get.to(
-                                        () => TheologySubjectsScreen({
-                                              'task': 'Select',
-                                              'theology_class_id':
-                                                  item.academic_class_id
-                                            }));
-                                    if (obj == null) {
-                                      Utils.toast("Please select class.");
-                                      return;
-                                    }
-                                    item.subject_id = obj.id.toString();
-                                    item.subject_text = obj.name.toString();
-                                    Utils.toast(item.subject_text);
+                                  var resp = await Get.to(ServicesScreen(
+                                      const {"task_picker": 'task_picker'}));
+
+                                  if (resp.runtimeType ==
+                                      item.service.runtimeType) {
+                                    item.service = resp;
+
+                                    item.title =
+                                        "${item.type}, ${item.target} - ${item.service.name}";
+                                    _formKey.currentState!.patchValue({
+                                      'service_text': item.service.name,
+                                    });
+                                    setState(() {});
                                   }
-                                  _formKey.currentState!.patchValue({
-                                    'subject_text': item.subject_text,
-                                  });
-                                  setState(() {});
                                 },
                                 initialValue: item.subject_text,
                                 textCapitalization: TextCapitalization.words,
                                 keyboardType: TextInputType.name,
                                 decoration: AppTheme.InputDecorationTheme1(
-                                  label: "Select Subject",
+                                  label: "Select Service",
                                 ),
                                 validator: FormBuilderValidators.compose([
                                   FormBuilderValidators.required(
@@ -487,7 +671,7 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
                               ),
                             ),
                       Container(
-                        margin: EdgeInsets.only(bottom: 20, top: 15),
+                        margin: const EdgeInsets.only(bottom: 20, top: 15),
                         child: FormBuilderDateTimePicker(
                           name: 'date',
                           initialEntryMode: DatePickerEntryMode.calendar,
@@ -508,6 +692,31 @@ class _SessionCreateNewScreenState extends State<SessionCreateNewScreen> {
                             ),
                           ]),
                         ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      FormBuilderTextField(
+                        name: 'details',
+                        initialValue: item.details,
+                        maxLines: 3,
+                        minLines: 1,
+                        enableSuggestions: true,
+                        textCapitalization: TextCapitalization.sentences,
+                        style: const TextStyle(fontSize: 14),
+                        decoration: AppTheme.InputDecorationTheme1(
+                          label: "Session Description",
+                          hintText:
+                              "Add more details about this session, like the reason for the roll-call, or specify the activity, etc.",
+                        ),
+                        validator: FormBuilderValidators.compose([
+                          FormBuilderValidators.required(
+                            errorText: "Session description is required",
+                          ),
+                        ]),
+                        onChanged: (x) {
+                          item.details = x.toString();
+                        },
                       ),
                       const SizedBox(
                         height: 15,

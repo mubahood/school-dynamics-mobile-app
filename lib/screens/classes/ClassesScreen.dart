@@ -12,10 +12,10 @@ import 'ClassScreen.dart';
 class ClassesScreen extends StatefulWidget {
   Map<String, dynamic> params = {};
 
-  ClassesScreen(this.params, {Key? key}) : super(key: key);
+  ClassesScreen(this.params, {super.key});
 
   @override
-  ClassesScreenState createState() => new ClassesScreenState();
+  ClassesScreenState createState() => ClassesScreenState();
 }
 
 class ClassesScreenState extends State<ClassesScreen> {
@@ -30,12 +30,29 @@ class ClassesScreenState extends State<ClassesScreen> {
 
   String title = '';
   bool isPicker = false;
+  bool isMultiPicker = false;
+  List<MyClasses> selectedItems = [];
+  List<int> selectedItemsIds = [];
   Future<dynamic> doRefresh() async {
     if (widget.params['title'] != null) {
       title = widget.params['title'];
     }
     if (widget.params['task'].toString() == 'Select'.toString()) {
       isPicker = true;
+    } else if (widget.params['task'].toString() == 'MultiSelect'.toString()) {
+      isMultiPicker = true;
+
+      if (widget.params['selectedItems'] != null) {
+        if (widget.params['selectedItems'].runtimeType ==
+            selectedItems.runtimeType) {
+          selectedItems = [];
+          //selectedItemsIds
+          widget.params['selectedItems'].forEach((x) {
+            selectedItemsIds.add(x.id);
+            selectedItems.add(x);
+          });
+        }
+      }
     }
 
     futureInit = init();
@@ -43,6 +60,10 @@ class ClassesScreenState extends State<ClassesScreen> {
   }
 
   late Future<dynamic> futureInit;
+
+  doneSelecting() {
+    Get.back(result: selectedItems);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,14 +74,44 @@ class ClassesScreenState extends State<ClassesScreen> {
           titleSpacing: 0,
           backgroundColor: CustomTheme.primary,
           elevation: 0,
-          iconTheme: IconThemeData(color: Colors.white),
+          actions: [
+            isMultiPicker
+                ? IconButton(
+                    onPressed: () {
+                      doneSelecting();
+                    },
+                    icon: const Icon(
+                      FeatherIcons.check,
+                      size: 35,
+                    ))
+                : SizedBox()
+          ],
+          iconTheme: const IconThemeData(color: Colors.white),
           automaticallyImplyLeading: true,
           // remove back button in appbar.
-          title: FxText.titleLarge(
-            title.isNotEmpty ? title : 'My Classes (${items.length})',
-            color: Colors.white,
-            fontWeight: 700,
-            height: .6,
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              FxText.titleMedium(
+                isMultiPicker
+                    ? 'Select Classes'
+                    : title.isNotEmpty
+                        ? title
+                        : 'Classes',
+                color: Colors.white,
+                fontWeight: 700,
+                height: 1,
+              ),
+              //count
+              FxText.bodySmall(
+                items.isNotEmpty
+                    ? "${items.length} Classes"
+                    : "No Classes Found",
+                color: Colors.white,
+                height: .8,
+              ),
+            ],
           )),
       body: FutureBuilder(
           future: futureInit,
@@ -73,74 +124,153 @@ class ClassesScreenState extends State<ClassesScreen> {
             }
 
             return Container(
-              padding: EdgeInsets.only(left: 5, right: 5),
-              child: RefreshIndicator(
-                backgroundColor: Colors.white,
-                onRefresh: doRefresh,
-                child: CustomScrollView(
-                  slivers: [
-                    SliverGrid(
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        crossAxisSpacing: 5,
-                        childAspectRatio: 0.7,
-                      ),
-                      delegate: SliverChildBuilderDelegate(
-                        (BuildContext context, int index) {
-                          MyClasses myClass = items[index];
-                          return FxContainer(
-                            margin: EdgeInsets.only(top: 5),
-                            onTap: () {
-                              if (isPicker) {
-                                Get.back(result: myClass);
-                                return;
-                              }
-
-                              Get.to(() => ClassScreen(data: myClass));
-                            },
-                            borderColor: CustomTheme.primary,
-                            bordered: true,
-                            borderRadiusAll: 8,
-                            color: CustomTheme.primary.withAlpha(40),
-                            paddingAll: 10,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  FeatherIcons.award,
-                                  color: CustomTheme.primary,
-                                  size: 30,
-                                ),
-                                Spacer(),
-                                FxText.titleSmall(
-                                  "${myClass.name} - ${myClass.short_name}",
-                                  height: .8,
-                                  color: Colors.black,
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                FxText.bodySmall(
-                                  myClass.class_teacher_name,
-                                  height: .9,
-                                  maxLines: 2,
-                                  color: CustomTheme.primary,
-                                ),
-                                const Spacer(),
-                                FxText.bodySmall(
-                                  "${myClass.students_count} Students",
-                                  height: .8,
-                                ),
-                              ],
+              padding: const EdgeInsets.only(left: 5, right: 5),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: RefreshIndicator(
+                      backgroundColor: Colors.white,
+                      onRefresh: doRefresh,
+                      child: CustomScrollView(
+                        slivers: [
+                          SliverGrid(
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3,
+                              crossAxisSpacing: 5,
+                              childAspectRatio: 0.7,
                             ),
-                          );
-                        },
-                        childCount: items.length,
+                            delegate: SliverChildBuilderDelegate(
+                              (BuildContext context, int index) {
+                                MyClasses myClass = items[index];
+                                return FxContainer(
+                                  margin: const EdgeInsets.only(top: 5),
+                                  onTap: () {
+                                    if (isMultiPicker) {
+                                      if (selectedItemsIds
+                                          .contains(myClass.id)) {
+                                        selectedItems.removeWhere((item) => item.id == myClass.id);
+                                        selectedItemsIds.remove(myClass.id);
+                                      } else {
+                                        selectedItems.add(myClass);
+                                        selectedItemsIds.add(myClass.id);
+                                      }
+                                      setState(() {});
+                                      return;
+                                    }
+
+                                    if (isPicker) {
+                                      Get.back(result: myClass);
+                                      return;
+                                    }
+
+                                    Get.to(() => ClassScreen(data: myClass));
+                                  },
+                                  borderColor: CustomTheme.primary,
+                                  bordered: true,
+                                  borderRadiusAll: 8,
+                                  color: isMultiPicker &&
+                                          selectedItemsIds.contains(myClass.id)
+                                      ? CustomTheme.primary.withAlpha(80)
+                                      : CustomTheme.primary.withAlpha(10),
+                                  paddingAll: 10,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Icon(
+                                            FeatherIcons.award,
+                                            color: CustomTheme.primary,
+                                            size: 30,
+                                          ),
+                                          (isMultiPicker &&
+                                                  selectedItemsIds
+                                                      .contains(myClass.id))
+                                              ? FxContainer(
+                                                  width: 30,
+                                                  height: 30,
+                                                  paddingAll: 0,
+                                                  borderRadiusAll: 100,
+                                                  bordered: true,
+                                                  borderColor: Colors.green,
+                                                  child: Center(
+                                                    child: Icon(
+                                                      FeatherIcons.check,
+                                                      color:
+                                                          CustomTheme.primary,
+                                                      size: 24,
+                                                    ),
+                                                  ),
+                                                )
+                                              : SizedBox(),
+                                        ],
+                                      ),
+                                      const Spacer(),
+                                      FxText.titleSmall(
+                                        "${myClass.name} - ${myClass.short_name}",
+                                        height: .8,
+                                        color: Colors.black,
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      FxText.bodySmall(
+                                        myClass.class_teacher_name,
+                                        height: .9,
+                                        maxLines: 2,
+                                        color: CustomTheme.primary,
+                                      ),
+                                      const Spacer(),
+                                      FxText.bodySmall(
+                                        "${myClass.students_count} Students",
+                                        height: .8,
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                              childCount: items.length,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                  isMultiPicker
+                      ? Container(
+                          margin: EdgeInsets.all(15),
+                          child: FxButton.block(
+                              onPressed: () {
+                                doneSelecting();
+                              },
+                              child: Center(
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    FxText.titleMedium(
+                                      'DONE SELECTING',
+                                      color: Colors.white,
+                                      fontWeight: 700,
+                                    ),
+                                    const SizedBox(
+                                      width: 15,
+                                    ),
+                                    const Icon(
+                                      FeatherIcons.check,
+                                      size: 25,
+                                      color: Colors.white,
+                                    ),
+                                  ],
+                                ),
+                              )),
+                        )
+                      : const SizedBox()
+                ],
               ),
             );
           }),

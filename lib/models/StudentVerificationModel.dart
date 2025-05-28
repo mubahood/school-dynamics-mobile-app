@@ -1,7 +1,6 @@
 import 'package:schooldynamics/utils/Utils.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../utils/AppConfig.dart';
 import 'RespondModel.dart';
 import 'UserModel.dart';
 
@@ -23,12 +22,12 @@ class StudentVerificationModel {
   List<UserModel> students = [];
 
   Future<List<UserModel>> getStudents() async {
-    students = await UserModel.getItems(where : " current_class_id = '${id}' ");
+    students = await UserModel.getItems(where : " current_class_id = '$id' ");
     return students;
   }
 
   static StudentVerificationModel fromJson(dynamic d) {
-    StudentVerificationModel obj = new StudentVerificationModel();
+    StudentVerificationModel obj = StudentVerificationModel();
     if (d == null) {
       return obj;
     }
@@ -89,7 +88,7 @@ class StudentVerificationModel {
     List<StudentVerificationModel> data = [];
 
     RespondModel resp = RespondModel(
-        await Utils.http_get('${StudentVerificationModel.endPoint}', {}));
+        await Utils.http_get(StudentVerificationModel.endPoint, {}));
 
     print(resp.message);
     if (resp.code != 1) {
@@ -178,7 +177,7 @@ class StudentVerificationModel {
     }
 
     String sql1 = " CREATE TABLE IF NOT EXISTS "
-        "${tableName} ("
+        "$tableName ("
         "id INTEGER PRIMARY KEY,"
         "name TEXT,"
         "avatar TEXT,"

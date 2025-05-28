@@ -107,7 +107,7 @@ class UserModel {
   int balance = 0;
 
   static fromJson(dynamic m) {
-    UserModel obj = new UserModel();
+    UserModel obj = UserModel();
     if (m == null) {
       return obj;
     }
@@ -232,7 +232,7 @@ class UserModel {
   static Future<UserModel> getItemById(String id) async {
     UserModel item = UserModel();
     try {
-      List<UserModel> items = await UserModel.getItems(where : "id = ${id}");
+      List<UserModel> items = await UserModel.getItems(where : "id = $id");
       if (items.isNotEmpty) {
         item = items.first;
       }
@@ -282,7 +282,7 @@ class UserModel {
     List<UserModel> data = [];
 
     RespondModel resp =
-        RespondModel(await Utils.http_get('${UserModel.end_point}', {}));
+        RespondModel(await Utils.http_get(UserModel.end_point, {}));
 
     if (resp.code != 1) {
       return [];

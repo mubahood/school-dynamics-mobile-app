@@ -222,7 +222,7 @@ class SubjectSchemeWorkScreenState extends State<SubjectSchemeWorkScreen> {
                                                   await m.delete();
                                                   init();
                                                 },
-                                                leading: Icon(
+                                                leading: const Icon(
                                                   FeatherIcons.trash,
                                                   color: CustomTheme.red,
                                                   size: 26,

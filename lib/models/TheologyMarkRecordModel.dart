@@ -40,7 +40,7 @@ class TheologyMarkRecordModel {
   String aggr_value = "";
 
   static fromJson(dynamic m) {
-    TheologyMarkRecordModel obj = new TheologyMarkRecordModel();
+    TheologyMarkRecordModel obj = TheologyMarkRecordModel();
     if (m == null) {
       return obj;
     }

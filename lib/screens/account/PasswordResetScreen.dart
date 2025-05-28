@@ -11,7 +11,7 @@ import '../../utils/Utils.dart';
 import '../OnBoardingScreen.dart';
 
 class PasswordResetScreen extends StatefulWidget {
-  PasswordResetScreen({Key? key}) : super(key: key);
+  const PasswordResetScreen({super.key});
 
   @override
   State<PasswordResetScreen> createState() => _PasswordResetScreenState();
@@ -74,13 +74,13 @@ class _PasswordResetScreenState extends State<PasswordResetScreen> {
                   if (val == null) {
                     return;
                   }
-                  email = val!.trim().toString();
+                  email = val.trim().toString();
                   setState(() {});
                 },
                 textInputAction: TextInputAction.next,
               ),
               !isTokenSent
-                  ? SizedBox()
+                  ? const SizedBox()
                   : Column(
                       children: [
                         const SizedBox(height: 15),
@@ -107,7 +107,7 @@ class _PasswordResetScreenState extends State<PasswordResetScreen> {
                               return;
                             }
 
-                            reset_code = val!.trim().toString();
+                            reset_code = val.trim().toString();
                           },
                           textInputAction: TextInputAction.next,
                         ),
@@ -137,7 +137,7 @@ class _PasswordResetScreenState extends State<PasswordResetScreen> {
                             if (val == null) {
                               return;
                             }
-                            password_1 = val!.trim().toString();
+                            password_1 = val.trim().toString();
                           },
                           textInputAction: TextInputAction.next,
                         ),
@@ -167,7 +167,7 @@ class _PasswordResetScreenState extends State<PasswordResetScreen> {
                             if (val == null) {
                               return;
                             }
-                            password_2 = val!.trim().toString();
+                            password_2 = val.trim().toString();
                           },
                           textInputAction: TextInputAction.next,
                         ),
@@ -182,7 +182,7 @@ class _PasswordResetScreenState extends State<PasswordResetScreen> {
                       width: double.infinity,
                       borderColor: Colors.red.shade900,
                       bordered: true,
-                      margin: EdgeInsets.only(bottom: 10),
+                      margin: const EdgeInsets.only(bottom: 10),
                       color: Colors.red.shade50,
                       child: FxText.bodySmall(
                         error_message,
@@ -195,7 +195,7 @@ class _PasswordResetScreenState extends State<PasswordResetScreen> {
                       width: double.infinity,
                       borderColor: Colors.green.shade900,
                       bordered: true,
-                      margin: EdgeInsets.only(bottom: 10),
+                      margin: const EdgeInsets.only(bottom: 10),
                       color: Colors.green.shade50,
                       child: FxText.bodySmall(
                         success_message,
@@ -247,7 +247,7 @@ class _PasswordResetScreenState extends State<PasswordResetScreen> {
                               !isTokenSent
                                   ? 'I already have secret code'
                                   : 'Request Another Secret Code',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 20,
                                 height: 1,
                                 color: CustomTheme.accent,
@@ -348,14 +348,14 @@ class _PasswordResetScreenState extends State<PasswordResetScreen> {
       return;
     }
     Utils.toast(resp.message);
-    Get.off(OnBoardingScreen());
+    Get.off(const OnBoardingScreen());
     return;
     success_message = resp.message;
     Utils.toast(resp.message);
     isTokenSent = true;
     setState(() {});
 
-    Get.offAll(() => OnBoardingScreen());
+    Get.offAll(() => const OnBoardingScreen());
   }
 
   Future<void> request_token() async {

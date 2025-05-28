@@ -67,7 +67,7 @@ class TheologyMarkCreateScreenState extends State<TheologyMarkCreateScreen> {
             },
           )
         ],
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         titleSpacing: 0,
         title: FxText.titleLarge(
           "Updating Marks",
@@ -116,7 +116,7 @@ class TheologyMarkCreateScreenState extends State<TheologyMarkCreateScreen> {
                             ),
                             widget.activeReportCard.activeMarkSubmission() !=
                                     'M.O.T'
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : FormBuilderTextField(
                                     name: 'mot_score',
                                     onChanged: (value) {
@@ -163,7 +163,7 @@ class TheologyMarkCreateScreenState extends State<TheologyMarkCreateScreen> {
                                   ),
                             widget.activeReportCard.activeMarkSubmission() !=
                                     'E.O.T'
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : FormBuilderTextField(
                                     name: 'eot_score',
                                     onChanged: (value) {

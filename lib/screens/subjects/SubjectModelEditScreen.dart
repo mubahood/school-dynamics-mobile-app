@@ -21,8 +21,8 @@ class SubjectModelEditScreen extends StatefulWidget {
 
   SubjectModelEditScreen(
     this.params, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   SubjectModelEditScreenState createState() => SubjectModelEditScreenState();
@@ -72,7 +72,7 @@ class SubjectModelEditScreenState extends State<SubjectModelEditScreen>
         actions: [
           is_loading
               ? Padding(
-                  padding: EdgeInsets.only(right: 20, top: 10, bottom: 10),
+                  padding: const EdgeInsets.only(right: 20, top: 10, bottom: 10),
                   child: Center(
                     child: CircularProgressIndicator(
                       strokeWidth: 2.0,
@@ -86,7 +86,7 @@ class SubjectModelEditScreenState extends State<SubjectModelEditScreen>
                     submit_form();
                   },
                   backgroundColor: Colors.white,
-                  child: Icon(
+                  child: const Icon(
                     FeatherIcons.check,
                     color: Colors.white,
                     size: 35,
@@ -431,7 +431,7 @@ class SubjectModelEditScreenState extends State<SubjectModelEditScreen>
                     ),
                   ),
                   _keyboardVisible
-                      ? SizedBox()
+                      ? const SizedBox()
                       : FxContainer(
                           color: Colors.white,
                           borderRadiusAll: 0,

@@ -194,7 +194,7 @@ Widget postWidget(PostModel object, Function f, BuildContext context) {
     child: Container(
       height: 110,
       width: double.infinity,
-      padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+      padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -203,7 +203,7 @@ Widget postWidget(PostModel object, Function f, BuildContext context) {
             child: Row(
               children: <Widget>[
                 Card(
-                    margin: EdgeInsets.all(0),
+                    margin: const EdgeInsets.all(0),
                     elevation: 0,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
@@ -258,7 +258,7 @@ Widget postWidget(PostModel object, Function f, BuildContext context) {
             ),
           ),
           Container(height: 10),
-          Divider(height: 0)
+          const Divider(height: 0)
         ],
       ),
     ),
@@ -268,11 +268,11 @@ Widget postWidget(PostModel object, Function f, BuildContext context) {
       f(object);
     },
     child: Container(
-      padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+      padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
       child: Column(
         children: <Widget>[
           Card(
-            margin: EdgeInsets.all(0),
+            margin: const EdgeInsets.all(0),
             elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
@@ -354,8 +354,8 @@ Widget ServiceSubscriptionWidget(ServiceSubscription m) => Flex(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           FxText.titleMedium(
-            "${m.administrator_text}",
-            color: Colors.black,
+                m.administrator_text,
+                color: Colors.black,
             fontWeight: 700,
           ),
           FxText.bodySmall(
@@ -376,8 +376,8 @@ Widget ServiceSubscriptionWidget(ServiceSubscription m) => Flex(
         ],
       ),
     ),
-    SizedBox(
-      width: 15,
+        const SizedBox(
+          width: 15,
     ),
   ],
 );
@@ -388,7 +388,7 @@ Widget menuItemWidget(MenuItem item) {
     height: (Get.width / 6),
     borderRadiusAll: 10,
     bordered: true,
-    padding: EdgeInsets.only(left: 5, right: 5),
+    padding: const EdgeInsets.only(left: 5, right: 5),
     onTap: () {
       item.f();
     },
@@ -473,13 +473,13 @@ Widget valueUnitWidget(BuildContext context, dynamic value, dynamic unit,
       fontWeight = FontWeight.w500}) {
   return RichText(
     text: TextSpan(
-      style: TextStyle(
+      style: const TextStyle(
         height: 1,
         color: Colors.black,
       ),
       children: <TextSpan>[
         TextSpan(
-          text: '${value.toString()}',
+          text: value.toString(),
           style: TextStyle(
               color: titleColor,
               letterSpacing: letterSpacing,
@@ -495,7 +495,7 @@ Widget valueUnitWidget(BuildContext context, dynamic value, dynamic unit,
         ),
       ],
     ),
-    textScaleFactor: 0.5,
+    textScaler: const TextScaler.linear(0.5),
   );
 }
 
@@ -629,7 +629,7 @@ Widget listItem2(MenuItem item) {
 }
 
 Widget myListLoaderWidget(BuildContext context) {
-  return Container(
+  return SizedBox(
     height: Get.height,
     child: ListView(
       children: [
@@ -677,7 +677,7 @@ Widget singleLoadingWidget(BuildContext context) {
             color: Colors.grey,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 10,
         ),
         Expanded(
@@ -693,22 +693,22 @@ Widget singleLoadingWidget(BuildContext context) {
                     height: Utils.mediaWidth(context) / 30,
                     width: Utils.mediaWidth(context) / 3,
                   ),
-                  SizedBox(
-                    height: 5,
+              const SizedBox(
+                height: 5,
                   ),
                   FxContainer(
                     height: Utils.mediaWidth(context) / 14,
                     color: Colors.grey,
                   ),
-                  SizedBox(
-                    height: 5,
+              const SizedBox(
+                height: 5,
                   ),
                   FxContainer(
                     height: Utils.mediaWidth(context) / 14,
                     color: Colors.grey,
                   ),
-                  SizedBox(
-                    height: 5,
+              const SizedBox(
+                height: 5,
                   ),
                   Flex(
                     direction: Axis.horizontal,
@@ -718,8 +718,8 @@ Widget singleLoadingWidget(BuildContext context) {
                         height: Utils.mediaWidth(context) / 30,
                         width: Utils.mediaWidth(context) / 6,
                       ),
-                      Spacer(),
-                      FxContainer(
+                  const Spacer(),
+                  FxContainer(
                         color: Colors.grey,
                         height: Utils.mediaWidth(context) / 30,
                         width: Utils.mediaWidth(context) / 6,

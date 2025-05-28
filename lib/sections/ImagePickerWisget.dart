@@ -20,9 +20,8 @@ class ImagePickerWidget extends StatefulWidget {
   ImagePickerWidget(
     this.path,
     this.src,
-    this.title,
-    this.onImageSelected,
-  ) : super();
+    this.title, this.onImageSelected,
+      {super.key});
 
   @override
   State<ImagePickerWidget> createState() => _ImagePickerWidgetState();
@@ -49,7 +48,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
       ),
       child: Row(
         children: [
-          Container(
+          SizedBox(
             width: 70,
             height: 70,
             child: imgPath.isNotEmpty
@@ -108,7 +107,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
         builder: (BuildContext buildContext) {
           return Container(
             color: Colors.transparent,
-            padding: EdgeInsets.all(15),
+            padding: const EdgeInsets.all(15),
             child: Container(
               decoration: const BoxDecoration(
                 color: Colors.white,
@@ -173,7 +172,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
       );
       displayPickedPhoto();
     } catch (e) {
-      Utils.toast("Failed to get photo because ${e}");
+      Utils.toast("Failed to get photo because $e");
     }
   }
 
@@ -188,11 +187,11 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
       return;
     }
 
-    var temp_file = pickedFile?.path.toString();
-    if (!(await (File(temp_file.toString()).exists()))) {
+    var tempFile = pickedFile?.path.toString();
+    if (!(await (File(tempFile.toString()).exists()))) {
       return;
     }
-    imgPath = temp_file.toString();
+    imgPath = tempFile.toString();
     widget.onImageSelected(imgPath);
     setState(() {});
   }

@@ -11,7 +11,7 @@ import '../../theme/custom_theme.dart';
 import 'ClassAttendenciesScreen.dart';
 
 class ClassScreen extends StatefulWidget {
-  const ClassScreen({Key? key, required this.data}) : super(key: key);
+  const ClassScreen({super.key, required this.data});
   final dynamic data;
 
   @override

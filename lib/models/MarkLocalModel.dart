@@ -1,7 +1,6 @@
 import 'package:schooldynamics/utils/Utils.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../utils/AppConfig.dart';
 import 'RespondModel.dart';
 
 class MarkLocalModel {
@@ -157,7 +156,7 @@ class MarkLocalModel {
     }
 
     String sql = " CREATE TABLE IF NOT EXISTS "
-        "${tableName} ("
+        "$tableName ("
         "id INTEGER PRIMARY KEY,"
         "exam_id Text,"
         "class_id Text,"

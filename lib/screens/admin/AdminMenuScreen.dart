@@ -15,7 +15,7 @@ import 'MenuEditList.dart';
 import 'StudentsVerificationScreen.dart';
 
 class AdminMenuScreen extends StatefulWidget {
-  const AdminMenuScreen({Key? key}) : super(key: key);
+  const AdminMenuScreen({super.key});
 
   @override
   _CourseTasksScreenState createState() => _CourseTasksScreenState();
@@ -56,7 +56,7 @@ class _CourseTasksScreenState extends State<AdminMenuScreen> {
           'Students verification',
           'Verify students status (Active or Inactive).',
           FeatherIcons.userCheck, '', () {
-        Get.to(() => StudentsVerificationScreen());
+        Get.to(() => const StudentsVerificationScreen());
       }),
       MenuItem('School info update', 'Update school details',
           FeatherIcons.settings, '', () async {

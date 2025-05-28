@@ -24,7 +24,7 @@ class TheologySubjectModel {
   String name = "";
 
   static fromJson(dynamic m) {
-    TheologySubjectModel obj = new TheologySubjectModel();
+    TheologySubjectModel obj = TheologySubjectModel();
     if (m == null) {
       return obj;
     }
@@ -91,7 +91,7 @@ class TheologySubjectModel {
     List<TheologySubjectModel> data = [];
 
     RespondModel resp = RespondModel(
-        await Utils.http_get('${TheologySubjectModel.end_point}', {}));
+        await Utils.http_get(TheologySubjectModel.end_point, {}));
 
 
     if (resp.code != 1) {

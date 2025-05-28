@@ -17,8 +17,8 @@ class ChangeAccountStatusScreen extends StatefulWidget {
 
   ChangeAccountStatusScreen(
     this.params, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   ChangeAccountStatusScreenState createState() =>
@@ -79,7 +79,7 @@ class ChangeAccountStatusScreenState extends State<ChangeAccountStatusScreen>
           future: initFuture,
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             }
 
             return FormBuilder(
@@ -186,13 +186,13 @@ class ChangeAccountStatusScreenState extends State<ChangeAccountStatusScreen>
                                                       .toList(),
                                                 ),
                                                 error_message.isEmpty
-                                                    ? SizedBox()
+                                                    ? const SizedBox()
                                                     : const SizedBox(
                                                         height: 10),
                                                 error_message.isEmpty
-                                                    ? SizedBox()
+                                                    ? const SizedBox()
                                                     : FxContainer(
-                                                        margin: EdgeInsets.only(
+                                                        margin: const EdgeInsets.only(
                                                             bottom: 10),
                                                         color:
                                                             Colors.red.shade50,

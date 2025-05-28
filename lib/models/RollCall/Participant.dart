@@ -46,7 +46,7 @@ class Participant {
   }
 
   static fromJson(dynamic m) {
-    Participant obj = new Participant();
+    Participant obj = Participant();
     if (m == null) {
       return obj;
     }
@@ -117,7 +117,7 @@ class Participant {
     List<Participant> data = [];
 
     RespondModel resp =
-        RespondModel(await Utils.http_get('${Participant.end_point}', {}));
+        RespondModel(await Utils.http_get(Participant.end_point, {}));
 
     if (resp.code != 1) {
       return [];

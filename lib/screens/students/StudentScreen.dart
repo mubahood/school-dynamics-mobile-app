@@ -19,7 +19,7 @@ import 'StudentEditGuardianScreen.dart';
 import 'StudentEditPhotoScreen.dart';
 
 class StudentScreen extends StatefulWidget {
-  const StudentScreen({Key? key, required this.data}) : super(key: key);
+  const StudentScreen({super.key, required this.data});
   final dynamic data;
 
   @override
@@ -321,12 +321,12 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                           height: 5,
                         ),
                         Container(
-                            child: titleValueWidget('NAME', '${item.name}')),
+                            child: titleValueWidget('NAME', item.name)),
                         Container(
-                            child: titleValueWidget('SEX', '${item.sex}')),
+                            child: titleValueWidget('SEX', item.sex)),
                         Container(
                             child: titleValueWidget('Date of birth',
-                                '${Utils.to_date_1(item.date_of_birth)}')),
+                                Utils.to_date_1(item.date_of_birth))),
                         /*           Container(
                         child: titleValueWidget(
                             'religion', '${item.religion}')),
@@ -335,11 +335,11 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                             'nationality', '${item.nationality}')),*/
                         Container(
                             child: titleValueWidget(
-                                'Home address', '${item.home_address}')),
+                                'Home address', item.home_address)),
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   FxContainer(
@@ -362,31 +362,31 @@ class _CourseTasksScreenState extends State<StudentScreen> {
               ),
               const Divider(),
               titleValueWidget2(
-                  'SCHOOL PAY CODE', '${item.school_pay_payment_code}'),
+                  'SCHOOL PAY CODE', item.school_pay_payment_code),
               const SizedBox(
                 height: 15,
               ),
               title_widget('Academics'),
-              titleValueWidget2('Current class', '${item.current_class_text}'),
+              titleValueWidget2('Current class', item.current_class_text),
               titleValueWidget2('Current theology class',
-                  '${item.current_theology_class_id}'),
-              titleValueWidget2('STUDENT ID', '${item.user_id}'),
+                  item.current_theology_class_id),
+              titleValueWidget2('STUDENT ID', item.user_id),
               titleValueWidget2(
-                  'school pay CODE', '${item.school_pay_payment_code}'),
+                  'school pay CODE', item.school_pay_payment_code),
               titleValueWidget2(
-                  'status', '${item.status == '1' ? 'Active' : 'Pending'}'),
+                  'status', item.status == '1' ? 'Active' : 'Pending'),
               titleValueWidget2(
-                  'registered', '${Utils.to_date_1(item.created_at)}'),
+                  'registered', Utils.to_date_1(item.created_at)),
               const SizedBox(
                 height: 10,
               ),
               title_widget('Guardian'),
-              titleValueWidget2("Father's name", '${item.father_name}'),
-              titleValueWidget2("mother's name", '${item.mother_name}'),
-              titleValueWidget2("guardian's contact", '${item.phone_number_1}'),
+              titleValueWidget2("Father's name", item.father_name),
+              titleValueWidget2("mother's name", item.mother_name),
+              titleValueWidget2("guardian's contact", item.phone_number_1),
               titleValueWidget2(
-                  "guArdian's contact 2", '${item.phone_number_2}'),
-              titleValueWidget2("Email address", '${item.email}'),
+                  "guArdian's contact 2", item.phone_number_2),
+              titleValueWidget2("Email address", item.email),
               const SizedBox(
                 height: 100,
               ),
@@ -823,7 +823,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                             height: 5,
                           ),
                           titleValueWidget('Details', m.description),
-                          Divider(),
+                          const Divider(),
                           titleValueWidget(
                               'Head Teacher\'s Comment', m.hm_comment),
                           const SizedBox(
@@ -831,7 +831,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                           ),
                           titleValueWidget(
                               'Class Teacher\'s Comment', m.teacher_comment),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
                           titleValueWidget(

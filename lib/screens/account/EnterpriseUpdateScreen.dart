@@ -20,8 +20,8 @@ class EnterpriseUpdateScreen extends StatefulWidget {
 
   EnterpriseUpdateScreen(
     this.params, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   EnterpriseUpdateScreenState createState() => EnterpriseUpdateScreenState();
@@ -66,7 +66,7 @@ class EnterpriseUpdateScreenState extends State<EnterpriseUpdateScreen>
         actions: [
           is_loading
               ? Padding(
-                  padding: EdgeInsets.only(right: 20, top: 10, bottom: 10),
+                  padding: const EdgeInsets.only(right: 20, top: 10, bottom: 10),
                   child: Center(
                     child: CircularProgressIndicator(
                       strokeWidth: 2.0,
@@ -80,7 +80,7 @@ class EnterpriseUpdateScreenState extends State<EnterpriseUpdateScreen>
                     submit_form();
                   },
                   backgroundColor: Colors.white,
-                  child: Icon(
+                  child: const Icon(
                     FeatherIcons.check,
                     color: Colors.white,
                     size: 35,
@@ -219,12 +219,12 @@ class EnterpriseUpdateScreenState extends State<EnterpriseUpdateScreen>
                                   FormBuilderFieldOption(
                                     value: 'Secondary',
                                     child: Text(
-                                        "Secondary School (O\'level school)"),
+                                        "Secondary School (O'level school)"),
                                   ),
                                   FormBuilderFieldOption(
                                     value: 'Advanced',
                                     child: Text(
-                                        "Advanced Secondary School (Both O\'level and A\'level)"),
+                                        "Advanced Secondary School (Both O'level and A'level)"),
                                   ),
                                 ]),
                             const SizedBox(height: 20),
@@ -506,7 +506,7 @@ class EnterpriseUpdateScreenState extends State<EnterpriseUpdateScreen>
                     ),
                   ),
                   _keyboardVisible
-                      ? SizedBox()
+                      ? const SizedBox()
                       : FxContainer(
                           color: Colors.white,
                           borderRadiusAll: 0,

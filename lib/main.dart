@@ -23,7 +23,7 @@ Future<void> main() async {
 [        ] > flutter run --scan to get full insights.
 * */
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +33,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
       builder: EasyLoading.init(),
-      home: OnBoardingScreen(),
+      home: const OnBoardingScreen(),
       routes: {
-        '/OnBoardingScreen': (context) => OnBoardingScreen(),
+        '/OnBoardingScreen': (context) => const OnBoardingScreen(),
         AppConfig.FullApp: (context) => const FullApp(),
       },
     );

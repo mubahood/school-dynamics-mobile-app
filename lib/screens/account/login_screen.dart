@@ -18,10 +18,10 @@ import '../OnBoardingScreen.dart';
 import 'PasswordResetScreen.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
-  LoginScreenState createState() => new LoginScreenState();
+  LoginScreenState createState() => LoginScreenState();
 }
 
 Future<void> checkForUpdate() async {
@@ -54,8 +54,8 @@ class LoginScreenState extends State<LoginScreen> {
       return;
     }
 
-    Map<String, dynamic> form_data_map = {};
-    form_data_map = {
+    Map<String, dynamic> formDataMap = {};
+    formDataMap = {
       'username': _formKey.currentState?.fields['username']?.value,
       'password': _formKey.currentState?.fields['password']?.value,
     };
@@ -64,7 +64,7 @@ class LoginScreenState extends State<LoginScreen> {
     error_message = "";
     setState(() {});
     RespondModel resp =
-    RespondModel(await Utils.http_post('users/login', form_data_map));
+    RespondModel(await Utils.http_post('users/login', formDataMap));
 
     if (resp.code != 1) {
       is_loading = false;
@@ -105,7 +105,7 @@ class LoginScreenState extends State<LoginScreen> {
     is_loading = false;
     setState(() {});
 
-    Get.off(OnBoardingScreen());
+    Get.off(const OnBoardingScreen());
   }
 
   String error_message = "";
@@ -201,7 +201,7 @@ class LoginScreenState extends State<LoginScreen> {
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(0),
+          preferredSize: const Size.fromHeight(0),
           child: Container(color: Colors.white)),
       body: SingleChildScrollView(
         child: Column(
@@ -322,7 +322,7 @@ class LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                               onPressed: () {
-                                Get.to(()=>PasswordResetScreen());
+                                Get.to(()=>const PasswordResetScreen());
                               },
                             )
                           ],
@@ -331,7 +331,7 @@ class LoginScreenState extends State<LoginScreen> {
                         error_message.isEmpty
                             ? const SizedBox()
                             : FxContainer(
-                                margin: EdgeInsets.only(bottom: 10),
+                                margin: const EdgeInsets.only(bottom: 10),
                                 color: Colors.red.shade50,
                                 child: Text(
                                   error_message,

@@ -7,7 +7,7 @@ import '../../theme/custom_theme.dart';
 import 'UserAccountCreateScreen.dart';
 
 class ConfirmCreateNewSchoolAccountScreen extends StatelessWidget {
-  const ConfirmCreateNewSchoolAccountScreen({Key? key}) : super(key: key);
+  const ConfirmCreateNewSchoolAccountScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -14,7 +14,7 @@ class EmailVerificationScreen extends StatefulWidget {
   LoggedInUserModel u;
   String task;
 
-  EmailVerificationScreen(this.u, this.task, {Key? key}) : super(key: key);
+  EmailVerificationScreen(this.u, this.task, {super.key});
 
   @override
   State<EmailVerificationScreen> createState() =>
@@ -77,12 +77,12 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                   if (val == null) {
                     return;
                   }
-                  item.email = val!.trim().toString();
+                  item.email = val.trim().toString();
                 },
                 textInputAction: TextInputAction.next,
               ),
               !isTokenSent
-                  ? SizedBox()
+                  ? const SizedBox()
                   : Column(
                       children: [
                         const SizedBox(height: 15),
@@ -108,7 +108,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                             if (val == null) {
                               return;
                             }
-                            item.password = val!.trim().toString();
+                            item.password = val.trim().toString();
                           },
                           textInputAction: TextInputAction.next,
                         ),
@@ -123,7 +123,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                       width: double.infinity,
                       borderColor: Colors.red.shade900,
                       bordered: true,
-                      margin: EdgeInsets.only(bottom: 10),
+                      margin: const EdgeInsets.only(bottom: 10),
                       color: Colors.red.shade50,
                       child: FxText.bodySmall(
                         error_message,
@@ -136,7 +136,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                       width: double.infinity,
                       borderColor: Colors.green.shade900,
                       bordered: true,
-                      margin: EdgeInsets.only(bottom: 10),
+                      margin: const EdgeInsets.only(bottom: 10),
                       color: Colors.green.shade50,
                       child: FxText.bodySmall(
                         success_message,
@@ -163,7 +163,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                       },
                       child: Text(
                         isTokenSent ? 'Verify Email' : 'Request Secret Code',
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 20, height: 1, color: Colors.white),
                       ),
                     ),
@@ -185,7 +185,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                         !isTokenSent
                             ? 'I already have secret code'
                             : 'Request Another Secret Code',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 20,
                           height: 1,
                           color: CustomTheme.accent,
@@ -251,7 +251,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
     setState(() {});
     widget.u.verification = '1';
     await widget.u.save();
-    Get.offAll(() => OnBoardingScreen());
+    Get.offAll(() => const OnBoardingScreen());
   }
 
   Future<void> request_token() async {

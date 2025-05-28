@@ -12,7 +12,7 @@ import '../students/StudentScreen.dart';
 class TransactionScreen extends StatefulWidget {
   dynamic data;
 
-  TransactionScreen({Key? key, this.data}) : super(key: key);
+  TransactionScreen({super.key, this.data});
 
   @override
   TransactionScreenState createState() => TransactionScreenState();
@@ -36,7 +36,7 @@ class TransactionScreenState extends State<TransactionScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FxButton.text(
-                padding: EdgeInsets.only(top: 20, left: 15),
+                padding: const EdgeInsets.only(top: 20, left: 15),
                 onPressed: () {
                   Get.back();
                 },

@@ -10,7 +10,7 @@ import 'SubjectScreen.dart';
 class TheologySubjectsScreen extends StatefulWidget {
   Map<String, dynamic> params = {};
 
-  TheologySubjectsScreen(this.params, {Key? key}) : super(key: key);
+  TheologySubjectsScreen(this.params, {super.key});
 
   @override
   TheologySubjectsScreenState createState() => TheologySubjectsScreenState();
@@ -45,7 +45,7 @@ class TheologySubjectsScreenState extends State<TheologySubjectsScreen> {
           backgroundColor: CustomTheme.primary,
           titleSpacing: 0,
           elevation: 0,
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.white),
           automaticallyImplyLeading: true,
           // remove back button in appbar.
           title: FxText.titleLarge(
@@ -94,7 +94,7 @@ class TheologySubjectsScreenState extends State<TheologySubjectsScreen> {
                         padding: const EdgeInsets.only(
                             left: 5, right: 5, top: 5, bottom: 5),
                         color: CustomTheme.primary.withAlpha(10),
-                        child: Icon(Icons.chevron_right),
+                        child: const Icon(Icons.chevron_right),
                       ),
                     );
                   }),

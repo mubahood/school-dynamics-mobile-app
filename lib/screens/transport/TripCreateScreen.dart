@@ -8,7 +8,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutx/flutx.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
-import 'package:schooldynamics/models/TransportRouteModel.dart';
+import 'package:schooldynamics/models/TransportStage.dart';
 
 import '../../models/TransportParticipantModel.dart';
 import '../../models/TransportSubscriptionModel.dart';
@@ -26,8 +26,8 @@ class TripCreateScreen extends StatefulWidget {
 
   TripCreateScreen(
     this.item, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   _TripCreateScreenState createState() => _TripCreateScreenState();
@@ -58,7 +58,7 @@ class _TripCreateScreenState extends State<TripCreateScreen> {
       appBar: AppBar(
         backgroundColor: CustomTheme.primary,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         titleSpacing: 0,
         title: FxText.titleLarge(
           "Creating new trip",
@@ -94,7 +94,7 @@ class _TripCreateScreenState extends State<TripCreateScreen> {
                               initialValue: widget.item.transport_route_text,
                               textCapitalization: TextCapitalization.words,
                               onTap: () async {
-                                TransportRouteModel? t = await Get.to(() =>
+                                TransportStage? t = await Get.to(() =>
                                     TransportRoutesScreen(
                                         const {'task': 'picker'}));
                                 if (t == null) {
@@ -159,7 +159,7 @@ class _TripCreateScreenState extends State<TripCreateScreen> {
                               ],
                             ),
 
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
 
@@ -239,7 +239,7 @@ class _TripCreateScreenState extends State<TripCreateScreen> {
                   onTap: () async {
                     Utils.toast2("Please wait...");
                     await TransportVehicleModel.getOnlineItems();
-                    await TransportRouteModel.getOnlineItems();
+                    await TransportStage.getOnlineItems();
                     await TransportSubscriptionModel.getOnlineItems();
                     setState(() {});
                     caltulate_passengers();
@@ -255,7 +255,7 @@ class _TripCreateScreenState extends State<TripCreateScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.refresh,
                             size: 25,
                             color: CustomTheme.accent,
@@ -391,7 +391,8 @@ int id = 0;
     }
 
     subscriptions = await TransportSubscriptionModel.get_items(
-        where: ' transport_route_id = ${widget.item.transport_route_id}  ');
+        where: ' transport_stage_id = ${widget.item.transport_route_id} ');
+
     passengers.clear();
     for (TransportSubscriptionModel s in subscriptions) {
       if (s.trip_type != 'Round Trip') {
@@ -407,7 +408,6 @@ int id = 0;
       p.status = 'Absent';
       passengers.add(p);
     }
-
     widget.item.expected_passengers = passengers.length.toString();
     setState(() {});
   }

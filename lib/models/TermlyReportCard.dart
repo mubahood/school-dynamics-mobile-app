@@ -88,7 +88,7 @@ class TermlyReportCard {
   }
 
   static fromJson(dynamic m) {
-    TermlyReportCard obj = new TermlyReportCard();
+    TermlyReportCard obj = TermlyReportCard();
     if (m == null) {
       return obj;
     }
@@ -208,7 +208,7 @@ class TermlyReportCard {
     List<TermlyReportCard> data = [];
 
     RespondModel resp =
-        RespondModel(await Utils.http_get('${TermlyReportCard.end_point}', {}));
+        RespondModel(await Utils.http_get(TermlyReportCard.end_point, {}));
 
     if (resp.code != 1) {
       return [];

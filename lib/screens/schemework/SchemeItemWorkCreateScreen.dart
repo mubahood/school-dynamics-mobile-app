@@ -19,8 +19,8 @@ class SchemeItemWorkCreateScreen extends StatefulWidget {
 
   SchemeItemWorkCreateScreen(
     this.item, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   _SchemeItemWorkCreateScreenState createState() =>
@@ -187,7 +187,7 @@ class _SchemeItemWorkCreateScreenState
             },
           )
         ],
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         titleSpacing: 0,
         title: FxText.titleLarge(
           "New scheme-work item",

@@ -12,7 +12,7 @@ import '../posts/PostModelsScreen.dart';
 class FullApp extends StatefulWidget {
   static const String tag = "FullApp";
 
-  const FullApp({Key? key}) : super(key: key);
+  const FullApp({super.key});
 
   @override
   _FullAppState createState() => _FullAppState();

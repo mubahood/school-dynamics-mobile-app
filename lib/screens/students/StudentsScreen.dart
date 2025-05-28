@@ -18,7 +18,7 @@ import 'StudentCreateScreen.dart';
 class StudentsScreen extends StatefulWidget {
   Map<String, dynamic> params = {};
 
-  StudentsScreen(this.params, {Key? key}) : super(key: key);
+  StudentsScreen(this.params, {super.key});
 
   @override
   StudentsScreenState createState() => StudentsScreenState();
@@ -55,7 +55,7 @@ class StudentsScreenState extends State<StudentsScreen> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          await Get.to(() => StudentCreateScreen({}));
+          await Get.to(() => StudentCreateScreen(const {}));
           init();
         },
         backgroundColor: CustomTheme.primary,

@@ -80,6 +80,7 @@ class _SectionDashboardState extends State<SectionDashboard> {
 
   Future<dynamic> doRefresh() async {
     checkForUpdate();
+
     futureInit = myInit();
     setState(() {});
   }
@@ -93,6 +94,8 @@ class _SectionDashboardState extends State<SectionDashboard> {
 
   bool is_first_time = true;
   Future<dynamic> myInit() async {
+    await man.getEnt();
+
     if (is_first_time) {
       await man.getEnt();
       await Utils.init_theme();
@@ -101,6 +104,8 @@ class _SectionDashboardState extends State<SectionDashboard> {
       Utils.init_theme();
     }
 
+    man.ent.get_version();
+    await man.ent.check_version();
     LoggedInUserModel.getLoggedInUserOnline();
     u = await LoggedInUserModel.getLoggedInUser();
     //Utils.initOneSignal();
@@ -140,14 +145,14 @@ class _SectionDashboardState extends State<SectionDashboard> {
         u.isRole('parent')) {
       menuItems.add(MenuItem(
           'School Fees', 'T 1', FeatherIcons.edit, 'financial-account.jpg', () {
-        Get.to(() => FinancialAccountsScreen({}));
+        Get.to(() => FinancialAccountsScreen(const {}));
       }));
     }
 
     if (u.isRole('bursar')) {
       menuItems.add(
           MenuItem('Transactions', 'T 1', FeatherIcons.edit, 'finance.png', () {
-        Get.to(() => TransactionsScreen({}));
+        Get.to(() => TransactionsScreen(const {}));
       }));
       menuItems.add(
           MenuItem('Services', 'T 1', FeatherIcons.edit, 'services.png', () {
@@ -175,12 +180,12 @@ class _SectionDashboardState extends State<SectionDashboard> {
     if (!u.isRole('parent')) {
       menuItems.add(MenuItem(
           'Roll-calling', 'T 1', FeatherIcons.edit, 'attandance.png', () {
-        Get.to(() => SessionsScreen());
+        Get.to(() => const SessionsScreen());
       }));
     } else {
       menuItems.add(MenuItem(
           'Roll-calling', 'T 1', FeatherIcons.edit, 'attandance.png', () {
-        Get.to(() => AttendanceScreen());
+        Get.to(() => const AttendanceScreen());
       }));
     }
 
@@ -190,33 +195,33 @@ class _SectionDashboardState extends State<SectionDashboard> {
         u.isRole('gate')) {
       menuItems.add(MenuItem(
           'Visitors\' Book', 'T 1', FeatherIcons.edit, 'visitor.png', () {
-        Get.to(() => VisitorsBookScreen());
+        Get.to(() => const VisitorsBookScreen());
       }));
     }
 
     if (u.isRole('teacher') || u.isRole('admin') || u.isRole('dos')) {
       menuItems.add(
           MenuItem('Scheme-work', 'T 1', FeatherIcons.edit, 'scheme.png', () {
-        Get.to(() => SchemeWorkHomeScreen());
+        Get.to(() => const SchemeWorkHomeScreen());
       }));
     }
 
     if (u.isRole('driver') || u.isRole('admin')) {
       menuItems
           .add(MenuItem('Transport', 'T 1', FeatherIcons.edit, 'bus.jpg', () {
-        Get.to(() => TransportHomeScreen());
+        Get.to(() => const TransportHomeScreen());
       }));
     }
 
     menuItems
         .add(MenuItem('School News', 'T 1', FeatherIcons.edit, 'news.png', () {
-      Get.to(() => NewsHomeScreen());
+      Get.to(() => const NewsHomeScreen());
     }));
 
     if (u.isRole('teacher') || u.isRole('admin') || u.isRole('dos')) {
       menuItems.add(MenuItem(
           'Exams & Report Cards', 'T 1', FeatherIcons.edit, 'exams.png', () {
-        Get.to(() => ExamsHomeScreen());
+        Get.to(() => const ExamsHomeScreen());
       }));
     }
 
@@ -262,14 +267,14 @@ class _SectionDashboardState extends State<SectionDashboard> {
                       onTap: () {
                         myInit();
                       },
-                      child: FxText.titleLarge(
+                      child: FxText.titleSmall(
                         "${man.ent.name.toUpperCase()}.",
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.start,
                         fontWeight: 800,
                         color: Colors.white,
-                        fontSize: 30,
+                        fontSize: 20,
                         height: 1.2,
                       ),
                     ),
@@ -288,21 +293,21 @@ class _SectionDashboardState extends State<SectionDashboard> {
                 ),
               ],
             )),
-        Container(
-          padding: const EdgeInsets.only(
-            left: 20,
-            top: 10,
-            right: 20,
+        true
+            ? SizedBox()
+            : Container(
+                padding: const EdgeInsets.only(
+                  left: 20,
+                  top: 10,
+                  right: 20,
             bottom: 10,
           ),
           child: FxButton.block(
               onPressed: () {
-                Get.to(() => OnboardingCheckListScreen());
-              },
-              child: FxText.titleLarge(
-                  "Onboarding Check".toUpperCase(),
-                  fontWeight: 800,
-                  color: Colors.white)),
+                      Get.to(() => const OnboardingCheckListScreen());
+                    },
+                    child: FxText.titleLarge("Onboarding Check".toUpperCase(),
+                        fontWeight: 800, color: Colors.white)),
         ),
         Expanded(
           child: Container(
@@ -340,7 +345,7 @@ class _SectionDashboardState extends State<SectionDashboard> {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
       ],

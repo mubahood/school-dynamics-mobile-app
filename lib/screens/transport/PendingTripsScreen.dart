@@ -10,7 +10,7 @@ import '../../utils/Utils.dart';
 
 //PendingTripsScreen
 class PendingTripsScreen extends StatefulWidget {
-  PendingTripsScreen({Key? key}) : super(key: key);
+  const PendingTripsScreen({super.key});
 
   @override
   PendingTripsScreenState createState() => PendingTripsScreenState();
@@ -41,7 +41,7 @@ class PendingTripsScreenState extends State<PendingTripsScreen> {
           backgroundColor: CustomTheme.primary,
           titleSpacing: 0,
           elevation: 0,
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.white),
           automaticallyImplyLeading: true,
           // remove back button in appbar.
           title: Column(
@@ -92,7 +92,7 @@ class PendingTripsScreenState extends State<PendingTripsScreen> {
                                                   topRight:
                                                       Radius.circular(16))),
                                           child: Container(
-                                            padding: EdgeInsets.all(24),
+                                            padding: const EdgeInsets.all(24),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.min,
                                               crossAxisAlignment:
@@ -199,7 +199,7 @@ class PendingTripsScreenState extends State<PendingTripsScreen> {
           ),
           loading
               ? Container(
-                  padding: EdgeInsets.only(bottom: 10),
+                  padding: const EdgeInsets.only(bottom: 10),
                   child: const CircularProgressIndicator(
                     strokeWidth: 2.5,
                     valueColor: AlwaysStoppedAnimation<Color>(Colors.red),

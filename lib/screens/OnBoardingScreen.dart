@@ -17,7 +17,7 @@ import 'account/EmailVerificationScreen.dart';
 import 'account/EnterpriseRegisterScreen.dart';
 
 class OnBoardingScreen extends StatefulWidget {
-  OnBoardingScreen({Key? key}) : super(key: key);
+  const OnBoardingScreen({super.key});
 
   @override
   _OnBoardingScreenState createState() => _OnBoardingScreenState();
@@ -49,7 +49,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     padding: const EdgeInsets.symmetric(
                       horizontal: 40,
                     ),
-                    child: Container(
+                    child: SizedBox(
                       width: double.infinity,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -82,7 +82,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           ),
                           FxButton.block(
                             onPressed: () {
-                              Get.to(() => EnterpriseModelEditScreen({}));
+                              Get.to(() => EnterpriseModelEditScreen(const {}));
                             },
                             child: FxText.titleMedium(
                               "Register School".toUpperCase(),
@@ -111,7 +111,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                   TextButton(
                                     onPressed: () async {
                                       await Utils.logout();
-                                      Get.to(() => OnBoardingScreen(),
+                                      Get.to(() => const OnBoardingScreen(),
                                           preventDuplicates: false);
                                     },
                                     child: const Text("Logout"),
@@ -132,7 +132,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     padding: const EdgeInsets.symmetric(
                       horizontal: 40,
                     ),
-                    child: Container(
+                    child: SizedBox(
                       width: double.infinity,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -172,7 +172,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                               fontWeight: 900,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 15,
                           ),
                           FxButton.text(
@@ -192,7 +192,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                   TextButton(
                                     onPressed: () async {
                                       await Utils.logout();
-                                      Get.to(() => OnBoardingScreen(),
+                                      Get.to(() => const OnBoardingScreen(),
                                           preventDuplicates: false);
                                     },
                                     child: const Text("Logout"),
@@ -240,7 +240,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           padding: const EdgeInsets.symmetric(
                             horizontal: 20,
                           ),
-                          child: Container(
+                          child: SizedBox(
                             width: double.infinity,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -260,24 +260,24 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                   height: 50,
                                 ),
                                 //icon button
-                                MyButtonIcon(
+                                true
+                                    ? SizedBox()
+                                    : MyButtonIcon(
                                   "Continue with Google",
                                   Utils.icon('google.png'),
                                   () async {
-
-                                    final GoogleSignIn _googleSignIn = GoogleSignIn();
-                                    if (_googleSignIn == null){
-                                      Utils.toast("Google Sign In is null");
-                                      return;
-                                    }
-                                    if(_googleSignIn.currentUser != null){
-                                      Utils.toast("Good to go");
+                                          final GoogleSignIn googleSignIn =
+                                              GoogleSignIn();
+                                          if (googleSignIn.currentUser !=
+                                              null) {
+                                            Utils.toast("Good to go");
                                       return;
                                     }
                                     final GoogleSignInAccount? googleUser;
                                     try {
-                                      googleUser = await _googleSignIn.signIn();
-                                    } catch (e) {
+                                            googleUser =
+                                                await googleSignIn.signIn();
+                                          } catch (e) {
                                       print(e.toString());
                                       Utils.toast("failed because Google Sign In because of $e");
                                       return;
@@ -287,20 +287,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                       Utils.toast("failed because Google Sign In is null");
                                       return;
                                     }
-                                    final GoogleSignInAuthentication? googleAuth = await googleUser.authentication;
-                                    if (googleAuth == null) {
-                                      Utils.toast("failed because Google Sign In Auth is null");
-                                      return;
-                                    }
-                                    final credential = GoogleAuthProvider.credential(
+                                          final GoogleSignInAuthentication
+                                              googleAuth =
+                                              await googleUser.authentication;
+                                          final credential = GoogleAuthProvider.credential(
                                       accessToken: googleAuth.accessToken,
                                       idToken: googleAuth.idToken,
                                     );
                                     final UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
-                                    if (userCredential == null) {
-                                      Utils.toast("failed because User Credential is null");
-                                      return;
-                                    }
                                     final User? user = userCredential.user;
                                     if (user == null) {
                                       Utils.toast("failed because User is null");
@@ -374,7 +368,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                   "Use Email or Phone Number",
                                   Utils.icon('user.png'),
                                   () {
-                                    Get.to(() => LoginScreen());
+                                    Get.to(() => const LoginScreen());
                                   },
                                 ),
                               ],
@@ -401,7 +395,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                             InkWell(
                               onTap: () {
                                 Get.to(() =>
-                                    ConfirmCreateNewSchoolAccountScreen());
+                                    const ConfirmCreateNewSchoolAccountScreen());
                               },
                               child: Text(
                                 "Create New School Account",
@@ -469,7 +463,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   }
 
   bool is_loading = true;
-  LoggedInUserModel logged_in_user = new LoggedInUserModel();
+  LoggedInUserModel logged_in_user = LoggedInUserModel();
 
   void re_load() {
     setState(() {

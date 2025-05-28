@@ -1,13 +1,17 @@
 import 'dart:convert';
 
 import 'package:schooldynamics/models/RespondModel.dart';
+import 'package:schooldynamics/models/Service.dart';
+import 'package:schooldynamics/models/SessionOnline.dart';
 import 'package:schooldynamics/models/TemporaryModel.dart';
+import 'package:schooldynamics/models/TheologyStreamModel.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../utils/Utils.dart';
+import 'StreamModel.dart';
 
 class SessionLocal {
-  static String table_name = "SessionLocal1";
+  static String table_name = "SessionLocal2";
 
   List<TemporaryModel> expectedMembers = [];
   List<int> presentMembers = [];
@@ -30,7 +34,7 @@ class SessionLocal {
     if (absent.length < 2) {
       return [];
     }
-    var temp = null;
+    var temp;
 
     try {
       temp = jsonDecode(absent);
@@ -86,32 +90,63 @@ class SessionLocal {
   }
 
   Future<void> submitSelf() async {
-    print("======>$title<======");
-
     if (closed != 'yes') {
       return;
     }
 
-    Map<String, dynamic> params = {
-      'id': id,
-      'due_date': due_date,
-      'type': type,
-      'title': title,
-      'present': present,
-      'academic_class_id': academic_class_id,
-      'subject_id': subject_id,
-      'service_id': service_id,
-      'stream_id': stream_id,
-    };
-    RespondModel resp =
-        RespondModel(await Utils.http_post('session-create', params));
+    Map<String, dynamic> params = toJson();
+    params['id'] = id;
+    params['due_date'] = due_date;
+    params['type'] = type;
+    params['title'] = title;
+    params['present'] = present;
+    params['academic_class_id'] = academic_class_id;
+    params['service_id'] = service_id;
+    params['stream_id'] = stream_id;
+
+    // print("====> ${params['target']} <====");
+
+    if (academic_class_text.length > 2) {
+      params['target_text'] = academic_class_text;
+    } else if (stream_text.length > 2) {
+      params['target_text'] = stream_text;
+    } else if (service_text.length > 2) {
+      params['target_text'] = service_text;
+    } else {
+      params['target_text'] = title;
+    }
+
+    RespondModel? resp;
+
+    try {
+      resp = RespondModel(await Utils.http_post('session-create', params));
+    } catch (e) {
+      Utils.toast("Failed to submit session because ${e.toString()}");
+      print("Failed to submit session because ${e.toString()}");
+      return;
+    }
+
+    if (resp == null) {
+      Utils.toast("Failed to submit session because response is null.");
+      print("Failed to submit session because response is null.");
+      return;
+    }
 
     if (resp.code == 1) {
+      SessionOnline ses = SessionOnline.fromJson(resp.data);
+      if (ses.id < 1) {
+        Utils.toast("Failed to submit session because id is zero.");
+        print("Failed to submit session because id is zero.");
+        return;
+      }
+
+      await ses.save();
       await deleteSelf();
-      print('Successfully Submitted');
+      print('==> ${resp.message} <==');
     } else {
+      print("==============");
       print(resp.message);
-      print("failed/");
+      print("==============");
     }
   }
 
@@ -128,6 +163,26 @@ class SessionLocal {
       'subject_id': subject_id,
       'stream_id': stream_id,
       'service_id': service_id,
+      'is_open': is_open,
+      'prepared': prepared,
+      'stream_text': stream_text,
+      'notify_present': notify_present,
+      'notify_absent': notify_absent,
+      'participants': participants,
+      'target': target,
+      'secular_casses': secular_casses,
+      'theology_classes': theology_classes,
+      'secular_stream_id': secular_stream_id,
+      'secular_stream_text': secular_stream_text,
+      'theology_stream_id': theology_stream_id,
+      'theology_stream_text': theology_stream_text,
+      'total_expected': total_expected,
+      'total_present': total_present,
+      'total_absent': total_absent,
+      'details': details,
+      'session_decision': session_decision,
+      'source': source,
+      'target_text': target_text,
     };
     if (id != 0) {
       data['id'] = id;
@@ -186,13 +241,31 @@ class SessionLocal {
   String notify_present = "";
   String notify_absent = "";
   String participants = "";
+  String target = "";
+  String secular_casses = "";
+  String theology_classes = "";
+  String secular_stream_id = "";
+  String secular_stream_text = "";
+  String theology_stream_id = "";
+  String theology_stream_text = "";
+  String total_expected = "";
+  String total_present = "";
+  String total_absent = "";
+  String details = "";
+  String session_decision = "";
+  String source = "";
+  String target_text = "";
   String present = "";
   String absent = "";
   String expected = "";
   String closed = "";
 
+  TheologyStreamModel theologyStreamModel = TheologyStreamModel();
+  StreamModel secularStreamModel = StreamModel();
+  ServiceModel service = ServiceModel();
+
   static SessionLocal fromJson(dynamic m) {
-    SessionLocal obj = new SessionLocal();
+    SessionLocal obj = SessionLocal();
     if (m == null) {
       return obj;
     }
@@ -224,7 +297,20 @@ class SessionLocal {
     obj.notify_present = Utils.to_str(m['notify_present'], '');
     obj.notify_absent = Utils.to_str(m['notify_absent'], '');
     obj.participants = Utils.to_str(m['participants'], '');
-    obj.academic_class_id = Utils.to_str(m['academic_class_id'], '');
+    obj.target = Utils.to_str(m['target'], '');
+    obj.secular_casses = Utils.to_str(m['secular_casses'], '');
+    obj.theology_classes = Utils.to_str(m['theology_classes'], '');
+    obj.secular_stream_id = Utils.to_str(m['secular_stream_id'], '');
+    obj.secular_stream_text = Utils.to_str(m['secular_stream_text'], '');
+    obj.theology_stream_id = Utils.to_str(m['theology_stream_id'], '');
+    obj.theology_stream_text = Utils.to_str(m['theology_stream_text'], '');
+    obj.total_expected = Utils.to_str(m['total_expected'], '');
+    obj.total_present = Utils.to_str(m['total_present'], '');
+    obj.total_absent = Utils.to_str(m['total_absent'], '');
+    obj.details = Utils.to_str(m['details'], '');
+    obj.session_decision = Utils.to_str(m['session_decision'], '');
+    obj.source = Utils.to_str(m['source'], '');
+    obj.target_text = Utils.to_str(m['target_text'], '');
     obj.present = Utils.to_str(m['present'], '');
     obj.absent = Utils.to_str(m['absent'], '');
     obj.expected = Utils.to_str(m['expected'], '');
@@ -240,8 +326,8 @@ class SessionLocal {
     }
 
     String sql = " CREATE TABLE IF NOT EXISTS "
-        "${SessionLocal.table_name} (id INTEGER PRIMARY KEY AUTOINCREMENT,"
-        "created_at TEXT"
+        "${SessionLocal.table_name} (id INTEGER PRIMARY KEY AUTOINCREMENT"
+        ",created_at TEXT"
         ",updated_at TEXT"
         ",enterprise_id TEXT"
         ",enterprise_text TEXT"
@@ -267,6 +353,20 @@ class SessionLocal {
         ",notify_present TEXT"
         ",notify_absent TEXT"
         ",participants TEXT"
+        ",target TEXT"
+        ",secular_casses TEXT"
+        ",theology_classes TEXT"
+        ",secular_stream_id TEXT"
+        ",secular_stream_text TEXT"
+        ",theology_stream_id TEXT"
+        ",theology_stream_text TEXT"
+        ",total_expected TEXT"
+        ",total_present TEXT"
+        ",total_absent TEXT"
+        ",details TEXT"
+        ",session_decision TEXT"
+        ",source TEXT"
+        ",target_text TEXT"
         ",present TEXT"
         ",absent TEXT"
         ",expected TEXT"

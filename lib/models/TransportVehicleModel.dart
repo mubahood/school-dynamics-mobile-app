@@ -17,7 +17,7 @@ class TransportVehicleModel {
   String enterprise_text = "";
 
   static fromJson(dynamic m) {
-    TransportVehicleModel obj = new TransportVehicleModel();
+    TransportVehicleModel obj = TransportVehicleModel();
     if (m == null) {
       return obj;
     }
@@ -77,7 +77,7 @@ class TransportVehicleModel {
     List<TransportVehicleModel> data = [];
 
     RespondModel resp = RespondModel(
-        await Utils.http_get('${TransportVehicleModel.end_point}', {}));
+        await Utils.http_get(TransportVehicleModel.end_point, {}));
 
     if (resp.code != 1) {
       return [];

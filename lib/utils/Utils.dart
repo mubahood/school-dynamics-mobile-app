@@ -50,7 +50,7 @@ class Utils {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     FxText.bodySmall(
-                      "${message}\n",
+                      "$message\n",
                       fontWeight: 500,
                     ),
                     Container(
@@ -68,7 +68,7 @@ class Utils {
                                 elevation: 0,
                                 child: FxText.bodySmall(positive_text,
                                     letterSpacing: 0.3, color: Colors.white)),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             FxButton.outlined(
@@ -135,29 +135,30 @@ class Utils {
   static String icon(String) {
     return "assets/icons/$String";
   }
-  static String prepare_phone_number(String phone_number) {
-    if (phone_number.isEmpty) {
+
+  static String prepare_phone_number(String phoneNumber) {
+    if (phoneNumber.isEmpty) {
       return "";
     }
-    if (phone_number.substring(0, 1) != '0') {
-      phone_number = phone_number.replaceFirst('+', "");
-      phone_number = phone_number.replaceFirst('256', "");
+    if (phoneNumber.substring(0, 1) != '0') {
+      phoneNumber = phoneNumber.replaceFirst('+', "");
+      phoneNumber = phoneNumber.replaceFirst('256', "");
     } else {
-      phone_number = phone_number.replaceFirst('0', "");
+      phoneNumber = phoneNumber.replaceFirst('0', "");
     }
-    if (phone_number.length != 9) {
+    if (phoneNumber.length != 9) {
       return "";
     }
-    phone_number = "+256" + phone_number;
-    return phone_number;
+    phoneNumber = "+256$phoneNumber";
+    return phoneNumber;
   }
 
-  static bool phone_number_is_valid(String phone_number) {
-    if (phone_number.length != 13) {
+  static bool phone_number_is_valid(String phoneNumber) {
+    if (phoneNumber.length != 13) {
       return false;
     }
 
-    if (phone_number.substring(0, 4) != "+256") {
+    if (phoneNumber.substring(0, 4) != "+256") {
       return false;
     }
 
@@ -287,8 +288,8 @@ class Utils {
   }
 
   static Future<dynamic> http_post(String path, Map<String, dynamic> body) async {
-    bool is_online = await Utils.is_connected();
-    if (!is_online) {
+    bool isOnline = await Utils.is_connected();
+    if (!isOnline) {
       return {
         'code': 0,
         'message': 'You are not connected to internet.',
@@ -311,7 +312,7 @@ class Utils {
 
     try {
       String token = await Utils.getToken();
-      response = await dio.post(AppConfig.API_BASE_URL + "/${path}",
+      response = await dio.post("${AppConfig.API_BASE_URL}/$path",
           data: da,
           options: Options(
             headers: <String, String>{
@@ -356,11 +357,11 @@ class Utils {
   }
 
   static String get_file_url(String name) {
-    String url = AppConfig.MAIN_SITE_URL + "/storage/uploads";
-    if (name == null || (name.length < 2)) {
+    String url = "${AppConfig.MAIN_SITE_URL}/storage/uploads";
+    if ((name.length < 2)) {
       url += '/default.png';
     } else {
-      url += '/${name}';
+      url += '/$name';
     }
     return url;
   }
@@ -451,11 +452,11 @@ class Utils {
       };
     }
 
-    var response;
+    dioPackage.Response response;
     var dio = Dio();
 
-    // print("feting data...");
-    // print(AppConfig.API_BASE_URL + "/${path}");
+   /* print("feting data...");
+    print(AppConfig.API_BASE_URL + "/${path}");*/
 
     if (!kIsWeb) {
       (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
@@ -467,14 +468,14 @@ class Utils {
     }
 
     try {
-      response = await dio.get(AppConfig.API_BASE_URL + "/${path}",
+      response = await dio.get("${AppConfig.API_BASE_URL}/$path",
           queryParameters: body,
           options: Options(headers: <String, String>{
             "Content-Type": "application/json",
             "accept": "application/json",
-            "authorization": 'Bearer ${token}',
-            "Tok": 'Bearer ${token}',
-            "tok": 'Bearer ${token}',
+            "authorization": 'Bearer $token',
+            "Tok": 'Bearer $token',
+            "tok": 'Bearer $token',
           }));
 /*      print('=====||||==SUCCESS===||||====');
       Utils.log(response.data.toString());
@@ -508,8 +509,8 @@ class Utils {
     return;
   }
 
-  static void launchURL(String _url) async {
-    if (!await launch(_url)) throw 'Could not launch $_url';
+  static void launchURL(String url) async {
+    if (!await launch(url)) throw 'Could not launch $url';
   }
 
   static Future<void> boot_system() async {
@@ -615,8 +616,9 @@ class Utils {
   }
 
   static void launchPhone(String phoneNumber) async {
-    if (!await launch('tel:${phoneNumber}'))
+    if (!await launch('tel:$phoneNumber')) {
       throw 'Could not launch $phoneNumber';
+    }
   }
 
   static String yes_no_parse(dynamic x) {
@@ -762,7 +764,7 @@ class Utils {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     FxText.bodySmall(
-                      "${message}\n",
+                      "$message\n",
                       fontWeight: 500,
                     ),
                     Container(
@@ -780,7 +782,7 @@ class Utils {
                                 elevation: 0,
                                 child: FxText.bodySmall(positive_text,
                                     letterSpacing: 0.3, color: Colors.white)),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             FxButton.outlined(
@@ -847,7 +849,6 @@ class Utils {
     if (MediaQuery.of(context).size.width > 700) {
       return true;
     }
-    ;
     return false;
   }
 
@@ -939,21 +940,21 @@ class Utils {
     return Utils.sizeByWidth(context, 20);
   }
 
-  static dynamic toDate(String updated_at) {
-    DateTime? date = null;
+  static dynamic toDate(String updatedAt) {
+    DateTime? date;
 
     //01-01-2021 format
-    if (updated_at.toString().toString().length == 10) {
+    if (updatedAt.toString().toString().length == 10) {
       try {
         date = intl.DateFormat("dd-MM-yyyy")
-            .parseUTC(updated_at.toString())
+            .parseUTC(updatedAt.toString())
             .toLocal();
         return date;
       } catch (e) {
         //FormatException: Trying to read T from 2025-01-02 00:00:00.000 at 11
         try {
           date = intl.DateFormat("yyyy-MM-dd")
-              .parseUTC(updated_at.toString())
+              .parseUTC(updatedAt.toString())
               .toLocal();
           return date;
         } catch (e) {
@@ -965,7 +966,7 @@ class Utils {
 
     try {
       date = intl.DateFormat("yyyy-MM-ddTHH:mm:ssZ")
-          .parseUTC(updated_at.toString())
+          .parseUTC(updatedAt.toString())
           .toLocal();
     } catch (e) {
       print(e);
@@ -974,70 +975,70 @@ class Utils {
     return null;
   }
 
-  static String to_date(dynamic updated_at) {
-    String date_text = "--:--";
-    if (updated_at == null) {
+  static String to_date(dynamic updatedAt) {
+    String dateText = "--:--";
+    if (updatedAt == null) {
       return "--:--";
     }
-    if (updated_at.toString().length < 5) {
+    if (updatedAt.toString().length < 5) {
       return "--:--";
     }
 
     try {
-      DateTime date = DateTime.parse(updated_at.toString());
+      DateTime date = DateTime.parse(updatedAt.toString());
 
-      date_text = DateFormat("d MMM, y - ").format(date);
-      date_text += DateFormat("jm").format(date);
+      dateText = DateFormat("d MMM, y - ").format(date);
+      dateText += DateFormat("jm").format(date);
     } catch (e) {}
 
-    return date_text;
+    return dateText;
   }
 
   static String getImg(dynamic img) {
-    String _img = "logo.png";
+    String img0 = "logo.png";
     if (img != null) {
       img = img.toString();
       if (img.toString().length > 3) {
         if (img.toString().contains('/')) {
-          _img = img.split('/').last;
+          img0 = img.split('/').last;
         } else {
-          _img = img;
+          img0 = img;
         }
       }
     }
 
-    return "${AppConfig.MAIN_SITE_URL}/storage/images/${_img}";
+    return "${AppConfig.MAIN_SITE_URL}/storage/images/$img0";
   }
 
   static String getImageUrl(dynamic img) {
     return getImg(img);
-    String _img = "logo.png";
+    String img0 = "logo.png";
     if (img != null) {
       img = img.toString();
       if (img.toString().isNotEmpty) {
-        _img = img;
+        img0 = img;
       }
     }
-    _img.replaceAll('/images', '');
-    return "${AppConfig.MAIN_SITE_URL}/storage/images/${_img}";
+    img0.replaceAll('/images', '');
+    return "${AppConfig.MAIN_SITE_URL}/storage/images/$img0";
   }
 
-  static String to_date_1(dynamic updated_at) {
-    String date_text = "__/__/___";
-    if (updated_at == null) {
+  static String to_date_1(dynamic updatedAt) {
+    String dateText = "__/__/___";
+    if (updatedAt == null) {
       return "__/__/____";
     }
-    if (updated_at.toString().length < 5) {
+    if (updatedAt.toString().length < 5) {
       return "__/__/____";
     }
 
     try {
-      DateTime date = DateTime.parse(updated_at.toString());
+      DateTime date = DateTime.parse(updatedAt.toString());
 
-      date_text = DateFormat("d MMM, y").format(date);
+      dateText = DateFormat("d MMM, y").format(date);
     } catch (e) {}
 
-    return date_text;
+    return dateText;
   }
 
   static String moneyFormat(String price) {
@@ -1055,7 +1056,7 @@ class Utils {
   }
 
   static Future<void> launchBrowser(String path) async {
-    Uri uri = Uri.parse('${AppConfig.MAIN_SITE_URL}/${path}');
+    Uri uri = Uri.parse('${AppConfig.MAIN_SITE_URL}/$path');
 
     if (!await launchUrl(
       uri,
@@ -1069,6 +1070,6 @@ class Utils {
     File file = File(filePath);
     int sizeInBytes = file.lengthSync();
     double sizeInMb = sizeInBytes / (1024 * 1024);
-    return sizeInMb.toStringAsFixed(2) + " MB";
+    return "${sizeInMb.toStringAsFixed(2)} MB";
   }
 }

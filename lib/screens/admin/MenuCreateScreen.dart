@@ -15,8 +15,8 @@ class MenuCreateScreen extends StatefulWidget {
 
   MenuCreateScreen(
     this.params, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   MenuCreateScreenState createState() => MenuCreateScreenState();
@@ -69,7 +69,7 @@ class MenuCreateScreenState extends State<MenuCreateScreen>
         actions: [
           is_loading
               ? Padding(
-                  padding: EdgeInsets.only(right: 20, top: 10, bottom: 10),
+                  padding: const EdgeInsets.only(right: 20, top: 10, bottom: 10),
                   child: Center(
                     child: CircularProgressIndicator(
                       strokeWidth: 2.0,
@@ -83,7 +83,7 @@ class MenuCreateScreenState extends State<MenuCreateScreen>
                     submit_form();
                   },
                   backgroundColor: Colors.white,
-                  child: Icon(
+                  child: const Icon(
                     FeatherIcons.check,
                     color: Colors.white,
                     size: 35,

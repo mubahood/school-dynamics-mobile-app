@@ -155,7 +155,7 @@ class TheologyMarksScreenState extends State<TheologyMarksScreen> {
               ? FxContainer(
                   paddingAll: 0,
                   borderRadiusAll: 10,
-                  margin: EdgeInsets.only(
+                  margin: const EdgeInsets.only(
                     right: 5,
                     bottom: 2,
                   ),
@@ -353,8 +353,8 @@ class TheologyMarksScreenState extends State<TheologyMarksScreen> {
                                 horizontal: 20,
                                 vertical: 5,
                               ),
-                              title: FxText.titleLarge('${m.remarks}'),
-                              subtitle: FxText.bodyLarge('${m.mot_score}'),
+                              title: FxText.titleLarge(m.remarks),
+                              subtitle: FxText.bodyLarge(m.mot_score),
                               leading: const Icon(FeatherIcons.bookOpen),
                               trailing: const Icon(
                                 FeatherIcons.chevronRight,
