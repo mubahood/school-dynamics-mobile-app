@@ -19,7 +19,6 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen>
   final MobileScannerController controller = MobileScannerController(
     autoStart: false,
     torchEnabled: true,
-    useNewCameraSelector: true,
   );
 
   Barcode? _barcode;
@@ -97,9 +96,7 @@ class _QRCodeScannerScreenState extends State<QRCodeScannerScreen>
       children: [
         MobileScanner(
           controller: controller,
-          errorBuilder: (context, error, child) {
-            return Text(error.toString());
-          },
+
           fit: BoxFit.contain,
         ),
         Align(

@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutx/flutx.dart';
@@ -283,33 +282,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                       return;
                                     }
 
-                                    if (googleUser == null) {
-                                      Utils.toast("failed because Google Sign In is null");
-                                      return;
-                                    }
-                                          final GoogleSignInAuthentication
-                                              googleAuth =
-                                              await googleUser.authentication;
-                                          final credential = GoogleAuthProvider.credential(
-                                      accessToken: googleAuth.accessToken,
-                                      idToken: googleAuth.idToken,
-                                    );
-                                    final UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
-                                    final User? user = userCredential.user;
-                                    if (user == null) {
-                                      Utils.toast("failed because User is null");
-                                      return;
-                                    }
-
-                                    Utils.toast("===> DP NAME: ${user.displayName}");
-                                    Utils.toast("===> DP EMAIL: ${user.email}");
-                                    Utils.toast("===> DP PHOTO: ${user.photoURL}");
-                                    Utils.toast("===> DP PHONE: ${user.phoneNumber}");
-                                    Utils.toast("===> DP UID: ${user.uid}");
-                                    Utils.toast("===> DP TOKEN: ${user.refreshToken}");
-                                    Utils.toast("===> DP TOKEN: ${user.getIdToken()}");
-
-                                    return;
+                                          return;
 
                                    /* //create userCredential
                                     final UserCredential userCredential = await GoogleSignInProvider().signInWithGoogle();
