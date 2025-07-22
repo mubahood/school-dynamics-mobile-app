@@ -1,0 +1,2 @@
+/Users/mac/Desktop/github/school_dynamics/android/app/.cxx/Debug/6v4i212o/x86_64/CMakeFiles/edit_cache.dir
+/Users/mac/Desktop/github/school_dynamics/android/app/.cxx/Debug/6v4i212o/x86_64/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,1 @@
+/Users/mac/Desktop/github/school_dynamics/build/app/intermediates/cxx/RelWithDebInfo/61362e63/obj/x86_64
