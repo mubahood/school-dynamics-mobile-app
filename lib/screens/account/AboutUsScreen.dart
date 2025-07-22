@@ -8,10 +8,10 @@ import '../../utils/Utils.dart';
 import '../../utils/my_colors.dart';
 
 class AboutUsScreen extends StatefulWidget {
-  AboutUsScreen({super.key});
+  const AboutUsScreen({super.key});
 
   @override
-  AboutUsScreenState createState() => new AboutUsScreenState();
+  AboutUsScreenState createState() => AboutUsScreenState();
 }
 
 class AboutUsScreenState extends State<AboutUsScreen> {
@@ -63,22 +63,22 @@ class AboutUsScreenState extends State<AboutUsScreen> {
 
               FxText.bodyLarge('February 2023', color: Colors.white),
 
-              FeatureItem('Attendance Tracking',
+              const FeatureItem('Attendance Tracking',
                   'Say goodbye to manual attendance records. "School Dynamics" simplifies the process by allowing teachers to effortlessly mark and track student attendance with just a few taps.'),
-              FeatureItem('Assignment Management',
+              const FeatureItem('Assignment Management',
                   'Streamline the assignment workflow with our intuitive assignment management system. Teachers can assign tasks, set deadlines, and track student progress, fostering a more organized and productive learning environment.'),
-              FeatureItem('Communication Hub',
+              const FeatureItem('Communication Hub',
                   'Enhance communication between schools, teachers, and parents through our dedicated communication hub. Receive real-time updates, announcements, and notifications, ensuring everyone stays informed and engaged.'),
-              FeatureItem('Gradebook',
+              const FeatureItem('Gradebook',
                   'Keep track of student performance with our robust gradebook feature. Teachers can efficiently input and manage grades, while parents can monitor their child\'s progress and academic achievements.'),
-              FeatureItem('Event Calendar',
+              const FeatureItem('Event Calendar',
                   'Never miss an important event again. "School Dynamics" features a centralized event calendar that keeps everyone informed about upcoming school events, examinations, and extracurricular activities.'),
-              FeatureItem('Secure Messaging',
+              const FeatureItem('Secure Messaging',
                   'Ensure secure and direct communication between teachers, students, and parents through our encrypted messaging system, promoting a collaborative and supportive educational ecosystem.'),
-              FeatureItem('Timetable Management',
+              const FeatureItem('Timetable Management',
                   'Simplify scheduling with our timetable management tool. Easily create and manage class schedules, reducing confusion and ensuring a smooth flow of daily activities.'),
-              SizedBox(height: 36),
-              Center(
+              const SizedBox(height: 36),
+              const Center(
                 child: Text(
                   'Why "School Dynamics"?',
                   style: TextStyle(
@@ -89,13 +89,13 @@ class AboutUsScreenState extends State<AboutUsScreen> {
               ),
 
               // Why "School Dynamics"? List
-              WhyItem('User-Friendly Interface',
+              const WhyItem('User-Friendly Interface',
                   'We prioritize simplicity and ease of use, ensuring that all stakeholders, regardless of technical proficiency, can navigate the app effortlessly.'),
-              WhyItem('Data Security',
+              const WhyItem('Data Security',
                   'Your data is of utmost importance to us. "School Dynamics" employs state-of-the-art security measures to protect sensitive information and ensure a safe digital environment.'),
-              WhyItem('Customizable Solutions',
+              const WhyItem('Customizable Solutions',
                   'Recognizing that every school has unique needs, our app offers customizable features to adapt to the specific requirements of each educational institution.'),
-              SizedBox(height: 22),
+              const SizedBox(height: 22),
               FxButton.outlined(
                 backgroundColor: Colors.white,
                 borderColor: Colors.white,
@@ -110,7 +110,7 @@ class AboutUsScreenState extends State<AboutUsScreen> {
                   color: Colors.white,
                 ),
               ),
-              SizedBox(height: 22),
+              const SizedBox(height: 22),
             ],
           ),
         ),
@@ -124,20 +124,20 @@ class FeatureItem extends StatelessWidget {
   final String title;
   final String description;
 
-  FeatureItem(this.title, this.description);
+  const FeatureItem(this.title, this.description, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: 15),
+        const SizedBox(height: 15),
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
               color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 4),
+        const SizedBox(height: 4),
         Text(
           description,
           style: TextStyle(
@@ -155,20 +155,20 @@ class WhyItem extends StatelessWidget {
   final String title;
   final String description;
 
-  WhyItem(this.title, this.description);
+  const WhyItem(this.title, this.description, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: 15),
+        const SizedBox(height: 15),
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
               fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 4),
+        const SizedBox(height: 4),
         Text(
           description,
           style: TextStyle(

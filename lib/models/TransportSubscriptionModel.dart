@@ -5,7 +5,7 @@ import 'RespondModel.dart';
 
 class TransportSubscriptionModel {
   static String end_point = "transport-subscriptions";
-  static String tableName = "transport_subscriptions";
+  static String tableName = "transport_subscriptions_1";
   int id = 0;
   String created_at = "";
   String updated_at = "";
@@ -22,11 +22,12 @@ class TransportSubscriptionModel {
   String amount = "";
   String description = "";
   String service_subscription_id = "";
+  String transport_stage_id = "";
   String service_subscription_text = "";
 
 
   static fromJson(dynamic m) {
-    TransportSubscriptionModel obj = new TransportSubscriptionModel();
+    TransportSubscriptionModel obj = TransportSubscriptionModel();
     if (m == null) {
       return obj;
     }
@@ -45,6 +46,7 @@ class TransportSubscriptionModel {
     obj.status = Utils.to_str(m['status'], '');
     obj.trip_type = Utils.to_str(m['trip_type'], '');
     obj.amount = Utils.to_str(m['amount'], '');
+    obj.transport_stage_id = Utils.to_str(m['transport_stage_id'], '');
     obj.description = Utils.to_str(m['description'], '');
     obj.service_subscription_id =
         Utils.to_str(m['service_subscription_id'], '');
@@ -96,7 +98,8 @@ class TransportSubscriptionModel {
     List<TransportSubscriptionModel> data = [];
 
     RespondModel resp = RespondModel(
-        await Utils.http_get('${TransportSubscriptionModel.end_point}', {}));
+        await Utils.http_get(TransportSubscriptionModel.end_point, {}));
+    print(resp.data);
 
     if (resp.code != 1) {
       return [];
@@ -174,6 +177,7 @@ class TransportSubscriptionModel {
       'term_text': term_text,
       'status': status,
       'trip_type': trip_type,
+      'transport_stage_id': transport_stage_id,
       'amount': amount,
       'description': description,
       'service_subscription_id': service_subscription_id,
@@ -204,6 +208,7 @@ class TransportSubscriptionModel {
         ",trip_type TEXT"
         ",amount TEXT"
         ",description TEXT"
+        ",transport_stage_id TEXT"
         ",service_subscription_id TEXT"
         ",service_subscription_text TEXT"
         ")";

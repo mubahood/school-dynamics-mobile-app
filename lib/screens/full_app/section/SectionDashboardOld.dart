@@ -20,7 +20,7 @@ import '../../subjects/SubjectsScreen.dart';
 class SectionDashboardOld extends StatefulWidget {
   MainController mainController;
 
-  SectionDashboardOld(this.mainController, {Key? key}) : super(key: key);
+  SectionDashboardOld(this.mainController, {super.key});
 
   @override
   _SectionDashboardState createState() => _SectionDashboardState();
@@ -118,7 +118,7 @@ class _SectionDashboardState extends State<SectionDashboardOld> {
                   fontWeight: 800,
                   color: CustomTheme.primaryDark,
                 ),
-                Icon(FeatherIcons.user),
+                const Icon(FeatherIcons.user),
               ],
             ),
           ),
@@ -128,7 +128,7 @@ class _SectionDashboardState extends State<SectionDashboardOld> {
         ),
         Expanded(
           child: Container(
-            padding: EdgeInsets.only(left: 10, right: 10),
+            padding: const EdgeInsets.only(left: 10, right: 10),
             child: RefreshIndicator(
               onRefresh: doRefresh,
               color: CustomTheme.primary,
@@ -140,14 +140,14 @@ class _SectionDashboardState extends State<SectionDashboardOld> {
                       delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
                           return titleWidget('Examination Marks', () {
-                            Get.to(() => SubjectsScreen({}));
+                            Get.to(() => SubjectsScreen(const {}));
                           });
                         },
                         childCount: 1, // 1000 list items
                       ),
                     ),
                     SliverGrid(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 4,
                         crossAxisSpacing: 5,
                         childAspectRatio: 0.7,
@@ -174,11 +174,11 @@ class _SectionDashboardState extends State<SectionDashboardOld> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   FxText.titleLarge(
-                                    "${item.subject.short_name}",
+                                    item.subject.short_name,
                                     color: Colors.black,
                                     fontWeight: 900,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 5,
                                   ),
                                   FxText.bodyMedium(
@@ -187,7 +187,7 @@ class _SectionDashboardState extends State<SectionDashboardOld> {
                                     maxLines: 1,
                                     height: 1,
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                   FxText.bodySmall(
                                     "${item.marks_pending} marks not submitted.",
                                     color: Colors.red,
@@ -206,14 +206,14 @@ class _SectionDashboardState extends State<SectionDashboardOld> {
                       delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
                           return titleWidget('My Top Subjects', () {
-                            Get.to(() => SubjectsScreen({}));
+                            Get.to(() => SubjectsScreen(const {}));
                           });
                         },
                         childCount: 1, // 1000 list items
                       ),
                     ),
                     SliverGrid(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 5,
                         crossAxisSpacing: 5,
                         childAspectRatio: 0.7,
@@ -238,12 +238,12 @@ class _SectionDashboardState extends State<SectionDashboardOld> {
                                   paddingAll: 10,
                                   alignment: Alignment.center,
                                   child: FxText.titleLarge(
-                                    "${item.short_name}",
+                                    item.short_name,
                                     color: Colors.black,
                                     fontWeight: 900,
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 2,
                                 ),
                                 Center(
@@ -264,14 +264,14 @@ class _SectionDashboardState extends State<SectionDashboardOld> {
                       delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
                           return titleWidget('My Classes', () {
-                            Get.to(() => ClassesScreen({}));
+                            Get.to(() => ClassesScreen(const {}));
                           });
                         },
                         childCount: 1, // 1000 list items
                       ),
                     ),
                     SliverGrid(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
                         crossAxisSpacing: 5,
                         childAspectRatio: 0.7,
@@ -298,22 +298,22 @@ class _SectionDashboardState extends State<SectionDashboardOld> {
                                   color: CustomTheme.primaryDark,
                                   size: 30,
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 FxText.titleSmall(
                                   "${myClass.name} - ${myClass.short_name} ",
                                   height: .9,
                                   color: Colors.black,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 5,
                                 ),
                                 FxText.bodySmall(
-                                  "${myClass.class_teacher_name}",
+                                  myClass.class_teacher_name,
                                   height: .9,
                                   maxLines: 2,
                                   color: CustomTheme.primaryDark,
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 FxText.bodySmall(
                                   "${myClass.students_count} Students",
                                   height: .8,
@@ -361,9 +361,9 @@ class _SectionDashboardState extends State<SectionDashboardOld> {
                     SliverList(
                       delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
-                          return Text("Coming soon...");
+                          return const Text("Coming soon...");
                           return Container(
-                            padding: EdgeInsets.only(bottom: 15),
+                            padding: const EdgeInsets.only(bottom: 15),
                             child: Flex(
                               direction: Axis.horizontal,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -385,7 +385,7 @@ class _SectionDashboardState extends State<SectionDashboardOld> {
                                         .toString(),
                                     2.8,
                                     4.5),
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Expanded(
@@ -398,7 +398,7 @@ class _SectionDashboardState extends State<SectionDashboardOld> {
                                         color: Colors.black,
                                         overflow: TextOverflow.ellipsis,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 24,
                                       ),
                                       Row(
@@ -408,17 +408,17 @@ class _SectionDashboardState extends State<SectionDashboardOld> {
                                             size: 12,
                                             color: CustomTheme.primaryDark,
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 2,
                                           ),
                                           FxText.bodySmall('By John Doe'),
-                                          Spacer(),
+                                          const Spacer(),
                                           Icon(
                                             FeatherIcons.clock,
                                             size: 12,
                                             color: CustomTheme.primaryDark,
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 2,
                                           ),
                                           FxText.bodySmall('12 Feb,2019'),

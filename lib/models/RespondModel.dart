@@ -12,7 +12,7 @@ class RespondModel {
   dynamic data;
 
   RespondModel(this.raw) {
-    if (this.raw == null) {
+    if (raw == null) {
       return;
     }
     if (raw.runtimeType.toString() == '_JsonMap') {
@@ -42,13 +42,13 @@ class RespondModel {
 
 
     if (resp['code'] != null) {
-      this.code = Utils.int_parse(resp['code'].toString());
-      this.message = resp['message'].toString();
-      this.data = resp['data'];
+      code = Utils.int_parse(resp['code'].toString());
+      message = resp['message'].toString();
+      data = resp['data'];
     } else if (resp['message'] != null) {
-      this.code = Utils.int_parse(resp['code'].toString());
-      this.message = resp['message'].toString();
-      this.data = resp['data'];
+      code = Utils.int_parse(resp['code'].toString());
+      message = resp['message'].toString();
+      data = resp['data'];
     }
   }
 }

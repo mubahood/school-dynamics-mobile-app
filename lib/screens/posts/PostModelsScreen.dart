@@ -218,7 +218,7 @@ class _PostModelsScreenState extends State<PostModelsScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Container(
+                                SizedBox(
                                   height: Get.height / 9,
                                   child: FxText.titleMedium(
                                     item.title,
@@ -247,7 +247,7 @@ class _PostModelsScreenState extends State<PostModelsScreen> {
                                         fontSize: 14,
                                       ),
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                     FxText.bodySmall(
                                       Utils.to_date_1(item.created_at),
                                       color: Colors.grey.shade700,

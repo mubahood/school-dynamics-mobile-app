@@ -13,7 +13,7 @@ import 'SessionCreateNewScreen.dart';
 
 //AttendanceScreen
 class AttendanceScreen extends StatefulWidget {
-  AttendanceScreen({Key? key}) : super(key: key);
+  const AttendanceScreen({super.key});
 
   @override
   AttendanceScreenState createState() => AttendanceScreenState();
@@ -44,10 +44,9 @@ class AttendanceScreenState extends State<AttendanceScreen> {
       backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          await Get.to(() => SessionCreateNewScreen());
+          await Get.to(() => const SessionCreateNewScreen());
           await init();
           setState(() {
-            ;
           });
           // submit_form();
         },
@@ -66,7 +65,7 @@ class AttendanceScreenState extends State<AttendanceScreen> {
           backgroundColor: CustomTheme.primary,
           titleSpacing: 0,
           elevation: 0,
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.white),
           automaticallyImplyLeading: true,
           // remove back button in appbar.
           title: Column(
@@ -96,7 +95,7 @@ class AttendanceScreenState extends State<AttendanceScreen> {
             sessions.isNotEmpty
                 ? InkWell(
                     onTap: () async {
-                      await Get.to(() => SessionLocalScreen());
+                      await Get.to(() => const SessionLocalScreen());
                       init();
                     },
                     child: Container(
@@ -121,7 +120,7 @@ class AttendanceScreenState extends State<AttendanceScreen> {
                       ),
                     ),
                   )
-                : SizedBox(),
+                : const SizedBox(),
             Expanded(
               child: CustomScrollView(
                 slivers: [

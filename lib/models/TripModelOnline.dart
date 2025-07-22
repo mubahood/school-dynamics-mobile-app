@@ -33,7 +33,7 @@ class TripModelOnline {
   String local_text = "";
 
   static fromJson(dynamic m) {
-    TripModelOnline obj = new TripModelOnline();
+    TripModelOnline obj = TripModelOnline();
     if (m == null) {
       return obj;
     }
@@ -108,7 +108,7 @@ class TripModelOnline {
     List<TripModelOnline> data = [];
 
     RespondModel resp =
-        RespondModel(await Utils.http_get('${TripModelOnline.end_point}', {}));
+        RespondModel(await Utils.http_get(TripModelOnline.end_point, {}));
 
     if (resp.code != 1) {
       return [];

@@ -17,7 +17,7 @@ import '../sessions/SessionOnlineScreen.dart';
 class ClassAttendenciesScreen extends StatefulWidget {
   MyClasses data;
 
-  ClassAttendenciesScreen(this.data, {Key? key}) : super(key: key);
+  ClassAttendenciesScreen(this.data, {super.key});
 
   @override
   _CourseTasksScreenState createState() => _CourseTasksScreenState();
@@ -107,7 +107,7 @@ class _CourseTasksScreenState extends State<ClassAttendenciesScreen> {
                             ),
                             FxContainer(
                               onTap: () {
-                                Get.to(() => SessionLocalScreen());
+                                Get.to(() => const SessionLocalScreen());
                               },
                               color: Colors.white,
                               padding: const EdgeInsets.only(
@@ -160,9 +160,9 @@ class _CourseTasksScreenState extends State<ClassAttendenciesScreen> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Spacer(),
+                                              const Spacer(),
                                               FxText.titleMedium(
-                                                "${Utils.to_date(m.due_date)}",
+                                                Utils.to_date(m.due_date),
                                                 fontWeight: 700,
                                                 color: Colors.grey.shade700,
                                               ),

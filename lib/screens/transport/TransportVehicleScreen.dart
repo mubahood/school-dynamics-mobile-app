@@ -7,7 +7,7 @@ import '../../theme/custom_theme.dart';
 class TransportVehicleScreen extends StatefulWidget {
   Map<String, dynamic> params;
 
-  TransportVehicleScreen(this.params, {Key? key}) : super(key: key);
+  TransportVehicleScreen(this.params, {super.key});
 
   @override
   TransportVehicleScreenState createState() => TransportVehicleScreenState();
@@ -38,7 +38,7 @@ class TransportVehicleScreenState extends State<TransportVehicleScreen> {
           backgroundColor: CustomTheme.primary,
           titleSpacing: 0,
           elevation: 0,
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.white),
           automaticallyImplyLeading: true,
           // remove back button in appbar.
           title: Column(
@@ -76,7 +76,7 @@ class TransportVehicleScreenState extends State<TransportVehicleScreen> {
                           dense: true,
                           subtitle: FxText.bodySmall(
                             m.registration_number,
-                            color: FxAppTheme.theme.colorScheme.onBackground,
+                            color: FxAppTheme.theme.colorScheme.onSurface,
                           ),
                           title: FxText.titleLarge(m.name,
                               fontWeight: 600, letterSpacing: .5)),

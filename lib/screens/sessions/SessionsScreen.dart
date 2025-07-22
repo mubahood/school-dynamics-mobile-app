@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
+import 'package:schooldynamics/models/LoggedInUserModel.dart';
 
 import '../../models/SessionLocal.dart';
 import '../../models/SessionOnline.dart';
@@ -13,7 +14,7 @@ import '../sessions/SessionLocalScreen.dart';
 import '../sessions/SessionOnlineScreen.dart';
 
 class SessionsScreen extends StatefulWidget {
-  SessionsScreen({Key? key}) : super(key: key);
+  const SessionsScreen({super.key});
 
   @override
   _CourseTasksScreenState createState() => _CourseTasksScreenState();
@@ -24,8 +25,11 @@ class _CourseTasksScreenState extends State<SessionsScreen> {
 
   bool loading = false;
 
+  LoggedInUserModel u = LoggedInUserModel();
+
   Future<dynamic> my_init() async {
     loading = true;
+    u = await LoggedInUserModel.getLoggedInUser();
     setState(() {});
 
     sessionsOnline = await SessionOnline.getItems(forceWait: true);
@@ -48,11 +52,16 @@ class _CourseTasksScreenState extends State<SessionsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
-      floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.add),
-          onPressed: () async {
-            Get.to(() => SessionCreateNewScreen());
-          }),
+      floatingActionButton: u.user_type != 'employee'
+          ? null
+          : FloatingActionButton(
+              child: const Icon(Icons.add),
+              onPressed: () async {
+                Get.to(() => const SessionCreateNewScreen());
+
+                setState(() {});
+                await my_init();
+              }),
       appBar: AppBar(
         backgroundColor: CustomTheme.primary,
         titleSpacing: 0,
@@ -63,8 +72,8 @@ class _CourseTasksScreenState extends State<SessionsScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            FxText.titleMedium(
-              " Roll Calls",
+            FxText.titleLarge(
+              "Roll Calls",
               color: Colors.white,
               fontWeight: 800,
             ),
@@ -90,8 +99,12 @@ class _CourseTasksScreenState extends State<SessionsScreen> {
                               color: Colors.white,
                             ),
                             FxContainer(
-                              onTap: () {
-                                Get.to(() => SessionLocalScreen());
+                              onTap: () async {
+                                await Get.to(() => const SessionLocalScreen());
+                                sessionsLocal = await SessionLocal.getItems();
+                                setState(() {});
+                                //reloead
+                                await my_init();
                               },
                               color: Colors.white,
                               padding: const EdgeInsets.only(
@@ -121,6 +134,9 @@ class _CourseTasksScreenState extends State<SessionsScreen> {
                                     return FxContainer(
                                       bordered: true,
                                       onTap: () {
+                                        Utils.toast(
+                                            "Open web-portal to see details");
+                                        return;
                                         Get.to(() => SessionOnlineScreen(
                                               data: m,
                                             ));
@@ -144,9 +160,9 @@ class _CourseTasksScreenState extends State<SessionsScreen> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Spacer(),
+                                              const Spacer(),
                                               FxText.titleMedium(
-                                                "${Utils.to_date(m.due_date)}",
+                                                Utils.to_date(m.due_date),
                                                 fontWeight: 700,
                                                 color: Colors.grey.shade700,
                                               ),

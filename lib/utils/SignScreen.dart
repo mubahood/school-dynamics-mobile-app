@@ -63,17 +63,17 @@ class _SignScreenState extends State<SignScreen> {
 
     if (!mounted) return;
     //save data to file
-    String base_path = await Utils.get_temp_dir();
-    if (base_path.length < 2) {
+    String basePath = await Utils.get_temp_dir();
+    if (basePath.length < 2) {
       Utils.toast("Error getting temp dir");
       return;
     }
 
-    if (base_path[base_path.length - 1] != "/") {
-      base_path += "/";
+    if (basePath[basePath.length - 1] != "/") {
+      basePath += "/";
     }
     //check if directory exists
-    Directory dir = Directory(base_path);
+    Directory dir = Directory(basePath);
     if (!dir.existsSync()) {
       dir.createSync();
     }
@@ -84,7 +84,7 @@ class _SignScreenState extends State<SignScreen> {
     //CHECK IF FILE EXISTS
 
     String filePath =
-        "$base_path${DateTime.now().millisecondsSinceEpoch}-${Random().nextInt(1000000)}-${Random().nextInt(1000000)}-signature.png";
+        "$basePath${DateTime.now().millisecondsSinceEpoch}-${Random().nextInt(1000000)}-${Random().nextInt(1000000)}-signature.png";
     File file = File(filePath);
     if (file.existsSync()) {
       file.deleteSync();
@@ -135,7 +135,7 @@ class _SignScreenState extends State<SignScreen> {
       ),
       body: Column(
         children: <Widget>[
-          Spacer(),
+          const Spacer(),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Signature(
@@ -186,7 +186,7 @@ class _SignScreenState extends State<SignScreen> {
             color: Colors.white,
             textAlign: TextAlign.center,
           ),
-          Spacer(),
+          const Spacer(),
         ],
       ),
       bottomNavigationBar: BottomAppBar(

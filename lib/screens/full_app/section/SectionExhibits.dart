@@ -7,7 +7,7 @@ import '../../../theme/custom_theme.dart';
 import '../../../utils/Utils.dart';
 
 class SectionExhibits extends StatefulWidget {
-  SectionExhibits({Key? key}) : super(key: key);
+  const SectionExhibits({super.key});
 
   @override
   _SectionExhibitsState createState() => _SectionExhibitsState();
@@ -38,13 +38,13 @@ class _SectionExhibitsState extends State<SectionExhibits> {
           return Container(
             color: Colors.transparent,
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(16),
                       topRight: Radius.circular(16))),
               child: Container(
-                padding: EdgeInsets.all(24),
+                padding: const EdgeInsets.all(24),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -139,7 +139,7 @@ class _SectionExhibitsState extends State<SectionExhibits> {
                     child: Text("⌛ Loading..."),
                   );
                 default:
-                  return Text("Coming soon...");
+                  return const Text("Coming soon...");
               }
             }),
       ),

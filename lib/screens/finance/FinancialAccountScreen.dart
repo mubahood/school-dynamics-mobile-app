@@ -18,8 +18,7 @@ import 'ServiceSubscriptionCreateScreen.dart';
 import 'TransactionCreateScreen.dart';
 
 class FinancialAccountScreen extends StatefulWidget {
-  const FinancialAccountScreen({Key? key, required this.data})
-      : super(key: key);
+  const FinancialAccountScreen({super.key, required this.data});
   final dynamic data;
 
   @override
@@ -181,9 +180,9 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
               children: [
                 /*-------------- Build Tabs here ------------------*/
                 TabBar(
-                  padding: EdgeInsets.only(bottom: 0),
-                  labelPadding: EdgeInsets.only(bottom: 2, left: 8, right: 8),
-                  indicatorPadding: EdgeInsets.all(0),
+                  padding: const EdgeInsets.only(bottom: 0),
+                  labelPadding: const EdgeInsets.only(bottom: 2, left: 8, right: 8),
+                  indicatorPadding: const EdgeInsets.all(0),
                   labelColor: CustomTheme.primary,
                   isScrollable: true,
                   enableFeedback: true,
@@ -282,9 +281,9 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
                             height: 5,
                           ),
                           Container(
-                              child: titleValueWidget('NAME', '${item.name}')),
+                              child: titleValueWidget('NAME', item.name)),
                           Container(
-                              child: titleValueWidget('SEX', '${item.sex}')),
+                              child: titleValueWidget('SEX', item.sex)),
                           Container(
                               child: titleValueWidget(
                                   'CLASS', item.current_class_text)),
@@ -332,7 +331,7 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
                 ),
                 Center(
                   child: FxCard(
-                    padding: EdgeInsets.only(left: 5, right: 5, bottom: 2),
+                    padding: const EdgeInsets.only(left: 5, right: 5, bottom: 2),
                     marginAll: 0,
                     color: item.verification == '1'
                         ? Colors.green.shade700

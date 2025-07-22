@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
@@ -14,10 +13,10 @@ import '../../theme/custom_theme.dart';
 class SessionOnlineScreen extends StatefulWidget {
   dynamic data;
 
-  SessionOnlineScreen({Key? key, this.data}) : super(key: key);
+  SessionOnlineScreen({super.key, this.data});
 
   @override
-  SessionOnlineScreenState createState() => new SessionOnlineScreenState();
+  SessionOnlineScreenState createState() => SessionOnlineScreenState();
 }
 
 class SessionOnlineScreenState extends State<SessionOnlineScreen> {
@@ -45,7 +44,7 @@ class SessionOnlineScreenState extends State<SessionOnlineScreen> {
           backgroundColor: CustomTheme.primary,
           titleSpacing: 0,
           elevation: 0,
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.white),
           automaticallyImplyLeading: true,
           // remove back button in appbar.
           title: Column(
@@ -53,7 +52,7 @@ class SessionOnlineScreenState extends State<SessionOnlineScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               FxText.titleLarge(
-                '${item.title}',
+                item.title,
                 color: Colors.white,
                 fontWeight: 700,
                 height: .6,
@@ -72,12 +71,12 @@ class SessionOnlineScreenState extends State<SessionOnlineScreen> {
               color: item.presentMembers.contains(member.id)
                   ? Colors.green.shade50
                   :  Colors.red.shade50,
-              padding: EdgeInsets.only(left: 10, top: 10, right: 10),
+              padding: const EdgeInsets.only(left: 10, top: 10, right: 10),
               child: Flex(
                 direction: Axis.horizontal,
                 children: [
                   roundedImage(member.image.toString(), 5, 5),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Expanded(
@@ -124,7 +123,7 @@ class SessionOnlineScreenState extends State<SessionOnlineScreen> {
                               color: Colors.red.shade900,
                               letterSpacing: .01,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 3,
                             ),
                             FxContainer(
@@ -159,6 +158,7 @@ class SessionOnlineScreenState extends State<SessionOnlineScreen> {
       return;
     }
     item = widget.data;
+    Utils.log(item.toJson().toString());
     await item.getExpectedMembers();
     await item.getPresentMembers();
     setState(() {});

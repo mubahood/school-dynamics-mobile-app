@@ -18,7 +18,7 @@ class ServiceModel {
   String service_category_text = "";
 
   static fromJson(dynamic m) {
-    ServiceModel obj = new ServiceModel();
+    ServiceModel obj = ServiceModel();
     if (m == null) {
       return obj;
     }
@@ -75,7 +75,7 @@ class ServiceModel {
     List<ServiceModel> data = [];
 
     RespondModel resp =
-        RespondModel(await Utils.http_get('${ServiceModel.endPoint}', {}));
+        RespondModel(await Utils.http_get(ServiceModel.endPoint, {}));
 
     if (resp.code != 1) {
       return [];

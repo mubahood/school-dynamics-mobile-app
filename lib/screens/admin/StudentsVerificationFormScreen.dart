@@ -4,9 +4,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutx/flutx.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:schooldynamics/models/RespondModel.dart';
-import 'package:schooldynamics/models/ServiceSubscription.dart';
 import 'package:schooldynamics/screens/finance/ServiceSubscriptionCreateScreen.dart';
 import 'package:schooldynamics/sections/widgets.dart';
 
@@ -20,14 +18,14 @@ import '../../utils/Utils.dart';
 class StudentsVerificationFormScreen extends StatefulWidget {
   final dynamic data;
 
-  StudentsVerificationFormScreen({
-    Key? key,
+  const StudentsVerificationFormScreen({
+    super.key,
     this.data,
-  }) : super(key: key);
+  });
 
   @override
   _StudentsVerificationFormScreenState createState() =>
-      _StudentsVerificationFormScreenState(this.data);
+      _StudentsVerificationFormScreenState(data);
 }
 
 class _StudentsVerificationFormScreenState
@@ -129,7 +127,7 @@ class _StudentsVerificationFormScreenState
       appBar: AppBar(
         backgroundColor: CustomTheme.primary,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         titleSpacing: 0,
         title: FxText.titleLarge(
           "Verifying student",
@@ -144,19 +142,19 @@ class _StudentsVerificationFormScreenState
                 Container(
                     color: Colors.white,
                     padding:
-                        EdgeInsets.only(left: MySize.size16!, right: MySize.size16!),
+                        EdgeInsets.only(left: MySize.size16, right: MySize.size16),
                     child: FormBuilder(
                       key: _formKey,
                       child: Padding(
                         padding: EdgeInsets.only(
-                            top: MySize.size10!,
-                            left: MySize.size5!,
-                            right: MySize.size5!,
-                            bottom: MySize.size10!),
+                            top: MySize.size10,
+                            left: MySize.size5,
+                            right: MySize.size5,
+                            bottom: MySize.size10),
                         child: Column(
                           children: <Widget>[
                             Container(
-                              margin: EdgeInsets.only(bottom: 10, top: 10),
+                              margin: const EdgeInsets.only(bottom: 10, top: 10),
                               child: FormBuilderTextField(
                                 name: 'name',
                                 initialValue: item.name,
@@ -199,7 +197,7 @@ class _StudentsVerificationFormScreenState
                                       ))
                                   .toList(growable: false),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 15,
                             ),
                             FormBuilderRadioGroup(
@@ -231,10 +229,10 @@ class _StudentsVerificationFormScreenState
                                   .toList(growable: false),
                             ),
                             item.status != '1'
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : Column(
                                     children: [
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 15,
                                       ),
                                       FormBuilderTextField(
@@ -259,7 +257,7 @@ class _StudentsVerificationFormScreenState
                                           ),
                                         ]),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 15,
                                       ),
                                       FormBuilderTextField(
@@ -282,7 +280,7 @@ class _StudentsVerificationFormScreenState
                                         ]),
                                       ),
 
-                                      SizedBox(height: 10,),
+                                      const SizedBox(height: 10,),
                                       InkWell(
                                         onTap: (){
                                           Get.to(()=>ServiceSubscriptionCreateScreen({
@@ -291,8 +289,8 @@ class _StudentsVerificationFormScreenState
                                         },
                                         child: Column(
                                           children: [
-                                            Divider(),
-                                            SizedBox(height: 10,),
+                                            const Divider(),
+                                            const SizedBox(height: 10,),
                                             Row(
                                               children: [
                                                 Expanded(
@@ -303,21 +301,21 @@ class _StudentsVerificationFormScreenState
                                                       color: CustomTheme.primary,
                                                     )),
                                                 FxSpacing.width(20),
-                                                Icon(
+                                                const Icon(
                                                   FeatherIcons.chevronRight,
                                                   size: 20,
                                                 ),
                                               ],
                                             ),
-                                            SizedBox(height: 10,),
-                                            Divider(),
+                                            const SizedBox(height: 10,),
+                                            const Divider(),
                                           ],
                                         ),
                                       ),
 
                                     ],
                                   ),
-                            SizedBox(
+                            const SizedBox(
                               height: 15,
                             ),
                             alertWidget(error_message, 'danger'),
@@ -338,7 +336,7 @@ class _StudentsVerificationFormScreenState
                     CustomTheme.primary),
               ))
               : Container(
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               left: 10,
               right: 10,bottom: 10
             ),
@@ -357,7 +355,7 @@ class _StudentsVerificationFormScreenState
                       size: 30,
                       color: Colors.white,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Center(
@@ -398,17 +396,17 @@ class _StudentsVerificationFormScreenState
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(MySize.size16!),
-                topRight: Radius.circular(MySize.size16!),
+                topLeft: Radius.circular(MySize.size16),
+                topRight: Radius.circular(MySize.size16),
               ),
             ),
             child: Container(
-              padding: EdgeInsets.only(top: 15),
+              padding: const EdgeInsets.only(top: 15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(left: 15, right: 15),
+                    margin: const EdgeInsets.only(left: 15, right: 15),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -486,17 +484,17 @@ class _StudentsVerificationFormScreenState
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(MySize.size16!),
-                topRight: Radius.circular(MySize.size16!),
+                topLeft: Radius.circular(MySize.size16),
+                topRight: Radius.circular(MySize.size16),
               ),
             ),
             child: Container(
-              padding: EdgeInsets.only(top: 15),
+              padding: const EdgeInsets.only(top: 15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(left: 15, right: 15),
+                    margin: const EdgeInsets.only(left: 15, right: 15),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

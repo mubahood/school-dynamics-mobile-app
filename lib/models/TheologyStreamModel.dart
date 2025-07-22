@@ -18,7 +18,7 @@ class TheologyStreamModel {
   String teacher_text = "";
 
   static fromJson(dynamic m) {
-    TheologyStreamModel obj = new TheologyStreamModel();
+    TheologyStreamModel obj = TheologyStreamModel();
     if (m == null) {
       return obj;
     }
@@ -79,7 +79,7 @@ class TheologyStreamModel {
     List<TheologyStreamModel> data = [];
 
     RespondModel resp = RespondModel(
-        await Utils.http_get('${TheologyStreamModel.end_point}', {}));
+        await Utils.http_get(TheologyStreamModel.end_point, {}));
 
     if (resp.code != 1) {
       return [];

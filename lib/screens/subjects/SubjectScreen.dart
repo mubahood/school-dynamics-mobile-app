@@ -12,7 +12,7 @@ import '../../utils/my_widgets.dart';
 import '../sessions/SessionOnlineScreen.dart';
 
 class SubjectScreen extends StatefulWidget {
-  const SubjectScreen({Key? key, required this.data}) : super(key: key);
+  const SubjectScreen({super.key, required this.data});
   final dynamic data;
 
   @override
@@ -56,7 +56,7 @@ class _CourseTasksScreenState extends State<SubjectScreen> {
         backgroundColor: CustomTheme.primary,
         titleSpacing: 0,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         automaticallyImplyLeading: true,
         // remove back button in appbar.
 
@@ -77,9 +77,9 @@ class _CourseTasksScreenState extends State<SubjectScreen> {
               children: [
                 /*-------------- Build Tabs here ------------------*/
                 TabBar(
-                  padding: EdgeInsets.only(bottom: 0),
-                  labelPadding: EdgeInsets.only(bottom: 2, left: 8, right: 8),
-                  indicatorPadding: EdgeInsets.all(0),
+                  padding: const EdgeInsets.only(bottom: 0),
+                  labelPadding: const EdgeInsets.only(bottom: 2, left: 8, right: 8),
+                  indicatorPadding: const EdgeInsets.all(0),
                   labelColor: CustomTheme.primary,
                   isScrollable: false,
                   enableFeedback: true,
@@ -164,7 +164,7 @@ class _CourseTasksScreenState extends State<SubjectScreen> {
     );*/
     return Container(
       alignment: Alignment.centerRight,
-      padding: EdgeInsets.only(top: 4, bottom: 4),
+      padding: const EdgeInsets.only(top: 4, bottom: 4),
       child: Flex(
         direction: Axis.horizontal,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -174,13 +174,13 @@ class _CourseTasksScreenState extends State<SubjectScreen> {
             width: MediaQuery.of(context).size.width / 2.5,
             alignment: Alignment.centerRight,
             child: FxText.bodyLarge(
-              '${title} :'.toUpperCase(),
+              '$title :'.toUpperCase(),
               textAlign: TextAlign.right,
               color: CustomTheme.primary,
               fontWeight: 700,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 4,
           ),
           Expanded(
@@ -201,9 +201,9 @@ class _CourseTasksScreenState extends State<SubjectScreen> {
             height: 8,
           ),
           singleWidget('Subject name', ' ${item.subject_name}'),
-          singleWidget('Subject code', '${item.code}'),
-          singleWidget('Subject class', '${item.name}'),
-          singleWidget('Subject teacher', '${item.subject_teacher_name}'),
+          singleWidget('Subject code', item.code),
+          singleWidget('Subject class', item.name),
+          singleWidget('Subject teacher', item.subject_teacher_name),
         ],
       ),
     );
@@ -231,8 +231,8 @@ class _CourseTasksScreenState extends State<SubjectScreen> {
         builder: (BuildContext buildContext) {
           return Container(
             child: Container(
-              padding: EdgeInsets.only(bottom: 20),
-              margin: EdgeInsets.only(left: 13, right: 13, bottom: 10),
+              padding: const EdgeInsets.only(bottom: 20),
+              margin: const EdgeInsets.only(left: 13, right: 13, bottom: 10),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -243,12 +243,12 @@ class _CourseTasksScreenState extends State<SubjectScreen> {
                 ),
               ),
               child: Container(
-                padding: EdgeInsets.all(0),
+                padding: const EdgeInsets.all(0),
                 child: ListView(
                   children: [
                     Center(
                       child: Container(
-                        padding: EdgeInsets.only(top: 20),
+                        padding: const EdgeInsets.only(top: 20),
                         child: Column(
                           children: [
                             FxText.titleLarge(
@@ -300,7 +300,7 @@ class _CourseTasksScreenState extends State<SubjectScreen> {
                         ),
                         subtitle: FxText.bodySmall(Utils.to_date_1(m.due_date)),
                         trailing: FxContainer(
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                               left: 10, right: 10, top: 5, bottom: 5),
                           color: Colors.green.shade50,
                           child: FxText.bodySmall(

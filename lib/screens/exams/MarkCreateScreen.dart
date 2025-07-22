@@ -65,7 +65,7 @@ class MarkCreateScreenState extends State<MarkCreateScreen> {
             },
           )
         ],
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         titleSpacing: 0,
         title: FxText.titleLarge(
           "Updating Marks",
@@ -116,7 +116,7 @@ class MarkCreateScreenState extends State<MarkCreateScreen> {
                             ),
                             widget.activeReportCard.activeMarkSubmission() !=
                                     'B.O.T'
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : FormBuilderTextField(
                                     name: 'bot_score',
                                     onChanged: (value) {
@@ -164,7 +164,7 @@ class MarkCreateScreenState extends State<MarkCreateScreen> {
                                   ),
                             widget.activeReportCard.activeMarkSubmission() !=
                                     'M.O.T'
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : FormBuilderTextField(
                                     name: 'mot_score',
                                     onChanged: (value) {
@@ -211,7 +211,7 @@ class MarkCreateScreenState extends State<MarkCreateScreen> {
                                   ),
                             widget.activeReportCard.activeMarkSubmission() !=
                                     'E.O.T'
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : FormBuilderTextField(
                                     name: 'eot_score',
                                     onChanged: (value) {

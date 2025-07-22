@@ -424,6 +424,77 @@ Widget userMiniWidget(UserMiniModel u) {
   );
 }
 
+<<<<<<< HEAD
+=======
+Widget userWidget3(UserModel u, context, {String task_picker = ""}) {
+  return Container(
+    padding: const EdgeInsets.only(top: 10, left: 15, right: 15),
+    child: Flex(
+      direction: Axis.horizontal,
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        roundedImage2(u.avatar.toString(), 50, 50),
+        const SizedBox(
+          width: 10,
+        ),
+        Expanded(
+          child: Flex(
+            direction: Axis.vertical,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              FxText.titleMedium(
+                u.name.toUpperCase(),
+                maxLines: 1,
+                fontWeight: 800,
+                overflow: TextOverflow.ellipsis,
+              ),
+              const SizedBox(
+                height: 6,
+              ),
+              Text(u.roles_text),
+            ],
+          ),
+        ),
+        //create popupMenu with view, edit and delete
+        PopupMenuButton(
+          icon: Icon(FeatherIcons.moreVertical,
+              size: 30, color: CustomTheme.primary),
+          itemBuilder: (BuildContext context) {
+            return [
+              PopupMenuItem(
+                child: ListTile(
+                  leading: const Icon(FeatherIcons.eye),
+                  title: const Text('View'),
+                  onTap: () {
+                    //pop
+                    Navigator.pop(context);
+                    Get.to(() => StudentScreen(data: u));
+                  },
+                ),
+              ),
+              PopupMenuItem(
+                child: ListTile(
+                  leading: const Icon(FeatherIcons.edit),
+                  title: const Text('Edit'),
+                  onTap: () {
+                    Navigator.pop(context);
+                    EmployeeModel e = EmployeeModel.fromJson(u.toJson());
+                    Get.to(() => EmployeeCreateScreen({
+                          'item': e,
+                        }));
+                  },
+                ),
+              ),
+            ];
+          },
+        ),
+      ],
+    ),
+  );
+}
+
+>>>>>>> fixed
 Widget userWidget(UserModel u, context, {String task_picker = ""}) {
   return InkWell(
     onTap: () {

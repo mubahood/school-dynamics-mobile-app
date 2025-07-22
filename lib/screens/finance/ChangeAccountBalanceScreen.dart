@@ -20,8 +20,8 @@ class ChangeAccountBalanceScreen extends StatefulWidget {
 
   ChangeAccountBalanceScreen(
     this.params, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   ChangeAccountBalanceScreenState createState() =>
@@ -123,7 +123,7 @@ class ChangeAccountBalanceScreenState extends State<ChangeAccountBalanceScreen>
                                                     textAlign: TextAlign.start,
                                                   ),
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   height: 15,
                                                 ),
                                                 FormBuilderTextField(
@@ -198,13 +198,13 @@ class ChangeAccountBalanceScreenState extends State<ChangeAccountBalanceScreen>
                                                       TextInputAction.done,
                                                 ),
                                                 error_message.isEmpty
-                                                    ? SizedBox()
+                                                    ? const SizedBox()
                                                     : const SizedBox(
                                                         height: 10),
                                                 error_message.isEmpty
-                                                    ? SizedBox()
+                                                    ? const SizedBox()
                                                     : FxContainer(
-                                                        margin: EdgeInsets.only(
+                                                        margin: const EdgeInsets.only(
                                                             bottom: 10),
                                                         color:
                                                             Colors.red.shade50,

@@ -16,7 +16,7 @@ class AnalyzeImageFromGalleryButton extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(
+        const SizedBox(
           height: 5,
         ),
         IconButton(
@@ -177,6 +177,12 @@ class SwitchCameraButton extends StatelessWidget {
               Icons.camera_rear,
               color: Colors.white,
             );
+          case CameraFacing.external:
+            // TODO: Handle this case.
+            throw UnimplementedError();
+          case CameraFacing.unknown:
+            // TODO: Handle this case.
+            throw UnimplementedError();
         }
 
         return FxContainer(

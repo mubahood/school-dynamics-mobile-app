@@ -25,9 +25,9 @@ class AppTheme {
       bool hasPadding = true,
       String hintText = ""}) {
     EdgeInsets padding =
-        EdgeInsets.only(left: 10, top: 10, bottom: 10, right: 15);
+        const EdgeInsets.only(left: 10, top: 10, bottom: 10, right: 15);
     if (!hasPadding) {
-      padding = EdgeInsets.only(left: 10, top: 0, bottom: 0, right: 15);
+      padding = const EdgeInsets.only(left: 10, top: 0, bottom: 0, right: 15);
     }
 
     return InputDecoration(
@@ -48,21 +48,21 @@ class AppTheme {
         iconData,
         color: Colors.grey.shade800,
       ),*/
-      hintStyle: TextStyle(fontSize: 15, color: Color(0xaa495057)),
-      focusedBorder: OutlineInputBorder(
+      hintStyle: const TextStyle(fontSize: 15, color: Color(0xaa495057)),
+      focusedBorder: const OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(4)),
         borderSide: BorderSide(width: 1, color: Colors.green),
       ),
-      enabledBorder: OutlineInputBorder(
+      enabledBorder: const OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(4)),
         borderSide: BorderSide(width: 1, color: Colors.black54),
       ),
-      disabledBorder: OutlineInputBorder(
+      disabledBorder: const OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(4)),
         borderSide: BorderSide(width: 1, color: Colors.black54),
       ),
       fillColor: Colors.grey.shade100,
-      border: OutlineInputBorder(
+      border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(4)),
           borderSide: BorderSide(width: 1, color: Colors.black54)),
     );
@@ -78,7 +78,7 @@ class AppTheme {
         double? height,
         double wordSpacing = 0,
         double? fontSize}) {
-    double? finalFontSize = fontSize != null ? fontSize : textStyle!.fontSize;
+    double? finalFontSize = fontSize ?? textStyle!.fontSize;
 
     Color? finalColor;
     if (color == null) {
@@ -115,7 +115,7 @@ class AppTheme {
         colorScheme: ColorScheme.fromSeed(
             seedColor: seedColor,
             brightness: Brightness.dark,
-            onBackground: Color(0xFFDAD9CA)));
+            onBackground: const Color(0xFFDAD9CA)));
   }
 
   static ThemeData createTheme(ColorScheme colorScheme) {
@@ -142,11 +142,11 @@ class AppTheme {
   static ThemeData shoppingLightTheme = createTheme(
     ColorScheme.fromSeed(
       seedColor: CustomTheme.primary,
-      primaryContainer: Color(0xffdafafa),
-      secondary: Color(0xfff15f5f),
-      onSecondary: Color(0xffffffff),
-      secondaryContainer: Color(0xfff8d6d6),
-      onSecondaryContainer: Color(0xff570202),
+      primaryContainer: const Color(0xffdafafa),
+      secondary: const Color(0xfff15f5f),
+      onSecondary: const Color(0xffffffff),
+      secondaryContainer: const Color(0xfff8d6d6),
+      onSecondaryContainer: const Color(0xff570202),
     ),
   );
 
@@ -217,7 +217,7 @@ class AppTheme {
     primaryColor: CustomTheme.primary,
 
     /// Scaffold and Background color
-    scaffoldBackgroundColor: Color(0xffffffff),
+    scaffoldBackgroundColor: const Color(0xffffffff),
     canvasColor: Colors.transparent,
 
     /// AppBar Theme
@@ -231,16 +231,16 @@ class AppTheme {
         fontWeight: FontWeight.w800,
         fontSize: 18,
       ),
-      iconTheme: IconThemeData(color: Colors.white),
-      actionsIconTheme: IconThemeData(color: Colors.white),
+      iconTheme: const IconThemeData(color: Colors.white),
+      actionsIconTheme: const IconThemeData(color: Colors.white),
     ),
 
 
 
     /// Card Theme
-    cardTheme: CardTheme(color: Color(0xfff6f6f6)),
+    cardTheme: const CardTheme(color: Color(0xfff6f6f6)),
 
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       bodyLarge: TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w400,
@@ -251,17 +251,16 @@ class AppTheme {
     /// Colorscheme
     colorScheme: ColorScheme.light(
         primary: CustomTheme.primary,
-        onPrimary: Color(0xffeeeeee),
+        onPrimary: const Color(0xffeeeeee),
         secondary: CustomTheme.primary,
-        onSecondary: Color(0xffeeeeee),
-        surface: Color(0xffeeeeee),
-        background: Color(0xffeeeeee),
-        onBackground: Color(0xff495057)),
+        onSecondary: const Color(0xffeeeeee),
+        surface: const Color(0xffeeeeee),
+        onSurface: const Color(0xff495057)),
 
     /// Floating Action Theme
     floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor: CustomTheme.primary,
-        splashColor: Color(0xffeeeeee).withAlpha(100),
+        splashColor: const Color(0xffeeeeee).withAlpha(100),
         highlightElevation: 8,
         elevation: 4,
         shape: RoundedRectangleBorder(
@@ -269,18 +268,18 @@ class AppTheme {
         ),
         focusColor: CustomTheme.primary,
         hoverColor: CustomTheme.primary,
-        foregroundColor: Color(0xffeeeeee)),
+        foregroundColor: const Color(0xffeeeeee)),
 
     /// Divider Theme
-    dividerTheme: DividerThemeData(color: Color(0xffe8e8e8), thickness: 1),
-    dividerColor: Color(0xffe8e8e8),
+    dividerTheme: const DividerThemeData(color: Color(0xffe8e8e8), thickness: 1),
+    dividerColor: const Color(0xffe8e8e8),
 
     /// Bottom AppBar Theme
     bottomAppBarTheme:
-        BottomAppBarTheme(color: Color(0xffeeeeee), elevation: 2),
+        const BottomAppBarTheme(color: Color(0xffeeeeee), elevation: 2),
 
     /// Tab bar Theme
-    tabBarTheme: TabBarTheme(
+    tabBarTheme: const TabBarTheme(
       unselectedLabelColor: Color(0xff495057),
       labelColor: Color(0xff3d63ff),
       indicatorSize: TabBarIndicatorSize.label,
@@ -291,35 +290,35 @@ class AppTheme {
 
     /// CheckBox theme
     checkboxTheme: CheckboxThemeData(
-      checkColor: MaterialStateProperty.all(Color(0xffeeeeee)),
-      fillColor: MaterialStateProperty.all(CustomTheme.primary),
+      checkColor: WidgetStateProperty.all(const Color(0xffeeeeee)),
+      fillColor: WidgetStateProperty.all(CustomTheme.primary),
     ),
 
     /// Radio theme
     radioTheme: RadioThemeData(
-      fillColor: MaterialStateProperty.all(CustomTheme.primary),
+      fillColor: WidgetStateProperty.all(CustomTheme.primary),
     ),
 
     ///Switch Theme
     switchTheme: SwitchThemeData(
-      trackColor: MaterialStateProperty.resolveWith((state) {
-        const Set<MaterialState> interactiveStates = <MaterialState>{
-          MaterialState.pressed,
-          MaterialState.hovered,
-          MaterialState.focused,
-          MaterialState.selected,
+      trackColor: WidgetStateProperty.resolveWith((state) {
+        const Set<WidgetState> interactiveStates = <WidgetState>{
+          WidgetState.pressed,
+          WidgetState.hovered,
+          WidgetState.focused,
+          WidgetState.selected,
         };
         if (state.any(interactiveStates.contains)) {
-          return Color(0xffabb3ea);
+          return const Color(0xffabb3ea);
         }
         return null;
       }),
-      thumbColor: MaterialStateProperty.resolveWith((state) {
-        const Set<MaterialState> interactiveStates = <MaterialState>{
-          MaterialState.pressed,
-          MaterialState.hovered,
-          MaterialState.focused,
-          MaterialState.selected,
+      thumbColor: WidgetStateProperty.resolveWith((state) {
+        const Set<WidgetState> interactiveStates = <WidgetState>{
+          WidgetState.pressed,
+          WidgetState.hovered,
+          WidgetState.focused,
+          WidgetState.selected,
         };
         if (state.any(interactiveStates.contains)) {
           return CustomTheme.primary;
@@ -330,25 +329,25 @@ class AppTheme {
 
     /// Slider Theme
     sliderTheme: SliderThemeData(
-      activeTrackColor: Color(0xff3d63ff),
-      inactiveTrackColor: Color(0xff3d63ff).withAlpha(140),
-      trackShape: RoundedRectSliderTrackShape(),
+      activeTrackColor: const Color(0xff3d63ff),
+      inactiveTrackColor: const Color(0xff3d63ff).withAlpha(140),
+      trackShape: const RoundedRectSliderTrackShape(),
       trackHeight: 4.0,
-      thumbColor: Color(0xff3d63ff),
-      thumbShape: RoundSliderThumbShape(enabledThumbRadius: 10.0),
-      overlayShape: RoundSliderOverlayShape(overlayRadius: 24.0),
-      tickMarkShape: RoundSliderTickMarkShape(),
+      thumbColor: const Color(0xff3d63ff),
+      thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 10.0),
+      overlayShape: const RoundSliderOverlayShape(overlayRadius: 24.0),
+      tickMarkShape: const RoundSliderTickMarkShape(),
       inactiveTickMarkColor: Colors.red[100],
-      valueIndicatorShape: PaddleSliderValueIndicatorShape(),
-      valueIndicatorTextStyle: TextStyle(
+      valueIndicatorShape: const PaddleSliderValueIndicatorShape(),
+      valueIndicatorTextStyle: const TextStyle(
         color: Color(0xffeeeeee),
       ),
     ),
 
     /// Other Colors
     splashColor: Colors.white.withAlpha(100),
-    indicatorColor: Color(0xffeeeeee),
-    highlightColor: Color(0xffeeeeee),
+    indicatorColor: const Color(0xffeeeeee),
+    highlightColor: const Color(0xffeeeeee),
   );
 
   /// -------------------------- Dark Theme  -------------------------------------------- ///
@@ -357,31 +356,30 @@ class AppTheme {
     brightness: Brightness.dark,
 
     /// Primary Color
-    primaryColor: Color(0xff069DEF),
+    primaryColor: const Color(0xff069DEF),
 
     /// Scaffold and Background color
-    scaffoldBackgroundColor: Color(0xff161616),
+    scaffoldBackgroundColor: const Color(0xff161616),
     canvasColor: Colors.transparent,
 
     /// AppBar Theme
-    appBarTheme: AppBarTheme(backgroundColor: Color(0xff161616)),
+    appBarTheme: const AppBarTheme(backgroundColor: Color(0xff161616)),
 
     /// Card Theme
-    cardTheme: CardTheme(color: Color(0xff222327)),
+    cardTheme: const CardTheme(color: Color(0xff222327)),
 
     /// Colorscheme
     colorScheme: const ColorScheme.dark(
       primary: Color(0xff069DEF),
       secondary: Color(0xff069DEF),
-      background: Color(0xff161616),
       onPrimary: Colors.white,
-      onBackground: Color(0xfff3f3f3),
+      onSurface: Color(0xfff3f3f3),
       onSecondary: Colors.white,
       surface: Color(0xff585e63),
     ),
 
     /// Input (Text-Field) Theme
-    inputDecorationTheme: InputDecorationTheme(
+    inputDecorationTheme: const InputDecorationTheme(
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(4)),
         borderSide: BorderSide(width: 1, color: Color(0xff069DEF)),
@@ -396,25 +394,25 @@ class AppTheme {
     ),
 
     /// Divider Color
-    dividerTheme: DividerThemeData(color: Color(0xff363636), thickness: 1),
-    dividerColor: Color(0xff363636),
+    dividerTheme: const DividerThemeData(color: Color(0xff363636), thickness: 1),
+    dividerColor: const Color(0xff363636),
 
     /// Floating Action Theme
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: Color(0xff069DEF),
+        backgroundColor: const Color(0xff069DEF),
         splashColor: Colors.white.withAlpha(100),
         highlightElevation: 8,
         elevation: 4,
-        focusColor: Color(0xff069DEF),
-        hoverColor: Color(0xff069DEF),
+        focusColor: const Color(0xff069DEF),
+        hoverColor: const Color(0xff069DEF),
         foregroundColor: Colors.white),
 
     /// Bottom AppBar Theme
     bottomAppBarTheme:
-        BottomAppBarTheme(color: Color(0xff464c52), elevation: 2),
+        const BottomAppBarTheme(color: Color(0xff464c52), elevation: 2),
 
     /// Tab bar Theme
-    tabBarTheme: TabBarTheme(
+    tabBarTheme: const TabBarTheme(
       unselectedLabelColor: Color(0xff495057),
       labelColor: Color(0xff069DEF),
       indicatorSize: TabBarIndicatorSize.label,
@@ -425,24 +423,24 @@ class AppTheme {
 
     ///Switch Theme
     switchTheme: SwitchThemeData(
-      trackColor: MaterialStateProperty.resolveWith((state) {
-        const Set<MaterialState> interactiveStates = <MaterialState>{
-          MaterialState.pressed,
-          MaterialState.hovered,
-          MaterialState.focused,
-          MaterialState.selected,
+      trackColor: WidgetStateProperty.resolveWith((state) {
+        const Set<WidgetState> interactiveStates = <WidgetState>{
+          WidgetState.pressed,
+          WidgetState.hovered,
+          WidgetState.focused,
+          WidgetState.selected,
         };
         if (state.any(interactiveStates.contains)) {
-          return Color(0xffabb3ea);
+          return const Color(0xffabb3ea);
         }
         return null;
       }),
-      thumbColor: MaterialStateProperty.resolveWith((state) {
-        const Set<MaterialState> interactiveStates = <MaterialState>{
-          MaterialState.pressed,
-          MaterialState.hovered,
-          MaterialState.focused,
-          MaterialState.selected,
+      thumbColor: WidgetStateProperty.resolveWith((state) {
+        const Set<WidgetState> interactiveStates = <WidgetState>{
+          WidgetState.pressed,
+          WidgetState.hovered,
+          WidgetState.focused,
+          WidgetState.selected,
         };
         if (state.any(interactiveStates.contains)) {
           return CustomTheme.primary;
@@ -453,26 +451,26 @@ class AppTheme {
 
     /// Slider Theme
     sliderTheme: SliderThemeData(
-      activeTrackColor: Color(0xff069DEF),
-      inactiveTrackColor: Color(0xff069DEF).withAlpha(100),
-      trackShape: RoundedRectSliderTrackShape(),
+      activeTrackColor: const Color(0xff069DEF),
+      inactiveTrackColor: const Color(0xff069DEF).withAlpha(100),
+      trackShape: const RoundedRectSliderTrackShape(),
       trackHeight: 4.0,
-      thumbColor: Color(0xff069DEF),
-      thumbShape: RoundSliderThumbShape(enabledThumbRadius: 10.0),
-      overlayShape: RoundSliderOverlayShape(overlayRadius: 24.0),
-      tickMarkShape: RoundSliderTickMarkShape(),
+      thumbColor: const Color(0xff069DEF),
+      thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 10.0),
+      overlayShape: const RoundSliderOverlayShape(overlayRadius: 24.0),
+      tickMarkShape: const RoundSliderTickMarkShape(),
       inactiveTickMarkColor: Colors.red[100],
-      valueIndicatorShape: PaddleSliderValueIndicatorShape(),
-      valueIndicatorTextStyle: TextStyle(
+      valueIndicatorShape: const PaddleSliderValueIndicatorShape(),
+      valueIndicatorTextStyle: const TextStyle(
         color: Colors.white,
       ),
     ),
 
     ///Other Color
     indicatorColor: Colors.white,
-    disabledColor: Color(0xffa3a3a3),
+    disabledColor: const Color(0xffa3a3a3),
     highlightColor: Colors.white.withAlpha(28),
-    cardColor: Color(0xff282a2b),
+    cardColor: const Color(0xff282a2b),
     splashColor: Colors.white.withAlpha(56),
   );
 }

@@ -12,10 +12,10 @@ import 'TripCreateScreen.dart';
 
 //TransportHomeScreen
 class TransportHomeScreen extends StatefulWidget {
-  TransportHomeScreen({Key? key}) : super(key: key);
+  const TransportHomeScreen({super.key});
 
   @override
-  TransportHomeScreenState createState() => new TransportHomeScreenState();
+  TransportHomeScreenState createState() => TransportHomeScreenState();
 }
 
 class TransportHomeScreenState extends State<TransportHomeScreen> {
@@ -44,7 +44,7 @@ class TransportHomeScreenState extends State<TransportHomeScreen> {
           backgroundColor: CustomTheme.primary,
           titleSpacing: 0,
           elevation: 0,
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.white),
           automaticallyImplyLeading: true,
           // remove back button in appbar.
           title: Column(
@@ -83,7 +83,7 @@ class TransportHomeScreenState extends State<TransportHomeScreen> {
                             topLeft: Radius.circular(16),
                             topRight: Radius.circular(16))),
                     child: Container(
-                      padding: EdgeInsets.all(24),
+                      padding: const EdgeInsets.all(24),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -124,7 +124,7 @@ class TransportHomeScreenState extends State<TransportHomeScreen> {
           localTrips.isNotEmpty
               ? InkWell(
                   onTap: () {
-                    Get.to(() => PendingTripsScreen());
+                    Get.to(() => const PendingTripsScreen());
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(
@@ -148,7 +148,7 @@ class TransportHomeScreenState extends State<TransportHomeScreen> {
                     ),
                   ),
                 )
-              : SizedBox(),
+              : const SizedBox(),
           Expanded(
             child: RefreshIndicator(
               onRefresh: () async {
@@ -180,7 +180,7 @@ class TransportHomeScreenState extends State<TransportHomeScreen> {
                                                   topRight:
                                                       Radius.circular(16))),
                                           child: Container(
-                                            padding: EdgeInsets.all(24),
+                                            padding: const EdgeInsets.all(24),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.min,
                                               crossAxisAlignment:

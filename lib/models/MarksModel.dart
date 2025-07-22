@@ -1,7 +1,6 @@
 import 'package:schooldynamics/utils/Utils.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../utils/AppConfig.dart';
 
 class MarksModel {
   static String tableName = "MarksModels";
@@ -19,7 +18,7 @@ class MarksModel {
 
 
   static MarksModel fromJson(dynamic m) {
-    MarksModel obj = new MarksModel();
+    MarksModel obj = MarksModel();
     if (m == null) {
       return obj;
     }
@@ -114,7 +113,7 @@ class MarksModel {
     }
 
     String sql = " CREATE TABLE IF NOT EXISTS "
-        "${tableName} ("
+        "$tableName ("
         "id INTEGER PRIMARY KEY,"
         "exam_id Text,"
         "class_id Text,"

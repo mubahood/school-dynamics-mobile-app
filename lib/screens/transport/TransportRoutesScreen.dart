@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
 
-import '../../models/TransportRouteModel.dart';
+import '../../models/TransportStage.dart';
 import '../../theme/custom_theme.dart';
 
 class TransportRoutesScreen extends StatefulWidget {
   Map<String, dynamic> params;
 
-  TransportRoutesScreen(this.params, {Key? key}) : super(key: key);
+  TransportRoutesScreen(this.params, {super.key});
 
   @override
   TransportRoutesScreenState createState() => TransportRoutesScreenState();
@@ -38,7 +38,7 @@ class TransportRoutesScreenState extends State<TransportRoutesScreen> {
           backgroundColor: CustomTheme.primary,
           titleSpacing: 0,
           elevation: 0,
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.white),
           automaticallyImplyLeading: true,
           // remove back button in appbar.
           title: Column(
@@ -64,7 +64,7 @@ class TransportRoutesScreenState extends State<TransportRoutesScreen> {
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
-                  TransportRouteModel m = items[index];
+                  TransportStage m = items[index];
                   return ListTile(
                       onTap: () {
                         if (isPicker) {
@@ -83,7 +83,7 @@ class TransportRoutesScreenState extends State<TransportRoutesScreen> {
     );
   }
 
-  List<TransportRouteModel> items = [];
+  List<TransportStage> items = [];
 
   bool isPicker = false;
 
@@ -91,7 +91,7 @@ class TransportRoutesScreenState extends State<TransportRoutesScreen> {
     if (widget.params['task'] == 'picker') {
       isPicker = true;
     }
-    items = await TransportRouteModel.get_items();
+    items = await TransportStage.get_items();
     items.sort((a, b) => a.name.compareTo(b.name));
 
     setState(() {});

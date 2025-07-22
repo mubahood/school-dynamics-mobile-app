@@ -1,30 +1,23 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutx/flutx.dart';
-import 'package:flutx/widgets/container/container.dart';
 
 import '../../controllers/full_app_controller.dart';
 import '../../theme/custom_theme.dart';
-import '../full_app/section/AccountSection.dart';
-import '../full_app/section/CasesSuspect.dart';
-import '../full_app/section/SectionDashboard.dart';
-import '../full_app/section/TransactionsScreen.dart';
 
 class TestScreen extends StatefulWidget {
-  const TestScreen({Key? key}) : super(key: key);
+  const TestScreen({super.key});
 
   @override
-  TestScreenState createState() => new TestScreenState();
+  TestScreenState createState() => TestScreenState();
 }
 
 class WindowButtons extends StatelessWidget {
-  const WindowButtons({Key? key}) : super(key: key);
+  const WindowButtons({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return const SizedBox(
       width: 138,
       height: 50,
       child: Text("Romina"),
@@ -51,7 +44,7 @@ class TestScreenState extends State<TestScreen>
           padding: EdgeInsets.zero,
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               FxText.bodySmall(controller.navItems[i].title,
@@ -76,7 +69,7 @@ class TestScreenState extends State<TestScreen>
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
 
     );
   }

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:sqflite/sqflite.dart';
 
 import '../utils/Utils.dart';
@@ -5,7 +7,7 @@ import 'RespondModel.dart';
 
 class UserMiniModel {
   static String end_point = "users-mini";
-  static String table_name_6 = "users_mini_6";
+  static String table_name_6 = "users_mini_7";
   int id = 0;
   String name = "";
   String avatar = "";
@@ -17,6 +19,39 @@ class UserMiniModel {
   String user_number = "";
   String stream_id = "";
   String theology_stream_id = "";
+  String theology_class_id = "";
+
+  List<String> servicesList = [];
+
+  //getter servicesList
+  getServicesList() {
+    this.servicesList = [];
+    if (this.services.length < 2) {
+      return this.servicesList;
+    }
+    dynamic temp = null;
+    try {
+      temp = jsonDecode(services);
+    } catch (e) {
+      Utils.toast("Failed to decode services because ${e.toString()}");
+      return this.servicesList;
+    }
+    if (temp == null) {
+      return this.servicesList;
+    }
+
+    if (temp.runtimeType.toString().contains('List')) {
+      for (dynamic s in temp) {
+        servicesList.add(Utils.to_str(s, ''));
+      }
+    } else if (temp.runtimeType.toString().contains('Map')) {
+      for (String key in temp.keys) {
+        this.servicesList.add(Utils.to_str(temp[key], ''));
+      }
+    } else {
+      this.servicesList.add(Utils.to_str(temp, ''));
+    }
+  }
 
   Map<String, dynamic> toJson() {
     return {
@@ -31,6 +66,7 @@ class UserMiniModel {
       'user_number': user_number,
       'stream_id': stream_id,
       'theology_stream_id': theology_stream_id,
+      'theology_class_id': theology_class_id,
     };
   }
 
@@ -51,6 +87,8 @@ class UserMiniModel {
     obj.user_number = Utils.to_str(m['user_number'], '');
     obj.stream_id = Utils.to_str(m['stream_id'], '');
     obj.theology_stream_id = Utils.to_str(m['theology_stream_id'], '');
+    obj.theology_class_id = Utils.to_str(m['theology_class_id'], '');
+    obj.services = Utils.to_str(m['services'], '');
 
     return obj;
   }
@@ -111,11 +149,11 @@ class UserMiniModel {
 
     await db.transaction((txn) async {
       for (dynamic d in resp.data) {
-        UserMiniModel _u = UserMiniModel.fromJson(d);
+        UserMiniModel u = UserMiniModel.fromJson(d);
         try {
           await txn.insert(
             UserMiniModel.table_name_6,
-            _u.toJson(),
+            u.toJson(),
             conflictAlgorithm: ConflictAlgorithm.replace,
           );
         } catch (e) {
@@ -192,6 +230,7 @@ class UserMiniModel {
         "user_number TEXT, "
         "stream_id TEXT, "
         "theology_stream_id TEXT,"
+        "theology_class_id TEXT,"
         "user_type TEXT)";
 
     try {

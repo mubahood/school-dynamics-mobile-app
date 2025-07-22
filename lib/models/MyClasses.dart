@@ -28,16 +28,16 @@ class MyClasses {
 
   List<StudentHasClassModel> students = [];
 
-  Future<List<UserMiniModel>> getStudents(String class_id) async {
+  Future<List<UserMiniModel>> getStudents(String classId) async {
     List<UserMiniModel> users = await UserMiniModel.getItems(
-      where: " class_id = '$class_id' ",
+      where: " class_id = '$classId' ",
     );
 
     return users;
   }
 
   static MyClasses fromJson(dynamic d) {
-    MyClasses obj = new MyClasses();
+    MyClasses obj = MyClasses();
     if (d == null) {
       return obj;
     }
@@ -102,7 +102,7 @@ class MyClasses {
     List<MyClasses> data = [];
 
     RespondModel resp =
-        RespondModel(await Utils.http_get('${MyClasses.endPoint}', {}));
+        RespondModel(await Utils.http_get(MyClasses.endPoint, {}));
 
     if (resp.code != 1) {
       return [];
@@ -192,7 +192,7 @@ class MyClasses {
     }
 
     String sql = " CREATE TABLE IF NOT EXISTS "
-        "${tableName} ("
+        "$tableName ("
         "id INTEGER PRIMARY KEY,"
         "created_at TEXT,"
         "enterprise_id TEXT,"

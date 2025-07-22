@@ -11,39 +11,39 @@ class Constant {
   static ColorData softColors = ColorData();
 
   @Deprecated('message')
-  static final Color occur = Color(0xffb38220);
+  static const Color occur = Color(0xffb38220);
   @Deprecated('message')
-  static final Color peach = Color(0xffe09c5f);
+  static const Color peach = Color(0xffe09c5f);
   @Deprecated('message')
-  static final Color skyBlue = Color(0xff639fdc);
+  static const Color skyBlue = Color(0xff639fdc);
   @Deprecated('message')
-  static final Color darkGreen = Color(0xff226e79);
+  static const Color darkGreen = Color(0xff226e79);
   @Deprecated('message')
-  static final Color red = Color(0xfff8575e);
+  static const Color red = Color(0xfff8575e);
   @Deprecated('message')
-  static final Color purple = Color(0xff9f50bf);
+  static const Color purple = Color(0xff9f50bf);
   @Deprecated('message')
-  static final Color pink = Color(0xffd17b88);
+  static const Color pink = Color(0xffd17b88);
   @Deprecated('message')
-  static final Color brown = Color(0xffbd631a);
+  static const Color brown = Color(0xffbd631a);
   @Deprecated('message')
-  static final Color blue = Color(0xff1a71bd);
+  static const Color blue = Color(0xff1a71bd);
   @Deprecated('message')
-  static final Color green = Color(0xff068425);
+  static const Color green = Color(0xff068425);
   @Deprecated('message')
-  static final Color yellow = Color(0xfffff44f);
+  static const Color yellow = Color(0xfffff44f);
   @Deprecated('message')
-  static final Color orange = Color(0xffFFA500);
+  static const Color orange = Color(0xffFFA500);
 }
 
 class ColorData {
-  final Color star = Color(0xffFFC233);
+  Color star = Color(0xffFFC233);
 
-  final ColorGroup pink = ColorGroup(Color(0xffFFC2D9), Color(0xffF5005E));
-  final ColorGroup violet = ColorGroup(Color(0xffD0BADE), Color(0xff4E2E60));
-  final ColorGroup blue = ColorGroup(Color(0xffADD8FF), Color(0xff004A8F));
-  final ColorGroup green = ColorGroup(Color(0xffAFE9DA), Color(0xff165041));
-  final ColorGroup orange = ColorGroup(Color(0xffFFCEC2), Color(0xffFF3B0A));
+  final ColorGroup pink = ColorGroup(const Color(0xffFFC2D9), const Color(0xffF5005E));
+  final ColorGroup violet = ColorGroup(const Color(0xffD0BADE), const Color(0xff4E2E60));
+  final ColorGroup blue = ColorGroup(const Color(0xffADD8FF), const Color(0xff004A8F));
+  final ColorGroup green = ColorGroup(const Color(0xffAFE9DA), const Color(0xff165041));
+  final ColorGroup orange = ColorGroup(const Color(0xffFFCEC2), const Color(0xffFF3B0A));
 
   final List<ColorGroup> list = [];
 

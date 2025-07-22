@@ -19,8 +19,8 @@ import '../students/StudentsScreen.dart';
 class ServiceSubscriptionCreateScreen extends StatefulWidget {
   Map<String,dynamic> data = {};
   ServiceSubscriptionCreateScreen( this.data,{
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   ServiceSubscriptionCreateScreenState createState() =>
@@ -44,15 +44,13 @@ class ServiceSubscriptionCreateScreenState
   @override
   void initState() {
     super.initState();
-    if(widget.data != null){
-      if(widget.data['id']!=null){
-        if(Utils.int_parse(widget.data['id']) >0 ){
-          acc_id = Utils.int_parse(widget.data['id']);
+    if(widget.data['id']!=null){
+      if(Utils.int_parse(widget.data['id']) >0 ){
+        acc_id = Utils.int_parse(widget.data['id']);
 
-        }
       }
     }
-    initFuture = init_form();
+      initFuture = init_form();
   }
 
   final _fKey = GlobalKey<FormBuilderState>();
@@ -110,7 +108,7 @@ class ServiceSubscriptionCreateScreenState
           future: initFuture,
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             }
             //error_message = "";
 
@@ -240,10 +238,10 @@ class ServiceSubscriptionCreateScreenState
                                       const SizedBox(height: 5),
 
                                       error_message.isEmpty
-                                          ? SizedBox()
+                                          ? const SizedBox()
                                           : FxContainer(
                                         margin:
-                                        EdgeInsets.only(bottom: 10,top: 15),
+                                        const EdgeInsets.only(bottom: 10,top: 15),
                                         color: Colors.red.shade100,
                                         child: Text(
                                           error_message,
@@ -251,7 +249,7 @@ class ServiceSubscriptionCreateScreenState
                                       ),
 
 
-                                      Divider(),
+                                      const Divider(),
                                       const SizedBox(height: 5),
                                       FxContainer(
                                         color: CustomTheme.primary,
@@ -265,7 +263,7 @@ class ServiceSubscriptionCreateScreenState
                                       ),
                                       const SizedBox(height: 5),
                                       items.isNotEmpty
-                                          ? SizedBox()
+                                          ? const SizedBox()
                                           : FxContainer(
                                               child: FxText(
                                                   "Selected subscriber has no any service subscription."))
@@ -293,7 +291,7 @@ class ServiceSubscriptionCreateScreenState
                                                 CrossAxisAlignment.start,
                                             children: [
                                               FxText.titleMedium(
-                                                "${m.administrator_text}",
+                                                m.administrator_text,
                                                 color: Colors.black,
                                                 fontWeight: 700,
                                               ),
@@ -315,7 +313,7 @@ class ServiceSubscriptionCreateScreenState
                                             ],
                                           ),
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 15,
                                         ),
                                       ],
@@ -328,14 +326,14 @@ class ServiceSubscriptionCreateScreenState
                           ),
                         ),
                         is_loading? Container(
-                          padding: EdgeInsets.only(bottom: 10),
+                          padding: const EdgeInsets.only(bottom: 10),
                           child: const CircularProgressIndicator(
                             strokeWidth: 2.5,
                             valueColor:
                             AlwaysStoppedAnimation<Color>(Colors.red),
                           ),
                         ): Container(
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                             left: 10,
                             right: 10,
                             bottom: 8,
@@ -386,29 +384,29 @@ class ServiceSubscriptionCreateScreenState
 
     Get.defaultDialog(
         middleText: "Are you sure you want submit this records?",
-        titleStyle: TextStyle(color: Colors.black),
+        titleStyle: const TextStyle(color: Colors.black),
         actions: <Widget>[
           FxButton.small(
             onPressed: () {
               doUploadProcess();
               Navigator.pop(context);
             },
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
             child: FxText(
               'SUBMIT',
               color: Colors.white,
             ),
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
           ),
           FxButton.outlined(
             onPressed: () {
               Navigator.pop(context);
             },
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+            borderColor: CustomTheme.primary,
             child: FxText(
               'CANCEL',
               color: CustomTheme.primary,
             ),
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-            borderColor: CustomTheme.primary,
           ),
         ]);
 
@@ -452,30 +450,30 @@ class ServiceSubscriptionCreateScreenState
     Get.defaultDialog(
         middleText:
             "Do you want to create another record the selected subscriber?",
-        titleStyle: TextStyle(color: Colors.black),
+        titleStyle: const TextStyle(color: Colors.black),
         actions: <Widget>[
           FxButton.small(
             onPressed: () {
               Navigator.pop(context);
 
             },
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
             child: FxText(
               'YES',
               color: Colors.white,
             ),
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
           ),
           FxButton.outlined(
             onPressed: () {
               Navigator.pop(context);
               Navigator.pop(context);
             },
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+            borderColor: CustomTheme.primary,
             child: FxText(
               'NO',
               color: CustomTheme.primary,
             ),
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-            borderColor: CustomTheme.primary,
           ),
         ]);
 

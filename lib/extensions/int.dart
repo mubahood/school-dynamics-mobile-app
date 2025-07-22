@@ -18,7 +18,7 @@ extension IntUtil on int {
 
     if (withHours && hour != 0) {
       if (hour < 10 && withZeros) {
-        timeText += "0" + hour.toString() + (withSpace ? " : " : ":");
+        timeText += "0$hour${withSpace ? " : " : ":"}";
       } else {
         timeText += hour.toString() + (withSpace ? " : " : "");
       }
@@ -26,14 +26,14 @@ extension IntUtil on int {
 
     if (withMinutes) {
       if (minute < 10 && withZeros) {
-        timeText += "0" + minute.toString() + (withSpace ? " : " : ":");
+        timeText += "0$minute${withSpace ? " : " : ":"}";
       } else {
         timeText += minute.toString() + (withSpace ? " : " : "");
       }
     }
     if (withSeconds) {
       if (second < 10 && withZeros) {
-        timeText += "0" + second.toString();
+        timeText += "0$second";
       } else {
         timeText += second.toString();
       }

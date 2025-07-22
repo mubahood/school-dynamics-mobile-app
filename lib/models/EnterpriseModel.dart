@@ -1,8 +1,11 @@
 import 'dart:convert';
 
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:schooldynamics/utils/AppConfig.dart';
 import 'package:sqflite/sqflite.dart';
 
+import '../screens/account/AppUpdateScreen.dart';
 import '../utils/Utils.dart';
 import 'RespondModel.dart';
 
@@ -45,9 +48,13 @@ class EnterpriseModel {
   String can_send_messages = "";
   String has_valid_lisence = "";
   String school_pay_status = "";
+  String ANDROID_LINK =
+      "https://play.google.com/store/apps/details?id=schooldynamics.ug&hl=en";
+  String IOS_LINK =
+      "https://apps.apple.com/us/app/school-dynamics/id6469381244";
 
   String getLogo() {
-    return '${AppConfig.DASHBOARD_URL}/storage/${logo}';
+    return '${AppConfig.DASHBOARD_URL}/storage/$logo';
   }
 
   static Future<EnterpriseModel> getEnt() async {
@@ -68,7 +75,7 @@ class EnterpriseModel {
       ent.phone_number = '256 772 123 456';
       ent.email = 'info@schoooldynamics.ug';
       ent.address = 'Kampala, Uganda';
-      ent.expiry = '2023-12-31';
+      ent.expiry = '';
       ent.administrator_id = '1';
       ent.administrator_text = 'Administrator';
       ent.subdomain = 'schooldynamics';
@@ -84,6 +91,40 @@ class EnterpriseModel {
       ent.dp_year = '2023';
     }
     return ent;
+  }
+
+  //GET VERSION
+
+  int update_version = 0;
+
+  get_version() {
+    update_version = Utils.int_parse(expiry);
+    if (id < 1) {
+      update_version = 0;
+      return 0;
+    }
+    if (expiry.length > 1) {
+      try {
+        update_version = Utils.int_parse(expiry);
+      } catch (e) {
+        update_version = 0;
+      }
+    }
+  }
+
+  check_version() {
+    get_version();
+    if (id < 1) {
+      return false;
+    }
+    if (update_version < 1) {
+      return false;
+    }
+    if (update_version <= AppConfig.UPDATE_VERSION) {
+      return false;
+    }
+    Utils.toast("New App Version Available.");
+    Get.to(() => AppUpdateScreen(this));
   }
 
   static Future<void> getEntOnline() async {
@@ -102,7 +143,7 @@ class EnterpriseModel {
   }
 
   static fromJson(dynamic m) {
-    EnterpriseModel obj = new EnterpriseModel();
+    EnterpriseModel obj = EnterpriseModel();
     if (m == null) {
       return obj;
     }
@@ -142,6 +183,7 @@ class EnterpriseModel {
     obj.can_send_messages = Utils.to_str(m['can_send_messages'], '');
     obj.has_valid_lisence = Utils.to_str(m['has_valid_lisence'], '');
     obj.school_pay_status = Utils.to_str(m['school_pay_status'], '');
+    obj.get_version();
 
     return obj;
   }
@@ -188,7 +230,7 @@ class EnterpriseModel {
     List<EnterpriseModel> data = [];
 
     RespondModel resp =
-        RespondModel(await Utils.http_get('${EnterpriseModel.end_point}', {}));
+        RespondModel(await Utils.http_get(EnterpriseModel.end_point, {}));
 
     if (resp.code != 1) {
       return [];

@@ -10,10 +10,10 @@ import '../../models/RespondModel.dart';
 import '../../theme/custom_theme.dart';
 
 class LoginScreenOld extends StatefulWidget {
-  const LoginScreenOld({Key? key}) : super(key: key);
+  const LoginScreenOld({super.key});
 
   @override
-  LoginScreenOldState createState() => new LoginScreenOldState();
+  LoginScreenOldState createState() => LoginScreenOldState();
 }
 
 class LoginScreenOldState extends State<LoginScreenOld> {
@@ -25,8 +25,8 @@ class LoginScreenOldState extends State<LoginScreenOld> {
       return;
     }
 
-    Map<String, dynamic> form_data_map = {};
-    form_data_map = {
+    Map<String, dynamic> formDataMap = {};
+    formDataMap = {
       'phone_number': _formKey.currentState?.fields['username']?.value,
       'password': _formKey.currentState?.fields['password']?.value,
     };
@@ -36,7 +36,7 @@ class LoginScreenOldState extends State<LoginScreenOld> {
     setState(() {});
 
     RespondModel resp =
-    RespondModel(await Utils.http_post('users/login', form_data_map));
+    RespondModel(await Utils.http_post('users/login', formDataMap));
 
     if (resp.code != 1) {
       is_loading = false;
@@ -71,14 +71,14 @@ class LoginScreenOldState extends State<LoginScreenOld> {
       backgroundColor: Colors.white,
       appBar: null,
       body: Container(
-        margin: EdgeInsets.only(top: 60),
-        decoration: BoxDecoration(
+        margin: const EdgeInsets.only(top: 60),
+        decoration: const BoxDecoration(
           shape: BoxShape.rectangle,
           image: DecorationImage(
               image: AssetImage("${AppConfig.LOGIN_PICS}bg-2.jpg"),
               fit: BoxFit.fill),
         ),
-        padding: EdgeInsets.only(left: 25, right: 25, top: 30, bottom: 10),
+        padding: const EdgeInsets.only(left: 25, right: 25, top: 30, bottom: 10),
         child: ListView(
           children: [
             FormBuilder(
@@ -143,16 +143,16 @@ class LoginScreenOldState extends State<LoginScreenOld> {
                   ),
                   Container(height: 10),
                   error_message.isEmpty
-                      ? SizedBox()
+                      ? const SizedBox()
                       : FxContainer(
-                          margin: EdgeInsets.only(bottom: 10),
+                          margin: const EdgeInsets.only(bottom: 10),
                           color: Colors.red.shade50,
                           child: Text(
                             error_message,
                           ),
                         ),
                   Container(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       top: 20,
                     ),
                     child: is_loading
@@ -161,7 +161,7 @@ class LoginScreenOldState extends State<LoginScreenOld> {
                               width: 60,
                               height: 60,
                               padding: const EdgeInsets.all(15),
-                              child: CircularProgressIndicator(
+                              child: const CircularProgressIndicator(
                                 strokeWidth: 2.0,
                                 valueColor:
                                     AlwaysStoppedAnimation<Color>(Colors.red),
@@ -173,7 +173,7 @@ class LoginScreenOldState extends State<LoginScreenOld> {
                             onPressed: () {
                               submit_form();
                             },
-                            borderRadius: BorderRadius.all(Radius.circular(50)),
+                            borderRadius: const BorderRadius.all(Radius.circular(50)),
                             padding: FxSpacing.xy(32, 8),
                             pressedOpacity: 0.5,
                             child: FxText.bodyMedium("Sign In",
@@ -182,7 +182,7 @@ class LoginScreenOldState extends State<LoginScreenOld> {
                   Container(height: 5),
                   Row(
                     children: <Widget>[
-                      Spacer(),
+                      const Spacer(),
                       Text(
                         "Forgot password?",
                         style: TextStyle(

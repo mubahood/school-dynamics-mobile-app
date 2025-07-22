@@ -15,11 +15,11 @@ import '../../utils/my_widgets.dart';
 import 'StudentsVerificationFormScreen.dart';
 
 class StudentsVerificationScreen extends StatefulWidget {
-  StudentsVerificationScreen({Key? key}) : super(key: key);
+  const StudentsVerificationScreen({super.key});
 
   @override
   StudentsVerificationScreenState createState() =>
-      new StudentsVerificationScreenState();
+      StudentsVerificationScreenState();
 }
 
 class StudentsVerificationScreenState
@@ -49,7 +49,7 @@ class StudentsVerificationScreenState
 
   bool searchIsopen = false;
   String searchKeyWord = "";
-  TextEditingController search_controler = new TextEditingController();
+  TextEditingController search_controler = TextEditingController();
   var searchFocusNode = FocusNode();
 
   @override
@@ -61,13 +61,13 @@ class StudentsVerificationScreenState
         backgroundColor: CustomTheme.primary,
         titleSpacing: 0,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         automaticallyImplyLeading: true,
         // remove back button in appbar.
         title: searchIsopen
             ? FxContainer(
                 color: Colors.white,
-                padding: EdgeInsets.only(left: 10, top: 8, bottom: 8),
+                padding: const EdgeInsets.only(left: 10, top: 8, bottom: 8),
                 child: FormBuilderTextField(
                   name: "search",
                   onChanged: (x) {
@@ -80,21 +80,21 @@ class StudentsVerificationScreenState
                     hintText: "Search ...",
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
-                          Radius.circular(MySize.size8!),
+                          Radius.circular(MySize.size8),
                         ),
                         borderSide: BorderSide.none),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
-                          Radius.circular(MySize.size8!),
+                          Radius.circular(MySize.size8),
                         ),
                         borderSide: BorderSide.none),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
-                          Radius.circular(MySize.size8!),
+                          Radius.circular(MySize.size8),
                         ),
                         borderSide: BorderSide.none),
                     isDense: true,
-                    contentPadding: EdgeInsets.all(0),
+                    contentPadding: const EdgeInsets.all(0),
                   ),
                   controller: search_controler,
                   focusNode: searchFocusNode,
@@ -145,9 +145,9 @@ class StudentsVerificationScreenState
               children: [
                 /*-------------- Build Tabs here ------------------*/
                 TabBar(
-                  padding: EdgeInsets.only(bottom: 0),
-                  labelPadding: EdgeInsets.only(bottom: 2, left: 8, right: 8),
-                  indicatorPadding: EdgeInsets.all(0),
+                  padding: const EdgeInsets.only(bottom: 0),
+                  labelPadding: const EdgeInsets.only(bottom: 2, left: 8, right: 8),
+                  indicatorPadding: const EdgeInsets.all(0),
                   labelColor: CustomTheme.primary,
                   isScrollable: true,
                   enableFeedback: true,
@@ -343,17 +343,17 @@ class StudentsVerificationScreenState
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(MySize.size16!),
-                topRight: Radius.circular(MySize.size16!),
+                topLeft: Radius.circular(MySize.size16),
+                topRight: Radius.circular(MySize.size16),
               ),
             ),
             child: Container(
-              padding: EdgeInsets.only(top: 15),
+              padding: const EdgeInsets.only(top: 15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(left: 15, right: 15),
+                    margin: const EdgeInsets.only(left: 15, right: 15),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -482,7 +482,7 @@ class StudentsVerificationScreenState
                         FxContainer(
                           color: Colors.white,
                           borderRadiusAll: 0,
-                          padding: EdgeInsets.only(top: 8),
+                          padding: const EdgeInsets.only(top: 8),
                           child: Wrap(
                             runSpacing: 0,
                             children: <Widget>[
@@ -490,12 +490,12 @@ class StudentsVerificationScreenState
                               _buildChip('Male'),
                               _buildChip('Female'),
                               _buildChip(
-                                  '${selected_class_text.isEmpty ? "Class" : 'Class - $selected_class_text'}'),
+                                  selected_class_text.isEmpty ? "Class" : 'Class - $selected_class_text'),
                               _buildChip('Fees'),
                             ],
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Divider(
@@ -503,7 +503,7 @@ class StudentsVerificationScreenState
                           height: 0,
                         ),
                         Container(
-                            padding: EdgeInsets.only(bottom: 15, top: 5),
+                            padding: const EdgeInsets.only(bottom: 15, top: 5),
                             child: Column(
                               children: [
                                 Row(
@@ -589,7 +589,7 @@ class StudentsVerificationScreenState
                         FxContainer(
                           color: Colors.white,
                           borderRadiusAll: 0,
-                          padding: EdgeInsets.only(top: 8),
+                          padding: const EdgeInsets.only(top: 8),
                           child: Wrap(
                             runSpacing: 0,
                             children: <Widget>[
@@ -597,12 +597,12 @@ class StudentsVerificationScreenState
                               _buildChip('Male'),
                               _buildChip('Female'),
                               _buildChip(
-                                  '${selected_class_text.isEmpty ? "Class" : 'Class - $selected_class_text'}'),
+                                  selected_class_text.isEmpty ? "Class" : 'Class - $selected_class_text'),
                               _buildChip('Fees'),
                             ],
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Divider(
@@ -610,7 +610,7 @@ class StudentsVerificationScreenState
                           height: 0,
                         ),
                         Container(
-                            padding: EdgeInsets.only(bottom: 15, top: 5),
+                            padding: const EdgeInsets.only(bottom: 15, top: 5),
                             child: Column(
                               children: [
                                 Row(
@@ -697,7 +697,7 @@ class StudentsVerificationScreenState
                           FxContainer(
                             color: Colors.white,
                             borderRadiusAll: 0,
-                            padding: EdgeInsets.only(top: 8),
+                            padding: const EdgeInsets.only(top: 8),
                             child: Wrap(
                               runSpacing: 0,
                               children: <Widget>[
@@ -705,12 +705,12 @@ class StudentsVerificationScreenState
                                 _buildChip('Male'),
                                 _buildChip('Female'),
                                 _buildChip(
-                                    '${selected_class_text.isEmpty ? "Class" : 'Class - $selected_class_text'}'),
+                                    selected_class_text.isEmpty ? "Class" : 'Class - $selected_class_text'),
                                 _buildChip('Fees'),
                               ],
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Divider(
@@ -718,7 +718,7 @@ class StudentsVerificationScreenState
                             height: 0,
                           ),
                           Container(
-                              padding: EdgeInsets.only(bottom: 15, top: 5),
+                              padding: const EdgeInsets.only(bottom: 15, top: 5),
                               child: Column(
                                 children: [
                                   Row(

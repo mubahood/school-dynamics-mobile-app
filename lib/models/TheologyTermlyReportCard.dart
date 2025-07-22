@@ -69,7 +69,7 @@ class TheologyTermlyReportCard {
 
 
   static fromJson(dynamic m) {
-    TheologyTermlyReportCard obj = new TheologyTermlyReportCard();
+    TheologyTermlyReportCard obj = TheologyTermlyReportCard();
     if (m == null) {
       return obj;
     }
@@ -179,7 +179,7 @@ class TheologyTermlyReportCard {
     List<TheologyTermlyReportCard> data = [];
 
     RespondModel resp = RespondModel(
-        await Utils.http_get('${TheologyTermlyReportCard.end_point}', {}));
+        await Utils.http_get(TheologyTermlyReportCard.end_point, {}));
 
     if (resp.code != 1) {
       return [];

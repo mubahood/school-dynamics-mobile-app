@@ -13,7 +13,7 @@ import 'VisitorRecordCreateScreen.dart';
 
 //VisitorsBookScreen
 class VisitorsBookScreen extends StatefulWidget {
-  VisitorsBookScreen({Key? key}) : super(key: key);
+  const VisitorsBookScreen({super.key});
 
   @override
   VisitorsBookScreenState createState() => VisitorsBookScreenState();
@@ -70,7 +70,7 @@ class VisitorsBookScreenState extends State<VisitorsBookScreen> {
           backgroundColor: CustomTheme.primary,
           titleSpacing: 0,
           elevation: 0,
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.white),
           automaticallyImplyLeading: true,
           // remove back button in appbar.
           title: searchMode
@@ -117,7 +117,7 @@ class VisitorsBookScreenState extends State<VisitorsBookScreen> {
           localItems.isNotEmpty
               ? InkWell(
                   onTap: () async {
-                    await Get.to(() => OfflineVisitorsRecordsScreen());
+                    await Get.to(() => const OfflineVisitorsRecordsScreen());
                     await VisitorRecordModelLocal.submit_records();
                     init();
                   },
@@ -143,7 +143,7 @@ class VisitorsBookScreenState extends State<VisitorsBookScreen> {
                     ),
                   ),
                 )
-              : SizedBox(),
+              : const SizedBox(),
           Expanded(
             child: RefreshIndicator(
               onRefresh: () async {

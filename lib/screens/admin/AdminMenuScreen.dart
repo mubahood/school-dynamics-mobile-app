@@ -10,7 +10,7 @@ import '../../utils/my_widgets.dart';
 import 'StudentsVerificationScreen.dart';
 
 class AdminMenuScreen extends StatefulWidget {
-  const AdminMenuScreen({Key? key}) : super(key: key);
+  const AdminMenuScreen({super.key});
 
   @override
   _CourseTasksScreenState createState() => _CourseTasksScreenState();
@@ -46,7 +46,19 @@ class _CourseTasksScreenState extends State<AdminMenuScreen> {
     menuItems = [
       MenuItem('Students verification', 'Manage students statuses',
           FeatherIcons.userCheck, '', () {
+<<<<<<< HEAD
         Get.to(() => StudentsVerificationScreen());
+=======
+        Get.to(() => const StudentsVerificationScreen());
+      }),
+      MenuItem('School info update', 'Update school details',
+          FeatherIcons.settings, '', () async {
+        await Get.to(() => EnterpriseUpdateScreen({
+              'item': mainController.ent,
+            }));
+        mainController.getEnt();
+        setState(() {});
+>>>>>>> fixed
       })
     ];
 

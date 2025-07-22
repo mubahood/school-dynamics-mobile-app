@@ -93,23 +93,23 @@ class MainController extends GetxController {
 
   fetchMyClasses() async {
     my_classes.clear();
-    (await MyClasses.getItems()).forEach((element) {
+    for (var element in (await MyClasses.getItems())) {
       my_classes.add(element);
-    });
+    }
   }
 
   fetchMySubjects() async {
     my_subjects.clear();
-    (await MySubjects.getItems()).forEach((element) {
+    for (var element in (await MySubjects.getItems())) {
       my_subjects.add(element);
-    });
+    }
   }
 
   fetchMyStudents() async {
     my_students.clear();
-    (await UserModel.getItems()).forEach((element) {
+    for (var element in (await UserModel.getItems())) {
       my_students.add(element);
-    });
+    }
   }
 
   increment() => count++;

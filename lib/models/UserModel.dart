@@ -81,6 +81,7 @@ class UserModel {
   String stream_id = "";
   String current_class_text = "";
 
+<<<<<<< HEAD
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -160,6 +161,10 @@ class UserModel {
 
   static UserModel fromJson(dynamic m) {
     UserModel obj = new UserModel();
+=======
+  static fromJson(dynamic m) {
+    UserModel obj = UserModel();
+>>>>>>> fixed
     if (m == null) {
       return obj;
     }
@@ -261,7 +266,7 @@ class UserModel {
   static Future<UserModel> getItemById(String id) async {
     UserModel item = UserModel();
     try {
-      List<UserModel> items = await UserModel.getItems(where : "id = ${id}");
+      List<UserModel> items = await UserModel.getItems(where : "id = $id");
       if (items.isNotEmpty) {
         item = items.first;
       }
@@ -354,6 +359,22 @@ class UserModel {
     if (!(await initTable())) {
       return false;
     }
+<<<<<<< HEAD
+=======
+    return data;
+  }
+
+  static Future<List<UserModel>> getOnlineItems() async {
+    List<UserModel> data = [];
+
+    RespondModel resp =
+        RespondModel(await Utils.http_get(UserModel.end_point, {}));
+
+    if (resp.code != 1) {
+      return [];
+    }
+
+>>>>>>> fixed
     Database db = await Utils.getDb();
     if (!db.isOpen) {
       return false;

@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:ui';
 
 import '../../../theme/theme_type.dart';
@@ -16,26 +15,26 @@ class MaterialTheme {
   static MaterialThemeData learningLightTheme = MaterialThemeData()
       .light()
       .copyWith(
-          primary: Color(0xff6874E8),
-          onPrimary: Color(0xffffffff),
-          primaryContainer: Color(0xffe9eafd),
-          onPrimaryContainer: Color(0xff2033e7),
-          secondary: Color(0xff548c2f),
-          onSecondary: Color(0xffffffff),
-          secondaryContainer: Color(0xffdef0d1),
-          onSecondaryContainer: Color(0xff131F0a));
+          primary: const Color(0xff6874E8),
+          onPrimary: const Color(0xffffffff),
+          primaryContainer: const Color(0xffe9eafd),
+          onPrimaryContainer: const Color(0xff2033e7),
+          secondary: const Color(0xff548c2f),
+          onSecondary: const Color(0xffffffff),
+          secondaryContainer: const Color(0xffdef0d1),
+          onSecondaryContainer: const Color(0xff131F0a));
 
   static MaterialThemeData learningDarkTheme = MaterialThemeData()
       .dark()
       .copyWith(
-          primary: Color(0xffcfd2ff),
-          onPrimary: Color(0xff1529e8),
-          primaryContainer: Color(0xff5563e8),
-          onPrimaryContainer: Color(0xffe6e7fd),
-          secondary: Color(0xffd3ebc1),
-          onSecondary: Color(0xff253e14),
+          primary: const Color(0xffcfd2ff),
+          onPrimary: const Color(0xff1529e8),
+          primaryContainer: const Color(0xff5563e8),
+          onPrimaryContainer: const Color(0xffe6e7fd),
+          secondary: const Color(0xffd3ebc1),
+          onSecondary: const Color(0xff253e14),
           secondaryContainer: const Color(0xff4B7b28),
-          onSecondaryContainer: Color(0xffe9f5e0));
+          onSecondaryContainer: const Color(0xffe9f5e0));
 
   static MaterialThemeData learningTheme = AppTheme.themeType == ThemeType.light
       ? learningLightTheme
@@ -44,25 +43,25 @@ class MaterialTheme {
   static MaterialThemeData cookifyLightTheme = MaterialThemeData()
       .light()
       .copyWith(
-          primary: Color(0xffdf7463),
-          onPrimary: Color(0xffffffff),
-          primaryContainer: Color(0xfffdeeea),
-          onPrimaryContainer: Color(0xffe73a1f),
-          secondary: Color(0xff5e3f22),
-          onSecondary: Color(0xffffffff),
-          secondaryContainer: Color(0xffe7bc91),
-          onSecondaryContainer: Color(0xff462601));
+          primary: const Color(0xffdf7463),
+          onPrimary: const Color(0xffffffff),
+          primaryContainer: const Color(0xfffdeeea),
+          onPrimaryContainer: const Color(0xffe73a1f),
+          secondary: const Color(0xff5e3f22),
+          onSecondary: const Color(0xffffffff),
+          secondaryContainer: const Color(0xffe7bc91),
+          onSecondaryContainer: const Color(0xff462601));
 
   static MaterialThemeData cookifyDarkTheme =
       MaterialThemeData().dark().copyWith(
-            primary: Color(0xfffcccc5),
-            onPrimary: Color(0xffec371a),
-            primaryContainer: Color(0xffec6d5a),
-            onPrimaryContainer: Color(0xffffeeec),
-            secondary: Color(0xfffcc18e),
-            onSecondary: Color(0xff381f01),
-            secondaryContainer: Color(0xff54381e),
-            onSecondaryContainer: Color(0xffe7cbae),
+            primary: const Color(0xfffcccc5),
+            onPrimary: const Color(0xffec371a),
+            primaryContainer: const Color(0xffec6d5a),
+            onPrimaryContainer: const Color(0xffffeeec),
+            secondary: const Color(0xfffcc18e),
+            onSecondary: const Color(0xff381f01),
+            secondaryContainer: const Color(0xff54381e),
+            onSecondaryContainer: const Color(0xffe7cbae),
           );
 
   static MaterialThemeData cookifyTheme = AppTheme.themeType == ThemeType.light
@@ -72,25 +71,25 @@ class MaterialTheme {
   static MaterialThemeData datingLightTheme = MaterialThemeData()
       .light()
       .copyWith(
-          primary: Color(0xffB428C3),
-          onPrimary: Color(0xffffffff),
-          primaryContainer: Color(0xfffadcfd),
-          onPrimaryContainer: Color(0xff770983),
-          secondary: Color(0xfff15f5f),
-          onSecondary: Color(0xffffffff),
-          secondaryContainer: Color(0xfffcd8d8),
-          onSecondaryContainer: Color(0xffea2929));
+          primary: const Color(0xffB428C3),
+          onPrimary: const Color(0xffffffff),
+          primaryContainer: const Color(0xfffadcfd),
+          onPrimaryContainer: const Color(0xff770983),
+          secondary: const Color(0xfff15f5f),
+          onSecondary: const Color(0xffffffff),
+          secondaryContainer: const Color(0xfffcd8d8),
+          onSecondaryContainer: const Color(0xffea2929));
 
   static MaterialThemeData datingDarkTheme =
       MaterialThemeData().dark().copyWith(
-            primary: Color(0xfff1b0f8),
-            onPrimary: Color(0xff9614a4),
-            primaryContainer: Color(0xffde4cef),
-            onPrimaryContainer: Color(0xfff8d8fd),
-            secondary: Color(0xfff88686),
-            onSecondary: Color(0xff8f1313),
-            secondaryContainer: Color(0xffec3535),
-            onSecondaryContainer: Color(0xfff6cdcd),
+            primary: const Color(0xfff1b0f8),
+            onPrimary: const Color(0xff9614a4),
+            primaryContainer: const Color(0xffde4cef),
+            onPrimaryContainer: const Color(0xfff8d8fd),
+            secondary: const Color(0xfff88686),
+            onSecondary: const Color(0xff8f1313),
+            secondaryContainer: const Color(0xffec3535),
+            onSecondaryContainer: const Color(0xfff6cdcd),
           );
 
   static MaterialThemeData datingTheme = AppTheme.themeType == ThemeType.light
@@ -100,26 +99,26 @@ class MaterialTheme {
   static MaterialThemeData estateLightTheme = MaterialThemeData()
       .light()
       .copyWith(
-          primary: Color(0xff1c8c8c),
-          onPrimary: Color(0xffffffff),
-          primaryContainer: Color(0xffdafafa),
-          onPrimaryContainer: Color(0xff025e5e),
-          secondary: Color(0xfff15f5f),
-          onSecondary: Color(0xffffffff),
-          secondaryContainer: Color(0xfff8d6d6),
-          onSecondaryContainer: Color(0xff570202));
+          primary: const Color(0xff1c8c8c),
+          onPrimary: const Color(0xffffffff),
+          primaryContainer: const Color(0xffdafafa),
+          onPrimaryContainer: const Color(0xff025e5e),
+          secondary: const Color(0xfff15f5f),
+          onSecondary: const Color(0xffffffff),
+          secondaryContainer: const Color(0xfff8d6d6),
+          onSecondaryContainer: const Color(0xff570202));
 
   static MaterialThemeData estateDarkTheme = MaterialThemeData()
       .dark()
       .copyWith(
-          primary: Color(0xffcaffff),
-          onPrimary: Color(0xff0b7777),
-          primaryContainer: Color(0xff18a6a6),
-          onPrimaryContainer: Color(0xffe5fdfd),
-          secondary: Color(0xffeea6a6),
-          onSecondary: Color(0xff491818),
-          secondaryContainer: Color(0xff7a2f2f),
-          onSecondaryContainer: Color(0xffefdada));
+          primary: const Color(0xffcaffff),
+          onPrimary: const Color(0xff0b7777),
+          primaryContainer: const Color(0xff18a6a6),
+          onPrimaryContainer: const Color(0xffe5fdfd),
+          secondary: const Color(0xffeea6a6),
+          onSecondary: const Color(0xff491818),
+          secondaryContainer: const Color(0xff7a2f2f),
+          onSecondaryContainer: const Color(0xffefdada));
 
   static MaterialThemeData estateTheme = AppTheme.themeType == ThemeType.light
       ? estateLightTheme
@@ -128,26 +127,26 @@ class MaterialTheme {
   static MaterialThemeData homemadeLightTheme = MaterialThemeData()
       .light()
       .copyWith(
-          primary: Color(0xffc5558e),
-          onPrimary: Color(0xffffffff),
-          primaryContainer: Color(0xfffad2e6),
-          onPrimaryContainer: Color(0xffc21f73),
-          secondary: Color(0xffCC9D60),
-          onSecondary: Color(0xffffffff),
-          secondaryContainer: Color(0xfffce7cf),
-          onSecondaryContainer: Color(0xffc47712));
+          primary: const Color(0xffc5558e),
+          onPrimary: const Color(0xffffffff),
+          primaryContainer: const Color(0xfffad2e6),
+          onPrimaryContainer: const Color(0xffc21f73),
+          secondary: const Color(0xffCC9D60),
+          onSecondary: const Color(0xffffffff),
+          secondaryContainer: const Color(0xfffce7cf),
+          onSecondaryContainer: const Color(0xffc47712));
 
   static MaterialThemeData homemadeDarkTheme = MaterialThemeData()
       .dark()
       .copyWith(
-          primary: Color(0xfffaafd4),
-          onPrimary: Color(0xffbb2e75),
-          primaryContainer: Color(0xffd95a9b),
-          onPrimaryContainer: Color(0xfffadaea),
-          secondary: Color(0xffecc797),
-          onSecondary: Color(0xff4f3616),
-          secondaryContainer: Color(0xff855b25),
-          onSecondaryContainer: Color(0xfff5e6d6));
+          primary: const Color(0xfffaafd4),
+          onPrimary: const Color(0xffbb2e75),
+          primaryContainer: const Color(0xffd95a9b),
+          onPrimaryContainer: const Color(0xfffadaea),
+          secondary: const Color(0xffecc797),
+          onSecondary: const Color(0xff4f3616),
+          secondaryContainer: const Color(0xff855b25),
+          onSecondaryContainer: const Color(0xfff5e6d6));
 
   static MaterialThemeData homemadeTheme = AppTheme.themeType == ThemeType.light
       ? homemadeLightTheme
@@ -319,33 +318,33 @@ class MaterialThemeData {
 
   MaterialThemeData dark() {
     return copyWith(
-        primary: Color(0xffd0bcff),
-        onPrimary: Color(0xff381e73),
-        primaryContainer: Color(0xff4f378b),
-        onPrimaryContainer: Color(0xffeaddff),
-        secondary: Color(0xffcbc2cb),
-        onSecondary: Color(0xff332d41),
-        secondaryContainer: Color(0xff4a4458),
-        onSecondaryContainer: Color(0xffe8def8),
-        tertiary: Color(0xffefb8c8),
-        onTertiary: Color(0xff4a2532),
-        tertiaryContainer: Color(0xff633b48),
-        onTertiaryContainer: Color(0xfffbd8e4),
-        error: Color(0xfff2b8b5),
-        onError: Color(0xff601411),
-        errorContainer: Color(0xff8c1d19),
-        onErrorContainer: Color(0xfff9dedd),
-        background: Color(0xff000000),
-        onBackground: Color(0xffe6e1e5),
-        surface: Color(0xff000000),
-        onSurface: Color(0xffe6e1e5),
-        surfaceVariant: Color(0xff494550),
-        onSurfaceVariant: Color(0xffcac4d0),
-        outline: Color(0xff948f9a),
-        shimmerBaseColor: Color(0xFF1a1a1a),
-        shimmerHighlightColor: Color(0xFF454545),
-        card: Color(0xff222327),
-        onCard: Color(0xfff3f3f3));
+        primary: const Color(0xffd0bcff),
+        onPrimary: const Color(0xff381e73),
+        primaryContainer: const Color(0xff4f378b),
+        onPrimaryContainer: const Color(0xffeaddff),
+        secondary: const Color(0xffcbc2cb),
+        onSecondary: const Color(0xff332d41),
+        secondaryContainer: const Color(0xff4a4458),
+        onSecondaryContainer: const Color(0xffe8def8),
+        tertiary: const Color(0xffefb8c8),
+        onTertiary: const Color(0xff4a2532),
+        tertiaryContainer: const Color(0xff633b48),
+        onTertiaryContainer: const Color(0xfffbd8e4),
+        error: const Color(0xfff2b8b5),
+        onError: const Color(0xff601411),
+        errorContainer: const Color(0xff8c1d19),
+        onErrorContainer: const Color(0xfff9dedd),
+        background: const Color(0xff000000),
+        onBackground: const Color(0xffe6e1e5),
+        surface: const Color(0xff000000),
+        onSurface: const Color(0xffe6e1e5),
+        surfaceVariant: const Color(0xff494550),
+        onSurfaceVariant: const Color(0xffcac4d0),
+        outline: const Color(0xff948f9a),
+        shimmerBaseColor: const Color(0xFF1a1a1a),
+        shimmerHighlightColor: const Color(0xFF454545),
+        card: const Color(0xff222327),
+        onCard: const Color(0xfff3f3f3));
   }
 }
 

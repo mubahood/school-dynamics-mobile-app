@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutx/flutx.dart';
@@ -14,7 +13,7 @@ import '../utils/my_widgets.dart';
 import 'google_sign_in.dart';
 
 class OnBoardingScreen extends StatefulWidget {
-  OnBoardingScreen({Key? key}) : super(key: key);
+  const OnBoardingScreen({super.key});
 
   @override
   _OnBoardingScreenState createState() => _OnBoardingScreenState();
@@ -41,6 +40,173 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           body: FutureBuilder(
               future: futureInit,
               builder: (context, snapshot) {
+<<<<<<< HEAD
+=======
+                if (ready_to_create_ent == 'Yes') {
+                  return SingleChildScrollView(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 40,
+                    ),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const SizedBox(
+                            height: 50,
+                          ),
+                          FxText.titleLarge(
+                              "Congrats! You are ready to register your school!",
+                              textAlign: TextAlign.center,
+                              fontWeight: 900,
+                              color: Colors.green.shade700),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Divider(
+                            height: 2,
+                            color: Colors.grey,
+                            indent: Get.width * 0.3,
+                            endIndent: Get.width * 0.3,
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          FxText.bodyMedium(
+                              "You have successfully created and verified school admin account. Now you are ready to register your school and start using the system."),
+                          const SizedBox(
+                            height: 25,
+                          ),
+                          FxButton.block(
+                            onPressed: () {
+                              Get.to(() => EnterpriseModelEditScreen(const {}));
+                            },
+                            child: FxText.titleMedium(
+                              "Register School".toUpperCase(),
+                              color: Colors.white,
+                              fontWeight: 900,
+                              fontSize: 20,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          FxButton.text(
+                            onPressed: () {
+                              //are you sure you want to logout
+                              Get.dialog(AlertDialog(
+                                title: const Text("Logout"),
+                                content: const Text(
+                                    "Are you sure you want to logout?"),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text("Cancel"),
+                                  ),
+                                  TextButton(
+                                    onPressed: () async {
+                                      await Utils.logout();
+                                      Get.to(() => const OnBoardingScreen(),
+                                          preventDuplicates: false);
+                                    },
+                                    child: const Text("Logout"),
+                                  ),
+                                ],
+                              ));
+                            },
+                            child: FxText.titleMedium("Logout",
+                                color: CustomTheme.accent, fontWeight: 900),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }
+                if (account_not_verified == 'Yes') {
+                  return SingleChildScrollView(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 40,
+                    ),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const SizedBox(
+                            height: 50,
+                          ),
+                          FxText.titleLarge("Email not verified"),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Divider(
+                            height: 2,
+                            color: Colors.grey,
+                            indent: Get.width * 0.3,
+                            endIndent: Get.width * 0.3,
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          FxText.bodyMedium(
+                              "Your email (${logged_in_user.email}) is not verified. Please verify your email to continue."),
+                          const SizedBox(
+                            height: 50,
+                          ),
+                          FxButton.block(
+                            onPressed: () {
+                              Get.to(() => EmailVerificationScreen(
+                                    logged_in_user,
+                                    'VERIFY_EMAIL',
+                                  ));
+                            },
+                            child: FxText.titleMedium(
+                              "Verify Email",
+                              color: Colors.white,
+                              fontWeight: 900,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          FxButton.text(
+                            onPressed: () {
+                              //are you sure you want to logout
+                              Get.dialog(AlertDialog(
+                                title: const Text("Logout"),
+                                content: const Text(
+                                    "Are you sure you want to logout?"),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text("Cancel"),
+                                  ),
+                                  TextButton(
+                                    onPressed: () async {
+                                      await Utils.logout();
+                                      Get.to(() => const OnBoardingScreen(),
+                                          preventDuplicates: false);
+                                    },
+                                    child: const Text("Logout"),
+                                  ),
+                                ],
+                              ));
+                            },
+                            child: FxText.titleMedium("Logout",
+                                color: CustomTheme.accent, fontWeight: 900),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }
+>>>>>>> fixed
                 if (is_not_logged_in != 'Yes') {
                   return Center(
                     child: InkWell(
@@ -73,7 +239,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           padding: const EdgeInsets.symmetric(
                             horizontal: 20,
                           ),
-                          child: Container(
+                          child: SizedBox(
                             width: double.infinity,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -93,62 +259,36 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                   height: 50,
                                 ),
                                 //icon button
-                                MyButtonIcon(
+                                true
+                                    ? SizedBox()
+                                    : MyButtonIcon(
                                   "Continue with Google",
                                   Utils.icon('google.png'),
                                   () async {
-
-                                    final GoogleSignIn _googleSignIn = GoogleSignIn();
-                                    if (_googleSignIn == null){
-                                      Utils.toast("Google Sign In is null");
-                                      return;
-                                    }
-                                    if(_googleSignIn.currentUser != null){
-                                      Utils.toast("Good to go");
+                                          final GoogleSignIn googleSignIn =
+                                              GoogleSignIn();
+                                          if (googleSignIn.currentUser !=
+                                              null) {
+                                            Utils.toast("Good to go");
                                       return;
                                     }
                                     final GoogleSignInAccount? googleUser;
                                     try {
+<<<<<<< HEAD
                                       googleUser = await _googleSignIn.signIn();
                                     } catch (e) {
                                       print("===> DP ERROR: $e");
+=======
+                                            googleUser =
+                                                await googleSignIn.signIn();
+                                          } catch (e) {
+                                      print(e.toString());
+>>>>>>> fixed
                                       Utils.toast("failed because Google Sign In because of $e");
                                       return;
                                     }
 
-                                    if (googleUser == null) {
-                                      Utils.toast("failed because Google Sign In is null");
-                                      return;
-                                    }
-                                    final GoogleSignInAuthentication? googleAuth = await googleUser.authentication;
-                                    if (googleAuth == null) {
-                                      Utils.toast("failed because Google Sign In Auth is null");
-                                      return;
-                                    }
-                                    final credential = GoogleAuthProvider.credential(
-                                      accessToken: googleAuth.accessToken,
-                                      idToken: googleAuth.idToken,
-                                    );
-                                    final UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
-                                    if (userCredential == null) {
-                                      Utils.toast("failed because User Credential is null");
-                                      return;
-                                    }
-                                    final User? user = userCredential.user;
-                                    if (user == null) {
-                                      Utils.toast("failed because User is null");
-                                      return;
-                                    }
-
-                                    Utils.toast("===> DP NAME: ${user.displayName}");
-                                    Utils.toast("===> DP EMAIL: ${user.email}");
-                                    Utils.toast("===> DP PHOTO: ${user.photoURL}");
-                                    Utils.toast("===> DP PHONE: ${user.phoneNumber}");
-                                    Utils.toast("===> DP UID: ${user.uid}");
-                                    Utils.toast("===> DP TOKEN: ${user.refreshToken}");
-                                    Utils.toast("===> DP TOKEN: ${user.getIdToken()}");
-
-                                    return;
+                                          return;
 
                                    /* //create userCredential
                                     final UserCredential userCredential = await GoogleSignInProvider().signInWithGoogle();
@@ -207,7 +347,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                   "Use Email or Phone Number",
                                   Utils.icon('user.png'),
                                   () {
+<<<<<<< HEAD
                                     //Navigator.pushNamed(context, AppConfig.Login);
+=======
+                                    Get.to(() => const LoginScreen());
+>>>>>>> fixed
                                   },
                                 ),
                               ],
@@ -230,7 +374,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                 )),
                             InkWell(
                               onTap: () {
+<<<<<<< HEAD
                                 //Navigator.pushNamed(context, AppConfig.Register);
+=======
+                                Get.to(() =>
+                                    const ConfirmCreateNewSchoolAccountScreen());
+>>>>>>> fixed
                               },
                               child: Text(
                                 "Create Account",
@@ -283,7 +432,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   }
 
   bool is_loading = true;
-  LoggedInUserModel logged_in_user = new LoggedInUserModel();
+  LoggedInUserModel logged_in_user = LoggedInUserModel();
 
   void re_load() {
     setState(() {

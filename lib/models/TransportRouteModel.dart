@@ -17,7 +17,7 @@ class TransportRouteModel {
   String round_trip_fare = "";
 
   static fromJson(dynamic m) {
-    TransportRouteModel obj = new TransportRouteModel();
+    TransportRouteModel obj = TransportRouteModel();
     if (m == null) {
       return obj;
     }
@@ -77,7 +77,7 @@ class TransportRouteModel {
     List<TransportRouteModel> data = [];
 
     RespondModel resp = RespondModel(
-        await Utils.http_get('${TransportRouteModel.end_point}', {}));
+        await Utils.http_get(TransportRouteModel.end_point, {}));
 
     if (resp.code != 1) {
       return [];

@@ -132,7 +132,7 @@ class SessionOnline {
         var batch = txn.batch();
 
         for (var x in resp.data) {
-          SessionOnline sub = new SessionOnline();
+          SessionOnline sub = SessionOnline();
           try {
             sub.id = Utils.int_parse(x['id']);
           } catch (xs) {
@@ -219,7 +219,7 @@ class SessionOnline {
   String absent_count = '';
 
   static SessionOnline fromJson(dynamic data) {
-    SessionOnline item = new SessionOnline();
+    SessionOnline item = SessionOnline();
     if (data == null) {
       return item;
     }

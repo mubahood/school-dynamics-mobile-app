@@ -17,10 +17,10 @@ import '../../theme/custom_theme.dart';
 import '../OnBoardingScreen.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
-  LoginScreenState createState() => new LoginScreenState();
+  LoginScreenState createState() => LoginScreenState();
 }
 
 Future<void> checkForUpdate() async {
@@ -53,8 +53,8 @@ class LoginScreenState extends State<LoginScreen> {
       return;
     }
 
-    Map<String, dynamic> form_data_map = {};
-    form_data_map = {
+    Map<String, dynamic> formDataMap = {};
+    formDataMap = {
       'username': _formKey.currentState?.fields['username']?.value,
       'password': _formKey.currentState?.fields['password']?.value,
     };
@@ -63,7 +63,7 @@ class LoginScreenState extends State<LoginScreen> {
     error_message = "";
     setState(() {});
     RespondModel resp =
-    RespondModel(await Utils.http_post('users/login', form_data_map));
+    RespondModel(await Utils.http_post('users/login', formDataMap));
 
     if (resp.code != 1) {
       is_loading = false;
@@ -104,7 +104,7 @@ class LoginScreenState extends State<LoginScreen> {
     is_loading = false;
     setState(() {});
 
-    Get.off(OnBoardingScreen());
+    Get.off(const OnBoardingScreen());
   }
 
   String error_message = "";
@@ -200,7 +200,7 @@ class LoginScreenState extends State<LoginScreen> {
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(0),
+          preferredSize: const Size.fromHeight(0),
           child: Container(color: Colors.white)),
       body: Column(
         children: [
@@ -323,6 +323,7 @@ class LoginScreenState extends State<LoginScreen> {
                               child: Text(
                                 error_message,
                               ),
+<<<<<<< HEAD
                             ),
                             Container(
                               padding: const EdgeInsets.only(
@@ -357,6 +358,73 @@ class LoginScreenState extends State<LoginScreen> {
                           ],
                         ))),
 
+=======
+                              onPressed: () {
+                                Get.to(()=>const PasswordResetScreen());
+                              },
+                            )
+                          ],
+                        ),
+                        Container(height: 0),
+                        error_message.isEmpty
+                            ? const SizedBox()
+                            : FxContainer(
+                                margin: const EdgeInsets.only(bottom: 10),
+                                color: Colors.red.shade50,
+                                child: Text(
+                                  error_message,
+                                ),
+                              ),
+                        Container(
+                          padding: const EdgeInsets.only(
+                            top: 0,
+                          ),
+                          child: is_loading
+                              ? Center(
+                                  child: Container(
+                                    width: 60,
+                                    height: 60,
+                                    padding: const EdgeInsets.all(15),
+                                    child: const CircularProgressIndicator(
+                                      strokeWidth: 2.0,
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                          Colors.red),
+                                    ),
+                                  ),
+                                )
+                              : CupertinoButton(
+                                  color: CustomTheme.primary,
+                                  onPressed: () {
+                                    submit_form();
+                                  },
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(50)),
+                                  padding: FxSpacing.xy(32, 8),
+                                  pressedOpacity: 0.5,
+                                  child: FxText.bodyMedium("Sign In",
+                                      color: Colors.white)),
+                        ),
+                      ],
+                    ))),
+            const Divider(),
+            Row(
+              children: <Widget>[
+                const Spacer(),
+                Text(
+                  "Facing any problem?",
+                  style: TextStyle(color: Colors.red.shade500, fontSize: 14),
+                ),
+                TextButton(
+                  style: TextButton.styleFrom(),
+                  child: Text(
+                    "Ask for help",
+                    style: TextStyle(color: CustomTheme.primary, fontSize: 14),
+                  ),
+                  onPressed: () {
+                    showImagePicker(context);
+                  },
+                )
+>>>>>>> fixed
               ],
             ),
           ),

@@ -3,9 +3,10 @@ import 'package:flutx/widgets/text/text.dart';
 import 'package:get/get.dart';
 import 'package:schooldynamics/theme/app_theme.dart';
 
-import '../utils/Utils.dart';
 
 class TestHomeScreen extends StatelessWidget {
+  const TestHomeScreen({super.key});
+
   @override
   Widget build(context) {
     // Instantiate your class using Get.put() to make it available for all "child" routes there.
@@ -23,14 +24,17 @@ class TestHomeScreen extends StatelessWidget {
         // Replace the 8 lines Navigator.push by a simple Get.to(). You don't need context
         body: Center(
             child: ElevatedButton(
-                child: Text("Go to Other"),
-                onPressed: () => Get.to(OtherScreen()))),
+                child: const Text("Go to Other"),
+                onPressed: () => Get.to(const OtherScreen()))),
         floatingActionButton: FloatingActionButton(
-            child: Icon(Icons.add), onPressed: c.increment));
+            onPressed: c.increment,
+            child: const Icon(Icons.add)));
   }
 }
 
 class OtherScreen extends StatelessWidget {
+  const OtherScreen({super.key});
+
   @override
   Widget build(context) {
     // Instantiate your class using Get.put() to make it available for all "child" routes there.
@@ -51,14 +55,15 @@ class OtherScreen extends StatelessWidget {
           )),
 
           // Replace the 8 lines Navigator.push by a simple Get.to(). You don't need context
-          body: Center(
+          body: const Center(
               child: Column(
             children: [
 
             ],
           )),
           floatingActionButton: FloatingActionButton(
-              child: Icon(Icons.add), onPressed: c.decrement)),
+              onPressed: c.decrement,
+              child: const Icon(Icons.add))),
     );
   }
 }

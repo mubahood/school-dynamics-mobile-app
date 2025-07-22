@@ -19,7 +19,7 @@ class Transaction {
   String administrator_id = "";
 
   static Transaction fromJson(dynamic d) {
-    Transaction obj = new Transaction();
+    Transaction obj = Transaction();
     if (d == null) {
       return obj;
     }
@@ -79,7 +79,7 @@ class Transaction {
     List<Transaction> data = [];
 
     RespondModel resp =
-        RespondModel(await Utils.http_get('${Transaction.endPoint}', {}));
+        RespondModel(await Utils.http_get(Transaction.endPoint, {}));
 
     print(resp.message);
     if (resp.code != 1) {
@@ -164,7 +164,7 @@ class Transaction {
     }
 
     String sql = " CREATE TABLE IF NOT EXISTS "
-        "${tableName} ("
+        "$tableName ("
         "id INTEGER PRIMARY KEY,"
         "created_at TEXT,"
         "type TEXT,"

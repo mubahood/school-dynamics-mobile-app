@@ -23,7 +23,7 @@ class ServiceSubscription {
   String due_term_text = "";
 
   static fromJson(dynamic m) {
-    ServiceSubscription obj = new ServiceSubscription();
+    ServiceSubscription obj = ServiceSubscription();
     if (m == null) {
       return obj;
     }
@@ -89,7 +89,7 @@ class ServiceSubscription {
     List<ServiceSubscription> data = [];
 
     RespondModel resp = RespondModel(
-        await Utils.http_get('${ServiceSubscription.endPoint}', {}));
+        await Utils.http_get(ServiceSubscription.endPoint, {}));
 
     if (resp.code != 1) {
       return [];

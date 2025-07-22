@@ -11,11 +11,10 @@ import '../../sections/widgets.dart';
 import '../../theme/app_theme.dart';
 import '../../theme/custom_theme.dart';
 import '../../utils/my_widgets.dart';
-import '../exams/MarksScreen.dart';
 import '../sessions/SessionCreateNewScreen.dart';
 
 class ClassScreenOld extends StatefulWidget {
-  const ClassScreenOld({Key? key, required this.data}) : super(key: key);
+  const ClassScreenOld({super.key, required this.data});
   final dynamic data;
 
   @override
@@ -83,7 +82,7 @@ class _CourseTasksScreenState extends State<ClassScreenOld> {
                   break;
               }
             },
-            icon: Icon(
+            icon: const Icon(
               FeatherIcons.moreVertical,
               size: 25,
               color: Colors.white,
@@ -98,7 +97,7 @@ class _CourseTasksScreenState extends State<ClassScreenOld> {
                           FeatherIcons.checkCircle,
                           color: CustomTheme.primary,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 8,
                         ),
                         Expanded(
@@ -114,7 +113,7 @@ class _CourseTasksScreenState extends State<ClassScreenOld> {
                           FeatherIcons.camera,
                           color: CustomTheme.primary,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 8,
                         ),
                         FxText.bodyLarge('Add homework'),
@@ -129,7 +128,7 @@ class _CourseTasksScreenState extends State<ClassScreenOld> {
                           FeatherIcons.messageCircle,
                           color: CustomTheme.primary,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 8,
                         ),
                         FxText.bodyLarge('Add a test'),
@@ -144,7 +143,7 @@ class _CourseTasksScreenState extends State<ClassScreenOld> {
                           FeatherIcons.star,
                           color: CustomTheme.primary,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 8,
                         ),
                         FxText.bodyLarge('Add class motes'),
@@ -216,23 +215,23 @@ class _CourseTasksScreenState extends State<ClassScreenOld> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
+        const SizedBox(
           width: 15,
         ),
         FxText.bodyLarge(
-          '${title}'.toUpperCase(),
+          title.toUpperCase(),
           color: CustomTheme.primary,
           textAlign: TextAlign.left,
           fontWeight: 700,
         ),
-        SizedBox(
+        const SizedBox(
           width: 5,
         ),
         FxText.bodyLarge(
           subTitle,
           maxLines: 10,
         ),
-        SizedBox(
+        const SizedBox(
           width: 15,
         ),
       ],
@@ -253,7 +252,7 @@ class _CourseTasksScreenState extends State<ClassScreenOld> {
     );*/
     return Container(
       alignment: Alignment.centerRight,
-      padding: EdgeInsets.only(top: 4, bottom: 4),
+      padding: const EdgeInsets.only(top: 4, bottom: 4),
       child: Flex(
         direction: Axis.horizontal,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -263,13 +262,13 @@ class _CourseTasksScreenState extends State<ClassScreenOld> {
             width: MediaQuery.of(context).size.width / 2.5,
             alignment: Alignment.centerRight,
             child: FxText.bodyLarge(
-              '${title} :'.toUpperCase(),
+              '$title :'.toUpperCase(),
               textAlign: TextAlign.right,
               color: CustomTheme.primary,
               fontWeight: 700,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 4,
           ),
           Expanded(
@@ -284,7 +283,7 @@ class _CourseTasksScreenState extends State<ClassScreenOld> {
 
   mainFragment() {
     return Container(
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         left: 15,
         right: 15,
       ),
@@ -296,9 +295,9 @@ class _CourseTasksScreenState extends State<ClassScreenOld> {
             height: 8,
           ),
           singleWidget2('Class', '${item.name} - ${item.short_name}'),
-          singleWidget2('Academic year', '${item.academic_year_id}'),
-          singleWidget2('Class teacher', '${item.class_teacher_name}'),
-          singleWidget2('Students', '${item.students_count}'),
+          singleWidget2('Academic year', item.academic_year_id),
+          singleWidget2('Class teacher', item.class_teacher_name),
+          singleWidget2('Students', item.students_count),
           ListTile(
             title: FxText.titleMedium(
               'Students',
@@ -387,6 +386,6 @@ class _CourseTasksScreenState extends State<ClassScreenOld> {
   }
 
   Widget attendanceList() {
-    return Text("Attendance");
+    return const Text("Attendance");
   }
 }

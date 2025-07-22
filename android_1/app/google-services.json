@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "982322521689",
+    "project_id": "schooldynamics-ug",
+    "storage_bucket": "schooldynamics-ug.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982322521689:android:01fafd134fa1b5e9bb7348",
+        "android_client_info": {
+          "package_name": "schooldynamics.ug"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZF5AHGLMYEgZFmPGc_LnZXddAw_DeThE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -11,7 +11,7 @@ import '../admin/StudentsVerificationScreen.dart';
 import 'FinancialAccountsScreen.dart';
 
 class FinanceHomeScreen extends StatefulWidget {
-  const FinanceHomeScreen({Key? key}) : super(key: key);
+  const FinanceHomeScreen({super.key});
 
   @override
   _CourseTasksScreenState createState() => _CourseTasksScreenState();
@@ -48,31 +48,31 @@ class _CourseTasksScreenState extends State<FinanceHomeScreen> {
       MenuItem('Statistics', 'Students school fees accounts',
           FeatherIcons.pieChart, 'accounts.png', () {
         Get.to(
-          () => StudentsVerificationScreen(),
+          () => const StudentsVerificationScreen(),
         );
       }),
       MenuItem('School Fees', 'Students school fees accounts',
           FeatherIcons.user, 'accounts.png', () {
         Get.to(
-          () => FinancialAccountsScreen({}),
+          () => FinancialAccountsScreen(const {}),
         );
       }),
       MenuItem('Transactions', 'List of recent school fees payments',
           FeatherIcons.dollarSign, 'transactions.png', () {
         Get.to(
-          () => StudentsVerificationScreen(),
+          () => const StudentsVerificationScreen(),
         );
       }),
       MenuItem('Service subscription', 'Manage students service subscriptions',
           FeatherIcons.server, 'transactions.png', () {
         Get.to(
-          () => StudentsVerificationScreen(),
+          () => const StudentsVerificationScreen(),
         );
       }),
       MenuItem('Bursary Beneficiaries', 'Manage Bursary Beneficiaries',
           FeatherIcons.award, 'transactions.png', () {
         Get.to(
-          () => StudentsVerificationScreen(),
+          () => const StudentsVerificationScreen(),
         );
       }),
     ];
@@ -82,7 +82,7 @@ class _CourseTasksScreenState extends State<FinanceHomeScreen> {
           backgroundColor: CustomTheme.primary,
           titleSpacing: 0,
           elevation: 0,
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.white),
           automaticallyImplyLeading: true,
           title: FxText.titleLarge(
             "Finance",

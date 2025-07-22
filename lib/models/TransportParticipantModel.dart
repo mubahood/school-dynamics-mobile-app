@@ -14,7 +14,7 @@ class TransportParticipantModel {
   String student_id = "";
 
   static fromJson(dynamic m) {
-    TransportParticipantModel obj = new TransportParticipantModel();
+    TransportParticipantModel obj = TransportParticipantModel();
     if (m == null) {
       return obj;
     }
@@ -76,14 +76,14 @@ class TransportParticipantModel {
     await initTable();
 
     try {
-      dynamic my_data = toJson();
+      dynamic myData = toJson();
       if (id == 0) {
-        my_data.remove('id');
+        myData.remove('id');
       }
 
       await db.insert(
         tableName,
-        my_data,
+        myData,
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
     } catch (e) {

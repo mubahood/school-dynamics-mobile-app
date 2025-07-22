@@ -14,10 +14,10 @@ import '../../utils/Utils.dart';
 class StudentEditBioScreen extends StatefulWidget {
   final dynamic data;
 
-  StudentEditBioScreen({
-    Key? key,
+  const StudentEditBioScreen({
+    super.key,
     this.data,
-  }) : super(key: key);
+  });
 
   @override
   _StudentEditBioScreenState createState() => _StudentEditBioScreenState();
@@ -103,7 +103,7 @@ class _StudentEditBioScreenState extends State<StudentEditBioScreen> {
       appBar: AppBar(
         backgroundColor: CustomTheme.primary,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         titleSpacing: 0,
         title: FxText.titleLarge(
           "Updating student's bio data",
@@ -115,19 +115,19 @@ class _StudentEditBioScreenState extends State<StudentEditBioScreen> {
           Container(
               color: Colors.white,
               padding:
-                  EdgeInsets.only(left: MySize.size16!, right: MySize.size16!),
+                  EdgeInsets.only(left: MySize.size16, right: MySize.size16),
               child: FormBuilder(
                 key: _formKey,
                 child: Padding(
                   padding: EdgeInsets.only(
-                      top: MySize.size10!,
-                      left: MySize.size5!,
-                      right: MySize.size5!,
-                      bottom: MySize.size10!),
+                      top: MySize.size10,
+                      left: MySize.size5,
+                      right: MySize.size5,
+                      bottom: MySize.size10),
                   child: Column(
                     children: <Widget>[
                       Container(
-                        margin: EdgeInsets.only(bottom: 10, top: 10),
+                        margin: const EdgeInsets.only(bottom: 10, top: 10),
                         child: FormBuilderTextField(
                           name: 'first_name',
                           initialValue: item.first_name,
@@ -148,7 +148,7 @@ class _StudentEditBioScreenState extends State<StudentEditBioScreen> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(bottom: 20, top: 10),
+                        margin: const EdgeInsets.only(bottom: 20, top: 10),
                         child: FormBuilderTextField(
                           name: 'last_name',
                           initialValue: item.last_name,
@@ -181,12 +181,12 @@ class _StudentEditBioScreenState extends State<StudentEditBioScreen> {
                           ),
                         ),
                       ),
-                      FormBuilderChoiceChip<String>(
+                      FormBuilderChoiceChips<String>(
                         decoration: AppTheme.InputDecorationTheme1(
                             label: "Sex", isDense: true),
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         name: 'sex',
-                        padding: EdgeInsets.all(0),
+                        padding: const EdgeInsets.all(0),
                         elevation: 1,
                         initialValue: item.sex,
                         onChanged: (x) {
@@ -194,7 +194,7 @@ class _StudentEditBioScreenState extends State<StudentEditBioScreen> {
                           setState(() {});
                         },
                         backgroundColor: CupertinoColors.lightBackgroundGray,
-                        labelPadding: EdgeInsets.only(left: 6, right: 6),
+                        labelPadding: const EdgeInsets.only(left: 6, right: 6),
                         alignment: WrapAlignment.spaceEvenly,
                         selectedColor: (item.sex == 'Male')
                             ? Colors.green.shade700
@@ -221,7 +221,7 @@ class _StudentEditBioScreenState extends State<StudentEditBioScreen> {
                         ],
                       ),
                       Container(
-                        margin: EdgeInsets.only(bottom: 10, top: 20),
+                        margin: const EdgeInsets.only(bottom: 10, top: 20),
                         child: FormBuilderTextField(
                           name: 'nationality',
                           initialValue: item.nationality,
@@ -237,7 +237,7 @@ class _StudentEditBioScreenState extends State<StudentEditBioScreen> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(bottom: 20, top: 10),
+                        margin: const EdgeInsets.only(bottom: 20, top: 10),
                         child: FormBuilderTextField(
                           name: 'home_address',
                           initialValue: item.home_address,
@@ -276,7 +276,7 @@ class _StudentEditBioScreenState extends State<StudentEditBioScreen> {
                                     size: 30,
                                     color: Colors.white,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
                                   Center(

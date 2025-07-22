@@ -48,7 +48,7 @@ class SchemeWorkItemModel {
   }
 
   static fromJson(dynamic m) {
-    SchemeWorkItemModel obj = new SchemeWorkItemModel();
+    SchemeWorkItemModel obj = SchemeWorkItemModel();
     if (m == null) {
       return obj;
     }
@@ -138,7 +138,7 @@ class SchemeWorkItemModel {
     List<SchemeWorkItemModel> data = [];
 
     RespondModel resp = RespondModel(
-        await Utils.http_get('${SchemeWorkItemModel.end_point}', {}));
+        await Utils.http_get(SchemeWorkItemModel.end_point, {}));
 
     if (resp.code != 1) {
       return [];

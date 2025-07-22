@@ -13,11 +13,12 @@ import '../../theme/custom_theme.dart';
 import '../../utils/SizeConfig.dart';
 import '../../utils/Utils.dart';
 import '../../utils/my_widgets.dart';
+import 'StudentCreateScreen.dart';
 
 class StudentsScreen extends StatefulWidget {
   Map<String, dynamic> params = {};
 
-  StudentsScreen(this.params, {Key? key}) : super(key: key);
+  StudentsScreen(this.params, {super.key});
 
   @override
   StudentsScreenState createState() => StudentsScreenState();
@@ -52,6 +53,17 @@ class StudentsScreenState extends State<StudentsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          await Get.to(() => StudentCreateScreen(const {}));
+          init();
+        },
+        backgroundColor: CustomTheme.primary,
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+      ),
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -142,7 +154,12 @@ class StudentsScreenState extends State<StudentsScreen> {
                     child: Column(
                   children: [
                     const Spacer(),
-                    FxText('No item found.'),
+                    Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                        child: FxText(
+                          'You have not added any student yet. Press the + button to add a student.',
+                          textAlign: TextAlign.center,
+                        )),
                     FxButton.text(
                       child: FxText(
                         'Reload',

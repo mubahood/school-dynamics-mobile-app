@@ -42,7 +42,7 @@ class MarkRecordModel {
   String aggr_value = "";
 
   static fromJson(dynamic m) {
-    MarkRecordModel obj = new MarkRecordModel();
+    MarkRecordModel obj = MarkRecordModel();
     if (m == null) {
       return obj;
     }

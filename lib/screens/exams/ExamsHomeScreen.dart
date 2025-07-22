@@ -9,7 +9,6 @@ import 'package:schooldynamics/utils/Utils.dart';
 
 import '../../models/TermlyReportCard.dart';
 import '../../models/TheologyTermlyReportCard.dart';
-import 'ReportCardsScreen.dart';
 import 'TheologyMarksScreen.dart';
 
 class ExamsHomeScreen extends StatefulWidget {
