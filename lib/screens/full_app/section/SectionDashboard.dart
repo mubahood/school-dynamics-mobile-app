@@ -300,15 +300,15 @@ class _SectionDashboardState extends State<SectionDashboard> {
                   left: 20,
                   top: 10,
                   right: 20,
-            bottom: 10,
-          ),
-          child: FxButton.block(
-              onPressed: () {
+                  bottom: 10,
+                ),
+                child: FxButton.block(
+                    onPressed: () {
                       Get.to(() => const OnboardingCheckListScreen());
                     },
                     child: FxText.titleLarge("Onboarding Check".toUpperCase(),
                         fontWeight: 800, color: Colors.white)),
-        ),
+              ),
         Expanded(
           child: Container(
             padding: const EdgeInsets.only(
