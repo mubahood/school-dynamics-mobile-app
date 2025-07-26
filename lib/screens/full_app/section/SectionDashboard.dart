@@ -286,7 +286,7 @@ class _SectionDashboardState extends State<SectionDashboard> {
                   bordered: true,
                   borderRadiusAll: 0,
                   margin: const EdgeInsets.only(
-                    bottom: 10,
+                    bottom: 10, 
                   ),
                   padding: const EdgeInsets.all(5),
                   child: roundedImage(man.ent.getLogo(), 4, 0, radius: 0),
