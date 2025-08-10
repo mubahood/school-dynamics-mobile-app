@@ -986,10 +986,10 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2025-05-28T14:37:14.070804Z",
+  "generated": "2025-08-10T10:26:30.671796Z",
   "generator": "pub",
   "generatorVersion": "3.7.2",
   "flutterRoot": "file:///Users/mac/src/flutter",
-  "flutterVersion": "3.29.3",
+  "flutterVersion": "3.29.4-0.0.pre.1",
   "pubCache": "file:///Users/mac/.pub-cache"
 }
