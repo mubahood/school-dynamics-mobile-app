@@ -1,18 +1,18 @@
 /// School Dynamics Design System
-/// 
+///
 /// A unified design system providing consistent colors, typography,
 /// spacing, and components for the School Dynamics app.
-/// 
+///
 /// Usage:
 /// ```dart
 /// import 'package:schooldynamics/design_system/design_system.dart';
-/// 
+///
 /// // Use colors
 /// Container(color: AppColors.primary)
-/// 
+///
 /// // Use typography
 /// Text('Title', style: AppTypography.headlineMedium)
-/// 
+///
 /// // Use spacing
 /// Padding(padding: AppSpacing.allMD)
 /// ```

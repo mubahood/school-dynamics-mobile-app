@@ -6,121 +6,118 @@ class CustomTheme {
   // ========================================
   // DEPRECATED COLORS (To be removed in Phase 3)
   // ========================================
-  
+
   @Deprecated('Use AppColors.primary instead')
   static const Color primary_1 = Colors.green;
-  
+
   @Deprecated('Use AppColors.primary instead')
   static Color primary = AppColors.primary;
-  
+
   @Deprecated('Use AppColors.primarySurface instead')
   static const Color bg_primary_light = Color.fromRGBO(239, 252, 240, 1.0);
-  
+
   @Deprecated('Use AppColors.primaryDark instead')
   static Color primaryDark = AppColors.primaryDark;
-  
+
   @Deprecated('Use AppColors.primarySurface instead')
   static const Color primary_bg = Color(0xfff8fffb);
-  
+
   @Deprecated('Use AppColors.white instead')
   static const Color onPrimary = AppColors.white;
-  
+
   // ========================================
   // SEMANTIC COLORS (Using Design System)
   // ========================================
-  
+
   /// Success color for positive actions
   static const Color success = AppColors.success;
-  
-  /// Warning color for cautionary states  
+
+  /// Warning color for cautionary states
   static const Color warning = AppColors.warning;
-  
+
   /// Error color for destructive actions
   static const Color error = AppColors.error;
-  
+
   /// Info color for informational content
   static const Color info = AppColors.info;
-  
+
   // ========================================
   // LEGACY COLORS (Mapped to semantic colors)
   // ========================================
-  
+
   @Deprecated('Use AppColors.accent or define semantic color')
   static const Color accent = Color(0xffdf7463);
-  
+
   @Deprecated('Use semantic color instead')
   static const Color occur = Color(0xffb38220);
-  
+
   @Deprecated('Use semantic color instead')
   static const Color peach = Color(0xffe09c5f);
-  
+
   @Deprecated('Use semantic color instead')
   static const Color skyBlue = Color(0xff639fdc);
-  
+
   @Deprecated('Use semantic color instead')
   static const Color darkGreen = Color(0xff226e79);
-  
+
   @Deprecated('Use AppColors.error instead')
   static const Color red = AppColors.error;
-  
+
   @Deprecated('Use AppColors.academic instead')
   static const Color purple = AppColors.academic;
-  
+
   @Deprecated('Use semantic color instead')
   static const Color pink = Color(0xffd17b88);
-  
+
   @Deprecated('Use semantic color instead')
   static const Color brown = Color(0xffbd631a);
-  
+
   @Deprecated('Use AppColors.info instead')
   static const Color blue = AppColors.info;
-  
+
   @Deprecated('Use AppColors.success instead')
   static const Color green = AppColors.success;
-  
+
   @Deprecated('Use AppColors.warning instead')
   static const Color yellow = AppColors.warning;
-  
+
   @Deprecated('Use AppColors.warning instead')
   static const Color orange = AppColors.warning;
-  
+
   // ========================================
   // INPUT DECORATIONS (Updated with Design System)
   // ========================================
-  
+
   static final input_outline_border = OutlineInputBorder(
     borderSide: BorderSide(color: AppColors.primary),
     borderRadius: AppSpacing.borderRadiusMD,
   );
-  
+
   static final input_outline_focused_border = OutlineInputBorder(
     borderSide: BorderSide(color: AppColors.primary),
     gapPadding: AppSpacing.md,
     borderRadius: const BorderRadius.all(Radius.circular(10.0)),
   );
 
-
-
   static InputDecoration in_4(
       {bool isDense = true,
-        String label = "",
-        IconData iconData = Icons.edit,
-        String hintText = "",
-        double hPadding = 10,
-        double vPadding = 10
-      }) {
+      String label = "",
+      IconData iconData = Icons.edit,
+      String hintText = "",
+      double hPadding = 10,
+      double vPadding = 10}) {
     return InputDecoration(
       hintText: hintText.isEmpty ? null : hintText,
       isDense: isDense,
       label: (label.isEmpty)
           ? null
           : Text(
-        label,
-        style: TextStyle(
-            fontWeight: FontWeight.w500,
-            fontSize: 16,
-            color: Colors.grey.shade500),
-      ),
+              label,
+              style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                  color: Colors.grey.shade500),
+            ),
       hintStyle: const TextStyle(fontSize: 15, color: Color(0xaa495057)),
       focusedBorder: OutlineInputBorder(
         gapPadding: 5,
@@ -137,16 +134,15 @@ class CustomTheme {
         borderRadius: BorderRadius.all(Radius.circular(4)),
         borderSide: BorderSide(width: 1, color: Colors.black54),
       ),
-      contentPadding: EdgeInsets.symmetric(
-          horizontal: hPadding, vertical: hPadding),
+      contentPadding:
+          EdgeInsets.symmetric(horizontal: hPadding, vertical: hPadding),
       fillColor: Colors.grey.shade100,
       border: const OutlineInputBorder(
-        gapPadding: 0,
+          gapPadding: 0,
           borderRadius: BorderRadius.all(Radius.circular(4)),
           borderSide: BorderSide(width: 1, color: Colors.black54)),
     );
   }
-
 
   static InputDecoration in_3(
       {String label = "", String hintText = "", double label_font_size = 16}) {
@@ -159,25 +155,26 @@ class CustomTheme {
       )),
       enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.grey.shade400,
-          )),
+        color: Colors.grey.shade400,
+      )),
       focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.grey.shade400,
-          )),
+        color: Colors.grey.shade400,
+      )),
       disabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.grey.shade200,
-          )),
+        color: Colors.grey.shade200,
+      )),
       border: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.grey.shade400,
-          )),
+        color: Colors.grey.shade400,
+      )),
       labelStyle: FxTextStyle.bodyMedium(
         color: Colors.grey.shade800,
         fontSize: label_font_size,
       ),
-      contentPadding: const EdgeInsets.only(left: 0, bottom: 0, right: 0, top: 0),
+      contentPadding:
+          const EdgeInsets.only(left: 0, bottom: 0, right: 0, top: 0),
       label: FxText(
         label,
         color: primary,
@@ -191,17 +188,18 @@ class CustomTheme {
     );
   }
 
-  InputDecoration input_decoration_2({String labelText = "",
-    String hintText = "",
-    dynamic suffixIcon,
-    double label_font_size = 18}) {
+  InputDecoration input_decoration_2(
+      {String labelText = "",
+      String hintText = "",
+      dynamic suffixIcon,
+      double label_font_size = 18}) {
     return InputDecoration(
       suffixIcon: (suffixIcon == null)
           ? const SizedBox()
           : Icon(
-        suffixIcon,
-        size: 30,
-      ),
+              suffixIcon,
+              size: 30,
+            ),
       focusedBorder: InputBorder.none,
       enabledBorder: InputBorder.none,
       filled: true,
@@ -243,7 +241,8 @@ class CustomTheme {
     );
   }
 
-  InputDecoration input_decoration({String labelText = "", IconData icon = Icons.edit}) {
+  InputDecoration input_decoration(
+      {String labelText = "", IconData icon = Icons.edit}) {
     return InputDecoration(
       prefixIcon: Icon(icon, color: CustomTheme.primary),
       focusedBorder: OutlineInputBorder(

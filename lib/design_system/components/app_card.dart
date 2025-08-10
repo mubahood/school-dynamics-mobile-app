@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../design_system.dart';
 
 /// Unified card component following design system principles
-/// 
+///
 /// Features:
 /// - Consistent elevation and shadows
 /// - Material Design 3 styling
@@ -213,7 +213,8 @@ class StudentCard extends StatelessWidget {
           CircleAvatar(
             radius: 24,
             backgroundColor: AppColors.student.withValues(alpha: 0.1),
-            backgroundImage: avatarUrl != null ? NetworkImage(avatarUrl!) : null,
+            backgroundImage:
+                avatarUrl != null ? NetworkImage(avatarUrl!) : null,
             child: avatarUrl == null
                 ? Text(
                     studentName.isNotEmpty ? studentName[0].toUpperCase() : 'S',

@@ -3,7 +3,7 @@ import '../design_system.dart';
 import '../../models/MenuItem.dart';
 
 /// Modern menu item widget following design system principles
-/// 
+///
 /// Features:
 /// - Proper touch targets (minimum 44x44dp)
 /// - Material Design 3 styling
@@ -97,13 +97,15 @@ class _AppMenuItemWidgetState extends State<AppMenuItemWidget>
               child: Material(
                 color: Colors.transparent,
                 child: Card(
-                  elevation: _isPressed ? AppSpacing.elevationSM : AppSpacing.elevationMD,
+                  elevation: _isPressed
+                      ? AppSpacing.elevationSM
+                      : AppSpacing.elevationMD,
                   shadowColor: AppColors.primary.withOpacity(0.2),
                   shape: RoundedRectangleBorder(
                     borderRadius: AppSpacing.borderRadiusLG,
                     side: BorderSide(
-                      color: widget.isSelected 
-                          ? AppColors.primary 
+                      color: widget.isSelected
+                          ? AppColors.primary
                           : AppColors.border,
                       width: widget.isSelected ? 2.0 : 1.0,
                     ),
@@ -153,9 +155,9 @@ class _AppMenuItemWidgetState extends State<AppMenuItemWidget>
                             ),
                           ),
                         ),
-                        
+
                         AppSpacing.gapSM,
-                        
+
                         // Title with proper typography
                         Text(
                           widget.item.title,
@@ -204,7 +206,7 @@ class AppMenuGrid extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final itemPadding = padding ?? AppSpacing.horizontalMD;
     final gridSpacing = spacing ?? AppSpacing.md;
-    
+
     // Calculate item width for 2-column grid
     final availableWidth = screenWidth - itemPadding.horizontal - gridSpacing;
     final itemWidth = availableWidth / 2;
@@ -217,7 +219,7 @@ class AppMenuGrid extends StatelessWidget {
         children: items.asMap().entries.map((entry) {
           final index = entry.key;
           final item = entry.value;
-          
+
           return AppMenuItemWidget(
             item: item,
             isSelected: index == selectedIndex,

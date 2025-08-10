@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../design_system.dart';
 
 /// Unified input decoration system for the School Dynamics app
-/// 
+///
 /// Provides consistent input styling following Material Design 3
 /// principles with educational app optimizations.
 class AppInputDecorations {
@@ -12,85 +12,85 @@ class AppInputDecorations {
   // ========================================
   // BORDER STYLES
   // ========================================
-  
+
   /// Standard outline border for enabled state
   static OutlineInputBorder get _enabledBorder => OutlineInputBorder(
-    borderSide: BorderSide(
-      color: AppColors.border,
-      width: 1.0,
-    ),
-    borderRadius: AppSpacing.borderRadiusMD,
-  );
-  
+        borderSide: BorderSide(
+          color: AppColors.border,
+          width: 1.0,
+        ),
+        borderRadius: AppSpacing.borderRadiusMD,
+      );
+
   /// Focused outline border
   static OutlineInputBorder get _focusedBorder => OutlineInputBorder(
-    borderSide: BorderSide(
-      color: AppColors.primary,
-      width: 2.0,
-    ),
-    borderRadius: AppSpacing.borderRadiusMD,
-  );
-  
+        borderSide: BorderSide(
+          color: AppColors.primary,
+          width: 2.0,
+        ),
+        borderRadius: AppSpacing.borderRadiusMD,
+      );
+
   /// Error outline border
   static OutlineInputBorder get _errorBorder => OutlineInputBorder(
-    borderSide: BorderSide(
-      color: AppColors.error,
-      width: 1.0,
-    ),
-    borderRadius: AppSpacing.borderRadiusMD,
-  );
-  
+        borderSide: BorderSide(
+          color: AppColors.error,
+          width: 1.0,
+        ),
+        borderRadius: AppSpacing.borderRadiusMD,
+      );
+
   /// Focused error outline border
   static OutlineInputBorder get _focusedErrorBorder => OutlineInputBorder(
-    borderSide: BorderSide(
-      color: AppColors.error,
-      width: 2.0,
-    ),
-    borderRadius: AppSpacing.borderRadiusMD,
-  );
-  
+        borderSide: BorderSide(
+          color: AppColors.error,
+          width: 2.0,
+        ),
+        borderRadius: AppSpacing.borderRadiusMD,
+      );
+
   /// Disabled outline border
   static OutlineInputBorder get _disabledBorder => OutlineInputBorder(
-    borderSide: BorderSide(
-      color: AppColors.textDisabled,
-      width: 1.0,
-    ),
-    borderRadius: AppSpacing.borderRadiusMD,
-  );
+        borderSide: BorderSide(
+          color: AppColors.textDisabled,
+          width: 1.0,
+        ),
+        borderRadius: AppSpacing.borderRadiusMD,
+      );
 
   // ========================================
   // TEXT STYLES
   // ========================================
-  
+
   /// Hint text style
   static TextStyle get _hintStyle => AppTypography.bodyMedium.copyWith(
-    color: AppColors.textSecondary,
-  );
-  
+        color: AppColors.textSecondary,
+      );
+
   /// Label text style
   static TextStyle get _labelStyle => AppTypography.labelLarge.copyWith(
-    color: AppColors.textSecondary,
-  );
-  
+        color: AppColors.textSecondary,
+      );
+
   /// Floating label text style
   static TextStyle get _floatingLabelStyle => AppTypography.labelSmall.copyWith(
-    color: AppColors.primary,
-  );
-  
+        color: AppColors.primary,
+      );
+
   /// Error text style
   static TextStyle get _errorStyle => AppTypography.labelSmall.copyWith(
-    color: AppColors.error,
-  );
-  
+        color: AppColors.error,
+      );
+
   /// Helper text style
   static TextStyle get _helperStyle => AppTypography.labelSmall.copyWith(
-    color: AppColors.textSecondary,
-  );
+        color: AppColors.textSecondary,
+      );
 
   // ========================================
   // STANDARD INPUT DECORATIONS
   // ========================================
-  
+
   /// Standard input decoration with outline border
   static InputDecoration standard({
     String? labelText,
@@ -114,7 +114,7 @@ class AppInputDecorations {
       contentPadding: AppSpacing.input,
       filled: true,
       fillColor: enabled ? AppColors.surface : AppColors.backgroundSecondary,
-      
+
       // Border styles
       border: _enabledBorder,
       enabledBorder: _enabledBorder,
@@ -122,7 +122,7 @@ class AppInputDecorations {
       errorBorder: _errorBorder,
       focusedErrorBorder: _focusedErrorBorder,
       disabledBorder: _disabledBorder,
-      
+
       // Text styles
       hintStyle: _hintStyle,
       labelStyle: _labelStyle,
@@ -131,7 +131,7 @@ class AppInputDecorations {
       helperStyle: _helperStyle,
     );
   }
-  
+
   /// Dense input decoration for compact layouts
   static InputDecoration dense({
     String? labelText,
@@ -158,7 +158,7 @@ class AppInputDecorations {
       ),
     );
   }
-  
+
   /// Search input decoration with search icon
   static InputDecoration search({
     String? hintText = 'Search...',
@@ -202,7 +202,7 @@ class AppInputDecorations {
   // ========================================
   // EDUCATIONAL SPECIFIC DECORATIONS
   // ========================================
-  
+
   /// Grade input decoration with academic styling
   static InputDecoration grade({
     String? labelText,
@@ -226,7 +226,7 @@ class AppInputDecorations {
       ),
     );
   }
-  
+
   /// Amount input decoration for financial fields
   static InputDecoration amount({
     String? labelText,
@@ -258,7 +258,7 @@ class AppInputDecorations {
       ),
     );
   }
-  
+
   /// Student ID input decoration
   static InputDecoration studentId({
     String? labelText = 'Student ID',
@@ -286,7 +286,7 @@ class AppInputDecorations {
   // ========================================
   // SPECIALIZED DECORATIONS
   // ========================================
-  
+
   /// Password input decoration with visibility toggle
   static InputDecoration password({
     String? labelText = 'Password',
@@ -318,7 +318,7 @@ class AppInputDecorations {
           : null,
     );
   }
-  
+
   /// Email input decoration
   static InputDecoration email({
     String? labelText = 'Email',
@@ -339,7 +339,7 @@ class AppInputDecorations {
       ),
     );
   }
-  
+
   /// Phone input decoration
   static InputDecoration phone({
     String? labelText = 'Phone',
@@ -364,26 +364,26 @@ class AppInputDecorations {
   // ========================================
   // THEME INTEGRATION
   // ========================================
-  
+
   /// Creates an InputDecorationTheme for Material Theme
   static InputDecorationTheme get theme => InputDecorationTheme(
-    filled: true,
-    fillColor: AppColors.surface,
-    contentPadding: AppSpacing.input,
-    
-    // Border styles
-    border: _enabledBorder,
-    enabledBorder: _enabledBorder,
-    focusedBorder: _focusedBorder,
-    errorBorder: _errorBorder,
-    focusedErrorBorder: _focusedErrorBorder,
-    disabledBorder: _disabledBorder,
-    
-    // Text styles
-    hintStyle: _hintStyle,
-    labelStyle: _labelStyle,
-    floatingLabelStyle: _floatingLabelStyle,
-    errorStyle: _errorStyle,
-    helperStyle: _helperStyle,
-  );
+        filled: true,
+        fillColor: AppColors.surface,
+        contentPadding: AppSpacing.input,
+
+        // Border styles
+        border: _enabledBorder,
+        enabledBorder: _enabledBorder,
+        focusedBorder: _focusedBorder,
+        errorBorder: _errorBorder,
+        focusedErrorBorder: _focusedErrorBorder,
+        disabledBorder: _disabledBorder,
+
+        // Text styles
+        hintStyle: _hintStyle,
+        labelStyle: _labelStyle,
+        floatingLabelStyle: _floatingLabelStyle,
+        errorStyle: _errorStyle,
+        helperStyle: _helperStyle,
+      );
 }
