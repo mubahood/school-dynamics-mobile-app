@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../design_system.dart';
 
 /// Modern button component with loading states and animations
-/// 
+///
 /// Features:
 /// - Material Design 3 styling
 /// - Loading states with animations
@@ -139,7 +139,8 @@ class _AppButtonState extends State<AppButton>
     super.dispose();
   }
 
-  bool get _isInteractive => widget.onPressed != null && widget.isEnabled && !widget.isLoading;
+  bool get _isInteractive =>
+      widget.onPressed != null && widget.isEnabled && !widget.isLoading;
 
   void _onTapDown(TapDownDetails details) {
     if (_isInteractive) {
@@ -256,7 +257,8 @@ class _AppButtonState extends State<AppButton>
           foregroundColor: widget.foregroundColor ?? AppColors.white,
           padding: padding,
           shape: RoundedRectangleBorder(borderRadius: borderRadius),
-          elevation: _isPressed ? AppSpacing.elevationSM : AppSpacing.elevationMD,
+          elevation:
+              _isPressed ? AppSpacing.elevationSM : AppSpacing.elevationMD,
         );
 
       case AppButtonVariant.outlined:

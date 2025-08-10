@@ -3,7 +3,7 @@ import 'package:shimmer/shimmer.dart';
 import '../design_system.dart';
 
 /// Skeleton loading components for the School Dynamics app
-/// 
+///
 /// Provides consistent loading states with shimmer effects
 /// following design system principles.
 class AppSkeletonLoader extends StatelessWidget {

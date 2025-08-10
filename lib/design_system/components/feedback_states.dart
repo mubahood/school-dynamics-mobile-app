@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../design_system.dart';
 
 /// Error state components for the School Dynamics app
-/// 
+///
 /// Provides consistent error handling UI with retry mechanisms
 /// and contextual messaging.
 class AppErrorState extends StatelessWidget {
