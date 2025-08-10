@@ -181,6 +181,3 @@ class AppColors {
         : math.pow((component + 0.055) / 1.055, 2.4).toDouble();
   }
 }
-
-// Import required for math functions
-import 'dart:math' as math;
