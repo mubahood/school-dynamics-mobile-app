@@ -26,6 +26,8 @@ export 'spacing/app_spacing.dart';
 
 // Components
 export 'components/app_input_decorations.dart';
+export 'components/app_menu_item.dart';
+export 'components/app_card.dart';
 
 // Components (to be added in Phase 2)
 // export 'components/app_card.dart';
