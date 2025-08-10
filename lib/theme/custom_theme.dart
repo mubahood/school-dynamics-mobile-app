@@ -1,33 +1,101 @@
 import 'package:flutter/material.dart';
 import 'package:flutx/flutx.dart';
+import '../design_system/design_system.dart';
 
 class CustomTheme {
+  // ========================================
+  // DEPRECATED COLORS (To be removed in Phase 3)
+  // ========================================
+  
+  @Deprecated('Use AppColors.primary instead')
   static const Color primary_1 = Colors.green;
-  static  Color primary = const Color.fromRGBO(25, 131, 192, 1.0);
+  
+  @Deprecated('Use AppColors.primary instead')
+  static Color primary = AppColors.primary;
+  
+  @Deprecated('Use AppColors.primarySurface instead')
   static const Color bg_primary_light = Color.fromRGBO(239, 252, 240, 1.0);
-  static   Color primaryDark = const Color.fromRGBO(8, 79, 124, 1.0);
+  
+  @Deprecated('Use AppColors.primaryDark instead')
+  static Color primaryDark = AppColors.primaryDark;
+  
+  @Deprecated('Use AppColors.primarySurface instead')
   static const Color primary_bg = Color(0xfff8fffb);
-  static const Color onPrimary = Colors.white;
+  
+  @Deprecated('Use AppColors.white instead')
+  static const Color onPrimary = AppColors.white;
+  
+  // ========================================
+  // SEMANTIC COLORS (Using Design System)
+  // ========================================
+  
+  /// Success color for positive actions
+  static const Color success = AppColors.success;
+  
+  /// Warning color for cautionary states  
+  static const Color warning = AppColors.warning;
+  
+  /// Error color for destructive actions
+  static const Color error = AppColors.error;
+  
+  /// Info color for informational content
+  static const Color info = AppColors.info;
+  
+  // ========================================
+  // LEGACY COLORS (Mapped to semantic colors)
+  // ========================================
+  
+  @Deprecated('Use AppColors.accent or define semantic color')
   static const Color accent = Color(0xffdf7463);
+  
+  @Deprecated('Use semantic color instead')
   static const Color occur = Color(0xffb38220);
+  
+  @Deprecated('Use semantic color instead')
   static const Color peach = Color(0xffe09c5f);
+  
+  @Deprecated('Use semantic color instead')
   static const Color skyBlue = Color(0xff639fdc);
+  
+  @Deprecated('Use semantic color instead')
   static const Color darkGreen = Color(0xff226e79);
-  static const Color red = Color(0xfff8575e);
-  static const Color purple = Color(0xff9f50bf);
+  
+  @Deprecated('Use AppColors.error instead')
+  static const Color red = AppColors.error;
+  
+  @Deprecated('Use AppColors.academic instead')
+  static const Color purple = AppColors.academic;
+  
+  @Deprecated('Use semantic color instead')
   static const Color pink = Color(0xffd17b88);
+  
+  @Deprecated('Use semantic color instead')
   static const Color brown = Color(0xffbd631a);
-  static const Color blue = Color(0xff1a71bd);
-  static const Color green = Color(0xff068425);
-  static const Color yellow = Color(0xfffff44f);
-  static const Color orange = Color(0xffFFA500);
+  
+  @Deprecated('Use AppColors.info instead')
+  static const Color blue = AppColors.info;
+  
+  @Deprecated('Use AppColors.success instead')
+  static const Color green = AppColors.success;
+  
+  @Deprecated('Use AppColors.warning instead')
+  static const Color yellow = AppColors.warning;
+  
+  @Deprecated('Use AppColors.warning instead')
+  static const Color orange = AppColors.warning;
+  
+  // ========================================
+  // INPUT DECORATIONS (Updated with Design System)
+  // ========================================
+  
   static final input_outline_border = OutlineInputBorder(
-    borderSide: BorderSide(color: CustomTheme.primary),
-    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+    borderSide: BorderSide(color: AppColors.primary),
+    borderRadius: AppSpacing.borderRadiusMD,
   );
+  
   static final input_outline_focused_border = OutlineInputBorder(
-    borderSide: BorderSide(color: CustomTheme.primary),
-    gapPadding: 20,
+    borderSide: BorderSide(color: AppColors.primary),
+    gapPadding: AppSpacing.md,
     borderRadius: const BorderRadius.all(Radius.circular(10.0)),
   );
 

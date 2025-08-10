@@ -167,9 +167,9 @@ class AppColors {
   
   /// Calculates the relative luminance of a color
   static double _calculateLuminance(Color color) {
-    final double r = _linearizeColorComponent(color.red / 255.0);
-    final double g = _linearizeColorComponent(color.green / 255.0);
-    final double b = _linearizeColorComponent(color.blue / 255.0);
+    final double r = _linearizeColorComponent(color.r / 255.0);
+    final double g = _linearizeColorComponent(color.g / 255.0);
+    final double b = _linearizeColorComponent(color.b / 255.0);
     
     return 0.2126 * r + 0.7152 * g + 0.0722 * b;
   }
