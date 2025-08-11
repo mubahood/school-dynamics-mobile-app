@@ -26,6 +26,9 @@ class AppColors {
   /// Dynamic primary light variant
   static Color primaryLight = const Color.fromRGBO(77, 166, 215, 1.0);
 
+  /// Color to use on top of primary color
+  static const Color onPrimary = Color(0xFFFFFFFF);
+
   /// Primary surface color for backgrounds
   static Color primarySurface = const Color.fromRGBO(239, 248, 255, 1.0);
 

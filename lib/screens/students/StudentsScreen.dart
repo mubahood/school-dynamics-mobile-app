@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
 
@@ -10,15 +9,16 @@ import '../../models/UserModel.dart';
 import '../../sections/widgets.dart';
 import '../../theme/app_theme.dart';
 import '../../theme/custom_theme.dart';
+import '../../design_system/design_system.dart';
 import '../../utils/SizeConfig.dart';
 import '../../utils/Utils.dart';
 import '../../utils/my_widgets.dart';
 import 'StudentCreateScreen.dart';
 
 class StudentsScreen extends StatefulWidget {
-  Map<String, dynamic> params = {};
+  final Map<String, dynamic> params;
 
-  StudentsScreen(this.params, {super.key});
+  const StudentsScreen(this.params, {super.key});
 
   @override
   StudentsScreenState createState() => StudentsScreenState();
@@ -58,27 +58,25 @@ class StudentsScreenState extends State<StudentsScreen> {
           await Get.to(() => StudentCreateScreen(const {}));
           init();
         },
-        backgroundColor: CustomTheme.primary,
+        backgroundColor: AppColors.primary,
         child: const Icon(
           Icons.add,
-          color: Colors.white,
+          color: AppColors.onPrimary,
         ),
       ),
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.surface,
       appBar: AppBar(
-        backgroundColor: CustomTheme.primary,
+        backgroundColor: AppColors.primary,
         titleSpacing: 0,
         elevation: 0,
-        iconTheme: const IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: AppColors.onPrimary),
         automaticallyImplyLeading: true,
-        // remove back button in appbar.
         title: searchIsopen
-            ? FxContainer(
-                color: Colors.white,
-                padding: const EdgeInsets.only(left: 10, top: 8, bottom: 8),
-                child: FormBuilderTextField(
-                  name: "search",
+            ? AppCard.filled(
+                backgroundColor: AppColors.surface,
+                padding: AppSpacing.allSM,
+                child: TextField(
                   onChanged: (x) {
                     setState(() {
                       searchKeyWord = x.toString();
@@ -86,25 +84,17 @@ class StudentsScreenState extends State<StudentsScreen> {
                     doRefresh();
                   },
                   decoration: InputDecoration(
-                    hintText: "Search ...",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(MySize.size8),
-                        ),
-                        borderSide: BorderSide.none),
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(MySize.size8),
-                        ),
-                        borderSide: BorderSide.none),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(MySize.size8),
-                        ),
-                        borderSide: BorderSide.none),
+                    hintText: "Search students...",
+                    hintStyle: AppTypography.bodyMedium.copyWith(
+                      color: AppColors.textSecondary,
+                    ),
+                    border: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    focusedBorder: InputBorder.none,
                     isDense: true,
-                    contentPadding: const EdgeInsets.all(0),
+                    contentPadding: EdgeInsets.zero,
                   ),
+                  style: AppTypography.bodyMedium,
                   controller: search_controler,
                   focusNode: searchFocusNode,
                   textInputAction: TextInputAction.search,
@@ -112,15 +102,16 @@ class StudentsScreenState extends State<StudentsScreen> {
                   keyboardType: TextInputType.name,
                 ),
               )
-            : FxText.titleLarge(
+            : Text(
                 'Students',
-                color: Colors.white,
-                fontWeight: 700,
-                height: .6,
+                style: AppTypography.titleLarge.copyWith(
+                  color: AppColors.onPrimary,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
         actions: [
-          InkWell(
-            onTap: () {
+          IconButton(
+            onPressed: () {
               searchKeyWord = "";
               setState(() {
                 searchIsopen = !searchIsopen;
@@ -132,12 +123,9 @@ class StudentsScreenState extends State<StudentsScreen> {
               });
               doRefresh();
             },
-            child: Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15),
-              child: Icon(
-                searchIsopen ? FeatherIcons.x : FeatherIcons.search,
-                color: Colors.white,
-              ),
+            icon: Icon(
+              searchIsopen ? FeatherIcons.x : FeatherIcons.search,
+              color: AppColors.onPrimary,
             ),
           )
         ],
@@ -151,106 +139,140 @@ class StudentsScreenState extends State<StudentsScreen> {
               }
               if (items.isEmpty) {
                 return Center(
-                    child: Column(
-                  children: [
-                    const Spacer(),
-                    Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 30),
-                        child: FxText(
-                          'You have not added any student yet. Press the + button to add a student.',
-                          textAlign: TextAlign.center,
-                        )),
-                    FxButton.text(
-                      child: FxText(
-                        'Reload',
-                        color: CustomTheme.primary,
+                    child: Container(
+                  padding: AppSpacing.allMD,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Spacer(),
+                      AppCard.outlined(
+                        padding: AppSpacing.allXL,
+                        child: Column(
+                          children: [
+                            Icon(
+                              Icons.school_outlined,
+                              size: AppSpacing.iconXL * 2,
+                              color: AppColors.textSecondary,
+                            ),
+                            AppSpacing.gapMD,
+                            Text(
+                              'No Students Yet',
+                              style: AppTypography.titleLarge.copyWith(
+                                fontWeight: FontWeight.w600,
+                                color: AppColors.textPrimary,
+                              ),
+                            ),
+                            AppSpacing.gapSM,
+                            Text(
+                              'You have not added any student yet. Press the + button to add a student.',
+                              style: AppTypography.bodyMedium.copyWith(
+                                color: AppColors.textSecondary,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            AppSpacing.gapMD,
+                            AppButton.primary(
+                              text: 'Reload',
+                              onPressed: () {
+                                doRefresh(isRefresh: true);
+                              },
+                            ),
+                          ],
+                        ),
                       ),
-                      onPressed: () {
-                        doRefresh(isRefresh: true);
-                      },
-                    ),
-                    const Spacer(),
-                  ],
+                      const Spacer(),
+                    ],
+                  ),
                 ));
               }
 
-              return Container(
-                child: RefreshIndicator(
-                  backgroundColor: Colors.white,
-                  onRefresh: doRefresh1,
-                  child: CustomScrollView(
-                    slivers: [
-                      SliverAppBar(
-                        toolbarHeight: Get.width / 5,
-                        backgroundColor: CupertinoColors.lightBackgroundGray,
-                        title: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            FxContainer(
-                              color: CupertinoColors.lightBackgroundGray,
-                              borderRadiusAll: 0,
-                              padding: const EdgeInsets.only(top: 8),
-                              child: Wrap(
-                                runSpacing: 0,
-                                children: <Widget>[
-                                  _buildChip('All'),
-                                  _buildChip('Male'),
-                                  _buildChip('Female'),
-                                  _buildChip(selected_class_text.isEmpty
-                                      ? "Class"
-                                      : 'Class - $selected_class_text'),
-                                  _buildChip('Fees'),
-                                ],
-                              ),
+              return RefreshIndicator(
+                backgroundColor: AppColors.surface,
+                color: AppColors.primary,
+                onRefresh: doRefresh1,
+                child: CustomScrollView(
+                  slivers: [
+                    SliverAppBar(
+                      toolbarHeight: Get.width / 5,
+                      backgroundColor: AppColors.surfaceVariant,
+                      title: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // Filter chips with design system styling
+                          Container(
+                            padding: AppSpacing.allSM,
+                            child: Wrap(
+                              spacing: AppSpacing.sm,
+                              runSpacing: AppSpacing.sm,
+                              children: <Widget>[
+                                _buildChip('All'),
+                                _buildChip('Male'),
+                                _buildChip('Female'),
+                                _buildChip(selected_class_text.isEmpty
+                                    ? "Class"
+                                    : 'Class - $selected_class_text'),
+                                _buildChip('Fees'),
+                              ],
                             ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Divider(
-                              color: CustomTheme.primary,
-                              height: 0,
-                            ),
-                            Container(
-                                padding:
-                                    const EdgeInsets.only(bottom: 10, top: 5),
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        FxText.bodyLarge(
-                                          "Found ",
-                                          fontWeight: 800,
-                                        ),
-                                        FxText.bodyLarge(
-                                          "${items.length} students",
-                                          color: Colors.black,
-                                          fontWeight: 800,
-                                        ),
-                                      ],
+                          ),
+                          AppSpacing.gapSM,
+                          Divider(
+                            color: AppColors.primary,
+                            height: 1,
+                          ),
+                          // Enhanced results counter
+                          Container(
+                            padding: AppSpacing.allSM,
+                            child: Row(
+                              children: [
+                                Text(
+                                  "Found ",
+                                  style: AppTypography.bodyMedium.copyWith(
+                                    fontWeight: FontWeight.w500,
+                                    color: AppColors.textSecondary,
+                                  ),
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: AppSpacing.sm,
+                                    vertical: AppSpacing.xs,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color:
+                                        AppColors.primaryLight.withOpacity(0.1),
+                                    borderRadius: AppSpacing.borderRadiusSM,
+                                  ),
+                                  child: Text(
+                                    "${items.length} students",
+                                    style: AppTypography.bodyMedium.copyWith(
+                                      color: AppColors.primary,
+                                      fontWeight: FontWeight.w700,
                                     ),
-                                  ],
-                                ))
-                          ],
-                        ),
-                        automaticallyImplyLeading: false,
-                        floating: true,
-                        elevation: 1,
-                        leadingWidth: 0,
-                        stretch: true,
-                        shadowColor: CustomTheme.primary,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                      SliverList(
-                        delegate: SliverChildBuilderDelegate(
-                          (BuildContext context, int index) {
-                            UserModel m = items[index];
-                            return userWidget(m, context,
-                                task_picker: task_picker);
-                          },
-                          childCount: items.length, // 1000 list items
-                        ),
-                      )
-                    ],
-                  ),
+                      automaticallyImplyLeading: false,
+                      floating: true,
+                      elevation: 1,
+                      leadingWidth: 0,
+                      stretch: true,
+                      shadowColor: AppColors.primary.withOpacity(0.2),
+                    ),
+                    SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        (BuildContext context, int index) {
+                          UserModel m = items[index];
+                          return userWidget(m, context,
+                              task_picker: task_picker);
+                        },
+                        childCount: items.length, // 1000 list items
+                      ),
+                    )
+                  ],
                 ),
               );
             }),
@@ -446,22 +468,44 @@ class StudentsScreenState extends State<StudentsScreen> {
     if (label.contains('Class') && selected_class_text.isNotEmpty) {
       isSelected = true;
     }
-    return FxContainer(
-      onTap: () {
-        addItemToFilter(label);
-      },
-      margin: const EdgeInsets.only(right: 5, top: 5),
-      padding: const EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
-      borderRadiusAll: 20,
-      borderColor: CustomTheme.primary,
-      bordered: true,
-      color: isSelected ? CustomTheme.primary : Colors.grey.shade100,
-      child: FxText(
-        label,
-        fontSize: 14,
-        fontWeight: 700,
-        color: isSelected ? Colors.white : Colors.black,
-      ),
+
+    return Container(
+      margin: const EdgeInsets.only(right: AppSpacing.sm, top: AppSpacing.sm),
+      child: isSelected
+          ? AppCard.filled(
+              onTap: () {
+                addItemToFilter(label);
+              },
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.md,
+                vertical: AppSpacing.sm,
+              ),
+              backgroundColor: AppColors.primary,
+              child: Text(
+                label,
+                style: AppTypography.bodySmall.copyWith(
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.onPrimary,
+                ),
+              ),
+            )
+          : AppCard.outlined(
+              onTap: () {
+                addItemToFilter(label);
+              },
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.md,
+                vertical: AppSpacing.sm,
+              ),
+              backgroundColor: AppColors.surface,
+              child: Text(
+                label,
+                style: AppTypography.bodySmall.copyWith(
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.textPrimary,
+                ),
+              ),
+            ),
     );
   }
 }

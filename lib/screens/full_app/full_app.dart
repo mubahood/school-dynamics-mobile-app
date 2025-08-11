@@ -7,6 +7,7 @@ import 'package:schooldynamics/screens/full_app/section/SectionDashboard.dart';
 
 import '../../controllers/MainController.dart';
 import '../../theme/custom_theme.dart';
+import '../../design_system/design_system.dart';
 import '../posts/PostModelsScreen.dart';
 
 class FullApp extends StatefulWidget {
@@ -40,70 +41,78 @@ class _FullAppState extends State<FullApp> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            body: Row(
+      body: Row(
+        children: [
+          Expanded(
+            child: Column(
               children: [
                 Expanded(
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: TabBarView(
-                          physics: const NeverScrollableScrollPhysics(),
-                          controller: tabController,
-                          children: <Widget>[
-                            const SectionDashboard(),
+                  child: TabBarView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    controller: tabController,
+                    children: <Widget>[
+                      const SectionDashboard(),
                       PostModelsScreen('Notice', true),
                       PostModelsScreen('Event', true),
                       PostModelsScreen('News', true),
                       const AccountSection(),
-                          ],
-                        ),
-                      ),
-                      FxContainer(
-                        color: Colors.white,
-                        bordered: true,
-                        enableBorderRadius: false,
-                        border: Border(
-                            top: BorderSide(
-                                width: 2,
-                                color: Colors.grey.shade400,
-                                style: BorderStyle.solid)),
-                  padding: FxSpacing.only(
-                    top: 5,
-                    bottom: 3,
-                  ),
-                  marginAll: 0,
-                  child: TabBar(
-                    dividerColor: Colors.white,
-                    labelPadding: EdgeInsets.zero,
-                    controller: tabController,
-                    indicator: FxTabIndicator(
-                              indicatorColor: CustomTheme.primary,
-                              indicatorHeight: 2,
-                              radius: 4,
-                              width: 60,
-                              indicatorStyle: FxTabIndicatorStyle.rectangle,
-                              yOffset: -7),
-                          indicatorSize: TabBarIndicatorSize.tab,
-                          indicatorColor: CustomTheme.primary,
-                          tabs: [
-                            myNavItem('Home', FeatherIcons.home, 0),
-                            myNavItem('Noticeboard',
-                                Icons.chrome_reader_mode_outlined, 1),
-                            myNavItem('Events', FeatherIcons.calendar, 2),
-                            myNavItem('News', Icons.newspaper, 3),
-                            myNavItem('Account', FeatherIcons.user, 4),
-                          ],
-                        ),
-                      )
                     ],
                   ),
                 ),
+                AppCard.elevated(
+                  child: TabBar(
+                    dividerColor: Colors.transparent,
+                    labelPadding: const EdgeInsets.all(AppSpacing.xs),
+                    controller: tabController,
+                    indicator: BoxDecoration(
+                      color: AppColors.primary,
+                      borderRadius: AppSpacing.borderRadiusSM,
+                    ),
+                    indicatorSize: TabBarIndicatorSize.tab,
+                    tabs: [
+                      _buildNavItem('Home', FeatherIcons.home, 0),
+                      _buildNavItem(
+                          'Notices', Icons.chrome_reader_mode_outlined, 1),
+                      _buildNavItem('Events', FeatherIcons.calendar, 2),
+                      _buildNavItem('News', Icons.newspaper, 3),
+                      _buildNavItem('Account', FeatherIcons.user, 4),
+                    ],
+                  ),
+                )
               ],
             ),
-          );
+          ),
+        ],
+      ),
+    );
   }
 
   late TabController tabController;
+
+  Widget _buildNavItem(String title, IconData icon, int index) {
+    final isActive = tabController.index == index;
+    return Container(
+      padding: const EdgeInsets.all(AppSpacing.xs),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            icon,
+            size: AppSpacing.iconMD,
+            color: isActive ? AppColors.onPrimary : AppColors.textSecondary,
+          ),
+          AppSpacing.gapXS,
+          Text(
+            title,
+            style: AppTypography.bodySmall.copyWith(
+              color: isActive ? AppColors.onPrimary : AppColors.textSecondary,
+              fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   Widget myNavItem(String title, IconData icon, int i) {
     return Container(

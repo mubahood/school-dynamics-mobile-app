@@ -1,4 +1,7 @@
 class AppConfig {
+  // Demo mode flag - set to true for demo/showcase version
+  static const bool IS_DEMO_MODE = true;
+
   // static String API_BASE_URL = "https://schooldynamics.ug/api";
 
   // static String API_BASE_URL = "http://10.0.2.2:8888/schools/api";
@@ -15,7 +18,8 @@ class AppConfig {
 
   //static const String STORAGE_URL_1 = "http://10.0.2.2:8888/schools/storage/";
   static const String ACCOUNT_DELETE = "https://forms.gle/eRZuEqzkcEDyros28";
-  static const String TERMS = "https://www.freeprivacypolicy.com/live/0ace623e-1852-4825-a38f-12af735fcdfe";
+  static const String TERMS =
+      "https://www.freeprivacypolicy.com/live/0ace623e-1852-4825-a38f-12af735fcdfe";
 
   //static const String DASHBOARD_URL = "http://10.0.2.2:8888/schools";
 
@@ -69,8 +73,4 @@ class AppConfig {
   static const String LOGIN_PICS = "./assets/images/login/";
   static const String lorem_1 =
       "A widget that clips its child using a rectangle. By default, ClipRect prevents its child from painting outside its bounds, but the size and location of the clip rect can be customized using a custom clipper. ClipRect i commonly used with these widgets, which commonly paint outside their bounds: CustomPaint.";
-
-
-
-
 }

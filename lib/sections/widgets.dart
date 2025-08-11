@@ -12,6 +12,7 @@ import 'package:schooldynamics/theme/app_theme.dart';
 import 'package:schooldynamics/utils/AppConfig.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 import 'package:shimmer/shimmer.dart';
+import '../design_system/design_system.dart';
 
 import '../models/EmployeeModel.dart';
 import '../models/StudentHasClassModel.dart';
@@ -89,21 +90,25 @@ Widget roundedImage2(String url, double w, double h,
 
 Widget roundedImage(String url, double w, double h,
     {String no_image = AppConfig.NO_IMAGE, double radius = 10}) {
+  // Calculate safe dimensions - avoid infinite height
+  double calculatedWidth = w > 0 ? (Get.width / w) : 50.0;
+  double calculatedHeight = h > 0 ? (Get.width / h) : 50.0;
+
   return ClipRRect(
     borderRadius: BorderRadius.circular(radius),
     child: CachedNetworkImage(
       fit: BoxFit.cover,
       imageUrl: url,
-      width: (Get.width / w),
-      height: (Get.width / h),
+      width: calculatedWidth,
+      height: calculatedHeight,
       placeholder: (context, url) => ShimmerLoadingWidget(
-        height: double.infinity,
+        height: calculatedHeight, // Use calculated height instead of infinity
       ),
       errorWidget: (context, url, error) => Image(
         image: AssetImage(no_image),
         fit: BoxFit.cover,
-        width: (Get.width / w),
-        height: (Get.width / h),
+        width: calculatedWidth,
+        height: calculatedHeight,
       ),
     ),
   );
@@ -111,22 +116,25 @@ Widget roundedImage(String url, double w, double h,
 
 Widget circularImage(String url, double size,
     {String no_image = AppConfig.USER_IMAGE}) {
+  // Calculate safe size - avoid division by zero
+  double calculatedSize = size > 0 ? (Get.width / size) : 50.0;
+
   return ClipOval(
     child: Container(
       color: CustomTheme.primary,
       child: CachedNetworkImage(
         fit: BoxFit.cover,
         imageUrl: url,
-        width: (Get.width / size),
-        height: (Get.width / size),
+        width: calculatedSize,
+        height: calculatedSize,
         placeholder: (context, url) => ShimmerLoadingWidget(
-          height: double.infinity,
+          height: calculatedSize, // Use calculated size instead of infinity
         ),
         errorWidget: (context, url, error) => Image(
           image: AssetImage(no_image),
           fit: BoxFit.cover,
-          width: (Get.width / size),
-          height: (Get.width / size),
+          width: calculatedSize,
+          height: calculatedSize,
         ),
       ),
     ),
@@ -517,66 +525,91 @@ Widget userWidget3(UserModel u, context, {String task_picker = ""}) {
 }
 
 Widget userWidget(UserModel u, context, {String task_picker = ""}) {
-  return InkWell(
-    onTap: () {
-      if (task_picker == 'task_picker') {
-        Navigator.pop(context, u);
-      } else {
-        Get.to(() => StudentScreen(data: u));
-      }
-    },
-    child: Container(
-      padding: const EdgeInsets.only(top: 10, left: 15, right: 15),
-      child: Flex(
-        direction: Axis.horizontal,
-        mainAxisAlignment: MainAxisAlignment.start,
+  return Container(
+    margin: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.md, vertical: AppSpacing.xs),
+    child: AppCard.elevated(
+      onTap: () {
+        if (task_picker == 'task_picker') {
+          Navigator.pop(context, u);
+        } else {
+          Get.to(() => StudentScreen(data: u));
+        }
+      },
+      padding: AppSpacing.allMD,
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          roundedImage(u.avatar.toString(), 4.5, 4.5),
-          const SizedBox(
-            width: 10,
+          // Avatar with enhanced styling
+          Container(
+            width: AppSpacing.iconXL * 1.5,
+            height: AppSpacing.iconXL * 1.5,
+            decoration: BoxDecoration(
+              borderRadius: AppSpacing.borderRadiusLG,
+              border: Border.all(
+                color: AppColors.primaryLight.withOpacity(0.3),
+                width: 2,
+              ),
+            ),
+            child: ClipRRect(
+              borderRadius: AppSpacing.borderRadiusLG,
+              child: roundedImage(u.avatar.toString(), 4.5, 4.5, radius: 0),
+            ),
           ),
+          AppSpacing.hGapMD,
           Expanded(
-            child: Flex(
-              direction: Axis.vertical,
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                FxText.titleMedium(
+                // Student name with design system typography
+                Text(
                   u.name.toUpperCase(),
+                  style: AppTypography.titleMedium.copyWith(
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.textPrimary,
+                  ),
                   maxLines: 1,
-                  fontWeight: 800,
                   overflow: TextOverflow.ellipsis,
                 ),
-                const SizedBox(
-                  height: 6,
-                ),
+                AppSpacing.gapSM,
+                // Class information with enhanced styling
                 Row(
                   children: [
-                    FxText.bodyMedium(
+                    Text(
                       'CLASS: ',
+                      style: AppTypography.bodyMedium.copyWith(
+                        color: AppColors.textSecondary,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
-                    FxText.bodyMedium(
-                      u.current_class_text.toUpperCase(),
-                      color: Colors.grey.shade600,
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.sm,
+                        vertical: AppSpacing.xs,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColors.primaryLight.withOpacity(0.1),
+                        borderRadius: AppSpacing.borderRadiusSM,
+                      ),
+                      child: Text(
+                        u.current_class_text.toUpperCase(),
+                        style: AppTypography.bodySmall.copyWith(
+                          color: AppColors.primary,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                     ),
                   ],
                 ),
-                /*Row(
-                  children: [
-                    FxText.bodyMedium(
-                      'FEES BALANCE: ',
-                    ),
-                    FxText.bodyMedium(
-                      'UGX ${Utils.moneyFormat(u.balance.toString())}'.toUpperCase(),
-                      color: u.balance>0? Colors.red.shade800 : Colors.green.shade800,
-                    ),
-                  ],
-                ),*/
-                const SizedBox(
-                  height: 6,
-                ),
+                AppSpacing.gapSM,
               ],
             ),
+          ),
+          // Arrow indicator
+          Icon(
+            Icons.arrow_forward_ios,
+            size: AppSpacing.iconSM,
+            color: AppColors.textSecondary,
           ),
         ],
       ),
