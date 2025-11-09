@@ -16,8 +16,6 @@ export 'custom_theme.dart';
 export 'navigation_theme.dart';
 
 class AppTheme {
-
-
   static InputDecoration InputDecorationTheme1(
       {bool isDense = true,
       String label = "",
@@ -70,14 +68,14 @@ class AppTheme {
 
   static TextStyle getTextStyle(TextStyle? textStyle,
       {int fontWeight = 500,
-        bool muted = false,
-        bool xMuted = false,
-        double letterSpacing = 0.15,
-        Color? color,
-        TextDecoration decoration = TextDecoration.none,
-        double? height,
-        double wordSpacing = 0,
-        double? fontSize}) {
+      bool muted = false,
+      bool xMuted = false,
+      double letterSpacing = 0.15,
+      Color? color,
+      TextDecoration decoration = TextDecoration.none,
+      double? height,
+      double wordSpacing = 0,
+      double? fontSize}) {
     double? finalFontSize = fontSize ?? textStyle!.fontSize;
 
     Color? finalColor;
@@ -102,7 +100,7 @@ class AppTheme {
 
   static ThemeData shoppingManagerTheme = getShoppingManagerTheme();
   static ThemeData getShoppingManagerTheme() {
-    return createThemeM3(themeType, CustomTheme.primary );
+    return createThemeM3(themeType, CustomTheme.primary);
   }
 
   static ThemeData createThemeM3(ThemeType themeType, Color seedColor) {
@@ -126,8 +124,6 @@ class AppTheme {
     }
     return lightTheme.copyWith(colorScheme: colorScheme);
   }
-
-
 
   static ThemeType themeType = ThemeType.light;
   static TextDirection textDirection = TextDirection.ltr;
@@ -235,10 +231,8 @@ class AppTheme {
       actionsIconTheme: const IconThemeData(color: Colors.white),
     ),
 
-
-
     /// Card Theme
-    cardTheme: const CardTheme(color: Color(0xfff6f6f6)),
+    cardTheme: const CardThemeData(color: Color(0xfff6f6f6)),
 
     textTheme: const TextTheme(
       bodyLarge: TextStyle(
@@ -271,7 +265,8 @@ class AppTheme {
         foregroundColor: const Color(0xffeeeeee)),
 
     /// Divider Theme
-    dividerTheme: const DividerThemeData(color: Color(0xffe8e8e8), thickness: 1),
+    dividerTheme:
+        const DividerThemeData(color: Color(0xffe8e8e8), thickness: 1),
     dividerColor: const Color(0xffe8e8e8),
 
     /// Bottom AppBar Theme
@@ -279,7 +274,7 @@ class AppTheme {
         const BottomAppBarTheme(color: Color(0xffeeeeee), elevation: 2),
 
     /// Tab bar Theme
-    tabBarTheme: const TabBarTheme(
+    tabBarTheme: const TabBarThemeData(
       unselectedLabelColor: Color(0xff495057),
       labelColor: Color(0xff3d63ff),
       indicatorSize: TabBarIndicatorSize.label,
@@ -366,7 +361,7 @@ class AppTheme {
     appBarTheme: const AppBarTheme(backgroundColor: Color(0xff161616)),
 
     /// Card Theme
-    cardTheme: const CardTheme(color: Color(0xff222327)),
+    cardTheme: const CardThemeData(color: Color(0xff222327)),
 
     /// Colorscheme
     colorScheme: const ColorScheme.dark(
@@ -394,7 +389,8 @@ class AppTheme {
     ),
 
     /// Divider Color
-    dividerTheme: const DividerThemeData(color: Color(0xff363636), thickness: 1),
+    dividerTheme:
+        const DividerThemeData(color: Color(0xff363636), thickness: 1),
     dividerColor: const Color(0xff363636),
 
     /// Floating Action Theme
@@ -412,7 +408,7 @@ class AppTheme {
         const BottomAppBarTheme(color: Color(0xff464c52), elevation: 2),
 
     /// Tab bar Theme
-    tabBarTheme: const TabBarTheme(
+    tabBarTheme: const TabBarThemeData(
       unselectedLabelColor: Color(0xff495057),
       labelColor: Color(0xff069DEF),
       indicatorSize: TabBarIndicatorSize.label,

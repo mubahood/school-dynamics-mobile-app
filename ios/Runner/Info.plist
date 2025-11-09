@@ -31,9 +31,13 @@
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Application requires user’s location for better user experience.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Application requires user’s location for better user experience.</string>
+	<string>Application requires user's location for better user experience.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>School Dynamics needs access to your camera to scan QR codes for attendance tracking, take photos for student profiles, capture images for school events, and document incidents. Camera access is essential for efficient school management and record-keeping.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This App needs permission for the photo library to a user ability to upload photos for different items such as livestock, events, profile photo among others</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>School Dynamics needs permission to save photos to your photo library. This allows you to save captured images of student profiles, attendance records, and school events to your device.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UIBackgroundModes</key>
