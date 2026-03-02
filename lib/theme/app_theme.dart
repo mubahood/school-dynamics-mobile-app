@@ -48,20 +48,20 @@ class AppTheme {
       ),*/
       hintStyle: const TextStyle(fontSize: 15, color: Color(0xaa495057)),
       focusedBorder: const OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(4)),
+        borderRadius: BorderRadius.zero,
         borderSide: BorderSide(width: 1, color: Colors.green),
       ),
       enabledBorder: const OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(4)),
+        borderRadius: BorderRadius.zero,
         borderSide: BorderSide(width: 1, color: Colors.black54),
       ),
       disabledBorder: const OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(4)),
+        borderRadius: BorderRadius.zero,
         borderSide: BorderSide(width: 1, color: Colors.black54),
       ),
       fillColor: Colors.grey.shade100,
       border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(4)),
+          borderRadius: BorderRadius.zero,
           borderSide: BorderSide(width: 1, color: Colors.black54)),
     );
   }
@@ -89,7 +89,7 @@ class AppTheme {
           : (muted ? color.withAlpha(200) : color);
     }
 
-    return GoogleFonts.ibmPlexSans(
+    return GoogleFonts.inter(
         fontSize: finalFontSize,
         letterSpacing: letterSpacing,
         color: finalColor,
@@ -165,17 +165,17 @@ class AppTheme {
   }
 */
   static resetFont() {
-    FxTextStyle.changeFontFamily(GoogleFonts.openSans);
+    FxTextStyle.changeFontFamily(GoogleFonts.inter);
     FxTextStyle.changeDefaultFontWeight({
       100: FontWeight.w100,
       200: FontWeight.w200,
       300: FontWeight.w300,
-      400: FontWeight.w300,
-      500: FontWeight.w400,
-      600: FontWeight.w500,
-      700: FontWeight.w600,
-      800: FontWeight.w700,
-      900: FontWeight.w800,
+      400: FontWeight.w400,
+      500: FontWeight.w500,
+      600: FontWeight.w600,
+      700: FontWeight.w700,
+      800: FontWeight.w800,
+      900: FontWeight.w900,
     });
   }
 
@@ -216,7 +216,7 @@ class AppTheme {
     scaffoldBackgroundColor: const Color(0xffffffff),
     canvasColor: Colors.transparent,
 
-    /// AppBar Theme
+    /// AppBar Theme — flat, primary bg, no gradient
     appBarTheme: AppBarTheme(
       systemOverlayStyle: Utils.get_theme(),
       backgroundColor: CustomTheme.primary,
@@ -224,69 +224,151 @@ class AppTheme {
       centerTitle: false,
       titleTextStyle: const TextStyle(
         color: Colors.white,
-        fontWeight: FontWeight.w800,
+        fontWeight: FontWeight.w600,
         fontSize: 18,
       ),
       iconTheme: const IconThemeData(color: Colors.white),
       actionsIconTheme: const IconThemeData(color: Colors.white),
     ),
 
-    /// Card Theme
-    cardTheme: const CardThemeData(color: Color(0xfff6f6f6)),
+    /// Card Theme — white with border, no shadow
+    cardTheme: const CardThemeData(
+      color: Color(0xffffffff),
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.zero,
+        side: BorderSide(color: Color(0xFFE0E0E0), width: 1),
+      ),
+    ),
 
+    /// Text Theme
     textTheme: const TextTheme(
       bodyLarge: TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w400,
-        color: Color(0xff495057),
+        color: Color(0xFF212121),
+      ),
+      bodyMedium: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        color: Color(0xFF212121),
+      ),
+      bodySmall: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        color: Color(0xFF757575),
+      ),
+      titleLarge: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+        color: Color(0xFF212121),
+      ),
+      titleMedium: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        color: Color(0xFF212121),
+      ),
+      titleSmall: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        color: Color(0xFF212121),
+      ),
+      labelLarge: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        color: Color(0xFF212121),
+      ),
+      labelMedium: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        color: Color(0xFF757575),
+      ),
+      labelSmall: TextStyle(
+        fontSize: 10,
+        fontWeight: FontWeight.w500,
+        color: Color(0xFF757575),
       ),
     ),
 
     /// Colorscheme
     colorScheme: ColorScheme.light(
-        primary: CustomTheme.primary,
-        onPrimary: const Color(0xffeeeeee),
-        secondary: CustomTheme.primary,
-        onSecondary: const Color(0xffeeeeee),
-        surface: const Color(0xffeeeeee),
-        onSurface: const Color(0xff495057)),
+      primary: CustomTheme.primary,
+      onPrimary: Colors.white,
+      secondary: CustomTheme.primary,
+      onSecondary: Colors.white,
+      surface: Colors.white,
+      onSurface: const Color(0xFF212121),
+    ),
 
-    /// Floating Action Theme
+    /// Input Decoration Theme — square corners
+    inputDecorationTheme: InputDecorationTheme(
+      filled: false,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+      isDense: true,
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.zero,
+        borderSide: BorderSide(width: 1.5, color: CustomTheme.primary),
+      ),
+      enabledBorder: const OutlineInputBorder(
+        borderRadius: BorderRadius.zero,
+        borderSide: BorderSide(width: 1, color: Color(0xFFE0E0E0)),
+      ),
+      disabledBorder: const OutlineInputBorder(
+        borderRadius: BorderRadius.zero,
+        borderSide: BorderSide(width: 1, color: Color(0xFFE0E0E0)),
+      ),
+      errorBorder: const OutlineInputBorder(
+        borderRadius: BorderRadius.zero,
+        borderSide: BorderSide(width: 1, color: Color(0xFFD32F2F)),
+      ),
+      focusedErrorBorder: const OutlineInputBorder(
+        borderRadius: BorderRadius.zero,
+        borderSide: BorderSide(width: 1.5, color: Color(0xFFD32F2F)),
+      ),
+      border: const OutlineInputBorder(
+        borderRadius: BorderRadius.zero,
+        borderSide: BorderSide(width: 1, color: Color(0xFFE0E0E0)),
+      ),
+    ),
+
+    /// Floating Action Button — square, primary, minimal elevation
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: CustomTheme.primary,
-        splashColor: const Color(0xffeeeeee).withAlpha(100),
-        highlightElevation: 8,
-        elevation: 4,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(100),
-        ),
-        focusColor: CustomTheme.primary,
-        hoverColor: CustomTheme.primary,
-        foregroundColor: const Color(0xffeeeeee)),
+      backgroundColor: CustomTheme.primary,
+      splashColor: Colors.white.withAlpha(80),
+      highlightElevation: 4,
+      elevation: 2,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.zero,
+      ),
+      focusColor: CustomTheme.primary,
+      hoverColor: CustomTheme.primary,
+      foregroundColor: Colors.white,
+    ),
 
     /// Divider Theme
     dividerTheme:
-        const DividerThemeData(color: Color(0xffe8e8e8), thickness: 1),
-    dividerColor: const Color(0xffe8e8e8),
+        const DividerThemeData(color: Color(0xFFE0E0E0), thickness: 1),
+    dividerColor: const Color(0xFFE0E0E0),
 
-    /// Bottom AppBar Theme
+    /// Bottom AppBar Theme — white, no elevation
     bottomAppBarTheme:
-        const BottomAppBarTheme(color: Color(0xffeeeeee), elevation: 2),
+        const BottomAppBarTheme(color: Colors.white, elevation: 0),
 
     /// Tab bar Theme
-    tabBarTheme: const TabBarThemeData(
-      unselectedLabelColor: Color(0xff495057),
-      labelColor: Color(0xff3d63ff),
+    tabBarTheme: TabBarThemeData(
+      unselectedLabelColor: const Color(0xFF757575),
+      labelColor: CustomTheme.primary,
       indicatorSize: TabBarIndicatorSize.label,
       indicator: UnderlineTabIndicator(
-        borderSide: BorderSide(color: Color(0xff3d63ff), width: 2.0),
+        borderSide: BorderSide(color: CustomTheme.primary, width: 2.0),
       ),
     ),
 
     /// CheckBox theme
     checkboxTheme: CheckboxThemeData(
-      checkColor: WidgetStateProperty.all(const Color(0xffeeeeee)),
+      checkColor: WidgetStateProperty.all(Colors.white),
       fillColor: WidgetStateProperty.all(CustomTheme.primary),
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
     ),
 
     /// Radio theme
@@ -294,55 +376,42 @@ class AppTheme {
       fillColor: WidgetStateProperty.all(CustomTheme.primary),
     ),
 
-    ///Switch Theme
+    /// Switch Theme
     switchTheme: SwitchThemeData(
       trackColor: WidgetStateProperty.resolveWith((state) {
-        const Set<WidgetState> interactiveStates = <WidgetState>{
-          WidgetState.pressed,
-          WidgetState.hovered,
-          WidgetState.focused,
-          WidgetState.selected,
-        };
-        if (state.any(interactiveStates.contains)) {
-          return const Color(0xffabb3ea);
+        if (state.contains(WidgetState.selected)) {
+          return CustomTheme.primary.withAlpha(140);
         }
-        return null;
+        return const Color(0xFFE0E0E0);
       }),
       thumbColor: WidgetStateProperty.resolveWith((state) {
-        const Set<WidgetState> interactiveStates = <WidgetState>{
-          WidgetState.pressed,
-          WidgetState.hovered,
-          WidgetState.focused,
-          WidgetState.selected,
-        };
-        if (state.any(interactiveStates.contains)) {
+        if (state.contains(WidgetState.selected)) {
           return CustomTheme.primary;
         }
-        return null;
+        return const Color(0xFF757575);
       }),
     ),
 
     /// Slider Theme
     sliderTheme: SliderThemeData(
-      activeTrackColor: const Color(0xff3d63ff),
-      inactiveTrackColor: const Color(0xff3d63ff).withAlpha(140),
+      activeTrackColor: CustomTheme.primary,
+      inactiveTrackColor: CustomTheme.primary.withAlpha(60),
       trackShape: const RoundedRectSliderTrackShape(),
       trackHeight: 4.0,
-      thumbColor: const Color(0xff3d63ff),
+      thumbColor: CustomTheme.primary,
       thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 10.0),
       overlayShape: const RoundSliderOverlayShape(overlayRadius: 24.0),
       tickMarkShape: const RoundSliderTickMarkShape(),
-      inactiveTickMarkColor: Colors.red[100],
       valueIndicatorShape: const PaddleSliderValueIndicatorShape(),
       valueIndicatorTextStyle: const TextStyle(
-        color: Color(0xffeeeeee),
+        color: Colors.white,
       ),
     ),
 
     /// Other Colors
     splashColor: Colors.white.withAlpha(100),
-    indicatorColor: const Color(0xffeeeeee),
-    highlightColor: const Color(0xffeeeeee),
+    indicatorColor: Colors.white,
+    highlightColor: Colors.white.withAlpha(50),
   );
 
   /// -------------------------- Dark Theme  -------------------------------------------- ///
@@ -376,15 +445,15 @@ class AppTheme {
     /// Input (Text-Field) Theme
     inputDecorationTheme: const InputDecorationTheme(
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(4)),
+        borderRadius: BorderRadius.zero,
         borderSide: BorderSide(width: 1, color: Color(0xff069DEF)),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(4)),
+        borderRadius: BorderRadius.zero,
         borderSide: BorderSide(width: 1, color: Colors.white70),
       ),
       border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(4)),
+          borderRadius: BorderRadius.zero,
           borderSide: BorderSide(width: 1, color: Colors.white70)),
     ),
 

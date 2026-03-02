@@ -155,7 +155,7 @@ class MarksScreenState extends State<MarksScreen> {
           title: searchMode
               ? FxContainer(
                   paddingAll: 0,
-                  borderRadiusAll: 10,
+                  borderRadiusAll: 0,
                   margin: const EdgeInsets.only(
                     right: 5,
                     bottom: 2,
@@ -455,8 +455,8 @@ class MarksScreenState extends State<MarksScreen> {
               decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16))),
+                      topLeft: Radius.zero,
+                      topRight: Radius.zero)),
               child: Container(
                 padding: const EdgeInsets.only(
                   left: 15,

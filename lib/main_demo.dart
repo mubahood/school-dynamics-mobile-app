@@ -55,7 +55,7 @@ class DesignSystemShowcase extends StatelessWidget {
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.zero,
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.1),
@@ -151,7 +151,7 @@ class DesignSystemShowcase extends StatelessWidget {
               padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.zero,
                 border: Border.all(color: Colors.grey[300]!),
               ),
               child: Column(
@@ -195,7 +195,7 @@ class DesignSystemShowcase extends StatelessWidget {
                     foregroundColor: Colors.white,
                     padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.zero,
                     ),
                   ),
                   child: Text('Primary Button'),
@@ -207,7 +207,7 @@ class DesignSystemShowcase extends StatelessWidget {
                     side: BorderSide(color: primaryColor),
                     padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.zero,
                     ),
                   ),
                   child: Text('Secondary Button'),
@@ -240,7 +240,7 @@ class DesignSystemShowcase extends StatelessWidget {
               child: Card(
                 elevation: 4,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.zero,
                 ),
                 child: Padding(
                   padding: EdgeInsets.all(16),
@@ -302,10 +302,10 @@ class DesignSystemShowcase extends StatelessWidget {
                 labelText: 'Student Name',
                 hintText: 'Enter student name',
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.zero,
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.zero,
                   borderSide: BorderSide(color: primaryColor, width: 2),
                 ),
                 prefixIcon: Icon(Icons.person, color: primaryColor),
@@ -317,10 +317,10 @@ class DesignSystemShowcase extends StatelessWidget {
                 labelText: 'Email Address',
                 hintText: 'Enter email address',
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.zero,
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.zero,
                   borderSide: BorderSide(color: primaryColor, width: 2),
                 ),
                 prefixIcon: Icon(Icons.email, color: primaryColor),
@@ -335,7 +335,7 @@ class DesignSystemShowcase extends StatelessWidget {
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: successColor.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.zero,
                 border: Border.all(color: successColor, width: 2),
               ),
               child: Column(
@@ -376,7 +376,7 @@ class DesignSystemShowcase extends StatelessWidget {
       height: 80,
       decoration: BoxDecoration(
         color: color,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.zero,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.1),

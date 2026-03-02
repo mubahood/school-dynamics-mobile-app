@@ -619,7 +619,7 @@ class _SchemeItemWorkCreateScreenState
                           ? FxContainer(
                               padding: const EdgeInsets.all(10),
                               margin: const EdgeInsets.only(bottom: 10),
-                              borderRadiusAll: 10,
+                              borderRadiusAll: 0,
                               color: Colors.red.shade100,
                               child: FxText.bodyMedium(
                                 error_message,
@@ -656,7 +656,7 @@ class _SchemeItemWorkCreateScreenState
                             do_submit();
                           },
                           padding: const EdgeInsets.fromLTRB(15, 15, 15, 15),
-                          borderRadiusAll: 10,
+                          borderRadiusAll: 0,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

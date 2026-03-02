@@ -13,17 +13,16 @@ import '../theme/custom_theme.dart';
 import 'Utils.dart';
 import 'my_colors.dart';
 
-
 Widget MyButtonIcon(String title, String icon, Function f,
     {Color color = Colors.grey,
-      Color textColor = Colors.black,
-      double fontSize = 16,
-      double iconSize = 30,
-      double padding = 0,
-      double borderRadius = 10,
-      double borderWidth = 1,
-      double height = 50,
-      double width = 100}) {
+    Color textColor = Colors.black,
+    double fontSize = 16,
+    double iconSize = 30,
+    double padding = 0,
+    double borderRadius = 0,
+    double borderWidth = 1,
+    double height = 50,
+    double width = 100}) {
   return FxButton.outlined(
     padding: EdgeInsets.all(padding),
     onPressed: () {
@@ -131,7 +130,7 @@ Widget postWidget2(PostModel object, Function f, BuildContext context) {
       child: Card(
           margin: const EdgeInsets.all(0),
           elevation: 2,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
           clipBehavior: Clip.antiAliasWithSaveLayer,
           child: Column(
             children: <Widget>[
@@ -152,7 +151,8 @@ Widget postWidget2(PostModel object, Function f, BuildContext context) {
                         ],
                       ),
                       Container(height: 10),
-                      Text(Utils.to_date_1(object.created_at),
+                      Text(
+                        Utils.to_date_1(object.created_at),
                         style: TextStyle(
                             color: Colors.grey[700],
                             fontSize: 12,
@@ -206,7 +206,7 @@ Widget postWidget(PostModel object, Function f, BuildContext context) {
                     margin: const EdgeInsets.all(0),
                     elevation: 0,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.zero,
                     ),
                     clipBehavior: Clip.antiAliasWithSaveLayer,
                     child: CachedNetworkImage(
@@ -275,7 +275,7 @@ Widget postWidget(PostModel object, Function f, BuildContext context) {
             margin: const EdgeInsets.all(0),
             elevation: 0,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.zero,
             ),
             clipBehavior: Clip.antiAliasWithSaveLayer,
             child: CachedNetworkImage(
@@ -329,8 +329,8 @@ Widget emptyListWidget(String title, Function f) {
             f();
           },
           padding:
-          const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
-          borderRadiusAll: 100,
+              const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+          borderRadiusAll: 0,
           borderColor: CustomTheme.primary,
           child: FxText.bodySmall(
             "Reload",
@@ -344,49 +344,49 @@ Widget emptyListWidget(String title, Function f) {
 }
 
 Widget ServiceSubscriptionWidget(ServiceSubscription m) => Flex(
-  direction: Axis.horizontal,
-  children: [
-    const SizedBox(
-      width: 15,
-    ),
-    Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          FxText.titleMedium(
-                m.administrator_text,
-                color: Colors.black,
-            fontWeight: 700,
-          ),
-          FxText.bodySmall(
-            "TERM: ${m.due_term_text} \n ${m.service_text} X ${m.quantity}",
-          ),
-        ],
-      ),
-    ),
-    Container(
-      child: Flex(
-        direction: Axis.horizontal,
-        children: [
-          FxText.titleLarge(
-            Utils.moneyFormat(m.total),
-            color: Colors.black,
-            fontWeight: 800,
-          ),
-        ],
-      ),
-    ),
+      direction: Axis.horizontal,
+      children: [
         const SizedBox(
           width: 15,
-    ),
-  ],
-);
+        ),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              FxText.titleMedium(
+                m.administrator_text,
+                color: Colors.black,
+                fontWeight: 700,
+              ),
+              FxText.bodySmall(
+                "TERM: ${m.due_term_text} \n ${m.service_text} X ${m.quantity}",
+              ),
+            ],
+          ),
+        ),
+        Container(
+          child: Flex(
+            direction: Axis.horizontal,
+            children: [
+              FxText.titleLarge(
+                Utils.moneyFormat(m.total),
+                color: Colors.black,
+                fontWeight: 800,
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(
+          width: 15,
+        ),
+      ],
+    );
 
 Widget menuItemWidget(MenuItem item) {
   return FxCard(
     width: (Get.width / 6),
     height: (Get.width / 6),
-    borderRadiusAll: 10,
+    borderRadiusAll: 0,
     bordered: true,
     padding: const EdgeInsets.only(left: 5, right: 5),
     onTap: () {
@@ -440,10 +440,10 @@ Widget menuItemWidget(MenuItem item) {
 
 Widget valueUnitWidget2(dynamic title, dynamic value,
     {double fontSize = 6,
-      double letterSpacing = -1,
-      Color titleColor = Colors.grey,
-      Color color = Colors.black,
-      fontWeight = FontWeight.w500}) {
+    double letterSpacing = -1,
+    Color titleColor = Colors.grey,
+    Color color = Colors.black,
+    fontWeight = FontWeight.w500}) {
   return Container(
     child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -467,10 +467,10 @@ Widget valueUnitWidget2(dynamic title, dynamic value,
 
 Widget valueUnitWidget(BuildContext context, dynamic value, dynamic unit,
     {double fontSize = 6,
-      double letterSpacing = -1,
-      Color color = Colors.grey,
-      Color titleColor = Colors.black,
-      fontWeight = FontWeight.w500}) {
+    double letterSpacing = -1,
+    Color color = Colors.grey,
+    Color titleColor = Colors.black,
+    fontWeight = FontWeight.w500}) {
   return RichText(
     text: TextSpan(
       style: const TextStyle(
@@ -518,39 +518,39 @@ Widget listItem(MenuItem item) {
                     left: 15, top: 12, bottom: 12, right: 10),
                 child: item.icon == null
                     ? const SizedBox(
-                  height: 34,
+                        height: 34,
                       )
                     : Icon(
-                  item.icon,
-                  size: 34,
-                  color: CustomTheme.primary,
-                ),
+                        item.icon,
+                        size: 34,
+                        color: CustomTheme.primary,
+                      ),
               ),
               Expanded(
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      FxText.titleMedium(
-                        item.title,
-                        maxLines: 2,
-                        height: .8,
-                        fontWeight: 800,
-                        color: Colors.black,
-                        fontSize: 18,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      FxText.bodySmall(
-                        item.subTitle,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
-                  )),
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  FxText.titleMedium(
+                    item.title,
+                    maxLines: 2,
+                    height: .8,
+                    fontWeight: 800,
+                    color: Colors.black,
+                    fontSize: 18,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  FxText.bodySmall(
+                    item.subTitle,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              )),
             ],
           ),
         ),
@@ -682,53 +682,53 @@ Widget singleLoadingWidget(BuildContext context) {
         ),
         Expanded(
             child: Shimmer.fromColors(
-              baseColor: Colors.grey.shade50,
-              highlightColor: Colors.grey.shade300,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+          baseColor: Colors.grey.shade50,
+          highlightColor: Colors.grey.shade300,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              FxContainer(
+                color: Colors.grey,
+                height: Utils.mediaWidth(context) / 30,
+                width: Utils.mediaWidth(context) / 3,
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              FxContainer(
+                height: Utils.mediaWidth(context) / 14,
+                color: Colors.grey,
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              FxContainer(
+                height: Utils.mediaWidth(context) / 14,
+                color: Colors.grey,
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Flex(
+                direction: Axis.horizontal,
                 children: [
                   FxContainer(
                     color: Colors.grey,
                     height: Utils.mediaWidth(context) / 30,
-                    width: Utils.mediaWidth(context) / 3,
+                    width: Utils.mediaWidth(context) / 6,
                   ),
-              const SizedBox(
-                height: 5,
-                  ),
-                  FxContainer(
-                    height: Utils.mediaWidth(context) / 14,
-                    color: Colors.grey,
-                  ),
-              const SizedBox(
-                height: 5,
-                  ),
-                  FxContainer(
-                    height: Utils.mediaWidth(context) / 14,
-                    color: Colors.grey,
-                  ),
-              const SizedBox(
-                height: 5,
-                  ),
-                  Flex(
-                    direction: Axis.horizontal,
-                    children: [
-                      FxContainer(
-                        color: Colors.grey,
-                        height: Utils.mediaWidth(context) / 30,
-                        width: Utils.mediaWidth(context) / 6,
-                      ),
                   const Spacer(),
                   FxContainer(
-                        color: Colors.grey,
-                        height: Utils.mediaWidth(context) / 30,
-                        width: Utils.mediaWidth(context) / 6,
-                      ),
-                    ],
-                  )
+                    color: Colors.grey,
+                    height: Utils.mediaWidth(context) / 30,
+                    width: Utils.mediaWidth(context) / 6,
+                  ),
                 ],
-              ),
-            ))
+              )
+            ],
+          ),
+        ))
       ],
     ),
   );

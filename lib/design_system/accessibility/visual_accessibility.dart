@@ -232,7 +232,7 @@ class _FocusIndicators {
                 color: focusColor ?? Theme.of(context).focusColor,
                 width: borderWidth,
               ),
-              borderRadius: borderRadius ?? BorderRadius.circular(4),
+              borderRadius: borderRadius ?? BorderRadius.zero,
             ),
             child: child,
           );

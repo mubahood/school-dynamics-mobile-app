@@ -41,7 +41,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
         vertical: 15,
       ),
       bordered: true,
-      borderRadiusAll: 10,
+      borderRadiusAll: 0,
       border: Border.all(
         color: CustomTheme.primary,
         width: 1,
@@ -112,10 +112,10 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
               decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(16),
-                  topRight: Radius.circular(16),
-                  bottomLeft: Radius.circular(16),
-                  bottomRight: Radius.circular(16),
+                  topLeft: Radius.zero,
+                  topRight: Radius.zero,
+                  bottomLeft: Radius.zero,
+                  bottomRight: Radius.zero,
                 ),
               ),
               child: Padding(

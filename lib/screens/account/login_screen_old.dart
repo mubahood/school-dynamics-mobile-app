@@ -173,7 +173,7 @@ class LoginScreenOldState extends State<LoginScreenOld> {
                             onPressed: () {
                               submit_form();
                             },
-                            borderRadius: const BorderRadius.all(Radius.circular(50)),
+                            borderRadius: BorderRadius.zero,
                             padding: FxSpacing.xy(32, 8),
                             pressedOpacity: 0.5,
                             child: FxText.bodyMedium("Sign In",

@@ -101,7 +101,7 @@ class SessionOnlineScreenState extends State<SessionOnlineScreen> {
                               height: 3,
                             ),
                             FxContainer(
-                              borderRadiusAll: 100,
+                              borderRadiusAll: 0,
                               width: 25,
                               height: 25,
                               bordered: true,
@@ -127,7 +127,7 @@ class SessionOnlineScreenState extends State<SessionOnlineScreen> {
                               height: 3,
                             ),
                             FxContainer(
-                              borderRadiusAll: 100,
+                              borderRadiusAll: 0,
                               width: 25,
                               color: (!item.presentMembers
                                   .contains(member.id))

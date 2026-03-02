@@ -57,7 +57,7 @@ class _SimpleSkeletonLoaderState extends State<SimpleSkeletonLoader>
       width: width,
       height: height,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(4),
+        borderRadius: BorderRadius.zero,
         color: AppColors.border.withOpacity(0.3 + (_animation.value * 0.4)),
       ),
     );

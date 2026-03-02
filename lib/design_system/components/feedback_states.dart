@@ -108,7 +108,7 @@ class AppErrorState extends StatelessWidget {
               height: 80,
               decoration: BoxDecoration(
                 color: errorColor.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(40),
+                borderRadius: BorderRadius.zero,
               ),
               child: Icon(
                 errorIcon,
@@ -232,7 +232,7 @@ class AppEmptyState extends StatelessWidget {
                 height: 80,
                 decoration: BoxDecoration(
                   color: AppColors.surfaceVariant,
-                  borderRadius: BorderRadius.circular(40),
+                  borderRadius: BorderRadius.zero,
                 ),
                 child: Icon(
                   icon ?? Icons.inbox_outlined,
@@ -321,7 +321,7 @@ class AppSuccessState extends StatelessWidget {
               height: 80,
               decoration: BoxDecoration(
                 color: AppColors.success.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(40),
+                borderRadius: BorderRadius.zero,
               ),
               child: Icon(
                 icon ?? Icons.check_circle_outline,

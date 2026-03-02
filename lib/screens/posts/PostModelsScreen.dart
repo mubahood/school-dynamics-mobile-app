@@ -130,7 +130,7 @@ class _PostModelsScreenState extends State<PostModelsScreen> {
                   doRefresh();
                 },
                 padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-                borderRadiusAll: 100,
+                borderRadiusAll: 0,
                 child: FxText.titleMedium(
                   "Refresh",
                   color: Colors.white,
@@ -179,7 +179,7 @@ class _PostModelsScreenState extends State<PostModelsScreen> {
                     },
                     child: FxContainer(
                       bordered: true,
-                      borderRadiusAll: 10,
+                      borderRadiusAll: 0,
                       borderColor: CustomTheme.primary.withOpacity(.4),
                       color: CustomTheme.primary.withOpacity(.2),
                       padding: const EdgeInsets.only(
@@ -191,7 +191,7 @@ class _PostModelsScreenState extends State<PostModelsScreen> {
                         children: [
                           ClipRRect(
                             borderRadius: const BorderRadius.all(
-                              Radius.circular(10),
+                              Radius.zero,
                             ),
                             child: CachedNetworkImage(
                               fit: BoxFit.cover,

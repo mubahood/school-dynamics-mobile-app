@@ -155,7 +155,7 @@ class _OnGoingTripScreenState extends State<OnGoingTripScreen>
                             onPressed: _clearSearch,
                           ),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.zero,
                     ),
                     contentPadding:
                         const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
@@ -188,7 +188,7 @@ class _OnGoingTripScreenState extends State<OnGoingTripScreen>
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               child: FxButton.block(
                 onPressed: _confirmEndSession,
-                borderRadiusAll: 8,
+                borderRadiusAll: 0,
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 child: FxText.titleLarge(
                   "END SESSION",
@@ -220,7 +220,7 @@ class _OnGoingTripScreenState extends State<OnGoingTripScreen>
         padding: const EdgeInsets.all(16),
         decoration: const BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+          borderRadius: BorderRadius.vertical(top: Radius.zero),
         ),
         child: Column(mainAxisSize: MainAxisSize.min, children: [
           Align(
@@ -228,7 +228,7 @@ class _OnGoingTripScreenState extends State<OnGoingTripScreen>
             child: FxContainer(
               onTap: () => Get.back(),
               padding: const EdgeInsets.all(8),
-              borderRadiusAll: 100,
+              borderRadiusAll: 0,
               child: const Icon(Icons.close, color: Colors.red),
             ),
           ),
@@ -293,7 +293,7 @@ class _OnGoingTripScreenState extends State<OnGoingTripScreen>
             FxButton.small(
               onPressed: () => _updateStatus(p, 'Onboard'),
               backgroundColor: Colors.orange,
-              borderRadiusAll: 50,
+              borderRadiusAll: 0,
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               child: Center(
                 child: FxText.bodyMedium(
@@ -309,7 +309,7 @@ class _OnGoingTripScreenState extends State<OnGoingTripScreen>
             FxButton.small(
               onPressed: () => _updateStatus(p, 'Arrived'),
               backgroundColor: Colors.green,
-              borderRadiusAll: 50,
+              borderRadiusAll: 0,
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Center(
                 child: FxText.bodyMedium(

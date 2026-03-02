@@ -343,7 +343,7 @@ class _TripCreateScreenState extends State<TripCreateScreen> {
                       ]);
                 },
                 padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
-                borderRadiusAll: 10,
+                borderRadiusAll: 0,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

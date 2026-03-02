@@ -97,9 +97,9 @@ class OfflineVisitorsRecordsScreenState
                                           decoration: const BoxDecoration(
                                               color: Colors.white,
                                               borderRadius: BorderRadius.only(
-                                                  topLeft: Radius.circular(16),
+                                                  topLeft: Radius.zero,
                                                   topRight:
-                                                      Radius.circular(16))),
+                                                      Radius.zero)),
                                           child: Container(
                                             padding: const EdgeInsets.all(24),
                                             child: Column(
@@ -215,7 +215,7 @@ class OfflineVisitorsRecordsScreenState
                       onPressed: () {
                         submit_records();
                       },
-                      borderRadiusAll: 10,
+                      borderRadiusAll: 0,
                       child: FxText.titleLarge(
                         "SUBMIT ALL",
                         color: Colors.white,

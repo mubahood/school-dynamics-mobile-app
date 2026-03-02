@@ -79,7 +79,7 @@ class TheologyStreamsScreenState extends State<TheologyStreamsScreen> {
                         vertical: 10,
                       ),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.zero,
                       ),
                     ),
                     child: FxText.bodyLarge(
@@ -120,7 +120,7 @@ class TheologyStreamsScreenState extends State<TheologyStreamsScreen> {
                             },
                             borderColor: CustomTheme.primary,
                             bordered: true,
-                            borderRadiusAll: 8,
+                            borderRadiusAll: 0,
                             color: CustomTheme.primary.withAlpha(40),
                             paddingAll: 10,
                             child: Column(

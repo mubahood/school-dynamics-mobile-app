@@ -80,8 +80,8 @@ class TransportHomeScreenState extends State<TransportHomeScreen> {
                     decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(16),
-                            topRight: Radius.circular(16))),
+                            topLeft: Radius.zero,
+                            topRight: Radius.zero)),
                     child: Container(
                       padding: const EdgeInsets.all(24),
                       child: Column(
@@ -176,9 +176,9 @@ class TransportHomeScreenState extends State<TransportHomeScreen> {
                                           decoration: const BoxDecoration(
                                               color: Colors.white,
                                               borderRadius: BorderRadius.only(
-                                                  topLeft: Radius.circular(16),
+                                                  topLeft: Radius.zero,
                                                   topRight:
-                                                      Radius.circular(16))),
+                                                      Radius.zero)),
                                           child: Container(
                                             padding: const EdgeInsets.all(24),
                                             child: Column(

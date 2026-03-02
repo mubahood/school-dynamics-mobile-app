@@ -41,8 +41,8 @@ class _SectionExhibitsState extends State<SectionExhibits> {
               decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16))),
+                      topLeft: Radius.zero,
+                      topRight: Radius.zero)),
               child: Container(
                 padding: const EdgeInsets.all(24),
                 child: Column(
@@ -95,7 +95,7 @@ class _SectionExhibitsState extends State<SectionExhibits> {
               width: 10,
               height: 20,
               color: CustomTheme.primary,
-              borderRadiusAll: 2,
+              borderRadiusAll: 0,
             ),
             FxSpacing.width(8),
             FxText.titleLarge(

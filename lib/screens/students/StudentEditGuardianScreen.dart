@@ -232,7 +232,7 @@ class _StudentEditGuardianScreenState extends State<StudentEditGuardianScreen> {
                               },
                           padding:
                           const EdgeInsets.fromLTRB(24, 24, 24, 24),
-                              borderRadiusAll: 100,
+                              borderRadiusAll: 0,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [

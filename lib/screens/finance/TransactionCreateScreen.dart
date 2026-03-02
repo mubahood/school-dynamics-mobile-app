@@ -114,7 +114,6 @@ class TransactionCreateScreenState extends State<TransactionCreateScreen>
                                             ),
                                             child: Column(
                                               children: [
-
                                                 FormBuilderTextField(
                                                   decoration: CustomTheme.in_4(
                                                     label: "Select account",
@@ -173,7 +172,7 @@ class TransactionCreateScreenState extends State<TransactionCreateScreen>
                                                   ]),
                                                   keyboardType:
                                                       const TextInputType
-                                                              .numberWithOptions(
+                                                          .numberWithOptions(
                                                           decimal: false),
                                                   name: "amount",
                                                   onChanged: (value) {
@@ -204,110 +203,123 @@ class TransactionCreateScreenState extends State<TransactionCreateScreen>
                                                   textInputAction:
                                                       TextInputAction.done,
                                                 ),
-
                                                 error_message.isEmpty
                                                     ? const SizedBox()
-                                                    : const SizedBox(height: 10),
+                                                    : const SizedBox(
+                                                        height: 10),
                                                 error_message.isEmpty
                                                     ? const SizedBox()
                                                     : FxContainer(
-                                                  margin: const EdgeInsets.only(
-                                                      bottom: 10),
-                                                  color:
-                                                  Colors.red.shade50,
-                                                  child: Text(
-                                                    error_message,
-                                                  ),
-                                                ),
-
+                                                        margin: const EdgeInsets
+                                                            .only(bottom: 10),
+                                                        color:
+                                                            Colors.red.shade50,
+                                                        child: Text(
+                                                          error_message,
+                                                        ),
+                                                      ),
                                                 const SizedBox(height: 15),
                                                 is_loading
                                                     ? Padding(
-                                                  padding:
-                                                  const EdgeInsets.only(right: 20, top: 10, bottom: 10),
-                                                  child: Center(
-                                                    child: CircularProgressIndicator(
-                                                      strokeWidth: 2.0,
-                                                      valueColor:
-                                                      AlwaysStoppedAnimation<Color>(CustomTheme.primary),
-                                                    ),
-                                                  ),
-                                                )
-                                                    :                                                 FxButton.block(
-                                                  padding:
-                                                  const EdgeInsets.fromLTRB(24, 24, 24, 24),
-                                                  onPressed: () {
-                                                    if (!_fKey.currentState!
-                                                        .validate()) {
-                                                      Utils.toast(
-                                                          'Fix some errors first.',
-                                                          color: Colors
-                                                              .red.shade700);
-                                                      return;
-                                                    }
-                                                    Get.defaultDialog(
-                                                        middleText: ""
-                                                            "${account.name} paid school fees UGX ${Utils.moneyFormat(amount)} on ${(Utils.to_date(date))}"
-                                                            "\n\nAre you sure you want submit this transaction?",
-                                                        titleStyle:
-                                                            const TextStyle(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .only(
+                                                                right: 20,
+                                                                top: 10,
+                                                                bottom: 10),
+                                                        child: Center(
+                                                          child:
+                                                              CircularProgressIndicator(
+                                                            strokeWidth: 2.0,
+                                                            valueColor:
+                                                                AlwaysStoppedAnimation<
+                                                                        Color>(
+                                                                    CustomTheme
+                                                                        .primary),
+                                                          ),
+                                                        ),
+                                                      )
+                                                    : FxButton.block(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .fromLTRB(
+                                                                24, 24, 24, 24),
+                                                        onPressed: () {
+                                                          if (!_fKey
+                                                              .currentState!
+                                                              .validate()) {
+                                                            Utils.toast(
+                                                                'Fix some errors first.',
                                                                 color: Colors
-                                                                    .black),
-                                                        actions: <Widget>[
-                                                          FxButton.small(
-                                                            onPressed: () {
-                                                              save_form();
-                                                              Navigator.pop(
-                                                                  context);
-                                                            },
-                                                            padding:
-                                                                const EdgeInsets
-                                                                        .symmetric(
-                                                                    vertical:
-                                                                        10,
-                                                                    horizontal:
-                                                                        15),
-                                                            child: FxText(
-                                                              'SUBMIT',
-                                                              color:
-                                                                  Colors.white,
-                                                            ),
-                                                          ),
-                                                          FxButton.outlined(
-                                                            onPressed: () {
-                                                              Navigator.pop(
-                                                                  context);
-                                                            },
-                                                            padding: const EdgeInsets
-                                                                .symmetric(
-                                                                    vertical:
-                                                                        10,
-                                                                    horizontal:
-                                                                        15),
-                                                            borderColor:
-                                                                CustomTheme
-                                                                    .primary,
-                                                            child: FxText(
-                                                              'CANCEL',
-                                                              color: CustomTheme
-                                                                  .primary,
-                                                            ),
-                                                          ),
-                                                        ]);
-                                                  },
-                                                  backgroundColor: FxAppTheme
-                                                      .theme
-                                                      .colorScheme
-                                                      .primary,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          4.0),
-                                                  child: FxText.bodySmall(
-                                                    "SUBMIT",
-                                                    color: Colors.white,
-                                                    fontWeight: 600,
-                                                  ),
-                                                ),
+                                                                    .red
+                                                                    .shade700);
+                                                            return;
+                                                          }
+                                                          Get.defaultDialog(
+                                                              middleText: ""
+                                                                  "${account.name} paid school fees UGX ${Utils.moneyFormat(amount)} on ${(Utils.to_date(date))}"
+                                                                  "\n\nAre you sure you want submit this transaction?",
+                                                              titleStyle:
+                                                                  const TextStyle(
+                                                                      color: Colors
+                                                                          .black),
+                                                              actions: <Widget>[
+                                                                FxButton.small(
+                                                                  onPressed:
+                                                                      () {
+                                                                    save_form();
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  },
+                                                                  padding: const EdgeInsets
+                                                                      .symmetric(
+                                                                      vertical:
+                                                                          10,
+                                                                      horizontal:
+                                                                          15),
+                                                                  child: FxText(
+                                                                    'SUBMIT',
+                                                                    color: Colors
+                                                                        .white,
+                                                                  ),
+                                                                ),
+                                                                FxButton
+                                                                    .outlined(
+                                                                  onPressed:
+                                                                      () {
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  },
+                                                                  padding: const EdgeInsets
+                                                                      .symmetric(
+                                                                      vertical:
+                                                                          10,
+                                                                      horizontal:
+                                                                          15),
+                                                                  borderColor:
+                                                                      CustomTheme
+                                                                          .primary,
+                                                                  child: FxText(
+                                                                    'CANCEL',
+                                                                    color: CustomTheme
+                                                                        .primary,
+                                                                  ),
+                                                                ),
+                                                              ]);
+                                                        },
+                                                        backgroundColor:
+                                                            FxAppTheme
+                                                                .theme
+                                                                .colorScheme
+                                                                .primary,
+                                                        borderRadius:
+                                                            BorderRadius.zero,
+                                                        child: FxText.bodySmall(
+                                                          "SUBMIT",
+                                                          color: Colors.white,
+                                                          fontWeight: 600,
+                                                        ),
+                                                      ),
                                               ],
                                             ),
                                           ),
@@ -365,9 +377,9 @@ class TransactionCreateScreenState extends State<TransactionCreateScreen>
     Transaction.getItems();
     UserModel.getItems();
 
-    Utils.toast(resp.message,isLong: true);
+    Utils.toast(resp.message, isLong: true);
 
-   Navigator.pop(context);
+    Navigator.pop(context);
     return;
   }
 

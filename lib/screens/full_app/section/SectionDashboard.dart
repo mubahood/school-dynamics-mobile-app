@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
@@ -11,8 +12,8 @@ import 'package:schooldynamics/utils/Utils.dart';
 import '../../../models/MenuItem.dart';
 import '../../../theme/app_theme.dart';
 import '../../../design_system/design_system.dart';
-import '../../account/login_screen.dart';
 import '../../admin/AdminMenuScreen.dart';
+import '../../assignments/AssignmentsHomeScreen.dart';
 import '../../exams/ExamsHomeScreen.dart';
 import '../../finance/FinancialAccountsScreen.dart';
 import '../../finance/ServicesScreen.dart';
@@ -149,6 +150,18 @@ class _SectionDashboardState extends State<SectionDashboard> {
       }));
     }
 
+    if (u.isRole('teacher') ||
+        u.isRole('student') ||
+        u.isRole('parent') ||
+        u.isRole('admin') ||
+        u.isRole('dos') ||
+        u.isRole('hm')) {
+      menuItems.add(MenuItem(
+          'Assignments', 'T 1', FeatherIcons.bookOpen, 'scheme.png', () {
+        Get.to(() => const AssignmentsHomeScreen());
+      }));
+    }
+
     if (u.isRole('dos') ||
         u.isRole('admin') ||
         u.isRole('bursar') ||
@@ -245,235 +258,447 @@ class _SectionDashboardState extends State<SectionDashboard> {
       }));
     }*/
 
+    // ── Date & greeting ─────────────────────────────────────────
+    final now = DateTime.now();
+    const weekdays = [
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday'
+    ];
+    const months = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December'
+    ];
+    final formattedDate =
+        '${weekdays[now.weekday - 1]}, ${now.day} ${months[now.month - 1]} ${now.year}';
+    final firstName = u.name.split(' ').first;
+    final hour = now.hour;
+    final greeting = hour < 12
+        ? 'Good Morning,'
+        : (hour < 17 ? 'Good Afternoon,' : 'Good Evening,');
+
+    return Stack(
+      children: [
+        // Subtle dot-grid across entire background
+        Positioned.fill(
+          child: CustomPaint(painter: _SubtleDotPainter()),
+        ),
+        // Scrollable content
+        RefreshIndicator(
+          onRefresh: doRefresh,
+          color: AppColors.primary,
+          backgroundColor: Colors.white,
+          child: CustomScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            slivers: [
+              // Hero header with doodle pattern + floating welcome card
+              SliverToBoxAdapter(
+                child: _buildHeroHeader(greeting, firstName, formattedDate),
+              ),
+              // Section label
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
+                  child: Row(
+                    children: [
+                      Container(width: 4, height: 18, color: AppColors.primary),
+                      const SizedBox(width: 8),
+                      const Text(
+                        'MODULES',
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xFF424242),
+                          letterSpacing: 1.2,
+                        ),
+                      ),
+                      const Spacer(),
+                      Text(
+                        '${menuItems.length} items',
+                        style: const TextStyle(
+                          fontSize: 11,
+                          color: Color(0xFFBDBDBD),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              // 3-column grid of accent-topped cards
+              SliverPadding(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
+                sliver: SliverGrid(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 12,
+                    mainAxisSpacing: 12,
+                    childAspectRatio: 0.85,
+                  ),
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) => _buildMenuItem(menuItems[index]),
+                    childCount: menuItems.length,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // HERO HEADER — doodle pattern + floating welcome card
+  // ═══════════════════════════════════════════════════════════════
+
+  Widget _buildHeroHeader(
+      String greeting, String firstName, String formattedDate) {
     return Column(
       children: [
-        // Enhanced Header with Modern Gradient
-        Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                Color(0xFF1976D2), // Primary blue
-                Color(0xFF1565C0), // Darker blue
-                Color(0xFF0D47A1), // Even darker blue
-              ],
-            ),
-          ),
-          child: SafeArea(
-            bottom: false,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 16, 20, 20),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
+        Stack(
+          clipBehavior: Clip.none,
+          children: [
+            // Primary background with geometric doodle overlay
+            Container(
+              width: double.infinity,
+              color: AppColors.primary,
+              child: SafeArea(
+                bottom: false,
+                child: CustomPaint(
+                  painter: _DoodlePatternPainter(color: Colors.white),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 24, 16, 80),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          '${Utils.greet(u.name)}, Welcome to',
-                          style: AppTypography.bodyMedium.copyWith(
-                            color: Colors.white.withOpacity(0.9),
-                            fontWeight: FontWeight.w300,
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        const SizedBox(height: 4),
-                        InkWell(
-                          onTap: () {
-                            myInit();
-                          },
-                          child: Text(
-                            "${man.ent.name.toUpperCase()}.",
-                            style: AppTypography.headlineSmall.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w800,
-                              height: 1.2,
-                              shadows: [
-                                Shadow(
-                                  color: Colors.black.withOpacity(0.2),
-                                  offset: const Offset(0, 2),
-                                  blurRadius: 4,
-                                ),
-                              ],
+                        // Enterprise logo
+                        Container(
+                          width: 56,
+                          height: 56,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(
+                              color: Colors.white.withValues(alpha: 0.3),
+                              width: 1.5,
                             ),
-                            maxLines: 3,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(3),
+                            child: ClipRect(
+                              child: roundedImage(man.ent.getLogo(), 48, 48,
+                                  radius: 0),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 12),
+                        // Enterprise name
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          child: Text(
+                            man.ent.name,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              letterSpacing: 0.3,
+                            ),
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
                       ],
                     ),
                   ),
-                  const SizedBox(width: 16),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.15),
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(
-                        color: Colors.white.withOpacity(0.25),
-                        width: 1.5,
-                      ),
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: roundedImage(man.ent.getLogo(), 8, 8, radius: 0),
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
-          ),
-        ),
-        Expanded(
-          child: Container(
-            padding:
-                const EdgeInsets.fromLTRB(16, 8, 16, 16), // Optimized padding
-            child: RefreshIndicator(
-              onRefresh: doRefresh,
-              color: AppColors.primary,
-              backgroundColor: AppColors.surface,
-              child: SafeArea(
-                child: CustomScrollView(
-                  physics:
-                      const BouncingScrollPhysics(), // Better scroll physics
-                  slivers: [
-                    SliverGrid(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount:
-                            3, // Changed to 3-column for compactness
-                        crossAxisSpacing: AppSpacing.sm,
-                        mainAxisSpacing: AppSpacing.sm,
-                        childAspectRatio: 0.85, // More compact ratio
+            // Floating welcome card — overlaps header bottom
+            Positioned(
+              left: 16,
+              right: 16,
+              bottom: -40,
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: const Color(0xFFE0E0E0)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.06),
+                      blurRadius: 12,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            greeting,
+                            style: const TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xFF9E9E9E),
+                            ),
+                          ),
+                          const SizedBox(height: 2),
+                          Text(
+                            firstName,
+                            style: const TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xFF212121),
+                              letterSpacing: -0.3,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            formattedDate,
+                            style: const TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xFFBDBDBD),
+                            ),
+                          ),
+                        ],
                       ),
-                      delegate: SliverChildBuilderDelegate(
-                        (BuildContext context, int index) {
-                          MenuItem item = menuItems[index];
-                          return _buildEnhancedMenuItem(item);
-                        },
-                        childCount: menuItems.length,
+                    ),
+                    // Role badge
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 5),
+                      decoration: BoxDecoration(
+                        color: AppColors.primarySurface,
+                        border: Border.all(
+                            color: AppColors.primary.withValues(alpha: 0.15)),
+                      ),
+                      child: Text(
+                        u.user_type.capitalizeFirst ?? 'User',
+                        style: TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.primary,
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
             ),
-          ),
+          ],
         ),
-        AppSpacing.gapMD,
+        // Space for the overflowing welcome card
+        const SizedBox(height: 52),
       ],
     );
   }
 
-  /// Modern compact menu item widget with gradient and visual appeal
-  Widget _buildEnhancedMenuItem(MenuItem item) {
-    // Create different gradient colors for visual variety
-    final List<List<Color>> gradientOptions = [
-      [const Color(0xFF6366F1), const Color(0xFF8B5CF6)], // Purple gradient
-      [const Color(0xFF059669), const Color(0xFF10B981)], // Green gradient
-      [const Color(0xFFDC2626), const Color(0xFFEF4444)], // Red gradient
-      [const Color(0xFFD97706), const Color(0xFFF59E0B)], // Orange gradient
-      [const Color(0xFF7C3AED), const Color(0xFFA855F7)], // Violet gradient
-      [const Color(0xFF0EA5E9), const Color(0xFF3B82F6)], // Blue gradient
-      [const Color(0xFFEC4899), const Color(0xFFF472B6)], // Pink gradient
-      [const Color(0xFF14B8A6), const Color(0xFF06B6D4)], // Teal gradient
-    ];
+  // ═══════════════════════════════════════════════════════════════
+  // MENU ITEM CARD — accent bar + icon + label
+  // ═══════════════════════════════════════════════════════════════
 
-    // Select gradient based on item index for variety
-    final gradientIndex = item.hashCode % gradientOptions.length;
-    final selectedGradient = gradientOptions[gradientIndex];
-
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 200),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: () => item.f(),
-          borderRadius: BorderRadius.circular(16),
-          splashColor: Colors.white.withOpacity(0.3),
-          highlightColor: Colors.white.withOpacity(0.1),
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  selectedGradient[0],
-                  selectedGradient[1],
-                ],
-              ),
-              borderRadius: BorderRadius.circular(16),
-              boxShadow: [
-                BoxShadow(
-                  color: selectedGradient[0].withOpacity(0.3),
-                  blurRadius: 8,
-                  offset: const Offset(0, 4),
-                ),
-              ],
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(12), // Much reduced padding
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // Modern icon container with subtle backdrop
-                  Container(
-                    width: 44, // Slightly increased for better balance
-                    height: 44,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.15),
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(
-                        color: Colors.white.withOpacity(0.25),
-                        width: 1.5,
-                      ),
-                    ),
-                    child: Center(
-                      child: Image.asset(
-                        'assets/icons/${item.img}',
-                        width: 26, // Slightly larger icon
-                        height: 26,
-                        color: Colors.white,
-                        errorBuilder: (context, error, stackTrace) {
-                          return Icon(
-                            item.icon,
-                            size: 26,
-                            color: Colors.white,
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 10), // Slightly more spacing
-                  // Improved title with better contrast
-                  Text(
-                    item.title,
-                    style: AppTypography.bodySmall.copyWith(
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
-                      fontSize: 11.5, // Slightly larger
-                      shadows: [
-                        Shadow(
-                          color: Colors.black.withOpacity(0.2),
-                          offset: const Offset(0, 1),
-                          blurRadius: 2,
+  Widget _buildMenuItem(MenuItem item) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () => item.f(),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(color: const Color(0xFFEEEEEE)),
+          ),
+          child: Column(
+            children: [
+              // Primary accent bar at top
+              Container(height: 3, color: AppColors.primary),
+              // Card content
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Image.asset(
+                          'assets/icons/${item.img}',
+                          width: 44,
+                          height: 44,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Icon(
+                              item.icon,
+                              size: 44,
+                              color: AppColors.primary,
+                            );
+                          },
                         ),
-                      ],
-                    ),
-                    textAlign: TextAlign.center,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        item.title,
+                        style: const TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xFF424242),
+                        ),
+                        textAlign: TextAlign.center,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
         ),
       ),
     );
   }
+}
+
+// ════════════════════════════════════════════════════════════════════
+// CUSTOM PAINTERS — Background patterns & geometric doodles
+// ════════════════════════════════════════════════════════════════════
+
+/// Draws education-themed geometric doodles on the primary header.
+///
+/// Scatters circles, stars, diamonds, triangles, plus signs,
+/// dot clusters, and small squares across the painting area using
+/// [color] at low opacity. A fixed random seed (42) ensures the
+/// pattern is deterministic and consistent across rebuilds.
+class _DoodlePatternPainter extends CustomPainter {
+  final Color color;
+  _DoodlePatternPainter({required this.color});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final strokePaint = Paint()
+      ..color = color.withValues(alpha: 0.10)
+      ..strokeWidth = 1.2
+      ..style = PaintingStyle.stroke;
+
+    final dotPaint = Paint()
+      ..color = color.withValues(alpha: 0.06)
+      ..style = PaintingStyle.fill;
+
+    final rng = math.Random(42);
+
+    for (int i = 0; i < 45; i++) {
+      final x = rng.nextDouble() * size.width;
+      final y = rng.nextDouble() * size.height;
+      final shape = rng.nextInt(7);
+      final s = 6.0 + rng.nextDouble() * 16;
+
+      switch (shape) {
+        case 0: // Circle
+          canvas.drawCircle(Offset(x, y), s / 2, strokePaint);
+          break;
+        case 1: // Plus sign
+          canvas.drawLine(
+              Offset(x - s / 2, y), Offset(x + s / 2, y), strokePaint);
+          canvas.drawLine(
+              Offset(x, y - s / 2), Offset(x, y + s / 2), strokePaint);
+          break;
+        case 2: // Diamond
+          final path = Path()
+            ..moveTo(x, y - s / 2)
+            ..lineTo(x + s / 2, y)
+            ..lineTo(x, y + s / 2)
+            ..lineTo(x - s / 2, y)
+            ..close();
+          canvas.drawPath(path, strokePaint);
+          break;
+        case 3: // Triangle
+          final path = Path()
+            ..moveTo(x, y - s / 2)
+            ..lineTo(x + s / 2, y + s / 3)
+            ..lineTo(x - s / 2, y + s / 3)
+            ..close();
+          canvas.drawPath(path, strokePaint);
+          break;
+        case 4: // Five-point star
+          _drawStar(canvas, x, y, s / 2, strokePaint);
+          break;
+        case 5: // Dot cluster
+          for (int j = 0; j < 3; j++) {
+            canvas.drawCircle(
+              Offset(x + rng.nextDouble() * s - s / 2,
+                  y + rng.nextDouble() * s - s / 2),
+              1.5,
+              dotPaint,
+            );
+          }
+          break;
+        case 6: // Small square
+          canvas.drawRect(
+            Rect.fromCenter(
+                center: Offset(x, y), width: s * 0.7, height: s * 0.7),
+            strokePaint,
+          );
+          break;
+      }
+    }
+  }
+
+  void _drawStar(Canvas canvas, double cx, double cy, double r, Paint paint) {
+    final path = Path();
+    for (int i = 0; i < 5; i++) {
+      final outerAngle = (i * 72 - 90) * math.pi / 180;
+      final innerAngle = ((i * 72) + 36 - 90) * math.pi / 180;
+      final outerX = cx + r * math.cos(outerAngle);
+      final outerY = cy + r * math.sin(outerAngle);
+      final innerX = cx + r * 0.4 * math.cos(innerAngle);
+      final innerY = cy + r * 0.4 * math.sin(innerAngle);
+      if (i == 0) {
+        path.moveTo(outerX, outerY);
+      } else {
+        path.lineTo(outerX, outerY);
+      }
+      path.lineTo(innerX, innerY);
+    }
+    path.close();
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+}
+
+/// Draws a subtle evenly-spaced dot grid across the content background,
+/// adding visual texture without distracting from the UI content.
+class _SubtleDotPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = const Color(0xFFE8E8E8)
+      ..style = PaintingStyle.fill;
+
+    const spacing = 24.0;
+    for (double x = 12; x < size.width; x += spacing) {
+      for (double y = 12; y < size.height; y += spacing) {
+        canvas.drawCircle(Offset(x, y), 1.0, paint);
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

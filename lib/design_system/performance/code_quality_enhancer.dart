@@ -333,7 +333,7 @@ class _DefaultErrorWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.red.shade50,
         border: Border.all(color: Colors.red),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.zero,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,

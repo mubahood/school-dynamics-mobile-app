@@ -83,7 +83,7 @@ class NavigationComponents {
         indicator: _ModernTabIndicator(
           color: indicatorColor ?? AppColors.primary,
           height: 3,
-          borderRadius: BorderRadius.circular(1.5),
+          borderRadius: BorderRadius.zero,
         ),
         labelColor: labelColor ?? AppColors.primary,
         unselectedLabelColor: unselectedLabelColor ?? AppColors.textSecondary,
@@ -135,7 +135,7 @@ class NavigationComponents {
       elevation: elevation ?? 6,
       highlightElevation: (elevation ?? 6) + 2,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(mini ? 12 : 16),
+        borderRadius: BorderRadius.zero,
       ),
     );
   }
@@ -189,7 +189,7 @@ class NavigationComponents {
         ),
         indicatorColor: AppColors.primary.withValues(alpha: 0.12),
         indicatorShape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.zero,
         ),
       ),
     );
@@ -216,7 +216,7 @@ class _NavigationBarItem extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.zero,
         splashColor: AppColors.primary.withValues(alpha: 0.12),
         highlightColor: AppColors.primary.withValues(alpha: 0.08),
         child: AnimatedContainer(
@@ -237,7 +237,7 @@ class _NavigationBarItem extends StatelessWidget {
                   color: isSelected
                       ? AppColors.primary.withValues(alpha: 0.12)
                       : Colors.transparent,
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.zero,
                 ),
                 child: IconTheme(
                   data: IconThemeData(

@@ -122,7 +122,7 @@ class _ListOptimizationSection extends StatelessWidget {
               OptimizedWidgets.column(
                 children: [
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.zero,
                     child: Image.asset(
                       'assets/icons/admin.png',
                       width: 60,
@@ -148,7 +148,7 @@ class _ListOptimizationSection extends StatelessWidget {
                     width: 60,
                     height: 60,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.zero,
                       color: Theme.of(context).primaryColor,
                     ),
                     child: const Icon(
@@ -192,7 +192,7 @@ class _MemoryOptimizationSection extends StatelessWidget {
             padding: OptimizedWidgets.paddingAll12,
             decoration: BoxDecoration(
               color: Colors.blue[50],
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.zero,
               border: Border.all(color: Colors.blue[200]!),
             ),
             child: OptimizedWidgets.column(
@@ -249,7 +249,7 @@ class _ErrorHandlingSection extends StatelessWidget {
                       padding: OptimizedWidgets.paddingAll12,
                       decoration: BoxDecoration(
                         color: Colors.green[50],
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.zero,
                         border: Border.all(color: Colors.green[200]!),
                       ),
                       child: OptimizedWidgets.row(
@@ -271,7 +271,7 @@ class _ErrorHandlingSection extends StatelessWidget {
                       padding: OptimizedWidgets.paddingAll8,
                       decoration: BoxDecoration(
                         color: Colors.orange[50],
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.zero,
                         border: Border.all(color: Colors.orange[200]!),
                       ),
                       child: OptimizedWidgets.bodyText(
@@ -285,7 +285,7 @@ class _ErrorHandlingSection extends StatelessWidget {
                   padding: OptimizedWidgets.paddingAll12,
                   decoration: BoxDecoration(
                     color: Colors.red[50],
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.zero,
                     border: Border.all(color: Colors.red[200]!),
                   ),
                   child: OptimizedWidgets.bodyText(
@@ -324,7 +324,7 @@ class _PerformanceAwareExampleState extends State<_PerformanceAwareExample> {
       padding: OptimizedWidgets.paddingAll12,
       decoration: BoxDecoration(
         color: Colors.orange[50],
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.zero,
         border: Border.all(color: Colors.orange[200]!),
       ),
       child: OptimizedWidgets.column(

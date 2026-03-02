@@ -17,9 +17,8 @@ class AppTypography {
   /// Modern, highly readable font optimized for digital interfaces
   static const String _primaryFontFamily = 'Inter';
 
-  /// Secondary font family for emphasis (Roboto)
-  /// Google's font designed for Android and educational content
-  static const String _secondaryFontFamily = 'Roboto';
+  /// Secondary font family — same as primary for consistency
+  static const String _secondaryFontFamily = 'Inter';
 
   // ========================================
   // DISPLAY TEXT STYLES

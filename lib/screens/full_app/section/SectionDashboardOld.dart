@@ -164,7 +164,7 @@ class _SectionDashboardState extends State<SectionDashboardOld> {
                             child: FxContainer(
                               width: (Get.width / 6),
                               height: (Get.width / 6),
-                              borderRadiusAll: 10,
+                              borderRadiusAll: 0,
                               borderColor: Colors.red.shade700,
                               bordered: true,
                               color: CustomTheme.red.withAlpha(40),
@@ -233,7 +233,7 @@ class _SectionDashboardState extends State<SectionDashboardOld> {
                                 FxContainer(
                                   width: (Get.width / 6),
                                   height: (Get.width / 6),
-                                  borderRadiusAll: 100,
+                                  borderRadiusAll: 0,
                                   color: CustomTheme.primary.withAlpha(40),
                                   paddingAll: 10,
                                   alignment: Alignment.center,
@@ -286,7 +286,7 @@ class _SectionDashboardState extends State<SectionDashboardOld> {
                             },
                             borderColor: CustomTheme.primaryDark,
                             bordered: true,
-                            borderRadiusAll: 8,
+                            borderRadiusAll: 0,
                             color: CustomTheme.primary.withAlpha(40),
                             paddingAll: 10,
                             child: Column(

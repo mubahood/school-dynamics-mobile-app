@@ -90,13 +90,13 @@ class CustomTheme {
 
   static final input_outline_border = OutlineInputBorder(
     borderSide: BorderSide(color: AppColors.primary),
-    borderRadius: AppSpacing.borderRadiusMD,
+    borderRadius: BorderRadius.zero,
   );
 
   static final input_outline_focused_border = OutlineInputBorder(
     borderSide: BorderSide(color: AppColors.primary),
     gapPadding: AppSpacing.md,
-    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+    borderRadius: BorderRadius.zero,
   );
 
   static InputDecoration in_4(
@@ -121,17 +121,17 @@ class CustomTheme {
       hintStyle: const TextStyle(fontSize: 15, color: Color(0xaa495057)),
       focusedBorder: OutlineInputBorder(
         gapPadding: 5,
-        borderRadius: const BorderRadius.all(Radius.circular(4)),
+        borderRadius: BorderRadius.zero,
         borderSide: BorderSide(width: 1, color: CustomTheme.primaryDark),
       ),
       enabledBorder: const OutlineInputBorder(
         gapPadding: 0,
-        borderRadius: BorderRadius.all(Radius.circular(4)),
+        borderRadius: BorderRadius.zero,
         borderSide: BorderSide(width: 1, color: Colors.black54),
       ),
       disabledBorder: const OutlineInputBorder(
         gapPadding: 0,
-        borderRadius: BorderRadius.all(Radius.circular(4)),
+        borderRadius: BorderRadius.zero,
         borderSide: BorderSide(width: 1, color: Colors.black54),
       ),
       contentPadding:
@@ -139,7 +139,7 @@ class CustomTheme {
       fillColor: Colors.grey.shade100,
       border: const OutlineInputBorder(
           gapPadding: 0,
-          borderRadius: BorderRadius.all(Radius.circular(4)),
+          borderRadius: BorderRadius.zero,
           borderSide: BorderSide(width: 1, color: Colors.black54)),
     );
   }
@@ -222,20 +222,11 @@ class CustomTheme {
       hintText: labelText,
       hintStyle: const TextStyle(),
       border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(18),
-          ),
-          borderSide: BorderSide.none),
+          borderRadius: BorderRadius.zero, borderSide: BorderSide.none),
       enabledBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(18),
-          ),
-          borderSide: BorderSide.none),
+          borderRadius: BorderRadius.zero, borderSide: BorderSide.none),
       focusedBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(18),
-          ),
-          borderSide: BorderSide.none),
+          borderRadius: BorderRadius.zero, borderSide: BorderSide.none),
       isDense: true,
       contentPadding: const EdgeInsets.all(0),
     );
@@ -247,11 +238,11 @@ class CustomTheme {
       prefixIcon: Icon(icon, color: CustomTheme.primary),
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(color: CustomTheme.primary),
-        borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+        borderRadius: BorderRadius.zero,
       ),
       enabledBorder: OutlineInputBorder(
         borderSide: BorderSide(color: CustomTheme.primary),
-        borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+        borderRadius: BorderRadius.zero,
       ),
       filled: true,
       border: InputBorder.none,

@@ -75,17 +75,17 @@ class UsersPickerScreenState extends State<UsersPickerScreen> {
                     hintText: "Search ...",
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
-                          Radius.circular(MySize.size8),
+                          Radius.zero,
                         ),
                         borderSide: BorderSide.none),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
-                          Radius.circular(MySize.size8),
+                          Radius.zero,
                         ),
                         borderSide: BorderSide.none),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
-                          Radius.circular(MySize.size8),
+                          Radius.zero,
                         ),
                         borderSide: BorderSide.none),
                     isDense: true,

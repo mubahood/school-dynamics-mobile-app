@@ -17,12 +17,12 @@ class AcademicScreenComponents {
   }) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(AppSpacing.sm),
+      borderRadius: BorderRadius.zero,
       child: Container(
         padding: const EdgeInsets.all(AppSpacing.sm),
         decoration: BoxDecoration(
           color: record.status.color.withOpacity(0.1),
-          borderRadius: BorderRadius.circular(AppSpacing.sm),
+          borderRadius: BorderRadius.zero,
           border: Border.all(
             color: record.status.color.withOpacity(0.3),
             width: 1.5,
@@ -143,7 +143,7 @@ class AcademicScreenComponents {
             margin: const EdgeInsets.all(2),
             decoration: BoxDecoration(
               color: attendanceStatus?.color.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(AppSpacing.xs),
+              borderRadius: BorderRadius.zero,
               border: attendanceStatus != null
                   ? Border.all(
                       color: attendanceStatus.color.withOpacity(0.3),
@@ -257,7 +257,7 @@ class AcademicScreenComponents {
             padding: const EdgeInsets.all(AppSpacing.md),
             decoration: BoxDecoration(
               color: AppColors.primary.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(AppSpacing.sm),
+              borderRadius: BorderRadius.zero,
             ),
             child: Row(
               children: [
@@ -295,7 +295,7 @@ class AcademicScreenComponents {
       padding: const EdgeInsets.all(AppSpacing.sm),
       decoration: BoxDecoration(
         color: color.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(AppSpacing.sm),
+        borderRadius: BorderRadius.zero,
       ),
       child: Column(
         children: [
@@ -370,7 +370,7 @@ class AcademicScreenComponents {
               padding: const EdgeInsets.all(AppSpacing.sm),
               decoration: BoxDecoration(
                 color: AppColors.surface,
-                borderRadius: BorderRadius.circular(AppSpacing.sm),
+                borderRadius: BorderRadius.zero,
               ),
               child: Text(
                 grade.comments!,
@@ -394,7 +394,7 @@ class AcademicScreenComponents {
       padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
         color: gradeColor.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(AppSpacing.sm),
+        borderRadius: BorderRadius.zero,
         border: Border.all(
           color: gradeColor.withOpacity(0.3),
           width: 2,
@@ -438,7 +438,7 @@ class AcademicScreenComponents {
       padding: const EdgeInsets.all(AppSpacing.sm),
       decoration: BoxDecoration(
         color: color.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(AppSpacing.sm),
+        borderRadius: BorderRadius.zero,
       ),
       child: Row(
         children: [

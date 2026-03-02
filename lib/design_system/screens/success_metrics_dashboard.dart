@@ -110,7 +110,7 @@ class _SuccessMetricsDashboardState extends State<SuccessMetricsDashboard> {
         width: double.infinity,
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.zero,
           gradient: LinearGradient(
             colors: [scoreColor.withOpacity(0.1), scoreColor.withOpacity(0.05)],
             begin: Alignment.topLeft,
@@ -145,7 +145,7 @@ class _SuccessMetricsDashboardState extends State<SuccessMetricsDashboard> {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               decoration: BoxDecoration(
                 color: scoreColor.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.zero,
                 border: Border.all(color: scoreColor.withOpacity(0.3)),
               ),
               child: Text(
@@ -162,7 +162,7 @@ class _SuccessMetricsDashboardState extends State<SuccessMetricsDashboard> {
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   color: Colors.green.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.zero,
                   border: Border.all(color: Colors.green.withOpacity(0.3)),
                 ),
                 child: Row(
@@ -201,7 +201,7 @@ class _SuccessMetricsDashboardState extends State<SuccessMetricsDashboard> {
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: color.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.zero,
           ),
           child: Icon(icon, color: color),
         ),
@@ -452,7 +452,7 @@ class _SuccessMetricsDashboardState extends State<SuccessMetricsDashboard> {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
         color: color.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.zero,
         border: Border.all(color: color.withOpacity(0.3)),
       ),
       child: Text(

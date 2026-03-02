@@ -161,21 +161,9 @@ class _AppUpdateScreenState extends State<AppUpdateScreen> {
   }
 
   Widget _buildGradientOverlay() {
-    // Consistent gradient overlay
     return Positioned.fill(
       child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.bottomCenter,
-            end: Alignment.topCenter,
-            stops: const [0.0, 0.7, 1.0],
-            colors: [
-              _primaryColor.withOpacity(0.95),
-              _primaryColor.withOpacity(0.7),
-              Colors.transparent,
-            ],
-          ),
-        ),
+        color: _primaryColor.withOpacity(0.85),
       ),
     );
   }
@@ -237,7 +225,7 @@ class _AppUpdateScreenState extends State<AppUpdateScreen> {
               decoration: BoxDecoration(
                 color: Colors.black.withOpacity(0.2),
                 // Darker background inside glass
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.zero,
               ),
               child: FxText(
                 'Bug fixes and performance improvements.',
@@ -291,14 +279,14 @@ class _AppUpdateScreenState extends State<AppUpdateScreen> {
   /// Helper to build the glass container effect.
   Widget _buildGlassContainer({required Widget child}) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(25),
+      borderRadius: BorderRadius.zero,
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
           decoration: BoxDecoration(
             color: Colors.white.withOpacity(0.1), // Glass background color
-            borderRadius: BorderRadius.circular(25),
+            borderRadius: BorderRadius.zero,
             border: Border.all(
                 color: Colors.white.withOpacity(0.15)), // Glass border
           ),
@@ -329,7 +317,7 @@ class _AppUpdateScreenState extends State<AppUpdateScreen> {
         // Icon/Text color
         padding: const EdgeInsets.symmetric(vertical: 16),
         // Button padding
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
         elevation: 3,
         shadowColor: color.withOpacity(0.4),
       ),
@@ -355,7 +343,7 @@ class _AppUpdateScreenState extends State<AppUpdateScreen> {
             FxButton.outlined(
               onPressed: _fetchManifest,
               borderColor: _accentColor,
-              borderRadiusAll: 8,
+              borderRadiusAll: 0,
               child: FxText('Retry', color: _accentColor),
             )
           ],

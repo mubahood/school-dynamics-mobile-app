@@ -64,7 +64,7 @@ class _SubjectsScreenState extends State<SubjectsScreen> {
       padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.zero,
       ),
       child: TextField(
         autofocus: true,

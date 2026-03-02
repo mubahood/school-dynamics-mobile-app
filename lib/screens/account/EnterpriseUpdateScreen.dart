@@ -312,7 +312,7 @@ class EnterpriseUpdateScreenState extends State<EnterpriseUpdateScreen>
                                     width: 50,
                                     height: 50,
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
+                                      borderRadius: BorderRadius.zero,
                                       color: item.color.length < 4
                                           ? CustomTheme.primary
                                           : Utils.getColor(item.color),

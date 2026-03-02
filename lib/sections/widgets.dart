@@ -89,7 +89,7 @@ Widget roundedImage2(String url, double w, double h,
 }
 
 Widget roundedImage(String url, double w, double h,
-    {String no_image = AppConfig.NO_IMAGE, double radius = 10}) {
+    {String no_image = AppConfig.NO_IMAGE, double radius = 0}) {
   // Calculate safe dimensions - avoid infinite height
   double calculatedWidth = w > 0 ? (Get.width / w) : 50.0;
   double calculatedHeight = h > 0 ? (Get.width / h) : 50.0;
@@ -415,7 +415,7 @@ Widget userMiniWidget(UserMiniModel u) {
                 children: [
                   FxContainer(
                     color: CustomTheme.primary,
-                    borderRadiusAll: 10,
+                    borderRadiusAll: 0,
                     padding: const EdgeInsets.symmetric(
                       vertical: 2,
                       horizontal: 5,
@@ -434,7 +434,7 @@ Widget userMiniWidget(UserMiniModel u) {
                   if (u.phone_number.isNotEmpty) ...[
                     FxContainer(
                       color: CustomTheme.primary,
-                      borderRadiusAll: 10,
+                      borderRadiusAll: 0,
                       padding: const EdgeInsets.symmetric(
                         vertical: 2,
                         horizontal: 5,
@@ -971,7 +971,7 @@ Widget IconTextWidget(
               f();
             },
             padding: EdgeInsets.zero,
-            borderRadiusAll: 30,
+            borderRadiusAll: 0,
             borderColor: CustomTheme.primary,
             child: FxText(
               action_text,

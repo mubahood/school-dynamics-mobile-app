@@ -238,7 +238,7 @@ class SessionRollCallingScreenState extends State<SessionRollCallingScreen>
                               },
                             ),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.zero,
                       ),
                     ),
                   ),
@@ -288,7 +288,7 @@ class SessionRollCallingScreenState extends State<SessionRollCallingScreen>
                                         width: 24,
                                         height: 24,
                                         bordered: true,
-                                        borderRadiusAll: 12,
+                                        borderRadiusAll: 0,
                                         color:
                                             item.presentMembers.contains(m.id)
                                                 ? Colors.green.shade700
@@ -314,7 +314,7 @@ class SessionRollCallingScreenState extends State<SessionRollCallingScreen>
                                         width: 24,
                                         height: 24,
                                         bordered: true,
-                                        borderRadiusAll: 12,
+                                        borderRadiusAll: 0,
                                         color: item.absentMembers.contains(m.id)
                                             ? Colors.red.shade700
                                             : Colors.white,

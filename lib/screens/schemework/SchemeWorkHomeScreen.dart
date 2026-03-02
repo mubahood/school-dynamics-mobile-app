@@ -176,7 +176,7 @@ class _SchemeWorkHomeScreenState extends State<SchemeWorkHomeScreen>
               height: 50,
               decoration: BoxDecoration(
                 color: CustomTheme.primary,
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.zero,
               ),
               child: Center(
                 child: FxText.titleLarge(

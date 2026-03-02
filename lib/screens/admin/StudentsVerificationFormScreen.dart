@@ -346,7 +346,7 @@ class _StudentsVerificationFormScreenState
                 },
                     padding:
                     const EdgeInsets.fromLTRB(24, 24, 24, 24),
-                borderRadiusAll: 100,
+                borderRadiusAll: 0,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -396,8 +396,8 @@ class _StudentsVerificationFormScreenState
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(MySize.size16),
-                topRight: Radius.circular(MySize.size16),
+                topLeft: Radius.zero,
+                topRight: Radius.zero,
               ),
             ),
             child: Container(
@@ -484,8 +484,8 @@ class _StudentsVerificationFormScreenState
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(MySize.size16),
-                topRight: Radius.circular(MySize.size16),
+                topLeft: Radius.zero,
+                topRight: Radius.zero,
               ),
             ),
             child: Container(

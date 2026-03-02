@@ -490,7 +490,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                                                     left: 8,
                                                     right: 8,
                                                   ),
-                                                  borderRadiusAll: 50,
+                                                  borderRadiusAll: 0,
                                                   child: FxText.bodySmall(
                                                     m.grade,
                                                     color: Colors.white,
@@ -597,7 +597,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                                                     left: 8,
                                                     right: 8,
                                                   ),
-                                                  borderRadiusAll: 50,
+                                                  borderRadiusAll: 0,
                                                   child: FxText.bodySmall(
                                                     m.p()
                                                         ? 'Good Record'
@@ -706,7 +706,7 @@ class _CourseTasksScreenState extends State<StudentScreen> {
                                                     left: 8,
                                                     right: 8,
                                                   ),
-                                                  borderRadiusAll: 50,
+                                                  borderRadiusAll: 0,
                                                   child: FxText.bodySmall(
                                                     m.p()
                                                         ? 'Present'
@@ -754,8 +754,8 @@ class _CourseTasksScreenState extends State<StudentScreen> {
               decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16))),
+                      topLeft: Radius.zero,
+                      topRight: Radius.zero)),
               child: Container(
                 padding: const EdgeInsets.only(
                   left: 15,
@@ -865,8 +865,8 @@ class _CourseTasksScreenState extends State<StudentScreen> {
               decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16))),
+                      topLeft: Radius.zero,
+                      topRight: Radius.zero)),
               child: Container(
                 padding: const EdgeInsets.only(
                   left: 15,

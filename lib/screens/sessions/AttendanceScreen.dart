@@ -177,7 +177,7 @@ class AttendanceScreenState extends State<AttendanceScreen> {
                                                   left: 8,
                                                   right: 8,
                                                 ),
-                                                borderRadiusAll: 50,
+                                                borderRadiusAll: 0,
                                                 child: FxText.bodySmall(
                                                   m.p() ? 'Present' : 'Absent',
                                                   color: Colors.white,
@@ -237,8 +237,8 @@ class AttendanceScreenState extends State<AttendanceScreen> {
               decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16))),
+                      topLeft: Radius.zero,
+                      topRight: Radius.zero)),
               child: Container(
                 padding: const EdgeInsets.only(
                   left: 15,

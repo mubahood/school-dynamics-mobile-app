@@ -62,7 +62,7 @@ class _SectionCasesState extends State<SectionCases> {
               width: 10,
               height: 20,
               color: CustomTheme.primary,
-              borderRadiusAll: 2,
+              borderRadiusAll: 0,
             ),
             FxSpacing.width(8),
             FxText.titleLarge(

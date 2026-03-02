@@ -270,7 +270,7 @@ class EmployeeCreateScreenState extends State<EmployeeCreateScreen>
                                         vertical: 10,
                                       ),
                                       border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(8),
+                                        borderRadius: BorderRadius.zero,
                                       ),
                                     ),
                                     validator: FormBuilderValidators.compose([

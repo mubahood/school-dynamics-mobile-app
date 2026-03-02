@@ -146,7 +146,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                                         const EdgeInsets.only(right: 5, top: 5),
                                     padding: const EdgeInsets.only(
                                         left: 5, right: 5, top: 5, bottom: 5),
-                                    borderRadiusAll: 20,
+                                    borderRadiusAll: 0,
                                     borderColor: CustomTheme.primary,
                                     bordered: true,
                                     color: (activeAccount.id > 0)

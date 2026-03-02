@@ -75,7 +75,7 @@ class SkeletonLoaders {
           AppSkeletonLoader(
             width: 48,
             height: 48,
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.zero,
           ),
           AppSpacing.hGapMD,
           // Content skeleton
@@ -185,7 +185,7 @@ class SkeletonLoaders {
           AppSkeletonLoader(
             width: 40,
             height: 40,
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.zero,
           ),
           AppSpacing.hGapMD,
           Expanded(
@@ -220,7 +220,7 @@ class SkeletonLoaders {
           AppSkeletonLoader(
             width: 40,
             height: 40,
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.zero,
           ),
           AppSpacing.hGapMD,
           Expanded(
@@ -244,7 +244,7 @@ class SkeletonLoaders {
           AppSkeletonLoader(
             width: 24,
             height: 24,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.zero,
           ),
         ],
       ),

@@ -265,7 +265,7 @@ class _StudentEditBioScreenState extends State<StudentEditBioScreen> {
                               onPressed: () {
                                 submit_form();
                               },
-                              borderRadiusAll: 100,
+                              borderRadiusAll: 0,
                           padding:
                           const EdgeInsets.fromLTRB(24, 24, 24, 24),
                               child: Row(

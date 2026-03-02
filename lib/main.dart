@@ -129,54 +129,36 @@ class _DemoSchoolDynamicsAppState extends State<DemoSchoolDynamicsApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color(0xFF1976D2), // Primary blue
-              Color(0xFF1565C0), // Darker blue
-            ],
-          ),
-        ),
+        color: Theme.of(context).primaryColor,
         child: const Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // School Dynamics Logo
               Icon(
                 Icons.school,
-                size: 80,
+                size: 64,
                 color: Colors.white,
               ),
               SizedBox(height: 24),
               Text(
                 'School Dynamics',
                 style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600,
                   color: Colors.white,
                 ),
               ),
               SizedBox(height: 8),
               Text(
-                'Professional School Management System',
+                'Professional School Management',
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 14,
                   color: Colors.white70,
                 ),
               ),
               SizedBox(height: 40),
               CircularProgressIndicator(
                 valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-              ),
-              SizedBox(height: 16),
-              Text(
-                'Loading enhanced app...',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.white70,
-                ),
               ),
             ],
           ),

@@ -97,8 +97,8 @@ class SubjectSchemeWorkScreenState extends State<SubjectSchemeWorkScreen> {
                     decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(16),
-                            topRight: Radius.circular(16))),
+                            topLeft: Radius.zero,
+                            topRight: Radius.zero)),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -176,9 +176,9 @@ class SubjectSchemeWorkScreenState extends State<SubjectSchemeWorkScreen> {
                                           decoration: const BoxDecoration(
                                               color: Colors.white,
                                               borderRadius: BorderRadius.only(
-                                                  topLeft: Radius.circular(16),
+                                                  topLeft: Radius.zero,
                                                   topRight:
-                                                      Radius.circular(16))),
+                                                      Radius.zero)),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.min,
                                             crossAxisAlignment:

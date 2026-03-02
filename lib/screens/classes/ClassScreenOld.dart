@@ -369,7 +369,7 @@ class _CourseTasksScreenState extends State<ClassScreenOld> {
                         dense: true,
                         subtitle: FxText.bodySmall(m.subject.subject_name),
                         trailing: FxContainer(
-                          borderRadiusAll: 50,
+                          borderRadiusAll: 0,
                           padding: const EdgeInsets.only(
                               left: 5, right: 5, top: 5, bottom: 5),
                           color: Colors.green.shade50,

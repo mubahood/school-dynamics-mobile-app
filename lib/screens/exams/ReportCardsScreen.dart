@@ -155,7 +155,7 @@ class ReportCardsScreenState extends State<ReportCardsScreen> {
           title: searchMode
               ? FxContainer(
                   paddingAll: 0,
-                  borderRadiusAll: 10,
+                  borderRadiusAll: 0,
                   margin: const EdgeInsets.only(
                     right: 5,
                     bottom: 2,
@@ -425,8 +425,8 @@ class ReportCardsScreenState extends State<ReportCardsScreen> {
               decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16))),
+                      topLeft: Radius.zero,
+                      topRight: Radius.zero)),
               child: Container(
                 padding: const EdgeInsets.only(
                   left: 15,

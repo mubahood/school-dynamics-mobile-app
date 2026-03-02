@@ -80,17 +80,17 @@ class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
                     hintText: "Search ...",
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
-                          Radius.circular(MySize.size8),
+                          Radius.zero,
                         ),
                         borderSide: BorderSide.none),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
-                          Radius.circular(MySize.size8),
+                          Radius.zero,
                         ),
                         borderSide: BorderSide.none),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
-                          Radius.circular(MySize.size8),
+                          Radius.zero,
                         ),
                         borderSide: BorderSide.none),
                     isDense: true,
@@ -518,8 +518,8 @@ class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(MySize.size16),
-                topRight: Radius.circular(MySize.size16),
+                topLeft: Radius.zero,
+                topRight: Radius.zero,
               ),
             ),
             child: Container(
@@ -607,7 +607,7 @@ class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
       },
       margin: const EdgeInsets.only(right: 5, top: 5),
       padding: const EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
-      borderRadiusAll: 20,
+      borderRadiusAll: 0,
       borderColor: CustomTheme.primary,
       bordered: true,
       color: isSelected ? CustomTheme.primary : Colors.grey.shade100,
@@ -631,8 +631,8 @@ class FinancialAccountsScreenState extends State<FinancialAccountsScreen> {
               decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16))),
+                      topLeft: Radius.zero,
+                      topRight: Radius.zero)),
               child: Container(
                 padding: const EdgeInsets.all(12),
                 child: Column(

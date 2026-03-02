@@ -210,7 +210,7 @@ class _PasswordResetScreenState extends State<PasswordResetScreen> {
                         backgroundColor: CustomTheme.primary,
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.zero,
                         ),
                       ),
                       onPressed: () {

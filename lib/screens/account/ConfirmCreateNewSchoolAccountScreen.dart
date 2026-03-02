@@ -70,7 +70,7 @@ class ConfirmCreateNewSchoolAccountScreen extends StatelessWidget {
                       backgroundColor: CustomTheme.primary,
                       padding: const EdgeInsets.symmetric(vertical: 16),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.zero,
                       ),
                     ),
                     onPressed: () {
@@ -92,7 +92,7 @@ class ConfirmCreateNewSchoolAccountScreen extends StatelessWidget {
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 16),
                                       shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(8),
+                                        borderRadius: BorderRadius.zero,
                                       ),
                                     ),
                                     onPressed: () {
@@ -119,7 +119,7 @@ class ConfirmCreateNewSchoolAccountScreen extends StatelessWidget {
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 16),
                                       shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(8),
+                                        borderRadius: BorderRadius.zero,
                                       ),
                                     ),
                                     onPressed: () {
@@ -153,7 +153,7 @@ class ConfirmCreateNewSchoolAccountScreen extends StatelessWidget {
                       side: BorderSide(color: CustomTheme.primary),
                       padding: const EdgeInsets.symmetric(vertical: 16),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.zero,
                       ),
                     ),
                     onPressed: () {

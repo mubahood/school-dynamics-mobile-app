@@ -390,8 +390,8 @@ class StudentsScreenState extends State<StudentsScreen> {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(MySize.size16),
-                topRight: Radius.circular(MySize.size16),
+                topLeft: Radius.zero,
+                topRight: Radius.zero,
               ),
             ),
             child: Container(

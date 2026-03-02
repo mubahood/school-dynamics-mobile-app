@@ -20,68 +20,68 @@ class AppSpacing {
   // ========================================
 
   /// Extra small spacing - 4px
-  static const double xs = _baseUnit * 0.5;
+  static const double xs = 4.0;
 
   /// Small spacing - 8px
-  static const double sm = _baseUnit * 1;
+  static const double sm = 8.0;
 
-  /// Medium spacing - 16px
-  static const double md = _baseUnit * 2;
+  /// Medium (default) spacing - 12px
+  static const double md = 12.0;
 
-  /// Large spacing - 24px
-  static const double lg = _baseUnit * 3;
+  /// Large spacing - 16px
+  static const double lg = 16.0;
 
-  /// Extra large spacing - 32px
-  static const double xl = _baseUnit * 4;
+  /// Extra large spacing - 24px
+  static const double xl = 24.0;
 
-  /// Extra extra large spacing - 48px
-  static const double xxl = _baseUnit * 6;
+  /// Extra extra large spacing - 32px
+  static const double xxl = 32.0;
 
-  /// Extra extra extra large spacing - 64px
-  static const double xxxl = _baseUnit * 8;
+  /// Extra extra extra large spacing - 48px
+  static const double xxxl = 48.0;
 
   // ========================================
   // COMPONENT SPECIFIC SPACING
   // ========================================
 
-  /// Card padding
+  /// Card padding - 12px
   static const double cardPadding = md;
 
-  /// Button padding horizontal
+  /// Button padding horizontal - 16px
   static const double buttonPaddingHorizontal = lg;
 
-  /// Button padding vertical
-  static const double buttonPaddingVertical = sm;
+  /// Button padding vertical - 12px
+  static const double buttonPaddingVertical = md;
 
-  /// Input field padding
+  /// Input field padding - 12px
   static const double inputPadding = md;
 
-  /// List item padding
+  /// List item padding - 12px
   static const double listItemPadding = md;
 
-  /// Screen edge padding
-  static const double screenPadding = md;
+  /// Screen edge padding - 16px
+  static const double screenPadding = lg;
 
-  /// Section spacing
+  /// Section spacing - 24px
   static const double sectionSpacing = xl;
 
-  /// Grid item spacing
-  static const double gridSpacing = sm;
+  /// Grid item spacing - 12px
+  static const double gridSpacing = md;
 
   // ========================================
   // EDUCATIONAL SPECIFIC SPACING
   // ========================================
 
-  /// Dashboard grid spacing
+  /// Dashboard grid spacing - 12px
   static const double dashboardSpacing = md;
 
-  /// Menu item spacing
-  static const double menuItemSpacing = sm;
+  /// Menu item spacing - 12px
+  static const double menuItemSpacing = md;
 
   /// Grade display spacing
   static const double gradeSpacing = xs;
 
-  /// Student card spacing
+  /// Student card spacing - 12px
   static const double studentCardSpacing = md;
 
   // ========================================
@@ -214,44 +214,39 @@ class AppSpacing {
   /// No border radius
   static const double radiusNone = 0.0;
 
-  /// Small border radius - 4px
-  static const double radiusSM = 4.0;
+  /// Small border radius - square corners
+  static const double radiusSM = 0.0;
 
-  /// Medium border radius - 8px
-  static const double radiusMD = 8.0;
+  /// Medium border radius - square corners
+  static const double radiusMD = 0.0;
 
-  /// Large border radius - 12px
-  static const double radiusLG = 12.0;
+  /// Large border radius - square corners
+  static const double radiusLG = 0.0;
 
-  /// Extra large border radius - 16px
-  static const double radiusXL = 16.0;
+  /// Extra large border radius - square corners
+  static const double radiusXL = 0.0;
 
-  /// Round border radius - 1000px (for fully rounded elements)
-  static const double radiusRound = 1000.0;
+  /// Round border radius - square corners
+  static const double radiusRound = 0.0;
 
   // ========================================
   // BORDER RADIUS OBJECTS
   // ========================================
 
-  /// Small border radius
-  static const BorderRadius borderRadiusSM =
-      BorderRadius.all(Radius.circular(radiusSM));
+  /// Small border radius - square
+  static const BorderRadius borderRadiusSM = BorderRadius.zero;
 
-  /// Medium border radius
-  static const BorderRadius borderRadiusMD =
-      BorderRadius.all(Radius.circular(radiusMD));
+  /// Medium border radius - square
+  static const BorderRadius borderRadiusMD = BorderRadius.zero;
 
-  /// Large border radius
-  static const BorderRadius borderRadiusLG =
-      BorderRadius.all(Radius.circular(radiusLG));
+  /// Large border radius - square
+  static const BorderRadius borderRadiusLG = BorderRadius.zero;
 
-  /// Extra large border radius
-  static const BorderRadius borderRadiusXL =
-      BorderRadius.all(Radius.circular(radiusXL));
+  /// Extra large border radius - square
+  static const BorderRadius borderRadiusXL = BorderRadius.zero;
 
-  /// Round border radius
-  static const BorderRadius borderRadiusRound =
-      BorderRadius.all(Radius.circular(radiusRound));
+  /// Round border radius - square
+  static const BorderRadius borderRadiusRound = BorderRadius.zero;
 
   // ========================================
   // ELEVATION VALUES

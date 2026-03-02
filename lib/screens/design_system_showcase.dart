@@ -83,7 +83,7 @@ class _DesignSystemShowcaseState extends State<DesignSystemShowcase> {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.zero,
         border: Border.all(color: AppColors.primary.withOpacity(0.2)),
       ),
       child: Column(
@@ -156,7 +156,7 @@ class _DesignSystemShowcaseState extends State<DesignSystemShowcase> {
         padding: EdgeInsets.all(AppSpacing.md),
         decoration: BoxDecoration(
           color: color,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.zero,
         ),
         child: Text(
           name,
@@ -215,7 +215,7 @@ class _DesignSystemShowcaseState extends State<DesignSystemShowcase> {
                     foregroundColor: AppColors.onPrimary,
                     padding: EdgeInsets.all(AppSpacing.md),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.zero,
                     ),
                   ),
                   child: const Text('Primary'),
@@ -229,7 +229,7 @@ class _DesignSystemShowcaseState extends State<DesignSystemShowcase> {
                     foregroundColor: AppColors.primary,
                     padding: EdgeInsets.all(AppSpacing.md),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.zero,
                     ),
                   ),
                   child: const Text('Secondary'),
@@ -259,7 +259,7 @@ class _DesignSystemShowcaseState extends State<DesignSystemShowcase> {
                     foregroundColor: AppColors.onPrimary,
                     padding: EdgeInsets.all(AppSpacing.md),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.zero,
                     ),
                   ),
                   icon: const Icon(Icons.check),
@@ -320,7 +320,7 @@ class _DesignSystemShowcaseState extends State<DesignSystemShowcase> {
                     padding: EdgeInsets.all(AppSpacing.md),
                     decoration: BoxDecoration(
                       color: AppColors.primary,
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.zero,
                     ),
                     child: Icon(
                       Icons.trending_up,
@@ -370,10 +370,10 @@ class _DesignSystemShowcaseState extends State<DesignSystemShowcase> {
               hintText: 'Enter student name',
               prefixIcon: Icon(Icons.person, color: AppColors.primary),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.zero,
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.zero,
                 borderSide: BorderSide(color: AppColors.primary, width: 2),
               ),
             ),
@@ -386,10 +386,10 @@ class _DesignSystemShowcaseState extends State<DesignSystemShowcase> {
               prefixIcon: Icon(Icons.email, color: AppColors.primary),
               suffixIcon: Icon(Icons.verified, color: AppColors.success),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.zero,
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.zero,
                 borderSide: BorderSide(color: AppColors.primary, width: 2),
               ),
             ),
@@ -400,7 +400,7 @@ class _DesignSystemShowcaseState extends State<DesignSystemShowcase> {
               labelText: 'Class Section',
               prefixIcon: Icon(Icons.class_, color: AppColors.primary),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.zero,
               ),
             ),
             items: const [
@@ -432,7 +432,7 @@ class _DesignSystemShowcaseState extends State<DesignSystemShowcase> {
                     foregroundColor: AppColors.onPrimary,
                     padding: EdgeInsets.all(AppSpacing.md),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.zero,
                     ),
                   ),
                   child: _isLoading
@@ -475,7 +475,7 @@ class _DesignSystemShowcaseState extends State<DesignSystemShowcase> {
             padding: EdgeInsets.all(AppSpacing.md),
             decoration: BoxDecoration(
               color: AppColors.success.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.zero,
               border: Border.all(color: AppColors.success.withOpacity(0.3)),
             ),
             child: Row(
@@ -526,7 +526,7 @@ class _DesignSystemShowcaseState extends State<DesignSystemShowcase> {
                 minimumSize:
                     const Size(double.infinity, 48), // Minimum touch target
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.zero,
                 ),
               ),
               child: const Text('Test Accessibility Features'),
@@ -548,7 +548,7 @@ class _DesignSystemShowcaseState extends State<DesignSystemShowcase> {
               padding: EdgeInsets.all(AppSpacing.sm),
               decoration: BoxDecoration(
                 color: AppColors.primary.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.zero,
               ),
               child: Icon(icon, color: AppColors.primary),
             ),
@@ -602,7 +602,7 @@ class _DesignSystemShowcaseState extends State<DesignSystemShowcase> {
         backgroundColor: AppColors.primary,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.zero,
         ),
       ),
     );

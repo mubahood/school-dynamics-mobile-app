@@ -64,7 +64,7 @@ class SimpleDesignDemo extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.zero,
         border: Border.all(
           color: const Color.fromRGBO(25, 131, 192, 1.0).withOpacity(0.2),
         ),
@@ -128,7 +128,7 @@ class SimpleDesignDemo extends StatelessWidget {
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: color,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.zero,
       ),
       child: Text(
         name,
@@ -159,7 +159,7 @@ class SimpleDesignDemo extends StatelessWidget {
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.all(16),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.zero,
                     ),
                   ),
                   child: const Text('Primary'),
@@ -173,7 +173,7 @@ class SimpleDesignDemo extends StatelessWidget {
                     foregroundColor: const Color.fromRGBO(25, 131, 192, 1.0),
                     padding: const EdgeInsets.all(16),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.zero,
                     ),
                   ),
                   child: const Text('Secondary'),
@@ -192,7 +192,7 @@ class SimpleDesignDemo extends StatelessWidget {
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.all(16),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.zero,
                     ),
                   ),
                   icon: const Icon(Icons.check),
@@ -234,7 +234,7 @@ class SimpleDesignDemo extends StatelessWidget {
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       color: const Color.fromRGBO(25, 131, 192, 1.0),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.zero,
                     ),
                     child: const Icon(
                       Icons.school,
@@ -279,7 +279,7 @@ class SimpleDesignDemo extends StatelessWidget {
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       color: const Color(0xFF068425),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.zero,
                     ),
                     child: const Icon(
                       Icons.trending_up,
@@ -332,10 +332,10 @@ class SimpleDesignDemo extends StatelessWidget {
               prefixIcon:
                   Icon(Icons.person, color: Color.fromRGBO(25, 131, 192, 1.0)),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(8)),
+                borderRadius: BorderRadius.zero,
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(8)),
+                borderRadius: BorderRadius.zero,
                 borderSide: BorderSide(
                     color: Color.fromRGBO(25, 131, 192, 1.0), width: 2),
               ),
@@ -350,10 +350,10 @@ class SimpleDesignDemo extends StatelessWidget {
                   Icon(Icons.email, color: Color.fromRGBO(25, 131, 192, 1.0)),
               suffixIcon: Icon(Icons.verified, color: Color(0xFF068425)),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(8)),
+                borderRadius: BorderRadius.zero,
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(8)),
+                borderRadius: BorderRadius.zero,
                 borderSide: BorderSide(
                     color: Color.fromRGBO(25, 131, 192, 1.0), width: 2),
               ),
@@ -373,7 +373,7 @@ class SimpleDesignDemo extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: const Color(0xFF068425).withOpacity(0.1),
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.zero,
           border: Border.all(color: const Color(0xFF068425).withOpacity(0.3)),
         ),
         child: const Column(
@@ -422,7 +422,7 @@ class SimpleDesignDemo extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 color: const Color.fromRGBO(25, 131, 192, 1.0).withOpacity(0.1),
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.zero,
               ),
               child: Icon(icon, color: const Color.fromRGBO(25, 131, 192, 1.0)),
             ),

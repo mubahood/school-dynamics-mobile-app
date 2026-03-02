@@ -82,11 +82,11 @@ class ListScreenComponents {
                   color: AppColors.textSecondary,
                 ),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(AppSpacing.sm),
+                  borderRadius: BorderRadius.zero,
                   borderSide: BorderSide(color: AppColors.border),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(AppSpacing.sm),
+                  borderRadius: BorderRadius.zero,
                   borderSide: BorderSide(color: AppColors.primary),
                 ),
                 filled: true,
@@ -132,7 +132,7 @@ class ListScreenComponents {
         children: [
           InkWell(
             onTap: onTap,
-            borderRadius: BorderRadius.circular(AppSpacing.sm),
+            borderRadius: BorderRadius.zero,
             child: Padding(
               padding: padding ?? const EdgeInsets.all(AppSpacing.md),
               child: Row(
@@ -183,11 +183,11 @@ class ListScreenComponents {
       child: InkWell(
         onTap: onTap,
         onLongPress: onLongPress,
-        borderRadius: BorderRadius.circular(AppSpacing.sm),
+        borderRadius: BorderRadius.zero,
         child: Container(
           padding: const EdgeInsets.all(AppSpacing.md),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(AppSpacing.sm),
+            borderRadius: BorderRadius.zero,
             border: isSelected
                 ? Border.all(color: AppColors.primary, width: 2)
                 : null,
@@ -279,7 +279,7 @@ class ListScreenComponents {
       ),
       decoration: BoxDecoration(
         color: detail.color.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(AppSpacing.xs),
+        borderRadius: BorderRadius.zero,
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -313,7 +313,7 @@ class ListScreenComponents {
       ),
       decoration: BoxDecoration(
         color: status.color.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(AppSpacing.sm),
+        borderRadius: BorderRadius.zero,
       ),
       child: Text(
         status.label,

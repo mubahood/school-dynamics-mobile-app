@@ -88,9 +88,9 @@ class PendingTripsScreenState extends State<PendingTripsScreen> {
                                           decoration: const BoxDecoration(
                                               color: Colors.white,
                                               borderRadius: BorderRadius.only(
-                                                  topLeft: Radius.circular(16),
+                                                  topLeft: Radius.zero,
                                                   topRight:
-                                                      Radius.circular(16))),
+                                                      Radius.zero)),
                                           child: Container(
                                             padding: const EdgeInsets.all(24),
                                             child: Column(
@@ -214,7 +214,7 @@ class PendingTripsScreenState extends State<PendingTripsScreen> {
                       onPressed: () {
                         Utils.toast2("Time to submit...");
                       },
-                      borderRadiusAll: 10,
+                      borderRadiusAll: 0,
                       child: FxText.titleLarge(
                         "SUBMIT ALL",
                         color: Colors.white,

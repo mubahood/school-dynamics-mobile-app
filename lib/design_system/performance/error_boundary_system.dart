@@ -549,7 +549,7 @@ class _DebugOverlayWidget extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               color: Colors.black54,
-              borderRadius: BorderRadius.circular(4),
+              borderRadius: BorderRadius.zero,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

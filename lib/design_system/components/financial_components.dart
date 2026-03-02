@@ -19,7 +19,7 @@ class FinancialScreenComponents {
       padding: EdgeInsets.zero,
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(AppSpacing.sm),
+        borderRadius: BorderRadius.zero,
         child: Padding(
           padding: const EdgeInsets.all(AppSpacing.md),
           child: Row(
@@ -121,7 +121,7 @@ class FinancialScreenComponents {
       ),
       decoration: BoxDecoration(
         color: status.color.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(AppSpacing.sm),
+        borderRadius: BorderRadius.zero,
         border: Border.all(
           color: status.color.withOpacity(0.3),
           width: 1,
@@ -211,7 +211,7 @@ class FinancialScreenComponents {
             decoration: BoxDecoration(
               color: (netChange >= 0 ? AppColors.success : AppColors.error)
                   .withOpacity(0.1),
-              borderRadius: BorderRadius.circular(AppSpacing.sm),
+              borderRadius: BorderRadius.zero,
             ),
             child: Row(
               children: [
@@ -248,7 +248,7 @@ class FinancialScreenComponents {
       padding: const EdgeInsets.all(AppSpacing.sm),
       decoration: BoxDecoration(
         color: color.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(AppSpacing.sm),
+        borderRadius: BorderRadius.zero,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -294,14 +294,14 @@ class FinancialScreenComponents {
           InkWell(
             onTap: onToggle,
             borderRadius: BorderRadius.vertical(
-              top: Radius.circular(AppSpacing.sm),
+              top: Radius.zero,
             ),
             child: Container(
               padding: const EdgeInsets.all(AppSpacing.md),
               decoration: BoxDecoration(
                 color: AppColors.surface,
                 borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(AppSpacing.sm),
+                  top: Radius.zero,
                 ),
               ),
               child: Row(
@@ -391,12 +391,12 @@ class FinancialScreenComponents {
   static Widget _buildPaymentActionButton(PaymentAction action) {
     return InkWell(
       onTap: action.onTap,
-      borderRadius: BorderRadius.circular(AppSpacing.sm),
+      borderRadius: BorderRadius.zero,
       child: Container(
         padding: const EdgeInsets.all(AppSpacing.md),
         decoration: BoxDecoration(
           color: action.color.withOpacity(0.1),
-          borderRadius: BorderRadius.circular(AppSpacing.sm),
+          borderRadius: BorderRadius.zero,
           border: Border.all(
             color: action.color.withOpacity(0.3),
             width: 1,

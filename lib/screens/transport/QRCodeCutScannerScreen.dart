@@ -60,7 +60,7 @@ class _QRCodeCutScannerScreenState extends State<QRCodeCutScannerScreen> {
                         await controller?.toggleFlash();
                         setState(() {});
                       },
-                      borderRadiusAll: 100,
+                      borderRadiusAll: 0,
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: FutureBuilder<bool?>(
                         future: controller?.getFlashStatus(),
@@ -79,7 +79,7 @@ class _QRCodeCutScannerScreenState extends State<QRCodeCutScannerScreen> {
                         await controller?.flipCamera();
                         setState(() {});
                       },
-                      borderRadiusAll: 100,
+                      borderRadiusAll: 0,
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: FutureBuilder<CameraFacing?>(
                         future: controller?.getCameraInfo(),

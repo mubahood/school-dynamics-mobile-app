@@ -169,7 +169,7 @@ class _UserAccountCreateScreenState extends State<UserAccountCreateScreen> {
                           vertical: 10,
                         ),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.zero,
                         ),
                       ),
                       validator: FormBuilderValidators.compose([
@@ -334,7 +334,7 @@ class _UserAccountCreateScreenState extends State<UserAccountCreateScreen> {
                         backgroundColor: CustomTheme.primary,
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.zero,
                         ),
                       ),
                       onPressed: () {

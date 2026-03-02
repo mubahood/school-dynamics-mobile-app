@@ -76,7 +76,7 @@ class VisitorsBookScreenState extends State<VisitorsBookScreen> {
           title: searchMode
               ? FxContainer(
                   paddingAll: 0,
-                  borderRadiusAll: 10,
+                  borderRadiusAll: 0,
                   color: Colors.white,
                   child: TextField(
                     onChanged: (value) {
@@ -178,7 +178,7 @@ class VisitorsBookScreenState extends State<VisitorsBookScreen> {
                                   ),
                                   FxContainer(
                                     paddingAll: 5,
-                                    borderRadiusAll: 10,
+                                    borderRadiusAll: 0,
                                     child: roundedImage(
                                         Utils.getImg(m.signature_src), 8, 8),
                                   ),
@@ -212,7 +212,7 @@ class VisitorsBookScreenState extends State<VisitorsBookScreen> {
                                                   left: 8,
                                                   right: 8,
                                                 ),
-                                                borderRadiusAll: 50,
+                                                borderRadiusAll: 0,
                                                 child: FxText.bodySmall(
                                                   m.isOut()
                                                       ? 'CHECKED OUT'
@@ -278,8 +278,8 @@ class VisitorsBookScreenState extends State<VisitorsBookScreen> {
               decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16))),
+                      topLeft: Radius.zero,
+                      topRight: Radius.zero)),
               child: Container(
                 padding: const EdgeInsets.only(
                   left: 15,
@@ -313,7 +313,7 @@ class VisitorsBookScreenState extends State<VisitorsBookScreen> {
                           Center(
                             child: FxContainer(
                               paddingAll: 5,
-                              borderRadiusAll: 10,
+                              borderRadiusAll: 0,
                               child: roundedImage(
                                   Utils.getImg(m.signature_src), 6, 6),
                             ),

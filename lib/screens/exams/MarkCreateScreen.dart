@@ -384,7 +384,7 @@ class MarkCreateScreenState extends State<MarkCreateScreen> {
                   ? FxContainer(
                       padding: const EdgeInsets.all(10),
                       margin: const EdgeInsets.only(bottom: 10),
-                      borderRadiusAll: 10,
+                      borderRadiusAll: 0,
                       color: Colors.red.shade100,
                       child: FxText.bodyMedium(
                         error_message,
@@ -408,7 +408,7 @@ class MarkCreateScreenState extends State<MarkCreateScreen> {
                       do_submit();
                     },
                     padding: const EdgeInsets.fromLTRB(15, 20, 15, 20),
-                    borderRadiusAll: 10,
+                    borderRadiusAll: 0,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -458,8 +458,8 @@ class MarkCreateScreenState extends State<MarkCreateScreen> {
               decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16))),
+                      topLeft: Radius.zero,
+                      topRight: Radius.zero)),
               child: Container(
                 padding: const EdgeInsets.only(
                   left: 15,

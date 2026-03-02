@@ -154,7 +154,7 @@ class TheologyMarksScreenState extends State<TheologyMarksScreen> {
           title: searchMode
               ? FxContainer(
                   paddingAll: 0,
-                  borderRadiusAll: 10,
+                  borderRadiusAll: 0,
                   margin: const EdgeInsets.only(
                     right: 5,
                     bottom: 2,

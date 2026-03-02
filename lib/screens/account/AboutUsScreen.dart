@@ -99,7 +99,7 @@ class AboutUsScreenState extends State<AboutUsScreen> {
               FxButton.outlined(
                 backgroundColor: Colors.white,
                 borderColor: Colors.white,
-                borderRadius: BorderRadius.circular(4),
+                borderRadius: BorderRadius.zero,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                 onPressed: () {

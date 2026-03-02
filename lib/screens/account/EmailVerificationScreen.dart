@@ -151,7 +151,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                         backgroundColor: CustomTheme.primary,
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.zero,
                         ),
                       ),
                       onPressed: () {

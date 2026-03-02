@@ -410,7 +410,7 @@ class StudentCreateScreenState extends State<StudentCreateScreen>
                                                 ),
                                                 border: OutlineInputBorder(
                                                   borderRadius:
-                                                      BorderRadius.circular(8),
+                                                      BorderRadius.zero,
                                                 ),
                                               ),
                                               validator: FormBuilderValidators

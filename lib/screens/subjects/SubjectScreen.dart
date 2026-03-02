@@ -236,10 +236,10 @@ class _CourseTasksScreenState extends State<SubjectScreen> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(MySize.size16),
-                  topRight: Radius.circular(MySize.size16),
-                  bottomLeft: Radius.circular(MySize.size16),
-                  bottomRight: Radius.circular(MySize.size16),
+                  topLeft: Radius.zero,
+                  topRight: Radius.zero,
+                  bottomLeft: Radius.zero,
+                  bottomRight: Radius.zero,
                 ),
               ),
               child: Container(

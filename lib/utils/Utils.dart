@@ -29,12 +29,13 @@ import 'package:url_launcher/url_launcher.dart';
 import '../models/EnterpriseModel.dart';
 import '../models/ExamModel.dart';
 import '../models/LoggedInUserModel.dart';
+import '../design_system/colors/app_colors.dart';
 import '../theme/app_theme.dart';
 import 'AppConfig.dart';
 
 class Utils {
-  static Future<void> confirmDialog(
-      BuildContext context,String title, String message, Function onPositiveClick,
+  static Future<void> confirmDialog(BuildContext context, String title,
+      String message, Function onPositiveClick,
       {String positive_text = "Confirm",
       String negative_text = "Cancel"}) async {
     await showDialog<void>(
@@ -64,7 +65,7 @@ class Utils {
                                   onPositiveClick();
                                   Navigator.pop(context);
                                 },
-                                borderRadiusAll: 4,
+                                borderRadiusAll: 0,
                                 elevation: 0,
                                 child: FxText.bodySmall(positive_text,
                                     letterSpacing: 0.3, color: Colors.white)),
@@ -75,7 +76,7 @@ class Utils {
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
-                                borderRadiusAll: 4,
+                                borderRadiusAll: 0,
                                 elevation: 0,
                                 child: FxText.bodySmall(negative_text,
                                     letterSpacing: 0.3, color: Colors.red)),
@@ -212,7 +213,6 @@ class Utils {
   }
 
   static Future<void> initOneSignal(LoggedInUserModel u) async {
-
     //await Firebase.initializeApp();
     /*OneSignal.shared.setAppId(AppConfig.ONESIGNAL_APP_ID);
 
@@ -287,7 +287,8 @@ class Utils {
     return yes;
   }
 
-  static Future<dynamic> http_post(String path, Map<String, dynamic> body) async {
+  static Future<dynamic> http_post(
+      String path, Map<String, dynamic> body) async {
     bool isOnline = await Utils.is_connected();
     if (!isOnline) {
       return {
@@ -299,7 +300,7 @@ class Utils {
     dynamic response;
     var dio = Dio();
 
-   /* if (!kIsWeb) {
+    /* if (!kIsWeb) {
       (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
           (HttpClient client) {
         client.badCertificateCallback =
@@ -424,7 +425,8 @@ class Utils {
     return;
   }
 
-  static Future<dynamic> http_get(String path, Map<String, dynamic> body) async {
+  static Future<dynamic> http_get(
+      String path, Map<String, dynamic> body) async {
     var client = http.Client();
     String token = await Utils.getToken();
 
@@ -455,7 +457,7 @@ class Utils {
     dioPackage.Response response;
     var dio = Dio();
 
-   /* print("feting data...");
+    /* print("feting data...");
     print(AppConfig.API_BASE_URL + "/${path}");*/
 
     if (!kIsWeb) {
@@ -550,6 +552,8 @@ class Utils {
         CustomTheme.primary =
             Color(int.parse(ent.color.replaceAll("#", "0xff")));
         CustomTheme.primaryDark = CustomTheme.primary;
+        // Propagate enterprise color to the design system
+        AppColors.updatePrimaryColors(newPrimary: CustomTheme.primary);
       }
     } catch (e) {
       print("Error :===>  $e");
@@ -576,8 +580,8 @@ class Utils {
         systemNavigationBarContrastEnforced: true,
         systemStatusBarContrastEnforced: true,
         systemNavigationBarIconBrightness:
-        debugBrightnessOverride // For iOS (dark icons)
-    );
+            debugBrightnessOverride // For iOS (dark icons)
+        );
   }
 
 /*
@@ -690,7 +694,6 @@ class Utils {
     }
     return await InternetConnection().hasInternetAccess;
 
-
     //if is web
     if (AppConfig.API_BASE_URL.contains('10.0.2.2')) {
       return true;
@@ -716,15 +719,15 @@ class Utils {
         backgroundColor: color,
         margin: EdgeInsets.zero,
         duration:
-        isLong ? const Duration(seconds: 3) : const Duration(seconds: 5),
+            isLong ? const Duration(seconds: 3) : const Duration(seconds: 5),
         snackPosition: SnackPosition.BOTTOM,
         snackStyle: SnackStyle.GROUNDED);
   }
 
   static void toast2(String message,
       {Color background_color = Colors.green,
-        color = Colors.white,
-        bool is_long = false}) {
+      color = Colors.white,
+      bool is_long = false}) {
     if (Colors.green == color) {
       color = CustomTheme.primary;
     }
@@ -743,13 +746,14 @@ class Utils {
     Navigator.pushNamedAndRemoveUntil(context, "/HomeScreen", (r) => false);
   }
 
-  static Future<void> showConfirmDialog(BuildContext context,
-      Function onPositiveClick,
-      Function onNegativeClick, {
-        String message = "Please confirm this action",
-        String positive_text = "Confirm",
-        String negative_text = "Cancel",
-      }) async {
+  static Future<void> showConfirmDialog(
+    BuildContext context,
+    Function onPositiveClick,
+    Function onNegativeClick, {
+    String message = "Please confirm this action",
+    String positive_text = "Confirm",
+    String negative_text = "Cancel",
+  }) async {
     await showDialog<void>(
       context: context,
       builder: (BuildContext context) {
@@ -773,12 +777,12 @@ class Utils {
                           children: [
                             FxButton.block(
                                 padding:
-                                const EdgeInsets.fromLTRB(24, 24, 24, 24),
+                                    const EdgeInsets.fromLTRB(24, 24, 24, 24),
                                 onPressed: () {
                                   onPositiveClick();
                                   Navigator.pop(context);
                                 },
-                                borderRadiusAll: 4,
+                                borderRadiusAll: 0,
                                 elevation: 0,
                                 child: FxText.bodySmall(positive_text,
                                     letterSpacing: 0.3, color: Colors.white)),
@@ -790,7 +794,7 @@ class Utils {
                                   onNegativeClick();
                                   Navigator.pop(context);
                                 },
-                                borderRadiusAll: 4,
+                                borderRadiusAll: 0,
                                 elevation: 0,
                                 child: FxText.bodySmall(negative_text,
                                     letterSpacing: 0.3, color: Colors.red)),

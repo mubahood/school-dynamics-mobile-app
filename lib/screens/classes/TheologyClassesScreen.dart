@@ -153,7 +153,7 @@ class TheologyClassesScreenState extends State<TheologyClassesScreen> {
                                   },
                                   borderColor: CustomTheme.primary,
                                   bordered: true,
-                                  borderRadiusAll: 8,
+                                  borderRadiusAll: 0,
                                   color: isMultiPicker &&
                                           selectedItemsIds.contains(myClass.id)
                                       ? CustomTheme.primary.withAlpha(80)
@@ -180,7 +180,7 @@ class TheologyClassesScreenState extends State<TheologyClassesScreen> {
                                             width: 30,
                                             height: 30,
                                             paddingAll: 0,
-                                            borderRadiusAll: 100,
+                                            borderRadiusAll: 0,
                                             bordered: true,
                                             borderColor: Colors.green,
                                             child: Center(

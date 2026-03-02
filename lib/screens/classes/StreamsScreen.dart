@@ -72,7 +72,7 @@ class StreamsScreenState extends State<StreamsScreen> {
                     onPressed: () {
                       doRefresh();
                     },
-                    borderRadiusAll: 100,
+                    borderRadiusAll: 0,
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: FxText.bodySmall(
                       'Refresh',
@@ -113,7 +113,7 @@ class StreamsScreenState extends State<StreamsScreen> {
                             },
                             borderColor: CustomTheme.primary,
                             bordered: true,
-                            borderRadiusAll: 8,
+                            borderRadiusAll: 0,
                             color: CustomTheme.primary.withAlpha(40),
                             paddingAll: 10,
                             child: Column(

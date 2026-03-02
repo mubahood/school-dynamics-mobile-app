@@ -41,44 +41,44 @@ class _FullAppState extends State<FullApp> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
+      body: Column(
         children: [
           Expanded(
-            child: Column(
-              children: [
-                Expanded(
-                  child: TabBarView(
-                    physics: const NeverScrollableScrollPhysics(),
-                    controller: tabController,
-                    children: <Widget>[
-                      const SectionDashboard(),
-                      PostModelsScreen('Notice', true),
-                      PostModelsScreen('Event', true),
-                      PostModelsScreen('News', true),
-                      const AccountSection(),
-                    ],
-                  ),
+            child: TabBarView(
+              physics: const NeverScrollableScrollPhysics(),
+              controller: tabController,
+              children: <Widget>[
+                const SectionDashboard(),
+                PostModelsScreen('Notice', true),
+                PostModelsScreen('Event', true),
+                PostModelsScreen('News', true),
+                const AccountSection(),
+              ],
+            ),
+          ),
+          // Bottom nav — white bg, top border, no shadow
+          Container(
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              border: Border(
+                top: BorderSide(
+                  color: Color(0xFFE0E0E0),
+                  width: 1,
                 ),
-                AppCard.elevated(
-                  child: TabBar(
-                    dividerColor: Colors.transparent,
-                    labelPadding: const EdgeInsets.all(AppSpacing.xs),
-                    controller: tabController,
-                    indicator: BoxDecoration(
-                      color: AppColors.primary,
-                      borderRadius: AppSpacing.borderRadiusSM,
-                    ),
-                    indicatorSize: TabBarIndicatorSize.tab,
-                    tabs: [
-                      _buildNavItem('Home', FeatherIcons.home, 0),
-                      _buildNavItem(
-                          'Notices', Icons.chrome_reader_mode_outlined, 1),
-                      _buildNavItem('Events', FeatherIcons.calendar, 2),
-                      _buildNavItem('News', Icons.newspaper, 3),
-                      _buildNavItem('Account', FeatherIcons.user, 4),
-                    ],
-                  ),
-                )
+              ),
+            ),
+            child: TabBar(
+              dividerColor: Colors.transparent,
+              labelPadding: EdgeInsets.zero,
+              controller: tabController,
+              indicator: const BoxDecoration(),
+              indicatorSize: TabBarIndicatorSize.tab,
+              tabs: [
+                _buildNavItem('Home', FeatherIcons.home, 0),
+                _buildNavItem('Notices', Icons.chrome_reader_mode_outlined, 1),
+                _buildNavItem('Events', FeatherIcons.calendar, 2),
+                _buildNavItem('News', Icons.newspaper, 3),
+                _buildNavItem('Account', FeatherIcons.user, 4),
               ],
             ),
           ),
@@ -91,22 +91,23 @@ class _FullAppState extends State<FullApp> with SingleTickerProviderStateMixin {
 
   Widget _buildNavItem(String title, IconData icon, int index) {
     final isActive = tabController.index == index;
-    return Container(
-      padding: const EdgeInsets.all(AppSpacing.xs),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(
             icon,
-            size: AppSpacing.iconMD,
-            color: isActive ? AppColors.onPrimary : AppColors.textSecondary,
+            size: 22,
+            color: isActive ? AppColors.primary : const Color(0xFF757575),
           ),
-          AppSpacing.gapXS,
+          const SizedBox(height: 4),
           Text(
             title,
-            style: AppTypography.bodySmall.copyWith(
-              color: isActive ? AppColors.onPrimary : AppColors.textSecondary,
+            style: TextStyle(
+              fontSize: 10,
               fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
+              color: isActive ? AppColors.primary : const Color(0xFF757575),
             ),
           ),
         ],
