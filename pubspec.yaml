@@ -1,7 +1,7 @@
 name: schooldynamics
 description: A new Flutter project.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-version: 3.0.25+25
+version: 3.0.28+28
 
 environment:
   sdk: '>=3.1.2 <4.0.0'
@@ -23,6 +23,8 @@ dependencies:
   url_launcher: ^6.3.1
 #  flutter_native_splash: ^2.4.4
   image_picker: ^1.1.2
+  file_picker: ^8.0.0
+  flutter_image_compress: ^2.3.0
   shimmer: ^3.0.0
   intl: ^0.20.1
   flutx: ^0.2.0-rc.4

@@ -5,7 +5,7 @@ import '../RespondModel.dart';
 
 class Participant {
   static String end_point = "participants";
-  static String tableName = "participants_1";
+  static String tableName = "participants_2";
   int id = 0;
   String created_at = "";
   String updated_at = "";
@@ -26,6 +26,8 @@ class Participant {
   String is_present = "";
   String session_id = "";
   String session_text = "";
+  String type = "";
+  String title = "";
   String is_done = "";
   String avatar = "";
 
@@ -33,16 +35,36 @@ class Participant {
     return is_present.toLowerCase() == '1';
   }
 
-  getDisplayText() {
-    if (subject_text.length > 2) {
-      String descr = subject_text;
-      if (academic_class_text.length > 2) {
-        descr = "Class: $academic_class_text, Subject: $descr";
-      }
-      return descr;
-    } else {
-      return service_text;
+  /// Returns a human-readable description of the attendance session.
+  String getDisplayText() {
+    // Prefer the session title stored on the record (most descriptive).
+    if (title.isNotEmpty) {
+      // The title is stored as e.g. "CLASS_ATTENDANCE, SECULAR_STREAM - P.2 - 2026 - RED".
+      // Strip the leading type prefix so the UI shows only the class/stream part.
+      final String cleaned = title
+          .replaceFirst(RegExp(r'^[A-Z_]+,\s*'), '')
+          .trim();
+      return cleaned.isNotEmpty ? cleaned : _formatType();
     }
+    // Fall back to subject or service if available.
+    if (subject_text.length > 2) {
+      return academic_class_text.length > 2
+          ? '$academic_class_text · $subject_text'
+          : subject_text;
+    }
+    if (service_text.length > 2) return service_text;
+    // Last resort: format the type enum.
+    return _formatType();
+  }
+
+  String _formatType() {
+    if (type.isEmpty) return session_text.isNotEmpty ? session_text : 'Attendance';
+    return type
+        .split('_')
+        .map((w) => w.isEmpty
+            ? ''
+            : '${w[0].toUpperCase()}${w.substring(1).toLowerCase()}')
+        .join(' ');
   }
 
   static fromJson(dynamic m) {
@@ -71,6 +93,8 @@ class Participant {
     obj.is_present = Utils.to_str(m['is_present'], '');
     obj.session_id = Utils.to_str(m['session_id'], '');
     obj.session_text = Utils.to_str(m['session_text'], '');
+    obj.type = Utils.to_str(m['type'], '');
+    obj.title = Utils.to_str(m['title'], '');
     obj.is_done = Utils.to_str(m['is_done'], '');
     obj.avatar = Utils.to_str(m['avatar'], '');
 
@@ -200,6 +224,8 @@ class Participant {
       'is_present': is_present,
       'session_id': session_id,
       'session_text': session_text,
+      'type': type,
+      'title': title,
       'is_done': is_done,
       'avatar': avatar,
     };
@@ -233,6 +259,8 @@ class Participant {
         ",is_present TEXT"
         ",session_id TEXT"
         ",session_text TEXT"
+        ",type TEXT"
+        ",title TEXT"
         ",is_done TEXT"
         ",avatar TEXT"
         ")";

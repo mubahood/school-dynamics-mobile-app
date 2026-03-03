@@ -311,6 +311,9 @@ class Utils {
 
     var da = dioPackage.FormData.fromMap(body); //.fromMap();
 
+    print("${AppConfig.API_BASE_URL}/$path");
+    print(body.toString());
+
     try {
       String token = await Utils.getToken();
       response = await dio.post("${AppConfig.API_BASE_URL}/$path",
@@ -324,9 +327,9 @@ class Utils {
               "accept": "application/json",
             },
           ));
-      /*Utils.log("=========success==========");
+      Utils.log("=========success==========");
       Utils.log(response.data.toString());
-      Utils.log("===========================");*/
+      Utils.log("===========================");
       return response.data;
     } on DioError catch (e) {
       Utils.log("==========failed===========");
@@ -536,12 +539,14 @@ class Utils {
 
     return SystemUiOverlayStyle(
       statusBarColor: CustomTheme.primary,
-      statusBarIconBrightness: Brightness.light,
-      statusBarBrightness: Brightness.dark,
+      statusBarIconBrightness: Brightness.light,   // white icons on Android
+      statusBarBrightness: Brightness.dark,        // white icons on iOS
       systemNavigationBarColor: CustomTheme.primary,
       systemNavigationBarDividerColor: CustomTheme.primary,
-      systemNavigationBarContrastEnforced: true,
-      systemStatusBarContrastEnforced: true, // For iOS (dark icons)
+      systemNavigationBarIconBrightness: Brightness.light,
+      // false = do NOT let the OS enforce its own contrast; we own the colours.
+      systemNavigationBarContrastEnforced: false,
+      systemStatusBarContrastEnforced: false,
     );
   }
 

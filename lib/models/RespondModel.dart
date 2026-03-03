@@ -7,6 +7,7 @@ import '../utils/Utils.dart';
 class RespondModel {
   dynamic raw;
   int code = 0;
+  String rawCode = '';
   String message =
       "Failed to connect to internet. Check your connection and try again";
   dynamic data;
@@ -17,6 +18,7 @@ class RespondModel {
     }
     if (raw.runtimeType.toString() == '_JsonMap') {
       if (raw['code'] != null) {
+        rawCode = raw['code'].toString();
         code = Utils.int_parse(raw['code']);
       }
       data = raw['data'];
@@ -42,10 +44,12 @@ class RespondModel {
 
 
     if (resp['code'] != null) {
+      rawCode = resp['code'].toString();
       code = Utils.int_parse(resp['code'].toString());
       message = resp['message'].toString();
       data = resp['data'];
     } else if (resp['message'] != null) {
+      rawCode = resp['code']?.toString() ?? '';
       code = Utils.int_parse(resp['code'].toString());
       message = resp['message'].toString();
       data = resp['data'];

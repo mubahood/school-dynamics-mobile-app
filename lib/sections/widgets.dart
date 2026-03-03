@@ -525,91 +525,104 @@ Widget userWidget3(UserModel u, context, {String task_picker = ""}) {
 }
 
 Widget userWidget(UserModel u, context, {String task_picker = ""}) {
-  return Container(
-    margin: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.md, vertical: AppSpacing.xs),
-    child: AppCard.elevated(
-      onTap: () {
-        if (task_picker == 'task_picker') {
-          Navigator.pop(context, u);
-        } else {
-          Get.to(() => StudentScreen(data: u));
-        }
-      },
-      padding: AppSpacing.allMD,
+  final bool isActive = u.status == '1';
+  return InkWell(
+    onTap: () {
+      if (task_picker == 'task_picker') {
+        Navigator.pop(context, u);
+      } else {
+        Get.to(() => StudentScreen(data: u));
+      }
+    },
+    child: Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      decoration: const BoxDecoration(
+        border: Border(
+            bottom: BorderSide(color: AppColors.border, width: 0.8)),
+      ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Avatar with enhanced styling
+          // Square avatar
           Container(
-            width: AppSpacing.iconXL * 1.5,
-            height: AppSpacing.iconXL * 1.5,
+            width: 46,
+            height: 46,
             decoration: BoxDecoration(
-              borderRadius: AppSpacing.borderRadiusLG,
               border: Border.all(
-                color: AppColors.primaryLight.withOpacity(0.3),
-                width: 2,
-              ),
+                  color: AppColors.primary.withValues(alpha: 0.2),
+                  width: 1.5),
             ),
-            child: ClipRRect(
-              borderRadius: AppSpacing.borderRadiusLG,
-              child: roundedImage(u.avatar.toString(), 4.5, 4.5, radius: 0),
-            ),
+            child: roundedImage(u.avatar.toString(), 8, 8, radius: 0),
           ),
-          AppSpacing.hGapMD,
+          const SizedBox(width: 12),
+          // Name + class + sex
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Student name with design system typography
                 Text(
-                  u.name.toUpperCase(),
-                  style: AppTypography.titleMedium.copyWith(
+                  u.name,
+                  style: AppTypography.titleSmall.copyWith(
                     fontWeight: FontWeight.w700,
                     color: AppColors.textPrimary,
                   ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
-                AppSpacing.gapSM,
-                // Class information with enhanced styling
+                const SizedBox(height: 3),
                 Row(
                   children: [
-                    Text(
-                      'CLASS: ',
-                      style: AppTypography.bodyMedium.copyWith(
-                        color: AppColors.textSecondary,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: AppSpacing.sm,
-                        vertical: AppSpacing.xs,
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppColors.primaryLight.withOpacity(0.1),
-                        borderRadius: AppSpacing.borderRadiusSM,
-                      ),
-                      child: Text(
-                        u.current_class_text.toUpperCase(),
+                    if (u.current_class_text.isNotEmpty) ...[
+                      Text(
+                        u.current_class_text,
                         style: AppTypography.bodySmall.copyWith(
                           color: AppColors.primary,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                    ),
+                      if (u.sex.isNotEmpty) ...[
+                        const SizedBox(width: 5),
+                        Container(
+                          width: 3,
+                          height: 3,
+                          decoration: const BoxDecoration(
+                            color: AppColors.textSecondary,
+                            shape: BoxShape.circle,
+                          ),
+                        ),
+                        const SizedBox(width: 5),
+                      ],
+                    ],
+                    if (u.sex.isNotEmpty)
+                      Text(
+                        u.sex,
+                        style: AppTypography.bodySmall.copyWith(
+                          color: AppColors.textSecondary,
+                        ),
+                      ),
                   ],
                 ),
-                AppSpacing.gapSM,
               ],
             ),
           ),
-          // Arrow indicator
-          Icon(
-            Icons.arrow_forward_ios,
-            size: AppSpacing.iconSM,
-            color: AppColors.textSecondary,
+          const SizedBox(width: 8),
+          // Active / Pending badge
+          Container(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+            decoration: BoxDecoration(
+              color: isActive
+                  ? AppColors.successLight
+                  : AppColors.warningLight,
+              borderRadius: BorderRadius.circular(3),
+            ),
+            child: Text(
+              isActive ? 'Active' : 'Pending',
+              style: AppTypography.bodySmall.copyWith(
+                color: isActive ? AppColors.success : AppColors.warning,
+                fontWeight: FontWeight.w600,
+                fontSize: 10,
+              ),
+            ),
           ),
         ],
       ),

@@ -5,10 +5,12 @@ import 'package:get/get.dart';
 import 'package:schooldynamics/screens/sessions/SessionLocalScreen.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 
+import '../../models/LoggedInUserModel.dart';
 import '../../models/RollCall/Participant.dart';
+import '../../models/RespondModel.dart';
 import '../../models/SessionLocal.dart';
+import '../../design_system/design_system.dart';
 import '../../sections/widgets.dart';
-import '../../theme/custom_theme.dart';
 import 'SessionCreateNewScreen.dart';
 
 //AttendanceScreen
@@ -20,39 +22,63 @@ class AttendanceScreen extends StatefulWidget {
 }
 
 class AttendanceScreenState extends State<AttendanceScreen> {
-  Future<void> submit_form() async {
-    init();
-    return;
-  }
+  LoggedInUserModel loggedInUser = LoggedInUserModel();
+  List<SessionLocal> sessions = [];
+  List<Participant> participants = [];
 
-  String error_message = "";
-  bool is_loading = false;
+  // Summary data
+  String termText = '';
+  int summaryTotal = 0;
+  int summaryPresent = 0;
+  int summaryAbsent = 0;
+  List<dynamic> summaryChildren = [];
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     init();
   }
 
-  List<SessionLocal> sessions = [];
+  Future<void> init() async {
+    loggedInUser = await LoggedInUserModel.getLoggedInUser();
+    sessions = await SessionLocal.getItems();
+    setState(() {});
+
+    // Load summary from API
+    RespondModel summResp = RespondModel(
+        await Utils.http_get('attendance-summary', {}));
+    if (summResp.code == 1 && summResp.data != null) {
+      final d = summResp.data;
+      termText = d['term_text']?.toString() ?? '';
+      summaryTotal = Utils.int_parse(d['total']);
+      summaryPresent = Utils.int_parse(d['present']);
+      summaryAbsent = Utils.int_parse(d['absent']);
+      summaryChildren = (d['children'] is List) ? d['children'] : [];
+    }
+
+    participants = await Participant.get_items();
+    setState(() {});
+  }
+
+  bool get _isParent =>
+      loggedInUser.isRole('parent') || loggedInUser.user_type == 'parent';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          await Get.to(() => const SessionCreateNewScreen());
-          await init();
-          setState(() {
-          });
-          // submit_form();
-        },
-        backgroundColor: CustomTheme.primary,
-        child: const Icon(FeatherIcons.plus),
-      ),
+      floatingActionButton: _isParent
+          ? null
+          : FloatingActionButton(
+              onPressed: () async {
+                await Get.to(() => const SessionCreateNewScreen());
+                await init();
+                setState(() {});
+              },
+              backgroundColor: AppColors.primary,
+              child: const Icon(FeatherIcons.plus),
+            ),
       appBar: AppBar(
           actions: [
             IconButton(
@@ -62,12 +88,11 @@ class AttendanceScreenState extends State<AttendanceScreen> {
               },
             )
           ],
-          backgroundColor: CustomTheme.primary,
+          backgroundColor: AppColors.primary,
           titleSpacing: 0,
           elevation: 0,
           iconTheme: const IconThemeData(color: Colors.white),
           automaticallyImplyLeading: true,
-          // remove back button in appbar.
           title: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,10 +113,11 @@ class AttendanceScreenState extends State<AttendanceScreen> {
         onRefresh: () async {
           await init();
         },
-        color: CustomTheme.primary,
+        color: AppColors.primary,
         backgroundColor: Colors.white,
         child: Column(
           children: [
+            // ── Pending uploads banner ─────────────────────────────────
             sessions.isNotEmpty
                 ? InkWell(
                     onTap: () async {
@@ -121,6 +147,11 @@ class AttendanceScreenState extends State<AttendanceScreen> {
                     ),
                   )
                 : const SizedBox(),
+
+            // ── Summary card ───────────────────────────────────────────
+            if (summaryTotal > 0) _buildSummaryCard(),
+
+            // ── Records list ───────────────────────────────────────────
             Expanded(
               child: CustomScrollView(
                 slivers: [
@@ -137,19 +168,13 @@ class AttendanceScreenState extends State<AttendanceScreen> {
                           paddingAll: 0,
                           child: Column(
                             children: [
-                              const SizedBox(
-                                height: 10,
-                              ),
+                              const SizedBox(height: 10),
                               Flex(
                                 direction: Axis.horizontal,
                                 children: [
-                                  const SizedBox(
-                                    width: 15,
-                                  ),
+                                  const SizedBox(width: 15),
                                   roundedImage(m.avatar.toString(), 8, 8),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
+                                  const SizedBox(width: 10),
                                   Expanded(
                                     child: Column(
                                       mainAxisAlignment:
@@ -193,19 +218,15 @@ class AttendanceScreenState extends State<AttendanceScreen> {
                                       ],
                                     ),
                                   ),
-                                  const SizedBox(
-                                    width: 10,
-                                  )
+                                  const SizedBox(width: 10),
                                 ],
                               ),
-                              const SizedBox(
-                                height: 10,
-                              )
+                              const SizedBox(height: 10),
                             ],
                           ),
                         );
                       },
-                      childCount: participants.length, // 1000 list items
+                      childCount: participants.length,
                     ),
                   )
                 ],
@@ -217,14 +238,147 @@ class AttendanceScreenState extends State<AttendanceScreen> {
     );
   }
 
-  List<Participant> participants = [];
+  Widget _buildSummaryCard() {
+    final double presentPct =
+        summaryTotal > 0 ? summaryPresent / summaryTotal : 0;
 
-  Future<void> init() async {
-    sessions = await SessionLocal.getItems();
-    setState(() {});
-    participants = await Participant.get_items();
+    return Container(
+      margin: const EdgeInsets.fromLTRB(12, 10, 12, 4),
+      decoration: BoxDecoration(
+        color: AppColors.primary.withAlpha(12),
+        border: Border.all(color: AppColors.primary.withAlpha(60)),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Term label + attendance rate
+          Padding(
+            padding: const EdgeInsets.fromLTRB(12, 10, 12, 0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: FxText.titleSmall(
+                    termText.isNotEmpty ? termText : 'Active Term',
+                    fontWeight: 700,
+                    color: AppColors.primary,
+                  ),
+                ),
+                FxText.bodySmall(
+                  '${(presentPct * 100).toStringAsFixed(0)}% attendance',
+                  color: Colors.grey.shade600,
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 6),
+          // Progress bar
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(4),
+              child: LinearProgressIndicator(
+                value: presentPct,
+                minHeight: 6,
+                backgroundColor: Colors.red.shade100,
+                valueColor:
+                    AlwaysStoppedAnimation<Color>(Colors.green.shade600),
+              ),
+            ),
+          ),
+          const SizedBox(height: 8),
+          // Total / Present / Absent counters
+          Padding(
+            padding: const EdgeInsets.fromLTRB(12, 0, 12, 10),
+            child: Row(
+              children: [
+                _statChip('Total', summaryTotal, Colors.grey.shade700),
+                const SizedBox(width: 8),
+                _statChip('Present', summaryPresent, Colors.green.shade700),
+                const SizedBox(width: 8),
+                _statChip('Absent', summaryAbsent, Colors.red.shade700),
+              ],
+            ),
+          ),
+          // Per-child breakdown (parents only)
+          if (_isParent && summaryChildren.isNotEmpty) ...[
+            Divider(
+                height: 1,
+                color: AppColors.primary.withAlpha(40)),
+            ...summaryChildren.map((child) {
+              final int ct = Utils.int_parse(child['total']);
+              final int cp = Utils.int_parse(child['present']);
+              final double cpct = ct > 0 ? cp / ct : 0;
+              return Padding(
+                padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
+                child: Row(
+                  children: [
+                    roundedImage(child['avatar']?.toString() ?? '', 10, 10),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          FxText.titleSmall(
+                            child['name']?.toString() ?? '',
+                            fontWeight: 700,
+                            maxLines: 1,
+                            color: Colors.grey.shade800,
+                          ),
+                          const SizedBox(height: 3),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(3),
+                            child: LinearProgressIndicator(
+                              value: cpct,
+                              minHeight: 4,
+                              backgroundColor: Colors.red.shade100,
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                  Colors.green.shade600),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    FxText.bodySmall(
+                      '$cp/$ct',
+                      fontWeight: 700,
+                      color: Colors.grey.shade700,
+                    ),
+                  ],
+                ),
+              );
+            }),
+          ],
+        ],
+      ),
+    );
+  }
 
-    setState(() {});
+  Widget _statChip(String label, int value, Color color) {
+    return Expanded(
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 6),
+        decoration: BoxDecoration(
+          color: color.withAlpha(20),
+          borderRadius: BorderRadius.circular(6),
+        ),
+        child: Column(
+          children: [
+            FxText.titleMedium(
+              '$value',
+              fontWeight: 800,
+              color: color,
+            ),
+            FxText.bodySmall(
+              label,
+              color: color,
+              fontSize: 10,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   void _showBottomSheet(Participant m) {
@@ -277,34 +431,22 @@ class AttendanceScreenState extends State<AttendanceScreen> {
                               radius: 100,
                             ),
                           ),
-                          const SizedBox(
-                            height: 5,
-                          ),
+                          const SizedBox(height: 5),
                           FxText.titleLarge(
                             m.academic_class_text,
                             fontWeight: 800,
                             color: Colors.black,
                           ),
-                          const SizedBox(
-                            height: 5,
-                          ),
+                          const SizedBox(height: 5),
                           const Divider(),
-                          const SizedBox(
-                            height: 5,
-                          ),
+                          const SizedBox(height: 5),
                           titleValueWidget('Date', Utils.to_date(m.created_at)),
-                          const SizedBox(
-                            height: 5,
-                          ),
+                          const SizedBox(height: 5),
                           titleValueWidget('Roll Call', m.getDisplayText()),
-                          const SizedBox(
-                            height: 5,
-                          ),
+                          const SizedBox(height: 5),
                           titleValueWidget(
                               'Status', m.p() ? 'Present' : 'Absent'),
-                          const SizedBox(
-                            height: 5,
-                          ),
+                          const SizedBox(height: 5),
                           titleValueWidget('Details', m.session_text),
                         ],
                       ),

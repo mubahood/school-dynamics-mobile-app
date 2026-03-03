@@ -151,11 +151,17 @@ class AppTheme {
     //  FlutX.changeTheme(theme);
     AppTheme.resetFont();
     FxAppTheme.changeTheme(lightTheme);
+    // Apply globally — every screen inherits this unless explicitly overridden.
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-        statusBarColor: CustomTheme.primary,
-        statusBarIconBrightness: Brightness.light,
-        systemNavigationBarIconBrightness: Brightness.light,
-        systemNavigationBarColor: CustomTheme.primary));
+      statusBarColor: CustomTheme.primary,
+      statusBarIconBrightness: Brightness.light,   // white icons (Android)
+      statusBarBrightness: Brightness.dark,        // white icons (iOS)
+      systemNavigationBarColor: CustomTheme.primary,
+      systemNavigationBarIconBrightness: Brightness.light,
+      systemNavigationBarDividerColor: CustomTheme.primary,
+      systemNavigationBarContrastEnforced: false,
+      systemStatusBarContrastEnforced: false,
+    ));
   }
 
   /* static init() {

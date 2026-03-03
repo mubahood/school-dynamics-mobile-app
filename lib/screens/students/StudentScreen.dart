@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:flutx/flutx.dart';
 import 'package:get/get.dart';
 import 'package:schooldynamics/models/LoggedInUserModel.dart';
 import 'package:schooldynamics/models/UserModel.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 
+import '../../design_system/design_system.dart';
 import '../../models/DisciplinaryRecordModel.dart';
+import '../../models/RespondModel.dart';
 import '../../models/RollCall/Participant.dart';
 import '../../models/StudentReportCard.dart';
+import '../../models/Transaction.dart';
 import '../../sections/widgets.dart';
-import '../../theme/app_theme.dart';
-import '../../theme/custom_theme.dart';
 import '../../utils/my_widgets.dart';
 import 'PdfViewer.dart';
 import 'StudentEditBioScreen.dart';
@@ -23,925 +23,765 @@ class StudentScreen extends StatefulWidget {
   final dynamic data;
 
   @override
-  _CourseTasksScreenState createState() => _CourseTasksScreenState();
+  State<StudentScreen> createState() => _StudentScreenState();
 }
 
-class _CourseTasksScreenState extends State<StudentScreen> {
-  late ThemeData themeData;
-
-  _CourseTasksScreenState();
-
-  late Future<dynamic> futureInit;
-
-  LoggedInUserModel u = LoggedInUserModel();
-
-  Future<dynamic> _my_init() async {
-    futureInit = my_init();
-    u = await LoggedInUserModel.getLoggedInUser();
-    if (u.user_type == 'employee') {
-      showFloat = true;
-    } else {
-      showFloat = false;
-    }
-
-    setState(() {});
-    return "done";
-  }
-
+class _StudentScreenState extends State<StudentScreen> {
   UserModel item = UserModel();
+  LoggedInUserModel loggedInUser = LoggedInUserModel();
+  bool showEditActions = false;
+  bool dataLoading = true;
 
-  Future<dynamic> my_init() async {
-    item = widget.data;
-    getAttendance();
-    setState(() {});
-    return "Done";
-  }
+  List<Participant> participants = [];
+  List<StudentReportCard> cards = [];
+  List<DisciplinaryRecordModel> disciplinaryRecords = [];
+  List<Transaction> transactions = [];
 
   @override
   void initState() {
-    _my_init();
+    super.initState();
+    _init();
   }
 
-  bool showFloat = false;
+  Future<void> _init() async {
+    item = widget.data;
+    loggedInUser = await LoggedInUserModel.getLoggedInUser();
+    showEditActions = loggedInUser.user_type == 'employee';
+    setState(() {});
+    await _loadTabData();
+  }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: !showFloat
-          ? null
-          : FloatingActionButton(
-              backgroundColor: CustomTheme.primary,
-              onPressed: () {
-                _my_init();
-              },
-              child: PopupMenuButton<int>(
-                  onSelected: (x) async {
-                    switch (x.toString()) {
-                      case '1':
-                        Get.to(() => StudentEditBioScreen(
-                              data: item,
-                            ));
-                        break;
-                      case '2':
-                        Get.to(() => StudentEditPhotoScreen(
-                              data: item,
-                            ));
-                        break;
+  Future<void> _loadTabData() async {
+    setState(() => dataLoading = true);
+    cards = await StudentReportCard.get_items(
+        where: " student_id = '${item.id}'");
+    disciplinaryRecords = await DisciplinaryRecordModel.get_items(
+        where: " administrator_id = '${item.id}'");
+    participants = await Participant.get_items(
+        where: " administrator_id = '${item.id}'");
+    RespondModel txResp = RespondModel(
+        await Utils.http_get('student-transactions', {'student_id': item.id}));
+    if (txResp.code == 1 && txResp.data != null) {
+      transactions = [];
+      for (var x in txResp.data) {
+        transactions.add(Transaction.fromJson(x));
+      }
+      transactions.sort((a, b) => b.id.compareTo(a.id));
+    }
+    setState(() => dataLoading = false);
+  }
 
-                      case '3':
-                        await
-                        Get.to(() => StudentEditGuardianScreen(
-                              data: item,
-                            ));
-                        setState(() {
-                          _my_init();
-                        });
-                        break;
-                    }
-                  },
-                  icon: const Icon(
-                    FeatherIcons.moreVertical,
-                    size: 25,
-                    color: Colors.white,
-                  ),
-                  itemBuilder: (context) => [
-                        PopupMenuItem(
-                          value: 1,
-                          child: Flex(
-                            direction: Axis.horizontal,
-                            children: [
-                              Icon(
-                                FeatherIcons.user,
-                                color: CustomTheme.primary,
-                        ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        Expanded(child: FxText.bodyLarge('Edit bio data')),
-                      ],
-                    ),
-                  ),
-                  PopupMenuItem(
-                    value: 2,
-                    child: Row(
-                      children: [
-                        Icon(
-                          FeatherIcons.camera,
-                          color: CustomTheme.primary,
-                        ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        FxText.bodyLarge('Update photo'),
-                      ],
-                    ),
-                  ),
-                  PopupMenuItem(
-                    value: 3,
-                    child: Row(
-                      children: [
-                        Icon(
-                          FeatherIcons.edit3,
-                          color: CustomTheme.primary,
-                        ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        FxText.bodyLarge('Edit guardian'),
-                      ],
-                    ),
-                  ),
-                  PopupMenuItem(
-                    value: 4,
-                    child: Row(
-                      children: [
-                        Icon(
-                          FeatherIcons.smile,
-                          color: Colors.green.shade700,
-                        ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        FxText.bodyLarge('Add good record'),
-                      ],
-                    ),
-                  ),
-                  PopupMenuItem(
-                    value: 9,
-                    child: Row(
-                      children: [
-                        Icon(
-                          FeatherIcons.frown,
-                          color: Colors.red.shade700,
-                        ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        FxText.bodyLarge('Report indiscipline'),
-                      ],
-                    ),
-                  ),
-                ]),
-      ),
-      appBar: AppBar(
-        backgroundColor: CustomTheme.primary,
-        titleSpacing: 0,
-        elevation: 0,
-        iconTheme: const IconThemeData(color: Colors.white),
-        automaticallyImplyLeading: true,
-        // remove back button in appbar.
+  // ── Helpers ──────────────────────────────────────────────────────────────
 
-        title: FxText.titleLarge(
-          item.name,
-          color: Colors.white,
+  Widget _sectionHeader(String title) => Padding(
+        padding: const EdgeInsets.fromLTRB(0, 18, 0, 6),
+        child: Row(
+          children: [
+            Container(
+              width: 3,
+              height: 14,
+              color: AppColors.primary,
+              margin: const EdgeInsets.only(right: 8),
+            ),
+            Text(
+              title.toUpperCase(),
+              style: AppTypography.bodySmall.copyWith(
+                fontWeight: FontWeight.w700,
+                color: AppColors.primary,
+                letterSpacing: 0.8,
+              ),
+            ),
+          ],
         ),
-      ),
-      body: DefaultTabController(
-        length: 4,
-        child: Scaffold(
-          appBar: AppBar(
-            elevation: 1,
-            backgroundColor: CustomTheme.primary,
-            toolbarHeight: 35,
-            automaticallyImplyLeading: false,
-            flexibleSpace: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                /*-------------- Build Tabs here ------------------*/
-                TabBar(
-                  padding: const EdgeInsets.only(bottom: 0),
-                  labelPadding:
-                      const EdgeInsets.only(bottom: 2, left: 8, right: 8),
-                  indicatorPadding: const EdgeInsets.all(0),
-                  labelColor: Colors.white,
-                  isScrollable: true,
-                  enableFeedback: true,
-                  indicator: const UnderlineTabIndicator(
-                      borderSide: BorderSide(color: Colors.white, width: 4)),
-                  tabs: [
-                    Tab(
-                        height: 30,
-                        child: FxText.titleSmall(
-                          "BIO".toUpperCase(),
-                          fontWeight: 600,
-                          color: Colors.white,
-                        )),
-                    Tab(
-                        height: 30,
-                        child: Container(
-                          child: FxText.titleMedium("Attendance".toUpperCase(),
-                              fontWeight: 600, color: Colors.white),
-                        )),
-                    Tab(
-                        height: 30,
-                        child: FxText.titleSmall("DISCIPLINARY".toUpperCase(),
-                            fontWeight: 600, color: Colors.white)),
-                    Tab(
-                        height: 30,
-                        child: FxText.titleSmall("REPORT CARDS".toUpperCase(),
-                            fontWeight: 600, color: Colors.white)),
-                  ],
-                )
-              ],
+      );
+
+  Widget _infoRow(String label, String value, {IconData? icon}) {
+    if (value.trim().isEmpty) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (icon != null) ...[
+            Icon(icon, size: 14, color: AppColors.textSecondary),
+            const SizedBox(width: 6),
+          ],
+          SizedBox(
+            width: 120,
+            child: Text(
+              label,
+              style: AppTypography.bodySmall.copyWith(
+                color: AppColors.textSecondary,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
-
-          /*--------------- Build Tab body here -------------------*/
-          body: TabBarView(
-            children: <Widget>[
-              FutureBuilder(
-                  future: futureInit,
-                  builder: (context, snapshot) {
-                    switch (snapshot.connectionState) {
-                      case ConnectionState.waiting:
-                        return myListLoaderWidget(context);
-                      default:
-                        return mainFragment();
-                    }
-                  }),
-              FutureBuilder(
-                  future: futureInit,
-                  builder: (context, snapshot) {
-                    switch (snapshot.connectionState) {
-                      case ConnectionState.waiting:
-                        return myListLoaderWidget(context);
-                      default:
-                        return feesFragment();
-                    }
-                  }),
-              FutureBuilder(
-                  future: futureInit,
-                  builder: (context, snapshot) {
-                    switch (snapshot.connectionState) {
-                      case ConnectionState.waiting:
-                        return myListLoaderWidget(context);
-                      default:
-                        return disciplineFragment();
-                    }
-                  }),
-              FutureBuilder(
-                  future: futureInit,
-                  builder: (context, snapshot) {
-                    switch (snapshot.connectionState) {
-                      case ConnectionState.waiting:
-                        return myListLoaderWidget(context);
-                      default:
-                        return cardsFragment();
-                    }
-                  }),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  mainFragment() {
-    return Container(
-      padding: const EdgeInsets.only(left: 15, right: 15),
-      child: ListView(
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 15,
+          Expanded(
+            child: Text(
+              value,
+              style: AppTypography.bodySmall.copyWith(
+                color: AppColors.textPrimary,
+                fontWeight: FontWeight.w600,
               ),
-              Flex(
-                direction: Axis.horizontal,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Column(
-                      children: [
-                        title_widget('BIO DATA'),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Container(
-                            child: titleValueWidget('NAME', item.name)),
-                        Container(
-                            child: titleValueWidget('SEX', item.sex)),
-                        Container(
-                            child: titleValueWidget('Date of birth',
-                                Utils.to_date_1(item.date_of_birth))),
-                        /*           Container(
-                        child: titleValueWidget(
-                            'religion', '${item.religion}')),
-                    Container(
-                        child: titleValueWidget(
-                            'nationality', '${item.nationality}')),*/
-                        Container(
-                            child: titleValueWidget(
-                                'Home address', item.home_address)),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  FxContainer(
-                    bordered: true,
-                    color: CustomTheme.primary.withAlpha(30),
-                    borderColor: CustomTheme.primary,
-                    paddingAll: 5,
-                    borderRadiusAll: 0,
-                    child: roundedImage(
-                      item.avatar.toString(),
-                      2.6,
-                      2,
-                      radius: 0,
-                    ),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Divider(),
-              titleValueWidget2(
-                  'SCHOOL PAY CODE', item.school_pay_payment_code),
-              const SizedBox(
-                height: 15,
-              ),
-              title_widget('Academics'),
-              titleValueWidget2('Current class', item.current_class_text),
-              titleValueWidget2('Current theology class',
-                  item.current_theology_class_id),
-              titleValueWidget2('STUDENT ID', item.user_id),
-              titleValueWidget2(
-                  'school pay CODE', item.school_pay_payment_code),
-              titleValueWidget2(
-                  'status', item.status == '1' ? 'Active' : 'Pending'),
-              titleValueWidget2(
-                  'registered', Utils.to_date_1(item.created_at)),
-              const SizedBox(
-                height: 10,
-              ),
-              title_widget('Guardian'),
-              titleValueWidget2("Father's name", item.father_name),
-              titleValueWidget2("mother's name", item.mother_name),
-              titleValueWidget2("guardian's contact", item.phone_number_1),
-              titleValueWidget2(
-                  "guArdian's contact 2", item.phone_number_2),
-              titleValueWidget2("Email address", item.email),
-              const SizedBox(
-                height: 100,
-              ),
-            ],
+            ),
           ),
         ],
       ),
     );
   }
 
-  List<Participant> participants = [];
-  List<StudentReportCard> cards = [];
-  List<DisciplinaryRecordModel> disciplinaryRecords = [];
+  // ── Profile header ────────────────────────────────────────────────────────
 
-  Future getAttendance() async {
-    setState(() {});
-    cards = await StudentReportCard.get_items(
-        where: ' student_id = \'${item.id}\'');
-
-    disciplinaryRecords = await DisciplinaryRecordModel.get_items(
-        where: ' administrator_id = \'${item.id}\'');
-
-    participants = await Participant.get_items(
-        where: ' administrator_id = \'${item.id}\'');
-
-    transactions_loading = false;
-    setState(() {});
-  }
-
-  bool transactions_loading = false;
-
-  cardsFragment() {
-    return transactions_loading
-        ? myListLoaderWidget(context)
-        : cards.isEmpty
-            ? emptyListWidget('No Report cards found.', () {
-                getAttendance();
-              })
-            : RefreshIndicator(
-                onRefresh: () async {
-                  await getAttendance();
-                },
-                color: CustomTheme.primary,
-                backgroundColor: Colors.white,
-                child: CustomScrollView(
-                  slivers: [
-                    SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        (BuildContext context, int index) {
-                          StudentReportCard m = cards[index];
-                          return FxContainer(
-                            onTap: () {
-                              // print(m.getPdf());
-                              // return;
-                              Get.to(() => PdfViewerScreen(
-                                  m.getPdf(), 'Termly Report Card'));
-                              //_disciplineBottomSheet(m);
-                            },
-                            paddingAll: 0,
-                            child: Column(
-                              children: [
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Flex(
-                                  direction: Axis.horizontal,
-                                  children: [
-                                    const SizedBox(
-                                      width: 15,
-                                    ),
-                                    roundedImage(m.vatar.toString(), 8, 8),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    Expanded(
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          FxText.titleMedium(
-                                            m.student_text,
-                                            maxLines: 1,
-                                            height: 1,
-                                            color: Colors.grey.shade800,
-                                            fontWeight: 800,
-                                          ),
-                                          FxText.bodySmall(
-                                              'CLASS: ${m.academic_class_text}'),
-                                          Row(
-                                            children: [
-                                              FxText(
-                                                  'DIVISION: '.toUpperCase()),
-                                              FxCard(
-                                                  color: CustomTheme.primary,
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                    top: 2,
-                                                    bottom: 4,
-                                                    left: 8,
-                                                    right: 8,
-                                                  ),
-                                                  borderRadiusAll: 0,
-                                                  child: FxText.bodySmall(
-                                                    m.grade,
-                                                    color: Colors.white,
-                                                    fontWeight: 900,
-                                                    height: 1,
-                                                    fontSize: 10,
-                                                  )),
-                                              const Spacer(),
-                                              FxText.bodySmall(
-                                                  Utils.to_date(m.created_at)),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    )
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                )
-                              ],
-                            ),
-                          );
-                        },
-                        childCount: cards.length, // 1000 list items
-                      ),
-                    )
-                  ],
-                ),
-              );
-  }
-
-  disciplineFragment() {
-    return transactions_loading
-        ? myListLoaderWidget(context)
-        : disciplinaryRecords.isEmpty
-            ? emptyListWidget('No Disciplinary Records.', () {
-                getAttendance();
-              })
-            : RefreshIndicator(
-                onRefresh: () async {
-                  await getAttendance();
-                },
-                color: CustomTheme.primary,
-                backgroundColor: Colors.white,
-                child: CustomScrollView(
-                  slivers: [
-                    SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        (BuildContext context, int index) {
-                          DisciplinaryRecordModel m =
-                              disciplinaryRecords[index];
-                          return FxContainer(
-                            onTap: () {
-                              _disciplineBottomSheet(m);
-                            },
-                            color: m.p()
-                                ? Colors.green.shade50
-                                : Colors.red.shade50,
-                            paddingAll: 0,
-                            child: Column(
-                              children: [
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Flex(
-                                  direction: Axis.horizontal,
-                                  children: [
-                                    const SizedBox(
-                                      width: 15,
-                                    ),
-                                    roundedImage(m.avatar.toString(), 8, 8),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    Expanded(
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          FxText.titleMedium(
-                                            m.administrator_text,
-                                            maxLines: 1,
-                                            height: 1,
-                                            color: Colors.grey.shade800,
-                                            fontWeight: 800,
-                                          ),
-                                          FxText.bodySmall(m.getDisplayText()),
-                                          Row(
-                                            children: [
-                                              FxCard(
-                                                  color: m.p()
-                                                      ? Colors.green.shade700
-                                                      : Colors.red.shade700,
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                    top: 2,
-                                                    bottom: 4,
-                                                    left: 8,
-                                                    right: 8,
-                                                  ),
-                                                  borderRadiusAll: 0,
-                                                  child: FxText.bodySmall(
-                                                    m.p()
-                                                        ? 'Good Record'
-                                                        : 'Indiscipline',
-                                                    color: Colors.white,
-                                                    fontWeight: 900,
-                                                    height: 1,
-                                                    fontSize: 10,
-                                                  )),
-                                              const Spacer(),
-                                              FxText.bodySmall(
-                                                  Utils.to_date(m.created_at)),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    )
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                )
-                              ],
-                            ),
-                          );
-                        },
-                        childCount:
-                            disciplinaryRecords.length, // 1000 list items
-                      ),
-                    )
-                  ],
-                ),
-              );
-  }
-
-  feesFragment() {
-    return transactions_loading
-        ? myListLoaderWidget(context)
-        : participants.isEmpty
-            ? emptyListWidget('No Attendance Record.', () {
-                getAttendance();
-              })
-            : RefreshIndicator(
-                onRefresh: () async {
-                  await getAttendance();
-                },
-                color: CustomTheme.primary,
-                backgroundColor: Colors.white,
-                child: CustomScrollView(
-                  slivers: [
-                    SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        (BuildContext context, int index) {
-                          Participant m = participants[index];
-                          return FxContainer(
-                            onTap: () {
-                              _showBottomSheet(m);
-                            },
-                            color: m.p()
-                                ? Colors.green.shade50
-                                : Colors.red.shade50,
-                            paddingAll: 0,
-                            child: Column(
-                              children: [
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Flex(
-                                  direction: Axis.horizontal,
-                                  children: [
-                                    const SizedBox(
-                                      width: 15,
-                                    ),
-                                    roundedImage(m.avatar.toString(), 8, 8),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    Expanded(
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          FxText.titleMedium(
-                                            m.administrator_text,
-                                            maxLines: 1,
-                                            height: 1,
-                                            color: Colors.grey.shade800,
-                                            fontWeight: 800,
-                                          ),
-                                          FxText.bodySmall(m.getDisplayText()),
-                                          Row(
-                                            children: [
-                                              FxCard(
-                                                  color: m.p()
-                                                      ? Colors.green.shade700
-                                                      : Colors.red.shade700,
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                    top: 2,
-                                                    bottom: 4,
-                                                    left: 8,
-                                                    right: 8,
-                                                  ),
-                                                  borderRadiusAll: 0,
-                                                  child: FxText.bodySmall(
-                                                    m.p()
-                                                        ? 'Present'
-                                                        : 'Absent',
-                                                    color: Colors.white,
-                                                    fontWeight: 900,
-                                                    height: 1,
-                                                    fontSize: 10,
-                                                  )),
-                                              const Spacer(),
-                                              FxText.bodySmall(
-                                                  Utils.to_date(m.created_at)),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    )
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                )
-                              ],
-                            ),
-                          );
-                        },
-                        childCount: participants.length, // 1000 list items
-                      ),
-                    )
-                  ],
-                ),
-              );
-  }
-
-  void _disciplineBottomSheet(DisciplinaryRecordModel m) {
-    showModalBottomSheet(
-        context: context,
-        builder: (BuildContext buildContext) {
-          return Container(
-            color: Colors.transparent,
+  Widget _profileHeader() {
+    final bool isActive = item.status == '1';
+    return Container(
+      color: AppColors.primary,
+      padding: const EdgeInsets.fromLTRB(20, 16, 20, 20),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // Photo
+          GestureDetector(
+            onTap: showEditActions
+                ? () async {
+                    await Get.to(
+                        () => StudentEditPhotoScreen(data: item));
+                    _init();
+                  }
+                : null,
             child: Container(
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.zero,
-                      topRight: Radius.zero)),
-              child: Container(
-                padding: const EdgeInsets.only(
-                  left: 15,
-                  right: 15,
-                  top: 15,
+              width: 72,
+              height: 72,
+              decoration: BoxDecoration(
+                border: Border.all(
+                    color: Colors.white.withValues(alpha: 0.5), width: 2),
+              ),
+              child: roundedImage(item.avatar.toString(), 5, 5, radius: 0),
+            ),
+          ),
+          const SizedBox(width: 16),
+          // Name + class + status
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  item.name,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 0.2,
+                  ),
+                  maxLines: 2,
                 ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        const Spacer(),
-                        IconButton(
-                          icon: const Icon(
-                            FeatherIcons.x,
-                            color: Colors.black,
-                            size: 30,
-                          ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                        )
-                      ],
+                const SizedBox(height: 4),
+                if (item.current_class_text.isNotEmpty)
+                  Text(
+                    item.current_class_text,
+                    style: TextStyle(
+                      color: Colors.white.withValues(alpha: 0.85),
+                      fontSize: 13,
+                      fontWeight: FontWeight.w500,
                     ),
-                    Expanded(
-                        child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Center(
-                            child: roundedImage(
-                              item.avatar.toString(),
-                              5,
-                              5,
-                              radius: 100,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          FxText.titleLarge(
-                            item.name,
-                            fontWeight: 800,
-                            color: Colors.black,
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          const Divider(),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          titleValueWidget('Date', Utils.to_date(m.created_at)),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          titleValueWidget('Title', m.getDisplayText()),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          titleValueWidget('Record Category',
-                              m.p() ? 'Good Record' : 'Indiscipline'),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          titleValueWidget('Details', m.description),
-                          const Divider(),
-                          titleValueWidget(
-                              'Head Teacher\'s Comment', m.hm_comment),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          titleValueWidget(
-                              'Class Teacher\'s Comment', m.teacher_comment),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          titleValueWidget(
-                              'Student\'s Comment', m.student_comment),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          titleValueWidget(
-                              'Parent\'s Comment', m.parent_comment),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                        ],
+                  ),
+                const SizedBox(height: 6),
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 3),
+                      decoration: BoxDecoration(
+                        color: isActive
+                            ? Colors.green.shade400
+                            : Colors.orange.shade400,
+                        borderRadius: BorderRadius.circular(3),
                       ),
-                    ))
+                      child: Text(
+                        isActive ? 'Active' : 'Pending',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                    if (item.sex.isNotEmpty) ...[
+                      const SizedBox(width: 8),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 3),
+                        decoration: BoxDecoration(
+                          color: Colors.white.withValues(alpha: 0.18),
+                          borderRadius: BorderRadius.circular(3),
+                        ),
+                        child: Text(
+                          item.sex,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 10,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ],
                   ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // ── BIO tab ───────────────────────────────────────────────────────────────
+
+  Widget _bioTab() {
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(16, 4, 16, 32),
+      children: [
+        _sectionHeader('Bio Data'),
+        _infoRow('Full name', item.name, icon: FeatherIcons.user),
+        _infoRow('Sex', item.sex, icon: FeatherIcons.users),
+        _infoRow('Date of birth', Utils.to_date_1(item.date_of_birth),
+            icon: FeatherIcons.calendar),
+        _infoRow('Home address', item.home_address,
+            icon: FeatherIcons.mapPin),
+
+        _sectionHeader('Academics'),
+        _infoRow('Student ID', item.user_id, icon: FeatherIcons.hash),
+        _infoRow('Current class', item.current_class_text,
+            icon: FeatherIcons.bookOpen),
+        _infoRow('School Pay Code', item.school_pay_payment_code,
+            icon: FeatherIcons.creditCard),
+        _infoRow('Registered', Utils.to_date_1(item.created_at),
+            icon: FeatherIcons.clock),
+
+        _sectionHeader('Guardian'),
+        _infoRow("Father's name", item.father_name,
+            icon: FeatherIcons.user),
+        _infoRow("Mother's name", item.mother_name,
+            icon: FeatherIcons.user),
+        _infoRow('Contact', item.phone_number_1,
+            icon: FeatherIcons.phone),
+        _infoRow('Contact 2', item.phone_number_2,
+            icon: FeatherIcons.phone),
+        _infoRow('Email', item.email, icon: FeatherIcons.mail),
+      ],
+    );
+  }
+
+  // ── Attendance tab ────────────────────────────────────────────────────────
+
+  Widget _attendanceTab() {
+    if (dataLoading) return myListLoaderWidget(context);
+    if (participants.isEmpty) {
+      return _emptyTab('No attendance records', FeatherIcons.checkSquare);
+    }
+    return RefreshIndicator(
+      color: AppColors.primary,
+      backgroundColor: Colors.white,
+      onRefresh: _loadTabData,
+      child: ListView.builder(
+        itemCount: participants.length,
+        itemBuilder: (_, i) {
+          final Participant p = participants[i];
+          final bool present = p.p();
+          return _recordTile(
+            title: p.getDisplayText(),
+            date: Utils.to_date(p.created_at),
+            badge: present ? 'Present' : 'Absent',
+            badgeColor: present ? AppColors.success : AppColors.error,
+            badgeBg: present ? AppColors.successLight : AppColors.errorLight,
+            onTap: () => _attendanceSheet(p),
+          );
+        },
+      ),
+    );
+  }
+
+  // ── Discipline tab ────────────────────────────────────────────────────────
+
+  Widget _disciplineTab() {
+    if (dataLoading) return myListLoaderWidget(context);
+    if (disciplinaryRecords.isEmpty) {
+      return _emptyTab('No disciplinary records', FeatherIcons.shield);
+    }
+    return RefreshIndicator(
+      color: AppColors.primary,
+      backgroundColor: Colors.white,
+      onRefresh: _loadTabData,
+      child: ListView.builder(
+        itemCount: disciplinaryRecords.length,
+        itemBuilder: (_, i) {
+          final DisciplinaryRecordModel d = disciplinaryRecords[i];
+          final bool good = d.p();
+          return _recordTile(
+            title: d.getDisplayText(),
+            date: Utils.to_date(d.created_at),
+            badge: good ? 'Good Record' : 'Indiscipline',
+            badgeColor: good ? AppColors.success : AppColors.error,
+            badgeBg: good ? AppColors.successLight : AppColors.errorLight,
+            onTap: () => _disciplineSheet(d),
+          );
+        },
+      ),
+    );
+  }
+
+  // ── Report cards tab ──────────────────────────────────────────────────────
+
+  Widget _reportCardsTab() {
+    if (dataLoading) return myListLoaderWidget(context);
+    if (cards.isEmpty) {
+      return _emptyTab('No report cards', FeatherIcons.fileText);
+    }
+    return RefreshIndicator(
+      color: AppColors.primary,
+      backgroundColor: Colors.white,
+      onRefresh: _loadTabData,
+      child: ListView.builder(
+        itemCount: cards.length,
+        itemBuilder: (_, i) {
+          final StudentReportCard rc = cards[i];
+          return _recordTile(
+            title: rc.student_text,
+            subtitle: rc.academic_class_text,
+            date: Utils.to_date(rc.created_at),
+            badge: rc.grade,
+            badgeColor: AppColors.onPrimary,
+            badgeBg: AppColors.primary,
+            onTap: () =>
+                Get.to(() => PdfViewerScreen(rc.getPdf(), 'Report Card')),
+          );
+        },
+      ),
+    );
+  }
+
+  // ── Finance tab ───────────────────────────────────────────────────────────
+
+  Widget _financeTab() {
+    if (dataLoading) return myListLoaderWidget(context);
+    final bool inDebt = item.balance < 0;
+    return RefreshIndicator(
+      color: AppColors.primary,
+      backgroundColor: Colors.white,
+      onRefresh: _loadTabData,
+      child: ListView(
+        children: [
+          // Balance card
+          Container(
+            margin: const EdgeInsets.all(16),
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+            decoration: BoxDecoration(
+              color: inDebt ? AppColors.errorLight : AppColors.successLight,
+              border: Border.all(
+                color: inDebt ? AppColors.error : AppColors.success,
+                width: 0.8,
+              ),
+            ),
+            child: Column(
+              children: [
+                Text(
+                  'FEES BALANCE',
+                  style: AppTypography.bodySmall.copyWith(
+                    color: AppColors.textSecondary,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.8,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  'UGX ${Utils.moneyFormat("${item.balance}")}',
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.w800,
+                    color: inDebt ? Colors.red.shade800 : Colors.green.shade800,
+                  ),
+                ),
+                const SizedBox(height: 6),
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                  color:
+                      inDebt ? Colors.red.shade700 : Colors.green.shade700,
+                  child: Text(
+                    item.verification == '1'
+                        ? 'Verified Balance'
+                        : 'Not Verified',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 10,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          // Transactions list
+          if (transactions.isEmpty)
+            _emptyTab('No transactions yet', FeatherIcons.creditCard)
+          else ...[
+            _sectionHeader('Transactions'),
+            ...transactions.map(_transactionTile),
+          ],
+          const SizedBox(height: 24),
+        ],
+      ),
+    );
+  }
+
+  Widget _transactionTile(Transaction t) {
+    final bool isCharge = t.amount_figure < 0;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 11),
+      decoration: const BoxDecoration(
+        border:
+            Border(bottom: BorderSide(color: AppColors.border, width: 0.8)),
+      ),
+      child: Row(
+        children: [
+          Container(
+            width: 36,
+            height: 36,
+            color: isCharge ? AppColors.errorLight : AppColors.successLight,
+            child: Icon(
+              isCharge ? FeatherIcons.arrowUp : FeatherIcons.arrowDown,
+              size: 16,
+              color: isCharge ? AppColors.error : AppColors.success,
+            ),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  t.description.isNotEmpty ? t.description : t.type,
+                  style: AppTypography.bodyMedium.copyWith(
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textPrimary,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                Text(
+                  Utils.to_date(t.created_at),
+                  style: AppTypography.bodySmall
+                      .copyWith(color: AppColors.textSecondary),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(width: 10),
+          Text(
+            'UGX ${Utils.moneyFormat(t.amount)}',
+            style: TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 13,
+              color: isCharge ? Colors.red.shade700 : Colors.green.shade700,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // ── Shared list tile ──────────────────────────────────────────────────────
+
+  Widget _recordTile({
+    required String title,
+    String? subtitle,
+    required String date,
+    required String badge,
+    required Color badgeColor,
+    required Color badgeBg,
+    required VoidCallback onTap,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 11),
+        decoration: const BoxDecoration(
+          border: Border(
+              bottom: BorderSide(color: AppColors.border, width: 0.8)),
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: AppTypography.bodyMedium.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.textPrimary,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  if (subtitle != null && subtitle.isNotEmpty) ...[
+                    const SizedBox(height: 2),
+                    Text(subtitle,
+                        style: AppTypography.bodySmall.copyWith(
+                            color: AppColors.textSecondary)),
+                  ],
+                  const SizedBox(height: 3),
+                  Text(
+                    date,
+                    style: AppTypography.bodySmall
+                        .copyWith(color: AppColors.textSecondary),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: 10),
+            Container(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              decoration: BoxDecoration(
+                color: badgeBg,
+                borderRadius: BorderRadius.circular(3),
+              ),
+              child: Text(
+                badge,
+                style: AppTypography.bodySmall.copyWith(
+                  color: badgeColor,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 10,
                 ),
               ),
             ),
-          );
-        });
+          ],
+        ),
+      ),
+    );
   }
 
-  void _showBottomSheet(Participant m) {
+  // ── Empty state ───────────────────────────────────────────────────────────
+
+  Widget _emptyTab(String message, IconData icon) {
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon,
+              size: 48,
+              color: AppColors.textSecondary.withValues(alpha: 0.4)),
+          const SizedBox(height: 12),
+          Text(message,
+              style: AppTypography.bodyMedium
+                  .copyWith(color: AppColors.textSecondary)),
+        ],
+      ),
+    );
+  }
+
+  // ── Bottom sheets ─────────────────────────────────────────────────────────
+
+  void _attendanceSheet(Participant p) {
+    _infoSheet([
+      _sheetRow('Date', Utils.to_date(p.created_at)),
+      _sheetRow('Roll call', p.getDisplayText()),
+      _sheetRow('Status', p.p() ? 'Present' : 'Absent'),
+      _sheetRow('Session', p.session_text),
+    ]);
+  }
+
+  void _disciplineSheet(DisciplinaryRecordModel d) {
+    _infoSheet([
+      _sheetRow('Date', Utils.to_date(d.created_at)),
+      _sheetRow('Title', d.getDisplayText()),
+      _sheetRow('Category', d.p() ? 'Good Record' : 'Indiscipline'),
+      _sheetRow('Details', d.description),
+      if (d.hm_comment.isNotEmpty)
+        _sheetRow("Head Teacher's Comment", d.hm_comment),
+      if (d.teacher_comment.isNotEmpty)
+        _sheetRow("Class Teacher's Comment", d.teacher_comment),
+      if (d.student_comment.isNotEmpty)
+        _sheetRow("Student's Comment", d.student_comment),
+      if (d.parent_comment.isNotEmpty)
+        _sheetRow("Parent's Comment", d.parent_comment),
+    ]);
+  }
+
+  Widget _sheetRow(String label, String value) {
+    if (value.trim().isEmpty) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 5),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 130,
+            child: Text(
+              label,
+              style: AppTypography.bodySmall
+                  .copyWith(color: AppColors.textSecondary),
+            ),
+          ),
+          Expanded(
+            child: Text(
+              value,
+              style: AppTypography.bodySmall.copyWith(
+                  color: AppColors.textPrimary,
+                  fontWeight: FontWeight.w600),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _infoSheet(List<Widget> rows) {
     showModalBottomSheet(
-        context: context,
-        builder: (BuildContext buildContext) {
-          return Container(
-            color: Colors.transparent,
-            child: Container(
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.zero,
-                      topRight: Radius.zero)),
-              child: Container(
-                padding: const EdgeInsets.only(
-                  left: 15,
-                  right: 15,
-                  top: 15,
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        const Spacer(),
-                        IconButton(
-                          icon: const Icon(
-                            FeatherIcons.x,
-                            color: Colors.black,
-                            size: 30,
-                          ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                        )
-                      ],
-                    ),
-                    Expanded(
-                        child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Center(
-                            child: roundedImage(
-                              item.avatar.toString(),
-                              5,
-                              5,
-                              radius: 100,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          FxText.titleLarge(
-                            item.name,
-                            fontWeight: 800,
-                            color: Colors.black,
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          const Divider(),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          titleValueWidget('Date', Utils.to_date(m.created_at)),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          titleValueWidget('Roll Call', m.getDisplayText()),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          titleValueWidget(
-                              'Status', m.p() ? 'Present' : 'Absent'),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          titleValueWidget('Details', m.session_text),
-                        ],
-                      ),
-                    ))
-                  ],
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (ctx) => DraggableScrollableSheet(
+        initialChildSize: 0.55,
+        minChildSize: 0.3,
+        maxChildSize: 0.9,
+        builder: (_, controller) => Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.zero,
+          ),
+          child: Column(
+            children: [
+              // Handle
+              Container(
+                margin: const EdgeInsets.only(top: 10, bottom: 8),
+                width: 36,
+                height: 4,
+                decoration: BoxDecoration(
+                  color: AppColors.border,
+                  borderRadius: BorderRadius.circular(2),
                 ),
               ),
+              Expanded(
+                child: ListView(
+                  controller: controller,
+                  padding: const EdgeInsets.fromLTRB(16, 4, 16, 32),
+                  children: rows,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // ── Build ─────────────────────────────────────────────────────────────────
+
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: 5,
+      child: Scaffold(
+        backgroundColor: AppColors.surface,
+        appBar: AppBar(
+          backgroundColor: AppColors.primary,
+          titleSpacing: 0,
+          elevation: 0,
+          iconTheme: const IconThemeData(color: Colors.white),
+          title: Text(
+            item.name.isEmpty ? 'Student' : item.name,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
             ),
-          );
-        });
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+          actions: showEditActions
+              ? [
+                  PopupMenuButton<int>(
+                    icon: const Icon(FeatherIcons.moreVertical,
+                        color: Colors.white),
+                    onSelected: (v) async {
+                      if (v == 1) {
+                        await Get.to(
+                            () => StudentEditBioScreen(data: item));
+                        _init();
+                      } else if (v == 2) {
+                        await Get.to(
+                            () => StudentEditPhotoScreen(data: item));
+                        _init();
+                      } else if (v == 3) {
+                        await Get.to(
+                            () => StudentEditGuardianScreen(data: item));
+                        _init();
+                      }
+                    },
+                    itemBuilder: (_) => [
+                      _menuItem(1, FeatherIcons.edit2, 'Edit bio data'),
+                      _menuItem(2, FeatherIcons.camera, 'Update photo'),
+                      _menuItem(3, FeatherIcons.users, 'Edit guardian'),
+                    ],
+                  ),
+                ]
+              : null,
+        ),
+        body: Column(
+          children: [
+            _profileHeader(),
+            // ── Tab bar sits directly below the profile card ────────────
+            Container(
+              color: AppColors.surface,
+              child: TabBar(
+                indicatorColor: AppColors.primary,
+                indicatorWeight: 3,
+                labelColor: AppColors.primary,
+                unselectedLabelColor: AppColors.textSecondary,
+                isScrollable: true,
+                labelStyle: const TextStyle(
+                    fontSize: 13, fontWeight: FontWeight.w600),
+                unselectedLabelStyle: const TextStyle(
+                    fontSize: 13, fontWeight: FontWeight.w400),
+                tabs: const [
+                  Tab(text: 'Bio'),
+                  Tab(text: 'Attendance'),
+                  Tab(text: 'Discipline'),
+                  Tab(text: 'Report Cards'),
+                  Tab(text: 'Finance'),
+                ],
+              ),
+            ),
+            const Divider(height: 1, color: AppColors.border),
+            Expanded(
+              child: TabBarView(
+                children: [
+                  _bioTab(),
+                  _attendanceTab(),
+                  _disciplineTab(),
+                  _reportCardsTab(),
+                  _financeTab(),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  PopupMenuItem<int> _menuItem(int value, IconData icon, String label) {
+    return PopupMenuItem<int>(
+      value: value,
+      child: Row(
+        children: [
+          Icon(icon, color: AppColors.primary, size: 18),
+          const SizedBox(width: 10),
+          Text(label, style: AppTypography.bodyMedium),
+        ],
+      ),
+    );
   }
 }

@@ -7,6 +7,8 @@ import 'package:schooldynamics/models/UserModel.dart';
 import 'package:schooldynamics/screens/finance/ChangeAccountStatusScreen.dart';
 import 'package:schooldynamics/utils/Utils.dart';
 
+import '../../models/LoggedInUserModel.dart';
+import '../../models/RespondModel.dart';
 import '../../models/Transaction.dart';
 import '../../sections/widgets.dart';
 import '../../theme/app_theme.dart';
@@ -39,9 +41,11 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
   }
 
   UserModel item = UserModel();
+  LoggedInUserModel loggedInUser = LoggedInUserModel();
 
   Future<dynamic> my_init() async {
     item = widget.data;
+    loggedInUser = await LoggedInUserModel.getLoggedInUser();
     await getTransactions();
     await getServices();
     setState(() {});
@@ -56,7 +60,7 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: loggedInUser.isRole('bursar') ? FloatingActionButton(
         backgroundColor: CustomTheme.primary,
         onPressed: () {
           _my_init();
@@ -154,7 +158,7 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
                     ),
                   ),
                 ]),
-      ),
+      ) : null,
       appBar: AppBar(
         backgroundColor: CustomTheme.primary,
         titleSpacing: 0,
@@ -251,107 +255,164 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
     );
   }
 
+  Future<void> _refreshSummary() async {
+    await getBasicData();
+    await getTransactions();
+    setState(() {});
+  }
+
   mainFragment() {
-    return Container(
-      padding: const EdgeInsets.only(left: 15, right: 15),
-      child: RefreshIndicator(
-        onRefresh: getBasicData,
-        backgroundColor: Colors.white,
-        color: CustomTheme.primary,
-        child: ListView(
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 15,
-                ),
-                Flex(
-                  direction: Axis.horizontal,
-                  mainAxisAlignment: MainAxisAlignment.start,
+    return RefreshIndicator(
+      onRefresh: _refreshSummary,
+      backgroundColor: Colors.white,
+      color: CustomTheme.primary,
+      child: ListView(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        children: [
+          // ── Bio + Photo ────────────────────────────────────────────
+          const SizedBox(height: 15),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: Container(
-                          child: Column(
-                        children: [
-                          title_widget('BIO DATA'),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Container(
-                              child: titleValueWidget('NAME', item.name)),
-                          Container(
-                              child: titleValueWidget('SEX', item.sex)),
-                          Container(
-                              child: titleValueWidget(
-                                  'CLASS', item.current_class_text)),
-                        ],
-                      )),
-                    ),
-                    const SizedBox(
-                      width: 8,
-                    ),
-                    FxContainer(
-                      bordered: true,
-                      color: CustomTheme.primary.withAlpha(30),
-                      borderColor: CustomTheme.primary,
-                      paddingAll: 5,
-                      borderRadiusAll: 0,
-                      child: roundedImage(
-                        item.avatar.toString(),
-                        2.6,
-                        2,
-                        radius: 0,
-                      ),
-                    )
+                    title_widget('BIO DATA'),
+                    const SizedBox(height: 5),
+                    titleValueWidget('NAME', item.name),
+                    titleValueWidget('SEX', item.sex),
+                    titleValueWidget('CLASS', item.current_class_text),
                   ],
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                title_widget('SCHOOL FEES BALANCE'),
-                const SizedBox(
-                  height: 10,
-                ),
-                Center(
-                  child: FxText.titleLarge(
-                    'UGX ${Utils.moneyFormat("${item.balance}")}',
-                    fontSize: 35,
-                    color: item.balance < 0
-                        ? Colors.red.shade900
-                        : Colors.green.shade900,
-                    textAlign: TextAlign.center,
-                    fontWeight: 700,
-                  ),
-                ),
-                const SizedBox(
-                  width: 8,
-                ),
-                Center(
-                  child: FxCard(
-                    padding: const EdgeInsets.only(left: 5, right: 5, bottom: 2),
-                    marginAll: 0,
-                    color: item.verification == '1'
-                        ? Colors.green.shade700
-                        : Colors.red.shade700,
-                    child: FxText.bodySmall(
-                      item.verification == '1'
-                          ? 'Verified Balance'
-                          : 'Not Verified Balance',
-                      fontWeight: 800,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                Divider(
-                  color: CustomTheme.primary,
-                )
-              ],
+              ),
+              const SizedBox(width: 8),
+              FxContainer(
+                bordered: true,
+                color: CustomTheme.primary.withAlpha(30),
+                borderColor: CustomTheme.primary,
+                paddingAll: 5,
+                borderRadiusAll: 0,
+                child: roundedImage(item.avatar.toString(), 2.6, 2, radius: 0),
+              ),
+            ],
+          ),
+          // ── Fees Balance ───────────────────────────────────────────
+          const SizedBox(height: 10),
+          title_widget('SCHOOL FEES BALANCE'),
+          const SizedBox(height: 10),
+          Center(
+            child: FxText.titleLarge(
+              'UGX ${Utils.moneyFormat("${item.balance}")}',
+              fontSize: 35,
+              color: item.balance < 0
+                  ? Colors.red.shade900
+                  : Colors.green.shade900,
+              textAlign: TextAlign.center,
+              fontWeight: 700,
             ),
-          ],
-        ),
+          ),
+          const SizedBox(height: 6),
+          Center(
+            child: FxCard(
+              padding: const EdgeInsets.only(left: 5, right: 5, bottom: 2),
+              marginAll: 0,
+              color: item.verification == '1'
+                  ? Colors.green.shade700
+                  : Colors.red.shade700,
+              child: FxText.bodySmall(
+                item.verification == '1'
+                    ? 'Verified Balance'
+                    : 'Not Verified Balance',
+                fontWeight: 800,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          Divider(color: CustomTheme.primary),
+          // ── Transactions ───────────────────────────────────────────
+          title_widget('TRANSACTIONS'),
+          const SizedBox(height: 8),
+          if (transactions.isEmpty)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 24),
+              child: Center(
+                child: Column(
+                  children: [
+                    Icon(Icons.receipt_long_outlined,
+                        size: 40, color: Colors.grey.shade400),
+                    const SizedBox(height: 8),
+                    FxText.bodyMedium(
+                      'No transactions found',
+                      color: Colors.grey.shade600,
+                    ),
+                    const SizedBox(height: 4),
+                    FxText.bodySmall(
+                      'Pull down to refresh',
+                      color: Colors.grey.shade400,
+                    ),
+                  ],
+                ),
+              ),
+            )
+          else
+            ...transactions.map((t) {
+              final bool isCharge = t.amount_figure < 0;
+              return InkWell(
+                onTap: () => Get.to(() => TransactionScreen(data: t)),
+                child: Column(
+                  children: [
+                    Flex(
+                      direction: Axis.horizontal,
+                      children: [
+                        FxContainer(
+                          color: CustomTheme.primary.withAlpha(20),
+                          paddingAll: 10,
+                          margin: const EdgeInsets.only(right: 10, bottom: 0, top: 0),
+                          child: Icon(
+                            isCharge
+                                ? Icons.arrow_upward
+                                : Icons.arrow_downward,
+                            color: isCharge
+                                ? Colors.red.shade800
+                                : Colors.green.shade800,
+                            size: 18,
+                          ),
+                        ),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              FxText.bodySmall(Utils.to_date(t.created_at),
+                                  color: Colors.grey.shade600),
+                              FxText.titleMedium(
+                                t.description.isNotEmpty
+                                    ? t.description
+                                    : t.type,
+                                maxLines: 2,
+                                color: Colors.grey.shade800,
+                                fontWeight: 700,
+                              ),
+                            ],
+                          ),
+                        ),
+                        FxText.bodyLarge(
+                          Utils.moneyFormat(t.amount),
+                          fontWeight: 700,
+                          color: isCharge
+                              ? Colors.red.shade700
+                              : Colors.green.shade700,
+                        ),
+                        const SizedBox(width: 4),
+                      ],
+                    ),
+                    const Divider(),
+                  ],
+                ),
+              );
+            }),
+          const SizedBox(height: 24),
+        ],
       ),
     );
   }
@@ -372,8 +433,15 @@ class _CourseTasksScreenState extends State<FinancialAccountScreen> {
   }
 
   Future<void> getTransactions() async {
-    transactions =
-        await Transaction.getItems(where: ' administrator_id = ${item.id} ');
+    RespondModel resp = RespondModel(
+        await Utils.http_get('student-transactions', {'student_id': item.id}));
+    if (resp.code == 1 && resp.data != null) {
+      transactions = [];
+      for (var x in resp.data) {
+        transactions.add(Transaction.fromJson(x));
+      }
+      transactions.sort((a, b) => b.id.compareTo(a.id));
+    }
   }
 
   servicesFragment() {

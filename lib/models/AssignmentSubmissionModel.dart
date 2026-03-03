@@ -10,6 +10,7 @@ class AssignmentSubmissionModel {
   String status = 'Pending';
   String submissionText = '';
   String attachment = '';
+  List<String> photos = [];
   String submittedAt = '';
   String gradedAt = '';
   double? score;
@@ -38,6 +39,12 @@ class AssignmentSubmissionModel {
     model.status = Utils.to_str(json['status'], 'Pending');
     model.submissionText = Utils.to_str(json['submission_text'], '');
     model.attachment = Utils.to_str(json['attachment'], '');
+    if (json['photos'] is List) {
+      model.photos = (json['photos'] as List)
+          .map((e) => e?.toString() ?? '')
+          .where((e) => e.isNotEmpty)
+          .toList();
+    }
     model.submittedAt = Utils.to_str(json['submitted_at'], '');
     model.gradedAt = Utils.to_str(json['graded_at'], '');
     model.feedback = Utils.to_str(json['feedback'], '');

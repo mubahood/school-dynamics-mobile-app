@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Modify this file to customize your launch splash screen -->
+<!-- Native Android launch screen shown while Flutter initialises.
+     Uses the primary brand colour so there is no white flash before
+     the Flutter splash screen paints. -->
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@android:color/white" />
-
-    <!-- You can insert your own image assets here -->
-    <!-- <item>
+    <!-- Primary brand background -->
+    <item android:drawable="@color/primary_color" />
+    <!-- Centred app logo -->
+    <item>
         <bitmap
             android:gravity="center"
-            android:src="@mipmap/launch_image" />
-    </item> -->
+            android:src="@drawable/logo" />
+    </item>
 </layer-list>

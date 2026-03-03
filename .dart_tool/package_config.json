@@ -170,6 +170,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "file_picker",
+      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/file_picker-8.3.7",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
       "name": "file_selector_linux",
       "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/file_selector_linux-0.9.3+2",
       "packageUri": "lib/",
@@ -240,6 +246,42 @@
       "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/flutter_html-3.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.2"
+    },
+    {
+      "name": "flutter_image_compress",
+      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/flutter_image_compress-2.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_image_compress_common",
+      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/flutter_image_compress_common-1.0.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_image_compress_macos",
+      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/flutter_image_compress_macos-1.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_image_compress_ohos",
+      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/flutter_image_compress_ohos-0.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_image_compress_platform_interface",
+      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/flutter_image_compress_platform_interface-1.0.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_image_compress_web",
+      "rootUri": "file:///Users/mac/.pub-cache/hosted/pub.dev/flutter_image_compress_web-0.1.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "flutter_lints",

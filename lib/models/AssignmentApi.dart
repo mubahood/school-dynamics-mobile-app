@@ -134,6 +134,7 @@ class AssignmentApi {
     required int submissionId,
     String submissionText = '',
     String? attachmentPath,
+    List<String> photoPaths = const [],
   }) async {
     final body = <String, dynamic>{};
 
@@ -146,6 +147,17 @@ class AssignmentApi {
         attachmentPath,
         filename: attachmentPath.split('/').last,
       );
+    }
+
+    // Multiple compressed photos — sent as photos[0], photos[1], ...
+    for (int i = 0; i < photoPaths.length; i++) {
+      final p = photoPaths[i];
+      if (p.isNotEmpty) {
+        body['photos[$i]'] = await dio.MultipartFile.fromFile(
+          p,
+          filename: p.split('/').last,
+        );
+      }
     }
 
     return RespondModel(await Utils.http_post(

@@ -61,12 +61,19 @@ class EnterpriseModel {
     EnterpriseModel ent = EnterpriseModel();
     String entText = await Utils.getPref('manifest');
     if (entText.isEmpty) {
+      // No cache at all — must wait for network before we have anything to show.
       await getEntOnline();
       entText = await Utils.getPref('manifest');
     } else {
-      await getEntOnline();
+      // Cache exists — show it immediately and refresh in the background.
+      getEntOnline();
     }
-    ent = EnterpriseModel.fromJson(json.decode(entText));
+    if (entText.isEmpty) return ent;
+    try {
+      ent = EnterpriseModel.fromJson(json.decode(entText));
+    } catch (_) {
+      return ent;
+    }
     if (ent.id == 0) {
       ent.name = 'School Dynamics';
       ent.short_name = 'SD';
