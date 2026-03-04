@@ -10,38 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b53d5bbc-3aaf-4461-9262-7a96f2d9f29d" name="Changes" comment="latest changes.">
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable-v21/launch_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-v21/launch_background.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable/launch_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable/launch_background.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/values-night/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/values-night/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/AssignmentApi.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/AssignmentApi.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/AssignmentSubmissionModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/AssignmentSubmissionModel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/EnterpriseModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/EnterpriseModel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/RespondModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/RespondModel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/RollCall/Participant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/RollCall/Participant.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/OnBoardingScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/OnBoardingScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/account/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/account/login_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/assignments/AssignmentsHomeScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/assignments/AssignmentsHomeScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/finance/FinancialAccountScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/finance/FinancialAccountScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/sessions/AttendanceScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/sessions/AttendanceScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/students/StudentScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/students/StudentScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/students/StudentsScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/students/StudentsScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/sections/widgets.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/sections/widgets.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/theme/app_theme.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/theme/app_theme.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utils/AppConfig.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/AppConfig.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utils/Utils.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/Utils.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
