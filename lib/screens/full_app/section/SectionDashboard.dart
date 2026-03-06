@@ -5,6 +5,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:schooldynamics/controllers/MainController.dart';
 import 'package:schooldynamics/models/LoggedInUserModel.dart';
+import 'package:schooldynamics/models/RespondModel.dart';
 import 'package:schooldynamics/screens/classes/ClassesScreen.dart';
 import 'package:schooldynamics/sections/widgets.dart';
 import 'package:schooldynamics/utils/Utils.dart';
@@ -81,6 +82,8 @@ class _SectionDashboardState extends State<SectionDashboard> {
 
   LoggedInUserModel u = LoggedInUserModel();
 
+  List<dynamic> unclassedStudents = [];
+
   //maincontroller find
   final MainController man = Get.find<MainController>();
 
@@ -123,6 +126,18 @@ class _SectionDashboardState extends State<SectionDashboard> {
     Utils.init_theme();
     if (is_first_time) {
       is_first_time = false;
+    }
+
+    // Fetch unclassed students for admin/dos/hm roles
+    if (u.isRole('admin') || u.isRole('dos') || u.isRole('hm')) {
+      try {
+        var resp = RespondModel(await Utils.http_get('unclassed-students', {}));
+        if (resp.code == 200 && resp.data != null) {
+          unclassedStudents = resp.data is List ? resp.data : [];
+        }
+      } catch (_) {
+        unclassedStudents = [];
+      }
     }
 
     return "Done";
@@ -309,6 +324,11 @@ class _SectionDashboardState extends State<SectionDashboard> {
               SliverToBoxAdapter(
                 child: _buildHeroHeader(greeting, firstName, formattedDate),
               ),
+              // Unclassed students alert
+              if (unclassedStudents.isNotEmpty)
+                SliverToBoxAdapter(
+                  child: _buildUnclassedStudentsAlert(),
+                ),
               // Section label
               SliverToBoxAdapter(
                 child: Padding(
@@ -570,6 +590,179 @@ class _SectionDashboardState extends State<SectionDashboard> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildUnclassedStudentsAlert() {
+    final count = unclassedStudents.length;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
+      child: GestureDetector(
+        onTap: () {
+          Get.to(() => UnclassedStudentsScreen(students: unclassedStudents));
+        },
+        child: Container(
+          padding: const EdgeInsets.all(14),
+          decoration: BoxDecoration(
+            color: const Color(0xFFFFF3E0),
+            border: Border.all(color: const Color(0xFFFF9800)),
+          ),
+          child: Row(
+            children: [
+              Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFFF9800).withValues(alpha: 0.15),
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(Icons.warning_amber_rounded,
+                    color: Color(0xFFE65100), size: 22),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '$count Student${count > 1 ? 's' : ''} Not in Class',
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xFFE65100),
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    const Text(
+                      'Active students not assigned to a class in the current academic year.',
+                      style: TextStyle(fontSize: 12, color: Color(0xFF795548)),
+                    ),
+                  ],
+                ),
+              ),
+              const Icon(Icons.chevron_right, color: Color(0xFFE65100)),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ════════════════════════════════════════════════════════════════════
+// UNCLASSED STUDENTS SCREEN
+// ════════════════════════════════════════════════════════════════════
+
+class UnclassedStudentsScreen extends StatelessWidget {
+  final List<dynamic> students;
+  const UnclassedStudentsScreen({super.key, required this.students});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Unclassed Students (${students.length})',
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+        ),
+        backgroundColor: Colors.white,
+        foregroundColor: const Color(0xFF212121),
+        elevation: 0,
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(1),
+          child: Container(height: 1, color: const Color(0xFFE0E0E0)),
+        ),
+      ),
+      body: students.isEmpty
+          ? const Center(child: Text('No unclassed students found.'))
+          : ListView.separated(
+              padding: const EdgeInsets.all(16),
+              itemCount: students.length,
+              separatorBuilder: (_, __) => const SizedBox(height: 8),
+              itemBuilder: (context, index) {
+                final s = students[index];
+                final name = s['name'] ?? 'Unknown';
+                final className = s['current_class_name'] ?? 'None';
+                final yearName = s['year_name'] ?? 'N/A';
+                return Container(
+                  padding: const EdgeInsets.all(14),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: const Color(0xFFE0E0E0)),
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          color: AppColors.primarySurface,
+                          shape: BoxShape.circle,
+                        ),
+                        alignment: Alignment.center,
+                        child: Text(
+                          name.isNotEmpty ? name[0].toUpperCase() : '?',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.primary,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              name,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF212121),
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Row(
+                              children: [
+                                const Icon(Icons.class_outlined,
+                                    size: 14, color: Color(0xFF9E9E9E)),
+                                const SizedBox(width: 4),
+                                Text(
+                                  className,
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    color: Color(0xFF757575),
+                                  ),
+                                ),
+                                const SizedBox(width: 12),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 6, vertical: 2),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFFFFF3E0),
+                                    border: Border.all(
+                                        color: const Color(0xFFFFCC80)),
+                                  ),
+                                  child: Text(
+                                    yearName,
+                                    style: const TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xFFE65100),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
     );
   }
 }
