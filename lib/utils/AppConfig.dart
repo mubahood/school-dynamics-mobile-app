@@ -5,9 +5,9 @@ class AppConfig {
   static String API_BASE_URL = "https://schooldynamics.ug/api";
 
   // static String API_BASE_URL = "http://10.0.2.2:8888/schools/api";
-  static const String DASHBOARD_URL = "http://10.0.2.2:8888/schools";
+  static const String DASHBOARD_URL = "https://schooldynamics.ug";
 
-  // static const String DASHBOARD_URL = "https://schooldynamics.ug";
+  // static const String DASHBOARD_URL = "http://10.0.2.2:8888/schools";
 
   // static String API_BASE_URL = "https://schooldynamics.ug/api";
   static const String ONESIGNAL_APP_ID = "4112fae4-4ea5-4acc-b9da-4dba93b85c34";
@@ -30,8 +30,8 @@ class AppConfig {
   static const int UPDATE_VERSION = 4;
   static const String DATABASE_PATH = "SCHOOL_DYNAMICS_$APP_VERSION";
 
-  static const String MAIN_SITE_URL = "http://10.0.2.2:8888/schools";
-  /*static const String MAIN_SITE_URL = "https://schooldynamics.ug";
+  static const String MAIN_SITE_URL = "https://schooldynamics.ug";
+  /*static const String MAIN_SITE_URL = "http://10.0.2.2:8888/schools";
   static const String MAIN_SITE_URL_1 = "schooldynamics.ug";*/
   static String APP_NAME = "School Dynamics";
   static String CONTACT_PHONE = "+256783204665";

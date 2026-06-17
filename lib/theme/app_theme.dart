@@ -358,7 +358,7 @@ class AppTheme {
 
     /// Bottom AppBar Theme — white, no elevation
     bottomAppBarTheme:
-        const BottomAppBarTheme(color: Colors.white, elevation: 0),
+        const BottomAppBarThemeData(color: Colors.white, elevation: 0),
 
     /// Tab bar Theme
     tabBarTheme: TabBarThemeData(
@@ -480,7 +480,7 @@ class AppTheme {
 
     /// Bottom AppBar Theme
     bottomAppBarTheme:
-        const BottomAppBarTheme(color: Color(0xff464c52), elevation: 2),
+        const BottomAppBarThemeData(color: Color(0xff464c52), elevation: 2),
 
     /// Tab bar Theme
     tabBarTheme: const TabBarThemeData(

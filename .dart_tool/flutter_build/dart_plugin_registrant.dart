@@ -6,48 +6,48 @@
 // @dart = 3.1
 
 import 'dart:io'; // flutter_ignore: dart_io_import.
-import 'package:file_picker/file_picker.dart';
-import 'package:flutter_image_compress_common/flutter_image_compress_common.dart';
-import 'package:google_sign_in_android/google_sign_in_android.dart';
-import 'package:image_picker_android/image_picker_android.dart';
-import 'package:path_provider_android/path_provider_android.dart';
-import 'package:shared_preferences_android/shared_preferences_android.dart';
-import 'package:sqflite_android/sqflite_android.dart';
-import 'package:url_launcher_android/url_launcher_android.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:flutter_image_compress_common/flutter_image_compress_common.dart';
-import 'package:google_sign_in_ios/google_sign_in_ios.dart';
-import 'package:image_picker_ios/image_picker_ios.dart';
-import 'package:path_provider_foundation/path_provider_foundation.dart';
-import 'package:shared_preferences_foundation/shared_preferences_foundation.dart';
-import 'package:sqflite_darwin/sqflite_darwin.dart';
-import 'package:url_launcher_ios/url_launcher_ios.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:device_info_plus/device_info_plus.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:file_selector_linux/file_selector_linux.dart';
-import 'package:image_picker_linux/image_picker_linux.dart';
-import 'package:path_provider_linux/path_provider_linux.dart';
-import 'package:share_plus/share_plus.dart';
-import 'package:shared_preferences_linux/shared_preferences_linux.dart';
-import 'package:url_launcher_linux/url_launcher_linux.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:file_selector_macos/file_selector_macos.dart';
-import 'package:flutter_image_compress_macos/flutter_image_compress_macos.dart';
-import 'package:google_sign_in_ios/google_sign_in_ios.dart';
-import 'package:image_picker_macos/image_picker_macos.dart';
-import 'package:path_provider_foundation/path_provider_foundation.dart';
-import 'package:shared_preferences_foundation/shared_preferences_foundation.dart';
-import 'package:sqflite_darwin/sqflite_darwin.dart';
-import 'package:url_launcher_macos/url_launcher_macos.dart';
-import 'package:device_info_plus/device_info_plus.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:file_selector_windows/file_selector_windows.dart';
-import 'package:image_picker_windows/image_picker_windows.dart';
-import 'package:path_provider_windows/path_provider_windows.dart';
-import 'package:share_plus/share_plus.dart';
-import 'package:shared_preferences_windows/shared_preferences_windows.dart';
-import 'package:url_launcher_windows/url_launcher_windows.dart';
+import 'package:file_picker/file_picker.dart' as file_picker;
+import 'package:flutter_image_compress_common/flutter_image_compress_common.dart' as flutter_image_compress_common;
+import 'package:google_sign_in_android/google_sign_in_android.dart' as google_sign_in_android;
+import 'package:image_picker_android/image_picker_android.dart' as image_picker_android;
+import 'package:path_provider_android/path_provider_android.dart' as path_provider_android;
+import 'package:shared_preferences_android/shared_preferences_android.dart' as shared_preferences_android;
+import 'package:sqflite_android/sqflite_android.dart' as sqflite_android;
+import 'package:url_launcher_android/url_launcher_android.dart' as url_launcher_android;
+import 'package:file_picker/file_picker.dart' as file_picker;
+import 'package:flutter_image_compress_common/flutter_image_compress_common.dart' as flutter_image_compress_common;
+import 'package:google_sign_in_ios/google_sign_in_ios.dart' as google_sign_in_ios;
+import 'package:image_picker_ios/image_picker_ios.dart' as image_picker_ios;
+import 'package:path_provider_foundation/path_provider_foundation.dart' as path_provider_foundation;
+import 'package:shared_preferences_foundation/shared_preferences_foundation.dart' as shared_preferences_foundation;
+import 'package:sqflite_darwin/sqflite_darwin.dart' as sqflite_darwin;
+import 'package:url_launcher_ios/url_launcher_ios.dart' as url_launcher_ios;
+import 'package:connectivity_plus/connectivity_plus.dart' as connectivity_plus;
+import 'package:device_info_plus/device_info_plus.dart' as device_info_plus;
+import 'package:file_picker/file_picker.dart' as file_picker;
+import 'package:file_selector_linux/file_selector_linux.dart' as file_selector_linux;
+import 'package:image_picker_linux/image_picker_linux.dart' as image_picker_linux;
+import 'package:path_provider_linux/path_provider_linux.dart' as path_provider_linux;
+import 'package:share_plus/share_plus.dart' as share_plus;
+import 'package:shared_preferences_linux/shared_preferences_linux.dart' as shared_preferences_linux;
+import 'package:url_launcher_linux/url_launcher_linux.dart' as url_launcher_linux;
+import 'package:file_picker/file_picker.dart' as file_picker;
+import 'package:file_selector_macos/file_selector_macos.dart' as file_selector_macos;
+import 'package:flutter_image_compress_macos/flutter_image_compress_macos.dart' as flutter_image_compress_macos;
+import 'package:google_sign_in_ios/google_sign_in_ios.dart' as google_sign_in_ios;
+import 'package:image_picker_macos/image_picker_macos.dart' as image_picker_macos;
+import 'package:path_provider_foundation/path_provider_foundation.dart' as path_provider_foundation;
+import 'package:shared_preferences_foundation/shared_preferences_foundation.dart' as shared_preferences_foundation;
+import 'package:sqflite_darwin/sqflite_darwin.dart' as sqflite_darwin;
+import 'package:url_launcher_macos/url_launcher_macos.dart' as url_launcher_macos;
+import 'package:device_info_plus/device_info_plus.dart' as device_info_plus;
+import 'package:file_picker/file_picker.dart' as file_picker;
+import 'package:file_selector_windows/file_selector_windows.dart' as file_selector_windows;
+import 'package:image_picker_windows/image_picker_windows.dart' as image_picker_windows;
+import 'package:path_provider_windows/path_provider_windows.dart' as path_provider_windows;
+import 'package:share_plus/share_plus.dart' as share_plus;
+import 'package:shared_preferences_windows/shared_preferences_windows.dart' as shared_preferences_windows;
+import 'package:url_launcher_windows/url_launcher_windows.dart' as url_launcher_windows;
 
 @pragma('vm:entry-point')
 class _PluginRegistrant {
@@ -56,7 +56,7 @@ class _PluginRegistrant {
   static void register() {
     if (Platform.isAndroid) {
       try {
-        FilePickerIO.registerWith();
+        file_picker.FilePickerIO.registerWith();
       } catch (err) {
         print(
           '`file_picker` threw an error: $err. '
@@ -65,7 +65,7 @@ class _PluginRegistrant {
       }
 
       try {
-        FlutterImageCompressCommon.registerWith();
+        flutter_image_compress_common.FlutterImageCompressCommon.registerWith();
       } catch (err) {
         print(
           '`flutter_image_compress_common` threw an error: $err. '
@@ -74,7 +74,7 @@ class _PluginRegistrant {
       }
 
       try {
-        GoogleSignInAndroid.registerWith();
+        google_sign_in_android.GoogleSignInAndroid.registerWith();
       } catch (err) {
         print(
           '`google_sign_in_android` threw an error: $err. '
@@ -83,7 +83,7 @@ class _PluginRegistrant {
       }
 
       try {
-        ImagePickerAndroid.registerWith();
+        image_picker_android.ImagePickerAndroid.registerWith();
       } catch (err) {
         print(
           '`image_picker_android` threw an error: $err. '
@@ -92,7 +92,7 @@ class _PluginRegistrant {
       }
 
       try {
-        PathProviderAndroid.registerWith();
+        path_provider_android.PathProviderAndroid.registerWith();
       } catch (err) {
         print(
           '`path_provider_android` threw an error: $err. '
@@ -101,7 +101,7 @@ class _PluginRegistrant {
       }
 
       try {
-        SharedPreferencesAndroid.registerWith();
+        shared_preferences_android.SharedPreferencesAndroid.registerWith();
       } catch (err) {
         print(
           '`shared_preferences_android` threw an error: $err. '
@@ -110,7 +110,7 @@ class _PluginRegistrant {
       }
 
       try {
-        SqfliteAndroid.registerWith();
+        sqflite_android.SqfliteAndroid.registerWith();
       } catch (err) {
         print(
           '`sqflite_android` threw an error: $err. '
@@ -119,7 +119,7 @@ class _PluginRegistrant {
       }
 
       try {
-        UrlLauncherAndroid.registerWith();
+        url_launcher_android.UrlLauncherAndroid.registerWith();
       } catch (err) {
         print(
           '`url_launcher_android` threw an error: $err. '
@@ -129,7 +129,7 @@ class _PluginRegistrant {
 
     } else if (Platform.isIOS) {
       try {
-        FilePickerIO.registerWith();
+        file_picker.FilePickerIO.registerWith();
       } catch (err) {
         print(
           '`file_picker` threw an error: $err. '
@@ -138,7 +138,7 @@ class _PluginRegistrant {
       }
 
       try {
-        FlutterImageCompressCommon.registerWith();
+        flutter_image_compress_common.FlutterImageCompressCommon.registerWith();
       } catch (err) {
         print(
           '`flutter_image_compress_common` threw an error: $err. '
@@ -147,7 +147,7 @@ class _PluginRegistrant {
       }
 
       try {
-        GoogleSignInIOS.registerWith();
+        google_sign_in_ios.GoogleSignInIOS.registerWith();
       } catch (err) {
         print(
           '`google_sign_in_ios` threw an error: $err. '
@@ -156,7 +156,7 @@ class _PluginRegistrant {
       }
 
       try {
-        ImagePickerIOS.registerWith();
+        image_picker_ios.ImagePickerIOS.registerWith();
       } catch (err) {
         print(
           '`image_picker_ios` threw an error: $err. '
@@ -165,7 +165,7 @@ class _PluginRegistrant {
       }
 
       try {
-        PathProviderFoundation.registerWith();
+        path_provider_foundation.PathProviderFoundation.registerWith();
       } catch (err) {
         print(
           '`path_provider_foundation` threw an error: $err. '
@@ -174,7 +174,7 @@ class _PluginRegistrant {
       }
 
       try {
-        SharedPreferencesFoundation.registerWith();
+        shared_preferences_foundation.SharedPreferencesFoundation.registerWith();
       } catch (err) {
         print(
           '`shared_preferences_foundation` threw an error: $err. '
@@ -183,7 +183,7 @@ class _PluginRegistrant {
       }
 
       try {
-        SqfliteDarwin.registerWith();
+        sqflite_darwin.SqfliteDarwin.registerWith();
       } catch (err) {
         print(
           '`sqflite_darwin` threw an error: $err. '
@@ -192,7 +192,7 @@ class _PluginRegistrant {
       }
 
       try {
-        UrlLauncherIOS.registerWith();
+        url_launcher_ios.UrlLauncherIOS.registerWith();
       } catch (err) {
         print(
           '`url_launcher_ios` threw an error: $err. '
@@ -202,7 +202,7 @@ class _PluginRegistrant {
 
     } else if (Platform.isLinux) {
       try {
-        ConnectivityPlusLinuxPlugin.registerWith();
+        connectivity_plus.ConnectivityPlusLinuxPlugin.registerWith();
       } catch (err) {
         print(
           '`connectivity_plus` threw an error: $err. '
@@ -211,7 +211,7 @@ class _PluginRegistrant {
       }
 
       try {
-        DeviceInfoPlusLinuxPlugin.registerWith();
+        device_info_plus.DeviceInfoPlusLinuxPlugin.registerWith();
       } catch (err) {
         print(
           '`device_info_plus` threw an error: $err. '
@@ -220,7 +220,7 @@ class _PluginRegistrant {
       }
 
       try {
-        FilePickerLinux.registerWith();
+        file_picker.FilePickerLinux.registerWith();
       } catch (err) {
         print(
           '`file_picker` threw an error: $err. '
@@ -229,7 +229,7 @@ class _PluginRegistrant {
       }
 
       try {
-        FileSelectorLinux.registerWith();
+        file_selector_linux.FileSelectorLinux.registerWith();
       } catch (err) {
         print(
           '`file_selector_linux` threw an error: $err. '
@@ -238,7 +238,7 @@ class _PluginRegistrant {
       }
 
       try {
-        ImagePickerLinux.registerWith();
+        image_picker_linux.ImagePickerLinux.registerWith();
       } catch (err) {
         print(
           '`image_picker_linux` threw an error: $err. '
@@ -247,7 +247,7 @@ class _PluginRegistrant {
       }
 
       try {
-        PathProviderLinux.registerWith();
+        path_provider_linux.PathProviderLinux.registerWith();
       } catch (err) {
         print(
           '`path_provider_linux` threw an error: $err. '
@@ -256,7 +256,7 @@ class _PluginRegistrant {
       }
 
       try {
-        SharePlusLinuxPlugin.registerWith();
+        share_plus.SharePlusLinuxPlugin.registerWith();
       } catch (err) {
         print(
           '`share_plus` threw an error: $err. '
@@ -265,7 +265,7 @@ class _PluginRegistrant {
       }
 
       try {
-        SharedPreferencesLinux.registerWith();
+        shared_preferences_linux.SharedPreferencesLinux.registerWith();
       } catch (err) {
         print(
           '`shared_preferences_linux` threw an error: $err. '
@@ -274,7 +274,7 @@ class _PluginRegistrant {
       }
 
       try {
-        UrlLauncherLinux.registerWith();
+        url_launcher_linux.UrlLauncherLinux.registerWith();
       } catch (err) {
         print(
           '`url_launcher_linux` threw an error: $err. '
@@ -284,7 +284,7 @@ class _PluginRegistrant {
 
     } else if (Platform.isMacOS) {
       try {
-        FilePickerMacOS.registerWith();
+        file_picker.FilePickerMacOS.registerWith();
       } catch (err) {
         print(
           '`file_picker` threw an error: $err. '
@@ -293,7 +293,7 @@ class _PluginRegistrant {
       }
 
       try {
-        FileSelectorMacOS.registerWith();
+        file_selector_macos.FileSelectorMacOS.registerWith();
       } catch (err) {
         print(
           '`file_selector_macos` threw an error: $err. '
@@ -302,7 +302,7 @@ class _PluginRegistrant {
       }
 
       try {
-        FlutterImageCompressMacos.registerWith();
+        flutter_image_compress_macos.FlutterImageCompressMacos.registerWith();
       } catch (err) {
         print(
           '`flutter_image_compress_macos` threw an error: $err. '
@@ -311,7 +311,7 @@ class _PluginRegistrant {
       }
 
       try {
-        GoogleSignInIOS.registerWith();
+        google_sign_in_ios.GoogleSignInIOS.registerWith();
       } catch (err) {
         print(
           '`google_sign_in_ios` threw an error: $err. '
@@ -320,7 +320,7 @@ class _PluginRegistrant {
       }
 
       try {
-        ImagePickerMacOS.registerWith();
+        image_picker_macos.ImagePickerMacOS.registerWith();
       } catch (err) {
         print(
           '`image_picker_macos` threw an error: $err. '
@@ -329,7 +329,7 @@ class _PluginRegistrant {
       }
 
       try {
-        PathProviderFoundation.registerWith();
+        path_provider_foundation.PathProviderFoundation.registerWith();
       } catch (err) {
         print(
           '`path_provider_foundation` threw an error: $err. '
@@ -338,7 +338,7 @@ class _PluginRegistrant {
       }
 
       try {
-        SharedPreferencesFoundation.registerWith();
+        shared_preferences_foundation.SharedPreferencesFoundation.registerWith();
       } catch (err) {
         print(
           '`shared_preferences_foundation` threw an error: $err. '
@@ -347,7 +347,7 @@ class _PluginRegistrant {
       }
 
       try {
-        SqfliteDarwin.registerWith();
+        sqflite_darwin.SqfliteDarwin.registerWith();
       } catch (err) {
         print(
           '`sqflite_darwin` threw an error: $err. '
@@ -356,7 +356,7 @@ class _PluginRegistrant {
       }
 
       try {
-        UrlLauncherMacOS.registerWith();
+        url_launcher_macos.UrlLauncherMacOS.registerWith();
       } catch (err) {
         print(
           '`url_launcher_macos` threw an error: $err. '
@@ -366,7 +366,7 @@ class _PluginRegistrant {
 
     } else if (Platform.isWindows) {
       try {
-        DeviceInfoPlusWindowsPlugin.registerWith();
+        device_info_plus.DeviceInfoPlusWindowsPlugin.registerWith();
       } catch (err) {
         print(
           '`device_info_plus` threw an error: $err. '
@@ -375,7 +375,7 @@ class _PluginRegistrant {
       }
 
       try {
-        FilePickerWindows.registerWith();
+        file_picker.FilePickerWindows.registerWith();
       } catch (err) {
         print(
           '`file_picker` threw an error: $err. '
@@ -384,7 +384,7 @@ class _PluginRegistrant {
       }
 
       try {
-        FileSelectorWindows.registerWith();
+        file_selector_windows.FileSelectorWindows.registerWith();
       } catch (err) {
         print(
           '`file_selector_windows` threw an error: $err. '
@@ -393,7 +393,7 @@ class _PluginRegistrant {
       }
 
       try {
-        ImagePickerWindows.registerWith();
+        image_picker_windows.ImagePickerWindows.registerWith();
       } catch (err) {
         print(
           '`image_picker_windows` threw an error: $err. '
@@ -402,7 +402,7 @@ class _PluginRegistrant {
       }
 
       try {
-        PathProviderWindows.registerWith();
+        path_provider_windows.PathProviderWindows.registerWith();
       } catch (err) {
         print(
           '`path_provider_windows` threw an error: $err. '
@@ -411,7 +411,7 @@ class _PluginRegistrant {
       }
 
       try {
-        SharePlusWindowsPlugin.registerWith();
+        share_plus.SharePlusWindowsPlugin.registerWith();
       } catch (err) {
         print(
           '`share_plus` threw an error: $err. '
@@ -420,7 +420,7 @@ class _PluginRegistrant {
       }
 
       try {
-        SharedPreferencesWindows.registerWith();
+        shared_preferences_windows.SharedPreferencesWindows.registerWith();
       } catch (err) {
         print(
           '`shared_preferences_windows` threw an error: $err. '
@@ -429,7 +429,7 @@ class _PluginRegistrant {
       }
 
       try {
-        UrlLauncherWindows.registerWith();
+        url_launcher_windows.UrlLauncherWindows.registerWith();
       } catch (err) {
         print(
           '`url_launcher_windows` threw an error: $err. '

@@ -61,12 +61,14 @@ dev_dependencies:
 
 dependency_overrides:
   intl: any
-  google_fonts: any
   #  shared_preferences: any
 
   # Icons
   material_design_icons_flutter: ^7.0.7296
-  flutter_feather_icons: ^2.0.0+1
+  flutter_feather_icons:
+    path: packages/flutter_feather_icons
+  google_fonts:
+    path: packages/google_fonts
   flutter_lints: ^3.0.1
 
 
