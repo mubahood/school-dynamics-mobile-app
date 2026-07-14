@@ -9,6 +9,7 @@ import 'package:schooldynamics/utils/Utils.dart';
 
 import '../../models/TermlyReportCard.dart';
 import '../../models/TheologyTermlyReportCard.dart';
+import '../students/ProgressiveReportsScreen.dart';
 import 'TheologyMarksScreen.dart';
 
 class ExamsHomeScreen extends StatefulWidget {
@@ -182,6 +183,25 @@ class _ExamsHomeScreenState extends State<ExamsHomeScreen> {
                     title:
                         FxText.titleLarge('Theological Marks', fontWeight: 700),
                     leading: const Icon(FeatherIcons.book),
+                    trailing: const Icon(
+                      FeatherIcons.chevronRight,
+                      size: 30,
+                    ),
+                  ),
+                  Divider(
+                    height: 0,
+                    color: CustomTheme.primary,
+                  ),
+                  ListTile(
+                    onTap: () => Get.to(
+                        () => const ProgressiveReportsScreen(student: null)),
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 5,
+                    ),
+                    title: FxText.titleLarge('Progressive Assessment Reports',
+                        fontWeight: 700),
+                    leading: const Icon(FeatherIcons.barChart2),
                     trailing: const Icon(
                       FeatherIcons.chevronRight,
                       size: 30,

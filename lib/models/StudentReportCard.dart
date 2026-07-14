@@ -43,12 +43,12 @@ class StudentReportCard {
   String pdf_url = "";
   String vatar = "";
 
+  bool get hasPdf => pdf_url.isNotEmpty && pdf_url.length >= 3;
+
   String getPdf() {
-    if (pdf_url.contains("files/")) {
-      pdf_url.replaceAll("files/", "");
-    }
-    return "${AppConfig.DASHBOARD_URL}/storage/files/$pdf_url";
-    return pdf_url;
+    // Remove any embedded "files/" prefix to avoid double-path
+    final clean = pdf_url.replaceAll('files/', '');
+    return '${AppConfig.DASHBOARD_URL}/storage/files/$clean';
   }
 
   static fromJson(dynamic m) {

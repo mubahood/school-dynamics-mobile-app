@@ -13,7 +13,8 @@ import '../../models/StudentReportCard.dart';
 import '../../models/Transaction.dart';
 import '../../sections/widgets.dart';
 import '../../utils/my_widgets.dart';
-import 'PdfViewer.dart';
+import 'ProgressiveReportsScreen.dart';
+import 'ReportCardDetailScreen.dart';
 import 'StudentEditBioScreen.dart';
 import 'StudentEditGuardianScreen.dart';
 import 'StudentEditPhotoScreen.dart';
@@ -333,29 +334,82 @@ class _StudentScreenState extends State<StudentScreen> {
   // ── Report cards tab ──────────────────────────────────────────────────────
 
   Widget _reportCardsTab() {
-    if (dataLoading) return myListLoaderWidget(context);
-    if (cards.isEmpty) {
-      return _emptyTab('No report cards', FeatherIcons.fileText);
-    }
     return RefreshIndicator(
       color: AppColors.primary,
       backgroundColor: Colors.white,
       onRefresh: _loadTabData,
-      child: ListView.builder(
-        itemCount: cards.length,
-        itemBuilder: (_, i) {
-          final StudentReportCard rc = cards[i];
-          return _recordTile(
-            title: rc.student_text,
-            subtitle: rc.academic_class_text,
-            date: Utils.to_date(rc.created_at),
-            badge: rc.grade,
-            badgeColor: AppColors.onPrimary,
-            badgeBg: AppColors.primary,
-            onTap: () =>
-                Get.to(() => PdfViewerScreen(rc.getPdf(), 'Report Card')),
-          );
-        },
+      child: ListView(
+        children: [
+          // PA Reports shortcut banner
+          InkWell(
+            onTap: () => Get.to(
+                () => ProgressiveReportsScreen(student: item)),
+            child: Container(
+              margin: const EdgeInsets.fromLTRB(16, 12, 16, 4),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 14, vertical: 11),
+              decoration: BoxDecoration(
+                color: AppColors.primary.withValues(alpha: 0.07),
+                border: Border.all(
+                    color: AppColors.primary.withValues(alpha: 0.3)),
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: Row(
+                children: [
+                  Icon(FeatherIcons.barChart2,
+                      size: 16, color: AppColors.primary),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      'Progressive Assessment Reports',
+                      style: AppTypography.bodyMedium.copyWith(
+                        color: AppColors.primary,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  Icon(FeatherIcons.chevronRight,
+                      size: 16, color: AppColors.primary),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
+            child: Text(
+              'TERM REPORT CARDS',
+              style: AppTypography.bodySmall.copyWith(
+                color: AppColors.textSecondary,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.8,
+                fontSize: 10,
+              ),
+            ),
+          ),
+          if (dataLoading)
+            myListLoaderWidget(context)
+          else if (cards.isEmpty)
+            Padding(
+              padding: const EdgeInsets.only(top: 24),
+              child: _emptyTab('No report cards yet', FeatherIcons.fileText),
+            )
+          else
+            ...cards.map((rc) => _recordTile(
+                  title: rc.student_text.isNotEmpty
+                      ? rc.student_text
+                      : item.name,
+                  subtitle: rc.academic_class_text.isNotEmpty
+                      ? '${rc.academic_class_text}  •  ${rc.term_text}'
+                      : rc.term_text,
+                  date: Utils.to_date(rc.created_at),
+                  badge: rc.grade.isNotEmpty ? rc.grade : 'View',
+                  badgeColor: AppColors.onPrimary,
+                  badgeBg: AppColors.primary,
+                  onTap: () => Get.to(
+                      () => ReportCardDetailScreen(card: rc)),
+                )),
+          const SizedBox(height: 24),
+        ],
       ),
     );
   }
