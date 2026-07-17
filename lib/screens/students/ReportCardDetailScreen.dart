@@ -9,7 +9,8 @@ import '../../design_system/colors/app_colors.dart';
 import '../../design_system/typography/app_typography.dart';
 import 'PdfViewer.dart';
 
-// ─── Lightweight model for a single subject row ───────────────────────────────
+// ─── Models ──────────────────────────────────────────────────────────────────
+
 class _SubjectMark {
   final String subjectName;
   final String botMark;
@@ -18,6 +19,7 @@ class _SubjectMark {
   final String total;
   final String grade;
   final String remarks;
+  final String initials;
   final bool didBot;
   final bool didMot;
   final bool didEot;
@@ -30,6 +32,7 @@ class _SubjectMark {
     required this.total,
     required this.grade,
     required this.remarks,
+    required this.initials,
     required this.didBot,
     required this.didMot,
     required this.didEot,
@@ -44,6 +47,7 @@ class _SubjectMark {
       total: Utils.to_str(m['total'], ''),
       grade: Utils.to_str(m['grade_name'], ''),
       remarks: Utils.to_str(m['remarks'], ''),
+      initials: Utils.to_str(m['initials'], ''),
       didBot: Utils.to_str(m['did_bot'], '') == '1' ||
           Utils.to_str(m['did_bot'], '') == 'Yes',
       didMot: Utils.to_str(m['did_mot'], '') == '1' ||
@@ -54,11 +58,40 @@ class _SubjectMark {
   }
 }
 
+class _TheologyCard {
+  final String grade;
+  final String position;
+  final String totalStudents;
+  final String totalMarks;
+  final String totalAggregates;
+  final String classTeacherComment;
+  final String headTeacherComment;
+
+  const _TheologyCard({
+    required this.grade,
+    required this.position,
+    required this.totalStudents,
+    required this.totalMarks,
+    required this.totalAggregates,
+    required this.classTeacherComment,
+    required this.headTeacherComment,
+  });
+
+  factory _TheologyCard.fromJson(Map<String, dynamic> m) => _TheologyCard(
+        grade: Utils.to_str(m['grade'], ''),
+        position: Utils.to_str(m['position'], ''),
+        totalStudents: Utils.to_str(m['total_students'], ''),
+        totalMarks: Utils.to_str(m['total_marks'], ''),
+        totalAggregates: Utils.to_str(m['total_aggregates'], ''),
+        classTeacherComment: Utils.to_str(m['class_teacher_comment'], ''),
+        headTeacherComment: Utils.to_str(m['head_teacher_comment'], ''),
+      );
+}
+
 // ─── Screen ──────────────────────────────────────────────────────────────────
 
 class ReportCardDetailScreen extends StatefulWidget {
   final StudentReportCard card;
-
   const ReportCardDetailScreen({super.key, required this.card});
 
   @override
@@ -70,9 +103,10 @@ class _ReportCardDetailScreenState extends State<ReportCardDetailScreen> {
   bool _generatingPdf = false;
   String _error = '';
 
-  // Detail data populated from API
   StudentReportCard _card = StudentReportCard();
-  List<_SubjectMark> _items = [];
+  List<_SubjectMark> _secularItems = [];
+  List<_SubjectMark> _theologyItems = [];
+  _TheologyCard? _theologyCard;
 
   @override
   void initState() {
@@ -87,38 +121,48 @@ class _ReportCardDetailScreenState extends State<ReportCardDetailScreen> {
       _error = '';
     });
 
-    final raw = await Utils.http_get(
-        'student-report-card-detail/${_card.id}', {});
+    final raw = await Utils.http_get('student-report-card-detail/${_card.id}', {});
     final resp = RespondModel(raw);
 
     if (resp.code == 1 && resp.data != null) {
       final data = resp.data as Map<String, dynamic>;
 
-      // Re-parse the card fields from detail response
       final updated = StudentReportCard.fromJson(data);
       updated.pdf_url = Utils.to_str(data['pdf_url'], '');
 
-      // Parse subject items
-      final rawItems = data['items'];
-      final parsedItems = <_SubjectMark>[];
-      if (rawItems is List) {
-        for (final item in rawItems) {
-          parsedItems.add(_SubjectMark.fromJson(item as Map<String, dynamic>));
+      List<_SubjectMark> secular = [];
+      if (data['items'] is List) {
+        for (final i in data['items'] as List) {
+          secular.add(_SubjectMark.fromJson(i as Map<String, dynamic>));
         }
+      }
+
+      List<_SubjectMark> theology = [];
+      if (data['theology_items'] is List) {
+        for (final i in data['theology_items'] as List) {
+          theology.add(_SubjectMark.fromJson(i as Map<String, dynamic>));
+        }
+      }
+
+      _TheologyCard? theoCard;
+      if (data['theology_card'] is Map) {
+        theoCard = _TheologyCard.fromJson(
+            data['theology_card'] as Map<String, dynamic>);
       }
 
       if (mounted) {
         setState(() {
           _card = updated;
-          _items = parsedItems;
+          _secularItems = secular;
+          _theologyItems = theology;
+          _theologyCard = theoCard;
           _loading = false;
         });
       }
     } else {
       if (mounted) {
         setState(() {
-          _error =
-              resp.message.isNotEmpty ? resp.message : 'Failed to load data.';
+          _error = resp.message.isNotEmpty ? resp.message : 'Failed to load data.';
           _loading = false;
         });
       }
@@ -129,8 +173,7 @@ class _ReportCardDetailScreenState extends State<ReportCardDetailScreen> {
     setState(() => _generatingPdf = true);
     Utils.toast('Generating PDF, please wait…');
 
-    final raw =
-        await Utils.http_post('make-pdf/${_card.id}', {});
+    final raw = await Utils.http_post('make-pdf/${_card.id}', {});
     final resp = RespondModel(raw);
 
     if (resp.code == 1 && resp.data != null) {
@@ -156,49 +199,50 @@ class _ReportCardDetailScreenState extends State<ReportCardDetailScreen> {
     Get.to(() => PdfViewerScreen(_card.getPdf(), 'Report Card'));
   }
 
-  // ── Grade helpers ────────────────────────────────────────────────────────
+  // ── Grade / mark helpers ─────────────────────────────────────────────────
 
-  Color _gradeColor(String grade) {
-    switch (grade.toUpperCase()) {
-      case 'D1':
-      case '1':
-        return Colors.green.shade700;
-      case 'D2':
-      case '2':
-        return Colors.lightGreen.shade600;
-      case 'D3':
-      case '3':
-        return Colors.amber.shade700;
-      case 'D4':
-      case '4':
-        return Colors.orange.shade700;
-      case 'U':
-        return Colors.red.shade700;
-      default:
-        return Colors.blueGrey.shade600;
+  Color _gradeColor(String g) {
+    switch (g.toUpperCase()) {
+      case 'D1': case '1': return const Color(0xFF1B8A3C);
+      case 'D2': case '2': return const Color(0xFF43A047);
+      case 'C3': case '3': return const Color(0xFF7CB342);
+      case 'C4': case '4': return const Color(0xFFF9A825);
+      case 'C5': case '5': return const Color(0xFFFB8C00);
+      case 'C6': case '6': return const Color(0xFFE64A19);
+      case 'D7': case '7': return const Color(0xFFC62828);
+      case 'D8': case '8': return const Color(0xFF880E4F);
+      case 'U': return const Color(0xFF757575);
+      default:   return AppColors.textSecondary;
     }
   }
 
-  Color _markColor(String markStr) {
-    final val = double.tryParse(markStr) ?? 0;
-    if (val >= 70) return Colors.green.shade700;
-    if (val >= 50) return Colors.orange.shade700;
-    return Colors.red.shade700;
+  Color _markBandColor(String markStr) {
+    final v = double.tryParse(markStr) ?? 0;
+    if (v >= 75) return const Color(0xFF1B8A3C);
+    if (v >= 60) return const Color(0xFF43A047);
+    if (v >= 45) return const Color(0xFFF9A825);
+    if (v >= 30) return const Color(0xFFFB8C00);
+    return const Color(0xFFC62828);
   }
 
-  // ── UI ────────────────────────────────────────────────────────────────────
+  // Determine which assessment columns are active across all rows
+  bool _hasBot(List<_SubjectMark> items) => items.any((i) => i.didBot);
+  bool _hasMot(List<_SubjectMark> items) => items.any((i) => i.didMot);
+  bool _hasEot(List<_SubjectMark> items) => items.any((i) => i.didEot);
+
+  // ── Build ─────────────────────────────────────────────────────────────────
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.surface,
+      backgroundColor: const Color(0xFFF4F6F8),
       appBar: AppBar(
         backgroundColor: AppColors.primary,
+        elevation: 0,
         iconTheme: const IconThemeData(color: Colors.white),
-        title: Text(
+        title: const Text(
           'Report Card',
-          style: const TextStyle(
-              color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700),
+          style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700),
         ),
         actions: [
           if (!_loading)
@@ -217,12 +261,41 @@ class _ReportCardDetailScreenState extends State<ReportCardDetailScreen> {
                   onRefresh: _fetchDetail,
                   color: AppColors.primary,
                   child: ListView(
-                    padding: const EdgeInsets.all(0),
+                    padding: EdgeInsets.zero,
                     children: [
-                      _buildHeader(),
-                      _buildSummaryRow(),
-                      if (_items.isNotEmpty) _buildSubjectMarks(),
+                      _buildHero(),
+                      const SizedBox(height: 12),
+                      if (_secularItems.isNotEmpty)
+                        _buildMarksSection(
+                          title: 'SECULAR REPORT',
+                          icon: FeatherIcons.bookOpen,
+                          accentColor: AppColors.primary,
+                          items: _secularItems,
+                          summaryGrade: _card.grade,
+                          summaryPosition: _card.position,
+                          summaryTotal: _card.total_students,
+                          summaryMarks: _card.total_marks,
+                          summaryAgg: _card.total_aggregates,
+                        ),
+                      if (_theologyItems.isNotEmpty) ...[
+                        const SizedBox(height: 12),
+                        _buildMarksSection(
+                          title: 'THEOLOGY REPORT',
+                          icon: FeatherIcons.book,
+                          accentColor: const Color(0xFF7B5EA7),
+                          items: _theologyItems,
+                          summaryGrade: _theologyCard?.grade ?? '',
+                          summaryPosition: _theologyCard?.position ?? '',
+                          summaryTotal: _theologyCard?.totalStudents ?? '',
+                          summaryMarks: _theologyCard?.totalMarks ?? '',
+                          summaryAgg: _theologyCard?.totalAggregates ?? '',
+                        ),
+                      ],
+                      if (_secularItems.isEmpty && _theologyItems.isEmpty)
+                        _buildNoMarks(),
+                      const SizedBox(height: 12),
                       _buildComments(),
+                      const SizedBox(height: 12),
                       _buildPdfActions(),
                       const SizedBox(height: 32),
                     ],
@@ -231,88 +304,83 @@ class _ReportCardDetailScreenState extends State<ReportCardDetailScreen> {
     );
   }
 
-  Widget _buildError() {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(32),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(FeatherIcons.alertCircle,
-                size: 48, color: AppColors.error.withValues(alpha: 0.7)),
-            const SizedBox(height: 16),
-            Text(_error,
-                textAlign: TextAlign.center,
-                style: AppTypography.bodyMedium
-                    .copyWith(color: AppColors.textSecondary)),
-            const SizedBox(height: 20),
-            ElevatedButton.icon(
-              style:
-                  ElevatedButton.styleFrom(backgroundColor: AppColors.primary),
-              onPressed: _fetchDetail,
-              icon: const Icon(Icons.refresh, color: Colors.white, size: 18),
-              label: const Text('Retry',
-                  style: TextStyle(color: Colors.white)),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  // ── Hero header ───────────────────────────────────────────────────────────
 
-  // ── Header card ───────────────────────────────────────────────────────────
-
-  Widget _buildHeader() {
+  Widget _buildHero() {
     return Container(
       color: AppColors.primary,
-      padding: const EdgeInsets.fromLTRB(20, 20, 20, 24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Student name
-          Text(
-            _card.student_text.isNotEmpty ? _card.student_text : 'Student',
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-              fontWeight: FontWeight.w800,
-              letterSpacing: 0.2,
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Student avatar placeholder
+                Container(
+                  width: 54,
+                  height: 54,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.2),
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: Colors.white.withValues(alpha: 0.35), width: 1.5),
+                  ),
+                  child: const Icon(FeatherIcons.user, color: Colors.white, size: 26),
+                ),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        _card.student_text.isNotEmpty ? _card.student_text : 'Student',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: 0.1,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      if (_card.academic_class_text.isNotEmpty)
+                        Text(
+                          _card.academic_class_text,
+                          style: TextStyle(
+                            color: Colors.white.withValues(alpha: 0.85),
+                            fontSize: 13,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      const SizedBox(height: 8),
+                      Wrap(
+                        spacing: 6,
+                        runSpacing: 4,
+                        children: [
+                          if (_card.term_text.isNotEmpty)
+                            _chip(FeatherIcons.calendar, _card.term_text),
+                          if (_card.academic_year_text.isNotEmpty)
+                            _chip(FeatherIcons.award, _card.academic_year_text),
+                          if (_card.is_ready == '1')
+                            _chip(FeatherIcons.checkCircle, 'Published',
+                                color: Colors.greenAccent.shade100),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ),
-          const SizedBox(height: 6),
-          // Class + stream
-          if (_card.academic_class_text.isNotEmpty)
-            Text(
-              _card.academic_class_text,
-              style: TextStyle(
-                  color: Colors.white.withValues(alpha: 0.85),
-                  fontSize: 13,
-                  fontWeight: FontWeight.w500),
-            ),
-          const SizedBox(height: 10),
-          // Term / year chips
-          Wrap(
-            spacing: 8,
-            runSpacing: 6,
-            children: [
-              if (_card.term_text.isNotEmpty)
-                _headerChip(FeatherIcons.calendar, _card.term_text),
-              if (_card.academic_year_text.isNotEmpty)
-                _headerChip(FeatherIcons.award, _card.academic_year_text),
-              if (_card.is_ready == '1')
-                _headerChip(FeatherIcons.checkCircle, 'Published',
-                    color: Colors.green.shade300),
-            ],
           ),
         ],
       ),
     );
   }
 
-  Widget _headerChip(IconData icon, String label, {Color? color}) {
-    final c = color ?? Colors.white.withValues(alpha: 0.85);
+  Widget _chip(IconData icon, String label, {Color? color}) {
+    final c = color ?? Colors.white.withValues(alpha: 0.9);
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3),
       decoration: BoxDecoration(
         color: Colors.white.withValues(alpha: 0.15),
         borderRadius: BorderRadius.circular(4),
@@ -321,30 +389,123 @@ class _ReportCardDetailScreenState extends State<ReportCardDetailScreen> {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 11, color: c),
+          Icon(icon, size: 10, color: c),
           const SizedBox(width: 5),
           Text(label,
-              style: TextStyle(
-                  color: c, fontSize: 11, fontWeight: FontWeight.w600)),
+              style: TextStyle(color: c, fontSize: 10, fontWeight: FontWeight.w600)),
         ],
       ),
     );
   }
 
-  // ── Summary stats ─────────────────────────────────────────────────────────
+  // ── Full marks section (summary + table) ──────────────────────────────────
 
-  Widget _buildSummaryRow() {
-    final grade = _card.grade;
-    final pos = _card.position.isNotEmpty ? _card.position : '—';
-    final total = _card.total_students.isNotEmpty ? _card.total_students : '—';
-    final marks = _card.total_marks.isNotEmpty ? _card.total_marks : '—';
-    final agg = _card.total_aggregates.isNotEmpty
-        ? _card.total_aggregates
-        : '—';
+  Widget _buildMarksSection({
+    required String title,
+    required IconData icon,
+    required Color accentColor,
+    required List<_SubjectMark> items,
+    required String summaryGrade,
+    required String summaryPosition,
+    required String summaryTotal,
+    required String summaryMarks,
+    required String summaryAgg,
+  }) {
+    final hasBot = _hasBot(items);
+    final hasMot = _hasMot(items);
+    final hasEot = _hasEot(items);
 
     return Container(
-      color: Colors.white,
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+      margin: const EdgeInsets.symmetric(horizontal: 12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.06),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Section title bar
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            decoration: BoxDecoration(
+              color: accentColor.withValues(alpha: 0.08),
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
+              border: Border(
+                bottom: BorderSide(color: accentColor.withValues(alpha: 0.15)),
+              ),
+            ),
+            child: Row(
+              children: [
+                Icon(icon, size: 14, color: accentColor),
+                const SizedBox(width: 8),
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w800,
+                    color: accentColor,
+                    letterSpacing: 0.8,
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          // Summary strip
+          _buildSummaryStrip(
+            accentColor: accentColor,
+            grade: summaryGrade,
+            position: summaryPosition,
+            total: summaryTotal,
+            marks: summaryMarks,
+            agg: summaryAgg,
+          ),
+
+          const Divider(height: 1, color: AppColors.border),
+
+          // Column headers
+          _buildTableHeader(hasBot: hasBot, hasMot: hasMot, hasEot: hasEot, accent: accentColor),
+
+          const Divider(height: 1, color: AppColors.border),
+
+          // Subject rows
+          ...List.generate(items.length, (i) {
+            final item = items[i];
+            return Column(
+              children: [
+                _buildSubjectRow(item, hasBot: hasBot, hasMot: hasMot, hasEot: hasEot),
+                if (i < items.length - 1)
+                  const Divider(height: 1, indent: 16, endIndent: 16, color: AppColors.border),
+              ],
+            );
+          }),
+
+          const SizedBox(height: 4),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSummaryStrip({
+    required Color accentColor,
+    required String grade,
+    required String position,
+    required String total,
+    required String marks,
+    required String agg,
+  }) {
+    final pos = position.isNotEmpty ? position : '—';
+    final tot = total.isNotEmpty ? total : '—';
+
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
       child: Row(
         children: [
           _summaryCell(
@@ -353,31 +514,32 @@ class _ReportCardDetailScreenState extends State<ReportCardDetailScreen> {
             valueColor: grade.isNotEmpty ? _gradeColor(grade) : AppColors.textSecondary,
             large: true,
           ),
-          _divider(),
+          _vLine(),
           _summaryCell(
             label: 'POSITION',
-            value: '$pos / $total',
+            value: '$pos / $tot',
           ),
-          _divider(),
+          _vLine(),
           _summaryCell(
-            label: 'TOTAL MARKS',
-            value: marks,
+            label: 'MARKS',
+            value: marks.isNotEmpty ? marks : '—',
           ),
-          _divider(),
+          _vLine(),
           _summaryCell(
             label: 'AGGREGATES',
-            value: agg,
+            value: agg.isNotEmpty ? agg : '—',
           ),
         ],
       ),
     );
   }
 
-  Widget _summaryCell(
-      {required String label,
-      required String value,
-      Color? valueColor,
-      bool large = false}) {
+  Widget _summaryCell({
+    required String label,
+    required String value,
+    Color? valueColor,
+    bool large = false,
+  }) {
     return Expanded(
       child: Column(
         children: [
@@ -389,14 +551,14 @@ class _ReportCardDetailScreenState extends State<ReportCardDetailScreen> {
               color: valueColor ?? AppColors.textPrimary,
             ),
           ),
-          const SizedBox(height: 3),
+          const SizedBox(height: 2),
           Text(
             label,
             textAlign: TextAlign.center,
-            style: AppTypography.bodySmall.copyWith(
-              color: AppColors.textSecondary,
+            style: const TextStyle(
               fontSize: 9,
               fontWeight: FontWeight.w600,
+              color: AppColors.textSecondary,
               letterSpacing: 0.5,
             ),
           ),
@@ -405,151 +567,120 @@ class _ReportCardDetailScreenState extends State<ReportCardDetailScreen> {
     );
   }
 
-  Widget _divider() => Container(
-        width: 1,
-        height: 40,
-        color: AppColors.border,
-      );
+  Widget _vLine() => Container(width: 1, height: 36, color: AppColors.border);
 
-  // ── Subject marks table ───────────────────────────────────────────────────
+  // ── Table header ──────────────────────────────────────────────────────────
 
-  Widget _buildSubjectMarks() {
+  Widget _buildTableHeader({
+    required bool hasBot,
+    required bool hasMot,
+    required bool hasEot,
+    required Color accent,
+  }) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-      color: Colors.white,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
+      color: accent.withValues(alpha: 0.04),
+      child: Row(
         children: [
-          _sectionHeader('SUBJECT RESULTS', FeatherIcons.bookOpen),
-          // Table header
-          Container(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            color: AppColors.primary.withValues(alpha: 0.07),
-            child: Row(
-              children: [
-                const Expanded(
-                  flex: 3,
-                  child: Text('Subject',
-                      style: TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.textSecondary)),
-                ),
-                ...[
-                  _colHead('BOT'),
-                  _colHead('MOT'),
-                  _colHead('EOT'),
-                  _colHead('Total'),
-                  _colHead('Grade'),
-                ],
-              ],
-            ),
+          const Expanded(
+            flex: 4,
+            child: Text('SUBJECT',
+                style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: AppColors.textSecondary, letterSpacing: 0.3)),
           ),
-          const Divider(height: 1, color: AppColors.border),
-          // Rows
-          ListView.separated(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: _items.length,
-            separatorBuilder: (_, __) =>
-                const Divider(height: 1, color: AppColors.border),
-            itemBuilder: (_, i) => _buildSubjectRow(_items[i]),
-          ),
+          if (hasBot) _thCell('BOT'),
+          if (hasMot) _thCell('MOT'),
+          if (hasEot) _thCell('EOT'),
+          _thCell('TOTAL'),
+          _thCell('GRD', width: 42),
         ],
       ),
     );
   }
 
-  Widget _colHead(String label) {
-    return SizedBox(
-      width: 38,
-      child: Text(
-        label,
-        textAlign: TextAlign.center,
-        style: const TextStyle(
-            fontSize: 10, fontWeight: FontWeight.w700, color: AppColors.textSecondary),
-      ),
-    );
-  }
+  Widget _thCell(String label, {double width = 36}) => SizedBox(
+        width: width,
+        child: Text(
+          label,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+              fontSize: 9, fontWeight: FontWeight.w700, color: AppColors.textSecondary, letterSpacing: 0.3),
+        ),
+      );
 
-  Widget _buildSubjectRow(_SubjectMark item) {
-    final total = double.tryParse(item.total) ?? 0;
+  // ── Subject row ───────────────────────────────────────────────────────────
 
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+  Widget _buildSubjectRow(
+    _SubjectMark item, {
+    required bool hasBot,
+    required bool hasMot,
+    required bool hasEot,
+  }) {
+    final totalVal = double.tryParse(item.total) ?? 0;
+    final hasTotal = totalVal > 0;
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 9),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // Subject name
+          // Subject name + remarks
           Expanded(
-            flex: 3,
+            flex: 4,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   item.subjectName,
-                  style: AppTypography.bodySmall.copyWith(
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.textPrimary),
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textPrimary,
+                  ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
-                if (item.remarks.isNotEmpty)
+                if (item.remarks.isNotEmpty && item.remarks != '-')
                   Padding(
                     padding: const EdgeInsets.only(top: 2),
                     child: Text(
                       item.remarks,
                       style: TextStyle(
-                          fontSize: 9,
-                          color: AppColors.textSecondary,
-                          fontStyle: FontStyle.italic),
+                        fontSize: 9.5,
+                        color: hasTotal
+                            ? _markBandColor(item.total).withValues(alpha: 0.9)
+                            : AppColors.textSecondary,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
               ],
             ),
           ),
           // BOT
-          _markCell(item.botMark, item.didBot),
+          if (hasBot) _markCell(item.botMark, item.didBot),
           // MOT
-          _markCell(item.motMark, item.didMot),
+          if (hasMot) _markCell(item.motMark, item.didMot),
           // EOT
-          _markCell(item.eotMark, item.didEot),
-          // Total
+          if (hasEot) _markCell(item.eotMark, item.didEot),
+          // Total — always shown
           SizedBox(
-            width: 38,
+            width: 36,
             child: Text(
-              item.total.isNotEmpty ? item.total : '—',
+              hasTotal ? item.total : '—',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w700,
-                color: total > 0 ? _markColor(item.total) : AppColors.textSecondary,
+                fontSize: 13,
+                fontWeight: FontWeight.w800,
+                color: hasTotal ? _markBandColor(item.total) : Colors.grey.shade400,
               ),
             ),
           ),
           // Grade badge
           SizedBox(
-            width: 38,
-            child: item.grade.isNotEmpty
-                ? Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 4, vertical: 2),
-                    decoration: BoxDecoration(
-                      color: _gradeColor(item.grade).withValues(alpha: 0.12),
-                      borderRadius: BorderRadius.circular(3),
-                      border: Border.all(
-                          color: _gradeColor(item.grade).withValues(alpha: 0.4)),
-                    ),
-                    child: Text(
-                      item.grade,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w700,
-                          color: _gradeColor(item.grade)),
-                    ),
-                  )
+            width: 42,
+            child: item.grade.isNotEmpty && item.grade != 'X' && item.grade != '-'
+                ? _gradeBadge(item.grade)
                 : const SizedBox(),
           ),
         ],
@@ -558,17 +689,66 @@ class _ReportCardDetailScreenState extends State<ReportCardDetailScreen> {
   }
 
   Widget _markCell(String mark, bool submitted) {
-    final hasValue = submitted && mark.isNotEmpty && mark != '0';
+    final val = double.tryParse(mark) ?? 0;
+    final hasValue = submitted && mark.isNotEmpty && val > 0;
     return SizedBox(
-      width: 38,
+      width: 36,
       child: Text(
         hasValue ? mark : '—',
         textAlign: TextAlign.center,
         style: TextStyle(
           fontSize: 12,
           fontWeight: hasValue ? FontWeight.w600 : FontWeight.w400,
-          color: hasValue ? _markColor(mark) : Colors.grey.shade400,
+          color: hasValue ? _markBandColor(mark) : Colors.grey.shade400,
         ),
+      ),
+    );
+  }
+
+  Widget _gradeBadge(String grade) {
+    final color = _gradeColor(grade);
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.12),
+        borderRadius: BorderRadius.circular(4),
+        border: Border.all(color: color.withValues(alpha: 0.35)),
+      ),
+      child: Text(
+        grade,
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 10, fontWeight: FontWeight.w800, color: color),
+      ),
+    );
+  }
+
+  // ── No marks placeholder ──────────────────────────────────────────────────
+
+  Widget _buildNoMarks() {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 12),
+      padding: const EdgeInsets.all(32),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.05), blurRadius: 6)],
+      ),
+      child: Column(
+        children: [
+          Icon(FeatherIcons.fileText, size: 40, color: AppColors.textSecondary.withValues(alpha: 0.4)),
+          const SizedBox(height: 12),
+          Text(
+            'Subject marks are not yet available.',
+            textAlign: TextAlign.center,
+            style: AppTypography.bodyMedium.copyWith(color: AppColors.textSecondary),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'They will appear here once the report card has been generated.',
+            textAlign: TextAlign.center,
+            style: AppTypography.bodySmall.copyWith(color: AppColors.textDisabled),
+          ),
+        ],
       ),
     );
   }
@@ -578,49 +758,70 @@ class _ReportCardDetailScreenState extends State<ReportCardDetailScreen> {
   Widget _buildComments() {
     final comments = <_CommentData>[];
     if (_card.class_teacher_comment.isNotEmpty) {
-      comments.add(_CommentData(
-          'Class Teacher', _card.class_teacher_comment, FeatherIcons.user));
+      comments.add(_CommentData('Class Teacher', _card.class_teacher_comment, FeatherIcons.user));
     }
     if (_card.head_teacher_comment.isNotEmpty) {
-      comments.add(_CommentData(
-          'Head Teacher', _card.head_teacher_comment, FeatherIcons.briefcase));
+      comments.add(_CommentData('Head Teacher', _card.head_teacher_comment, FeatherIcons.briefcase));
     }
     if (_card.sports_comment.isNotEmpty) {
-      comments.add(_CommentData(
-          'Sports', _card.sports_comment, FeatherIcons.activity));
+      comments.add(_CommentData('Sports', _card.sports_comment, FeatherIcons.activity));
     }
     if (_card.mentor_comment.isNotEmpty) {
-      comments.add(_CommentData(
-          'Mentor', _card.mentor_comment, FeatherIcons.heart));
+      comments.add(_CommentData('Mentor', _card.mentor_comment, FeatherIcons.heart));
     }
     if (_card.nurse_comment.isNotEmpty) {
-      comments.add(
-          _CommentData('Nurse', _card.nurse_comment, FeatherIcons.plus));
+      comments.add(_CommentData('Nurse', _card.nurse_comment, FeatherIcons.plus));
+    }
+
+    // Theology comments
+    if (_theologyCard != null && _theologyCard!.classTeacherComment.isNotEmpty) {
+      comments.add(_CommentData('Theology Class Teacher', _theologyCard!.classTeacherComment, FeatherIcons.book));
+    }
+    if (_theologyCard != null && _theologyCard!.headTeacherComment.isNotEmpty) {
+      comments.add(_CommentData('Theology Head Teacher', _theologyCard!.headTeacherComment, FeatherIcons.briefcase));
     }
 
     if (comments.isEmpty) return const SizedBox();
 
     return Container(
-      margin: const EdgeInsets.only(top: 10),
-      color: Colors.white,
+      margin: const EdgeInsets.symmetric(horizontal: 12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _sectionHeader('COMMENTS', FeatherIcons.messageSquare),
-          ...comments
-              .map((c) => _buildCommentTile(c.role, c.text, c.icon)),
-          const SizedBox(height: 8),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            decoration: BoxDecoration(
+              color: AppColors.primarySurface,
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
+              border: const Border(bottom: BorderSide(color: AppColors.border)),
+            ),
+            child: Row(
+              children: [
+                Icon(FeatherIcons.messageSquare, size: 14, color: AppColors.primary),
+                const SizedBox(width: 8),
+                Text('COMMENTS',
+                    style: TextStyle(
+                        fontSize: 12, fontWeight: FontWeight.w800, color: AppColors.primary, letterSpacing: 0.8)),
+              ],
+            ),
+          ),
+          ...comments.map((c) => _buildCommentTile(c)),
+          const SizedBox(height: 4),
         ],
       ),
     );
   }
 
-  Widget _buildCommentTile(String role, String text, IconData icon) {
+  Widget _buildCommentTile(_CommentData c) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
+      padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
       decoration: const BoxDecoration(
-        border: Border(
-            bottom: BorderSide(color: AppColors.border, width: 0.8)),
+        border: Border(bottom: BorderSide(color: AppColors.border, width: 0.6)),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -630,29 +831,25 @@ class _ReportCardDetailScreenState extends State<ReportCardDetailScreen> {
             height: 32,
             decoration: BoxDecoration(
               color: AppColors.primary.withValues(alpha: 0.1),
-              borderRadius: BorderRadius.circular(4),
+              borderRadius: BorderRadius.circular(6),
             ),
-            child: Icon(icon, size: 14, color: AppColors.primary),
+            child: Icon(c.icon, size: 14, color: AppColors.primary),
           ),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  role,
-                  style: AppTypography.bodySmall.copyWith(
-                      color: AppColors.textSecondary,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 10,
-                      letterSpacing: 0.4),
-                ),
+                Text(c.role,
+                    style: const TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.textSecondary,
+                        letterSpacing: 0.4)),
                 const SizedBox(height: 3),
-                Text(
-                  text,
-                  style: AppTypography.bodySmall
-                      .copyWith(color: AppColors.textPrimary),
-                ),
+                Text(c.text,
+                    style: AppTypography.bodySmall.copyWith(
+                        color: AppColors.textPrimary, height: 1.4)),
               ],
             ),
           ),
@@ -661,39 +858,35 @@ class _ReportCardDetailScreenState extends State<ReportCardDetailScreen> {
     );
   }
 
-  // ── PDF action buttons ────────────────────────────────────────────────────
+  // ── PDF actions ───────────────────────────────────────────────────────────
 
   Widget _buildPdfActions() {
-    return Container(
-      margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           if (_card.hasPdf) ...[
-            // Primary: open existing PDF
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red.shade700,
+                backgroundColor: const Color(0xFFC62828),
                 padding: const EdgeInsets.symmetric(vertical: 14),
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.zero),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                elevation: 2,
               ),
               onPressed: _openPdf,
-              icon: const Icon(Icons.picture_as_pdf, color: Colors.white),
+              icon: const Icon(Icons.picture_as_pdf, color: Colors.white, size: 20),
               label: const Text('Open Report Card PDF',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700)),
+                  style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700)),
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 10),
           ],
-          // Secondary: generate / regenerate
           _generatingPdf
               ? Container(
-                  height: 48,
+                  height: 50,
                   decoration: BoxDecoration(
                     border: Border.all(color: AppColors.border),
+                    borderRadius: BorderRadius.circular(8),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -701,43 +894,29 @@ class _ReportCardDetailScreenState extends State<ReportCardDetailScreen> {
                       SizedBox(
                           width: 18,
                           height: 18,
-                          child: CircularProgressIndicator(
-                              strokeWidth: 2,
-                              color: AppColors.primary)),
+                          child: CircularProgressIndicator(strokeWidth: 2, color: AppColors.primary)),
                       const SizedBox(width: 12),
                       const Text('Generating PDF…',
-                          style: TextStyle(
-                              color: AppColors.textSecondary,
-                              fontWeight: FontWeight.w500)),
+                          style: TextStyle(color: AppColors.textSecondary, fontWeight: FontWeight.w500)),
                     ],
                   ),
                 )
               : OutlinedButton.icon(
                   style: OutlinedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(vertical: 14),
-                    side: BorderSide(
-                        color: _card.hasPdf
-                            ? Colors.orange.shade700
-                            : AppColors.primary),
-                    shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.zero),
+                    side: BorderSide(color: _card.hasPdf ? Colors.orange.shade700 : AppColors.primary),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                   ),
                   onPressed: _generatePdf,
                   icon: Icon(
-                    _card.hasPdf
-                        ? Icons.refresh
-                        : Icons.picture_as_pdf_outlined,
-                    color: _card.hasPdf
-                        ? Colors.orange.shade700
-                        : AppColors.primary,
+                    _card.hasPdf ? Icons.refresh : Icons.picture_as_pdf_outlined,
+                    color: _card.hasPdf ? Colors.orange.shade700 : AppColors.primary,
                     size: 18,
                   ),
                   label: Text(
                     _card.hasPdf ? 'Regenerate PDF' : 'Generate PDF',
                     style: TextStyle(
-                      color: _card.hasPdf
-                          ? Colors.orange.shade700
-                          : AppColors.primary,
+                      color: _card.hasPdf ? Colors.orange.shade700 : AppColors.primary,
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                     ),
@@ -748,25 +927,29 @@ class _ReportCardDetailScreenState extends State<ReportCardDetailScreen> {
     );
   }
 
-  // ── Shared helpers ────────────────────────────────────────────────────────
+  // ── Error ─────────────────────────────────────────────────────────────────
 
-  Widget _sectionHeader(String title, IconData icon) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-      child: Row(
-        children: [
-          Icon(icon, size: 14, color: AppColors.primary),
-          const SizedBox(width: 8),
-          Text(
-            title,
-            style: AppTypography.bodySmall.copyWith(
-              fontWeight: FontWeight.w700,
-              color: AppColors.primary,
-              letterSpacing: 0.8,
-              fontSize: 11,
+  Widget _buildError() {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(32),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(FeatherIcons.alertCircle, size: 48, color: AppColors.error.withValues(alpha: 0.7)),
+            const SizedBox(height: 16),
+            Text(_error, textAlign: TextAlign.center,
+                style: AppTypography.bodyMedium.copyWith(color: AppColors.textSecondary)),
+            const SizedBox(height: 20),
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
+              onPressed: _fetchDetail,
+              icon: const Icon(Icons.refresh, color: Colors.white, size: 18),
+              label: const Text('Retry', style: TextStyle(color: Colors.white)),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
